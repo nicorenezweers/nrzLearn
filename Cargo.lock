@@ -2108,7 +2108,7 @@ dependencies = [
 
 [[package]]
 name = "nrzlearn"
-version = "0.1.0"
+version = "3.0.0"
 dependencies = [
  "dioxus",
  "gloo-net",
@@ -2124,7 +2124,7 @@ dependencies = [
 
 [[package]]
 name = "nrzlearn-server"
-version = "0.1.0"
+version = "3.0.0"
 dependencies = [
  "argon2",
  "axum",
@@ -2141,7 +2141,7 @@ dependencies = [
 
 [[package]]
 name = "nrzlearn-shared"
-version = "0.1.0"
+version = "3.0.0"
 dependencies = [
  "serde",
 ]
