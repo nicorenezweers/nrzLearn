@@ -3,6 +3,7 @@ name = "nrzlearn-server"
 version = "0.1.0"
 edition = "2024"
 publish = false
+license = "MIT"
 description = "Self-hosted server for nrzLearn: accounts, progress, leaderboard and the web app."
 
 [dependencies]

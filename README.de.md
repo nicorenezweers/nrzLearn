@@ -109,3 +109,7 @@ shared/         Typen, die Web-App und Server teilen
 ### Eine Sprache hinzufügen
 
 Texte nutzen das Makro `tr!(sprache, en, de, es)`. Eine neue Sprache braucht eine neue Variante in `Sprache` (`src/i18n.rs`), ein weiteres Argument in jedem `tr!` und eine übersetzte Lektionsdatei in `src/content/`. Der Test `sprachen_haben_gleiche_struktur` prüft, dass generierte Aufgaben in jeder Sprache dieselbe Struktur haben.
+
+## Lizenz
+
+[MIT](LICENSE)

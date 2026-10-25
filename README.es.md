@@ -109,3 +109,7 @@ shared/         Tipos compartidos por la aplicación web y el servidor
 ### Añadir un idioma
 
 Los textos usan la macro `tr!(idioma, en, de, es)`. Un idioma nuevo necesita una variante nueva en `Sprache` (`src/i18n.rs`), un argumento más en cada `tr!` y un archivo de lecciones traducido en `src/content/`. El test `sprachen_haben_gleiche_struktur` comprueba que los ejercicios generados tienen la misma estructura en todos los idiomas.
+
+## Licencia
+
+[MIT](LICENSE)

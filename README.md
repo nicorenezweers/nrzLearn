@@ -116,3 +116,7 @@ shared/         Types shared by the web app and the server
 ### Adding a language
 
 Texts use the `tr!(lang, en, de, es)` macro. A new language needs a new variant in `Sprache` (`src/i18n.rs`), one more argument in each `tr!`, and a translated lessons file in `src/content/`. The test `sprachen_haben_gleiche_struktur` checks that generated exercises have the same structure in every language.
+
+## License
+
+[MIT](LICENSE)
