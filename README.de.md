@@ -2,7 +2,7 @@
 
 # nrzLearn
 
-**Programmier-Lernplattform, angetrieben von Rust.**
+**Eine Programmier-Lernplattform, angetrieben von Rust.**
 
 [English](README.md) · **Deutsch** · [Español](README.es.md)
 

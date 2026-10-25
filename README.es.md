@@ -2,7 +2,7 @@
 
 # nrzLearn
 
-**Plataforma de aprendizaje de programación impulsada por Rust.**
+**Una plataforma de aprendizaje de programación impulsada por Rust.**
 
 [English](README.md) · [Deutsch](README.de.md) · **Español**
 

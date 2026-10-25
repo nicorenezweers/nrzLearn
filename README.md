@@ -2,7 +2,7 @@
 
 # nrzLearn
 
-**Rust-powered programming learning platform.**
+**A Rust-powered programming learning platform.**
 
 **English** · [Deutsch](README.de.md) · [Español](README.es.md)
 
