@@ -1,0 +1,14 @@
+services:
+  nrzlearn:
+    image: ghcr.io/nicorenezweers/nrzlearn:latest
+    # build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - nrzlearn-data:/data
+    # environment:
+    #   NRZLEARN_SECURE_COOKIES: "true"   # when served over HTTPS
+    restart: unless-stopped
+
+volumes:
+  nrzlearn-data:

@@ -1,0 +1,9 @@
+[package]
+name = "nrzlearn-shared"
+version = "0.1.0"
+edition = "2024"
+publish = false
+description = "API types shared by the nrzLearn web app and server."
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }

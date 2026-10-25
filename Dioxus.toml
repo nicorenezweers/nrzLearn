@@ -1,0 +1,13 @@
+[application]
+name = "nrzlearn"
+
+[web.app]
+title = "nrzLearn"
+
+[serve]
+port = 8091
+
+# During development (`dx serve`), API calls go to a locally running server:
+#   NRZLEARN_ADDR=127.0.0.1:8090 cargo run -p nrzlearn-server
+[[web.proxy]]
+backend = "http://127.0.0.1:8090/api/"

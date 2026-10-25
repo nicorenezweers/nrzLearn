@@ -1,0 +1,9 @@
+pub mod admin;
+pub mod anmeldung;
+pub mod home;
+pub mod lesson;
+pub mod onboarding;
+pub mod rangliste;
+pub mod spickzettel;
+pub mod spieler;
+pub mod terminal;
