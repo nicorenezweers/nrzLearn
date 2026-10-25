@@ -2,7 +2,7 @@
 
 # nrzLearn
 
-**Learn Rust step by step: self-hosted, multi-user, with a world map, generated exercises and a leaderboard.**
+**Rust-powered programming learning platform.**
 
 **English** · [Deutsch](README.de.md) · [Español](README.es.md)
 

@@ -2,7 +2,7 @@
 
 # nrzLearn
 
-**Rust Schritt für Schritt lernen: selbst gehostet, für viele Nutzer, mit Weltkarte, generierten Aufgaben und Rangliste.**
+**Programmier-Lernplattform, angetrieben von Rust.**
 
 [English](README.md) · **Deutsch** · [Español](README.es.md)
 

@@ -2,7 +2,7 @@
 
 # nrzLearn
 
-**Aprende Rust paso a paso: autoalojado, multiusuario, con mapa de mundos, ejercicios generados y clasificación.**
+**Plataforma de aprendizaje de programación impulsada por Rust.**
 
 [English](README.md) · [Deutsch](README.de.md) · **Español**
 
