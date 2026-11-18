@@ -1,0 +1,1938 @@
+{
+  "course": "scala",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Scala",
+      "chapter": "First steps",
+      "summary": "Write your first Scala program, print text with println and print, and join strings.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Every Scala program needs a starting point. The line `@main def run(): Unit =` creates it. `def` defines a function, `run` is its name, the empty parentheses `()` mean it takes no input, `: Unit` means it gives back no useful value, and `=` says that the body follows. `@main` marks this function as the place where the program starts."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  println(\"Hello, Scala!\")",
+          "output": "Hello, Scala!"
+        },
+        {
+          "type": "text",
+          "md": "The body is the indented code below the first line. `println` prints the text in the parentheses and then starts a new line. Text in double quotes, like `\"Hello, Scala!\"`, is called a **string**. Each `println` prints its own line, from top to bottom."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  println(\"Good morning\")\n  println(\"Scala is fun\")\n  println(\"Bye\")",
+          "output": "Good morning\nScala is fun\nBye"
+        },
+        {
+          "type": "heading",
+          "text": "print and println"
+        },
+        {
+          "type": "text",
+          "md": "`print` works like `println`, but it does not start a new line. The next output continues on the same line. `println()` with nothing in the parentheses only starts a new line."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  print(\"Hello, \")\n  print(\"Scala\")\n  println(\"!\")\n  println(\"Done\")",
+          "output": "Hello, Scala!\nDone"
+        },
+        {
+          "type": "text",
+          "md": "Numbers are written without quotes, and Scala can calculate with them: `2 + 3` gives `5`. Inside quotes, `\"2 + 3\"` is only text and is printed as it is. With strings, `+` joins them into one string."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  println(2 + 3)\n  println(\"2 + 3\")\n  println(10 * 4)\n  println(\"Hello, \" + \"world\")",
+          "output": "5\n2 + 3\n40\nHello, world"
+        },
+        {
+          "type": "tip",
+          "md": "Scala 3 uses indentation to group code. All lines of the body must start with the same number of spaces. Two spaces is the usual style. Older Scala code puts the body in curly braces `{` and `}` instead."
+        },
+        {
+          "type": "warning",
+          "md": "Scala is case-sensitive: `println` works, but `Println` or `PrintLn` is an error. A string also needs a double quote at the start and at the end."
+        }
+      ],
+      "card": [
+        "`@main def run(): Unit =` starts the program",
+        "`println(\"Hi\")` prints a line",
+        "`print(\"Hi\")` prints without a line break",
+        "`\"Hi, \" + \"you\"` joins strings",
+        "Indent the body, usually by 2 spaces"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which line prints Hello on its own line?",
+          "options": [
+            "`println(\"Hello\")`",
+            "`print Hello`",
+            "`echo(\"Hello\")`",
+            "`printLine(\"Hello\")`"
+          ],
+          "answer": 0,
+          "explain": "`println` prints the string in the parentheses and then starts a new line. The other commands do not exist in Scala."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  print(\"Sca\")\n  print(\"la\")\n  println(\"!\")",
+          "answers": [
+            "Scala!"
+          ],
+          "explain": "`print` does not start a new line, so all three parts end up on one line: `Scala!`."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  println(6 * 7)",
+          "answers": [
+            "42"
+          ],
+          "explain": "Without quotes, `6 * 7` is a calculation. `*` multiplies, so Scala prints `42`."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "This program prints `7`.",
+          "code": "@main def run(): Unit =\n  println(\"3 + 4\")",
+          "answer": false,
+          "explain": "The calculation is inside double quotes, so it is only text. The program prints `3 + 4`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Fill the gap so the program prints Hi and Bye on two lines.",
+          "code": "@main def run(): Unit =\n  ___(\"Hi\")\n  println(\"Bye\")",
+          "options": [
+            "println",
+            "print",
+            "echo"
+          ],
+          "answer": 0,
+          "explain": "`println` starts a new line after `Hi`. With `print`, the output would be `HiBye`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Fill the gap to define the starting point of the program.",
+          "code": "@main ___ run(): Unit =\n  println(\"Start\")",
+          "options": [
+            "def",
+            "fun",
+            "func",
+            "main"
+          ],
+          "answer": 0,
+          "explain": "In Scala, functions are defined with `def`. `fun` and `func` are keywords of other languages."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build a line that prints the sum of 2 and 3.",
+          "tokens": [
+            "println(",
+            "2",
+            "+",
+            "3",
+            ")"
+          ],
+          "distractors": [
+            "printline(",
+            "\"+\""
+          ],
+          "explain": "`println( 2 + 3 )` calculates `2 + 3` and prints `5`. Spaces next to the parentheses do not matter."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order so the program prints One, Two and Three on separate lines.",
+          "lines": [
+            "@main def run(): Unit =",
+            "  println(\"One\")",
+            "  println(\"Two\")",
+            "  println(\"Three\")"
+          ],
+          "explain": "The program starts with `@main def run(): Unit =`. The `println` lines run from top to bottom."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match each piece of code with its meaning.",
+          "pairs": [
+            [
+              "`println(\"Hi\")`",
+              "prints Hi and starts a new line"
+            ],
+            [
+              "`print(\"Hi\")`",
+              "prints Hi without a new line"
+            ],
+            [
+              "`\"Hi\"`",
+              "a string"
+            ],
+            [
+              "`@main`",
+              "marks where the program starts"
+            ],
+            [
+              "`Unit`",
+              "no useful value"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "@main def run(): Unit =",
+            "  println(\"Start\")",
+            "  println(\"Middle)",
+            "  println(\"End\")"
+          ],
+          "bug": 2,
+          "explain": "The string `\"Middle` has no closing double quote. Correct: `println(\"Middle\")`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "@main def run(): Unit =",
+            "  println(\"Hi\")",
+            "  Println(\"Bye\")"
+          ],
+          "bug": 2,
+          "explain": "Scala is case-sensitive. `Println` does not exist; write `println(\"Bye\")`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-12",
+          "prompt": "In `@main def run(): Unit =`, what does `Unit` mean?",
+          "options": [
+            "The function gives back no useful value",
+            "The function gives back a number",
+            "The program runs only once",
+            "The function has one input"
+          ],
+          "answer": 0,
+          "explain": "The type after the colon is the type of the result. `Unit` means that there is no useful result: `run` only does something, like printing."
+        }
+      ]
+    },
+    {
+      "id": "values",
+      "title": "Values and types",
+      "chapter": "Basics",
+      "summary": "Store data with val and var, and get to know Int, Double, Boolean, String and type inference.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **value** gives a name to a piece of data. You write `val`, the name, `=` and the data. After that, you can use the name instead of the data. A `val` can never change."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val name = \"Mia\"\n  val age = 25\n  println(name)\n  println(age)",
+          "output": "Mia\n25"
+        },
+        {
+          "type": "text",
+          "md": "When something needs to change, use `var` for a **variable**. You give it a new value with `=`. `score += 5` is short for `score = score + 5`; `-=` and `*=` work the same way."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  var score = 10\n  println(score)\n  score = 15\n  println(score)\n  score += 5\n  println(score)",
+          "output": "10\n15\n20"
+        },
+        {
+          "type": "warning",
+          "md": "Giving a `val` a new value is an error: the program does not compile and Scala reports `Reassignment to val`. Use `val` by default and `var` only when the value really has to change."
+        },
+        {
+          "type": "heading",
+          "text": "Types"
+        },
+        {
+          "type": "text",
+          "md": "Every value has a **type**. `Int` is a whole number, `Double` is a number with decimals, `Boolean` is `true` or `false`, and `String` is text. Usually Scala works out the type by itself; this is called **type inference**. You can also write the type after a colon: `val age: Int = 25`."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val count: Int = 3\n  val price: Double = 2.5\n  val open: Boolean = true\n  val city: String = \"Oslo\"\n  println(count)\n  println(price)\n  println(open)\n  println(city)",
+          "output": "3\n2.5\ntrue\nOslo"
+        },
+        {
+          "type": "text",
+          "md": "Scala calculates with `+`, `-`, `*` (multiply) and `/` (divide). `%` gives the remainder of a division. Be careful: when you divide two `Int` values, the result is an `Int` too, and the decimals are cut off. If one of the numbers is a `Double`, the result has decimals."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  println(7 + 2)\n  println(7 - 2)\n  println(7 * 2)\n  println(7 / 2)\n  println(7 % 2)\n  println(7.0 / 2)",
+          "output": "9\n5\n14\n3\n1\n3.5"
+        },
+        {
+          "type": "text",
+          "md": "To change the type of a value, use a conversion: `toDouble` turns a number into a `Double`, `toInt` turns a `Double` into an `Int` and cuts off the decimals, and `toInt` on a string like `\"42\"` reads the number in it."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val n = 7\n  println(n.toDouble)\n  val x = 9.8\n  println(x.toInt)\n  val text = \"42\"\n  println(text.toInt + 1)",
+          "output": "7.0\n9\n43"
+        },
+        {
+          "type": "tip",
+          "md": "A type mismatch is an error. `val age: Int = \"25\"` does not compile, because `\"25\"` is a `String`, not an `Int`. Scala finds such mistakes before the program runs."
+        }
+      ],
+      "card": [
+        "`val x = 5` cannot change",
+        "`var y = 5` can change: `y = 6`, `y += 1`",
+        "`Int`, `Double`, `Boolean`, `String`",
+        "`val price: Double = 2.5` with a type",
+        "`7 / 2` is `3`, `7.0 / 2` is `3.5`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "values-1",
+          "prompt": "Which keyword creates a variable that you can change later?",
+          "options": [
+            "`var`",
+            "`val`",
+            "`def`",
+            "`let`"
+          ],
+          "answer": 0,
+          "explain": "A `var` can get a new value with `=`. A `val` can never change."
+        },
+        {
+          "type": "input",
+          "id": "values-2",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  println(17 / 5)",
+          "answers": [
+            "3"
+          ],
+          "explain": "Both numbers are `Int` values, so the result is an `Int`. `17 / 5` is `3.4`, and the decimals are cut off: `3`."
+        },
+        {
+          "type": "input",
+          "id": "values-3",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  println(17 % 5)",
+          "answers": [
+            "2"
+          ],
+          "explain": "`%` gives the remainder. `5` fits into `17` three times (`15`), and `2` is left over."
+        },
+        {
+          "type": "choice",
+          "id": "values-4",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  val a = 10\n  var b = a\n  b += 5\n  println(a + b)",
+          "options": [
+            "`25`",
+            "`20`",
+            "`15`",
+            "`30`"
+          ],
+          "answer": 0,
+          "explain": "`b` starts as `10` and becomes `15`. `a` stays `10`. `10 + 15` is `25`."
+        },
+        {
+          "type": "true_false",
+          "id": "values-5",
+          "statement": "This program compiles and prints `6`.",
+          "code": "@main def run(): Unit =\n  val n = 5\n  n = 6\n  println(n)",
+          "answer": false,
+          "explain": "`n` is a `val`, so it cannot get a new value. The program does not compile. With `var n = 5` it would print `6`."
+        },
+        {
+          "type": "gap",
+          "id": "values-6",
+          "prompt": "Fill the gap with the right type.",
+          "code": "@main def run(): Unit =\n  val price: ___ = 4.5\n  println(price)",
+          "options": [
+            "Double",
+            "Int",
+            "Boolean"
+          ],
+          "answer": 0,
+          "explain": "`4.5` has decimals, so its type is `Double`. An `Int` can only hold whole numbers."
+        },
+        {
+          "type": "gap",
+          "id": "values-7",
+          "prompt": "Fill the gap so the program prints 3.",
+          "code": "@main def run(): Unit =\n  var count = 1\n  count ___ 2\n  println(count)",
+          "options": [
+            "+=",
+            "=",
+            "=="
+          ],
+          "answer": 0,
+          "explain": "`count += 2` adds `2` to `count`, so it becomes `3`. `count = 2` would set it to `2`, and `==` only compares."
+        },
+        {
+          "type": "blocks",
+          "id": "values-8",
+          "prompt": "Create a value named age of type Int with the value 30 that can never change.",
+          "tokens": [
+            "val",
+            "age:",
+            "Int",
+            "=",
+            "30"
+          ],
+          "distractors": [
+            "var",
+            "int"
+          ],
+          "explain": "`val age: Int = 30` creates a value that cannot change. The type comes after the colon and starts with a capital letter."
+        },
+        {
+          "type": "order",
+          "id": "values-9",
+          "prompt": "Put the lines in order so the program prints 12.",
+          "lines": [
+            "@main def run(): Unit =",
+            "  var total = 2",
+            "  total = total * 3",
+            "  total = total + 6",
+            "  println(total)"
+          ],
+          "explain": "`total` starts at `2`, `2 * 3` is `6`, and `6 + 6` is `12`. In the other order, `(2 + 6) * 3` would be `24`."
+        },
+        {
+          "type": "bug",
+          "id": "values-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "@main def run(): Unit =",
+            "  val name = \"Kim\"",
+            "  val age: Int = \"25\"",
+            "  println(name)",
+            "  println(age)"
+          ],
+          "bug": 2,
+          "explain": "`\"25\"` is a `String`, but `age` must be an `Int`. Write the number without quotes: `val age: Int = 25`."
+        },
+        {
+          "type": "bug",
+          "id": "values-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "@main def run(): Unit =",
+            "  val price = 9.99",
+            "  val whole: Int = price",
+            "  println(whole)"
+          ],
+          "bug": 2,
+          "explain": "`price` is a `Double`, and Scala does not turn it into an `Int` by itself. Convert it: `val whole: Int = price.toInt`."
+        },
+        {
+          "type": "pairs",
+          "id": "values-12",
+          "prompt": "Match each type with the kind of data it holds.",
+          "pairs": [
+            [
+              "`Int`",
+              "a whole number"
+            ],
+            [
+              "`Double`",
+              "a number with decimals"
+            ],
+            [
+              "`Boolean`",
+              "true or false"
+            ],
+            [
+              "`String`",
+              "text"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings",
+      "chapter": "Basics",
+      "summary": "Build text with s-interpolation and use length, toUpperCase, contains and substring.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A `String` is text in double quotes. You already know that `+` joins strings. When you join a string and a number, Scala turns the number into text: `\"Age: \" + 36` gives `\"Age: 36\"`."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val first = \"Ada\"\n  val last = \"Lovelace\"\n  println(first + \" \" + last)\n  println(\"Age: \" + 36)",
+          "output": "Ada Lovelace\nAge: 36"
+        },
+        {
+          "type": "heading",
+          "text": "String interpolation"
+        },
+        {
+          "type": "text",
+          "md": "An easier way to build text is **string interpolation**. Write the letter `s` right before the opening quote. Inside the string, `$name` puts in the value of `name`. For a calculation or a longer expression, use curly braces: `${age + 1}`."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val name = \"Leo\"\n  val age = 20\n  println(s\"Hello, $name!\")\n  println(s\"Next year you are ${age + 1}.\")",
+          "output": "Hello, Leo!\nNext year you are 21."
+        },
+        {
+          "type": "warning",
+          "md": "Do not forget the `s` before the quote. Without it, Scala prints `$name` as plain text and does not put in the value."
+        },
+        {
+          "type": "heading",
+          "text": "Useful methods"
+        },
+        {
+          "type": "text",
+          "md": "Strings have many **methods**: functions that belong to a value. You call them with a dot after the value. `length` counts the characters, `toUpperCase` and `toLowerCase` change capital letters, and `contains` checks if a text is inside the string. `contains` gives a `Boolean`."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val word = \"Scala\"\n  println(word.length)\n  println(word.toUpperCase)\n  println(word.toLowerCase)\n  println(word.contains(\"ca\"))\n  println(word.contains(\"x\"))",
+          "output": "5\nSCALA\nscala\ntrue\nfalse"
+        },
+        {
+          "type": "text",
+          "md": "Every character in a string has a position, called its **index**. The first character has index `0`. `substring(start, end)` gives the characters from index `start` up to, but not including, index `end`. `substring(start)` goes to the end of the string. `replace` swaps one text for another."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val text = \"Hello, Scala\"\n  println(text.substring(0, 5))\n  println(text.substring(7))\n  println(text.replace(\"Hello\", \"Hi\"))",
+          "output": "Hello\nScala\nHi, Scala"
+        },
+        {
+          "type": "tip",
+          "md": "A string never changes. Methods like `toUpperCase` give back a **new** string, and the original string stays the same. To keep the result, store it in a new `val`."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val city = \"rome\"\n  val big = city.toUpperCase\n  println(city)\n  println(big)",
+          "output": "rome\nROME"
+        }
+      ],
+      "card": [
+        "`s\"Hi, $name\"` puts in a value",
+        "`s\"Sum: ${a + b}\"` puts in an expression",
+        "`text.length`, `text.toUpperCase`",
+        "`text.contains(\"ab\")` gives a `Boolean`",
+        "`text.substring(0, 3)`: index 0 up to 3"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  val name = \"Eva\"\n  println(s\"Hi, $name!\")",
+          "answers": [
+            "Hi, Eva!"
+          ],
+          "explain": "Because of the `s` before the quote, `$name` is replaced by the value `Eva`."
+        },
+        {
+          "type": "input",
+          "id": "strings-2",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  val word = \"banana\"\n  println(word.length)",
+          "answers": [
+            "6"
+          ],
+          "explain": "`length` counts the characters: b, a, n, a, n, a. That is `6`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-3",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  val text = \"Programming\"\n  println(text.substring(0, 3))",
+          "options": [
+            "`Pro`",
+            "`Prog`",
+            "`rog`",
+            "`Pr`"
+          ],
+          "answer": 0,
+          "explain": "`substring(0, 3)` takes the characters with index `0`, `1` and `2`. The character at index `3` is not included."
+        },
+        {
+          "type": "choice",
+          "id": "strings-4",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  val a = 4\n  val b = 3\n  println(s\"$a + $b = ${a + b}\")",
+          "options": [
+            "`4 + 3 = 7`",
+            "`7 = 7`",
+            "`$a + $b = 7`",
+            "`4 + 3 = 4 + 3`"
+          ],
+          "answer": 0,
+          "explain": "`$a` and `$b` put in the values `4` and `3`. `${a + b}` calculates first and puts in `7`. The `+` outside the braces is plain text."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-5",
+          "statement": "This program prints `Hello, Ana`.",
+          "code": "@main def run(): Unit =\n  val name = \"Ana\"\n  println(\"Hello, $name\")",
+          "answer": false,
+          "explain": "The string has no `s` before the quote, so `$name` stays plain text. The program prints `Hello, $name`."
+        },
+        {
+          "type": "gap",
+          "id": "strings-6",
+          "prompt": "Fill the gap so the program prints ANA.",
+          "code": "@main def run(): Unit =\n  val name = \"ana\"\n  println(name.___)",
+          "options": [
+            "toUpperCase",
+            "toLowerCase",
+            "length",
+            "upper"
+          ],
+          "answer": 0,
+          "explain": "`toUpperCase` gives back the string with capital letters: `ANA`."
+        },
+        {
+          "type": "gap",
+          "id": "strings-7",
+          "prompt": "Fill the gap so the program prints I live in Paris.",
+          "code": "@main def run(): Unit =\n  val city = \"Paris\"\n  println(___\"I live in $city.\")",
+          "options": [
+            "s",
+            "$",
+            "+"
+          ],
+          "answer": 0,
+          "explain": "The letter `s` right before the quote turns on string interpolation, so `$city` becomes `Paris`."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-8",
+          "prompt": "Build a line that stores word in capital letters in a new value named upper.",
+          "tokens": [
+            "val",
+            "upper",
+            "=",
+            "word.toUpperCase"
+          ],
+          "distractors": [
+            "word.upper()",
+            "toUpperCase(word)"
+          ],
+          "explain": "Methods are called with a dot after the value: `word.toUpperCase`. The result is stored in `upper`."
+        },
+        {
+          "type": "order",
+          "id": "strings-9",
+          "prompt": "Put the lines in order so the program prints SCALA has 5 letters.",
+          "lines": [
+            "@main def run(): Unit =",
+            "  val lang = \"scala\"",
+            "  val big = lang.toUpperCase",
+            "  val count = big.length",
+            "  println(s\"$big has $count letters\")"
+          ],
+          "explain": "Each line uses the value from the line before it: `lang`, then `big`, then `count`. A value must exist before you can use it."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-10",
+          "prompt": "Match each piece of code with what it does.",
+          "pairs": [
+            [
+              "`s\"Hi $name\"`",
+              "puts a value into a string"
+            ],
+            [
+              "`text.length`",
+              "counts the characters"
+            ],
+            [
+              "`text.toUpperCase`",
+              "gives the text in capital letters"
+            ],
+            [
+              "`text.contains(\"a\")`",
+              "checks if a text is inside"
+            ],
+            [
+              "`text.substring(1, 3)`",
+              "gives a part of the text"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "strings-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "@main def run(): Unit =",
+            "  val first = \"Ana\"",
+            "  val last = \"Silva\"",
+            "  println(s\"Name: $first $last\")",
+            "  println(\"Letters: ${first.length}\")"
+          ],
+          "bug": 4,
+          "explain": "The last string has no `s` before the quote, so `${first.length}` is printed as plain text. Correct: `println(s\"Letters: ${first.length}\")`."
+        },
+        {
+          "type": "bug",
+          "id": "strings-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "@main def run(): Unit =",
+            "  val word = \"apple\"",
+            "  println(word.toUppercase)",
+            "  println(word.length)"
+          ],
+          "bug": 2,
+          "explain": "Method names are case-sensitive. The method is called `toUpperCase`, with a capital `C`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Make decisions with if, then and else, compare and combine conditions, and choose with match.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A comparison gives a `Boolean`: `true` or `false`. Scala has `==` (equal), `!=` (not equal), `<` (less than), `>` (greater than), `<=` (less than or equal) and `>=` (greater than or equal). You can compare strings with `==` too."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val age = 17\n  println(age >= 18)\n  println(age == 17)\n  println(age != 17)\n  println(\"cat\" == \"cat\")",
+          "output": "false\ntrue\nfalse\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "`if` runs code only when a condition is `true`. Write `if`, the condition, `then`, and the code below it, indented. The `else` part is optional: it runs when the condition is `false`."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val temperature = 25\n  if temperature > 20 then\n    println(\"It is warm.\")\n  else\n    println(\"It is cold.\")",
+          "output": "It is warm."
+        },
+        {
+          "type": "text",
+          "md": "With `else if` you can check more conditions, one after the other. Scala runs the code of the first condition that is `true` and skips the rest."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val score = 72\n  if score >= 90 then\n    println(\"Grade A\")\n  else if score >= 70 then\n    println(\"Grade B\")\n  else\n    println(\"Grade C\")",
+          "output": "Grade B"
+        },
+        {
+          "type": "text",
+          "md": "In Scala, `if` is an **expression**: it gives back a value. You can store this value in a `val`. Short ones fit on one line: `if a > b then a else b` gives `a` when `a` is bigger, otherwise `b`."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val a = 8\n  val b = 5\n  val max = if a > b then a else b\n  println(max)\n  val label = if max % 2 == 0 then \"even\" else \"odd\"\n  println(label)",
+          "output": "8\neven"
+        },
+        {
+          "type": "text",
+          "md": "**Logical operators** combine conditions. `&&` (and) is `true` when both sides are true. `||` (or) is `true` when at least one side is true. `!` (not) turns `true` into `false` and `false` into `true`."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val age = 25\n  val hasTicket = true\n  println(age >= 18 && hasTicket)\n  println(age < 12 || age > 65)\n  println(!hasTicket)",
+          "output": "true\nfalse\nfalse"
+        },
+        {
+          "type": "heading",
+          "text": "match"
+        },
+        {
+          "type": "text",
+          "md": "`match` compares one value with several patterns. Each `case` has a pattern, an arrow `=>` and a result. Scala checks the cases from top to bottom and takes the first one that fits. `|` puts several values into one case, and `_` fits every value, so it goes last. Like `if`, `match` gives back a value."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val day = 6\n  val name = day match\n    case 1 => \"Monday\"\n    case 6 | 7 => \"Weekend\"\n    case _ => \"Workday\"\n  println(name)\n  val n = -4\n  val sign = n match\n    case 0 => \"zero\"\n    case x if x > 0 => \"positive\"\n    case _ => \"negative\"\n  println(sign)",
+          "output": "Weekend\nnegative"
+        },
+        {
+          "type": "tip",
+          "md": "In the second `match`, `case x if x > 0` gives the value the name `x` and adds a condition, called a **guard**. The case fits only when the guard is `true`."
+        }
+      ],
+      "card": [
+        "`==`, `!=`, `<`, `>`, `<=`, `>=` compare",
+        "`if x > 0 then … else …`",
+        "`val max = if a > b then a else b`",
+        "`x match` with `case 1 => …` and `case _ => …`",
+        "`&&` and, `||` or, `!` not"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  val x = 7\n  if x > 5 then\n    println(\"big\")\n  else\n    println(\"small\")",
+          "answers": [
+            "big"
+          ],
+          "explain": "`7 > 5` is `true`, so the code after `then` runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  val n = 9\n  val result = if n % 2 == 0 then \"even\" else \"odd\"\n  println(result)",
+          "answers": [
+            "odd"
+          ],
+          "explain": "`9 % 2` is `1`, not `0`. The condition is `false`, so `if` gives back `\"odd\"`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  val code = 3\n  val text = code match\n    case 1 => \"one\"\n    case 2 | 3 => \"few\"\n    case _ => \"many\"\n  println(text)",
+          "options": [
+            "`few`",
+            "`one`",
+            "`many`",
+            "`3`"
+          ],
+          "answer": 0,
+          "explain": "The case `2 | 3` fits both `2` and `3`, so `text` is `\"few\"`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-4",
+          "prompt": "What is the value of `5 != 5`?",
+          "options": [
+            "`false`",
+            "`true`",
+            "`5`",
+            "`0`"
+          ],
+          "answer": 0,
+          "explain": "`!=` means \"not equal\". `5` is equal to `5`, so the result is `false`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-5",
+          "statement": "This program prints `true`.",
+          "code": "@main def run(): Unit =\n  val a = 3\n  val b = 10\n  println(a > 2 && b < 5)",
+          "answer": false,
+          "explain": "`a > 2` is `true`, but `b < 5` is `false`. With `&&`, both sides must be true, so it prints `false`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-6",
+          "prompt": "Fill the gap so that both conditions must be true to get in.",
+          "code": "@main def run(): Unit =\n  val age = 15\n  val member = true\n  if age >= 18 ___ member then\n    println(\"Welcome\")\n  else\n    println(\"Sorry\")",
+          "options": [
+            "&&",
+            "||",
+            "!"
+          ],
+          "answer": 0,
+          "explain": "`&&` needs both sides to be true. Here `age >= 18` is `false`, so the program prints `Sorry`. With `||`, the member would get in although `age` is only `15`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Fill the gap so the program prints large.",
+          "code": "@main def run(): Unit =\n  val n = 50\n  val size = if n > 10 ___ \"large\" else \"small\"\n  println(size)",
+          "options": [
+            "then",
+            "do",
+            "else"
+          ],
+          "answer": 0,
+          "explain": "The form is `if condition then a else b`. Here `n > 10` is `true`, so `size` is `\"large\"`."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-8",
+          "prompt": "Build a line that stores the smaller of a and b in min.",
+          "tokens": [
+            "val",
+            "min",
+            "=",
+            "if",
+            "a < b",
+            "then",
+            "a",
+            "else",
+            "b"
+          ],
+          "distractors": [
+            "when",
+            "?"
+          ],
+          "explain": "`if a < b then a else b` gives back `a` when it is smaller, otherwise `b`."
+        },
+        {
+          "type": "order",
+          "id": "conditions-9",
+          "prompt": "Put the lines in order so the program prints Grade B.",
+          "lines": [
+            "@main def run(): Unit =",
+            "  val score = 75",
+            "  if score >= 90 then",
+            "    println(\"Grade A\")",
+            "  else",
+            "    println(\"Grade B\")"
+          ],
+          "explain": "`75 >= 90` is `false`, so the `else` part runs. It must contain `println(\"Grade B\")`."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-10",
+          "prompt": "Match each operator with its meaning.",
+          "pairs": [
+            [
+              "`&&`",
+              "and: both must be true"
+            ],
+            [
+              "`||`",
+              "or: at least one must be true"
+            ],
+            [
+              "`!`",
+              "not: turns true into false"
+            ],
+            [
+              "`==`",
+              "is equal to"
+            ],
+            [
+              "`!=`",
+              "is not equal to"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "@main def run(): Unit =",
+            "  val age = 16",
+            "  if age = 18 then",
+            "    println(\"Exactly 18\")",
+            "  else",
+            "    println(\"Not 18\")"
+          ],
+          "bug": 2,
+          "explain": "A single `=` gives a name a value. To compare, write `==`: `if age == 18 then`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "@main def run(): Unit =",
+            "  val n = 3",
+            "  val text = n match",
+            "    case 1 => \"one\"",
+            "    case 2 => \"two\"",
+            "    case _ -> \"many\"",
+            "  println(text)"
+          ],
+          "bug": 5,
+          "explain": "In a `case`, the pattern and the result are separated by `=>`, not `->`. Correct: `case _ => \"many\"`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops and ranges",
+      "chapter": "Control flow",
+      "summary": "Repeat code with for and while, count with ranges like 1 to 5, and build new collections with yield.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A `for` loop repeats code. `1 to 3` is a **range**: the numbers `1`, `2` and `3`, including the last one. In `for i <- 1 to 3 do`, the arrow `<-` takes each number from the range, one after the other, and gives it the name `i`. The code after `do` runs once for each number."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  for i <- 1 to 3 do\n    println(s\"Round $i\")",
+          "output": "Round 1\nRound 2\nRound 3"
+        },
+        {
+          "type": "text",
+          "md": "`until` makes a range **without** the last number: `0 until 3` is `0`, `1` and `2`. With `by` you choose the step: `1 to 10 by 3` counts `1`, `4`, `7`, `10`. A short loop body can stay on the same line as `do`."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  for i <- 0 until 3 do println(i)\n  for i <- 1 to 10 by 3 do println(i)",
+          "output": "0\n1\n2\n1\n4\n7\n10"
+        },
+        {
+          "type": "text",
+          "md": "To collect a result, create a `var` before the loop and change it inside the loop. Here `total` adds up the numbers from `1` to `4`."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  var total = 0\n  for n <- 1 to 4 do\n    total += n\n  println(total)",
+          "output": "10"
+        },
+        {
+          "type": "heading",
+          "text": "while"
+        },
+        {
+          "type": "text",
+          "md": "A `while` loop repeats its code as long as a condition is `true`. Scala checks the condition before every round. Inside the loop, you must change something so that the condition becomes `false` one day. `count -= 1` makes `count` one smaller."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  var count = 3\n  while count > 0 do\n    println(count)\n    count -= 1\n  println(\"Go!\")",
+          "output": "3\n2\n1\nGo!"
+        },
+        {
+          "type": "warning",
+          "md": "If the condition of a `while` loop never becomes `false`, the loop never ends. Check that the loop changes the variable in the condition."
+        },
+        {
+          "type": "heading",
+          "text": "for with yield"
+        },
+        {
+          "type": "text",
+          "md": "With `yield` instead of `do`, a `for` loop does not run code but builds a **new collection**: one result for each value. For a range, the result is a `Vector`, a collection that holds values in order. `println` shows it as `Vector(…)`."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val squares = for i <- 1 to 4 yield i * i\n  println(squares)",
+          "output": "Vector(1, 4, 9, 16)"
+        },
+        {
+          "type": "tip",
+          "md": "To count down, use a negative step: `for i <- 3 to 1 by -1 do` counts `3`, `2`, `1`. A range like `3 to 1` without a step is empty, so the loop does not run at all."
+        }
+      ],
+      "card": [
+        "`for i <- 1 to 5 do …` counts 1 to 5",
+        "`0 until 3` is 0, 1, 2",
+        "`1 to 10 by 2` counts in steps of 2",
+        "`while x > 0 do …` repeats while true",
+        "`for i <- 1 to 3 yield i * 2`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  for i <- 1 to 4 do print(i)",
+          "answers": [
+            "1234"
+          ],
+          "explain": "`1 to 4` includes `4`. `print` does not start a new line, so the numbers end up next to each other."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  var total = 0\n  for n <- 1 to 5 do\n    total += n\n  println(total)",
+          "answers": [
+            "15"
+          ],
+          "explain": "The loop adds `1 + 2 + 3 + 4 + 5`, which is `15`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  for i <- 0 until 3 do print(i)",
+          "options": [
+            "`012`",
+            "`0123`",
+            "`123`",
+            "`01`"
+          ],
+          "answer": 0,
+          "explain": "`0 until 3` starts at `0` and stops before `3`: `0`, `1`, `2`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-4",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  var n = 10\n  var steps = 0\n  while n > 1 do\n    n = n / 2\n    steps += 1\n  println(steps)",
+          "options": [
+            "`3`",
+            "`4`",
+            "`5`",
+            "`10`"
+          ],
+          "answer": 0,
+          "explain": "`n` goes from `10` to `5`, then `2`, then `1`. Now `n > 1` is `false`. That makes `3` rounds."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-5",
+          "statement": "`1 to 5` and `1 until 5` contain the same numbers.",
+          "answer": false,
+          "explain": "`1 to 5` includes `5`: `1` to `5`. `1 until 5` stops before `5`: `1` to `4`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-6",
+          "prompt": "Fill the gap so the program prints 1, 2 and 3 on separate lines.",
+          "code": "@main def run(): Unit =\n  for i <- 1 ___ 3 do\n    println(i)",
+          "options": [
+            "to",
+            "until",
+            "by"
+          ],
+          "answer": 0,
+          "explain": "`1 to 3` includes the last number. `1 until 3` would stop after `2`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-7",
+          "prompt": "Fill the gap so the program prints Vector(2, 4, 6).",
+          "code": "@main def run(): Unit =\n  val doubled = for i <- 1 to 3 ___ i * 2\n  println(doubled)",
+          "options": [
+            "yield",
+            "do",
+            "return"
+          ],
+          "answer": 0,
+          "explain": "`yield` builds a new collection from the results. With `do`, the loop only runs code and gives back no collection."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-8",
+          "prompt": "Build a loop that prints the numbers 0 to 4.",
+          "tokens": [
+            "for",
+            "i",
+            "<-",
+            "0",
+            "until",
+            "5",
+            "do",
+            "println(i)"
+          ],
+          "distractors": [
+            "in",
+            "->"
+          ],
+          "explain": "`0 until 5` gives `0` to `4`. The arrow `<-` takes each number, and the code after `do` prints it."
+        },
+        {
+          "type": "order",
+          "id": "loops-9",
+          "prompt": "Put the lines in order so the program prints 3, 2 and 1 on separate lines.",
+          "lines": [
+            "@main def run(): Unit =",
+            "  var n = 3",
+            "  while n > 0 do",
+            "    println(n)",
+            "    n -= 1"
+          ],
+          "explain": "The loop must print `n` first and then make it smaller. In the other order it would print `2`, `1`, `0`."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-10",
+          "prompt": "Match each range with its numbers.",
+          "pairs": [
+            [
+              "`1 to 3`",
+              "1, 2, 3"
+            ],
+            [
+              "`1 until 3`",
+              "1, 2"
+            ],
+            [
+              "`1 to 9 by 4`",
+              "1, 5, 9"
+            ],
+            [
+              "`3 to 1 by -1`",
+              "3, 2, 1"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "loops-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "@main def run(): Unit =",
+            "  var sum = 0",
+            "  for i -> 1 to 3 do",
+            "    sum += i",
+            "  println(sum)"
+          ],
+          "bug": 2,
+          "explain": "In a `for` loop, the arrow that takes each value is `<-`, not `->`. Correct: `for i <- 1 to 3 do`."
+        },
+        {
+          "type": "bug",
+          "id": "loops-12",
+          "prompt": "The program should print Line 1, Line 2 and Line 3. Which line has the bug?",
+          "lines": [
+            "@main def run(): Unit =",
+            "  for i <- 1 until 3 do",
+            "    println(s\"Line $i\")"
+          ],
+          "bug": 1,
+          "explain": "`1 until 3` stops before `3`, so the program prints only two lines. Use `1 to 3` to include `3`."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Building blocks",
+      "summary": "Write your own functions with def, parameters and return types, use default arguments and lambdas.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** is a piece of code with a name that you can use again and again. You define it with `def`, the name, the **parameters** in parentheses and the return type after a colon. Every parameter needs a type. The value of the code after `=` is the result; you do not need a `return` keyword."
+        },
+        {
+          "type": "code",
+          "code": "def square(n: Int): Int = n * n\n\n@main def run(): Unit =\n  println(square(4))\n  println(square(9))",
+          "output": "16\n81"
+        },
+        {
+          "type": "text",
+          "md": "Parameters are separated by commas. When you call the function, the **arguments** go into the parameters in the same order. A body with several lines is indented, and the last line gives the result."
+        },
+        {
+          "type": "code",
+          "code": "def area(width: Double, height: Double): Double =\n  val result = width * height\n  result\n\n@main def run(): Unit =\n  println(area(2.5, 4))",
+          "output": "10.0"
+        },
+        {
+          "type": "text",
+          "md": "A function that only does something, like printing, has the return type `Unit`. You call it on its own line."
+        },
+        {
+          "type": "code",
+          "code": "def greet(name: String): Unit =\n  println(s\"Hello, $name!\")\n\n@main def run(): Unit =\n  greet(\"Ana\")\n  greet(\"Ben\")",
+          "output": "Hello, Ana!\nHello, Ben!"
+        },
+        {
+          "type": "text",
+          "md": "A parameter can have a **default value**, written with `=` in the parameter list. When you leave out that argument, Scala uses the default. With **named arguments** like `greeting = \"Hey\"`, you say which parameter gets which value, in any order."
+        },
+        {
+          "type": "code",
+          "code": "def welcome(name: String, greeting: String = \"Hello\"): String =\n  s\"$greeting, $name!\"\n\n@main def run(): Unit =\n  println(welcome(\"Ana\"))\n  println(welcome(\"Ben\", \"Hi\"))\n  println(welcome(greeting = \"Hey\", name = \"Cy\"))",
+          "output": "Hello, Ana!\nHi, Ben!\nHey, Cy!"
+        },
+        {
+          "type": "heading",
+          "text": "Lambdas"
+        },
+        {
+          "type": "text",
+          "md": "A **lambda** is a function without a name. `(x: Int) => x * 2` takes `x` and gives back `x * 2`. The arrow `=>` separates the parameters from the result. You can store a lambda in a `val` and call it like any function. Its type is written `Int => Int`: it takes an `Int` and gives back an `Int`."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val double = (x: Int) => x * 2\n  val add = (a: Int, b: Int) => a + b\n  println(double(5))\n  println(add(2, 3))",
+          "output": "10\n5"
+        },
+        {
+          "type": "text",
+          "md": "A function can take another function as a parameter. `applyTwice` below calls `f` two times. You can pass a stored lambda or write a new one directly in the call. In the call, `x => x + 10` needs no type, because Scala knows that `f` takes an `Int`."
+        },
+        {
+          "type": "code",
+          "code": "def applyTwice(f: Int => Int, x: Int): Int = f(f(x))\n\n@main def run(): Unit =\n  val double = (x: Int) => x * 2\n  println(applyTwice(double, 3))\n  println(applyTwice(x => x + 10, 1))",
+          "output": "12\n21"
+        },
+        {
+          "type": "tip",
+          "md": "Scala can often work out the return type by itself, so `def square(n: Int) = n * n` also works. Writing the return type makes your code easier to read and helps the compiler find mistakes."
+        }
+      ],
+      "card": [
+        "`def square(n: Int): Int = n * n`",
+        "The last expression is the result",
+        "`def f(x: Int = 1)` has a default value",
+        "`(x: Int) => x * 2` is a lambda",
+        "`Unit`: the function gives back nothing useful"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this program print?",
+          "code": "def triple(n: Int): Int = n * 3\n\n@main def run(): Unit =\n  println(triple(4) + 1)",
+          "answers": [
+            "13"
+          ],
+          "explain": "`triple(4)` gives `12`, and `12 + 1` is `13`."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this program print?",
+          "code": "def describe(name: String, age: Int = 30): String =\n  s\"$name is $age\"\n\n@main def run(): Unit =\n  println(describe(\"Ana\"))",
+          "answers": [
+            "Ana is 30"
+          ],
+          "explain": "The call leaves out `age`, so Scala uses the default value `30`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-3",
+          "prompt": "What does this program print?",
+          "code": "def f(a: Int, b: Int): Int =\n  val c = a + b\n  c * 2\n\n@main def run(): Unit =\n  println(f(2, 3))",
+          "options": [
+            "`10`",
+            "`8`",
+            "`5`",
+            "`7`"
+          ],
+          "answer": 0,
+          "explain": "`c` is `2 + 3`, which is `5`. The last line `c * 2` is the result: `10`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-4",
+          "prompt": "Which line correctly defines a function that adds two `Int` values?",
+          "options": [
+            "`def add(a: Int, b: Int): Int = a + b`",
+            "`def add(a, b) = a + b`",
+            "`fun add(a: Int, b: Int): Int = a + b`",
+            "`def add(a: Int, b: Int): Int => a + b`"
+          ],
+          "answer": 0,
+          "explain": "A Scala function starts with `def`, every parameter needs a type, and the body comes after `=`. `fun` is Kotlin, and `=>` is used for lambdas."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-5",
+          "statement": "A Scala function needs the keyword `return` to give back a value.",
+          "answer": false,
+          "explain": "The value of the body is the result. In a body with several lines, the last line is the result. `return` is not needed."
+        },
+        {
+          "type": "gap",
+          "id": "functions-6",
+          "prompt": "Fill the gap with the right return type.",
+          "code": "def isEven(n: Int): ___ = n % 2 == 0\n\n@main def run(): Unit =\n  println(isEven(4))",
+          "options": [
+            "Boolean",
+            "Int",
+            "String",
+            "Unit"
+          ],
+          "answer": 0,
+          "explain": "`n % 2 == 0` is a comparison, so the result is `true` or `false`: a `Boolean`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-7",
+          "prompt": "Fill the gap to complete the lambda.",
+          "code": "@main def run(): Unit =\n  val half = (x: Double) ___ x / 2\n  println(half(9))",
+          "options": [
+            "=>",
+            "->",
+            "="
+          ],
+          "answer": 0,
+          "explain": "In a lambda, `=>` separates the parameters from the result. `half(9)` gives `4.5`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-8",
+          "prompt": "Build a function cube that gives back n * n * n.",
+          "tokens": [
+            "def",
+            "cube(n: Int):",
+            "Int",
+            "=",
+            "n * n * n"
+          ],
+          "distractors": [
+            "fun",
+            "->"
+          ],
+          "explain": "`def cube(n: Int): Int = n * n * n` has a name, a parameter with a type, a return type and the body after `=`."
+        },
+        {
+          "type": "order",
+          "id": "functions-9",
+          "prompt": "Put the lines in order so the function gives back the price plus tax.",
+          "lines": [
+            "def price(base: Double, tax: Double): Double =",
+            "  val extra = base * tax",
+            "  val total = base + extra",
+            "  total"
+          ],
+          "explain": "The function header comes first. `extra` must exist before `total` uses it, and the last line `total` is the result."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-10",
+          "prompt": "Match each piece of code with its meaning.",
+          "pairs": [
+            [
+              "`def`",
+              "defines a function"
+            ],
+            [
+              "`: Int =`",
+              "the return type"
+            ],
+            [
+              "`x => x + 1`",
+              "a lambda"
+            ],
+            [
+              "`name: String = \"you\"`",
+              "a parameter with a default value"
+            ],
+            [
+              "`Unit`",
+              "no useful result"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "functions-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "def greet(name: String): String =",
+            "  s\"Hi, $name\"",
+            "@main def run(): Unit =",
+            "  println(greet(\"Ana\", \"Ben\"))"
+          ],
+          "bug": 3,
+          "explain": "`greet` has one parameter, but the call passes two arguments. Correct: `println(greet(\"Ana\"))`."
+        },
+        {
+          "type": "bug",
+          "id": "functions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "def add(a: Int, b): Int =",
+            "  a + b",
+            "@main def run(): Unit =",
+            "  println(add(2, 3))"
+          ],
+          "bug": 0,
+          "explain": "Every parameter needs a type. Correct: `def add(a: Int, b: Int): Int =`."
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "Lists and maps",
+      "chapter": "Data",
+      "summary": "Keep many values in a List or a Map, and work with them using map, filter, sum and foreach.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A `List` holds several values in a fixed order. You create it with `List(…)` and the values separated by commas. `fruits(0)` gives the element at index `0`, the first one. `length` counts the elements, and `contains` checks if a value is in the list."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val fruits = List(\"apple\", \"banana\", \"cherry\")\n  println(fruits)\n  println(fruits(0))\n  println(fruits.length)\n  println(fruits.contains(\"kiwi\"))",
+          "output": "List(apple, banana, cherry)\napple\n3\nfalse"
+        },
+        {
+          "type": "text",
+          "md": "A list never changes. `:+` gives back a **new** list with one more element at the end; the old list stays the same. With a `for` loop, you can go through all elements of a list."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val nums = List(3, 5)\n  val more = nums :+ 8\n  println(more)\n  println(nums)\n  for n <- more do\n    println(n * 10)",
+          "output": "List(3, 5, 8)\nList(3, 5)\n30\n50\n80"
+        },
+        {
+          "type": "text",
+          "md": "`map` uses a function on every element and gives back a new list with the results. `filter` keeps only the elements for which the function gives `true`. `sum` adds all numbers. Instead of `x => x + 1`, you can write `_ + 1`: the `_` stands for the element."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val nums = List(1, 2, 3, 4, 5)\n  println(nums.map(x => x * 2))\n  println(nums.filter(x => x % 2 == 0))\n  println(nums.sum)\n  println(nums.map(_ + 1))",
+          "output": "List(2, 4, 6, 8, 10)\nList(2, 4)\n15\nList(2, 3, 4, 5, 6)"
+        },
+        {
+          "type": "text",
+          "md": "You can call several methods one after the other. `foreach` runs a function for every element, for example `println`. `mkString` joins all elements into one string, with the text you give between them."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val prices = List(4, 12, 7, 20)\n  val big = prices.filter(_ > 5).map(_ * 2)\n  println(big)\n  big.foreach(println)\n  println(prices.mkString(\" | \"))",
+          "output": "List(24, 14, 40)\n24\n14\n40\n4 | 12 | 7 | 20"
+        },
+        {
+          "type": "heading",
+          "text": "Maps"
+        },
+        {
+          "type": "text",
+          "md": "A `Map` stores pairs of a **key** and a **value**. `\"Ana\" -> 31` makes a pair with the key `\"Ana\"` and the value `31`. `ages(\"Ana\")` gives the value for a key. `getOrElse` gives a default value when the key is missing. `+` gives back a new map with one more pair, and `size` counts the pairs."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val ages = Map(\"Ana\" -> 31, \"Ben\" -> 25)\n  println(ages(\"Ana\"))\n  println(ages.getOrElse(\"Cy\", 0))\n  val more = ages + (\"Cy\" -> 40)\n  println(more.size)\n  println(more)",
+          "output": "31\n0\n3\nMap(Ana -> 31, Ben -> 25, Cy -> 40)"
+        },
+        {
+          "type": "text",
+          "md": "A `for` loop can go through a map, too. In `for (fruit, count) <- stock do`, each pair is split into two names: `fruit` for the key and `count` for the value."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val stock = Map(\"apple\" -> 3, \"pear\" -> 0)\n  for (fruit, count) <- stock do\n    println(s\"$fruit: $count\")",
+          "output": "apple: 3\npear: 0"
+        },
+        {
+          "type": "warning",
+          "md": "`ages(\"Zoe\")` stops the program with an error when the key `\"Zoe\"` is missing. Use `getOrElse` when you are not sure that a key exists."
+        }
+      ],
+      "card": [
+        "`val xs = List(1, 2, 3)`, `xs(0)` is `1`",
+        "`xs.map(_ * 2)`, `xs.filter(_ > 1)`, `xs.sum`",
+        "`xs :+ 4` gives a new list",
+        "`Map(\"a\" -> 1)`, `m.getOrElse(\"b\", 0)`",
+        "`xs.foreach(println)`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "collections-1",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  val nums = List(4, 8, 15)\n  println(nums(1))",
+          "answers": [
+            "8"
+          ],
+          "explain": "The index starts at `0`. `nums(0)` is `4`, so `nums(1)` is `8`."
+        },
+        {
+          "type": "input",
+          "id": "collections-2",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  val nums = List(1, 2, 3, 4)\n  println(nums.map(_ * 3).sum)",
+          "answers": [
+            "30"
+          ],
+          "explain": "`map(_ * 3)` gives `List(3, 6, 9, 12)`. Their sum is `30`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-3",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  val nums = List(5, 12, 3, 20)\n  println(nums.filter(_ > 4))",
+          "options": [
+            "`List(5, 12, 20)`",
+            "`List(12, 20)`",
+            "`List(3)`",
+            "`List(5, 12, 3, 20)`"
+          ],
+          "answer": 0,
+          "explain": "`filter` keeps the elements for which `_ > 4` is `true`: `5`, `12` and `20`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-4",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  val ages = Map(\"Ana\" -> 31, \"Ben\" -> 25)\n  println(ages.getOrElse(\"Eva\", -1))",
+          "options": [
+            "`-1`",
+            "`0`",
+            "`31`",
+            "Nothing, the program stops with an error"
+          ],
+          "answer": 0,
+          "explain": "The key `\"Eva\"` is missing, so `getOrElse` gives back the default value `-1`."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-5",
+          "statement": "This program prints `List(1, 2, 3)`.",
+          "code": "@main def run(): Unit =\n  val a = List(1, 2)\n  val b = a :+ 3\n  println(a)",
+          "answer": false,
+          "explain": "`:+` gives back a new list, which is stored in `b`. The list `a` does not change, so the program prints `List(1, 2)`."
+        },
+        {
+          "type": "gap",
+          "id": "collections-6",
+          "prompt": "Fill the gap so the program prints List(HI, YO).",
+          "code": "@main def run(): Unit =\n  val words = List(\"hi\", \"yo\")\n  println(words.___(_.toUpperCase))",
+          "options": [
+            "map",
+            "filter",
+            "foreach",
+            "sum"
+          ],
+          "answer": 0,
+          "explain": "`map` uses the function on every element and gives back a new list with the results."
+        },
+        {
+          "type": "gap",
+          "id": "collections-7",
+          "prompt": "Fill the gap so the program prints List(8, 6).",
+          "code": "@main def run(): Unit =\n  val nums = List(3, 8, 1, 6)\n  println(nums.filter(_ ___ 5))",
+          "options": [
+            ">",
+            "<",
+            "=="
+          ],
+          "answer": 0,
+          "explain": "Only `8` and `6` are greater than `5`, so `filter(_ > 5)` keeps them."
+        },
+        {
+          "type": "blocks",
+          "id": "collections-8",
+          "prompt": "Build a line that keeps only the even numbers of nums.",
+          "tokens": [
+            "val",
+            "even",
+            "=",
+            "nums.filter(",
+            "_ % 2 == 0",
+            ")"
+          ],
+          "distractors": [
+            "nums.map(",
+            "_ % 2 = 0"
+          ],
+          "explain": "`filter` keeps the elements for which the condition is `true`. `_ % 2 == 0` is `true` for even numbers."
+        },
+        {
+          "type": "order",
+          "id": "collections-9",
+          "prompt": "Put the lines in order so the program prints 12.",
+          "lines": [
+            "@main def run(): Unit =",
+            "  val nums = List(1, 2, 3, 4)",
+            "  val small = nums.filter(_ < 4)",
+            "  val doubled = small.map(_ * 2)",
+            "  println(doubled.sum)"
+          ],
+          "explain": "`small` is `List(1, 2, 3)`, `doubled` is `List(2, 4, 6)`, and the sum is `12`. Each line needs the value from the line before."
+        },
+        {
+          "type": "pairs",
+          "id": "collections-10",
+          "prompt": "Match each method with what it does.",
+          "pairs": [
+            [
+              "`map`",
+              "changes every element"
+            ],
+            [
+              "`filter`",
+              "keeps some elements"
+            ],
+            [
+              "`sum`",
+              "adds all numbers"
+            ],
+            [
+              "`foreach`",
+              "runs code for every element"
+            ],
+            [
+              "`getOrElse`",
+              "gives a default when a key is missing"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "collections-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "@main def run(): Unit =",
+            "  val fruits = List(\"apple\", \"pear\")",
+            "  val more = fruits + \"kiwi\"",
+            "  println(more)"
+          ],
+          "bug": 2,
+          "explain": "To add an element at the end of a list, use `:+`: `val more = fruits :+ \"kiwi\"`."
+        },
+        {
+          "type": "bug",
+          "id": "collections-12",
+          "prompt": "The program should print 3 and then 0. Which line has the bug?",
+          "lines": [
+            "@main def run(): Unit =",
+            "  val stock = Map(\"tea\" -> 3, \"cake\" -> 5)",
+            "  println(stock(\"tea\"))",
+            "  println(stock(\"coffee\"))"
+          ],
+          "bug": 3,
+          "explain": "The key `\"coffee\"` is missing, so `stock(\"coffee\")` stops the program with an error. Use `stock.getOrElse(\"coffee\", 0)`."
+        }
+      ]
+    },
+    {
+      "id": "classes",
+      "title": "Case classes and Option",
+      "chapter": "Data",
+      "summary": "Group data in case classes, add methods, take values apart with match, and handle missing values with Option.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **case class** groups values that belong together into a new type. `case class Point(x: Int, y: Int)` defines a type `Point` with two **fields**, `x` and `y`. You create a point with `Point(3, 4)` and read a field with a dot: `p.x`. `println` shows the class name and the values."
+        },
+        {
+          "type": "code",
+          "code": "case class Point(x: Int, y: Int)\n\n@main def run(): Unit =\n  val p = Point(3, 4)\n  println(p.x)\n  println(p.y)\n  println(p)",
+          "output": "3\n4\nPoint(3,4)"
+        },
+        {
+          "type": "text",
+          "md": "The fields of a case class cannot change. `copy` gives back a new object with some fields changed; the others keep their values. `==` compares two case class objects by their values."
+        },
+        {
+          "type": "code",
+          "code": "case class Person(name: String, age: Int)\n\n@main def run(): Unit =\n  val ana = Person(\"Ana\", 30)\n  val older = ana.copy(age = 31)\n  println(older)\n  println(ana == Person(\"Ana\", 30))",
+          "output": "Person(Ana,31)\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "A case class can have **methods**: functions that belong to it. Put a colon after the class header and write the methods below it, indented. Methods can use the fields directly. A method without parameters, like `area`, needs no parentheses."
+        },
+        {
+          "type": "code",
+          "code": "case class Rect(width: Int, height: Int):\n  def area: Int = width * height\n  def isSquare: Boolean = width == height\n\n@main def run(): Unit =\n  val r = Rect(3, 4)\n  println(r.area)\n  println(r.isSquare)",
+          "output": "12\nfalse"
+        },
+        {
+          "type": "text",
+          "md": "`match` can take a case class apart. `case Point(0, 0)` fits only when both fields are `0`. `case Point(x, 0)` fits when `y` is `0` and gives the first field the name `x`. `_` fits any value."
+        },
+        {
+          "type": "code",
+          "code": "case class Point(x: Int, y: Int)\n\ndef describe(p: Point): String = p match\n  case Point(0, 0) => \"origin\"\n  case Point(x, 0) => s\"on the x axis at $x\"\n  case Point(_, y) => s\"y is $y\"\n\n@main def run(): Unit =\n  println(describe(Point(0, 0)))\n  println(describe(Point(5, 0)))\n  println(describe(Point(2, 7)))",
+          "output": "origin\non the x axis at 5\ny is 7"
+        },
+        {
+          "type": "heading",
+          "text": "Option"
+        },
+        {
+          "type": "text",
+          "md": "Sometimes a value can be missing. An `Option[Int]` is either `Some(value)`, when there is an `Int`, or `None`, when there is nothing. The type in square brackets says what the `Option` can hold. `find` gives back the first element that fits, as an `Option`. `getOrElse` gives the value inside, or a default for `None`."
+        },
+        {
+          "type": "code",
+          "code": "@main def run(): Unit =\n  val nums = List(4, 9, 12)\n  val big = nums.find(_ > 5)\n  val huge = nums.find(_ > 50)\n  println(big)\n  println(huge)\n  println(huge.getOrElse(0))",
+          "output": "Some(9)\nNone\n0"
+        },
+        {
+          "type": "text",
+          "md": "You can use `match` on an `Option`, too. `case Some(v)` fits when there is a value and gives it the name `v`. `case None` fits when the value is missing."
+        },
+        {
+          "type": "code",
+          "code": "def half(n: Int): Option[Int] =\n  if n % 2 == 0 then Some(n / 2) else None\n\ndef show(o: Option[Int]): String = o match\n  case Some(v) => s\"got $v\"\n  case None => \"nothing\"\n\n@main def run(): Unit =\n  println(show(half(10)))\n  println(show(half(7)))",
+          "output": "got 5\nnothing"
+        },
+        {
+          "type": "tip",
+          "md": "When a function gives back an `Option`, its type tells you that the value can be missing. You cannot use an `Option[Int]` like an `Int`; you must first handle both cases, for example with `getOrElse` or `match`. This prevents many errors."
+        }
+      ],
+      "card": [
+        "`case class Point(x: Int, y: Int)`",
+        "`p.copy(x = 5)` makes a changed copy",
+        "`case Point(x, 0) => …` takes it apart",
+        "`Some(3)`, `None`, `opt.getOrElse(0)`",
+        "`case Some(v) => …` and `case None => …`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "classes-1",
+          "prompt": "What does this program print?",
+          "code": "case class Book(title: String, pages: Int)\n\n@main def run(): Unit =\n  val b = Book(\"Dune\", 412)\n  println(b.pages)",
+          "answers": [
+            "412"
+          ],
+          "explain": "`b.pages` reads the field `pages` of the book, which is `412`."
+        },
+        {
+          "type": "input",
+          "id": "classes-2",
+          "prompt": "What does this program print?",
+          "code": "case class Point(x: Int, y: Int)\n\n@main def run(): Unit =\n  val p = Point(1, 2)\n  println(p.copy(y = 5))",
+          "answers": [
+            "Point(1,5)",
+            "Point(1, 5)"
+          ],
+          "explain": "`copy(y = 5)` makes a new point with `y` changed to `5`. `x` keeps its value `1`."
+        },
+        {
+          "type": "choice",
+          "id": "classes-3",
+          "prompt": "What does this program print?",
+          "code": "@main def run(): Unit =\n  val nums = List(3, 8, 11)\n  println(nums.find(_ > 20).getOrElse(-1))",
+          "options": [
+            "`-1`",
+            "`None`",
+            "`Some(-1)`",
+            "`11`"
+          ],
+          "answer": 0,
+          "explain": "No number is greater than `20`, so `find` gives back `None`. `getOrElse` then gives the default `-1`."
+        },
+        {
+          "type": "choice",
+          "id": "classes-4",
+          "prompt": "What does this program print?",
+          "code": "case class Point(x: Int, y: Int)\n\ndef where(p: Point): String = p match\n  case Point(0, 0) => \"center\"\n  case Point(0, _) => \"on the y axis\"\n  case _ => \"somewhere else\"\n\n@main def run(): Unit =\n  println(where(Point(0, 3)))",
+          "options": [
+            "`on the y axis`",
+            "`center`",
+            "`somewhere else`",
+            "`Point(0,3)`"
+          ],
+          "answer": 0,
+          "explain": "`Point(0, 0)` does not fit, because `y` is `3`. `Point(0, _)` fits: `x` is `0`, and `_` fits any `y`."
+        },
+        {
+          "type": "true_false",
+          "id": "classes-5",
+          "statement": "This program prints `true`.",
+          "code": "case class Point(x: Int, y: Int)\n\n@main def run(): Unit =\n  println(Point(1, 2) == Point(1, 2))",
+          "answer": true,
+          "explain": "`==` compares case class objects by their values. Both points have `x = 1` and `y = 2`, so they are equal."
+        },
+        {
+          "type": "gap",
+          "id": "classes-6",
+          "prompt": "Fill the gap so the program prints Hi, stranger.",
+          "code": "def show(o: Option[String]): String = o match\n  case Some(name) => s\"Hi, $name\"\n  case ___ => \"Hi, stranger\"\n\n@main def run(): Unit =\n  println(show(None))",
+          "options": [
+            "None",
+            "Null",
+            "Empty"
+          ],
+          "answer": 0,
+          "explain": "An `Option` is either `Some(…)` or `None`. The case `None` fits when there is no value."
+        },
+        {
+          "type": "gap",
+          "id": "classes-7",
+          "prompt": "Fill the gap to define the type Point.",
+          "code": "___ class Point(x: Int, y: Int)\n\n@main def run(): Unit =\n  println(Point(1, 2))",
+          "options": [
+            "case",
+            "data",
+            "record"
+          ],
+          "answer": 0,
+          "explain": "`case class` defines a type with fields. `data class` is Kotlin, and `record` is Java."
+        },
+        {
+          "type": "blocks",
+          "id": "classes-8",
+          "prompt": "Build a line that creates a Person named Ana who is 30.",
+          "tokens": [
+            "val",
+            "ana",
+            "=",
+            "Person(",
+            "\"Ana\",",
+            "30",
+            ")"
+          ],
+          "distractors": [
+            "Person[",
+            "class"
+          ],
+          "explain": "You create a case class object with its name and the values in parentheses, in the order of the fields."
+        },
+        {
+          "type": "order",
+          "id": "classes-9",
+          "prompt": "Put the lines in order so the program prints 31.",
+          "lines": [
+            "@main def run(): Unit =",
+            "  val p = Person(\"Ana\", 30)",
+            "  val older = p.copy(age = p.age + 1)",
+            "  println(older.age)"
+          ],
+          "explain": "First create `p`, then make a copy with `age` one higher, and then print the new age."
+        },
+        {
+          "type": "pairs",
+          "id": "classes-10",
+          "prompt": "Match each piece of code with its meaning.",
+          "pairs": [
+            [
+              "`case class`",
+              "defines a type with fields"
+            ],
+            [
+              "`p.copy(x = 1)`",
+              "a new object with one field changed"
+            ],
+            [
+              "`Some(5)`",
+              "an Option with a value"
+            ],
+            [
+              "`None`",
+              "an Option without a value"
+            ],
+            [
+              "`getOrElse(0)`",
+              "the value, or a default"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "classes-11",
+          "prompt": "The program should print Point(5,2). Which line has the bug?",
+          "lines": [
+            "case class Point(x: Int, y: Int)",
+            "@main def run(): Unit =",
+            "  var p = Point(1, 2)",
+            "  p.x = 5",
+            "  println(p)"
+          ],
+          "bug": 3,
+          "explain": "The fields of a case class cannot change. Make a changed copy instead: `p = p.copy(x = 5)`."
+        },
+        {
+          "type": "bug",
+          "id": "classes-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "def half(n: Int): Option[Int] =",
+            "  if n % 2 == 0 then Some(n / 2) else None",
+            "@main def run(): Unit =",
+            "  val h = half(8)",
+            "  println(h + 1)"
+          ],
+          "bug": 4,
+          "explain": "`h` is an `Option[Int]`, not an `Int`, so you cannot add `1` to it. Take the value out first: `println(h.getOrElse(0) + 1)`."
+        }
+      ]
+    }
+  ]
+}

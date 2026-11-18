@@ -1,0 +1,2011 @@
+{
+ "course": "pascal",
+ "lang": "en",
+ "units": [
+  {
+   "id": "hello",
+   "title": "Hello, Pascal!",
+   "chapter": "Basics",
+   "summary": "Write your first Pascal program and print text and numbers with writeln and write.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A Pascal program starts with the word `program` and a name. The code that runs goes between `begin` and `end.` (with a period). The program runs these lines from top to bottom."
+    },
+    {
+     "type": "code",
+     "code": "program Hello;\n{$mode objfpc}{$H+}\nbegin\n  writeln('Hello, Pascal!');\nend.",
+     "output": "Hello, Pascal!"
+    },
+    {
+     "type": "text",
+     "md": "Line by line: `program Hello;` gives the program a name. `{$mode objfpc}{$H+}` is a **compiler directive**: it tells Free Pascal to use its modern mode and long strings. Every program in this course has this line. `begin` and `end.` mark the main block, and `writeln` prints a line."
+    },
+    {
+     "type": "heading",
+     "text": "Printing text"
+    },
+    {
+     "type": "text",
+     "md": "Text goes in single quotes, like `'Hello'`. Such a text is called a **string**. `writeln` can print several values separated by commas. It prints them one after the other without spaces and then ends the line. `writeln` alone prints an empty line."
+    },
+    {
+     "type": "code",
+     "code": "program Parts;\n{$mode objfpc}{$H+}\nbegin\n  writeln('Pascal', 'is', 'fun');\n  writeln('Pascal ', 'is ', 'fun');\n  writeln;\n  writeln('Done');\nend.",
+     "output": "Pascalisfun\nPascal is fun\n\nDone"
+    },
+    {
+     "type": "text",
+     "md": "`write` prints like `writeln`, but it does not end the line. The next output continues on the same line. A semicolon `;` separates two statements. Before `end` you may leave it out."
+    },
+    {
+     "type": "code",
+     "code": "program SameLine;\n{$mode objfpc}{$H+}\nbegin\n  write('One ');\n  write('line. ');\n  writeln('Next.');\n  writeln('New line.')\nend.",
+     "output": "One line. Next.\nNew line."
+    },
+    {
+     "type": "heading",
+     "text": "Numbers and calculations"
+    },
+    {
+     "type": "text",
+     "md": "Numbers do not need quotes. Without quotes, Pascal calculates: `2 + 3` gives `5`, but `'2 + 3'` is only text. Use `*` to multiply. You can mix text and numbers in one `writeln`."
+    },
+    {
+     "type": "code",
+     "code": "program Numbers;\n{$mode objfpc}{$H+}\nbegin\n  writeln(2 + 3);\n  writeln('2 + 3');\n  writeln(6 * 7);\n  writeln('Sum: ', 10 + 5);\nend.",
+     "output": "5\n2 + 3\n42\nSum: 15"
+    },
+    {
+     "type": "tip",
+     "md": "Pascal does not care about upper and lower case in names: `writeln`, `WriteLn` and `WRITELN` are the same. Text between `{` and `}` or after `//` is a **comment**, and the compiler ignores it. A `{` followed by `$` is a directive, not a comment."
+    },
+    {
+     "type": "warning",
+     "md": "Strings use single quotes, never double quotes. To put an apostrophe inside a string, write it twice: `'It''s late'` prints `It's late`. The last `end` of the program needs a period, not a semicolon."
+    }
+   ],
+   "card": [
+    "`program Name;` … `begin` … `end.` is a complete program",
+    "`{$mode objfpc}{$H+}` turns on modern Free Pascal",
+    "`writeln('Hi')` prints and ends the line, `write` stays on it",
+    "`writeln('Sum: ', 2 + 3)` prints values one after the other",
+    "`'It''s'`: write an apostrophe twice inside a string"
+   ],
+   "exercises": [
+    {
+     "type": "choice",
+     "id": "hello-1",
+     "prompt": "How does a Pascal program end?",
+     "options": [
+      "`end.`",
+      "`end;`",
+      "`end`",
+      "`stop.`"
+     ],
+     "answer": 0,
+     "explain": "The main block of a program ends with `end` and a period."
+    },
+    {
+     "type": "input",
+     "id": "hello-2",
+     "prompt": "What does this print?",
+     "code": "writeln('Pas', 'cal');",
+     "answers": [
+      "Pascal"
+     ],
+     "explain": "`writeln` prints its values one after the other, without spaces."
+    },
+    {
+     "type": "input",
+     "id": "hello-3",
+     "prompt": "What does this print?",
+     "code": "writeln(10 - 4, ' apples');",
+     "answers": [
+      "6 apples"
+     ],
+     "explain": "`10 - 4` has no quotes, so Pascal calculates `6`. The text `' apples'` starts with a space."
+    },
+    {
+     "type": "true_false",
+     "id": "hello-4",
+     "statement": "`write` ends the line after printing, like `writeln`.",
+     "answer": false,
+     "explain": "`write` stays on the same line. Only `writeln` ends the line."
+    },
+    {
+     "type": "gap",
+     "id": "hello-5",
+     "prompt": "Complete the program so it prints Hi.",
+     "code": "program Hi;\n{$mode objfpc}{$H+}\n___\n  writeln('Hi');\nend.",
+     "options": [
+      "begin",
+      "start",
+      "{",
+      "do"
+     ],
+     "answer": 0,
+     "explain": "The main block starts with `begin` and ends with `end.`."
+    },
+    {
+     "type": "gap",
+     "id": "hello-6",
+     "prompt": "Complete the line so it prints `It's late`.",
+     "code": "writeln(___);",
+     "options": [
+      "'It''s late'",
+      "'It's late'",
+      "\"It's late\"",
+      "It's late"
+     ],
+     "answer": 0,
+     "explain": "Strings use single quotes. An apostrophe inside a string is written twice."
+    },
+    {
+     "type": "blocks",
+     "id": "hello-7",
+     "prompt": "Build the line that prints Hello, Pascal! and ends the line.",
+     "tokens": [
+      "writeln",
+      "(",
+      "'Hello, Pascal!'",
+      ")",
+      ";"
+     ],
+     "distractors": [
+      "print",
+      "\"Hello, Pascal!\""
+     ],
+     "explain": "`writeln` prints and ends the line. The text goes in single quotes inside the parentheses."
+    },
+    {
+     "type": "order",
+     "id": "hello-8",
+     "prompt": "Put the lines in order so the program prints Ready and then Go.",
+     "lines": [
+      "program Start;",
+      "begin",
+      "  writeln('Ready');",
+      "  writeln('Go');",
+      "end."
+     ],
+     "explain": "First the `program` line, then `begin`, the statements in the order of the output, and `end.` at the end."
+    },
+    {
+     "type": "pairs",
+     "id": "hello-9",
+     "prompt": "Match the code with its meaning.",
+     "pairs": [
+      [
+       "`program`",
+       "gives the program a name"
+      ],
+      [
+       "`begin`",
+       "starts the main block"
+      ],
+      [
+       "`end.`",
+       "ends the program"
+      ],
+      [
+       "`writeln`",
+       "prints and ends the line"
+      ],
+      [
+       "`write`",
+       "prints and stays on the line"
+      ]
+     ]
+    },
+    {
+     "type": "bug",
+     "id": "hello-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "program Greet;",
+      "{$mode objfpc}{$H+}",
+      "begin",
+      "  writeln('Hello');",
+      "  writeln('World);",
+      "end."
+     ],
+     "bug": 4,
+     "explain": "The closing quote is missing. Write `writeln('World');`."
+    },
+    {
+     "type": "bug",
+     "id": "hello-11",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "program Two;",
+      "{$mode objfpc}{$H+}",
+      "begin",
+      "  writeln('One')",
+      "  writeln('Two');",
+      "end."
+     ],
+     "bug": 3,
+     "explain": "A semicolon must separate two statements. Write `writeln('One');`."
+    },
+    {
+     "type": "choice",
+     "id": "hello-12",
+     "prompt": "What does this print?",
+     "code": "writeln('3 + 4 = ', 3 + 4);",
+     "options": [
+      "`3 + 4 = 7`",
+      "`3 + 4 = 3 + 4`",
+      "`7`",
+      "`3 + 4 = 34`"
+     ],
+     "answer": 0,
+     "explain": "The text in quotes is printed as it is. `3 + 4` without quotes is calculated: `7`."
+    }
+   ]
+  },
+  {
+   "id": "variables",
+   "title": "Variables and types",
+   "chapter": "Basics",
+   "summary": "Declare variables with var, store values with := and use integer, real, char, string, boolean and const.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A **variable** is a name for a value that the program stores. In Pascal you declare every variable before `begin`, in a `var` section: the name, a colon `:` and the **type**. Then `:=` stores a value in it. Read `x := 5` as \"x becomes 5\"."
+    },
+    {
+     "type": "code",
+     "code": "program Vars;\n{$mode objfpc}{$H+}\nvar\n  age: integer;\n  name: string;\nbegin\n  name := 'Ada';\n  age := 36;\n  writeln(name, ' is ', age, ' years old.');\n  age := age + 1;\n  writeln('Next year: ', age);\nend.",
+     "output": "Ada is 36 years old.\nNext year: 37"
+    },
+    {
+     "type": "text",
+     "md": "`age := age + 1` takes the old value of `age`, adds 1 and stores the result in `age` again. A single `=` does not store anything: it compares two values. You use it in conditions later."
+    },
+    {
+     "type": "heading",
+     "text": "Basic types"
+    },
+    {
+     "type": "text",
+     "md": "The most common types: `integer` holds whole numbers, `real` holds numbers with decimals, `char` holds one character in single quotes, `string` holds text and `boolean` holds `True` or `False`. You can declare several variables of the same type in one line, separated by commas."
+    },
+    {
+     "type": "code",
+     "code": "program Types;\n{$mode objfpc}{$H+}\nvar\n  count, total: integer;\n  price: real;\n  grade: char;\n  city: string;\n  done: boolean;\nbegin\n  count := 3;\n  total := count * 2;\n  price := 2.5;\n  grade := 'A';\n  city := 'Lima';\n  done := True;\n  writeln(total);\n  writeln(price);\n  writeln(grade, ' ', city);\n  writeln(done);\nend.",
+     "output": "6\n 2.5000000000000000E+000\nA Lima\nTRUE"
+    },
+    {
+     "type": "text",
+     "md": "`writeln` shows a `real` in scientific notation with a space in front: `2.5000000000000000E+000` means 2.5 times 10 to the power of 0. The next unit shows how to print it as `2.50`. A `boolean` is printed in capital letters: `TRUE` or `FALSE`."
+    },
+    {
+     "type": "heading",
+     "text": "Constants"
+    },
+    {
+     "type": "text",
+     "md": "A **constant** is a value that never changes. You declare it in a `const` section with `=` (not `:=`) and without a type: Pascal sees the type from the value. Constants make code easier to read and to change."
+    },
+    {
+     "type": "code",
+     "code": "program Consts;\n{$mode objfpc}{$H+}\nconst\n  Rate = 3;\n  Greeting = 'Hi';\nvar\n  hours: integer;\nbegin\n  hours := 5;\n  writeln(Greeting, '! You earn ', hours * Rate, ' coins.');\nend.",
+     "output": "Hi! You earn 15 coins."
+    },
+    {
+     "type": "text",
+     "md": "The operator `+` joins two strings into a new, longer string."
+    },
+    {
+     "type": "code",
+     "code": "program Join;\n{$mode objfpc}{$H+}\nvar\n  first, last, full: string;\nbegin\n  first := 'Ada';\n  last := 'Lovelace';\n  full := first + ' ' + last;\n  writeln(full);\nend.",
+     "output": "Ada Lovelace"
+    },
+    {
+     "type": "warning",
+     "md": "Pascal checks types. `count := 2.5` is an error when `count` is an `integer`, because an integer cannot hold decimals. The other way round works: `price := 3` stores `3.0` in a `real`. Always give a variable a value before you read it."
+    },
+    {
+     "type": "tip",
+     "md": "Names start with a letter or `_` and may contain letters, digits and `_`. Upper and lower case do not matter: `Total` and `total` are the same name. That is why a variable must not have the same name as the program."
+    }
+   ],
+   "card": [
+    "`var x: integer;` declares a variable before `begin`",
+    "`x := 5;` stores a value, `=` only compares",
+    "`integer`, `real`, `char`, `string`, `boolean`",
+    "`const Max = 10;` is a value that never changes",
+    "`s := 'a' + 'b';` joins strings"
+   ],
+   "exercises": [
+    {
+     "type": "choice",
+     "id": "variables-1",
+     "prompt": "Which line stores 10 in the variable `x`?",
+     "options": [
+      "`x := 10;`",
+      "`x = 10;`",
+      "`10 := x;`",
+      "`x == 10;`"
+     ],
+     "answer": 0,
+     "explain": "`:=` stores the value on the right in the variable on the left. `=` compares."
+    },
+    {
+     "type": "input",
+     "id": "variables-2",
+     "prompt": "What does this print?",
+     "code": "var\n  n: integer;\nbegin\n  n := 4;\n  n := n * 3;\n  writeln(n);\nend.",
+     "answers": [
+      "12"
+     ],
+     "explain": "First `n` is 4. Then `n := n * 3` stores 4 times 3, which is 12."
+    },
+    {
+     "type": "input",
+     "id": "variables-3",
+     "prompt": "What does this print?",
+     "code": "var\n  a, b: string;\nbegin\n  a := 'sun';\n  b := 'flower';\n  writeln(b + a);\nend.",
+     "answers": [
+      "flowersun"
+     ],
+     "explain": "`+` joins the strings in the order you write them: first `b`, then `a`."
+    },
+    {
+     "type": "true_false",
+     "id": "variables-4",
+     "statement": "After `const Max = 10;` you can write `Max := 20;` to change the constant.",
+     "answer": false,
+     "explain": "A constant never changes. Trying to assign a new value is a compile error."
+    },
+    {
+     "type": "gap",
+     "id": "variables-5",
+     "prompt": "Choose the type so that the program prints `4.75`.",
+     "code": "var\n  price: ___;\nbegin\n  price := 4.75;\n  writeln(price:0:2);\nend.",
+     "options": [
+      "real",
+      "integer",
+      "char",
+      "boolean"
+     ],
+     "answer": 0,
+     "explain": "A number with decimals needs the type `real`."
+    },
+    {
+     "type": "gap",
+     "id": "variables-6",
+     "prompt": "Complete the constant declaration.",
+     "code": "const\n  Size ___ 8;\nbegin\n  writeln(Size * 2);\nend.",
+     "options": [
+      "=",
+      ":=",
+      ":",
+      "=="
+     ],
+     "answer": 0,
+     "explain": "Constants use `=` in the `const` section. `:=` is for storing values in variables."
+    },
+    {
+     "type": "blocks",
+     "id": "variables-7",
+     "prompt": "Build the line that stores the text Ada in the variable `name`.",
+     "tokens": [
+      "name",
+      ":=",
+      "'Ada'",
+      ";"
+     ],
+     "distractors": [
+      "=",
+      "\"Ada\""
+     ],
+     "explain": "`:=` stores the value, and strings use single quotes."
+    },
+    {
+     "type": "order",
+     "id": "variables-8",
+     "prompt": "Put the lines in order so the program prints 7.",
+     "lines": [
+      "var",
+      "  x: integer;",
+      "begin",
+      "  x := 3;",
+      "  x := x + 4;",
+      "  writeln(x);",
+      "end."
+     ],
+     "explain": "Declare `x` first. Inside the block, `x` gets 3, then 4 is added, and at the end it is printed."
+    },
+    {
+     "type": "pairs",
+     "id": "variables-9",
+     "prompt": "Match the type with what it holds.",
+     "pairs": [
+      [
+       "`integer`",
+       "a whole number"
+      ],
+      [
+       "`real`",
+       "a number with decimals"
+      ],
+      [
+       "`char`",
+       "one character"
+      ],
+      [
+       "`string`",
+       "a text"
+      ],
+      [
+       "`boolean`",
+       "True or False"
+      ]
+     ]
+    },
+    {
+     "type": "bug",
+     "id": "variables-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "program Game;",
+      "{$mode objfpc}{$H+}",
+      "var",
+      "  points: integer;",
+      "begin",
+      "  points = 10;",
+      "  writeln(points);",
+      "end."
+     ],
+     "bug": 5,
+     "explain": "`=` only compares. To store a value, write `points := 10;`."
+    },
+    {
+     "type": "choice",
+     "id": "variables-11",
+     "prompt": "What does this print?",
+     "code": "var\n  x, y: integer;\nbegin\n  x := 5;\n  y := x;\n  x := 8;\n  writeln(y);\nend.",
+     "options": [
+      "`5`",
+      "`8`",
+      "`13`",
+      "`0`"
+     ],
+     "answer": 0,
+     "explain": "`y := x` copies the value 5 into `y`. Changing `x` later does not change `y`."
+    },
+    {
+     "type": "bug",
+     "id": "variables-12",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "program Travel;",
+      "{$mode objfpc}{$H+}",
+      "var",
+      "  city: string;",
+      "begin",
+      "  city := \"Rome\";",
+      "  writeln(city);",
+      "end."
+     ],
+     "bug": 5,
+     "explain": "Strings use single quotes in Pascal. Write `city := 'Rome';`."
+    }
+   ]
+  },
+  {
+   "id": "operators",
+   "title": "Operators and formatting",
+   "chapter": "Basics",
+   "summary": "Calculate with + - * /, divide whole numbers with div and mod, and format output with :width:decimals.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "`+`, `-` and `*` work with integers and reals. The operator `/` always gives a `real`, even for two integers. To divide whole numbers, use `div`: it gives the result without the remainder. `mod` gives the remainder."
+    },
+    {
+     "type": "code",
+     "code": "program Divide;\n{$mode objfpc}{$H+}\nbegin\n  writeln(17 div 4);\n  writeln(17 mod 4);\n  writeln(17 / 4);\n  writeln(10 / 2);\nend.",
+     "output": "4\n1\n 4.2500000000000000E+000\n 5.0000000000000000E+000"
+    },
+    {
+     "type": "text",
+     "md": "`mod` is useful to test numbers: `n mod 2` is `0` for even numbers. `*`, `/`, `div` and `mod` are calculated before `+` and `-`. Use parentheses `(` `)` to change the order."
+    },
+    {
+     "type": "code",
+     "code": "program Order;\n{$mode objfpc}{$H+}\nbegin\n  writeln(2 + 3 * 4);\n  writeln((2 + 3) * 4);\n  writeln(20 - 10 div 3);\n  writeln(14 mod 2, ' ', 15 mod 2);\nend.",
+     "output": "14\n20\n17\n0 1"
+    },
+    {
+     "type": "heading",
+     "text": "Formatting output"
+    },
+    {
+     "type": "text",
+     "md": "In `writeln`, `value:width` prints the value right-aligned in `width` characters. For a `real`, `value:width:decimals` also sets the number of decimals. A width of `0` means \"as wide as needed\", so `x:0:2` prints `x` with two decimals."
+    },
+    {
+     "type": "code",
+     "code": "program Format;\n{$mode objfpc}{$H+}\nvar\n  price: real;\nbegin\n  price := 7 / 4;\n  writeln(price:0:2);\n  writeln(price:8:3);\n  writeln('[', 42:5, ']');\n  writeln('[', 'ab':4, ']');\nend.",
+     "output": "1.75\n   1.750\n[   42]\n[  ab]"
+    },
+    {
+     "type": "text",
+     "md": "`round(x)` rounds a real to the nearest whole number. `trunc(x)` cuts off the decimals. Both give an `integer`."
+    },
+    {
+     "type": "code",
+     "code": "program Rounding;\n{$mode objfpc}{$H+}\nvar\n  x: real;\nbegin\n  x := 3.7;\n  writeln(round(x));\n  writeln(trunc(x));\n  writeln(x * 2:0:1);\nend.",
+     "output": "4\n3\n7.4"
+    },
+    {
+     "type": "heading",
+     "text": "Changing a counter"
+    },
+    {
+     "type": "text",
+     "md": "`inc(n)` adds 1 to the variable `n`, and `dec(n)` subtracts 1. With a second value, `inc(n, 5)` adds 5. They are short forms of `n := n + 1` and `n := n - 1`."
+    },
+    {
+     "type": "code",
+     "code": "program Counter;\n{$mode objfpc}{$H+}\nvar\n  n: integer;\nbegin\n  n := 10;\n  inc(n);\n  inc(n, 5);\n  dec(n, 2);\n  writeln(n);\nend.",
+     "output": "14"
+    },
+    {
+     "type": "warning",
+     "md": "You cannot store the result of `/` in an `integer`, even if the division has no remainder: `n := 10 / 2` is a compile error. Use `n := 10 div 2` instead."
+    }
+   ],
+   "card": [
+    "`7 div 2` → `3`, `7 mod 2` → `1`",
+    "`7 / 2` always gives a `real`: `3.5`",
+    "`writeln(x:0:2)` prints a real with 2 decimals",
+    "`writeln(n:5)` right-aligns in 5 characters",
+    "`inc(n)`, `dec(n, 2)`, `round(x)`, `trunc(x)`"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "operators-1",
+     "prompt": "What does this print?",
+     "code": "writeln(23 div 4);",
+     "answers": [
+      "5"
+     ],
+     "explain": "4 fits into 23 five times (20). `div` drops the remainder."
+    },
+    {
+     "type": "input",
+     "id": "operators-2",
+     "prompt": "What does this print?",
+     "code": "writeln(23 mod 4);",
+     "answers": [
+      "3"
+     ],
+     "explain": "23 = 5 × 4 + 3, so the remainder is 3."
+    },
+    {
+     "type": "input",
+     "id": "operators-3",
+     "prompt": "What does this print?",
+     "code": "writeln(2 + 6 div 2 * 3);",
+     "answers": [
+      "11"
+     ],
+     "explain": "`div` and `*` come first, from left to right: `6 div 2` is 3, times 3 is 9. Then 2 + 9 = 11."
+    },
+    {
+     "type": "choice",
+     "id": "operators-4",
+     "prompt": "What does this print?",
+     "code": "writeln(9 / 3:0:1);",
+     "options": [
+      "`3.0`",
+      "`3`",
+      "`3.00`",
+      "`0.3`"
+     ],
+     "answer": 0,
+     "explain": "`/` gives a real, and `:0:1` prints it with one decimal."
+    },
+    {
+     "type": "true_false",
+     "id": "operators-5",
+     "statement": "`n := 10 / 2;` works when `n` is an `integer`, because 10 / 2 is 5.",
+     "answer": false,
+     "explain": "`/` always gives a `real`, and a real cannot be stored in an integer. Use `div`."
+    },
+    {
+     "type": "gap",
+     "id": "operators-6",
+     "prompt": "Complete the line so it prints `4.50`.",
+     "code": "writeln(price___);",
+     "options": [
+      ":0:2",
+      ":2",
+      ":2:0",
+      ".2"
+     ],
+     "answer": 0,
+     "explain": "`:0:2` means: as wide as needed, with two decimals."
+    },
+    {
+     "type": "gap",
+     "id": "operators-7",
+     "prompt": "Complete the line so `rest` gets the remainder 2.",
+     "code": "rest := 17 ___ 5;\nwriteln(rest);",
+     "options": [
+      "mod",
+      "div",
+      "/",
+      "%"
+     ],
+     "answer": 0,
+     "explain": "`mod` gives the remainder of a whole-number division: 17 = 3 × 5 + 2."
+    },
+    {
+     "type": "blocks",
+     "id": "operators-8",
+     "prompt": "Build the line that stores the remainder of `a` divided by `b` in `r`.",
+     "tokens": [
+      "r",
+      ":=",
+      "a",
+      "mod",
+      "b",
+      ";"
+     ],
+     "distractors": [
+      "div",
+      "%"
+     ],
+     "explain": "`mod` gives the remainder. The variable that gets the result is on the left of `:=`."
+    },
+    {
+     "type": "order",
+     "id": "operators-9",
+     "prompt": "Put the lines in order so the program prints `Total: 12.50`.",
+     "lines": [
+      "var",
+      "  total: real;",
+      "begin",
+      "  total := 10;",
+      "  total := total + 2.5;",
+      "  writeln('Total: ', total:0:2);",
+      "end."
+     ],
+     "explain": "Declare the variable, give it a start value, add 2.5 and print it with two decimals."
+    },
+    {
+     "type": "bug",
+     "id": "operators-10",
+     "prompt": "The program should print the whole-number average 7. Which line has the bug?",
+     "lines": [
+      "program Average;",
+      "{$mode objfpc}{$H+}",
+      "var",
+      "  sum, avg: integer;",
+      "begin",
+      "  sum := 7 + 8;",
+      "  avg := sum / 2;",
+      "  writeln(avg);",
+      "end."
+     ],
+     "bug": 6,
+     "explain": "`/` gives a real, which an integer cannot hold. Write `avg := sum div 2;`."
+    },
+    {
+     "type": "choice",
+     "id": "operators-11",
+     "prompt": "What does this print?",
+     "code": "writeln('[', 7:3, ']');",
+     "options": [
+      "`[  7]`",
+      "`[7  ]`",
+      "`[007]`",
+      "`[7]`"
+     ],
+     "answer": 0,
+     "explain": "`7:3` prints the number right-aligned in 3 characters: two spaces and `7`."
+    },
+    {
+     "type": "pairs",
+     "id": "operators-12",
+     "prompt": "Match the code with its meaning.",
+     "pairs": [
+      [
+       "`div`",
+       "whole-number division"
+      ],
+      [
+       "`mod`",
+       "remainder of a division"
+      ],
+      [
+       "`/`",
+       "division with a real result"
+      ],
+      [
+       "`round(x)`",
+       "nearest whole number"
+      ],
+      [
+       "`trunc(x)`",
+       "cuts off the decimals"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "conditions",
+   "title": "Decisions",
+   "chapter": "Control flow",
+   "summary": "Let the program decide with if, then and else, combine conditions with and, or and not, and pick cases with case.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "`if condition then statement` runs the statement only when the condition is true. You compare values with `=` (equal), `<>` (not equal), `<`, `>`, `<=` (less or equal) and `>=` (greater or equal)."
+    },
+    {
+     "type": "code",
+     "code": "program Check;\n{$mode objfpc}{$H+}\nvar\n  temp: integer;\nbegin\n  temp := 30;\n  if temp > 25 then\n    writeln('Hot');\n  if temp = 30 then\n    writeln('Exactly 30');\n  if temp <> 30 then\n    writeln('Not 30');\nend.",
+     "output": "Hot\nExactly 30"
+    },
+    {
+     "type": "text",
+     "md": "`else` gives a second way: its statement runs when the condition is false. `then` and `else` control only one statement. To run several, put them between `begin` and `end`."
+    },
+    {
+     "type": "code",
+     "code": "program AgeCheck;\n{$mode objfpc}{$H+}\nvar\n  age: integer;\nbegin\n  age := 15;\n  if age >= 18 then\n    writeln('Adult')\n  else\n  begin\n    writeln('Not yet');\n    writeln('Wait ', 18 - age, ' years');\n  end;\nend.",
+     "output": "Not yet\nWait 3 years"
+    },
+    {
+     "type": "warning",
+     "md": "Never put a semicolon directly before `else`. The semicolon ends the whole `if` statement, so the compiler finds an `else` without an `if`. Write `writeln('Adult')` without `;` when `else` follows."
+    },
+    {
+     "type": "text",
+     "md": "To check more than two cases, write `else if`. Pascal tests the conditions from top to bottom and runs only the first branch whose condition is true."
+    },
+    {
+     "type": "code",
+     "code": "program Grade;\n{$mode objfpc}{$H+}\nvar\n  score: integer;\nbegin\n  score := 72;\n  if score >= 90 then\n    writeln('A')\n  else if score >= 70 then\n    writeln('B')\n  else\n    writeln('C');\nend.",
+     "output": "B"
+    },
+    {
+     "type": "heading",
+     "text": "and, or, not"
+    },
+    {
+     "type": "text",
+     "md": "`and` is true when both sides are true. `or` is true when at least one side is true. `not` turns true into false and false into true. In Pascal, `and` and `or` are calculated before comparisons, so put every comparison in parentheses: `(age >= 18) and (age < 65)`."
+    },
+    {
+     "type": "code",
+     "code": "program Logic;\n{$mode objfpc}{$H+}\nvar\n  age: integer;\n  member: boolean;\nbegin\n  age := 20;\n  member := False;\n  if (age >= 18) and (age < 65) then\n    writeln('Full price');\n  if member or (age < 12) then\n    writeln('Discount');\n  if not member then\n    writeln('Join us');\nend.",
+     "output": "Full price\nJoin us"
+    },
+    {
+     "type": "heading",
+     "text": "Choosing with case"
+    },
+    {
+     "type": "text",
+     "md": "`case value of` picks one branch by value. A label can be one value, a list like `'B', 'C'` or a range like `'D'..'F'`. The `else` branch runs when no label fits. The whole `case` ends with `end;`."
+    },
+    {
+     "type": "code",
+     "code": "program Marks;\n{$mode objfpc}{$H+}\nvar\n  grade: char;\nbegin\n  grade := 'B';\n  case grade of\n    'A': writeln('Excellent');\n    'B', 'C': writeln('Good');\n    'D'..'F': writeln('Try again');\n  else\n    writeln('Invalid');\n  end;\nend.",
+     "output": "Good"
+    },
+    {
+     "type": "tip",
+     "md": "`case` works with whole numbers and characters, but not with `real` values. It is often easier to read than a long chain of `else if`."
+    }
+   ],
+   "card": [
+    "`if x > 0 then ... else ...` (no `;` before `else`)",
+    "`=` `<>` `<` `>` `<=` `>=` compare values",
+    "`(a > 0) and (b > 0)`: comparisons need parentheses",
+    "`begin ... end` groups several statements",
+    "`case n of 1: ...; 2..5: ... else ... end;`"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "conditions-1",
+     "prompt": "What does this print?",
+     "code": "var\n  x: integer;\nbegin\n  x := 7;\n  if x mod 2 = 0 then\n    writeln('even')\n  else\n    writeln('odd');\nend.",
+     "answers": [
+      "odd"
+     ],
+     "explain": "7 mod 2 is 1, not 0, so the `else` branch runs."
+    },
+    {
+     "type": "choice",
+     "id": "conditions-2",
+     "prompt": "Which operator means \"not equal\" in Pascal?",
+     "options": [
+      "`<>`",
+      "`!=`",
+      "`=/=`",
+      "`not=`"
+     ],
+     "answer": 0,
+     "explain": "Pascal writes \"not equal\" as `<>`."
+    },
+    {
+     "type": "input",
+     "id": "conditions-3",
+     "prompt": "What does this print?",
+     "code": "var\n  n: integer;\nbegin\n  n := 4;\n  case n of\n    1: writeln('one');\n    2..5: writeln('few');\n  else\n    writeln('many');\n  end;\nend.",
+     "answers": [
+      "few"
+     ],
+     "explain": "4 is inside the range `2..5`, so the second branch runs."
+    },
+    {
+     "type": "true_false",
+     "id": "conditions-4",
+     "statement": "In Pascal, the statement before `else` ends with a semicolon.",
+     "answer": false,
+     "explain": "A semicolon before `else` ends the `if` statement too early. That is a compile error."
+    },
+    {
+     "type": "bug",
+     "id": "conditions-5",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "program Sign;",
+      "{$mode objfpc}{$H+}",
+      "var",
+      "  n: integer;",
+      "begin",
+      "  n := -3;",
+      "  if n >= 0 then",
+      "    writeln('positive');",
+      "  else",
+      "    writeln('negative');",
+      "end."
+     ],
+     "bug": 7,
+     "explain": "There must be no semicolon before `else`. Write `writeln('positive')`."
+    },
+    {
+     "type": "bug",
+     "id": "conditions-6",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "program Digit;",
+      "{$mode objfpc}{$H+}",
+      "var",
+      "  n: integer;",
+      "begin",
+      "  n := 5;",
+      "  if n > 0 and n < 10 then",
+      "    writeln('one digit');",
+      "end."
+     ],
+     "bug": 6,
+     "explain": "`and` is calculated before the comparisons. Write `if (n > 0) and (n < 10) then`."
+    },
+    {
+     "type": "gap",
+     "id": "conditions-7",
+     "prompt": "Complete the condition so it prints `teen` only for ages 13 to 19.",
+     "code": "if (age >= 13) ___ (age <= 19) then\n  writeln('teen');",
+     "options": [
+      "and",
+      "or",
+      "&&",
+      "xor"
+     ],
+     "answer": 0,
+     "explain": "Both conditions must be true at the same time, so you need `and`."
+    },
+    {
+     "type": "gap",
+     "id": "conditions-8",
+     "prompt": "Complete the range label.",
+     "code": "case score of\n  0..49: writeln('fail');\n  50___100: writeln('pass');\nend;",
+     "options": [
+      "..",
+      "-",
+      "to",
+      "..."
+     ],
+     "answer": 0,
+     "explain": "A range in a `case` label is written with two dots: `50..100`."
+    },
+    {
+     "type": "blocks",
+     "id": "conditions-9",
+     "prompt": "Build the line that prints `Hot` when `temp` is above 25.",
+     "tokens": [
+      "if",
+      "temp",
+      ">",
+      "25",
+      "then",
+      "writeln('Hot');"
+     ],
+     "distractors": [
+      ">=",
+      "do"
+     ],
+     "explain": "`if` is followed by the condition and `then`, then comes the statement."
+    },
+    {
+     "type": "order",
+     "id": "conditions-10",
+     "prompt": "Put the lines in order: adults see Welcome and then Enjoy, everyone else sees Too young.",
+     "lines": [
+      "if age >= 18 then",
+      "begin",
+      "  writeln('Welcome');",
+      "  writeln('Enjoy');",
+      "end",
+      "else",
+      "  writeln('Too young');"
+     ],
+     "explain": "`begin` and `end` group the two statements for adults. There is no semicolon after `end` because `else` follows."
+    },
+    {
+     "type": "choice",
+     "id": "conditions-11",
+     "prompt": "What does this print?",
+     "code": "var\n  a: integer;\n  ok: boolean;\nbegin\n  a := 5;\n  ok := (a > 3) and not (a = 5);\n  writeln(ok);\nend.",
+     "options": [
+      "`FALSE`",
+      "`TRUE`",
+      "`0`",
+      "`1`"
+     ],
+     "answer": 0,
+     "explain": "`a > 3` is true, but `a = 5` is also true, so `not (a = 5)` is false. True and false gives false."
+    },
+    {
+     "type": "pairs",
+     "id": "conditions-12",
+     "prompt": "Match the operator with its meaning.",
+     "pairs": [
+      [
+       "`=`",
+       "equal to"
+      ],
+      [
+       "`<>`",
+       "not equal to"
+      ],
+      [
+       "`<=`",
+       "less than or equal to"
+      ],
+      [
+       "`and`",
+       "both must be true"
+      ],
+      [
+       "`or`",
+       "at least one must be true"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "loops",
+   "title": "Loops",
+   "chapter": "Control flow",
+   "summary": "Repeat code with for to/downto do, while do and repeat until, and control loops with break and continue.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A `for` loop repeats a statement a fixed number of times. In `for i := 1 to 3 do`, the **counter** `i` takes the values 1, 2 and 3, one after the other. The counter is a normal variable, so you declare it in the `var` section."
+    },
+    {
+     "type": "code",
+     "code": "program Rounds;\n{$mode objfpc}{$H+}\nvar\n  i: integer;\nbegin\n  for i := 1 to 3 do\n    writeln('Round ', i);\nend.",
+     "output": "Round 1\nRound 2\nRound 3"
+    },
+    {
+     "type": "text",
+     "md": "`downto` counts down instead of up. To repeat several statements, put them between `begin` and `end`."
+    },
+    {
+     "type": "code",
+     "code": "program Countdown;\n{$mode objfpc}{$H+}\nvar\n  i, sum: integer;\nbegin\n  for i := 3 downto 1 do\n    writeln(i);\n  writeln('Go!');\n  sum := 0;\n  for i := 1 to 4 do\n  begin\n    sum := sum + i;\n    writeln('Added ', i, ', sum = ', sum);\n  end;\nend.",
+     "output": "3\n2\n1\nGo!\nAdded 1, sum = 1\nAdded 2, sum = 3\nAdded 3, sum = 6\nAdded 4, sum = 10"
+    },
+    {
+     "type": "tip",
+     "md": "When the start value is already bigger than the end value, a `to` loop does not run at all: `for i := 5 to 1 do` runs zero times. You must not change the counter inside the loop. The compiler does not allow it."
+    },
+    {
+     "type": "heading",
+     "text": "Loops with while"
+    },
+    {
+     "type": "text",
+     "md": "`while condition do` checks the condition before every round. The loop runs as long as the condition is true. If it is false at the start, the loop does not run at all."
+    },
+    {
+     "type": "code",
+     "code": "program Halve;\n{$mode objfpc}{$H+}\nvar\n  n: integer;\nbegin\n  n := 100;\n  while n > 10 do\n  begin\n    n := n div 2;\n    writeln(n);\n  end;\nend.",
+     "output": "50\n25\n12\n6"
+    },
+    {
+     "type": "heading",
+     "text": "Loops with repeat until"
+    },
+    {
+     "type": "text",
+     "md": "`repeat ... until condition` runs its statements first and checks the condition after each round. It stops as soon as the condition is true, so it always runs at least once. Between `repeat` and `until` you need no `begin` and `end`."
+    },
+    {
+     "type": "code",
+     "code": "program Triple;\n{$mode objfpc}{$H+}\nvar\n  n: integer;\nbegin\n  n := 1;\n  repeat\n    writeln(n);\n    n := n * 3;\n  until n > 50;\nend.",
+     "output": "1\n3\n9\n27"
+    },
+    {
+     "type": "text",
+     "md": "`break` leaves the loop at once. `continue` skips the rest of the current round and goes on with the next one."
+    },
+    {
+     "type": "code",
+     "code": "program Skip;\n{$mode objfpc}{$H+}\nvar\n  i: integer;\nbegin\n  for i := 1 to 10 do\n  begin\n    if i mod 3 = 0 then\n      continue;\n    if i > 7 then\n      break;\n    writeln(i);\n  end;\nend.",
+     "output": "1\n2\n4\n5\n7"
+    },
+    {
+     "type": "warning",
+     "md": "A `while` or `repeat` loop must change something in its condition. Otherwise it never stops. Remember the difference: `while` goes on while the condition is true, `repeat` stops when the condition is true."
+    }
+   ],
+   "card": [
+    "`for i := 1 to 5 do ...` counts up, `downto` counts down",
+    "`while x > 0 do begin ... end;` checks first",
+    "`repeat ... until x > 10;` runs at least once",
+    "`break` leaves the loop, `continue` skips to the next round"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "loops-1",
+     "prompt": "What does this print?",
+     "code": "var\n  i, total: integer;\nbegin\n  total := 0;\n  for i := 1 to 4 do\n    total := total + i * 2;\n  writeln(total);\nend.",
+     "answers": [
+      "20"
+     ],
+     "explain": "The loop adds 2, 4, 6 and 8. Their sum is 20."
+    },
+    {
+     "type": "input",
+     "id": "loops-2",
+     "prompt": "What does this print?",
+     "code": "var\n  i: integer;\nbegin\n  for i := 5 downto 2 do\n    write(i);\n  writeln;\nend.",
+     "answers": [
+      "5432"
+     ],
+     "explain": "`downto` counts from 5 down to 2, and `write` keeps everything on one line."
+    },
+    {
+     "type": "input",
+     "id": "loops-3",
+     "prompt": "What does this print?",
+     "code": "var\n  n, steps: integer;\nbegin\n  n := 20;\n  steps := 0;\n  while n > 1 do\n  begin\n    n := n div 2;\n    inc(steps);\n  end;\n  writeln(steps);\nend.",
+     "answers": [
+      "4"
+     ],
+     "explain": "`n` goes 20, 10, 5, 2, 1. That is 4 rounds, then `n > 1` is false."
+    },
+    {
+     "type": "true_false",
+     "id": "loops-4",
+     "statement": "A `repeat ... until` loop always runs its body at least once.",
+     "answer": true,
+     "explain": "`repeat` checks the condition only after the body, so the body runs before the first check."
+    },
+    {
+     "type": "choice",
+     "id": "loops-5",
+     "prompt": "How often does this loop print `Hi`?",
+     "code": "for i := 1 to 0 do\n  writeln('Hi');",
+     "options": [
+      "Never",
+      "Once",
+      "Twice",
+      "Without end"
+     ],
+     "answer": 0,
+     "explain": "The start value 1 is bigger than the end value 0, so a `to` loop does not run at all."
+    },
+    {
+     "type": "gap",
+     "id": "loops-6",
+     "prompt": "Complete the loop so it prints 10, 9, 8 and so on down to 1.",
+     "code": "for i := 10 ___ 1 do\n  writeln(i);",
+     "options": [
+      "downto",
+      "to",
+      "down",
+      "step"
+     ],
+     "answer": 0,
+     "explain": "`downto` counts down. With `to`, a loop from 10 to 1 does not run at all."
+    },
+    {
+     "type": "gap",
+     "id": "loops-7",
+     "prompt": "Complete the loop so it prints 16.",
+     "code": "n := 1;\nrepeat\n  n := n * 2;\n___ n >= 16;\nwriteln(n);",
+     "options": [
+      "until",
+      "while",
+      "do",
+      "end"
+     ],
+     "answer": 0,
+     "explain": "A `repeat` loop ends with `until` and the condition that stops it."
+    },
+    {
+     "type": "blocks",
+     "id": "loops-8",
+     "prompt": "Build the loop header that repeats while `count` is less than 10.",
+     "tokens": [
+      "while",
+      "count",
+      "<",
+      "10",
+      "do"
+     ],
+     "distractors": [
+      "then",
+      "until"
+     ],
+     "explain": "`while` is followed by the condition and `do`."
+    },
+    {
+     "type": "order",
+     "id": "loops-9",
+     "prompt": "Put the lines in order so the program prints 6 only once.",
+     "lines": [
+      "n := 0;",
+      "repeat",
+      "  n := n + 2;",
+      "until n = 6;",
+      "writeln(n);"
+     ],
+     "explain": "Set the start value, repeat adding 2 until `n` is 6, and print after the loop."
+    },
+    {
+     "type": "bug",
+     "id": "loops-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "program Squares;",
+      "{$mode objfpc}{$H+}",
+      "var",
+      "  i: integer;",
+      "begin",
+      "  for i = 1 to 3 do",
+      "    writeln(i * i);",
+      "end."
+     ],
+     "bug": 5,
+     "explain": "The counter gets its start value with `:=`. Write `for i := 1 to 3 do`."
+    },
+    {
+     "type": "bug",
+     "id": "loops-11",
+     "prompt": "The program should print 1, 2 and 3. Which line has the bug?",
+     "lines": [
+      "program Three;",
+      "{$mode objfpc}{$H+}",
+      "var",
+      "  n: integer;",
+      "begin",
+      "  n := 1;",
+      "  repeat",
+      "    writeln(n);",
+      "    inc(n);",
+      "  until n < 4;",
+      "end."
+     ],
+     "bug": 9,
+     "explain": "`repeat` stops when the condition is true. After the first round `n < 4` is already true. Write `until n > 3;`."
+    },
+    {
+     "type": "pairs",
+     "id": "loops-12",
+     "prompt": "Match the code with its meaning.",
+     "pairs": [
+      [
+       "`for i := 1 to 5 do`",
+       "counts up"
+      ],
+      [
+       "`for i := 5 downto 1 do`",
+       "counts down"
+      ],
+      [
+       "`while x > 0 do`",
+       "checks before each round"
+      ],
+      [
+       "`until x > 0;`",
+       "checks after each round"
+      ],
+      [
+       "`break`",
+       "leaves the loop"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "procedures",
+   "title": "Procedures and functions",
+   "chapter": "Structure",
+   "summary": "Group code in procedures and functions, pass parameters, return values with Result and change variables with var.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A **procedure** is a named group of statements. You write it before the main `begin` of the program. Then you **call** it by its name, as often as you like."
+    },
+    {
+     "type": "code",
+     "code": "program Greet;\n{$mode objfpc}{$H+}\nprocedure SayHello;\nbegin\n  writeln('Hello!');\n  writeln('Nice to see you.');\nend;\n\nbegin\n  SayHello;\n  SayHello;\nend.",
+     "output": "Hello!\nNice to see you.\nHello!\nNice to see you."
+    },
+    {
+     "type": "text",
+     "md": "**Parameters** pass values into a procedure. You list them in parentheses with their types and separate groups with `;`. A procedure can have its own `var` section: these **local** variables exist only inside it."
+    },
+    {
+     "type": "code",
+     "code": "program Lines;\n{$mode objfpc}{$H+}\nprocedure ShowLine(ch: char; count: integer);\nvar\n  i: integer;\nbegin\n  for i := 1 to count do\n    write(ch);\n  writeln;\nend;\n\nbegin\n  ShowLine('*', 5);\n  ShowLine('-', 3);\nend.",
+     "output": "*****\n---"
+    },
+    {
+     "type": "heading",
+     "text": "Functions"
+    },
+    {
+     "type": "text",
+     "md": "A **function** calculates a value and gives it back. Its type comes after the parameters, after a colon. Inside, you store the value to give back in `Result`. You use a function call like a value: in `writeln`, in a calculation or in another call."
+    },
+    {
+     "type": "code",
+     "code": "program Funcs;\n{$mode objfpc}{$H+}\nfunction Square(n: integer): integer;\nbegin\n  Result := n * n;\nend;\n\nfunction Max(a, b: integer): integer;\nbegin\n  if a > b then\n    Result := a\n  else\n    Result := b;\nend;\n\nbegin\n  writeln(Square(4));\n  writeln(Max(3, 9));\n  writeln(Square(Max(2, 5)));\nend.",
+     "output": "16\n9\n25"
+    },
+    {
+     "type": "tip",
+     "md": "`Result` works in the `objfpc` mode of this course. Older Pascal code assigns to the function name instead, like `Square := n * n`. Both give the value back."
+    },
+    {
+     "type": "heading",
+     "text": "var parameters"
+    },
+    {
+     "type": "text",
+     "md": "A normal parameter is a **copy**: when the procedure changes it, the variable of the caller stays the same. Write `var` before a parameter to let the procedure work on the caller's variable itself."
+    },
+    {
+     "type": "code",
+     "code": "program VarParam;\n{$mode objfpc}{$H+}\nprocedure AddTenCopy(n: integer);\nbegin\n  n := n + 10;\nend;\n\nprocedure AddTen(var n: integer);\nbegin\n  n := n + 10;\nend;\n\nvar\n  x: integer;\nbegin\n  x := 1;\n  AddTenCopy(x);\n  writeln(x);\n  AddTen(x);\n  writeln(x);\nend.",
+     "output": "1\n11"
+    },
+    {
+     "type": "text",
+     "md": "With `var` parameters, a procedure can change several variables. `Swap` exchanges the values of two variables."
+    },
+    {
+     "type": "code",
+     "code": "program Swapping;\n{$mode objfpc}{$H+}\nprocedure Swap(var a, b: integer);\nvar\n  temp: integer;\nbegin\n  temp := a;\n  a := b;\n  b := temp;\nend;\n\nvar\n  x, y: integer;\nbegin\n  x := 1;\n  y := 2;\n  Swap(x, y);\n  writeln(x, ' ', y);\nend.",
+     "output": "2 1"
+    },
+    {
+     "type": "warning",
+     "md": "A `var` parameter needs a variable: `AddTen(5)` is a compile error, because `5` is not a variable that can change. Declare a procedure or function before the code that calls it."
+    }
+   ],
+   "card": [
+    "`procedure Show(n: integer); begin ... end;`",
+    "`function Twice(n: integer): integer;` … `Result := n * 2;`",
+    "`var` before a parameter changes the caller's variable",
+    "Call it: `Show(5);`, `x := Twice(3);`"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "procedures-1",
+     "prompt": "What does this print?",
+     "code": "function Twice(n: integer): integer;\nbegin\n  Result := n * 2;\nend;\n\nbegin\n  writeln(Twice(Twice(3)));\nend.",
+     "answers": [
+      "12"
+     ],
+     "explain": "`Twice(3)` gives 6, and `Twice(6)` gives 12."
+    },
+    {
+     "type": "input",
+     "id": "procedures-2",
+     "prompt": "What does this print?",
+     "code": "procedure Bump(var n: integer);\nbegin\n  n := n + 1;\nend;\n\nvar\n  a: integer;\nbegin\n  a := 5;\n  Bump(a);\n  Bump(a);\n  writeln(a);\nend.",
+     "answers": [
+      "7"
+     ],
+     "explain": "`n` is a `var` parameter, so each call adds 1 to `a` itself: 5, 6, 7."
+    },
+    {
+     "type": "choice",
+     "id": "procedures-3",
+     "prompt": "What does this print?",
+     "code": "procedure Clear(n: integer);\nbegin\n  n := 0;\nend;\n\nvar\n  a: integer;\nbegin\n  a := 5;\n  Clear(a);\n  writeln(a);\nend.",
+     "options": [
+      "`5`",
+      "`0`",
+      "`6`",
+      "Nothing"
+     ],
+     "answer": 0,
+     "explain": "`n` is a copy. Setting the copy to 0 does not change `a`."
+    },
+    {
+     "type": "true_false",
+     "id": "procedures-4",
+     "statement": "In this course's mode, a function gives back its value when you assign it to `Result`.",
+     "answer": true,
+     "explain": "In `objfpc` mode every function has the variable `Result`. Its value at the end is the return value."
+    },
+    {
+     "type": "gap",
+     "id": "procedures-5",
+     "prompt": "Complete the function header.",
+     "code": "function Area(w, h: integer)___ integer;\nbegin\n  Result := w * h;\nend;\n\nbegin\n  writeln(Area(3, 4));\nend.",
+     "options": [
+      ":",
+      ";",
+      "=",
+      "->"
+     ],
+     "answer": 0,
+     "explain": "The type of the result follows the parameters after a colon."
+    },
+    {
+     "type": "gap",
+     "id": "procedures-6",
+     "prompt": "Complete the procedure so that `x` really changes and the program prints 12.",
+     "code": "procedure Triple(___ n: integer);\nbegin\n  n := n * 3;\nend;\n\nvar\n  x: integer;\nbegin\n  x := 4;\n  Triple(x);\n  writeln(x);\nend.",
+     "options": [
+      "var",
+      "const",
+      "ref",
+      "let"
+     ],
+     "answer": 0,
+     "explain": "Only a `var` parameter changes the caller's variable. A `const` parameter cannot be changed at all."
+    },
+    {
+     "type": "blocks",
+     "id": "procedures-7",
+     "prompt": "Build the header of a function `IsEven` that takes an integer `n` and gives back a boolean.",
+     "tokens": [
+      "function",
+      "IsEven",
+      "(n: integer)",
+      ":",
+      "boolean",
+      ";"
+     ],
+     "distractors": [
+      "procedure",
+      "->"
+     ],
+     "explain": "A function header: `function`, the name, the parameters, a colon and the result type."
+    },
+    {
+     "type": "order",
+     "id": "procedures-8",
+     "prompt": "Put the lines in order so `Stars(n)` prints n stars and then ends the line.",
+     "lines": [
+      "procedure Stars(n: integer);",
+      "var",
+      "  i: integer;",
+      "begin",
+      "  for i := 1 to n do",
+      "    write('*');",
+      "  writeln;",
+      "end;"
+     ],
+     "explain": "Header, local variables, then the body: the loop writes the stars, and `writeln` ends the line after the loop."
+    },
+    {
+     "type": "pairs",
+     "id": "procedures-9",
+     "prompt": "Match the code with its meaning.",
+     "pairs": [
+      [
+       "`procedure`",
+       "a named group of statements"
+      ],
+      [
+       "`function`",
+       "gives back a value"
+      ],
+      [
+       "`Result`",
+       "the value a function gives back"
+      ],
+      [
+       "`(var n: integer)`",
+       "works on the caller's variable"
+      ],
+      [
+       "`(n: integer)`",
+       "gets a copy of the value"
+      ]
+     ]
+    },
+    {
+     "type": "bug",
+     "id": "procedures-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "program Rect;",
+      "{$mode objfpc}{$H+}",
+      "function Area(w, h: integer);",
+      "begin",
+      "  Result := w * h;",
+      "end;",
+      "begin",
+      "  writeln(Area(3, 4));",
+      "end."
+     ],
+     "bug": 2,
+     "explain": "A function needs a result type. Write `function Area(w, h: integer): integer;`."
+    },
+    {
+     "type": "bug",
+     "id": "procedures-11",
+     "prompt": "The program should print 3. Which line has the bug?",
+     "lines": [
+      "procedure AddTwo(var n: integer);",
+      "begin",
+      "  n := n + 2;",
+      "end;",
+      "var",
+      "  a: integer;",
+      "begin",
+      "  a := 1;",
+      "  AddTwo(5);",
+      "  writeln(a);",
+      "end."
+     ],
+     "bug": 8,
+     "explain": "A `var` parameter needs a variable, not a number. Write `AddTwo(a);`."
+    },
+    {
+     "type": "choice",
+     "id": "procedures-12",
+     "prompt": "Where do you declare a procedure that the main program calls?",
+     "options": [
+      "Before the main `begin`",
+      "After `end.`",
+      "Between `begin` and `end.`",
+      "Anywhere, the order does not matter"
+     ],
+     "answer": 0,
+     "explain": "Pascal reads the program from top to bottom. A procedure must be declared before the code that calls it."
+    }
+   ]
+  },
+  {
+   "id": "arrays",
+   "title": "Arrays and strings",
+   "chapter": "Data",
+   "summary": "Store many values in arrays, read single characters of a string and use Length, Copy, Pos and UpperCase.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "An **array** stores several values of the same type under one name. `array[1..4] of integer` holds four integers with the **indexes** 1 to 4. You read or change one element with its index in square brackets: `scores[2]`."
+    },
+    {
+     "type": "code",
+     "code": "program Results;\n{$mode objfpc}{$H+}\nvar\n  scores: array[1..4] of integer;\n  i, total: integer;\nbegin\n  scores[1] := 8;\n  scores[2] := 5;\n  scores[3] := 9;\n  scores[4] := 6;\n  total := 0;\n  for i := 1 to 4 do\n    total := total + scores[i];\n  writeln('Second: ', scores[2]);\n  writeln('Total: ', total);\nend.",
+     "output": "Second: 5\nTotal: 28"
+    },
+    {
+     "type": "text",
+     "md": "You can give an array its values in the declaration, in parentheses. `Low(a)` gives the first index, `High(a)` the last index and `Length(a)` the number of elements. With them, a loop always fits the array."
+    },
+    {
+     "type": "code",
+     "code": "program Bounds;\n{$mode objfpc}{$H+}\nvar\n  primes: array[1..4] of integer = (2, 3, 5, 7);\n  i: integer;\nbegin\n  writeln(Low(primes), ' to ', High(primes));\n  writeln('Length: ', Length(primes));\n  for i := High(primes) downto Low(primes) do\n    writeln(primes[i]);\nend.",
+     "output": "1 to 4\nLength: 4\n7\n5\n3\n2"
+    },
+    {
+     "type": "warning",
+     "md": "Use only indexes inside the range. For `scores[5]` the compiler warns you, but with a variable index the program may read or change memory that does not belong to the array."
+    },
+    {
+     "type": "heading",
+     "text": "Strings and characters"
+    },
+    {
+     "type": "text",
+     "md": "A string is a row of characters. `s[1]` is the first character, because string indexes start at 1. `Length(s)` gives the number of characters, so `s[Length(s)]` is the last one."
+    },
+    {
+     "type": "code",
+     "code": "program Letters;\n{$mode objfpc}{$H+}\nvar\n  lang: string;\n  i: integer;\nbegin\n  lang := 'Pascal';\n  writeln(Length(lang));\n  writeln(lang[1], lang[Length(lang)]);\n  for i := Length(lang) downto 1 do\n    write(lang[i]);\n  writeln;\nend.",
+     "output": "6\nPl\nlacsaP"
+    },
+    {
+     "type": "heading",
+     "text": "String functions"
+    },
+    {
+     "type": "text",
+     "md": "`Copy(s, start, count)` gives `count` characters from position `start`. `Pos(part, s)` gives the position of `part` in `s`, or `0` if it is not there. `UpperCase` and `LowerCase` change the case, and `IntToStr` turns a number into a string. These three are in the unit `SysUtils`, which you load with `uses SysUtils;` before the `var` section."
+    },
+    {
+     "type": "code",
+     "code": "program Texts;\n{$mode objfpc}{$H+}\nuses\n  SysUtils;\nvar\n  s: string;\nbegin\n  s := 'Hello, world';\n  writeln(Copy(s, 1, 5));\n  writeln(Copy(s, 8, 5));\n  writeln(Pos('world', s));\n  writeln(Pos('moon', s));\n  writeln(UpperCase(s));\n  writeln('Size: ' + IntToStr(Length(s)));\nend.",
+     "output": "Hello\nworld\n8\n0\nHELLO, WORLD\nSize: 12"
+    },
+    {
+     "type": "tip",
+     "md": "You compare strings with `=` and `<>`. Case matters: `'abc' = 'ABC'` is false. Compare `UpperCase(a) = UpperCase(b)` to ignore case."
+    }
+   ],
+   "card": [
+    "`a: array[1..5] of integer;` five integers, index 1 to 5",
+    "`a[2] := 7;` and `Low(a)`, `High(a)`, `Length(a)`",
+    "`s[1]` is the first character of a string",
+    "`Copy(s, 2, 3)`, `Pos('x', s)`, `Length(s)`",
+    "`uses SysUtils;` for `UpperCase` and `IntToStr`"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "arrays-1",
+     "prompt": "What does this print?",
+     "code": "var\n  a: array[1..3] of integer = (4, 7, 1);\nbegin\n  writeln(a[2] + a[3]);\nend.",
+     "answers": [
+      "8"
+     ],
+     "explain": "`a[2]` is 7 and `a[3]` is 1. 7 + 1 = 8."
+    },
+    {
+     "type": "input",
+     "id": "arrays-2",
+     "prompt": "What does this print?",
+     "code": "writeln(Copy('Programming', 4, 4));",
+     "answers": [
+      "gram"
+     ],
+     "explain": "Position 4 of `Programming` is `g`. Four characters from there are `gram`."
+    },
+    {
+     "type": "input",
+     "id": "arrays-3",
+     "prompt": "What does this print?",
+     "code": "writeln(Pos('a', 'banana'));",
+     "answers": [
+      "2"
+     ],
+     "explain": "`Pos` gives the position of the first match. The first `a` in `banana` is at position 2."
+    },
+    {
+     "type": "choice",
+     "id": "arrays-4",
+     "prompt": "What does this print?",
+     "code": "writeln(Length('Free Pascal'));",
+     "options": [
+      "`11`",
+      "`10`",
+      "`9`",
+      "`12`"
+     ],
+     "answer": 0,
+     "explain": "`Length` counts every character, also the space: 4 + 1 + 6 = 11."
+    },
+    {
+     "type": "true_false",
+     "id": "arrays-5",
+     "statement": "The first character of a string `s` is `s[0]`.",
+     "answer": false,
+     "explain": "String indexes start at 1, so the first character is `s[1]`."
+    },
+    {
+     "type": "gap",
+     "id": "arrays-6",
+     "prompt": "Complete the loop so it visits every element of `nums`.",
+     "code": "for i := 1 to ___(nums) do\n  writeln(nums[i]);",
+     "options": [
+      "Length",
+      "Size",
+      "Count",
+      "Len"
+     ],
+     "answer": 0,
+     "explain": "`Length` gives the number of elements of an array."
+    },
+    {
+     "type": "gap",
+     "id": "arrays-7",
+     "prompt": "Complete the program so `UpperCase` is available.",
+     "code": "program Shout;\n{$mode objfpc}{$H+}\nuses\n  ___;\nbegin\n  writeln(UpperCase('hey'));\nend.",
+     "options": [
+      "SysUtils",
+      "System",
+      "Strings",
+      "Math"
+     ],
+     "answer": 0,
+     "explain": "`UpperCase` is part of the unit `SysUtils`."
+    },
+    {
+     "type": "blocks",
+     "id": "arrays-8",
+     "prompt": "Build the line that stores 10 in the third element of `scores`.",
+     "tokens": [
+      "scores",
+      "[3]",
+      ":=",
+      "10",
+      ";"
+     ],
+     "distractors": [
+      "(3)",
+      "="
+     ],
+     "explain": "The index goes in square brackets, and `:=` stores the value."
+    },
+    {
+     "type": "order",
+     "id": "arrays-9",
+     "prompt": "Put the lines in order so the program prints the biggest number in `nums`.",
+     "lines": [
+      "best := nums[1];",
+      "for i := 2 to 4 do",
+      "  if nums[i] > best then",
+      "    best := nums[i];",
+      "writeln(best);"
+     ],
+     "explain": "Start with the first element as the best so far. The loop compares every other element with it. Print the result after the loop."
+    },
+    {
+     "type": "bug",
+     "id": "arrays-10",
+     "prompt": "The program should print 30. Which line has the bug?",
+     "lines": [
+      "program Fill;",
+      "{$mode objfpc}{$H+}",
+      "var",
+      "  a: array[1..3] of integer;",
+      "  i: integer;",
+      "begin",
+      "  for i := 1 to 3 do",
+      "    a[i] := i * 10;",
+      "  writeln(a[4]);",
+      "end."
+     ],
+     "bug": 8,
+     "explain": "The array has the indexes 1 to 3, so `a[4]` is outside. Write `writeln(a[3]);`."
+    },
+    {
+     "type": "bug",
+     "id": "arrays-11",
+     "prompt": "The program should print `cal`. Which line has the bug?",
+     "lines": [
+      "program Part;",
+      "{$mode objfpc}{$H+}",
+      "var",
+      "  s: string;",
+      "begin",
+      "  s := 'Pascal';",
+      "  writeln(Copy(s, 3, 4));",
+      "end."
+     ],
+     "bug": 6,
+     "explain": "`Copy(s, 3, 4)` gives `scal`. `cal` starts at position 4 and has 3 characters: `Copy(s, 4, 3)`."
+    },
+    {
+     "type": "pairs",
+     "id": "arrays-12",
+     "prompt": "Match the code with its meaning.",
+     "pairs": [
+      [
+       "`Length(s)`",
+       "number of characters"
+      ],
+      [
+       "`Copy(s, 2, 3)`",
+       "three characters from position 2"
+      ],
+      [
+       "`Pos('a', s)`",
+       "position of the first a"
+      ],
+      [
+       "`UpperCase(s)`",
+       "the text in capital letters"
+      ],
+      [
+       "`High(a)`",
+       "last index of an array"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "records",
+   "title": "Records, enumerations and sets",
+   "chapter": "Data",
+   "summary": "Group values in records, name your own values with enumerated types and test membership with sets.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A **record** groups several values, called **fields**, under one name. The fields can have different types. You define a new type in a `type` section and end the record with `end;`. A dot gives you one field: `pet.name`."
+    },
+    {
+     "type": "code",
+     "code": "program Pets;\n{$mode objfpc}{$H+}\ntype\n  TPet = record\n    name: string;\n    age: integer;\n  end;\nvar\n  pet: TPet;\nbegin\n  pet.name := 'Rex';\n  pet.age := 3;\n  writeln(pet.name, ' is ', pet.age);\n  pet.age := pet.age + 1;\n  writeln(pet.name, ' is now ', pet.age);\nend.",
+     "output": "Rex is 3\nRex is now 4"
+    },
+    {
+     "type": "text",
+     "md": "By convention, type names start with `T`. Assigning one record to another copies all fields, so the two variables stay independent. You can also make an array of records."
+    },
+    {
+     "type": "code",
+     "code": "program Points;\n{$mode objfpc}{$H+}\ntype\n  TPoint = record\n    x, y: integer;\n  end;\nvar\n  a, b: TPoint;\n  path: array[1..3] of TPoint;\n  i: integer;\nbegin\n  a.x := 1;\n  a.y := 2;\n  b := a;\n  b.x := 10;\n  writeln(a.x, ' ', b.x);\n  for i := 1 to 3 do\n  begin\n    path[i].x := i;\n    path[i].y := i * i;\n  end;\n  writeln(path[3].x, ',', path[3].y);\nend.",
+     "output": "1 10\n3,9"
+    },
+    {
+     "type": "heading",
+     "text": "Enumerated types"
+    },
+    {
+     "type": "text",
+     "md": "An **enumerated type** lists all its possible values by name: `TSize = (Small, Medium, Large)`. `ord` gives the position of a value, starting at 0. `succ` gives the next value and `pred` the previous one. `writeln` prints the name of the value."
+    },
+    {
+     "type": "code",
+     "code": "program Sizes;\n{$mode objfpc}{$H+}\ntype\n  TSize = (Small, Medium, Large);\nvar\n  s: TSize;\nbegin\n  s := Medium;\n  writeln(s, ' ', ord(s), ' ', succ(s));\n  for s := Small to Large do\n    writeln(ord(s), ': ', s);\nend.",
+     "output": "Medium 1 Large\n0: Small\n1: Medium\n2: Large"
+    },
+    {
+     "type": "text",
+     "md": "Enumerated values work well in `case`. The names make the code easy to read."
+    },
+    {
+     "type": "code",
+     "code": "program Lights;\n{$mode objfpc}{$H+}\ntype\n  TLight = (Red, Yellow, Green);\nvar\n  light: TLight;\nbegin\n  light := Yellow;\n  case light of\n    Red: writeln('Stop');\n    Yellow: writeln('Wait');\n    Green: writeln('Go');\n  end;\nend.",
+     "output": "Wait"
+    },
+    {
+     "type": "heading",
+     "text": "Sets"
+    },
+    {
+     "type": "text",
+     "md": "A **set** holds values of an enumerated type, characters or small numbers. Each value is in the set or not, and there is no order. You write a set in square brackets, like `[Sat, Sun]` or `['a'..'z']`. `x in s` tests if `x` is in the set. `Include(s, x)` adds a value and `Exclude(s, x)` removes it. `+` joins two sets."
+    },
+    {
+     "type": "code",
+     "code": "program Days;\n{$mode objfpc}{$H+}\ntype\n  TDay = (Mon, Tue, Wed, Thu, Fri, Sat, Sun);\n  TDays = set of TDay;\nvar\n  free: TDays;\n  d: TDay;\nbegin\n  free := [Sat, Sun];\n  Include(free, Wed);\n  writeln(Wed in free);\n  writeln(Mon in free);\n  for d := Mon to Sun do\n    if d in free then\n      writeln(d);\nend.",
+     "output": "TRUE\nFALSE\nWed\nSat\nSun"
+    },
+    {
+     "type": "text",
+     "md": "A set of characters makes a long condition short: `c in ['0'..'9']` is clearer than `(c >= '0') and (c <= '9')`. This program counts the vowels in a word."
+    },
+    {
+     "type": "code",
+     "code": "program Vowels;\n{$mode objfpc}{$H+}\nvar\n  s: string;\n  i, count: integer;\nbegin\n  s := 'programming';\n  count := 0;\n  for i := 1 to Length(s) do\n    if s[i] in ['a', 'e', 'i', 'o', 'u'] then\n      inc(count);\n  writeln(count);\nend.",
+     "output": "3"
+    }
+   ],
+   "card": [
+    "`TPet = record name: string; age: integer; end;`",
+    "`pet.name := 'Rex';` sets one field",
+    "`TSize = (Small, Medium, Large);` and `ord(Medium)` → `1`",
+    "`x in [1, 3, 5]` tests if a value is in a set",
+    "`Include(s, x)` adds, `Exclude(s, x)` removes"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "records-1",
+     "prompt": "What does this print?",
+     "code": "type\n  TBox = record\n    w, h: integer;\n  end;\nvar\n  b: TBox;\nbegin\n  b.w := 3;\n  b.h := 5;\n  writeln(b.w * b.h);\nend.",
+     "answers": [
+      "15"
+     ],
+     "explain": "The fields `w` and `h` hold 3 and 5. 3 × 5 = 15."
+    },
+    {
+     "type": "input",
+     "id": "records-2",
+     "prompt": "What does this print?",
+     "code": "type\n  TLevel = (Easy, Normal, Hard);\nbegin\n  writeln(ord(Hard));\nend.",
+     "answers": [
+      "2"
+     ],
+     "explain": "Positions start at 0: `Easy` is 0, `Normal` is 1 and `Hard` is 2."
+    },
+    {
+     "type": "input",
+     "id": "records-3",
+     "prompt": "What does this print?",
+     "code": "var\n  c: char;\n  count: integer;\nbegin\n  count := 0;\n  for c := 'a' to 'j' do\n    if c in ['b', 'd', 'x'] then\n      inc(count);\n  writeln(count);\nend.",
+     "answers": [
+      "2"
+     ],
+     "explain": "From `a` to `j`, only `b` and `d` are in the set. `x` is in the set, but the loop never reaches it."
+    },
+    {
+     "type": "true_false",
+     "id": "records-4",
+     "statement": "After `b := a;` with two records, changing `b.x` does not change `a.x`.",
+     "answer": true,
+     "explain": "Assigning a record copies all its fields. `a` and `b` are two independent variables."
+    },
+    {
+     "type": "choice",
+     "id": "records-5",
+     "prompt": "What does this print?",
+     "code": "type\n  TSize = (Small, Medium, Large);\nvar\n  s: TSize;\nbegin\n  s := Large;\n  writeln(pred(s));\nend.",
+     "options": [
+      "`Medium`",
+      "`Small`",
+      "`1`",
+      "`Large`"
+     ],
+     "answer": 0,
+     "explain": "`pred` gives the previous value. Before `Large` comes `Medium`, and `writeln` prints its name."
+    },
+    {
+     "type": "gap",
+     "id": "records-6",
+     "prompt": "Complete the type declaration.",
+     "code": "type\n  TBook = ___\n    title: string;\n    pages: integer;\n  end;",
+     "options": [
+      "record",
+      "begin",
+      "struct",
+      "set"
+     ],
+     "answer": 0,
+     "explain": "A group of fields is declared with `record` ... `end;`."
+    },
+    {
+     "type": "gap",
+     "id": "records-7",
+     "prompt": "Complete the condition so it prints `lower` for small letters.",
+     "code": "if ch ___ ['a'..'z'] then\n  writeln('lower');",
+     "options": [
+      "in",
+      "=",
+      "of",
+      "inside"
+     ],
+     "answer": 0,
+     "explain": "`in` tests if a value is in a set."
+    },
+    {
+     "type": "blocks",
+     "id": "records-8",
+     "prompt": "Build the line that adds `Wed` to the set `free`.",
+     "tokens": [
+      "Include",
+      "(",
+      "free",
+      ",",
+      "Wed",
+      ")",
+      ";"
+     ],
+     "distractors": [
+      "Add",
+      "in"
+     ],
+     "explain": "`Include` takes the set first and then the value to add."
+    },
+    {
+     "type": "order",
+     "id": "records-9",
+     "prompt": "Put the lines in order so the program prints 0, 1 and 2.",
+     "lines": [
+      "type",
+      "  TSize = (Small, Medium, Large);",
+      "var",
+      "  s: TSize;",
+      "begin",
+      "  for s := Small to Large do",
+      "    writeln(ord(s));",
+      "end."
+     ],
+     "explain": "The type must exist before a variable can use it. Then the loop prints the position of every value."
+    },
+    {
+     "type": "bug",
+     "id": "records-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "type",
+      "  TBook = record",
+      "    title: string;",
+      "    pages: integer;",
+      "  end;",
+      "var",
+      "  b: TBook;",
+      "begin",
+      "  b.title := 'Notes';",
+      "  pages := 120;",
+      "  writeln(b.title, ': ', b.pages);",
+      "end."
+     ],
+     "bug": 9,
+     "explain": "`pages` is a field of `b`, not a variable of its own. Write `b.pages := 120;`."
+    },
+    {
+     "type": "bug",
+     "id": "records-11",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "program Machine;",
+      "{$mode objfpc}{$H+}",
+      "type",
+      "  TState = (Stopped, Running);",
+      "var",
+      "  m: TState;",
+      "begin",
+      "  m := 1;",
+      "  writeln(m);",
+      "end."
+     ],
+     "bug": 7,
+     "explain": "An enumerated variable only takes its own values, not numbers. Write `m := Running;`."
+    },
+    {
+     "type": "pairs",
+     "id": "records-12",
+     "prompt": "Match the code with its meaning.",
+     "pairs": [
+      [
+       "`record`",
+       "groups fields of different types"
+      ],
+      [
+       "`p.x`",
+       "the field x of p"
+      ],
+      [
+       "`(Red, Green)`",
+       "the values of an enumerated type"
+      ],
+      [
+       "`ord(Green)`",
+       "the position of a value"
+      ],
+      [
+       "`[1, 3, 5]`",
+       "a set of values"
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

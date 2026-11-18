@@ -1,0 +1,352 @@
+{
+  "hello-2": {
+    "out": "Good morning"
+  },
+  "hello-3": {
+    "out": "Total: 20"
+  },
+  "hello-4": {
+    "out": "AB\nC"
+  },
+  "hello-5": {
+    "extra": [
+      {
+        "src": "use strict;\nuse warnings;\nuse feature 'say';\nsay \"a\";\nprint \"b\";\nprint \"c\\n\";",
+        "out": "a\nbc"
+      }
+    ]
+  },
+  "hello-6": {
+    "out": "Ready"
+  },
+  "hello-7": {
+    "out": "Sum: 7",
+    "distractors": true
+  },
+  "hello-8": {
+    "out": "Perl is fun\nBye"
+  },
+  "hello-10": {
+    "fix": "say \"Line 1\";",
+    "out": "Line 1\nLine 2"
+  },
+  "hello-11": {
+    "fix": "print \"Middle\\n\";",
+    "out": "Start\nMiddle\nEnd"
+  },
+  "hello-12": {
+    "extra": [
+      {
+        "src": "use strict;\nuse warnings;\nuse feature 'say';\nsay 2 + 3;",
+        "out": "5"
+      },
+      {
+        "src": "use strict;\nuse warnings;\nuse feature 'say';\nsay \"2 + 3\";",
+        "out": "2 + 3"
+      },
+      {
+        "src": "use strict;\nuse warnings;\nuse feature 'say';\nsay \"2\", \"3\";",
+        "out": "23"
+      },
+      {
+        "src": "use strict;\nuse warnings;\nuse feature 'say';\nsay 23 - 3;",
+        "out": "20"
+      }
+    ]
+  },
+  "scalars-1": {
+    "out": "2"
+  },
+  "scalars-2": {
+    "out": "hahaha"
+  },
+  "scalars-3": {
+    "out": "I have a $item"
+  },
+  "scalars-4": {
+    "out": "53"
+  },
+  "scalars-5": {
+    "err": true
+  },
+  "scalars-6": {
+    "out": "Hello, Bob!"
+  },
+  "scalars-7": {
+    "out": "25"
+  },
+  "scalars-8": {
+    "tpl": "use strict;\nuse warnings;\nuse feature 'say';\n{{CODE}}\nsay $price;\n",
+    "out": "9.99",
+    "distractors": true
+  },
+  "scalars-9": {
+    "out": "Total: 12"
+  },
+  "scalars-11": {
+    "fix": "my $full = $first . \" \" . $last;",
+    "out": "Grace Hopper"
+  },
+  "scalars-12": {
+    "fix": "say \"Sum: $sum\";",
+    "out": "Sum: 7"
+  },
+  "conditions-1": {
+    "out": "medium"
+  },
+  "conditions-2": {
+    "out": "off"
+  },
+  "conditions-3": {
+    "extra": [
+      {
+        "src": "use strict;\nuse warnings;\nuse feature 'say';\nsay \"same\" if \"abc\" eq \"abc\";\nsay \"never\" if \"abc\" eq \"xyz\";",
+        "out": "same"
+      },
+      {
+        "src": "use strict;\nuse warnings;\nuse feature 'say';\nsay \"true\" if \"abc\" == \"xyz\";",
+        "out": "true",
+        "warn": true
+      }
+    ]
+  },
+  "conditions-4": {
+    "out": "same",
+    "warn": true
+  },
+  "conditions-5": {
+    "extra": [
+      {
+        "src": "use strict;\nuse warnings;\nuse feature 'say';\nmy $n = 2;\nif ($n == 1) {\n    say \"one\";\n} elsif ($n == 2) {\n    say \"two\";\n}",
+        "out": "two"
+      },
+      {
+        "src": "use strict;\nuse warnings;\nuse feature 'say';\nmy $n = 2;\nif ($n == 1) {\n    say \"one\";\n} else if ($n == 2) {\n    say \"two\";\n}",
+        "err": true
+      }
+    ]
+  },
+  "conditions-6": {
+    "out": "Access denied"
+  },
+  "conditions-7": {
+    "out": "Hello, Ada"
+  },
+  "conditions-8": {
+    "tpl": "use strict;\nuse warnings;\nuse feature 'say';\nmy $age = 20;\n{{CODE}}\n",
+    "out": "Adult",
+    "distractors": true
+  },
+  "conditions-9": {
+    "out": "5 is cold\n25 is warm"
+  },
+  "conditions-11": {
+    "fix": "} elsif ($age >= 13) {",
+    "out": "teen"
+  },
+  "conditions-12": {
+    "fix": "if ($answer eq \"no\") {",
+    "out": "Going on"
+  },
+  "loops-1": {
+    "out": "15"
+  },
+  "loops-2": {
+    "out": "32"
+  },
+  "loops-3": {
+    "out": "3\n4\n5\n6\n7"
+  },
+  "loops-4": {
+    "out": "124"
+  },
+  "loops-5": {
+    "out": ""
+  },
+  "loops-6": {
+    "out": "1\n2\n3"
+  },
+  "loops-7": {
+    "out": "1\n2\n3"
+  },
+  "loops-8": {
+    "tpl": "use strict;\nuse warnings;\nuse feature 'say';\nmy $count = 3;\n{{CODE}}\n    say $count;\n    $count -= 1;\n}\n",
+    "out": "3\n2\n1",
+    "distractors": true
+  },
+  "loops-9": {
+    "out": "Sum: 6"
+  },
+  "loops-11": {
+    "fix": "say \"Total: $total\";",
+    "out": "Total: 10"
+  },
+  "loops-12": {
+    "fix": "        last;",
+    "out": "1\n2\n3"
+  },
+  "arrays-1": {
+    "out": "c"
+  },
+  "arrays-2": {
+    "out": "4"
+  },
+  "arrays-3": {
+    "out": "Wed"
+  },
+  "arrays-4": {
+    "out": "100,20,3"
+  },
+  "arrays-5": {
+    "extra": [
+      {
+        "src": "use strict;\nuse warnings;\nuse feature 'say';\nmy @x = (1, 2, 3);\npop @x;\nsay \"@x\";",
+        "out": "1 2"
+      }
+    ]
+  },
+  "arrays-6": {
+    "out": "red green blue"
+  },
+  "arrays-7": {
+    "out": "1, 2, 3"
+  },
+  "arrays-8": {
+    "tpl": "use strict;\nuse warnings;\nuse feature 'say';\n{{CODE}}\nsay \"@pets\";\n",
+    "out": "cat dog",
+    "distractors": true
+  },
+  "arrays-9": {
+    "out": "3 5 7"
+  },
+  "arrays-11": {
+    "fix": "say \"The first is $animals[0]\";",
+    "out": "There are 3 animals\nThe first is cat"
+  },
+  "arrays-12": {
+    "fix": "my @sorted = sort { $a <=> $b } @nums;",
+    "out": "Smallest: 4"
+  },
+  "hashes-1": {
+    "out": "green"
+  },
+  "hashes-2": {
+    "out": "3"
+  },
+  "hashes-3": {
+    "out": "known"
+  },
+  "hashes-4": {
+    "out": "bird,cat,fish"
+  },
+  "hashes-5": {
+    "extra": [
+      {
+        "src": "use strict;\nuse warnings;\nuse feature 'say';\nmy %h;\nfor my $k (\"a\"..\"t\") {\n    $h{$k} = 1;\n}\nsay join(\"\", keys %h) eq join(\"\", \"a\"..\"t\") ? \"same\" : \"different\";",
+        "out": "different"
+      }
+    ]
+  },
+  "hashes-6": {
+    "out": "Paris"
+  },
+  "hashes-7": {
+    "out": "a=1\nb=2\nc=3"
+  },
+  "hashes-8": {
+    "tpl": "use strict;\nuse warnings;\nuse feature 'say';\nmy %ages = (Ann => 31);\n{{CODE}}\nsay $ages{Eve};\n",
+    "out": "28",
+    "distractors": true
+  },
+  "hashes-9": {
+    "out": "a: 2"
+  },
+  "hashes-11": {
+    "fix": "    say \"$name is $ages{$name}\";",
+    "out": "Ann is 31\nBen is 25\nCy is 40"
+  },
+  "hashes-12": {
+    "fix": "for my $p (values %price) {",
+    "out": "Total: 8"
+  },
+  "subs-1": {
+    "out": "42"
+  },
+  "subs-2": {
+    "out": "19"
+  },
+  "subs-3": {
+    "out": "3"
+  },
+  "subs-4": {
+    "out": "big small"
+  },
+  "subs-5": {
+    "err": true
+  },
+  "subs-6": {
+    "out": "Hi, Sam"
+  },
+  "subs-7": {
+    "out": "9"
+  },
+  "subs-8": {
+    "tpl": "use strict;\nuse warnings;\nuse feature 'say';\nsub diff {\n    my ($x, $y) = @_;\n    return $x - $y;\n}\n{{CODE}}\nsay $result;\n",
+    "out": "6",
+    "distractors": true
+  },
+  "subs-9": {
+    "tpl": "use strict;\nuse warnings;\nuse feature 'say';\n{{CODE}}\nsay largest(4, 9, 2);\n",
+    "out": "9"
+  },
+  "subs-11": {
+    "fix": "    my ($name) = @_;",
+    "out": "Hello, Ada"
+  },
+  "subs-12": {
+    "fix": "    return $y;",
+    "out": "8"
+  },
+  "regex-1": {
+    "out": "42"
+  },
+  "regex-2": {
+    "out": "a-b-c"
+  },
+  "regex-3": {
+    "extra": [
+      {
+        "src": "use strict;\nuse warnings;\nuse feature 'say';\nfor my $s (\"2024\", \"20 24\", \"year 2024\", \"2024!\") {\n    say $s if $s =~ /^\\d+$/;\n}",
+        "out": "2024"
+      }
+    ]
+  },
+  "regex-4": {
+    "out": "bonana"
+  },
+  "regex-5": {
+    "out": ""
+  },
+  "regex-6": {
+    "out": "yes"
+  },
+  "regex-7": {
+    "out": "2024"
+  },
+  "regex-8": {
+    "tpl": "use strict;\nuse warnings;\nuse feature 'say';\nmy $word = \"xoxo\";\n{{CODE}}\nsay $word;\n",
+    "out": "yoyo",
+    "distractors": true
+  },
+  "regex-9": {
+    "out": "Hello, Ada"
+  },
+  "regex-11": {
+    "fix": "    say \"Number: $2\";",
+    "out": "Prefix: 555\nNumber: 1234"
+  },
+  "regex-12": {
+    "fix": "$text =~ s/one/1/g;",
+    "out": "1 two 1"
+  }
+}

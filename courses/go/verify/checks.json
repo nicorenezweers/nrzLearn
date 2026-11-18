@@ -1,0 +1,366 @@
+{
+  "hello-2": {
+    "out": "Go is fun"
+  },
+  "hello-3": {
+    "out": "6 apples"
+  },
+  "hello-4": {
+    "extra": [
+      {
+        "src": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Printf(\"a\")\n    fmt.Printf(\"b\\n\")\n}\n",
+        "out": "ab"
+      }
+    ]
+  },
+  "hello-5": {
+    "tpl": "{{CODE}}\n",
+    "out": "Hi"
+  },
+  "hello-6": {
+    "out": "Name: Ada"
+  },
+  "hello-7": {
+    "out": "Hello, Go!"
+  },
+  "hello-8": {
+    "tpl": "{{CODE}}\n",
+    "out": "Ready"
+  },
+  "hello-10": {
+    "tpl": "{{CODE}}\n",
+    "fix": "    fmt.Println(\"Stop\")",
+    "out": "Start\nStop"
+  },
+  "hello-11": {
+    "tpl": "{{CODE}}\n",
+    "fix": "    fmt.Println(\"Line 2\")",
+    "out": "Line 1\nLine 2"
+  },
+  "hello-12": {
+    "out": "2 + 3 = 5"
+  },
+  "variables-1": {
+    "out": "2"
+  },
+  "variables-2": {
+    "out": "5"
+  },
+  "variables-3": {
+    "extra": [
+      {
+        "src": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    var b bool\n    fmt.Println(b)\n}\n",
+        "out": "false"
+      }
+    ]
+  },
+  "variables-4": {
+    "code": "x := 2.5\nfmt.Printf(\"%T\\n\", x)",
+    "out": "float64"
+  },
+  "variables-5": {
+    "code": "const limit = 10\nlimit = 20\nfmt.Println(limit)",
+    "err": true
+  },
+  "variables-6": {
+    "out": "3.5"
+  },
+  "variables-7": {
+    "out": "0.2"
+  },
+  "variables-8": {
+    "tpl": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    {{CODE}}\n    fmt.Println(price)\n}\n",
+    "out": "4.5"
+  },
+  "variables-9": {
+    "out": "15"
+  },
+  "variables-11": {
+    "tpl": "{{CODE}}\n",
+    "fix": "    name = \"Bea\"",
+    "out": "Bea 30"
+  },
+  "variables-12": {
+    "fix": "total := float64(count) * price",
+    "out": "7.5"
+  },
+  "control-1": {
+    "out": "medium"
+  },
+  "control-2": {
+    "out": "10"
+  },
+  "control-3": {
+    "out": "10\n7\n4\n1"
+  },
+  "control-4": {
+    "out": "two"
+  },
+  "control-5": {
+    "err": true
+  },
+  "control-6": {
+    "out": "0\n1\n2"
+  },
+  "control-7": {
+    "out": "odd"
+  },
+  "control-8": {
+    "tpl": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    n := 1\n    {{CODE}}\n        n *= 2\n    }\n    fmt.Println(n)\n}\n",
+    "out": "128"
+  },
+  "control-9": {
+    "out": "0\n2\n4"
+  },
+  "control-11": {
+    "fix": "for i := 1; i <= 5; i++ {",
+    "out": "12"
+  },
+  "control-12": {
+    "fix": "if x == 4 {",
+    "out": "x is four\n9"
+  },
+  "functions-1": {
+    "out": "12"
+  },
+  "functions-2": {
+    "out": "4 9"
+  },
+  "functions-3": {
+    "extra": [
+      {
+        "src": "package main\n\nimport \"fmt\"\n\nfunc sum(a int, b int) int {\n    return a + b\n}\n\nfunc main() {\n    fmt.Println(sum(1, 2))\n}\n",
+        "out": "3"
+      },
+      {
+        "src": "package main\n\nimport \"fmt\"\n\nfunc sum(int a, int b) int {\n    return a + b\n}\n\nfunc main() {\n    fmt.Println(sum(1, 2))\n}\n",
+        "err": true
+      },
+      {
+        "src": "package main\n\nimport \"fmt\"\n\nint sum(a, b int) {\n    return a + b\n}\n\nfunc main() {\n    fmt.Println(sum(1, 2))\n}\n",
+        "err": true
+      },
+      {
+        "src": "package main\n\nimport \"fmt\"\n\nfunc sum(a, b) int {\n    return a + b\n}\n\nfunc main() {\n    fmt.Println(sum(1, 2))\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "functions-4": {
+    "out": "2009"
+  },
+  "functions-5": {
+    "tpl": "package main\n\nimport \"fmt\"\n\n{{CODE}}\n\nfunc main() {\n    half(4)\n}\n",
+    "err": true
+  },
+  "functions-6": {
+    "tpl": "package main\n\nimport \"fmt\"\n\n{{CODE}}\n\nfunc main() {\n    a, b := split(7)\n    fmt.Println(a, b)\n}\n",
+    "out": "3 1"
+  },
+  "functions-7": {
+    "tpl": "package main\n\nimport \"fmt\"\n\n{{CODE}}\n\nfunc main() {\n    show(\"Ann\", \"Bob\")\n}\n",
+    "out": "Ann\nBob"
+  },
+  "functions-8": {
+    "tpl": "package main\n\nimport \"fmt\"\n\nfunc divide(a, b int) (int, int) {\n    return a / b, a % b\n}\n\nfunc main() {\n    {{CODE}}\n    fmt.Println(q, r)\n}\n",
+    "out": "3 2"
+  },
+  "functions-9": {
+    "tpl": "package main\n\nimport \"fmt\"\n\n{{CODE}}\n\nfunc main() {\n    countdown(3)\n}\n",
+    "out": "3\n2\n1\nGo!"
+  },
+  "functions-11": {
+    "fix": "    result := add(2, 3)",
+    "out": "5"
+  },
+  "functions-12": {
+    "fix": "    a, _ := pair()",
+    "out": "1"
+  },
+  "slices-1": {
+    "out": "4 16"
+  },
+  "slices-2": {
+    "out": "[b c d]"
+  },
+  "slices-3": {
+    "out": "7"
+  },
+  "slices-4": {
+    "code": "s := []int{1}\nappend(s, 5)\nfmt.Println(s)",
+    "err": true
+  },
+  "slices-5": {
+    "out": "false 1"
+  },
+  "slices-6": {
+    "out": "0"
+  },
+  "slices-7": {
+    "out": "15"
+  },
+  "slices-8": {
+    "tpl": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fruits := []string{\"apple\"}\n    {{CODE}}\n    fmt.Println(fruits)\n}\n",
+    "out": "[apple kiwi]"
+  },
+  "slices-9": {
+    "tpl": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    words := []string{\"go\", \"is\", \"go\"}\n    {{CODE}}\n}\n",
+    "out": "map[go:2 is:1]"
+  },
+  "slices-11": {
+    "fix": "for i := 0; i < len(nums); i++ {",
+    "out": "1\n2\n3"
+  },
+  "slices-12": {
+    "fix": "scores := map[string]int{}",
+    "out": "80"
+  },
+  "structs-1": {
+    "out": "Rex 4"
+  },
+  "structs-2": {
+    "out": "{2 0}"
+  },
+  "structs-3": {
+    "out": "false"
+  },
+  "structs-4": {
+    "extra": [
+      {
+        "src": "package main\n\nimport \"fmt\"\n\ntype Account struct {\n    Money int\n}\n\nfunc (a *Account) Deposit(n int) {\n    a.Money += n\n}\n\nfunc main() {\n    a := Account{}\n    a.Deposit(5)\n    fmt.Println(a.Money)\n}\n",
+        "out": "5"
+      },
+      {
+        "src": "package main\n\nimport \"fmt\"\n\ntype Account struct {\n    Money int\n}\n\nfunc (a Account) Deposit(n int) {\n    a.Money += n\n}\n\nfunc main() {\n    a := Account{}\n    a.Deposit(5)\n    fmt.Println(a.Money)\n}\n",
+        "out": "0"
+      }
+    ]
+  },
+  "structs-5": {
+    "extra": [
+      {
+        "src": "package main\n\nimport \"fmt\"\n\ntype Point struct {\n    X, Y int\n}\n\nfunc main() {\n    p := Point{X: 1, Y: 2}\n    fmt.Printf(\"%+v\\n\", p)\n}\n",
+        "out": "{X:1 Y:2}"
+      }
+    ]
+  },
+  "structs-6": {
+    "out": "10"
+  },
+  "structs-7": {
+    "out": "Oslo 700000"
+  },
+  "structs-8": {
+    "tpl": "package main\n\nimport \"fmt\"\n\ntype Square struct {\n    Side float64\n}\n\n{{CODE}}\n    return s.Side * s.Side\n}\n\nfunc main() {\n    fmt.Println(Square{Side: 1.5}.Area())\n}\n",
+    "out": "2.25"
+  },
+  "structs-9": {
+    "tpl": "package main\n\nimport \"fmt\"\n\ntype User struct {\n    Name string\n    Age  int\n}\n\nfunc (u *User) Birthday() {\n    u.Age++\n}\n\nfunc main() {\n    {{CODE}}\n}\n",
+    "out": "{Sam 31}"
+  },
+  "structs-11": {
+    "fix": "    c.Speed += 10",
+    "out": "10"
+  },
+  "structs-12": {
+    "fix": "type Point struct {",
+    "out": "3"
+  },
+  "interfaces-1": {
+    "out": "Meow"
+  },
+  "interfaces-2": {
+    "out": "(2|5)"
+  },
+  "interfaces-3": {
+    "out": "unknown"
+  },
+  "interfaces-4": {
+    "extra": [
+      {
+        "src": "package main\n\nimport \"fmt\"\n\ntype Namer interface {\n    Name() string\n}\n\ntype User struct{}\n\nfunc (u User) Name() string {\n    return \"Kim\"\n}\n\nfunc main() {\n    var n Namer = User{}\n    fmt.Println(n.Name())\n}\n",
+        "out": "Kim"
+      }
+    ]
+  },
+  "interfaces-5": {
+    "err": true,
+    "extra": [
+      {
+        "src": "package main\n\nimport \"fmt\"\n\ntype Walker interface {\n    Walk() string\n}\n\ntype Duck struct{}\n\nfunc (d *Duck) Walk() string {\n    return \"waddle\"\n}\n\nfunc main() {\n    var w Walker = &Duck{}\n    fmt.Println(w.Walk())\n}\n",
+        "out": "waddle"
+      }
+    ]
+  },
+  "interfaces-6": {
+    "out": "Hello"
+  },
+  "interfaces-7": {
+    "out": "int 42"
+  },
+  "interfaces-8": {
+    "tpl": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    var x any = \"go\"\n    {{CODE}}\n    fmt.Println(s, ok)\n}\n",
+    "out": "go true"
+  },
+  "interfaces-9": {
+    "tpl": "package main\n\nimport \"fmt\"\n\ntype Animal interface {\n    Sound() string\n}\n\ntype Dog struct{}\n\ntype Bird struct{}\n\nfunc (d Dog) Sound() string {\n    return \"Woof\"\n}\n\nfunc (b Bird) Sound() string {\n    return \"Tweet\"\n}\n\nfunc main() {\n    {{CODE}}\n}\n",
+    "out": "Woof\nTweet"
+  },
+  "interfaces-11": {
+    "fix": "f := x.(float64)",
+    "out": "7"
+  },
+  "interfaces-12": {
+    "fix": "func (t Temp) String() string {",
+    "out": "20 C"
+  },
+  "errors-1": {
+    "out": "24 <nil>"
+  },
+  "errors-2": {
+    "out": "<nil> 50 is too big"
+  },
+  "errors-3": {
+    "extra": [
+      {
+        "src": "package main\n\nimport (\n    \"fmt\"\n    \"strconv\"\n)\n\nfunc main() {\n    _, err := strconv.Atoi(\"5\")\n    fmt.Println(err == nil)\n}\n",
+        "out": "true"
+      }
+    ]
+  },
+  "errors-4": {
+    "out": "failed: cannot divide by zero"
+  },
+  "errors-5": {
+    "extra": [
+      {
+        "src": "package main\n\nimport (\n    \"fmt\"\n    \"strconv\"\n)\n\nfunc main() {\n    n, err := strconv.Atoi(\"3\")\n    fmt.Printf(\"%T %v\\n\", n, err)\n}\n",
+        "out": "int <nil>"
+      }
+    ]
+  },
+  "errors-6": {
+    "out": "not a number"
+  },
+  "errors-7": {
+    "tpl": "package main\n\nimport \"fmt\"\n\n{{CODE}}\n\nfunc main() {\n    fmt.Println(open(\"data.txt\"))\n}\n",
+    "out": "cannot open data.txt"
+  },
+  "errors-8": {
+    "tpl": "package main\n\nimport (\n    \"fmt\"\n    \"strconv\"\n)\n\nfunc main() {\n    _, err := strconv.Atoi(\"x\")\n    {{CODE}}\n        fmt.Println(\"error\")\n    }\n}\n",
+    "out": "error"
+  },
+  "errors-9": {
+    "tpl": "package main\n\nimport (\n    \"errors\"\n    \"fmt\"\n)\n\n{{CODE}}\n\nfunc main() {\n    fmt.Println(check(-1))\n    fmt.Println(check(2))\n}\n",
+    "out": "negative\n<nil>"
+  },
+  "errors-11": {
+    "tpl": "package main\n\nimport (\n    \"fmt\"\n    \"strconv\"\n)\n\n{{CODE}}\n\nfunc main() {\n    fmt.Println(parse(\"5\"))\n}\n",
+    "fix": "    return n, nil",
+    "out": "5 <nil>"
+  },
+  "errors-12": {
+    "out": "error: strconv.Atoi: parsing \"abc\": invalid syntax",
+    "fix": "    if err != nil {"
+  }
+}

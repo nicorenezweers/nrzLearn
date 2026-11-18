@@ -1,0 +1,1943 @@
+{
+  "course": "smalltalk",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Smalltalk",
+      "chapter": "Basics",
+      "summary": "Print your first lines with Transcript showCr: and learn that in Smalltalk everything is an object that gets messages.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Smalltalk is one of the first object-oriented languages. In Smalltalk, **everything is an object**: numbers, text, even `true` and `false`. You make things happen by sending **messages** to objects. This course uses GNU Smalltalk: you save your code in a file such as `hello.st` and run it with `gst hello.st`. Pharo uses the same language inside a graphical environment."
+        },
+        {
+          "type": "code",
+          "code": "Transcript showCr: 'Hello, Smalltalk!'.",
+          "output": "Hello, Smalltalk!"
+        },
+        {
+          "type": "text",
+          "md": "`Transcript` is an object that shows text. `showCr:` is a message that you send to it: show this text, then start a new line. Text in single quotes, like `'Hello, Smalltalk!'`, is a **string**. The period `.` ends a statement."
+        },
+        {
+          "type": "heading",
+          "text": "Several lines"
+        },
+        {
+          "type": "code",
+          "code": "Transcript showCr: 'One'.\nTranscript showCr: 'Two'.\nTranscript show: 'Three '.\nTranscript show: 'and four'.\nTranscript cr.",
+          "output": "One\nTwo\nThree and four"
+        },
+        {
+          "type": "text",
+          "md": "`show:` prints text but stays on the same line. `cr` starts a new line. The statements run from top to bottom, and a period separates each statement from the next one."
+        },
+        {
+          "type": "heading",
+          "text": "Numbers and printString"
+        },
+        {
+          "type": "text",
+          "md": "Smalltalk can calculate. In `3 + 4`, the object `3` gets the message `+` with the argument `4`, and it answers the object `7`. `showCr:` only accepts strings, so you turn a number into a string with the message `printString`. Parentheses `( )` make Smalltalk calculate the inside first."
+        },
+        {
+          "type": "code",
+          "code": "Transcript showCr: (3 + 4) printString.\nTranscript showCr: (6 * 7) printString.\nTranscript showCr: '3 + 4'.",
+          "output": "7\n42\n3 + 4"
+        },
+        {
+          "type": "text",
+          "md": "There is a shorter way to print a single object: send it `displayNl`. It prints the object and starts a new line. `printNl` does the same, but shows the object the way a programmer writes it, so a string keeps its quotes."
+        },
+        {
+          "type": "code",
+          "code": "'Hello' displayNl.\n'Hello' printNl.\n(2 + 3) displayNl.",
+          "output": "Hello\n'Hello'\n5"
+        },
+        {
+          "type": "text",
+          "md": "Every object belongs to a **class**, and you can ask it with the message `class`. A small whole number belongs to `SmallInteger`, text belongs to `String`, and `true` belongs to `True`."
+        },
+        {
+          "type": "code",
+          "code": "3 class displayNl.\n'Hi' class displayNl.\ntrue class displayNl.",
+          "output": "SmallInteger\nString\nTrue"
+        },
+        {
+          "type": "warning",
+          "md": "Strings use single quotes. Text in double quotes, like `\"note\"`, is a **comment**: Smalltalk ignores it. Also do not forget the period between two statements."
+        }
+      ],
+      "card": [
+        "`Transcript showCr: 'Hi'.` prints a line",
+        "`show:` stays on the line, `cr` starts a new one",
+        "`(3 + 4) printString` turns a number into a string",
+        "`x displayNl` prints `x`, `x printNl` prints it as code",
+        "`.` ends a statement, `\"...\"` is a comment"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "How do you write the text Hello as a string?",
+          "options": [
+            "`'Hello'`",
+            "`\"Hello\"`",
+            "`Hello`",
+            "`<Hello>`"
+          ],
+          "answer": 0,
+          "explain": "Strings use single quotes. Double quotes make a comment, which Smalltalk ignores."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "Transcript showCr: (10 - 4) printString.",
+          "answers": [
+            "6"
+          ],
+          "explain": "Smalltalk calculates `10 - 4` first because of the parentheses. `printString` turns `6` into a string."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "Transcript show: 'Small'.\nTranscript show: 'talk'.\nTranscript cr.",
+          "answers": [
+            "Smalltalk"
+          ],
+          "explain": "`show:` does not start a new line, so both parts appear on one line. `cr` ends the line."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "In Smalltalk, the number `3` is an object.",
+          "answer": true,
+          "explain": "Everything in Smalltalk is an object, also numbers. `3` is an instance of the class `SmallInteger`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Complete the code so it prints Hi on its own line.",
+          "code": "Transcript ___ 'Hi'.",
+          "options": [
+            "showCr:",
+            "showCr",
+            "print",
+            "println:"
+          ],
+          "answer": 0,
+          "explain": "The message is `showCr:` with a colon, because it takes an argument: the string to show."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so it prints 12.",
+          "code": "Transcript showCr: (3 * 4) ___.",
+          "options": [
+            "printString",
+            "toString",
+            "print",
+            "string"
+          ],
+          "answer": 0,
+          "explain": "`printString` turns the number `12` into the string `'12'`, which `showCr:` can show."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build the statement that prints Done on its own line.",
+          "tokens": [
+            "Transcript",
+            "showCr:",
+            "'Done'",
+            "."
+          ],
+          "distractors": [
+            "\"Done\"",
+            "show"
+          ],
+          "explain": "Send `showCr:` to `Transcript` with the string `'Done'` in single quotes, and end with a period."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order so the program prints `Hello, World` on one line and then `Bye` on the next line.",
+          "lines": [
+            "Transcript show: 'Hello, '.",
+            "Transcript show: 'World'.",
+            "Transcript cr.",
+            "Transcript showCr: 'Bye'."
+          ],
+          "explain": "The two `show:` statements build the first line, `cr` ends it, and `showCr:` prints the second line."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`showCr:`",
+              "shows text and starts a new line"
+            ],
+            [
+              "`show:`",
+              "shows text on the same line"
+            ],
+            [
+              "`cr`",
+              "starts a new line"
+            ],
+            [
+              "`printString`",
+              "turns an object into a string"
+            ],
+            [
+              "`'Hi'`",
+              "a string"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "Transcript showCr: 'Start'.",
+            "Transcript showCr: (2 + 2) printString.",
+            "Transcript showCr: \"End\"."
+          ],
+          "bug": 2,
+          "explain": "Double quotes make a comment, so `showCr:` gets no argument. Write `Transcript showCr: 'End'.`"
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "Transcript showCr: 'Sum:'.",
+            "Transcript showCr: 5 + 5.",
+            "Transcript showCr: 'Done'."
+          ],
+          "bug": 1,
+          "explain": "`showCr:` needs a string, not the number `10`. Write `Transcript showCr: (5 + 5) printString.`"
+        },
+        {
+          "type": "choice",
+          "id": "hello-12",
+          "prompt": "What does this print?",
+          "code": "'Hi' printNl.",
+          "options": [
+            "`'Hi'`",
+            "`Hi`",
+            "`\"Hi\"`",
+            "`printNl`"
+          ],
+          "answer": 0,
+          "explain": "`printNl` shows a string the way you write it in code, with single quotes. `displayNl` would print `Hi`."
+        }
+      ]
+    },
+    {
+      "id": "messages",
+      "title": "Messages",
+      "chapter": "Basics",
+      "summary": "Send unary, binary and keyword messages, learn the order Smalltalk evaluates them in, and chain messages with cascades.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Everything in Smalltalk happens by sending messages. A message goes to a **receiver**, the object on the left. The name of the message is its **selector**. There are three kinds of messages: unary, binary and keyword messages."
+        },
+        {
+          "type": "text",
+          "md": "A **unary** message has no argument. It is one word after the receiver. `5 factorial` multiplies 1 × 2 × 3 × 4 × 5, `abs` removes the minus sign, `asUppercase` makes capital letters, and `size` counts the characters of a string."
+        },
+        {
+          "type": "code",
+          "code": "5 factorial displayNl.\n-7 abs displayNl.\n'hello' asUppercase displayNl.\n'hello' size displayNl.",
+          "output": "120\n7\nHELLO\n5"
+        },
+        {
+          "type": "text",
+          "md": "A **binary** message has one argument and a name made of symbols, such as `+`, `-`, `*`, `/`, `<`, `>` and `=`. The comma `,` is a binary message too: it joins two strings."
+        },
+        {
+          "type": "code",
+          "code": "(3 + 4) displayNl.\n(10 > 3) displayNl.\n('Small', 'talk') displayNl.",
+          "output": "7\ntrue\nSmalltalk"
+        },
+        {
+          "type": "text",
+          "md": "A **keyword** message has one or more arguments. Each keyword ends with a colon `:` and comes before its argument. `copyFrom: 2 to: 4` is one message with two arguments; its selector is `copyFrom:to:`."
+        },
+        {
+          "type": "code",
+          "code": "(3 max: 9) displayNl.\n(7 between: 1 and: 10) displayNl.\n('hello' copyFrom: 2 to: 4) displayNl.",
+          "output": "9\ntrue\nell"
+        },
+        {
+          "type": "heading",
+          "text": "Which message goes first?"
+        },
+        {
+          "type": "text",
+          "md": "Smalltalk sends unary messages first, then binary messages, then keyword messages. Binary messages go strictly from left to right, so `2 + 3 * 4` is `20`, not `14`. Use parentheses to choose the order yourself."
+        },
+        {
+          "type": "code",
+          "code": "(2 + 3 * 4) displayNl.\n(2 + (3 * 4)) displayNl.\n(2 + 3 factorial) displayNl.\n(3 max: 2 + 5) displayNl.",
+          "output": "20\n14\n8\n7"
+        },
+        {
+          "type": "heading",
+          "text": "Cascades"
+        },
+        {
+          "type": "text",
+          "md": "A semicolon `;` sends another message to the same receiver. This is called a **cascade**. Here all four messages go to `Transcript`."
+        },
+        {
+          "type": "code",
+          "code": "Transcript show: 'a'; show: 'b'; cr; showCr: 'c'.",
+          "output": "ab\nc"
+        },
+        {
+          "type": "warning",
+          "md": "In `Transcript showCr: 2 + 3 printString`, the unary message `printString` goes to `3` first, and then `2 + '3'` fails. Write `(2 + 3) printString` instead."
+        }
+      ],
+      "card": [
+        "Unary: `5 factorial`, `'hi' size`",
+        "Binary: `3 + 4`, `'a', 'b'`",
+        "Keyword: `3 max: 9`, `'hello' copyFrom: 2 to: 4`",
+        "Order: unary, then binary (left to right), then keyword",
+        "`Transcript show: 'a'; cr` sends both messages to `Transcript`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "messages-1",
+          "prompt": "What kind of message is `max:` in `3 max: 9`?",
+          "options": [
+            "A keyword message",
+            "A unary message",
+            "A binary message",
+            "A cascade"
+          ],
+          "answer": 0,
+          "explain": "`max:` ends with a colon and takes an argument, so it is a keyword message."
+        },
+        {
+          "type": "input",
+          "id": "messages-2",
+          "prompt": "What does this print?",
+          "code": "(2 + 3 * 4) displayNl.",
+          "answers": [
+            "20"
+          ],
+          "explain": "Binary messages go from left to right: `2 + 3` is `5`, and `5 * 4` is `20`."
+        },
+        {
+          "type": "input",
+          "id": "messages-3",
+          "prompt": "What does this print?",
+          "code": "(3 + 2 factorial * 2) displayNl.",
+          "answers": [
+            "10"
+          ],
+          "explain": "The unary message goes first: `2 factorial` is `2`. Then from left to right: `3 + 2` is `5`, and `5 * 2` is `10`."
+        },
+        {
+          "type": "true_false",
+          "id": "messages-4",
+          "statement": "`2 + 3 * 4` answers `14` in Smalltalk.",
+          "answer": false,
+          "explain": "Binary messages have no priority among each other. They go from left to right, so the result is `20`."
+        },
+        {
+          "type": "choice",
+          "id": "messages-5",
+          "prompt": "What does this print?",
+          "code": "('abc', 'def') size displayNl.",
+          "options": [
+            "`6`",
+            "`3`",
+            "`abcdef`",
+            "`abc6`"
+          ],
+          "answer": 0,
+          "explain": "The parentheses join the strings first. Then `size` counts the six characters of `'abcdef'`."
+        },
+        {
+          "type": "gap",
+          "id": "messages-6",
+          "prompt": "Complete the code so it prints 14.",
+          "code": "(2 + ___) displayNl.",
+          "options": [
+            "(3 * 4)",
+            "3 * 4",
+            "3 * 4 factorial",
+            "[3 * 4]"
+          ],
+          "answer": 0,
+          "explain": "With parentheses, `3 * 4` is calculated first, so the result is `2 + 12`. Without them, the result is `20`."
+        },
+        {
+          "type": "gap",
+          "id": "messages-7",
+          "prompt": "Complete the code so it prints `ell`.",
+          "code": "('hello' copyFrom: 2 ___ 4) displayNl.",
+          "options": [
+            "to:",
+            "to",
+            "and:",
+            ","
+          ],
+          "answer": 0,
+          "explain": "The message is `copyFrom:to:`. Each keyword ends with a colon."
+        },
+        {
+          "type": "blocks",
+          "id": "messages-8",
+          "prompt": "Build a cascade that shows Hi and then starts a new line.",
+          "tokens": [
+            "Transcript",
+            "show:",
+            "'Hi'",
+            ";",
+            "cr"
+          ],
+          "distractors": [
+            ",",
+            "showCr"
+          ],
+          "explain": "The semicolon sends `cr` to the same receiver, `Transcript`."
+        },
+        {
+          "type": "order",
+          "id": "messages-9",
+          "prompt": "Put the lines in order so the program prints `one two` and then `three` on the next line.",
+          "lines": [
+            "Transcript",
+            "    show: 'one';",
+            "    show: ' two';",
+            "    cr;",
+            "    showCr: 'three'."
+          ],
+          "explain": "All messages go to `Transcript`. The semicolons separate them, and only the last line ends with a period."
+        },
+        {
+          "type": "pairs",
+          "id": "messages-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`5 factorial`",
+              "a unary message"
+            ],
+            [
+              "`3 + 4`",
+              "a binary message"
+            ],
+            [
+              "`3 max: 9`",
+              "a keyword message"
+            ],
+            [
+              "`;`",
+              "next message to the same receiver"
+            ],
+            [
+              "`( )`",
+              "calculated first"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "messages-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "('hello' copyFrom: 1 to: 4) displayNl.",
+            "'hello' size displayNl.",
+            "(3 max: 9) displayNl.",
+            "(3 between: 1 4) displayNl."
+          ],
+          "bug": 3,
+          "explain": "Every part of a keyword message needs its keyword. Write `(3 between: 1 and: 4) displayNl.`"
+        },
+        {
+          "type": "choice",
+          "id": "messages-12",
+          "prompt": "What does this print?",
+          "code": "(3 max: 2 + 5) displayNl.",
+          "options": [
+            "`7`",
+            "`5`",
+            "`3`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "Binary messages go before keyword messages, so `2 + 5` is calculated first, and `3 max: 7` is `7`."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and values",
+      "chapter": "Basics",
+      "summary": "Store objects in temporary variables with := and work with integers, fractions, strings, symbols and printString.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a name for an object. You declare temporary variables between two vertical bars, like `| name age |`. Then you give them a value with `:=`, which you read as \"becomes\". The declaration comes first, before all statements. Variable names start with a lowercase letter, and longer names look like `totalPrice`."
+        },
+        {
+          "type": "code",
+          "code": "| name age |\nname := 'Ada'.\nage := 36.\nTranscript showCr: name.\nTranscript showCr: age printString.",
+          "output": "Ada\n36"
+        },
+        {
+          "type": "text",
+          "md": "A new variable holds `nil`, the object that means \"nothing\". You can give a variable a new value at any time. In `count := count + 1`, Smalltalk calculates the right side first and then stores the result."
+        },
+        {
+          "type": "code",
+          "code": "| count |\ncount printNl.\ncount := 5.\ncount := count + 1.\ncount printNl.",
+          "output": "nil\n6"
+        },
+        {
+          "type": "heading",
+          "text": "Numbers"
+        },
+        {
+          "type": "text",
+          "md": "Whole numbers are **integers**. When `/` cannot divide evenly, Smalltalk keeps the exact result as a **fraction** such as `7/2`. `//` divides and drops the rest, and `\\\\` gives the remainder. Numbers with a decimal point, like `3.5`, also exist."
+        },
+        {
+          "type": "code",
+          "code": "(7 / 2) printNl.\n(6 / 3) printNl.\n(7 // 2) printNl.\n(7 \\\\ 2) printNl.\n((1/3) + (1/6)) printNl.\n3.5 printNl.",
+          "output": "7/2\n2\n3\n1\n1/2\n3.5"
+        },
+        {
+          "type": "heading",
+          "text": "Strings and symbols"
+        },
+        {
+          "type": "text",
+          "md": "A string is text in single quotes. The comma `,` joins strings, and `size` counts the characters. To put a single quote inside a string, write it twice: `'It''s'`."
+        },
+        {
+          "type": "code",
+          "code": "| greeting |\ngreeting := 'Hello', ', ', 'world'.\ngreeting displayNl.\ngreeting size printNl.\n'It''s fine' displayNl.",
+          "output": "Hello, world\n12\nIt's fine"
+        },
+        {
+          "type": "text",
+          "md": "A **symbol** starts with `#`, like `#red`. Two symbols with the same name are always the very same object. The message `==` checks if two things are the same object."
+        },
+        {
+          "type": "code",
+          "code": "#red printNl.\n(#red == #red) printNl.\n#red size printNl.",
+          "output": "#red\ntrue\n3"
+        },
+        {
+          "type": "text",
+          "md": "`printString` gives the text a programmer writes: strings keep their quotes. `displayString` gives the text for people. `printNl` and `displayNl` print these texts and start a new line."
+        },
+        {
+          "type": "code",
+          "code": "'hi' printString displayNl.\n'hi' displayString displayNl.\n42 printString size printNl.",
+          "output": "'hi'\nhi\n2"
+        }
+      ],
+      "card": [
+        "`| a b |` declares variables, `a := 5` assigns",
+        "A new variable is `nil`",
+        "`7 / 2` → `7/2`, `7 // 2` → `3`, `7 \\\\ 2` → `1`",
+        "`'a', 'b'` joins strings, `#red` is a symbol",
+        "`printString` keeps quotes, `displayString` does not"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "variables-1",
+          "prompt": "Which statement stores `10` in the variable `x`?",
+          "options": [
+            "`x := 10.`",
+            "`x = 10.`",
+            "`x == 10.`",
+            "`10 := x.`"
+          ],
+          "answer": 0,
+          "explain": "`:=` assigns. `=` and `==` only compare."
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this print?",
+          "code": "| a b |\na := 4.\nb := a * 2.\na := 10.\nb printNl.",
+          "answers": [
+            "8"
+          ],
+          "explain": "`b` gets `8` when the line runs. Changing `a` later does not change `b`."
+        },
+        {
+          "type": "input",
+          "id": "variables-3",
+          "prompt": "What does this print?",
+          "code": "(17 \\\\ 5) printNl.",
+          "answers": [
+            "2"
+          ],
+          "explain": "`\\\\` gives the remainder: `17` is `3 * 5` plus `2`."
+        },
+        {
+          "type": "input",
+          "id": "variables-4",
+          "prompt": "What does this print?",
+          "code": "(6 / 4) printNl.",
+          "answers": [
+            "3/2"
+          ],
+          "explain": "`6 / 4` is not a whole number, so Smalltalk answers the reduced fraction `3/2`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-5",
+          "statement": "A temporary variable holds `nil` until you assign a value to it.",
+          "answer": true,
+          "explain": "`nil` means \"no value\". Every new variable starts with it."
+        },
+        {
+          "type": "choice",
+          "id": "variables-6",
+          "prompt": "What does this print?",
+          "code": "| word |\nword := 'cat'.\n(word, 's') size printNl.",
+          "options": [
+            "`4`",
+            "`3`",
+            "`cats`",
+            "`'cats'`"
+          ],
+          "answer": 0,
+          "explain": "`word, 's'` is `'cats'`, and `size` counts its `4` characters."
+        },
+        {
+          "type": "gap",
+          "id": "variables-7",
+          "prompt": "Complete the code so it prints 3.",
+          "code": "(7 ___ 2) printNl.",
+          "options": [
+            "//",
+            "/",
+            "\\\\",
+            "*"
+          ],
+          "answer": 0,
+          "explain": "`//` divides and drops the rest. `/` would give `7/2`, and `\\\\` would give the remainder `1`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-8",
+          "prompt": "Complete the code so it prints `It's me`.",
+          "code": "'It___s me' displayNl.",
+          "options": [
+            "''",
+            "'",
+            "\\'",
+            "\""
+          ],
+          "answer": 0,
+          "explain": "Inside a string, you write a single quote twice: `'It''s me'`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-9",
+          "prompt": "Build the statement that stores three times `price` in `total`.",
+          "tokens": [
+            "total",
+            ":=",
+            "price",
+            "*",
+            "3",
+            "."
+          ],
+          "distractors": [
+            "=",
+            "=="
+          ],
+          "explain": "The variable on the left gets the result of `price * 3` through `:=`."
+        },
+        {
+          "type": "order",
+          "id": "variables-10",
+          "prompt": "Put the lines in order so the program prints 5.",
+          "lines": [
+            "| count |",
+            "count := 1.",
+            "count := count + 4.",
+            "count printNl."
+          ],
+          "explain": "Declare the variable first, give it a value, change it, and print it at the end."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`:=`",
+              "assigns a value"
+            ],
+            [
+              "`nil`",
+              "no value yet"
+            ],
+            [
+              "`#red`",
+              "a symbol"
+            ],
+            [
+              "`7 // 2`",
+              "division without the rest"
+            ],
+            [
+              "`7 \\\\ 2`",
+              "remainder of a division"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "variables-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "| first last |",
+            "first := 'Ada'.",
+            "last = 'Lovelace'.",
+            "Transcript showCr: first, ' ', last."
+          ],
+          "bug": 2,
+          "explain": "`=` only compares, so `last` stays `nil`. Write `last := 'Lovelace'.`"
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Compare values, decide with ifTrue:ifFalse: and combine conditions with and:, or: and not.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A comparison like `5 > 3` answers an object: `true` or `false`. These are objects too. `=` checks if two values are equal, `~=` checks if they are different, and `>=` and `<=` mean \"at least\" and \"at most\"."
+        },
+        {
+          "type": "code",
+          "code": "(5 > 3) printNl.\n(5 = 3) printNl.\n(5 ~= 3) printNl.\n(5 >= 5) printNl.\n(5 > 3) class printNl.",
+          "output": "true\nfalse\ntrue\ntrue\nTrue"
+        },
+        {
+          "type": "text",
+          "md": "Smalltalk has no `if` keyword. Instead you send the message `ifTrue:ifFalse:` to a boolean. Its arguments are two pieces of code in square brackets `[ ]`, called **blocks**. Only one of the two blocks runs."
+        },
+        {
+          "type": "code",
+          "code": "| age |\nage := 20.\nage >= 18\n    ifTrue: [Transcript showCr: 'adult']\n    ifFalse: [Transcript showCr: 'minor'].",
+          "output": "adult"
+        },
+        {
+          "type": "text",
+          "md": "You can also send only `ifTrue:` or only `ifFalse:`. When the condition does not match, nothing happens and the program goes on."
+        },
+        {
+          "type": "code",
+          "code": "| temp |\ntemp := 30.\ntemp > 25 ifTrue: [Transcript showCr: 'hot'].\ntemp < 10 ifTrue: [Transcript showCr: 'cold'].\nTranscript showCr: 'done'.",
+          "output": "hot\ndone"
+        },
+        {
+          "type": "text",
+          "md": "`ifTrue:ifFalse:` answers the value of the block that ran, so you can store the result. The message `even` answers `true` when a number is even."
+        },
+        {
+          "type": "code",
+          "code": "| n label |\nn := 7.\nlabel := n even ifTrue: ['even'] ifFalse: ['odd'].\nlabel displayNl.",
+          "output": "odd"
+        },
+        {
+          "type": "heading",
+          "text": "Combining conditions"
+        },
+        {
+          "type": "text",
+          "md": "`and:` answers `true` only when both conditions are true. `or:` answers `true` when at least one is true. The second condition goes into a block, so it only runs when it is needed. `not` turns `true` into `false` and the other way round."
+        },
+        {
+          "type": "code",
+          "code": "| x |\nx := 15.\n((x > 10) and: [x < 20]) printNl.\n((x < 0) or: [x > 100]) printNl.\n(x > 10) not printNl.",
+          "output": "true\nfalse\nfalse"
+        },
+        {
+          "type": "text",
+          "md": "A block can contain another decision. This program checks the first condition, and only when it is false, it checks the second one."
+        },
+        {
+          "type": "code",
+          "code": "| score |\nscore := 75.\nscore >= 90\n    ifTrue: [Transcript showCr: 'A']\n    ifFalse: [score >= 70\n        ifTrue: [Transcript showCr: 'B']\n        ifFalse: [Transcript showCr: 'C']].",
+          "output": "B"
+        },
+        {
+          "type": "warning",
+          "md": "Write the code for `ifTrue:` and `ifFalse:` in square brackets `[ ]`, not in parentheses. Also note that `ifFalse` needs its colon: `ifFalse: [ ... ]`."
+        }
+      ],
+      "card": [
+        "`a > b`, `a = b`, `a ~= b` answer `true` or `false`",
+        "`cond ifTrue: [ ... ] ifFalse: [ ... ]`",
+        "`cond ifTrue: [ ... ]` alone is fine",
+        "`(a > 1) and: [b < 5]`, `or: [ ... ]`, `not`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "(4 ~= 4) printNl.",
+          "options": [
+            "`false`",
+            "`true`",
+            "`nil`",
+            "`4`"
+          ],
+          "answer": 0,
+          "explain": "`~=` means \"different\". `4` is not different from `4`, so the answer is `false`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "| x |\nx := 8.\nx > 5\n    ifTrue: [Transcript showCr: 'big']\n    ifFalse: [Transcript showCr: 'small'].",
+          "answers": [
+            "big"
+          ],
+          "explain": "`8 > 5` is `true`, so only the `ifTrue:` block runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-3",
+          "prompt": "What does this print?",
+          "code": "| n |\nn := 3.\n(n even ifTrue: ['even'] ifFalse: ['odd']) displayNl.",
+          "answers": [
+            "odd"
+          ],
+          "explain": "`3 even` is `false`, so the expression answers the value of the `ifFalse:` block."
+        },
+        {
+          "type": "input",
+          "id": "conditions-4",
+          "prompt": "What does this print?",
+          "code": "((3 > 1) and: [2 > 5]) printNl.",
+          "answers": [
+            "false"
+          ],
+          "explain": "`and:` needs both conditions to be true, but `2 > 5` is `false`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-5",
+          "statement": "`true` and `false` are objects, and `ifTrue:` is a message sent to them.",
+          "answer": true,
+          "explain": "Smalltalk has no `if` keyword. Decisions are messages to the boolean objects."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-6",
+          "prompt": "Which message checks that two numbers are different?",
+          "options": [
+            "`~=`",
+            "`!=`",
+            "`<>`",
+            "`=/=`"
+          ],
+          "answer": 0,
+          "explain": "In Smalltalk, `~=` means \"not equal\"."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Complete the code so it prints `yes`.",
+          "code": "(5 > 2) ___ ['yes' displayNl].",
+          "options": [
+            "ifTrue:",
+            "ifFalse:",
+            "if:",
+            "then:"
+          ],
+          "answer": 0,
+          "explain": "`5 > 2` is `true`, and `ifTrue:` runs its block when the receiver is `true`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-8",
+          "prompt": "Complete the code so it prints `false`.",
+          "code": "| a |\na := 20.\n((a > 10) ___ [a < 15]) printNl.",
+          "options": [
+            "and:",
+            "or:",
+            "not:",
+            "&&"
+          ],
+          "answer": 0,
+          "explain": "`a < 15` is `false`, so `and:` answers `false`. `or:` would answer `true`."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-9",
+          "prompt": "Build the statement that shows `positive` when `x` is greater than 0.",
+          "tokens": [
+            "x",
+            ">",
+            "0",
+            "ifTrue:",
+            "[",
+            "'positive'",
+            "displayNl",
+            "]"
+          ],
+          "distractors": [
+            "if",
+            "then"
+          ],
+          "explain": "The condition comes first, then the message `ifTrue:` with a block."
+        },
+        {
+          "type": "order",
+          "id": "conditions-10",
+          "prompt": "Put the lines in order so the program prints `even`.",
+          "lines": [
+            "| n |",
+            "n := 4.",
+            "n even",
+            "    ifTrue: [Transcript showCr: 'even']",
+            "    ifFalse: [Transcript showCr: 'odd']."
+          ],
+          "explain": "Declare and set `n`, then send `ifTrue:ifFalse:` to the condition. The period comes at the very end."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`ifTrue:`",
+              "runs the block when the receiver is true"
+            ],
+            [
+              "`ifFalse:`",
+              "runs the block when the receiver is false"
+            ],
+            [
+              "`and:`",
+              "true when both are true"
+            ],
+            [
+              "`or:`",
+              "true when at least one is true"
+            ],
+            [
+              "`not`",
+              "turns true into false"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "| speed |",
+            "speed := 120.",
+            "speed > 100",
+            "    ifTrue: [Transcript showCr: 'too fast']",
+            "    ifFalse [Transcript showCr: 'ok']."
+          ],
+          "bug": 4,
+          "explain": "The keyword needs its colon. Write `ifFalse: [Transcript showCr: 'ok'].`"
+        }
+      ]
+    },
+    {
+      "id": "blocks",
+      "title": "Blocks",
+      "chapter": "Control flow",
+      "summary": "Store code in blocks, run it with value and value:, and give blocks parameters.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **block** is code in square brackets `[ ]`. The code does not run when Smalltalk reads it. A block is an object, so you can store it in a variable. Send it the message `value` to run it, as often as you like."
+        },
+        {
+          "type": "code",
+          "code": "| greet |\ngreet := [Transcript showCr: 'Hello!'].\nTranscript showCr: 'before'.\ngreet value.\ngreet value.",
+          "output": "before\nHello!\nHello!"
+        },
+        {
+          "type": "text",
+          "md": "When a block runs, it answers the value of its last statement. A block can have several statements, separated by periods."
+        },
+        {
+          "type": "code",
+          "code": "| answer |\nanswer := [3 + 4] value.\nanswer printNl.\n[10. 20. 30] value printNl.",
+          "output": "7\n30"
+        },
+        {
+          "type": "heading",
+          "text": "Parameters"
+        },
+        {
+          "type": "text",
+          "md": "A block can have **parameters**. Each name starts with a colon, and a vertical bar `|` separates the parameters from the code: `[:x | x * 2]`. You run it with `value:` and give the argument."
+        },
+        {
+          "type": "code",
+          "code": "| double |\ndouble := [:x | x * 2].\n(double value: 5) printNl.\n(double value: 21) printNl.",
+          "output": "10\n42"
+        },
+        {
+          "type": "text",
+          "md": "A block with two parameters runs with `value:value:`. The arguments fill the parameters in order. The message `numArgs` tells you how many parameters a block has."
+        },
+        {
+          "type": "code",
+          "code": "| add |\nadd := [:a :b | a + b].\n(add value: 3 value: 4) printNl.\nadd numArgs printNl.",
+          "output": "7\n2"
+        },
+        {
+          "type": "text",
+          "md": "A block can use and change the variables around it. Here the block adds each argument to `total`."
+        },
+        {
+          "type": "code",
+          "code": "| total addToTotal |\ntotal := 0.\naddToTotal := [:n | total := total + n].\naddToTotal value: 5.\naddToTotal value: 10.\ntotal printNl.",
+          "output": "15"
+        },
+        {
+          "type": "warning",
+          "md": "The number of arguments must match the parameters. Sending `value` to `[:x | x * 2]` is an error, because the block needs one argument."
+        },
+        {
+          "type": "tip",
+          "md": "You already used blocks: `ifTrue: [ ... ]` and `and: [ ... ]` take blocks. The boolean decides if it runs the block or not."
+        }
+      ],
+      "card": [
+        "`[ ... ]` is a block, `aBlock value` runs it",
+        "A block answers its last statement",
+        "`[:x | x * 2] value: 5` → `10`",
+        "`[:a :b | a + b] value: 1 value: 2` → `3`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "blocks-1",
+          "prompt": "What happens when Smalltalk reads a block?",
+          "options": [
+            "Nothing yet; it runs when it gets `value`",
+            "It runs right away",
+            "It runs twice",
+            "It prints its code"
+          ],
+          "answer": 0,
+          "explain": "A block only stores code. It runs when you send it `value` or `value:`."
+        },
+        {
+          "type": "input",
+          "id": "blocks-2",
+          "prompt": "What does this print?",
+          "code": "| b |\nb := [:x | x + 10].\n(b value: 5) printNl.",
+          "answers": [
+            "15"
+          ],
+          "explain": "The argument `5` goes into `x`, and the block answers `5 + 10`."
+        },
+        {
+          "type": "input",
+          "id": "blocks-3",
+          "prompt": "What does this print?",
+          "code": "([:a :b | a * b] value: 3 value: 4) printNl.",
+          "answers": [
+            "12"
+          ],
+          "explain": "`3` goes into `a` and `4` into `b`, so the block answers `12`."
+        },
+        {
+          "type": "input",
+          "id": "blocks-4",
+          "prompt": "What does this print?",
+          "code": "| count inc |\ncount := 0.\ninc := [count := count + 1].\ninc value.\ninc value.\ninc value.\ncount printNl.",
+          "answers": [
+            "3"
+          ],
+          "explain": "Each `value` runs the block once, and the block changes `count`."
+        },
+        {
+          "type": "true_false",
+          "id": "blocks-5",
+          "statement": "This program prints `Hi`.",
+          "code": "| b |\nb := [Transcript showCr: 'Hi'].",
+          "answer": false,
+          "explain": "The block is stored in `b`, but nobody sends it `value`, so its code never runs."
+        },
+        {
+          "type": "choice",
+          "id": "blocks-6",
+          "prompt": "What does this print?",
+          "code": "[1. 2. 3] value printNl.",
+          "options": [
+            "`3`",
+            "`1`",
+            "`6`",
+            "`(1 2 3 )`"
+          ],
+          "answer": 0,
+          "explain": "A block answers the value of its last statement, which is `3`."
+        },
+        {
+          "type": "gap",
+          "id": "blocks-7",
+          "prompt": "Complete the code so it prints 9.",
+          "code": "| square |\nsquare := [:n | n * n].\n(square ___ 3) printNl.",
+          "options": [
+            "value:",
+            "value",
+            "run:",
+            "do:"
+          ],
+          "answer": 0,
+          "explain": "A block with one parameter runs with `value:` and the argument."
+        },
+        {
+          "type": "gap",
+          "id": "blocks-8",
+          "prompt": "Complete the code so it prints 7.",
+          "code": "(___ a + b] value: 2 value: 5) printNl.",
+          "options": [
+            "[:a :b |",
+            "[a b |",
+            "[:a :b",
+            "(:a :b |"
+          ],
+          "answer": 0,
+          "explain": "Parameters start with a colon, and `|` separates them from the code."
+        },
+        {
+          "type": "blocks",
+          "id": "blocks-9",
+          "prompt": "Build a block that multiplies its argument by 3.",
+          "tokens": [
+            "[",
+            ":n",
+            "|",
+            "n",
+            "*",
+            "3",
+            "]"
+          ],
+          "distractors": [
+            "value",
+            "("
+          ],
+          "explain": "The parameter `:n` comes first, then `|`, then the code `n * 3`."
+        },
+        {
+          "type": "order",
+          "id": "blocks-10",
+          "prompt": "Put the lines in order so the program prints 5.",
+          "lines": [
+            "| add result |",
+            "add := [:a :b | a + b].",
+            "result := add value: 2 value: 3.",
+            "result printNl."
+          ],
+          "explain": "First declare the variables, then create the block, run it, and print the result."
+        },
+        {
+          "type": "pairs",
+          "id": "blocks-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`[ ]`",
+              "a block of code"
+            ],
+            [
+              "`:x`",
+              "a block parameter"
+            ],
+            [
+              "`value`",
+              "runs a block without arguments"
+            ],
+            [
+              "`value:`",
+              "runs a block with one argument"
+            ],
+            [
+              "`numArgs`",
+              "number of block parameters"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "blocks-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "| greet |",
+            "greet := [:name | 'Hello, ', name].",
+            "greet value displayNl."
+          ],
+          "bug": 2,
+          "explain": "The block has one parameter, so it needs one argument. Write `(greet value: 'Ada') displayNl.`"
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with timesRepeat:, count with to:do:, loop with whileTrue: and visit every element with do:.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "In Smalltalk, loops are messages that take blocks. `timesRepeat:` runs its block a given number of times."
+        },
+        {
+          "type": "code",
+          "code": "3 timesRepeat: [Transcript showCr: 'Hello'].",
+          "output": "Hello\nHello\nHello"
+        },
+        {
+          "type": "text",
+          "md": "`1 to: 4 do: [:i | ... ]` counts from `1` to `4`. Each round, the block gets the current number as its argument. A loop often updates a variable, like `sum` here."
+        },
+        {
+          "type": "code",
+          "code": "| sum |\nsum := 0.\n1 to: 4 do: [:i |\n    Transcript showCr: i printString.\n    sum := sum + i].\nTranscript showCr: 'sum: ', sum printString.",
+          "output": "1\n2\n3\n4\nsum: 10"
+        },
+        {
+          "type": "text",
+          "md": "`to:by:do:` counts in steps. With a negative step, it counts down."
+        },
+        {
+          "type": "code",
+          "code": "10 to: 1 by: -3 do: [:i | Transcript showCr: i printString].",
+          "output": "10\n7\n4\n1"
+        },
+        {
+          "type": "heading",
+          "text": "Repeat while a condition is true"
+        },
+        {
+          "type": "text",
+          "md": "`whileTrue:` repeats its block as long as a condition is true. The condition is a block too, because Smalltalk must check it again before every round. `whileFalse:` repeats as long as the condition is false."
+        },
+        {
+          "type": "code",
+          "code": "| n |\nn := 1.\n[n < 50] whileTrue: [n := n * 3].\nn printNl.",
+          "output": "81"
+        },
+        {
+          "type": "heading",
+          "text": "Every element with do:"
+        },
+        {
+          "type": "text",
+          "md": "`do:` runs a block once for every element of a collection. `#(3 5 7)` is an **array** literal: a list of values after `#`, in parentheses. A string is a collection too: its elements are characters, written like `$a`."
+        },
+        {
+          "type": "code",
+          "code": "#(3 5 7) do: [:x | (x * x) printNl].\n'abc' do: [:ch | ch printNl].",
+          "output": "9\n25\n49\n$a\n$b\n$c"
+        },
+        {
+          "type": "warning",
+          "md": "If the condition of `whileTrue:` never becomes false, the loop never ends. Make sure the block changes something that the condition checks."
+        }
+      ],
+      "card": [
+        "`3 timesRepeat: [ ... ]`",
+        "`1 to: 5 do: [:i | ... ]`",
+        "`10 to: 1 by: -1 do: [:i | ... ]`",
+        "`[n < 10] whileTrue: [ ... ]`",
+        "`#(1 2 3) do: [:x | ... ]`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "| n |\nn := 0.\n4 timesRepeat: [n := n + 5].\nn printNl.",
+          "answers": [
+            "20"
+          ],
+          "explain": "The block runs four times and adds `5` each time."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "| s |\ns := 0.\n1 to: 10 by: 4 do: [:i | s := s + i].\ns printNl.",
+          "answers": [
+            "15"
+          ],
+          "explain": "The loop visits `1`, `5` and `9`. The next step would be `13`, which is past `10`. `1 + 5 + 9` is `15`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "What does this print?",
+          "code": "| n |\nn := 1.\n[n < 20] whileTrue: [n := n * 2].\nn printNl.",
+          "options": [
+            "`32`",
+            "`16`",
+            "`20`",
+            "`64`"
+          ],
+          "answer": 0,
+          "explain": "`n` becomes `2`, `4`, `8`, `16` and `32`. Then `32 < 20` is false and the loop stops."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-4",
+          "statement": "This code prints the numbers from 5 down to 1.",
+          "code": "5 to: 1 do: [:i | i printNl].",
+          "answer": false,
+          "explain": "`to:do:` counts up. From `5` up to `1` there is no number, so it prints nothing. Use `to:by:do:` with `-1`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-5",
+          "prompt": "Why is the condition of `whileTrue:` written in a block?",
+          "options": [
+            "Smalltalk must check it again before every round",
+            "Blocks make the loop run faster",
+            "Every comparison must be in brackets",
+            "`whileTrue:` only works with strings"
+          ],
+          "answer": 0,
+          "explain": "A block can run many times, so the condition is checked again before each round."
+        },
+        {
+          "type": "gap",
+          "id": "loops-6",
+          "prompt": "Complete the code so it prints 1, 2 and 3 on separate lines.",
+          "code": "1 ___ 3 do: [:i | i printNl].",
+          "options": [
+            "to:",
+            "by:",
+            "upTo:",
+            "timesRepeat:"
+          ],
+          "answer": 0,
+          "explain": "The message is `to:do:`: `1 to: 3 do: [ ... ]`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-7",
+          "prompt": "Complete the code so it prints 5, 4 and 3 on separate lines.",
+          "code": "5 to: 3 by: ___ do: [:i | i printNl].",
+          "options": [
+            "-1",
+            "1",
+            "-2",
+            "0"
+          ],
+          "answer": 0,
+          "explain": "To count down one by one, the step is `-1`. A step of `-2` would skip `4`."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-8",
+          "prompt": "Build the statement that shows Hi three times.",
+          "tokens": [
+            "3",
+            "timesRepeat:",
+            "[",
+            "'Hi'",
+            "displayNl",
+            "]"
+          ],
+          "distractors": [
+            "times",
+            "do:"
+          ],
+          "explain": "Send `timesRepeat:` to the number `3` with a block that shows the text."
+        },
+        {
+          "type": "order",
+          "id": "loops-9",
+          "prompt": "Put the lines in order so the program prints 3, 2, 1 and then Go!",
+          "lines": [
+            "| i |",
+            "i := 3.",
+            "[i > 0] whileTrue: [",
+            "    Transcript showCr: i printString.",
+            "    i := i - 1].",
+            "Transcript showCr: 'Go!'."
+          ],
+          "explain": "The loop prints `i` and then makes it smaller. After the loop, the last line prints `Go!`."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`timesRepeat:`",
+              "repeats a block a number of times"
+            ],
+            [
+              "`to:do:`",
+              "counts from one number to another"
+            ],
+            [
+              "`to:by:do:`",
+              "counts in steps"
+            ],
+            [
+              "`whileTrue:`",
+              "repeats while a condition is true"
+            ],
+            [
+              "`do:`",
+              "runs a block for every element"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "loops-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "| n |",
+            "n := 10.",
+            "(n > 0) whileTrue: [n := n - 3].",
+            "n printNl."
+          ],
+          "bug": 2,
+          "explain": "The condition of `whileTrue:` must be a block. Write `[n > 0] whileTrue: [n := n - 3].`"
+        },
+        {
+          "type": "bug",
+          "id": "loops-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "| total |",
+            "total := 0.",
+            "1 to: 5 do: [i | total := total + i].",
+            "total printNl."
+          ],
+          "bug": 2,
+          "explain": "A block parameter starts with a colon. Write `[:i | total := total + i]`."
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "Collections",
+      "chapter": "Data",
+      "summary": "Store many objects in an Array or OrderedCollection and work with them using do:, collect:, select: and inject:into:.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **collection** holds many objects. An **Array** has a fixed size. You write an array literal as `#(2 3 5)`. The first element has the index `1`. `at:` reads an element, and `first`, `last` and `size` do what their names say."
+        },
+        {
+          "type": "code",
+          "code": "| primes |\nprimes := #(2 3 5 7 11).\nprimes size printNl.\n(primes at: 1) printNl.\nprimes last printNl.\nprimes printNl.",
+          "output": "5\n2\n11\n(2 3 5 7 11 )"
+        },
+        {
+          "type": "text",
+          "md": "`Array new: 3` makes an array with three empty places, which all hold `nil`. `at:put:` stores an object at an index. The cascade sends all three `at:put:` messages to the same array."
+        },
+        {
+          "type": "code",
+          "code": "| colors |\ncolors := Array new: 3.\ncolors at: 1 put: 'red'; at: 2 put: 'green'; at: 3 put: 'blue'.\n(colors at: 2) displayNl.\ncolors printNl.",
+          "output": "green\n('red' 'green' 'blue' )"
+        },
+        {
+          "type": "heading",
+          "text": "OrderedCollection"
+        },
+        {
+          "type": "text",
+          "md": "An **OrderedCollection** can grow. `add:` puts an element at the end, `addFirst:` at the front, and `removeFirst` takes the first element out and answers it. `includes:` checks if an element is there."
+        },
+        {
+          "type": "code",
+          "code": "| list |\nlist := OrderedCollection new.\nlist add: 'tea'; add: 'milk'; addFirst: 'bread'.\nlist printNl.\nlist size printNl.\n(list includes: 'milk') printNl.\nlist removeFirst displayNl.\nlist printNl.",
+          "output": "OrderedCollection ('bread' 'tea' 'milk' )\n3\ntrue\nbread\nOrderedCollection ('tea' 'milk' )"
+        },
+        {
+          "type": "heading",
+          "text": "Working with all elements"
+        },
+        {
+          "type": "text",
+          "md": "`collect:` answers a new collection with the result of the block for each element. `select:` keeps the elements for which the block answers `true`, and `reject:` keeps the others. `detect:` answers the first element that matches."
+        },
+        {
+          "type": "code",
+          "code": "| nums |\nnums := #(1 2 3 4 5 6).\n(nums collect: [:n | n * n]) printNl.\n(nums select: [:n | n even]) printNl.\n(nums reject: [:n | n even]) printNl.\n(nums detect: [:n | n > 3]) printNl.",
+          "output": "(1 4 9 16 25 36 )\n(2 4 6 )\n(1 3 5 )\n4"
+        },
+        {
+          "type": "text",
+          "md": "`inject:into:` combines all elements into one value. It starts with the first argument. For each element, the block gets the result so far and the element, and its answer becomes the new result."
+        },
+        {
+          "type": "code",
+          "code": "| nums |\nnums := #(1 2 3 4).\n(nums inject: 0 into: [:sum :n | sum + n]) printNl.\n(nums inject: 1 into: [:product :n | product * n]) printNl.",
+          "output": "10\n24"
+        },
+        {
+          "type": "tip",
+          "md": "These messages work on every collection, also on strings. `isVowel` answers `true` for the characters `a`, `e`, `i`, `o` and `u`, so `'hello' select: [:c | c isVowel]` answers `'eo'`."
+        },
+        {
+          "type": "warning",
+          "md": "Indexes start at `1`, not at `0`. `#(10 20) at: 0` and `#(10 20) at: 3` are errors."
+        }
+      ],
+      "card": [
+        "`#(1 2 3)` is an Array, `at: 1` is the first element",
+        "`OrderedCollection new add: x` grows",
+        "`collect:` transforms, `select:` / `reject:` filter",
+        "`inject: 0 into: [:sum :x | sum + x]` adds up"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "collections-1",
+          "prompt": "What does this print?",
+          "code": "(#(10 20 30) at: 2) printNl.",
+          "answers": [
+            "20"
+          ],
+          "explain": "Indexes start at `1`, so index `2` is the second element."
+        },
+        {
+          "type": "input",
+          "id": "collections-2",
+          "prompt": "What does this print?",
+          "code": "(#(2 3 4) inject: 10 into: [:acc :n | acc - n]) printNl.",
+          "answers": [
+            "1"
+          ],
+          "explain": "The result starts at `10`. Then `10 - 2` is `8`, `8 - 3` is `5`, and `5 - 4` is `1`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-3",
+          "prompt": "What does this print?",
+          "code": "(#(1 2 3 4 5) select: [:n | n > 2]) printNl.",
+          "options": [
+            "`(3 4 5 )`",
+            "`(1 2 )`",
+            "`(false false true true true )`",
+            "`3`"
+          ],
+          "answer": 0,
+          "explain": "`select:` keeps the elements for which the block answers `true`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-4",
+          "prompt": "What does this print?",
+          "code": "(#(1 2 3) collect: [:n | n * 10]) printNl.",
+          "options": [
+            "`(10 20 30 )`",
+            "`60`",
+            "`(1 2 3 )`",
+            "`(10 )`"
+          ],
+          "answer": 0,
+          "explain": "`collect:` answers a new array with the block result for every element."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-5",
+          "statement": "The first element of a Smalltalk array has the index 0.",
+          "answer": false,
+          "explain": "Smalltalk counts from `1`. The first element is `at: 1`."
+        },
+        {
+          "type": "input",
+          "id": "collections-6",
+          "prompt": "What does this print?",
+          "code": "| list |\nlist := OrderedCollection new.\nlist add: 5; add: 8; addFirst: 2.\nlist first printNl.",
+          "answers": [
+            "2"
+          ],
+          "explain": "`addFirst:` puts `2` in front of `5` and `8`."
+        },
+        {
+          "type": "gap",
+          "id": "collections-7",
+          "prompt": "Complete the code so it prints `(2 4 6 )`.",
+          "code": "(#(1 2 3) ___ [:n | n * 2]) printNl.",
+          "options": [
+            "collect:",
+            "select:",
+            "do:",
+            "detect:"
+          ],
+          "answer": 0,
+          "explain": "`collect:` answers the results of the block. `do:` only runs the block and answers the original array."
+        },
+        {
+          "type": "gap",
+          "id": "collections-8",
+          "prompt": "Complete the code so it prints 3.",
+          "code": "#(4 7 9) ___ printNl.",
+          "options": [
+            "size",
+            "length",
+            "count",
+            "last"
+          ],
+          "answer": 0,
+          "explain": "`size` answers the number of elements. `last` would answer `9`."
+        },
+        {
+          "type": "blocks",
+          "id": "collections-9",
+          "prompt": "Build the expression that keeps only the odd numbers of `nums`.",
+          "tokens": [
+            "nums",
+            "select:",
+            "[",
+            ":n",
+            "|",
+            "n",
+            "odd",
+            "]"
+          ],
+          "distractors": [
+            "collect:",
+            "even"
+          ],
+          "explain": "`select:` keeps the elements for which `n odd` answers `true`."
+        },
+        {
+          "type": "order",
+          "id": "collections-10",
+          "prompt": "Put the lines in order so the program prints `OrderedCollection ('a' 'b' )`.",
+          "lines": [
+            "| list |",
+            "list := OrderedCollection new.",
+            "list add: 'a'.",
+            "list add: 'b'.",
+            "list printNl."
+          ],
+          "explain": "Create the collection first, then add `'a'` before `'b'`, and print it at the end."
+        },
+        {
+          "type": "pairs",
+          "id": "collections-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`at:`",
+              "reads the element at an index"
+            ],
+            [
+              "`add:`",
+              "adds an element at the end"
+            ],
+            [
+              "`collect:`",
+              "new collection of block results"
+            ],
+            [
+              "`select:`",
+              "keeps elements where the block is true"
+            ],
+            [
+              "`inject:into:`",
+              "combines all elements into one value"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "collections-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "| names |",
+            "names := Array new: 2.",
+            "names at: 1 put: 'Ada'.",
+            "names at: 3 put: 'Alan'.",
+            "names printNl."
+          ],
+          "bug": 3,
+          "explain": "The array has only two places. Write `names at: 2 put: 'Alan'.`"
+        }
+      ]
+    },
+    {
+      "id": "classes",
+      "title": "Classes",
+      "chapter": "Objects",
+      "summary": "Define your own classes with instance variables and methods, return values with ^ and create objects with new.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Every object is an instance of a class. A class describes what its instances store, the **instance variables**, and which messages they understand, the **methods**. In GNU Smalltalk, you define a class with `Object subclass: Counter [ ... ]`. `new` creates an instance."
+        },
+        {
+          "type": "code",
+          "code": "Object subclass: Counter [\n    | count |\n    reset [ count := 0 ]\n    increment [ count := count + 1 ]\n    count [ ^count ]\n]\n\n| c |\nc := Counter new.\nc reset.\nc increment.\nc increment.\nc count printNl.",
+          "output": "2"
+        },
+        {
+          "type": "text",
+          "md": "`| count |` declares an instance variable: every counter has its own `count`. `reset [ ... ]` defines a method with the name `reset`, and the code in its brackets runs when the object gets the message `reset`. The caret `^` returns a value from a method. A method and an instance variable may have the same name, like `count` here."
+        },
+        {
+          "type": "heading",
+          "text": "Arguments and self"
+        },
+        {
+          "type": "text",
+          "md": "A method with an argument has a keyword name and a parameter name, like `deposit: amount [ ... ]`. Inside a method, `self` is the object itself, so `self balance` sends `balance` to the same object."
+        },
+        {
+          "type": "code",
+          "code": "Object subclass: Account [\n    | balance |\n    Account class >> new [ ^super new init ]\n    init [ balance := 0 ]\n    balance [ ^balance ]\n    deposit: amount [ balance := balance + amount ]\n    canPay: amount [ ^amount <= self balance ]\n]\n\n| acc |\nacc := Account new.\nacc deposit: 50; deposit: 25.\nacc balance printNl.\n(acc canPay: 100) printNl.",
+          "output": "75\nfalse"
+        },
+        {
+          "type": "text",
+          "md": "`Account class >> new [ ... ]` is a **class method**: the class itself understands it. `super new` creates the object in the normal way, and then `init` gives `balance` its start value `0`. Without `init`, `balance` would be `nil`."
+        },
+        {
+          "type": "heading",
+          "text": "Subclasses"
+        },
+        {
+          "type": "text",
+          "md": "A **subclass** gets all instance variables and methods of its superclass. It can add methods or replace them. Here `Dog` replaces `speak`, and `describe` uses the new version. An object without its own way to print shows its class name, like `a Dog`."
+        },
+        {
+          "type": "code",
+          "code": "Object subclass: Animal [\n    | name |\n    Animal class >> named: aName [ ^self new setName: aName ]\n    setName: aName [ name := aName ]\n    speak [ ^'...' ]\n    describe [ ^name, ' says ', self speak ]\n]\n\nAnimal subclass: Dog [\n    speak [ ^'Woof' ]\n]\n\n(Dog named: 'Rex') describe displayNl.\n(Animal named: 'Tom') describe displayNl.\n(Dog named: 'Rex') printNl.",
+          "output": "Rex says Woof\nTom says ...\na Dog"
+        },
+        {
+          "type": "tip",
+          "md": "Pharo uses the same classes and methods. Instead of a file, you type each class and method into the system browser of the graphical environment."
+        },
+        {
+          "type": "warning",
+          "md": "A method without `^` answers the object itself, not the value of its last line. If you write `count [ count ]`, then `c count` answers `a Counter`."
+        }
+      ],
+      "card": [
+        "`Object subclass: Point [ | x y | ... ]` defines a class",
+        "`x [ ^x ]` is a method that returns `x`",
+        "`setX: n [ x := n ]` is a method with an argument",
+        "`Point class >> new [ ^super new init ]` is a class method",
+        "`self` is the object itself"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "classes-1",
+          "prompt": "What does `^` do in a method?",
+          "options": [
+            "It returns a value from the method",
+            "It prints a value",
+            "It raises a number to a power",
+            "It starts a comment"
+          ],
+          "answer": 0,
+          "explain": "`^` ends the method and answers the value after it."
+        },
+        {
+          "type": "input",
+          "id": "classes-2",
+          "prompt": "What does this print?",
+          "code": "Object subclass: Box [\n    | width |\n    width: n [ width := n ]\n    doubled [ ^width * 2 ]\n]\n\n| b |\nb := Box new.\nb width: 21.\nb doubled printNl.",
+          "answers": [
+            "42"
+          ],
+          "explain": "`width:` stores `21` in the instance variable, and `doubled` returns `21 * 2`."
+        },
+        {
+          "type": "input",
+          "id": "classes-3",
+          "prompt": "What does this print?",
+          "code": "Object subclass: Greeter [\n    greet [ 'Hello' ]\n]\n\nGreeter new greet printNl.",
+          "answers": [
+            "a Greeter"
+          ],
+          "explain": "The method has no `^`, so it answers the object itself, which prints as `a Greeter`."
+        },
+        {
+          "type": "true_false",
+          "id": "classes-4",
+          "statement": "Every instance of a class has its own copy of the instance variables.",
+          "answer": true,
+          "explain": "Two counters can have different values for `count`. Each object stores its own instance variables."
+        },
+        {
+          "type": "choice",
+          "id": "classes-5",
+          "prompt": "What does this print?",
+          "code": "Object subclass: Shape [\n    name [ ^'shape' ]\n    describe [ ^'I am a ', self name ]\n]\n\nShape subclass: Circle [\n    name [ ^'circle' ]\n]\n\nCircle new describe displayNl.",
+          "options": [
+            "`I am a circle`",
+            "`I am a shape`",
+            "`circle`",
+            "`I am a self name`"
+          ],
+          "answer": 0,
+          "explain": "`self name` goes to the circle, and `Circle` replaces `name` with its own method."
+        },
+        {
+          "type": "gap",
+          "id": "classes-6",
+          "prompt": "Complete the method so the program prints 5.",
+          "code": "Object subclass: Coin [\n    amount [ ___ 5 ]\n]\n\nCoin new amount printNl.",
+          "options": [
+            "^",
+            "return",
+            ":=",
+            "="
+          ],
+          "answer": 0,
+          "explain": "In Smalltalk, `^` returns a value. There is no `return` keyword."
+        },
+        {
+          "type": "gap",
+          "id": "classes-7",
+          "prompt": "Complete the class so the program prints `Ada`.",
+          "code": "Object subclass: Person [\n    ___\n    name: aName [ name := aName ]\n    name [ ^name ]\n]\n\n| p |\np := Person new.\np name: 'Ada'.\np name displayNl.",
+          "options": [
+            "| name |",
+            "var name.",
+            "[ name ]",
+            "(name)"
+          ],
+          "answer": 0,
+          "explain": "Instance variables are declared between vertical bars, like temporary variables."
+        },
+        {
+          "type": "blocks",
+          "id": "classes-8",
+          "prompt": "Build the method `doubled` that returns twice the instance variable `n`.",
+          "tokens": [
+            "doubled",
+            "[",
+            "^",
+            "n",
+            "*",
+            "2",
+            "]"
+          ],
+          "distractors": [
+            "return",
+            ":="
+          ],
+          "explain": "The method name comes first, then the code in brackets. `^` returns `n * 2`."
+        },
+        {
+          "type": "order",
+          "id": "classes-9",
+          "prompt": "Put the lines in order so the program prints `Hello, Ada`.",
+          "lines": [
+            "Object subclass: Greeter [",
+            "    greet: name [",
+            "        Transcript show: 'Hello, '.",
+            "        Transcript showCr: name ]",
+            "]",
+            "Greeter new greet: 'Ada'."
+          ],
+          "explain": "The class contains the method `greet:`, and the method contains its two statements. Only after the class definition can you use it."
+        },
+        {
+          "type": "pairs",
+          "id": "classes-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`Object subclass: Dog [ ]`",
+              "defines a new class"
+            ],
+            [
+              "`| name |` in a class",
+              "declares instance variables"
+            ],
+            [
+              "`^`",
+              "returns a value from a method"
+            ],
+            [
+              "`self`",
+              "the object itself"
+            ],
+            [
+              "`Dog new`",
+              "creates an instance"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "classes-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "Object subclass: Counter [",
+            "    | count |",
+            "    init [ count := 0 ]",
+            "    increment [ count := count + 1 ]",
+            "    count [ count ]",
+            "]",
+            "| c |",
+            "c := Counter new init.",
+            "c increment.",
+            "c count printNl."
+          ],
+          "bug": 4,
+          "explain": "Without `^`, the method answers the counter itself. Write `count [ ^count ]`."
+        },
+        {
+          "type": "bug",
+          "id": "classes-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "Object subclass: Pet [",
+            "    | name |",
+            "    name: aName [ name := aName ]",
+            "    greeting [ ^'Hi, ', name ]",
+            "]",
+            "| p |",
+            "p := Pet new.",
+            "p name 'Bo'.",
+            "p greeting displayNl."
+          ],
+          "bug": 7,
+          "explain": "The message `name:` needs its colon. Write `p name: 'Bo'.`"
+        }
+      ]
+    }
+  ]
+}

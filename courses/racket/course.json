@@ -1,0 +1,1894 @@
+{
+  "course": "racket",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Racket",
+      "chapter": "Basics",
+      "summary": "Write your first Racket program and print text with displayln, display and printf.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Every Racket program starts with the line `#lang racket`. It tells Racket which language the file is written in. After it comes your code. This program prints one line of text."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(displayln \"Hello, Racket!\")",
+          "output": "Hello, Racket!"
+        },
+        {
+          "type": "text",
+          "md": "`(displayln \"Hello, Racket!\")` is a **function call**. You write an opening parenthesis `(`, the name of the function, its arguments and a closing parenthesis `)`. Text in double quotes, like `\"Hello, Racket!\"`, is a **string**. `displayln` prints its argument and then starts a new line."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(displayln \"One\")\n(displayln \"Two\")\n(displayln \"Three\")",
+          "output": "One\nTwo\nThree"
+        },
+        {
+          "type": "text",
+          "md": "`display` prints its argument but does not start a new line. `newline` takes no arguments and only starts a new line. Racket runs the lines of a program from top to bottom."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(display \"Hello, \")\n(display \"world\")\n(newline)\n(displayln \"Done\")",
+          "output": "Hello, world\nDone"
+        },
+        {
+          "type": "heading",
+          "text": "Formatted output with printf"
+        },
+        {
+          "type": "text",
+          "md": "`printf` prints a **format string**. Every `~a` in it is replaced by the next argument, in order. `\\n` inside a string means a line break. `printf` does not add a line break by itself, so you usually end the format string with `\\n`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(printf \"~a is ~a years old.\\n\" \"Ada\" 36)\n(printf \"~a + ~a = ~a\\n\" 2 3 5)",
+          "output": "Ada is 36 years old.\n2 + 3 = 5"
+        },
+        {
+          "type": "text",
+          "md": "`~s` also inserts the next argument, but writes it the way it looks in code. A string then keeps its double quotes. `~a` shows only the text."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(printf \"~a and ~s\\n\" \"tea\" \"tea\")",
+          "output": "tea and \"tea\""
+        },
+        {
+          "type": "tip",
+          "md": "A semicolon `;` starts a **comment**: Racket ignores everything after it until the end of the line, for example `(displayln 42) ; 42`. In the exercises, the first line `#lang racket` is often left out to keep the code short."
+        }
+      ],
+      "card": [
+        "`#lang racket` is the first line of every program",
+        "`(displayln \"Hi\")` prints `Hi` and a line break",
+        "`(display \"Hi\")` prints without a line break, `(newline)` adds one",
+        "`(printf \"~a and ~s\\n\" x y)`: `~a` as text, `~s` as code",
+        "`; comment` until the end of the line"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "hello-1",
+          "prompt": "What does this print?",
+          "code": "(display \"Hi\")\n(display \"!\")\n(newline)",
+          "answers": [
+            "Hi!"
+          ],
+          "explain": "`display` does not start a new line, so both strings end up on the same line. `newline` ends it."
+        },
+        {
+          "type": "choice",
+          "id": "hello-2",
+          "prompt": "Which line must come first in every Racket program in this course?",
+          "options": [
+            "`#lang racket`",
+            "`(displayln \"Start\")`",
+            "`(newline)`",
+            "`; racket`"
+          ],
+          "answer": 0,
+          "explain": "`#lang racket` tells Racket the language of the file. Without it, the file is not a Racket program."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "(printf \"~a + ~a\\n\" 2 3)",
+          "answers": [
+            "2 + 3"
+          ],
+          "explain": "Each `~a` is replaced by the next argument: first `2`, then `3`. The `+` inside the string is only text."
+        },
+        {
+          "type": "choice",
+          "id": "hello-4",
+          "prompt": "What does this print?",
+          "code": "(printf \"~s\\n\" \"cat\")",
+          "options": [
+            "`\"cat\"`",
+            "`cat`",
+            "`~s`",
+            "`\"~s\"`"
+          ],
+          "answer": 0,
+          "explain": "`~s` writes the value the way it looks in code, so the string keeps its double quotes."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-5",
+          "statement": "`displayln` starts a new line after it prints its argument.",
+          "answer": true,
+          "explain": "`displayln` means \"display, then line\". `display` is the version without the line break."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so it prints `Hello` and `Bye` on two lines.",
+          "code": "(___ \"Hello\")\n(displayln \"Bye\")",
+          "options": [
+            "displayln",
+            "display",
+            "print"
+          ],
+          "answer": 0,
+          "explain": "`displayln` adds a line break after `Hello`. `display` would print `HelloBye`, and `print` would add double quotes."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build a line that prints `1-2` with `printf`.",
+          "tokens": [
+            "(printf",
+            "\"~a-~a\\n\"",
+            "1",
+            "2)"
+          ],
+          "distractors": [
+            "(displayln",
+            "~s"
+          ],
+          "explain": "The format string comes first, then one argument for every `~a`, in order."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order so the program prints `A` and `B` on two lines.",
+          "lines": [
+            "#lang racket",
+            "(display \"A\")",
+            "(newline)",
+            "(displayln \"B\")"
+          ],
+          "explain": "`#lang racket` is always first. `display` prints `A`, `newline` ends the line, and `displayln` prints `B`."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`displayln`",
+              "prints and starts a new line"
+            ],
+            [
+              "`display`",
+              "prints without a line break"
+            ],
+            [
+              "`newline`",
+              "only starts a new line"
+            ],
+            [
+              "`~a`",
+              "a place for the next argument"
+            ],
+            [
+              "`;`",
+              "starts a comment"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "The program should print three lines. Which line has the bug?",
+          "lines": [
+            "#lang racket",
+            "(displayln \"One\")",
+            "(displayln \"Two)",
+            "(displayln \"Three\")"
+          ],
+          "bug": 2,
+          "explain": "The string is not closed. Every string needs a closing double quote: `(displayln \"Two\")`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "The program should print `salt and pepper` and then `Done`. Which line has the bug?",
+          "lines": [
+            "#lang racket",
+            "(printf \"~a and ~a\\n\" \"salt\")",
+            "(displayln \"Done\")"
+          ],
+          "bug": 1,
+          "explain": "The format string has two `~a`, so `printf` needs two arguments: `(printf \"~a and ~a\\n\" \"salt\" \"pepper\")`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-12",
+          "prompt": "Which line prints `Hi` followed by a line break?",
+          "options": [
+            "`(displayln \"Hi\")`",
+            "`(display \"Hi\")`",
+            "`(print \"Hi\")`",
+            "`(printf \"Hi\")`"
+          ],
+          "answer": 0,
+          "explain": "Only `displayln` adds a line break. `printf` would need `\\n` at the end of the format string."
+        }
+      ]
+    },
+    {
+      "id": "values",
+      "title": "Values",
+      "chapter": "Basics",
+      "summary": "Calculate with numbers and exact fractions, and meet strings, symbols, booleans and define.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "In Racket, the operator comes **first**, inside parentheses: `(+ 2 3)` means 2 plus 3. This is called **prefix notation**. The operators are `+`, `-`, `*` (multiply) and `/` (divide). `+` and `*` accept any number of arguments. You can also put a calculation inside another one: in `(* 2 (+ 3 4))`, Racket first computes `(+ 3 4)`, which is `7`, and then `(* 2 7)`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(displayln (+ 2 3))\n(displayln (* 4 5))\n(displayln (- 10 7))\n(displayln (+ 1 2 3 4))\n(displayln (* 2 (+ 3 4)))",
+          "output": "5\n20\n3\n10\n14"
+        },
+        {
+          "type": "heading",
+          "text": "Exact fractions"
+        },
+        {
+          "type": "text",
+          "md": "When you divide two whole numbers, Racket gives an **exact fraction**: `(/ 10 4)` is `5/2`, not `2.5`. A number with a decimal point, like `10.0`, is a decimal number, and the result is a decimal number too. `quotient` divides and drops the rest, `remainder` gives the rest."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(displayln (/ 10 4))\n(displayln (/ 10.0 4))\n(displayln (/ 6 3))\n(displayln (quotient 10 4))\n(displayln (remainder 10 4))",
+          "output": "5/2\n2.5\n2\n2\n2"
+        },
+        {
+          "type": "text",
+          "md": "`(define name value)` gives a value a name. After that, you can use the name instead of the value. Names may contain a dash `-`, like `total-price`. Racket programmers write names in lowercase with dashes."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define price 12)\n(define items 3)\n(define total-price (* price items))\n(printf \"Total: ~a\\n\" total-price)",
+          "output": "Total: 36"
+        },
+        {
+          "type": "heading",
+          "text": "Strings, symbols and booleans"
+        },
+        {
+          "type": "text",
+          "md": "A **string** is text in double quotes, and `string-length` counts its characters. A **symbol** is a name used as a value: you write a quote `'` in front of it, like `'apple`. The **booleans** are `#t` (true) and `#f` (false)."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define name \"Ada\")\n(displayln (string-length name))\n(displayln 'apple)\n(displayln #t)\n(displayln #f)",
+          "output": "3\napple\n#t\n#f"
+        },
+        {
+          "type": "text",
+          "md": "An expression that stands alone at the top level of a program, outside of any function, is also printed. Racket prints it the way it looks in code: a string with double quotes, a symbol with its quote."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(+ 1 2)\n\"hi\"\n'apple",
+          "output": "3\n\"hi\"\n'apple"
+        },
+        {
+          "type": "warning",
+          "md": "The first thing after an opening parenthesis must be a function. `(2 + 3)` is an error, because `2` is not a function. Write `(+ 2 3)`, with spaces between the parts."
+        }
+      ],
+      "card": [
+        "`(+ 2 3)`, `(* 2 (+ 3 4))`: operator first",
+        "`(/ 10 4)` is `5/2`, `(/ 10.0 4)` is `2.5`",
+        "`(quotient 10 4)` is `2`, `(remainder 10 4)` is `2`",
+        "`(define price 12)` gives a value a name",
+        "`\"text\"` string, `'apple` symbol, `#t` and `#f` booleans"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "values-1",
+          "prompt": "What does this print?",
+          "code": "(displayln (- 20 (* 3 4)))",
+          "answers": [
+            "8"
+          ],
+          "explain": "The inner part comes first: `(* 3 4)` is `12`, and `(- 20 12)` is `8`."
+        },
+        {
+          "type": "input",
+          "id": "values-2",
+          "prompt": "What does this print?",
+          "code": "(displayln (/ 9 6))",
+          "answers": [
+            "3/2"
+          ],
+          "explain": "Dividing two whole numbers gives an exact fraction. Racket shortens `9/6` to `3/2`."
+        },
+        {
+          "type": "choice",
+          "id": "values-3",
+          "prompt": "What does this print?",
+          "code": "(displayln (/ 7.0 2))",
+          "options": [
+            "`3.5`",
+            "`7/2`",
+            "`3`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "`7.0` has a decimal point, so the result is the decimal number `3.5` and not the fraction `7/2`."
+        },
+        {
+          "type": "choice",
+          "id": "values-4",
+          "prompt": "What does this print?",
+          "code": "(printf \"~a ~a\\n\" (quotient 17 5) (remainder 17 5))",
+          "options": [
+            "`3 2`",
+            "`2 3`",
+            "`17/5 2`",
+            "`3.4 2`"
+          ],
+          "answer": 0,
+          "explain": "17 divided by 5 is 3 with a rest of 2. `quotient` gives `3`, `remainder` gives `2`."
+        },
+        {
+          "type": "true_false",
+          "id": "values-5",
+          "statement": "In Racket, `(3 * 4)` computes 12.",
+          "answer": false,
+          "explain": "The operator comes first: `(* 3 4)`. In `(3 * 4)`, Racket tries to call `3` as a function, which is an error."
+        },
+        {
+          "type": "gap",
+          "id": "values-6",
+          "prompt": "Complete the code so it prints `20`.",
+          "code": "(define width 4)\n(define height 5)\n(displayln (___ width height))",
+          "options": [
+            "*",
+            "+",
+            "-",
+            "/"
+          ],
+          "answer": 0,
+          "explain": "`(* width height)` multiplies 4 by 5, which is 20. `+` would give 9."
+        },
+        {
+          "type": "blocks",
+          "id": "values-7",
+          "prompt": "Build a line that gives the name `left` to 10 minus 4.",
+          "tokens": [
+            "(define",
+            "left",
+            "(-",
+            "10",
+            "4))"
+          ],
+          "distractors": [
+            "=",
+            "(left"
+          ],
+          "explain": "`define` takes the name first and then the value. In the value, the operator `-` comes first."
+        },
+        {
+          "type": "order",
+          "id": "values-8",
+          "prompt": "Put the lines in order so the program prints `15`.",
+          "lines": [
+            "#lang racket",
+            "(define a 5)",
+            "(define b (* a 2))",
+            "(displayln (+ a b))"
+          ],
+          "explain": "A name must be defined before you use it: `b` uses `a`, and the last line uses both. 5 + 10 is 15."
+        },
+        {
+          "type": "pairs",
+          "id": "values-9",
+          "prompt": "Match the value with its kind.",
+          "pairs": [
+            [
+              "`5/2`",
+              "an exact fraction"
+            ],
+            [
+              "`2.5`",
+              "a decimal number"
+            ],
+            [
+              "`\"5\"`",
+              "a string"
+            ],
+            [
+              "`'five`",
+              "a symbol"
+            ],
+            [
+              "`#t`",
+              "the boolean true"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "values-10",
+          "prompt": "The program should print `12`. Which line has the bug?",
+          "lines": [
+            "(define price 4)",
+            "(define qty 3)",
+            "(define total (price * qty))",
+            "(displayln total)"
+          ],
+          "bug": 2,
+          "explain": "The operator must come first: `(define total (* price qty))`. `price` is a number, not a function."
+        },
+        {
+          "type": "input",
+          "id": "values-11",
+          "prompt": "What does this print?",
+          "code": "(displayln (string-length \"hello world\"))",
+          "answers": [
+            "11"
+          ],
+          "explain": "`string-length` counts every character, and the space counts too: 5 + 1 + 5 = 11."
+        },
+        {
+          "type": "choice",
+          "id": "values-12",
+          "prompt": "What does this complete program print?",
+          "code": "#lang racket\n(* 6 7)",
+          "options": [
+            "`42`",
+            "Nothing",
+            "`(* 6 7)`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "An expression at the top level of a program is printed automatically, so Racket prints the result `42`."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Write your own functions with define and lambda, call them, and use local names with let.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "You define a function with `(define (name parameter) body)`. The **parameter** is a name for the value you pass in. The function gives back the value of its body. Racket has no `return`: the result is always the value of the last expression."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define (square x)\n  (* x x))\n(displayln (square 5))\n(displayln (square 12))",
+          "output": "25\n144"
+        },
+        {
+          "type": "text",
+          "md": "A function can have several parameters. When you call it, you pass the arguments in the same order: in `(area 3 4)`, `width` is `3` and `height` is `4`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define (area width height)\n  (* width height))\n(displayln (area 3 4))",
+          "output": "12"
+        },
+        {
+          "type": "text",
+          "md": "A function can also print something. You call it like any other function. You can use the result of one function as the argument of another one."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define (greet name)\n  (printf \"Hello, ~a!\\n\" name))\n(define (double x)\n  (* 2 x))\n(greet \"Ada\")\n(greet \"Linus\")\n(displayln (double (double 5)))",
+          "output": "Hello, Ada!\nHello, Linus!\n20"
+        },
+        {
+          "type": "heading",
+          "text": "Functions without a name: lambda"
+        },
+        {
+          "type": "text",
+          "md": "`(lambda (x) body)` creates a function without a name. You can call it directly, or give it a name with `define`. In fact, `(define (triple x) ...)` is a short way to write `(define triple (lambda (x) ...))`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define triple (lambda (x) (* 3 x)))\n(displayln (triple 4))\n(displayln ((lambda (a b) (+ a b)) 2 3))",
+          "output": "12\n5"
+        },
+        {
+          "type": "heading",
+          "text": "Local names with let"
+        },
+        {
+          "type": "text",
+          "md": "`let` creates names that exist only inside it. You write each name with its value in square brackets, all inside one more pair of parentheses: `(let ([a 1] [b 2]) body)`. Square brackets `[ ]` work like parentheses. Racket uses them to make pairs easier to read."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define (price-with-tax price)\n  (let ([tax (* price 1/10)])\n    (+ price tax)))\n(displayln (price-with-tax 50))",
+          "output": "55"
+        },
+        {
+          "type": "warning",
+          "md": "A function needs exactly the number of arguments it has parameters. `(square 2 3)` is an error, because `square` takes only one argument."
+        }
+      ],
+      "card": [
+        "`(define (square x) (* x x))` defines a function",
+        "`(square 5)` calls it, the result is the last expression",
+        "`(lambda (x) (* 3 x))` is a function without a name",
+        "`(let ([a 1] [b 2]) (+ a b))` local names"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "(define (add3 x)\n  (+ x 3))\n(displayln (add3 (add3 1)))",
+          "answers": [
+            "7"
+          ],
+          "explain": "The inner call `(add3 1)` gives `4`, and `(add3 4)` gives `7`."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print?",
+          "code": "(define (f a b)\n  (- a b))\n(displayln (f 10 4))",
+          "answers": [
+            "6"
+          ],
+          "explain": "The arguments go to the parameters in order: `a` is `10` and `b` is `4`, so the result is `(- 10 4)`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-3",
+          "prompt": "What does this print?",
+          "code": "(displayln ((lambda (x) (* x x)) 6))",
+          "options": [
+            "`36`",
+            "`12`",
+            "`6`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "The `lambda` is called directly with `6`, so `x` is `6` and the result is `(* 6 6)`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-4",
+          "prompt": "Which line defines a function `half` that divides its argument by 2?",
+          "options": [
+            "`(define (half x) (/ x 2))`",
+            "`(define half x (/ x 2))`",
+            "`(define (half) (/ x 2))`",
+            "`(function half (x) (/ x 2))`"
+          ],
+          "answer": 0,
+          "explain": "The function name and its parameters go together in parentheses after `define`: `(half x)`."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-5",
+          "statement": "This code prints `10`.",
+          "code": "(define (calc x)\n  (* x 2)\n  (+ x 1))\n(displayln (calc 5))",
+          "answer": false,
+          "explain": "The result of a function is the value of its last expression, `(+ x 1)`. The code prints `6`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-6",
+          "prompt": "Complete the code so it prints `Hi, Bo!`.",
+          "code": "(define (greet name)\n  (printf \"Hi, ~a!\\n\" ___))\n(greet \"Bo\")",
+          "options": [
+            "name",
+            "\"name\"",
+            "'name",
+            "greet"
+          ],
+          "answer": 0,
+          "explain": "Inside the function, the parameter `name` holds the argument `\"Bo\"`. `\"name\"` would print the word name."
+        },
+        {
+          "type": "gap",
+          "id": "functions-7",
+          "prompt": "Complete the code so `cube` is a function.",
+          "code": "(define cube (___ (x) (* x x x)))",
+          "options": [
+            "lambda",
+            "define",
+            "let",
+            "function"
+          ],
+          "answer": 0,
+          "explain": "`lambda` creates a function. `define` gives it the name `cube`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-8",
+          "prompt": "Build a function `double` that multiplies its argument `n` by 2.",
+          "tokens": [
+            "(define",
+            "(double",
+            "n)",
+            "(*",
+            "2",
+            "n))"
+          ],
+          "distractors": [
+            "(lambda",
+            "return"
+          ],
+          "explain": "The name and the parameter go in parentheses: `(double n)`. The body `(* 2 n)` is the result."
+        },
+        {
+          "type": "order",
+          "id": "functions-9",
+          "prompt": "Put the lines in order so the program prints `Hi, Ana!` and then `Hi, Ben!`.",
+          "lines": [
+            "(define (greet name)",
+            "  (printf \"Hi, ~a!\\n\" name))",
+            "(greet \"Ana\")",
+            "(greet \"Ben\")"
+          ],
+          "explain": "The function must be defined before it is called. Then the calls run from top to bottom."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`(define (f x) ...)`",
+              "defines a function with a name"
+            ],
+            [
+              "`(lambda (x) ...)`",
+              "a function without a name"
+            ],
+            [
+              "`(f 3)`",
+              "calls f with the argument 3"
+            ],
+            [
+              "`(let ([a 1]) ...)`",
+              "a local name"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "functions-11",
+          "prompt": "The program should print `12`. Which line has the bug?",
+          "lines": [
+            "(define (area w h)",
+            "  (* w h))",
+            "(displayln (area 3))"
+          ],
+          "bug": 2,
+          "explain": "`area` has two parameters, so it needs two arguments: `(displayln (area 3 4))`."
+        },
+        {
+          "type": "bug",
+          "id": "functions-12",
+          "prompt": "The program should print `12`. Which line has the bug?",
+          "lines": [
+            "(define (total price)",
+            "  (let (tax (* price 1/5))",
+            "    (+ price tax)))",
+            "(displayln (total 10))"
+          ],
+          "bug": 1,
+          "explain": "Every name in a `let` goes with its value in square brackets, all inside parentheses: `(let ([tax (* price 1/5)])`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Compare values, ask questions with predicates and choose with if, cond, when, and, or and not.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Comparisons give a boolean: `<` (less than), `>` (greater than), `<=`, `>=` and `=` (equal) compare numbers. `equal?` compares any two values, for example two strings."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(displayln (< 3 5))\n(displayln (= 2 3))\n(displayln (>= 4 4))\n(displayln (equal? \"cat\" \"cat\"))",
+          "output": "#t\n#f\n#t\n#t"
+        },
+        {
+          "type": "text",
+          "md": "A function that answers a yes-or-no question is a **predicate**. By convention, its name ends with `?`. Examples: `even?`, `odd?`, `zero?`, `positive?`, `number?` and `string?`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(displayln (even? 4))\n(displayln (zero? 0))\n(displayln (positive? -3))\n(displayln (string? 42))",
+          "output": "#t\n#t\n#f\n#f"
+        },
+        {
+          "type": "text",
+          "md": "`(if test then else)` checks the test. If it is true, the result is the `then` part, otherwise the `else` part. Both parts are required. `if` gives back a value, so you can use it inside other expressions."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define age 20)\n(displayln (if (>= age 18) \"adult\" \"child\"))\n(displayln (if (> age 30) \"over 30\" \"30 or less\"))",
+          "output": "adult\n30 or less"
+        },
+        {
+          "type": "tip",
+          "md": "Only `#f` counts as false. Every other value counts as true, even `0` and the empty string `\"\"`. So `(if 0 \"yes\" \"no\")` gives `\"yes\"`."
+        },
+        {
+          "type": "heading",
+          "text": "Many cases with cond"
+        },
+        {
+          "type": "text",
+          "md": "`cond` checks several tests in order. Each **clause** is written in square brackets: a test and its result. The first clause whose test is true gives the result, and the rest is skipped. The last clause can use `else`, which matches everything."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define (grade score)\n  (cond [(>= score 90) \"A\"]\n        [(>= score 75) \"B\"]\n        [(>= score 50) \"C\"]\n        [else \"F\"]))\n(displayln (grade 95))\n(displayln (grade 80))\n(displayln (grade 20))",
+          "output": "A\nB\nF"
+        },
+        {
+          "type": "text",
+          "md": "`(when test body ...)` runs its body only if the test is true. It has no `else` part, but the body can contain several expressions. `unless` does the opposite: it runs its body only if the test is false."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define temp 30)\n(when (> temp 25)\n  (displayln \"Hot!\")\n  (displayln \"Drink water.\"))\n(unless (> temp 25)\n  (displayln \"Cold\"))",
+          "output": "Hot!\nDrink water."
+        },
+        {
+          "type": "text",
+          "md": "`and` is true if all its parts are true. `or` is true if at least one part is true. `not` turns `#t` into `#f` and `#f` into `#t`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define x 7)\n(displayln (and (> x 0) (< x 10)))\n(displayln (or (= x 1) (= x 2)))\n(displayln (not (= x 7)))",
+          "output": "#t\n#f\n#f"
+        }
+      ],
+      "card": [
+        "`(< a b)`, `(= a b)`, `(equal? s1 s2)`, `(even? n)`",
+        "`(if test then else)`: both parts required",
+        "`(cond [test result] ... [else result])`",
+        "`(when test body ...)`, `(unless test body ...)`",
+        "`(and ...)`, `(or ...)`, `(not x)`; only `#f` is false"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "(define n 15)\n(displayln (if (> n 10) \"big\" \"small\"))",
+          "answers": [
+            "big"
+          ],
+          "explain": "`15` is greater than `10`, so the test is true and `if` gives the `then` part."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "(define (size n)\n  (cond [(< n 10) \"S\"]\n        [(< n 100) \"M\"]\n        [else \"L\"]))\n(displayln (size 50))",
+          "answers": [
+            "M"
+          ],
+          "explain": "`(< 50 10)` is false, `(< 50 100)` is true. The first true clause gives the result `\"M\"`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "What does this print?",
+          "code": "(displayln (if 0 \"yes\" \"no\"))",
+          "options": [
+            "`yes`",
+            "`no`",
+            "`0`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "Only `#f` is false in Racket. `0` counts as true, so `if` gives `\"yes\"`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-4",
+          "prompt": "What does this print?",
+          "code": "(displayln (and (> 5 3) (< 5 4)))",
+          "options": [
+            "`#t`",
+            "`#f`",
+            "`5`",
+            "An error"
+          ],
+          "answer": 1,
+          "explain": "`(> 5 3)` is true, but `(< 5 4)` is false. `and` needs all parts to be true."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-5",
+          "statement": "`(= \"a\" \"a\")` is the right way to compare two strings.",
+          "answer": false,
+          "explain": "`=` only compares numbers and gives an error for strings. Use `(equal? \"a\" \"a\")`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-6",
+          "prompt": "Complete the code so it prints `zero`.",
+          "code": "(define (sign n)\n  (cond [(> n 0) \"positive\"]\n        [(< n 0) \"negative\"]\n        [___ \"zero\"]))\n(displayln (sign 0))",
+          "options": [
+            "else",
+            "#f",
+            "(> n 0)",
+            "when"
+          ],
+          "answer": 0,
+          "explain": "`else` matches every value that the clauses before it did not match. Here this is `0`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Complete the code so it prints `even`.",
+          "code": "(define x 4)\n(when (___ x)\n  (displayln \"even\"))",
+          "options": [
+            "even?",
+            "odd?",
+            "zero?"
+          ],
+          "answer": 0,
+          "explain": "`(even? 4)` is true, so `when` runs its body. `(odd? 4)` and `(zero? 4)` are false."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-8",
+          "prompt": "Build an expression that gives the larger of `a` and `b`.",
+          "tokens": [
+            "(if",
+            "(>",
+            "a",
+            "b)",
+            "a",
+            "b)"
+          ],
+          "distractors": [
+            "(<",
+            "else"
+          ],
+          "explain": "If `a` is greater than `b`, the result is `a`, otherwise `b`. `if` has no `else` keyword."
+        },
+        {
+          "type": "order",
+          "id": "conditions-9",
+          "prompt": "Put the lines in order so `(check 500)` gives `\"too big\"` and `(check 50)` gives `\"ok\"`.",
+          "lines": [
+            "(define (check n)",
+            "  (cond [(> n 100) \"too big\"]",
+            "        [(> n 10) \"ok\"]",
+            "        [else \"too small\"]))"
+          ],
+          "explain": "`cond` uses the first true clause. `(> n 100)` must come before `(> n 10)`, because 500 is also greater than 10."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`(if t a b)`",
+              "chooses between two values"
+            ],
+            [
+              "`(cond ...)`",
+              "chooses between many cases"
+            ],
+            [
+              "`(when t ...)`",
+              "runs code only if t is true"
+            ],
+            [
+              "`(not x)`",
+              "turns true into false"
+            ],
+            [
+              "`(equal? a b)`",
+              "compares two values of any kind"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "The program should print `yes` and `no`. Which line has the bug?",
+          "lines": [
+            "(define (vote age)",
+            "  (if (>= age 18) \"yes\"))",
+            "(displayln (vote 20))",
+            "(displayln (vote 12))"
+          ],
+          "bug": 1,
+          "explain": "In Racket, `if` always needs an `else` part: `(if (>= age 18) \"yes\" \"no\")`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-12",
+          "prompt": "What does this print?",
+          "code": "(define t 10)\n(when (< t 5)\n  (displayln \"cold\"))\n(displayln \"end\")",
+          "answers": [
+            "end"
+          ],
+          "explain": "`(< 10 5)` is false, so `when` skips its body. Only the last line prints."
+        }
+      ]
+    },
+    {
+      "id": "lists",
+      "title": "Lists",
+      "chapter": "Data",
+      "summary": "Keep many values in a list and work with list, cons, first, rest, empty?, length and append.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **list** keeps values in order. `(list 1 2 3)` creates one. `displayln` shows a list in parentheses. A quote in front of parentheses also creates a list: `'(a b c)` is a list of three symbols. `println` shows a list the way you write it in code."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define nums (list 1 2 3))\n(displayln nums)\n(displayln '(a b c))\n(displayln (list \"x\" \"y\"))\n(println (list \"x\" \"y\"))",
+          "output": "(1 2 3)\n(a b c)\n(x y)\n'(\"x\" \"y\")"
+        },
+        {
+          "type": "text",
+          "md": "`first` gives the first element. `rest` gives a list of all elements except the first. `length` counts the elements. `list-ref` gives the element at a position, called the **index**. The index starts at `0`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define fruits (list \"apple\" \"pear\" \"plum\"))\n(displayln (first fruits))\n(displayln (rest fruits))\n(displayln (length fruits))\n(displayln (list-ref fruits 2))",
+          "output": "apple\n(pear plum)\n3\nplum"
+        },
+        {
+          "type": "heading",
+          "text": "Building lists"
+        },
+        {
+          "type": "text",
+          "md": "`cons` puts one element in front of a list. `append` joins two or more lists. Lists in Racket never change: these functions return a **new** list, and the old list stays as it was."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define a (list 2 3))\n(displayln (cons 1 a))\n(displayln (append a (list 4 5)))\n(displayln a)",
+          "output": "(1 2 3)\n(2 3 4 5)\n(2 3)"
+        },
+        {
+          "type": "text",
+          "md": "The **empty list** has no elements. You write it `'()` or `empty`. `empty?` checks if a list is empty. The `rest` of a list with one element is the empty list."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(displayln (empty? '()))\n(displayln (empty? (list 1)))\n(displayln (rest (list 7)))\n(displayln (cons 1 empty))",
+          "output": "#t\n#f\n()\n(1)"
+        },
+        {
+          "type": "heading",
+          "text": "More list functions"
+        },
+        {
+          "type": "text",
+          "md": "`reverse` turns a list around. `(sort lst <)` sorts numbers from small to large. `(range 5)` creates the list of whole numbers from `0` up to, but not including, `5`. `(range 2 6)` starts at `2`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(displayln (reverse (list 1 2 3)))\n(displayln (sort (list 3 1 2) <))\n(displayln (range 5))\n(displayln (range 2 6))",
+          "output": "(3 2 1)\n(1 2 3)\n(0 1 2 3 4)\n(2 3 4 5)"
+        },
+        {
+          "type": "warning",
+          "md": "Do not write `(1 2 3)` without `list` or a quote. Racket would try to call `1` as a function, which is an error. Also, `first` of an empty list is an error."
+        }
+      ],
+      "card": [
+        "`(list 1 2 3)` or `'(1 2 3)`, `empty` is `'()`",
+        "`(first lst)`, `(rest lst)`, `(list-ref lst 0)`",
+        "`(cons 0 lst)` adds in front, `(append a b)` joins",
+        "`(length lst)`, `(empty? lst)`, `(reverse lst)`",
+        "`(sort lst <)`, `(range 5)` is `(0 1 2 3 4)`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "lists-1",
+          "prompt": "What does this print?",
+          "code": "(displayln (rest (list 4 5 6)))",
+          "answers": [
+            "(5 6)"
+          ],
+          "explain": "`rest` gives a list of all elements except the first one."
+        },
+        {
+          "type": "input",
+          "id": "lists-2",
+          "prompt": "What does this print?",
+          "code": "(displayln (length (append (list 1 2) (list 3))))",
+          "answers": [
+            "3"
+          ],
+          "explain": "`append` joins the lists to `(1 2 3)`, which has 3 elements."
+        },
+        {
+          "type": "choice",
+          "id": "lists-3",
+          "prompt": "What does this print?",
+          "code": "(displayln (cons 0 (list 1 2)))",
+          "options": [
+            "`(0 1 2)`",
+            "`(1 2 0)`",
+            "`(0 (1 2))`",
+            "`(0)`"
+          ],
+          "answer": 0,
+          "explain": "`cons` puts one element in front of the list."
+        },
+        {
+          "type": "choice",
+          "id": "lists-4",
+          "prompt": "What does this print?",
+          "code": "(displayln (list-ref (list \"a\" \"b\" \"c\") 1))",
+          "options": [
+            "`b`",
+            "`a`",
+            "`c`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "The index starts at 0, so index 1 is the second element."
+        },
+        {
+          "type": "true_false",
+          "id": "lists-5",
+          "statement": "This code prints `(3 2 1)`.",
+          "code": "(define nums (list 1 2 3))\n(define backwards (reverse nums))\n(displayln nums)",
+          "answer": false,
+          "explain": "`reverse` returns a new list and does not change `nums`. The code prints `(1 2 3)`."
+        },
+        {
+          "type": "gap",
+          "id": "lists-6",
+          "prompt": "Complete the code so it prints `1`.",
+          "code": "(displayln (___ (list 1 2 3)))",
+          "options": [
+            "first",
+            "rest",
+            "last",
+            "length"
+          ],
+          "answer": 0,
+          "explain": "`first` gives the first element, `1`. `last` and `length` would both print `3`."
+        },
+        {
+          "type": "gap",
+          "id": "lists-7",
+          "prompt": "Complete the code so it prints `(1 2 3)`.",
+          "code": "(define a (list 1 2))\n(displayln (___ a (list 3)))",
+          "options": [
+            "append",
+            "cons",
+            "list"
+          ],
+          "answer": 0,
+          "explain": "`append` joins two lists. `cons` would put the whole list `a` in front: `((1 2) 3)`."
+        },
+        {
+          "type": "blocks",
+          "id": "lists-8",
+          "prompt": "Build an expression that gives the list `(x y z)` with `cons`.",
+          "tokens": [
+            "(cons",
+            "\"x\"",
+            "(list",
+            "\"y\"",
+            "\"z\"))"
+          ],
+          "distractors": [
+            "(append",
+            "first"
+          ],
+          "explain": "`cons` takes the new first element and then the list it goes in front of."
+        },
+        {
+          "type": "order",
+          "id": "lists-9",
+          "prompt": "Put the lines in order so the program prints `(0 1 2 3)`.",
+          "lines": [
+            "(define a (list 3 1 2))",
+            "(define b (sort a <))",
+            "(define c (cons 0 b))",
+            "(displayln c)"
+          ],
+          "explain": "Each line uses the name from the line before it, so they must come in this order."
+        },
+        {
+          "type": "pairs",
+          "id": "lists-10",
+          "prompt": "Match the function with what it does.",
+          "pairs": [
+            [
+              "`first`",
+              "gives the first element"
+            ],
+            [
+              "`rest`",
+              "gives all but the first element"
+            ],
+            [
+              "`cons`",
+              "adds an element in front"
+            ],
+            [
+              "`length`",
+              "counts the elements"
+            ],
+            [
+              "`empty?`",
+              "checks for the empty list"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "lists-11",
+          "prompt": "The program should print `pen` and `cup`. Which line has the bug?",
+          "lines": [
+            "(define items (list \"pen\" \"cup\"))",
+            "(displayln (first items))",
+            "(displayln (list-ref items 2))"
+          ],
+          "bug": 2,
+          "explain": "The index starts at 0, so `\"cup\"` has index 1: `(list-ref items 1)`. Index 2 does not exist."
+        },
+        {
+          "type": "bug",
+          "id": "lists-12",
+          "prompt": "The program should print `3` and `1`. Which line has the bug?",
+          "lines": [
+            "(define nums (1 2 3))",
+            "(displayln (length nums))",
+            "(displayln (first nums))"
+          ],
+          "bug": 0,
+          "explain": "`(1 2 3)` tries to call `1` as a function. Create the list with `(list 1 2 3)` or `'(1 2 3)`."
+        }
+      ]
+    },
+    {
+      "id": "higher",
+      "title": "Higher-order functions",
+      "chapter": "Functions",
+      "summary": "Pass functions to other functions and process lists with map, filter, foldl and lambda.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "In Racket, functions are values. You can pass a function to another function, like a number or a string. A function that takes another function is called a **higher-order function**. `add1` is a built-in function that adds 1 to a number."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define (twice f x)\n  (f (f x)))\n(displayln (twice add1 5))\n(displayln (twice (lambda (n) (* n 10)) 3))",
+          "output": "7\n300"
+        },
+        {
+          "type": "heading",
+          "text": "map"
+        },
+        {
+          "type": "text",
+          "md": "`(map f lst)` calls the function `f` on every element of the list and gives a new list with the results. You can pass a named function or a `lambda`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define (square x)\n  (* x x))\n(displayln (map square (list 1 2 3 4)))\n(displayln (map (lambda (x) (* x 10)) (list 1 2 3)))\n(displayln (map string-length (list \"a\" \"bb\" \"ccc\")))",
+          "output": "(1 4 9 16)\n(10 20 30)\n(1 2 3)"
+        },
+        {
+          "type": "text",
+          "md": "`(filter pred lst)` keeps only the elements for which the predicate `pred` is true. The order stays the same."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(displayln (filter even? (list 1 2 3 4 5 6)))\n(displayln (filter (lambda (x) (> x 3)) (list 1 5 2 8)))",
+          "output": "(2 4 6)\n(5 8)"
+        },
+        {
+          "type": "heading",
+          "text": "foldl"
+        },
+        {
+          "type": "text",
+          "md": "`(foldl f start lst)` combines all elements into one value. It begins with `start`. For every element, it calls `f` with the element and the result so far, from left to right. `(foldl + 0 (list 1 2 3))` computes `(+ 3 (+ 2 (+ 1 0)))`, which is `6`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(displayln (foldl + 0 (list 1 2 3 4)))\n(displayln (foldl * 1 (list 1 2 3 4)))\n(displayln (foldl cons empty (list 1 2 3)))",
+          "output": "10\n24\n(3 2 1)"
+        },
+        {
+          "type": "text",
+          "md": "You can combine these functions. This program keeps the even numbers, squares them and adds up the squares: 4 + 16 + 36."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define nums (list 1 2 3 4 5 6))\n(define evens (filter even? nums))\n(define squares (map (lambda (x) (* x x)) evens))\n(displayln (foldl + 0 squares))",
+          "output": "56"
+        },
+        {
+          "type": "tip",
+          "md": "`map` also works with two lists of the same length. It then calls the function with one element from each list: `(map + (list 1 2) (list 10 20))` gives `(11 22)`."
+        }
+      ],
+      "card": [
+        "`(map f lst)` calls `f` on every element",
+        "`(filter even? lst)` keeps the matching elements",
+        "`(foldl + 0 lst)` combines all elements into one value",
+        "`(lambda (x) (* x 2))` as an argument",
+        "`add1`, `sub1` add or subtract 1"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "higher-1",
+          "prompt": "What does this print?",
+          "code": "(displayln (map (lambda (x) (+ x 1)) (list 1 2 3)))",
+          "answers": [
+            "(2 3 4)"
+          ],
+          "explain": "`map` adds 1 to every element and gives a new list."
+        },
+        {
+          "type": "input",
+          "id": "higher-2",
+          "prompt": "What does this print?",
+          "code": "(displayln (filter odd? (list 1 2 3 4 5)))",
+          "answers": [
+            "(1 3 5)"
+          ],
+          "explain": "`filter` keeps only the elements for which `odd?` is true."
+        },
+        {
+          "type": "input",
+          "id": "higher-3",
+          "prompt": "What does this print?",
+          "code": "(displayln (foldl + 10 (list 1 2 3)))",
+          "answers": [
+            "16"
+          ],
+          "explain": "`foldl` starts with `10` and adds every element: 10 + 1 + 2 + 3 = 16."
+        },
+        {
+          "type": "choice",
+          "id": "higher-4",
+          "prompt": "What does this print?",
+          "code": "(displayln (foldl cons empty (list \"a\" \"b\")))",
+          "options": [
+            "`(b a)`",
+            "`(a b)`",
+            "`ab`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "`foldl` goes from left to right. First `(cons \"a\" empty)`, then `\"b\"` is put in front of that: `(b a)`."
+        },
+        {
+          "type": "choice",
+          "id": "higher-5",
+          "prompt": "Which expression keeps only the strings in `words` that have more than 2 characters?",
+          "options": [
+            "`(filter (lambda (s) (> (string-length s) 2)) words)`",
+            "`(map (lambda (s) (> (string-length s) 2)) words)`",
+            "`(filter (> (string-length s) 2) words)`",
+            "`(filter string-length words)`"
+          ],
+          "answer": 0,
+          "explain": "`filter` needs a function as its first argument. The `lambda` gives true for strings longer than 2. `map` would give a list of booleans."
+        },
+        {
+          "type": "true_false",
+          "id": "higher-6",
+          "statement": "This code prints `(2 4 6)`.",
+          "code": "(define nums (list 1 2 3))\n(define doubled (map (lambda (x) (* 2 x)) nums))\n(displayln nums)",
+          "answer": false,
+          "explain": "`map` gives a new list and does not change `nums`. The code prints `(1 2 3)`."
+        },
+        {
+          "type": "gap",
+          "id": "higher-7",
+          "prompt": "Complete the code so it prints `(20 15)`.",
+          "code": "(displayln (___ (lambda (x) (> x 10)) (list 5 20 15 3)))",
+          "options": [
+            "filter",
+            "map",
+            "foldl"
+          ],
+          "answer": 0,
+          "explain": "`filter` keeps the elements greater than 10. `map` would print a list of booleans."
+        },
+        {
+          "type": "gap",
+          "id": "higher-8",
+          "prompt": "Complete the code so it prints `(2 4 6)`.",
+          "code": "(displayln (map ___ (list 1 2 3)))",
+          "options": [
+            "(lambda (x) (* 2 x))",
+            "(* 2 x)",
+            "(lambda x (* 2 x))",
+            "double"
+          ],
+          "answer": 0,
+          "explain": "`map` needs a function of one parameter. `(* 2 x)` is not a function, and `double` is not defined."
+        },
+        {
+          "type": "blocks",
+          "id": "higher-9",
+          "prompt": "Build an expression that adds up all numbers in `nums`.",
+          "tokens": [
+            "(foldl",
+            "+",
+            "0",
+            "nums)"
+          ],
+          "distractors": [
+            "(map",
+            "1"
+          ],
+          "explain": "`foldl` takes the function, the start value and the list, in this order. The start value for a sum is `0`."
+        },
+        {
+          "type": "order",
+          "id": "higher-10",
+          "prompt": "Put the lines in order so the program prints `(9 16)`.",
+          "lines": [
+            "(define nums (list 1 2 3 4))",
+            "(define big (filter (lambda (x) (> x 2)) nums))",
+            "(define squares (map (lambda (x) (* x x)) big))",
+            "(displayln squares)"
+          ],
+          "explain": "First keep the numbers greater than 2, which gives `(3 4)`. Then square them."
+        },
+        {
+          "type": "pairs",
+          "id": "higher-11",
+          "prompt": "Match the code with what it does.",
+          "pairs": [
+            [
+              "`map`",
+              "applies a function to every element"
+            ],
+            [
+              "`filter`",
+              "keeps the elements that pass a test"
+            ],
+            [
+              "`foldl`",
+              "combines all elements into one value"
+            ],
+            [
+              "`lambda`",
+              "creates a function without a name"
+            ],
+            [
+              "`add1`",
+              "adds 1 to a number"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "higher-12",
+          "prompt": "The program should print `10`. Which line has the bug?",
+          "lines": [
+            "(define words (list \"hi\" \"hello\" \"hey\"))",
+            "(define lengths (map string-length words))",
+            "(define total (foldl + lengths 0))",
+            "(displayln total)"
+          ],
+          "bug": 2,
+          "explain": "`foldl` takes the start value before the list: `(foldl + 0 lengths)`."
+        }
+      ]
+    },
+    {
+      "id": "recursion",
+      "title": "Recursion and loops",
+      "chapter": "Control flow",
+      "summary": "Repeat work with functions that call themselves, and loop over lists with for and for/list.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A function can call itself. This is called **recursion**. Every recursive function needs a **base case**: a case where it stops and does not call itself again. Here, the base case is `n` = 0. Each other call prints `n` and calls the function with a smaller `n`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define (countdown n)\n  (cond [(= n 0) (displayln \"Go!\")]\n        [else (displayln n)\n              (countdown (- n 1))]))\n(countdown 3)",
+          "output": "3\n2\n1\nGo!"
+        },
+        {
+          "type": "text",
+          "md": "The **factorial** of a number is the product of all whole numbers from 1 up to it. `(factorial 3)` computes `(* 3 (factorial 2))`, which is `(* 3 (* 2 (* 1 (factorial 0))))`, which is 6. Racket whole numbers can be as big as you need."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define (factorial n)\n  (if (= n 0)\n      1\n      (* n (factorial (- n 1)))))\n(displayln (factorial 5))\n(displayln (factorial 25))",
+          "output": "120\n15511210043330985984000000"
+        },
+        {
+          "type": "heading",
+          "text": "Recursion on lists"
+        },
+        {
+          "type": "text",
+          "md": "Many list functions follow one pattern. The base case is the empty list. Otherwise, you do something with the `first` element and call the function again on the `rest`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define (sum lst)\n  (if (empty? lst)\n      0\n      (+ (first lst) (sum (rest lst)))))\n(define (count-items lst)\n  (if (empty? lst)\n      0\n      (+ 1 (count-items (rest lst)))))\n(displayln (sum (list 1 2 3 4)))\n(displayln (count-items (list \"a\" \"b\" \"c\")))",
+          "output": "10\n3"
+        },
+        {
+          "type": "warning",
+          "md": "If the base case is missing or never reached, the function calls itself again and again and the program never ends. Make sure every call gets closer to the base case, for example with `(- n 1)` or `(rest lst)`."
+        },
+        {
+          "type": "heading",
+          "text": "Loops with for"
+        },
+        {
+          "type": "text",
+          "md": "`for` runs its body once for every element of a list. In `(for ([i (range 1 4)]) body)`, the name `i` takes each value in turn. The square brackets hold the name and the list, as in `let`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(for ([i (range 1 4)])\n  (printf \"Line ~a\\n\" i))\n(for ([fruit (list \"apple\" \"pear\")])\n  (displayln fruit))",
+          "output": "Line 1\nLine 2\nLine 3\napple\npear"
+        },
+        {
+          "type": "text",
+          "md": "`for` gives no useful result. `for/list` works like `for`, but collects the value of the body for every element into a new list."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(displayln (for/list ([i (range 5)]) (* i i)))\n(displayln (for/list ([x (list 1 2 3)]) (* x 10)))",
+          "output": "(0 1 4 9 16)\n(10 20 30)"
+        },
+        {
+          "type": "tip",
+          "md": "`for/sum` adds up the values of the body: `(for/sum ([i (range 1 5)]) i)` gives `10`."
+        }
+      ],
+      "card": [
+        "Recursion: a function calls itself on a smaller problem",
+        "Base case: `(if (empty? lst) 0 ...)` stops the recursion",
+        "`(for ([i (range 3)]) (displayln i))` repeats code",
+        "`(for/list ([x lst]) (* x 2))` collects results in a list",
+        "`(for/sum ([i lst]) i)` adds up the results"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "recursion-1",
+          "prompt": "What does this print?",
+          "code": "(define (f n)\n  (if (= n 0)\n      0\n      (+ n (f (- n 1)))))\n(displayln (f 4))",
+          "answers": [
+            "10"
+          ],
+          "explain": "`(f 4)` is 4 + 3 + 2 + 1 + 0. The base case `(f 0)` gives `0`."
+        },
+        {
+          "type": "input",
+          "id": "recursion-2",
+          "prompt": "What does this print?",
+          "code": "(for ([i (range 3)])\n  (display i))\n(newline)",
+          "answers": [
+            "012"
+          ],
+          "explain": "`(range 3)` is `(0 1 2)`, and `display` prints each number without a line break."
+        },
+        {
+          "type": "input",
+          "id": "recursion-3",
+          "prompt": "What does this print?",
+          "code": "(displayln (for/list ([i (range 1 4)]) (* i 2)))",
+          "answers": [
+            "(2 4 6)"
+          ],
+          "explain": "`(range 1 4)` is `(1 2 3)`. `for/list` collects each value times 2."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-4",
+          "prompt": "What does this print?",
+          "code": "(define (down n)\n  (when (> n 0)\n    (display n)\n    (down (- n 1))))\n(down 3)\n(newline)",
+          "options": [
+            "`321`",
+            "`123`",
+            "`3210`",
+            "`0123`"
+          ],
+          "answer": 0,
+          "explain": "The function prints `n` first and then calls itself with `n - 1`. At `0`, the test is false and it stops without printing."
+        },
+        {
+          "type": "true_false",
+          "id": "recursion-5",
+          "statement": "`(for ([i (range 3)]) ...)` runs its body for `i` = 1, 2 and 3.",
+          "answer": false,
+          "explain": "`(range 3)` starts at `0` and stops before `3`, so `i` is 0, 1 and 2."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-6",
+          "prompt": "Complete the base case so the program prints `11`.",
+          "code": "(define (sum lst)\n  (if (___ lst)\n      0\n      (+ (first lst) (sum (rest lst)))))\n(displayln (sum (list 5 6)))",
+          "options": [
+            "empty?",
+            "list?",
+            "first",
+            "rest"
+          ],
+          "answer": 0,
+          "explain": "The recursion must stop at the empty list. With the other options the test is true at once and the result is `0`."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-7",
+          "prompt": "Complete the code so it prints `(2 3 4)`.",
+          "code": "(displayln (___ ([x (list 1 2 3)]) (+ x 1)))",
+          "options": [
+            "for/list",
+            "for",
+            "map",
+            "lambda"
+          ],
+          "answer": 0,
+          "explain": "`for/list` collects the results in a list. `for` gives no list."
+        },
+        {
+          "type": "blocks",
+          "id": "recursion-8",
+          "prompt": "Build a loop that prints the numbers 0, 1 and 2 on separate lines.",
+          "tokens": [
+            "(for",
+            "([i",
+            "(range",
+            "3)])",
+            "(displayln",
+            "i))"
+          ],
+          "distractors": [
+            "(for/list",
+            "(list"
+          ],
+          "explain": "`for` takes the name and the list in brackets, then the body that runs for each value."
+        },
+        {
+          "type": "order",
+          "id": "recursion-9",
+          "prompt": "Put the lines in order so the program prints `24`.",
+          "lines": [
+            "(define (fact n)",
+            "  (if (= n 0)",
+            "      1",
+            "      (* n (fact (- n 1)))))",
+            "(displayln (fact 4))"
+          ],
+          "explain": "The `if` needs the test, then the base case result `1`, then the recursive case. The function must be defined before the call."
+        },
+        {
+          "type": "pairs",
+          "id": "recursion-10",
+          "prompt": "Match the term with its meaning.",
+          "pairs": [
+            [
+              "`(= n 0)`",
+              "the test of a base case"
+            ],
+            [
+              "`(f (- n 1))`",
+              "a recursive call"
+            ],
+            [
+              "`for`",
+              "repeats code for every element"
+            ],
+            [
+              "`for/list`",
+              "collects results in a list"
+            ],
+            [
+              "`(range 3)`",
+              "the list (0 1 2)"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "recursion-11",
+          "prompt": "The program should print `6`. Which line has the bug?",
+          "lines": [
+            "(define (sum-list lst)",
+            "  (if (empty? lst)",
+            "      1",
+            "      (+ (first lst) (sum-list (rest lst)))))",
+            "(displayln (sum-list (list 1 2 3)))"
+          ],
+          "bug": 2,
+          "explain": "The sum of an empty list is `0`, not `1`. With `1`, the program prints `7`."
+        },
+        {
+          "type": "bug",
+          "id": "recursion-12",
+          "prompt": "The program should print `(2 4 6)`. Which line has the bug?",
+          "lines": [
+            "(define nums (list 1 2 3))",
+            "(define doubled",
+            "  (for ([x nums])",
+            "    (* 2 x)))",
+            "(displayln doubled)"
+          ],
+          "bug": 2,
+          "explain": "`for` does not collect the results. Use `for/list` to get a list: `(for/list ([x nums])`."
+        }
+      ]
+    },
+    {
+      "id": "structs",
+      "title": "Structs and strings",
+      "chapter": "Data",
+      "summary": "Work with string functions, group values in structs and look up values by key in hashes.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`string-append` joins strings into one. `string-upcase` and `string-downcase` change letters to upper or lower case. `(substring s start end)` gives the characters from index `start` up to, but not including, index `end`."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define first-name \"Ada\")\n(define last-name \"Lovelace\")\n(displayln (string-append first-name \" \" last-name))\n(displayln (string-upcase first-name))\n(displayln (substring last-name 0 4))",
+          "output": "Ada Lovelace\nADA\nLove"
+        },
+        {
+          "type": "text",
+          "md": "`number->string` turns a number into a string, and `string->number` does the opposite. `string-split` splits a string at its spaces into a list of strings. `string-join` joins a list of strings with a separator between them."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(displayln (string-append \"Age: \" (number->string 36)))\n(displayln (+ 1 (string->number \"41\")))\n(displayln (string-split \"red green blue\"))\n(displayln (string-join (list \"a\" \"b\" \"c\") \"-\"))",
+          "output": "Age: 36\n42\n(red green blue)\na-b-c"
+        },
+        {
+          "type": "heading",
+          "text": "Structs"
+        },
+        {
+          "type": "text",
+          "md": "A **struct** groups several values under one name. `(struct book (title pages))` defines a new kind of value with two **fields**. Racket then creates the function `book` to make a book, `book-title` and `book-pages` to read the fields, and the predicate `book?`. With `#:transparent`, `println` shows the field values."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(struct book (title pages) #:transparent)\n(define b (book \"Dune\" 412))\n(println b)\n(displayln (book-title b))\n(displayln (book-pages b))\n(displayln (book? b))",
+          "output": "(book \"Dune\" 412)\nDune\n412\n#t"
+        },
+        {
+          "type": "text",
+          "md": "Structs work well with everything you know. Here, a list of structs is passed to `map` with a field function, and `foldl` adds up the prices."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(struct item (name price))\n(define cart (list (item \"tea\" 3) (item \"cake\" 5)))\n(displayln (map item-name cart))\n(displayln (foldl + 0 (map item-price cart)))",
+          "output": "(tea cake)\n8"
+        },
+        {
+          "type": "heading",
+          "text": "Hashes"
+        },
+        {
+          "type": "text",
+          "md": "A **hash** stores pairs of a **key** and a value. `(hash \"Ada\" 36 \"Linus\" 21)` creates one. `hash-ref` looks up the value for a key, with an optional default value as third argument. `hash-set` gives a new hash with one more pair, and the old hash stays the same. `hash-count` counts the pairs, and `hash-has-key?` checks for a key."
+        },
+        {
+          "type": "code",
+          "code": "#lang racket\n(define ages (hash \"Ada\" 36 \"Linus\" 21))\n(displayln (hash-ref ages \"Ada\"))\n(displayln (hash-ref ages \"Bob\" 0))\n(define more (hash-set ages \"Bob\" 50))\n(displayln (hash-count more))\n(displayln (hash-count ages))\n(displayln (hash-has-key? more \"Bob\"))",
+          "output": "36\n0\n3\n2\n#t"
+        },
+        {
+          "type": "warning",
+          "md": "`hash-ref` with a key that does not exist and no default value is an error. A hash has no fixed order, so do not rely on the order in which its pairs are printed."
+        }
+      ],
+      "card": [
+        "`(string-append \"a\" \"b\")`, `(substring s 0 4)`, `(string-upcase s)`",
+        "`(number->string 5)`, `(string-split s)`, `(string-join lst \"-\")`",
+        "`(struct book (title pages))` creates `book`, `book-title`, `book?`",
+        "`(hash \"a\" 1)`, `(hash-ref h \"a\" 0)`, `(hash-set h \"b\" 2)`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "structs-1",
+          "prompt": "What does this print?",
+          "code": "(displayln (string-append \"snow\" \"man\"))",
+          "answers": [
+            "snowman"
+          ],
+          "explain": "`string-append` joins the strings without adding a space."
+        },
+        {
+          "type": "input",
+          "id": "structs-2",
+          "prompt": "What does this print?",
+          "code": "(struct dog (name age))\n(define d (dog \"Rex\" 3))\n(displayln (dog-age d))",
+          "answers": [
+            "3"
+          ],
+          "explain": "`dog-age` reads the field `age`, which is `3`."
+        },
+        {
+          "type": "input",
+          "id": "structs-3",
+          "prompt": "What does this print?",
+          "code": "(define h (hash \"x\" 10 \"y\" 20))\n(displayln (hash-ref h \"z\" 0))",
+          "answers": [
+            "0"
+          ],
+          "explain": "The key `\"z\"` is not in the hash, so `hash-ref` gives the default value `0`."
+        },
+        {
+          "type": "choice",
+          "id": "structs-4",
+          "prompt": "What does this print?",
+          "code": "(displayln (substring \"racket\" 1 4))",
+          "options": [
+            "`ack`",
+            "`rac`",
+            "`acke`",
+            "`rack`"
+          ],
+          "answer": 0,
+          "explain": "The index starts at 0. `substring` takes the characters at index 1, 2 and 3 and stops before index 4."
+        },
+        {
+          "type": "choice",
+          "id": "structs-5",
+          "prompt": "After `(struct point (x y))`, which function reads the field `x` of a point?",
+          "options": [
+            "`point-x`",
+            "`x-point`",
+            "`point.x`"
+          ],
+          "answer": 0,
+          "explain": "Racket names the field functions with the struct name, a dash and the field name: `point-x` and `point-y`."
+        },
+        {
+          "type": "true_false",
+          "id": "structs-6",
+          "statement": "This code prints `2`.",
+          "code": "(define h (hash \"a\" 1))\n(define h2 (hash-set h \"b\" 2))\n(displayln (hash-count h))",
+          "answer": false,
+          "explain": "`hash-set` gives a new hash and does not change `h`. `h` still has one pair, so the code prints `1`."
+        },
+        {
+          "type": "gap",
+          "id": "structs-7",
+          "prompt": "Complete the code so it prints `Score: 10`.",
+          "code": "(displayln (string-append \"Score: \" (___ 10)))",
+          "options": [
+            "number->string",
+            "string->number",
+            "string-length",
+            "displayln"
+          ],
+          "answer": 0,
+          "explain": "`string-append` only joins strings, so the number `10` must become the string `\"10\"` first."
+        },
+        {
+          "type": "gap",
+          "id": "structs-8",
+          "prompt": "Complete the code so it prints `Tom`.",
+          "code": "(struct cat (name lives))\n(define c (cat \"Tom\" 9))\n(displayln (___ c))",
+          "options": [
+            "cat-name",
+            "cat-lives",
+            "name",
+            "cat"
+          ],
+          "answer": 0,
+          "explain": "`cat-name` reads the field `name`. `cat-lives` would print `9`."
+        },
+        {
+          "type": "blocks",
+          "id": "structs-9",
+          "prompt": "Build an expression that looks up `\"tea\"` in `prices` and gives `0` if the key is missing.",
+          "tokens": [
+            "(hash-ref",
+            "prices",
+            "\"tea\"",
+            "0)"
+          ],
+          "distractors": [
+            "(hash-set",
+            "(prices"
+          ],
+          "explain": "`hash-ref` takes the hash, the key and the default value, in this order."
+        },
+        {
+          "type": "order",
+          "id": "structs-10",
+          "prompt": "Put the lines in order so the program prints `6`.",
+          "lines": [
+            "(struct item (name price))",
+            "(define a (item \"pen\" 2))",
+            "(define b (item \"ink\" (* 2 (item-price a))))",
+            "(displayln (+ (item-price a) (item-price b)))"
+          ],
+          "explain": "The struct must exist before you make items. `b` uses the price of `a`, so `a` comes first. 2 + 4 is 6."
+        },
+        {
+          "type": "pairs",
+          "id": "structs-11",
+          "prompt": "Match the function with what it does.",
+          "pairs": [
+            [
+              "`string-append`",
+              "joins strings"
+            ],
+            [
+              "`string-length`",
+              "counts the characters"
+            ],
+            [
+              "`string-upcase`",
+              "changes letters to upper case"
+            ],
+            [
+              "`hash-ref`",
+              "looks up the value for a key"
+            ],
+            [
+              "`struct`",
+              "defines a new kind of value with fields"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "structs-12",
+          "prompt": "The program should print `ANA` and `ana@example.com`. Which line has the bug?",
+          "lines": [
+            "(struct user (name email))",
+            "(define u (user \"ana\" \"ana@example.com\"))",
+            "(displayln (string-upcase (user-name u)))",
+            "(displayln (user-mail u))"
+          ],
+          "bug": 3,
+          "explain": "The field is called `email`, so the function is `user-email`: `(displayln (user-email u))`."
+        }
+      ]
+    }
+  ]
+}

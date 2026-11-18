@@ -1,0 +1,1899 @@
+{
+  "course": "csharp",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, C#",
+      "chapter": "First steps",
+      "summary": "Write your first C# program and print text and numbers with `Console.WriteLine`.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A C# program is a list of **statements**. The computer runs them from top to bottom. Your first statement prints a line of text with `Console.WriteLine`."
+        },
+        {
+          "type": "code",
+          "code": "Console.WriteLine(\"Hello, World!\");",
+          "output": "Hello, World!"
+        },
+        {
+          "type": "text",
+          "md": "Text in double quotes, like `\"Hello\"`, is called a **string**. Every statement ends with a semicolon `;`. If you forget it, the program does not compile."
+        },
+        {
+          "type": "heading",
+          "text": "Top-level statements"
+        },
+        {
+          "type": "text",
+          "md": "This one line is already a complete program. Modern C# lets you write statements directly in the file, without any extra structure around them. They are called **top-level statements**. A new project from `dotnet new console` starts exactly like this."
+        },
+        {
+          "type": "code",
+          "code": "Console.WriteLine(\"Line 1\");\nConsole.WriteLine(\"Line 2\");\nConsole.WriteLine(\"Line 3\");",
+          "output": "Line 1\nLine 2\nLine 3"
+        },
+        {
+          "type": "heading",
+          "text": "Numbers"
+        },
+        {
+          "type": "text",
+          "md": "Numbers are written without quotes. C# can calculate with them: `+` adds, `-` subtracts, `*` multiplies and `/` divides."
+        },
+        {
+          "type": "code",
+          "code": "Console.WriteLine(7);\nConsole.WriteLine(2 + 3);\nConsole.WriteLine(10 - 4 * 2);\nConsole.WriteLine((10 - 4) * 2);\nConsole.WriteLine(\"2 + 3\");",
+          "output": "7\n5\n2\n12\n2 + 3"
+        },
+        {
+          "type": "text",
+          "md": "C# follows the usual math rules: `*` and `/` come before `+` and `-`. Parentheses `( )` make C# calculate a part first. A calculation in quotes is only text, so `\"2 + 3\"` prints as it is."
+        },
+        {
+          "type": "heading",
+          "text": "Write and WriteLine"
+        },
+        {
+          "type": "text",
+          "md": "`Console.Write` prints text without starting a new line afterwards. `Console.WriteLine()` with nothing inside the parentheses only ends the current line."
+        },
+        {
+          "type": "code",
+          "code": "Console.Write(\"Hello, \");\nConsole.Write(\"C#\");\nConsole.WriteLine();\nConsole.WriteLine(\"Done\");",
+          "output": "Hello, C#\nDone"
+        },
+        {
+          "type": "tip",
+          "md": "C# is case-sensitive. `Console.WriteLine` works, but `console.writeline` does not compile."
+        }
+      ],
+      "card": [
+        "`Console.WriteLine(\"Hi\");` prints a line",
+        "`Console.Write(x);` prints without a line break",
+        "Every statement ends with `;`",
+        "`\"text\"` is a string, `42` is a number",
+        "`*` and `/` come before `+` and `-`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which line prints `Hello`?",
+          "options": [
+            "`Console.WriteLine(\"Hello\");`",
+            "`console.writeline(\"Hello\");`",
+            "`Console.WriteLine(Hello);`",
+            "`print(\"Hello\");`"
+          ],
+          "answer": 0,
+          "explain": "C# is case-sensitive, and text must be in double quotes. The method is `Console.WriteLine`."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "Console.WriteLine(3 + 4 * 2);",
+          "answers": [
+            "11"
+          ],
+          "explain": "`*` comes before `+`: first `4 * 2` is `8`, then `3 + 8` is `11`."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-3",
+          "statement": "This line compiles: `Console.WriteLine(\"Hi\")`",
+          "answer": false,
+          "explain": "The semicolon is missing. Every statement in C# ends with `;`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-4",
+          "prompt": "Fill the gap so the program prints `Hello` and `World` on two separate lines.",
+          "code": "Console.___(\"Hello\");\nConsole.WriteLine(\"World\");",
+          "options": [
+            "WriteLine",
+            "Write",
+            "Print"
+          ],
+          "answer": 0,
+          "explain": "`WriteLine` ends the line after `Hello`. `Write` would print `HelloWorld` on one line, and `Print` does not exist."
+        },
+        {
+          "type": "input",
+          "id": "hello-5",
+          "prompt": "What does this print?",
+          "code": "Console.Write(\"A\");\nConsole.Write(\"B\");\nConsole.WriteLine(\"C\");",
+          "answers": [
+            "ABC"
+          ],
+          "explain": "`Console.Write` does not start a new line, so `A`, `B` and `C` end up on the same line."
+        },
+        {
+          "type": "bug",
+          "id": "hello-6",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "Console.WriteLine(\"Hello\");",
+            "Console.WriteLine(\"from\");",
+            "Console.WriteLine(\"C#\")"
+          ],
+          "bug": 2,
+          "explain": "The last line has no semicolon. Write `Console.WriteLine(\"C#\");`."
+        },
+        {
+          "type": "order",
+          "id": "hello-7",
+          "prompt": "Put the lines in order so the program prints `Hi, Ana!` and then `Bye`.",
+          "lines": [
+            "Console.Write(\"Hi, \");",
+            "Console.Write(\"Ana\");",
+            "Console.WriteLine(\"!\");",
+            "Console.WriteLine(\"Bye\");"
+          ],
+          "explain": "`Console.Write` keeps the first three parts on one line. `WriteLine(\"!\")` ends that line, so `Bye` comes on the next one."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-8",
+          "prompt": "Build a line that prints the result of `6 * 7`.",
+          "tokens": [
+            "Console.WriteLine(",
+            "6",
+            "*",
+            "7",
+            ");"
+          ],
+          "distractors": [
+            "\"6 * 7\"",
+            "print("
+          ],
+          "explain": "Numbers without quotes are calculated, so the line prints `42`. With quotes, it would print the text `6 * 7`."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`Console.WriteLine(x)`",
+              "prints x and ends the line"
+            ],
+            [
+              "`Console.Write(x)`",
+              "prints x without a line break"
+            ],
+            [
+              "`;`",
+              "ends a statement"
+            ],
+            [
+              "`\"Hi\"`",
+              "a string"
+            ],
+            [
+              "`*`",
+              "multiplies two numbers"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "hello-10",
+          "prompt": "What does this print?",
+          "code": "Console.WriteLine(\"10 + 5\");",
+          "options": [
+            "`10 + 5`",
+            "`15`",
+            "`105`",
+            "It does not compile."
+          ],
+          "answer": 0,
+          "explain": "The calculation is inside double quotes, so it is a string. C# prints the text exactly as it is."
+        },
+        {
+          "type": "input",
+          "id": "hello-11",
+          "prompt": "What does this print?",
+          "code": "Console.WriteLine((2 + 3) * 4);",
+          "answers": [
+            "20"
+          ],
+          "explain": "The parentheses come first: `2 + 3` is `5`, and `5 * 4` is `20`."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-12",
+          "statement": "`Console.Write` starts a new line after the text.",
+          "answer": false,
+          "explain": "Only `Console.WriteLine` ends the line. `Console.Write(\"A\")` followed by `Console.Write(\"B\")` prints `AB`."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "First steps",
+      "summary": "Store values in variables and get to know `int`, `double`, `string`, `bool`, `char`, `var` and `const`.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a named box for a value. You create it with a type, a name, `=` and a value. After that, you use the name instead of the value. Variable names usually start with a small letter, like `age` or `firstName`."
+        },
+        {
+          "type": "code",
+          "code": "int age = 30;\nstring name = \"Mia\";\nConsole.WriteLine(name);\nConsole.WriteLine(age);",
+          "output": "Mia\n30"
+        },
+        {
+          "type": "text",
+          "md": "You can give a variable a new value later. The old value is then gone. You write the type only once, when you create the variable."
+        },
+        {
+          "type": "code",
+          "code": "int score = 10;\nConsole.WriteLine(score);\nscore = 25;\nConsole.WriteLine(score);\nscore = score + 5;\nConsole.WriteLine(score);",
+          "output": "10\n25\n30"
+        },
+        {
+          "type": "heading",
+          "text": "The basic types"
+        },
+        {
+          "type": "text",
+          "md": "Every variable has a **type** that never changes. `int` holds whole numbers, `double` holds numbers with a decimal point, `string` holds text, `bool` holds `true` or `false`, and `char` holds a single character in single quotes."
+        },
+        {
+          "type": "code",
+          "code": "int count = 3;\ndouble price = 4.5;\nstring city = \"Lima\";\nbool isOpen = true;\nchar grade = 'A';\nConsole.WriteLine(count);\nConsole.WriteLine(price);\nConsole.WriteLine(city);\nConsole.WriteLine(isOpen);\nConsole.WriteLine(grade);",
+          "output": "3\n4.5\nLima\nTrue\nA"
+        },
+        {
+          "type": "tip",
+          "md": "`Console.WriteLine` prints a `bool` as `True` or `False` with a capital letter. In code, you always write `true` and `false`."
+        },
+        {
+          "type": "warning",
+          "md": "A variable cannot change its type. `int count = \"three\";` does not compile, because `\"three\"` is a `string`, not an `int`."
+        },
+        {
+          "type": "heading",
+          "text": "var and const"
+        },
+        {
+          "type": "text",
+          "md": "With `var`, C# works out the type from the value. `var total = 12;` creates an `int`. The type is still fixed: you cannot store text in `total` later."
+        },
+        {
+          "type": "code",
+          "code": "var total = 12;\nvar greeting = \"Hi\";\nconst int MaxPlayers = 4;\nConsole.WriteLine(total + MaxPlayers);\nConsole.WriteLine(greeting);",
+          "output": "16\nHi"
+        },
+        {
+          "type": "text",
+          "md": "A `const` is a value that never changes. Giving `MaxPlayers` a new value is an error. Names of constants usually start with a capital letter."
+        },
+        {
+          "type": "tip",
+          "md": "On some computers, a `double` prints with a comma instead of a point, for example `4,5` instead of `4.5`. This depends on the language settings of the system."
+        }
+      ],
+      "card": [
+        "`int age = 30;` creates a variable",
+        "Types: `int`, `double`, `string`, `bool`, `char`",
+        "`age = 31;` gives it a new value",
+        "`var x = 5;` lets C# find the type",
+        "`const int Max = 4;` never changes"
+      ],
+      "exercises": [
+        {
+          "type": "pairs",
+          "id": "variables-1",
+          "prompt": "Match each type with what it holds.",
+          "pairs": [
+            [
+              "`int`",
+              "a whole number"
+            ],
+            [
+              "`double`",
+              "a number with a decimal point"
+            ],
+            [
+              "`string`",
+              "text"
+            ],
+            [
+              "`bool`",
+              "true or false"
+            ],
+            [
+              "`char`",
+              "a single character"
+            ]
+          ]
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this print?",
+          "code": "int x = 5;\nx = x + 3;\nx = x * 2;\nConsole.WriteLine(x);",
+          "answers": [
+            "16"
+          ],
+          "explain": "`x` starts at `5`. Then `5 + 3` is `8`, and `8 * 2` is `16`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-3",
+          "prompt": "Which line creates a variable that holds a single character?",
+          "options": [
+            "`char c = 'x';`",
+            "`char c = \"x\";`",
+            "`string c = 'x';`",
+            "`char c = x;`"
+          ],
+          "answer": 0,
+          "explain": "A `char` value is written in single quotes. Double quotes make a `string`, and `x` without quotes is a name, not a value."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-4",
+          "statement": "This code compiles, because a `var` variable can hold any type.",
+          "code": "var n = 10;\nn = \"ten\";",
+          "answer": false,
+          "explain": "`var n = 10;` makes `n` an `int`, and the type never changes. Storing `\"ten\"` in it is an error."
+        },
+        {
+          "type": "gap",
+          "id": "variables-5",
+          "prompt": "Fill the gap with the right type.",
+          "code": "___ price = 2.5;\nConsole.WriteLine(price * 2);",
+          "options": [
+            "double",
+            "int",
+            "string",
+            "bool"
+          ],
+          "answer": 0,
+          "explain": "`2.5` has a decimal point, so the type is `double`. An `int` cannot hold `2.5`."
+        },
+        {
+          "type": "input",
+          "id": "variables-6",
+          "prompt": "What does this print?",
+          "code": "string a = \"Hi\";\nstring b = a;\na = \"Bye\";\nConsole.WriteLine(b);",
+          "answers": [
+            "Hi"
+          ],
+          "explain": "`b = a` copies the value `\"Hi\"` into `b`. Changing `a` later does not change `b`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-7",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "const int Days = 7;",
+            "int weeks = 3;",
+            "Days = 8;",
+            "Console.WriteLine(weeks * Days);"
+          ],
+          "bug": 2,
+          "explain": "`Days` is a `const`, so you cannot give it a new value. Remove the line `Days = 8;`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-8",
+          "prompt": "What does this print?",
+          "code": "bool done = false;\nConsole.WriteLine(done);",
+          "options": [
+            "`False`",
+            "`false`",
+            "`0`",
+            "`done`"
+          ],
+          "answer": 0,
+          "explain": "`Console.WriteLine` prints a `bool` with a capital letter: `False`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-9",
+          "prompt": "Build a line that creates a `string` variable `city` with the value `\"Oslo\"`.",
+          "tokens": [
+            "string",
+            "city",
+            "=",
+            "\"Oslo\"",
+            ";"
+          ],
+          "distractors": [
+            "int",
+            "'Oslo'"
+          ],
+          "explain": "First the type, then the name, then `=` and the value. Text goes in double quotes."
+        },
+        {
+          "type": "order",
+          "id": "variables-10",
+          "prompt": "Put the lines in order so the program prints `32`.",
+          "lines": [
+            "int width = 4;",
+            "int height = width * 2;",
+            "int area = width * height;",
+            "Console.WriteLine(area);"
+          ],
+          "explain": "A variable must exist before you use it: `height` needs `width`, `area` needs both, and the output comes last."
+        },
+        {
+          "type": "input",
+          "id": "variables-11",
+          "prompt": "What does this print?",
+          "code": "var big = 7;\nconst int Step = 2;\nConsole.WriteLine(big - Step * 3);",
+          "answers": [
+            "1"
+          ],
+          "explain": "`*` comes first: `Step * 3` is `6`, and `7 - 6` is `1`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-12",
+          "statement": "`Console.WriteLine(true);` prints `True`.",
+          "answer": true,
+          "explain": "In code you write `true`, but `Console.WriteLine` prints a `bool` with a capital letter."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings and operators",
+      "chapter": "Basics",
+      "summary": "Join and format text, use string methods like `ToUpper` and `Substring`, and calculate with `%`, `+=` and `++`.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "You can join two strings with `+`. This is called **concatenation**. A number joined with a string becomes text too."
+        },
+        {
+          "type": "code",
+          "code": "string first = \"Ada\";\nstring last = \"Lovelace\";\nstring full = first + \" \" + last;\nConsole.WriteLine(full);\nConsole.WriteLine(\"Age: \" + 36);",
+          "output": "Ada Lovelace\nAge: 36"
+        },
+        {
+          "type": "heading",
+          "text": "String interpolation"
+        },
+        {
+          "type": "text",
+          "md": "A string that starts with `$` can contain values in curly braces, like `$\"Hi, {name}!\"`. This is called **string interpolation**, and it is often easier to read than `+`. You can also put calculations inside the braces."
+        },
+        {
+          "type": "code",
+          "code": "string name = \"Sam\";\nint apples = 3;\nConsole.WriteLine($\"{name} has {apples} apples.\");\nConsole.WriteLine($\"Double: {apples * 2}\");",
+          "output": "Sam has 3 apples.\nDouble: 6"
+        },
+        {
+          "type": "heading",
+          "text": "Useful string members"
+        },
+        {
+          "type": "text",
+          "md": "`Length` tells you how many characters a string has. `ToUpper()` and `ToLower()` give you the text in capital or small letters. `Substring(start, length)` gives you a part of the string. Positions start at `0`, not at `1`."
+        },
+        {
+          "type": "code",
+          "code": "string word = \"Keyboard\";\nConsole.WriteLine(word.Length);\nConsole.WriteLine(word.ToUpper());\nConsole.WriteLine(word.ToLower());\nConsole.WriteLine(word.Substring(0, 3));\nConsole.WriteLine(word.Substring(3));\nConsole.WriteLine(word[0]);",
+          "output": "8\nKEYBOARD\nkeyboard\nKey\nboard\nK"
+        },
+        {
+          "type": "text",
+          "md": "`Substring(3)` without a length gives you everything from position `3` to the end. `word[0]` gives you the first character as a `char`. Methods like `ToUpper()` never change the original string. They return a new one."
+        },
+        {
+          "type": "heading",
+          "text": "Arithmetic operators"
+        },
+        {
+          "type": "text",
+          "md": "Besides `+`, `-`, `*` and `/`, there is `%`: the remainder of a division. When you divide two `int` values, the result is an `int` too, and the part after the decimal point is cut off. Use a `double` like `7.0` to keep it."
+        },
+        {
+          "type": "code",
+          "code": "Console.WriteLine(7 / 2);\nConsole.WriteLine(7 % 2);\nConsole.WriteLine(7.0 / 2);\nint x = 10;\nx += 5;\nx++;\nConsole.WriteLine(x);",
+          "output": "3\n1\n3.5\n16"
+        },
+        {
+          "type": "text",
+          "md": "`x += 5` is short for `x = x + 5`. The same works with `-=`, `*=` and `/=`. `x++` adds `1` to `x`, and `x--` subtracts `1`."
+        },
+        {
+          "type": "warning",
+          "md": "`+` with a string and a number joins them as text. `\"1\" + 2` gives `\"12\"`, not `3`."
+        }
+      ],
+      "card": [
+        "`a + b` joins two strings",
+        "`$\"Hi, {name}!\"` puts values into text",
+        "`s.Length`, `s.ToUpper()`, `s.Substring(0, 3)`, `s[0]`",
+        "`7 / 2` is `3`, `7 % 2` is `1`, `7.0 / 2` is `3.5`",
+        "`x += 5;` and `x++;` change a variable"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this print?",
+          "code": "string s = \"Hello\";\nConsole.WriteLine(s.Length);",
+          "answers": [
+            "5"
+          ],
+          "explain": "`Length` counts the characters: `H`, `e`, `l`, `l`, `o`."
+        },
+        {
+          "type": "input",
+          "id": "strings-2",
+          "prompt": "What does this print?",
+          "code": "Console.WriteLine(17 % 5);",
+          "answers": [
+            "2"
+          ],
+          "explain": "`17 / 5` is `3` with a remainder of `2`, and `%` gives the remainder."
+        },
+        {
+          "type": "choice",
+          "id": "strings-3",
+          "prompt": "What does this print?",
+          "code": "Console.WriteLine(\"1\" + 2);",
+          "options": [
+            "`12`",
+            "`3`",
+            "`\"1\" + 2`",
+            "It does not compile."
+          ],
+          "answer": 0,
+          "explain": "`\"1\"` is a string, so `+` joins the text `\"1\"` and `2` to `\"12\"`."
+        },
+        {
+          "type": "gap",
+          "id": "strings-4",
+          "prompt": "Fill the gap so the program prints `Hi, Lea!`.",
+          "code": "string name = \"Lea\";\nConsole.WriteLine(___\"Hi, {name}!\");",
+          "options": [
+            "$",
+            "@",
+            "#",
+            "+"
+          ],
+          "answer": 0,
+          "explain": "Only a string that starts with `$` replaces `{name}` with the value of `name`."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-5",
+          "prompt": "Build a line that prints the first 3 characters of `text`.",
+          "tokens": [
+            "Console.WriteLine(",
+            "text.Substring(",
+            "0,",
+            "3",
+            "));"
+          ],
+          "distractors": [
+            "1,",
+            "text.Length"
+          ],
+          "explain": "`Substring(0, 3)` starts at position `0` and takes `3` characters."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-6",
+          "statement": "This program prints `CAT`.",
+          "code": "string s = \"cat\";\ns.ToUpper();\nConsole.WriteLine(s);",
+          "answer": false,
+          "explain": "`ToUpper()` returns a new string, but the program does not store it. `s` is still `\"cat\"`."
+        },
+        {
+          "type": "bug",
+          "id": "strings-7",
+          "prompt": "The program should print `Rome in 2025`. Which line has the bug?",
+          "lines": [
+            "string city = \"Rome\";",
+            "int year = 2025;",
+            "string text = \"{city} in {year}\";",
+            "Console.WriteLine(text);"
+          ],
+          "bug": 2,
+          "explain": "The `$` is missing, so the braces are printed as normal text. Write `$\"{city} in {year}\"`."
+        },
+        {
+          "type": "input",
+          "id": "strings-8",
+          "prompt": "What does this print?",
+          "code": "int x = 4;\nx *= 3;\nx--;\nConsole.WriteLine(x);",
+          "answers": [
+            "11"
+          ],
+          "explain": "`x *= 3` makes `x` `12`, and `x--` subtracts `1`, so it is `11`."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`%`",
+              "remainder of a division"
+            ],
+            [
+              "`+=`",
+              "adds to a variable"
+            ],
+            [
+              "`++`",
+              "adds 1"
+            ],
+            [
+              "`.Length`",
+              "number of characters"
+            ],
+            [
+              "`$\"{x}\"`",
+              "puts a value into a string"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "strings-10",
+          "prompt": "What is the value of `10 / 4` in C#?",
+          "options": [
+            "`2`",
+            "`2.5`",
+            "`3`",
+            "`2.0`"
+          ],
+          "answer": 0,
+          "explain": "Both numbers are `int`, so the result is an `int`. The part after the decimal point is cut off."
+        },
+        {
+          "type": "order",
+          "id": "strings-11",
+          "prompt": "Put the lines in order so the program prints `HELLO WORLD`.",
+          "lines": [
+            "string word = \"world\";",
+            "string text = \"hello \" + word;",
+            "string loud = text.ToUpper();",
+            "Console.WriteLine(loud);"
+          ],
+          "explain": "Each line uses the variable from the line before it, so this is the only order that works."
+        },
+        {
+          "type": "choice",
+          "id": "strings-12",
+          "prompt": "What does this print?",
+          "code": "string s = \"Planet\";\nConsole.WriteLine(s[2]);",
+          "options": [
+            "`a`",
+            "`l`",
+            "`P`",
+            "`n`"
+          ],
+          "answer": 0,
+          "explain": "Positions start at `0`: `P` is at `0`, `l` at `1` and `a` at `2`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program choose with `if` and `else`, compare values, combine conditions and use switch expressions.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Programs often need to make a choice. An `if` statement runs a block of code only when its condition is `true`. The block is written in curly braces `{ }`."
+        },
+        {
+          "type": "code",
+          "code": "int temperature = 30;\nif (temperature > 25)\n{\n    Console.WriteLine(\"It is hot.\");\n}\nConsole.WriteLine(\"Done\");",
+          "output": "It is hot.\nDone"
+        },
+        {
+          "type": "text",
+          "md": "With `else`, you say what happens when the condition is `false`. With `else if`, you check more conditions one after another. C# runs the first block whose condition is `true` and skips the rest."
+        },
+        {
+          "type": "code",
+          "code": "int score = 72;\nif (score >= 90)\n{\n    Console.WriteLine(\"Excellent\");\n}\nelse if (score >= 60)\n{\n    Console.WriteLine(\"Passed\");\n}\nelse\n{\n    Console.WriteLine(\"Try again\");\n}",
+          "output": "Passed"
+        },
+        {
+          "type": "heading",
+          "text": "Comparison operators"
+        },
+        {
+          "type": "text",
+          "md": "A comparison gives a `bool`. The operators are `==` (equal), `!=` (not equal), `<` (less than), `>` (greater than), `<=` (less or equal) and `>=` (greater or equal). You can compare strings with `==` too."
+        },
+        {
+          "type": "code",
+          "code": "int a = 5;\nConsole.WriteLine(a == 5);\nConsole.WriteLine(a != 5);\nConsole.WriteLine(a < 3);\nConsole.WriteLine(\"cat\" == \"cat\");",
+          "output": "True\nFalse\nFalse\nTrue"
+        },
+        {
+          "type": "warning",
+          "md": "`=` gives a variable a value, `==` compares two values. `if (a = 5)` does not compile in C#."
+        },
+        {
+          "type": "heading",
+          "text": "Logical operators"
+        },
+        {
+          "type": "text",
+          "md": "You can combine conditions: `&&` means and (both must be `true`), `||` means or (at least one must be `true`), and `!` means not (it turns `true` into `false` and the other way round)."
+        },
+        {
+          "type": "code",
+          "code": "int age = 20;\nbool hasTicket = true;\nif (age >= 18 && hasTicket)\n{\n    Console.WriteLine(\"Welcome!\");\n}\nif (age < 12 || !hasTicket)\n{\n    Console.WriteLine(\"Sorry.\");\n}",
+          "output": "Welcome!"
+        },
+        {
+          "type": "heading",
+          "text": "Switch expressions"
+        },
+        {
+          "type": "text",
+          "md": "A **switch expression** picks one result out of several cases. Each case has the form `value => result`, and the cases are separated by commas. The underscore `_` matches every other value, like a final `else`."
+        },
+        {
+          "type": "code",
+          "code": "int day = 6;\nstring name = day switch\n{\n    1 => \"Monday\",\n    6 => \"Saturday\",\n    7 => \"Sunday\",\n    _ => \"Another day\"\n};\nConsole.WriteLine(name);",
+          "output": "Saturday"
+        }
+      ],
+      "card": [
+        "`if (x > 0) { ... } else { ... }`",
+        "`==` `!=` `<` `>` `<=` `>=` compare values",
+        "`&&` and, `||` or, `!` not",
+        "`x switch { 1 => \"one\", _ => \"other\" }`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "int n = 7;\nif (n > 10)\n{\n    Console.WriteLine(\"big\");\n}\nelse\n{\n    Console.WriteLine(\"small\");\n}",
+          "answers": [
+            "small"
+          ],
+          "explain": "`7 > 10` is `false`, so the `else` block runs."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "int x = 15;\nif (x > 5)\n{\n    Console.WriteLine(\"A\");\n}\nelse if (x > 10)\n{\n    Console.WriteLine(\"B\");\n}\nelse\n{\n    Console.WriteLine(\"C\");\n}",
+          "options": [
+            "`A`",
+            "`B`",
+            "`A` and then `B`",
+            "`C`"
+          ],
+          "answer": 0,
+          "explain": "C# runs only the first block whose condition is `true`. `15 > 5` is already `true`, so the other branches are skipped."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-3",
+          "statement": "This program prints `True`.",
+          "code": "bool a = true;\nbool b = false;\nConsole.WriteLine(a && b);",
+          "answer": false,
+          "explain": "`&&` needs both sides to be `true`. `b` is `false`, so the result is `False`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-4",
+          "prompt": "Fill the gap so the program prints `Equal`.",
+          "code": "int a = 4;\nint b = 4;\nif (a ___ b)\n{\n    Console.WriteLine(\"Equal\");\n}",
+          "options": [
+            "==",
+            "=",
+            "!=",
+            "=>"
+          ],
+          "answer": 0,
+          "explain": "`==` compares two values. A single `=` assigns a value and does not compile inside `if`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-5",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "int age = 16;",
+            "if (age >= 18)",
+            "{",
+            "    Console.WriteLine(\"Adult\");",
+            "}",
+            "else (age < 18)",
+            "{",
+            "    Console.WriteLine(\"Minor\");",
+            "}"
+          ],
+          "bug": 5,
+          "explain": "`else` never has a condition. Write only `else`, or use `else if (age < 18)`."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-6",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`&&`",
+              "both must be true"
+            ],
+            [
+              "`||`",
+              "at least one must be true"
+            ],
+            [
+              "`!`",
+              "turns true into false"
+            ],
+            [
+              "`!=`",
+              "not equal"
+            ],
+            [
+              "`_`",
+              "any other value in a switch"
+            ]
+          ]
+        },
+        {
+          "type": "input",
+          "id": "conditions-7",
+          "prompt": "What does this print?",
+          "code": "string size = \"M\";\nint price = size switch\n{\n    \"S\" => 5,\n    \"M\" => 7,\n    \"L\" => 9,\n    _ => 0\n};\nConsole.WriteLine(price);",
+          "answers": [
+            "7"
+          ],
+          "explain": "`size` is `\"M\"`, so the case `\"M\" => 7` matches."
+        },
+        {
+          "type": "order",
+          "id": "conditions-8",
+          "prompt": "Put the lines in order so the program prints `Even`.",
+          "lines": [
+            "int n = 8;",
+            "bool even = n % 2 == 0;",
+            "string text = even switch",
+            "{",
+            "    true => \"Even\",",
+            "    _ => \"Odd\"",
+            "};",
+            "Console.WriteLine(text);"
+          ],
+          "explain": "Each variable needs the one before it. In the switch expression, `_` must be the last case, because it matches every value."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-9",
+          "prompt": "Build the line that checks that `age` is at least `18` and `member` is `true`.",
+          "tokens": [
+            "if",
+            "(age",
+            ">=",
+            "18",
+            "&&",
+            "member)"
+          ],
+          "distractors": [
+            "||",
+            "=>"
+          ],
+          "explain": "`>=` means greater or equal, and `&&` needs both conditions to be `true`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-10",
+          "prompt": "Which operator means **or**?",
+          "options": [
+            "`||`",
+            "`&&`",
+            "`!`",
+            "`==`"
+          ],
+          "answer": 0,
+          "explain": "`||` is `true` when at least one side is `true`. `&&` means and, `!` means not."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-11",
+          "statement": "In a switch expression, `_` matches every value that no other case matched.",
+          "answer": true,
+          "explain": "`_` is the discard pattern. It works like a final `else`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-12",
+          "prompt": "What does this print?",
+          "code": "int a = 3;\nint b = 8;\nbool result = !(a > b) && b != 8;\nConsole.WriteLine(result);",
+          "answers": [
+            "False"
+          ],
+          "explain": "`a > b` is `false`, so `!(a > b)` is `true`. But `b != 8` is `false`, and `true && false` is `False`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with `for`, `while` and `foreach`, and control a loop with `break` and `continue`.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **loop** repeats code. The `for` loop is the classic way to count. It has three parts in parentheses, separated by semicolons: a start, a condition and a step."
+        },
+        {
+          "type": "code",
+          "code": "for (int i = 1; i <= 3; i++)\n{\n    Console.WriteLine($\"Round {i}\");\n}",
+          "output": "Round 1\nRound 2\nRound 3"
+        },
+        {
+          "type": "text",
+          "md": "`int i = 1` runs once at the start. Before each round, C# checks `i <= 3`. After each round, `i++` adds `1` to `i`. As soon as the condition is `false`, the loop ends. A loop is also useful to add up numbers."
+        },
+        {
+          "type": "code",
+          "code": "int sum = 0;\nfor (int i = 1; i <= 4; i++)\n{\n    sum += i;\n}\nConsole.WriteLine(sum);",
+          "output": "10"
+        },
+        {
+          "type": "heading",
+          "text": "while"
+        },
+        {
+          "type": "text",
+          "md": "A `while` loop repeats its block as long as the condition is `true`. Use it when you do not know in advance how many rounds you need. Make sure the condition becomes `false` at some point, or the loop never ends."
+        },
+        {
+          "type": "code",
+          "code": "int n = 1;\nwhile (n < 50)\n{\n    n = n * 3;\n}\nConsole.WriteLine(n);",
+          "output": "81"
+        },
+        {
+          "type": "heading",
+          "text": "foreach"
+        },
+        {
+          "type": "text",
+          "md": "A `foreach` loop goes through every item of a collection, one after another. A string is a collection of characters, so you can loop over it. You meet more collections in a later world."
+        },
+        {
+          "type": "code",
+          "code": "foreach (char c in \"abc\")\n{\n    Console.WriteLine(c);\n}",
+          "output": "a\nb\nc"
+        },
+        {
+          "type": "heading",
+          "text": "break and continue"
+        },
+        {
+          "type": "text",
+          "md": "`break` ends the whole loop at once. `continue` skips the rest of the current round and goes on with the next round."
+        },
+        {
+          "type": "code",
+          "code": "for (int i = 1; i <= 10; i++)\n{\n    if (i % 2 == 0)\n    {\n        continue;\n    }\n    if (i > 7)\n    {\n        break;\n    }\n    Console.WriteLine(i);\n}",
+          "output": "1\n3\n5\n7"
+        },
+        {
+          "type": "tip",
+          "md": "To count down, start high and use `i--`. The loop `for (int i = 3; i > 0; i--)` counts `3`, `2`, `1`."
+        }
+      ],
+      "card": [
+        "`for (int i = 0; i < 5; i++) { ... }`",
+        "`while (condition) { ... }`",
+        "`foreach (char c in text) { ... }`",
+        "`break` ends the loop, `continue` skips one round"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "for (int i = 0; i < 4; i++)\n{\n    Console.Write(i);\n}",
+          "answers": [
+            "0123"
+          ],
+          "explain": "`i` starts at `0` and the loop runs while `i < 4`, so it prints `0`, `1`, `2` and `3` on one line."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "int total = 0;\nfor (int i = 2; i <= 6; i += 2)\n{\n    total += i;\n}\nConsole.WriteLine(total);",
+          "answers": [
+            "12"
+          ],
+          "explain": "`i` takes the values `2`, `4` and `6`. Their sum is `12`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "How many times does this loop print `Hi`?",
+          "code": "for (int i = 1; i < 5; i++)\n{\n    Console.WriteLine(\"Hi\");\n}",
+          "options": [
+            "`4`",
+            "`5`",
+            "`3`",
+            "`6`"
+          ],
+          "answer": 0,
+          "explain": "`i` takes the values `1`, `2`, `3` and `4`. When `i` is `5`, `i < 5` is `false` and the loop ends."
+        },
+        {
+          "type": "gap",
+          "id": "loops-4",
+          "prompt": "Fill the gap so the loop prints `5`, `4`, `3`, `2`, `1`.",
+          "code": "for (int i = 5; i > 0; ___)\n{\n    Console.WriteLine(i);\n}",
+          "options": [
+            "i--",
+            "i - 1",
+            "i -= 2"
+          ],
+          "answer": 0,
+          "explain": "`i--` subtracts `1` after each round. `i - 1` calculates a value but does not change `i`, and `i -= 2` skips numbers."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-5",
+          "statement": "A `while` loop whose condition is `false` at the start never runs its block.",
+          "answer": true,
+          "explain": "C# checks the condition before every round, including the first one."
+        },
+        {
+          "type": "bug",
+          "id": "loops-6",
+          "prompt": "The program should print `1`, `2` and `3`. Which line has the bug?",
+          "lines": [
+            "int i = 1;",
+            "while (i < 3)",
+            "{",
+            "    Console.WriteLine(i);",
+            "    i++;",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "With `i < 3`, the loop stops before `3` is printed. Write `while (i <= 3)`."
+        },
+        {
+          "type": "order",
+          "id": "loops-7",
+          "prompt": "Put the lines in order so the program prints `14`.",
+          "lines": [
+            "int total = 0;",
+            "for (int i = 1; i <= 3; i++)",
+            "{",
+            "    int square = i * i;",
+            "    total += square;",
+            "}",
+            "Console.WriteLine(total);"
+          ],
+          "explain": "`total` must exist before the loop. In each round, the loop calculates `square` and adds it: `1 + 4 + 9` is `14`. The result is printed once, after the loop."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-8",
+          "prompt": "Build a loop header that goes through every character `c` of `word`.",
+          "tokens": [
+            "foreach",
+            "(char",
+            "c",
+            "in",
+            "word)"
+          ],
+          "distractors": [
+            "of",
+            "for"
+          ],
+          "explain": "A `foreach` loop has the form `foreach (type name in collection)`."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-9",
+          "prompt": "Match the keyword with its meaning.",
+          "pairs": [
+            [
+              "`for`",
+              "counts with a start, a condition and a step"
+            ],
+            [
+              "`while`",
+              "repeats as long as a condition is true"
+            ],
+            [
+              "`foreach`",
+              "goes through every item"
+            ],
+            [
+              "`break`",
+              "ends the loop"
+            ],
+            [
+              "`continue`",
+              "skips to the next round"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "loops-10",
+          "prompt": "What does this print?",
+          "code": "for (int i = 1; i <= 5; i++)\n{\n    if (i == 3)\n    {\n        break;\n    }\n    Console.Write(i);\n}",
+          "options": [
+            "`12`",
+            "`1245`",
+            "`123`",
+            "`12345`"
+          ],
+          "answer": 0,
+          "explain": "When `i` is `3`, `break` ends the loop before `3` is printed."
+        },
+        {
+          "type": "input",
+          "id": "loops-11",
+          "prompt": "What does this print?",
+          "code": "int count = 0;\nforeach (char c in \"banana\")\n{\n    if (c == 'a')\n    {\n        count++;\n    }\n}\nConsole.WriteLine(count);",
+          "answers": [
+            "3"
+          ],
+          "explain": "The loop looks at every character of `\"banana\"`, and three of them are `'a'`."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-12",
+          "statement": "This program prints `24`.",
+          "code": "for (int i = 1; i <= 5; i++)\n{\n    if (i % 2 == 1)\n    {\n        continue;\n    }\n    Console.Write(i);\n}",
+          "answer": true,
+          "explain": "For odd numbers, `i % 2 == 1` is `true` and `continue` skips the output. Only `2` and `4` are printed."
+        }
+      ]
+    },
+    {
+      "id": "methods",
+      "title": "Methods",
+      "chapter": "Building blocks",
+      "summary": "Write your own methods with parameters, return values and optional parameters, and call them as often as you need.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **method** is a named block of code that you can run as often as you want. You already use methods like `Console.WriteLine`. Now you write your own."
+        },
+        {
+          "type": "code",
+          "code": "void SayHello()\n{\n    Console.WriteLine(\"Hello!\");\n}\n\nSayHello();\nSayHello();",
+          "output": "Hello!\nHello!"
+        },
+        {
+          "type": "text",
+          "md": "`void` means that the method gives nothing back. The name is followed by parentheses, and method names in C# start with a capital letter. To run a method, you **call** it: write its name with parentheses."
+        },
+        {
+          "type": "text",
+          "md": "**Parameters** are inputs of a method. Each parameter has a type and a name. When you call the method, you pass a value for each parameter, called an **argument**. Inside the method, the parameter is a new variable with a copy of that value."
+        },
+        {
+          "type": "code",
+          "code": "void Greet(string name, int times)\n{\n    for (int i = 0; i < times; i++)\n    {\n        Console.WriteLine($\"Hi, {name}!\");\n    }\n}\n\nGreet(\"Zoe\", 2);\nGreet(\"Tom\", 1);",
+          "output": "Hi, Zoe!\nHi, Zoe!\nHi, Tom!"
+        },
+        {
+          "type": "heading",
+          "text": "Return values"
+        },
+        {
+          "type": "text",
+          "md": "A method can calculate a value and give it back with `return`. Instead of `void`, you write the type of the result before the name. `return` also ends the method at once."
+        },
+        {
+          "type": "code",
+          "code": "int Square(int x)\n{\n    return x * x;\n}\n\nint result = Square(4);\nConsole.WriteLine(result);\nConsole.WriteLine(Square(3) + Square(2));",
+          "output": "16\n13"
+        },
+        {
+          "type": "text",
+          "md": "If a method only returns one expression, you can use the short form with `=>`. The method `IsEven` below returns a `bool`."
+        },
+        {
+          "type": "code",
+          "code": "bool IsEven(int n) => n % 2 == 0;\n\nConsole.WriteLine(IsEven(10));\nConsole.WriteLine(IsEven(7));",
+          "output": "True\nFalse"
+        },
+        {
+          "type": "heading",
+          "text": "Optional parameters"
+        },
+        {
+          "type": "text",
+          "md": "A parameter with a default value is **optional**. If you leave out the argument, C# uses the default. You can also write the name of a parameter in the call, like `count: 2`. Then the order of the arguments does not matter."
+        },
+        {
+          "type": "code",
+          "code": "string Describe(string item, int count = 1)\n{\n    return $\"{count} x {item}\";\n}\n\nConsole.WriteLine(Describe(\"pen\"));\nConsole.WriteLine(Describe(\"cup\", 3));\nConsole.WriteLine(Describe(count: 2, item: \"book\"));",
+          "output": "1 x pen\n3 x cup\n2 x book"
+        },
+        {
+          "type": "tip",
+          "md": "Here the methods live directly in the program file, next to the top-level statements. Methods inside a class, which you meet in the last world, work the same way."
+        }
+      ],
+      "card": [
+        "`void Hi() { ... }` defines a method",
+        "`int Add(int a, int b) { return a + b; }`",
+        "`int Twice(int x) => x * 2;`",
+        "`void Hi(string name = \"you\")` has an optional parameter",
+        "`Add(2, 3)` calls a method"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "methods-1",
+          "prompt": "What does this print?",
+          "code": "int Add(int a, int b)\n{\n    return a + b;\n}\n\nConsole.WriteLine(Add(2, Add(3, 4)));",
+          "answers": [
+            "9"
+          ],
+          "explain": "The inner call runs first: `Add(3, 4)` is `7`, and `Add(2, 7)` is `9`."
+        },
+        {
+          "type": "choice",
+          "id": "methods-2",
+          "prompt": "What does `void` before a method name mean?",
+          "options": [
+            "The method returns no value.",
+            "The method has no parameters.",
+            "The method is empty.",
+            "The method returns `0`."
+          ],
+          "answer": 0,
+          "explain": "`void` stands where the type of the result would be. It says that the method gives nothing back."
+        },
+        {
+          "type": "gap",
+          "id": "methods-3",
+          "prompt": "Fill the gap so the method gives back the doubled value.",
+          "code": "int Twice(int x)\n{\n    ___ x * 2;\n}\n\nConsole.WriteLine(Twice(5));",
+          "options": [
+            "return",
+            "void",
+            "print",
+            "int"
+          ],
+          "answer": 0,
+          "explain": "`return` gives the value back to the caller, so `Twice(5)` is `10`."
+        },
+        {
+          "type": "bug",
+          "id": "methods-4",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "string Shout(string text)",
+            "{",
+            "    return text.ToUpper() + \"!\";",
+            "}",
+            "Console.WriteLine(Shout());"
+          ],
+          "bug": 4,
+          "explain": "`Shout` has a parameter, so the call needs an argument, for example `Shout(\"hey\")`."
+        },
+        {
+          "type": "true_false",
+          "id": "methods-5",
+          "statement": "A method with the return type `int` must give back a value with `return`.",
+          "answer": true,
+          "explain": "The type before the name promises a result. Without `return`, the method does not compile."
+        },
+        {
+          "type": "input",
+          "id": "methods-6",
+          "prompt": "What does this print?",
+          "code": "string Tag(string text, string mark = \"*\")\n{\n    return mark + text + mark;\n}\n\nConsole.WriteLine(Tag(\"hi\", \"#\"));",
+          "answers": [
+            "#hi#"
+          ],
+          "explain": "The call passes `\"#\"`, so it replaces the default value `\"*\"`."
+        },
+        {
+          "type": "order",
+          "id": "methods-7",
+          "prompt": "Put the lines in order so the method returns the price of all items plus a fee of `2`.",
+          "lines": [
+            "int Total(int price, int count)",
+            "{",
+            "    int sum = price * count;",
+            "    int withFee = sum + 2;",
+            "    return withFee;",
+            "}"
+          ],
+          "explain": "The method starts with its header and `{`. Each variable needs the one before it, and `return` gives back the final result."
+        },
+        {
+          "type": "blocks",
+          "id": "methods-8",
+          "prompt": "Build a short method `Next` that returns its argument plus one.",
+          "tokens": [
+            "int",
+            "Next(int",
+            "n)",
+            "=>",
+            "n",
+            "+",
+            "1;"
+          ],
+          "distractors": [
+            "return",
+            "void"
+          ],
+          "explain": "The short form is the type of the result, the name with the parameters, `=>` and the expression."
+        },
+        {
+          "type": "pairs",
+          "id": "methods-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`void`",
+              "returns no value"
+            ],
+            [
+              "`return x;`",
+              "gives x back and ends the method"
+            ],
+            [
+              "`int count = 1`",
+              "a parameter with a default value"
+            ],
+            [
+              "`=>`",
+              "short form for one expression"
+            ],
+            [
+              "`Show(5)`",
+              "calls a method with an argument"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "methods-10",
+          "prompt": "What does this print?",
+          "code": "int Calc(int a, int b = 10)\n{\n    return a * b;\n}\n\nConsole.WriteLine(Calc(3) + Calc(2, 2));",
+          "options": [
+            "`34`",
+            "`7`",
+            "`32`",
+            "`50`"
+          ],
+          "answer": 0,
+          "explain": "`Calc(3)` uses the default `b = 10` and gives `30`. `Calc(2, 2)` gives `4`. Together that is `34`."
+        },
+        {
+          "type": "input",
+          "id": "methods-11",
+          "prompt": "What does this print?",
+          "code": "string Check(int n)\n{\n    if (n < 0)\n    {\n        return \"negative\";\n    }\n    return \"ok\";\n}\n\nConsole.WriteLine(Check(-5));",
+          "answers": [
+            "negative"
+          ],
+          "explain": "`-5 < 0` is `true`, so the first `return` ends the method with `\"negative\"`."
+        },
+        {
+          "type": "true_false",
+          "id": "methods-12",
+          "statement": "This program prints `100`.",
+          "code": "void Change(int x)\n{\n    x = 100;\n}\n\nint n = 5;\nChange(n);\nConsole.WriteLine(n);",
+          "answer": false,
+          "explain": "The method gets a copy of the value of `n`. Changing `x` inside the method does not change `n`, so the program prints `5`."
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "Arrays and lists",
+      "chapter": "Data",
+      "summary": "Store many values in arrays, lists and dictionaries, and go through them with `foreach`.",
+      "lesson": [
+        {
+          "type": "heading",
+          "text": "Arrays"
+        },
+        {
+          "type": "text",
+          "md": "An **array** stores several values of the same type in one variable. You write the type with square brackets, like `int[]`, and the values in `[ ]`. Each value has a position, the **index**, which starts at `0`."
+        },
+        {
+          "type": "code",
+          "code": "int[] scores = [90, 75, 60];\nConsole.WriteLine(scores[0]);\nConsole.WriteLine(scores.Length);\nscores[1] = 80;\nConsole.WriteLine(scores[1]);",
+          "output": "90\n3\n80"
+        },
+        {
+          "type": "warning",
+          "md": "The last index is `Length - 1`. Reading `scores[3]` from an array with three items stops the program with an `IndexOutOfRangeException`."
+        },
+        {
+          "type": "heading",
+          "text": "Lists"
+        },
+        {
+          "type": "text",
+          "md": "An array has a fixed size. A `List<T>` can grow and shrink. `T` stands for the type of the items, so `List<string>` is a list of strings. `Add` adds an item at the end, `Remove` deletes one, and `Count` tells you how many items there are."
+        },
+        {
+          "type": "code",
+          "code": "List<string> fruits = [\"apple\", \"banana\"];\nfruits.Add(\"cherry\");\nfruits.Remove(\"apple\");\nConsole.WriteLine(fruits.Count);\nConsole.WriteLine(fruits[0]);\nConsole.WriteLine(fruits.Contains(\"cherry\"));",
+          "output": "2\nbanana\nTrue"
+        },
+        {
+          "type": "text",
+          "md": "`foreach` goes through all items of an array or a list. To print all items on one line, use `string.Join` with a separator."
+        },
+        {
+          "type": "code",
+          "code": "List<int> numbers = [3, 8, 5];\nint sum = 0;\nforeach (int n in numbers)\n{\n    sum += n;\n}\nConsole.WriteLine(sum);\nConsole.WriteLine(string.Join(\", \", numbers));",
+          "output": "16\n3, 8, 5"
+        },
+        {
+          "type": "tip",
+          "md": "`Console.WriteLine(numbers)` does not print the items, only the name of the type. Use `string.Join` or a loop instead."
+        },
+        {
+          "type": "heading",
+          "text": "Dictionaries"
+        },
+        {
+          "type": "text",
+          "md": "A `Dictionary<TKey, TValue>` stores pairs of a **key** and a **value**. You look up a value by its key, like a word in a dictionary. Each key exists only once."
+        },
+        {
+          "type": "code",
+          "code": "var ages = new Dictionary<string, int>();\nages[\"Ana\"] = 31;\nages[\"Ben\"] = 25;\nages[\"Ana\"] = 32;\nConsole.WriteLine(ages[\"Ana\"]);\nConsole.WriteLine(ages.Count);\nConsole.WriteLine(ages.ContainsKey(\"Eva\"));\nforeach (var pair in ages)\n{\n    Console.WriteLine($\"{pair.Key}: {pair.Value}\");\n}",
+          "output": "32\n2\nFalse\nAna: 32\nBen: 25"
+        },
+        {
+          "type": "text",
+          "md": "`new Dictionary<string, int>()` creates an empty dictionary with `string` keys and `int` values. Assigning to `ages[\"Ana\"]` again replaces the old value. Reading a key that does not exist stops the program, so check it with `ContainsKey` first."
+        }
+      ],
+      "card": [
+        "`int[] a = [1, 2, 3];` then `a[0]`, `a.Length`",
+        "`List<string> list = [];` then `list.Add(x)`, `list.Count`",
+        "`var d = new Dictionary<string, int>();` then `d[\"key\"] = 1;`",
+        "`foreach (var x in list) { ... }`",
+        "`string.Join(\", \", list)` joins the items"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "collections-1",
+          "prompt": "What does this print?",
+          "code": "int[] a = [4, 7, 1, 9];\nConsole.WriteLine(a[2]);",
+          "answers": [
+            "1"
+          ],
+          "explain": "The index starts at `0`: `a[0]` is `4`, `a[1]` is `7` and `a[2]` is `1`."
+        },
+        {
+          "type": "input",
+          "id": "collections-2",
+          "prompt": "What does this print?",
+          "code": "List<string> names = [\"Li\", \"Max\"];\nnames.Add(\"Ola\");\nnames.Add(\"Ida\");\nnames.Remove(\"Max\");\nConsole.WriteLine(names.Count);",
+          "answers": [
+            "3"
+          ],
+          "explain": "The list starts with two names, gets two more and loses one: `2 + 2 - 1` is `3`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-3",
+          "prompt": "Which index does the first item of an array have?",
+          "options": [
+            "`0`",
+            "`1`",
+            "`-1`"
+          ],
+          "answer": 0,
+          "explain": "In C#, counting positions starts at `0`. The second item has the index `1`."
+        },
+        {
+          "type": "gap",
+          "id": "collections-4",
+          "prompt": "Fill the gap so the program prints `3`.",
+          "code": "List<int> items = [5, 6, 7];\nConsole.WriteLine(items.___);",
+          "options": [
+            "Count",
+            "Length",
+            "Size"
+          ],
+          "answer": 0,
+          "explain": "A list tells you its number of items with `Count`. `Length` is for arrays and strings."
+        },
+        {
+          "type": "bug",
+          "id": "collections-5",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "string[] colors = [\"red\", \"green\", \"blue\"];",
+            "Console.WriteLine(colors[0]);",
+            "Console.WriteLine(colors[1]);",
+            "Console.WriteLine(colors[3]);"
+          ],
+          "bug": 3,
+          "explain": "The array has three items, so the last index is `2`. Write `colors[2]`."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-6",
+          "statement": "An array can grow: you can call `Add` on an `int[]`.",
+          "answer": false,
+          "explain": "An array has a fixed size and no `Add` method. Use a `List<int>` if you need to add items."
+        },
+        {
+          "type": "order",
+          "id": "collections-7",
+          "prompt": "Put the lines in order so the program prints `7`.",
+          "lines": [
+            "var stock = new Dictionary<string, int>();",
+            "stock[\"pens\"] = 10;",
+            "stock[\"pens\"] -= 3;",
+            "Console.WriteLine(stock[\"pens\"]);"
+          ],
+          "explain": "First create the dictionary, then store `10` for the key `\"pens\"`. Only then can you subtract `3` and print the result."
+        },
+        {
+          "type": "blocks",
+          "id": "collections-8",
+          "prompt": "Build a line that creates a `List<string>` named `drinks` with `\"tea\"` and `\"milk\"`.",
+          "tokens": [
+            "List<string>",
+            "drinks",
+            "=",
+            "[",
+            "\"tea\",",
+            "\"milk\"",
+            "];"
+          ],
+          "distractors": [
+            "List<int>",
+            "("
+          ],
+          "explain": "The type comes first, then the name, `=` and the items in square brackets."
+        },
+        {
+          "type": "pairs",
+          "id": "collections-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`int[]`",
+              "an array of whole numbers"
+            ],
+            [
+              "`List<string>`",
+              "a list of texts that can grow"
+            ],
+            [
+              "`Dictionary<string, int>`",
+              "pairs of a key and a value"
+            ],
+            [
+              "`.Count`",
+              "number of items in a list"
+            ],
+            [
+              "`.Length`",
+              "number of items in an array"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "collections-10",
+          "prompt": "What does this print?",
+          "code": "var prices = new Dictionary<string, int>();\nprices[\"tea\"] = 3;\nprices[\"cake\"] = 5;\nprices[\"tea\"] = 4;\nConsole.WriteLine(prices[\"tea\"] + prices.Count);",
+          "options": [
+            "`6`",
+            "`7`",
+            "`9`",
+            "`5`"
+          ],
+          "answer": 0,
+          "explain": "The second assignment to `\"tea\"` replaces `3` with `4`. There are still only two keys, so the result is `4 + 2`."
+        },
+        {
+          "type": "input",
+          "id": "collections-11",
+          "prompt": "What does this print?",
+          "code": "int[] values = [2, 4, 6];\nint total = 0;\nforeach (int v in values)\n{\n    total += v * v;\n}\nConsole.WriteLine(total);",
+          "answers": [
+            "56"
+          ],
+          "explain": "The loop adds the squares `4`, `16` and `36`, which is `56`."
+        },
+        {
+          "type": "input",
+          "id": "collections-12",
+          "prompt": "What does this print?",
+          "code": "List<int> nums = [1, 2];\nnums.Add(3);\nnums[0] = 9;\nConsole.WriteLine(string.Join(\"-\", nums));",
+          "answers": [
+            "9-2-3"
+          ],
+          "explain": "`Add(3)` adds `3` at the end, and `nums[0] = 9` replaces the first item. `string.Join` puts `-` between the items."
+        }
+      ]
+    },
+    {
+      "id": "classes",
+      "title": "Classes and objects",
+      "chapter": "Objects",
+      "summary": "Define your own types with classes, properties, constructors and methods, and store data with records.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **class** is a blueprint for your own type. It bundles data and the methods that work with that data. An **object** is one concrete thing that you build from a class with `new`."
+        },
+        {
+          "type": "code",
+          "code": "var dog = new Dog();\ndog.Name = \"Rex\";\ndog.Age = 3;\nConsole.WriteLine($\"{dog.Name} is {dog.Age}\");\n\nclass Dog\n{\n    public string Name { get; set; } = \"\";\n    public int Age { get; set; }\n}",
+          "output": "Rex is 3"
+        },
+        {
+          "type": "text",
+          "md": "`Name` and `Age` are **properties**: values that every object of the class has. `{ get; set; }` means you can read and change them, and `public` means code outside the class can use them. `= \"\"` gives `Name` an empty text as start value. In a program with top-level statements, classes go at the end of the file."
+        },
+        {
+          "type": "heading",
+          "text": "Constructors"
+        },
+        {
+          "type": "text",
+          "md": "A **constructor** runs when you create an object with `new`. It has the same name as the class and no return type. Use it to give the properties their start values."
+        },
+        {
+          "type": "code",
+          "code": "var book = new Book(\"Dune\", 412);\nConsole.WriteLine(book.Title);\nConsole.WriteLine(book.Pages);\n\nclass Book\n{\n    public string Title { get; }\n    public int Pages { get; }\n\n    public Book(string title, int pages)\n    {\n        Title = title;\n        Pages = pages;\n    }\n}",
+          "output": "Dune\n412"
+        },
+        {
+          "type": "text",
+          "md": "A property with only `get` can be set in the constructor, but not changed later. This protects the data of an object from mistakes."
+        },
+        {
+          "type": "heading",
+          "text": "Methods in classes"
+        },
+        {
+          "type": "text",
+          "md": "A class can have methods that use the properties of the object. Each object keeps its own values, so the same method changes only the object you call it on. `private set` means that only code inside the class can change `Value`."
+        },
+        {
+          "type": "code",
+          "code": "var a = new Counter();\nvar b = new Counter();\na.Increase();\na.Increase();\nb.Increase();\nConsole.WriteLine(a.Value);\nConsole.WriteLine(b.Value);\n\nclass Counter\n{\n    public int Value { get; private set; }\n\n    public void Increase()\n    {\n        Value++;\n    }\n}",
+          "output": "2\n1"
+        },
+        {
+          "type": "heading",
+          "text": "Records"
+        },
+        {
+          "type": "text",
+          "md": "A **record** is a short way to define a type that mainly holds data. One line creates the properties and the constructor. Records also print their values in a readable way, and two records with the same values are equal."
+        },
+        {
+          "type": "code",
+          "code": "var p1 = new Point(2, 3);\nvar p2 = new Point(2, 3);\nConsole.WriteLine(p1);\nConsole.WriteLine(p1 == p2);\nConsole.WriteLine(p1.X + p1.Y);\n\nrecord Point(int X, int Y);",
+          "output": "Point { X = 2, Y = 3 }\nTrue\n5"
+        },
+        {
+          "type": "tip",
+          "md": "Two objects of a normal class are only equal with `==` if they are the very same object. Use a record when you want to compare the values."
+        }
+      ],
+      "card": [
+        "`class Dog { public string Name { get; set; } = \"\"; }`",
+        "`var d = new Dog();` creates an object",
+        "`public Dog(string name) { Name = name; }` is a constructor",
+        "`record Point(int X, int Y);` is a data type",
+        "Classes go after the top-level statements"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "classes-1",
+          "prompt": "What does this print?",
+          "code": "var c = new Cat();\nc.Lives = 9;\nc.Lives -= 2;\nConsole.WriteLine(c.Lives);\n\nclass Cat\n{\n    public int Lives { get; set; }\n}",
+          "answers": [
+            "7"
+          ],
+          "explain": "`Lives` is set to `9`, and `-= 2` makes it `7`."
+        },
+        {
+          "type": "choice",
+          "id": "classes-2",
+          "prompt": "Which expression creates a new object of the class `Car`?",
+          "options": [
+            "`new Car()`",
+            "`Car()`",
+            "`create Car()`",
+            "`Car.new()`"
+          ],
+          "answer": 0,
+          "explain": "You create objects with the keyword `new`, followed by the class name and parentheses."
+        },
+        {
+          "type": "gap",
+          "id": "classes-3",
+          "prompt": "Fill the gap so the constructor stores the name.",
+          "code": "var p = new Player(\"Kai\");\nConsole.WriteLine(p.Name);\n\nclass Player\n{\n    public string Name { get; }\n\n    public Player(string name)\n    {\n        ___ = name;\n    }\n}",
+          "options": [
+            "Name",
+            "name",
+            "Player",
+            "string"
+          ],
+          "answer": 0,
+          "explain": "The property `Name` gets the value of the parameter `name`. `name = name` would only assign the parameter to itself."
+        },
+        {
+          "type": "true_false",
+          "id": "classes-4",
+          "statement": "A constructor has the same name as its class and no return type.",
+          "answer": true,
+          "explain": "That is how C# recognizes a constructor. It runs every time you create an object with `new`."
+        },
+        {
+          "type": "bug",
+          "id": "classes-5",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "var s = new Square();",
+            "s.Side = 4;",
+            "Console.WriteLine(s.Area());",
+            "class Square",
+            "{",
+            "    public int Side { get; set; }",
+            "    public void Area()",
+            "    {",
+            "        return Side * Side;",
+            "    }",
+            "}"
+          ],
+          "bug": 6,
+          "explain": "`Area` returns a number, so its return type must be `int`, not `void`. Write `public int Area()`."
+        },
+        {
+          "type": "order",
+          "id": "classes-6",
+          "prompt": "Put the lines in order so the program prints `Hi, Ana`.",
+          "lines": [
+            "var g = new Greeter();",
+            "g.Name = \"Ana\";",
+            "Console.WriteLine($\"Hi, {g.Name}\");",
+            "class Greeter",
+            "{",
+            "    public string Name { get; set; } = \"\";",
+            "}"
+          ],
+          "explain": "The top-level statements come first and the class goes at the end. Create the object before you set or read `Name`."
+        },
+        {
+          "type": "pairs",
+          "id": "classes-7",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`class`",
+              "a blueprint for objects"
+            ],
+            [
+              "`new`",
+              "creates an object"
+            ],
+            [
+              "`{ get; set; }`",
+              "a property you can read and change"
+            ],
+            [
+              "`record`",
+              "a data type that compares values"
+            ],
+            [
+              "`public`",
+              "usable outside the class"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "classes-8",
+          "prompt": "What does this print?",
+          "code": "var a = new Item(\"pen\");\nvar b = new Item(\"pen\");\nConsole.WriteLine(a == b);\n\nrecord Item(string Name);",
+          "options": [
+            "`True`",
+            "`False`",
+            "`Item { Name = pen }`",
+            "It does not compile."
+          ],
+          "answer": 0,
+          "explain": "Records compare their values. Both records have the name `\"pen\"`, so `a == b` is `True`."
+        },
+        {
+          "type": "blocks",
+          "id": "classes-9",
+          "prompt": "Build the line that defines a record `Person` with a `Name` and an `Age`.",
+          "tokens": [
+            "record",
+            "Person(string",
+            "Name,",
+            "int",
+            "Age);"
+          ],
+          "distractors": [
+            "class",
+            "new"
+          ],
+          "explain": "A record lists its properties with their types in parentheses after the name."
+        },
+        {
+          "type": "input",
+          "id": "classes-10",
+          "prompt": "What does this print?",
+          "code": "var s = new Shop();\ns.Sell(3);\ns.Sell(4);\nConsole.WriteLine(s.Sold);\n\nclass Shop\n{\n    public int Sold { get; private set; }\n\n    public void Sell(int count)\n    {\n        Sold += count;\n    }\n}",
+          "answers": [
+            "7"
+          ],
+          "explain": "Each call of `Sell` adds to `Sold` of the same object: `3 + 4` is `7`."
+        },
+        {
+          "type": "true_false",
+          "id": "classes-11",
+          "statement": "This program prints `True`.",
+          "code": "var a = new Box();\nvar b = new Box();\nConsole.WriteLine(a == b);\n\nclass Box\n{\n}",
+          "answer": false,
+          "explain": "`Box` is a normal class. `a` and `b` are two different objects, so `a == b` is `False`."
+        },
+        {
+          "type": "input",
+          "id": "classes-12",
+          "prompt": "What does this print?",
+          "code": "var t = new Temp(20);\nConsole.WriteLine(t.Fahrenheit());\n\nclass Temp\n{\n    public int Celsius { get; }\n\n    public Temp(int celsius)\n    {\n        Celsius = celsius;\n    }\n\n    public int Fahrenheit() => Celsius * 9 / 5 + 32;\n}",
+          "answers": [
+            "68"
+          ],
+          "explain": "`20 * 9` is `180`, `180 / 5` is `36`, and `36 + 32` is `68`."
+        }
+      ]
+    }
+  ]
+}

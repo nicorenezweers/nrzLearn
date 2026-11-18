@@ -1,0 +1,321 @@
+{
+ "_lesson": {
+  "extra": [
+   {
+    "src": "\"note\" 'x' displayNl.",
+    "out": "x"
+   },
+   {
+    "src": "Transcript showCr: 2 + 3 printString.",
+    "err": true
+   },
+   {
+    "src": "| n |\nn := 0.\n[n >= 3] whileFalse: [n := n + 1].\nn printNl.",
+    "out": "3"
+   },
+   {
+    "src": "[:x | x * 2] value.",
+    "err": true
+   },
+   {
+    "src": "('hello' select: [:c | c isVowel]) printNl.",
+    "out": "'eo'"
+   },
+   {
+    "src": "#(10 20) at: 3.",
+    "err": true
+   },
+   {
+    "src": "Object subclass: Account [\n    | balance |\n    balance [ ^balance ]\n]\n\nAccount new balance printNl.",
+    "out": "nil"
+   },
+   {
+    "src": "Object subclass: Counter [\n    | count |\n    count [ count ]\n]\n\nCounter new count printNl.",
+    "out": "a Counter"
+   }
+  ]
+ },
+ "hello-1": {
+  "extra": [
+   {
+    "src": "'Hello' displayNl.\n'Hello' class printNl.",
+    "out": "Hello\nString"
+   }
+  ]
+ },
+ "hello-4": {
+  "extra": [
+   {
+    "src": "3 class printNl.\n(3 isKindOf: Object) printNl.",
+    "out": "SmallInteger\ntrue"
+   }
+  ]
+ },
+ "hello-5": {
+  "out": "Hi"
+ },
+ "hello-6": {
+  "out": "12"
+ },
+ "hello-7": {
+  "out": "Done"
+ },
+ "hello-8": {
+  "out": "Hello, World\nBye"
+ },
+ "hello-10": {
+  "fix": "Transcript showCr: 'End'.",
+  "out": "Start\n4\nEnd"
+ },
+ "hello-11": {
+  "fix": "Transcript showCr: (5 + 5) printString.",
+  "out": "Sum:\n10\nDone"
+ },
+ "messages-1": {
+  "extra": [
+   {
+    "src": "#max: numArgs printNl.\n(3 max: 9) printNl.",
+    "out": "1\n9"
+   }
+  ]
+ },
+ "messages-4": {
+  "extra": [
+   {
+    "src": "(2 + 3 * 4) printNl.",
+    "out": "20"
+   }
+  ]
+ },
+ "messages-6": {
+  "out": "14"
+ },
+ "messages-7": {
+  "out": "ell"
+ },
+ "messages-8": {
+  "out": "Hi"
+ },
+ "messages-9": {
+  "out": "one two\nthree"
+ },
+ "messages-11": {
+  "fix": "(3 between: 1 and: 4) displayNl.",
+  "out": "hell\n5\n9\ntrue"
+ },
+ "variables-1": {
+  "extra": [
+   {
+    "src": "| x |\nx := 10.\nx printNl.",
+    "out": "10"
+   },
+   {
+    "src": "| x |\nx = 10.\nx printNl.",
+    "out": "nil"
+   },
+   {
+    "src": "| x |\nx == 10.\nx printNl.",
+    "out": "nil"
+   },
+   {
+    "src": "| x |\n10 := x.\nx printNl.",
+    "err": true
+   }
+  ]
+ },
+ "variables-5": {
+  "extra": [
+   {
+    "src": "| v |\nv printNl.",
+    "out": "nil"
+   }
+  ]
+ },
+ "variables-7": {
+  "out": "3"
+ },
+ "variables-8": {
+  "out": "It's me"
+ },
+ "variables-9": {
+  "tpl": "| price total |\nprice := 4.\n{{CODE}}\ntotal printNl.",
+  "out": "12"
+ },
+ "variables-10": {
+  "out": "5"
+ },
+ "variables-12": {
+  "fix": "last := 'Lovelace'.",
+  "out": "Ada Lovelace"
+ },
+ "conditions-5": {
+  "extra": [
+   {
+    "src": "true class printNl.\n(true respondsTo: #ifTrue:) printNl.\n(false respondsTo: #ifTrue:) printNl.",
+    "out": "True\ntrue\ntrue"
+   }
+  ]
+ },
+ "conditions-6": {
+  "extra": [
+   {
+    "src": "(3 ~= 4) printNl.\n(4 ~= 4) printNl.",
+    "out": "true\nfalse"
+   },
+   {
+    "src": "(3 != 4) printNl.",
+    "err": true
+   },
+   {
+    "src": "(3 <> 4) printNl.",
+    "err": true
+   },
+   {
+    "src": "(3 =/= 4) printNl.",
+    "err": true
+   }
+  ]
+ },
+ "conditions-7": {
+  "out": "yes"
+ },
+ "conditions-8": {
+  "out": "false"
+ },
+ "conditions-9": {
+  "tpl": "| x |\nx := 3.\n{{CODE}}.",
+  "out": "positive"
+ },
+ "conditions-10": {
+  "out": "even"
+ },
+ "conditions-12": {
+  "fix": "    ifFalse: [Transcript showCr: 'ok'].",
+  "out": "too fast"
+ },
+ "blocks-1": {
+  "extra": [
+   {
+    "src": "| b |\nb := ['run' displayNl].\n'before' displayNl.\nb value.",
+    "out": "before\nrun"
+   }
+  ]
+ },
+ "blocks-5": {
+  "out": ""
+ },
+ "blocks-7": {
+  "out": "9"
+ },
+ "blocks-8": {
+  "out": "7"
+ },
+ "blocks-9": {
+  "tpl": "({{CODE}} value: 4) printNl.",
+  "out": "12"
+ },
+ "blocks-10": {
+  "out": "5"
+ },
+ "blocks-12": {
+  "fix": "(greet value: 'Ada') displayNl.",
+  "out": "Hello, Ada"
+ },
+ "loops-4": {
+  "out": ""
+ },
+ "loops-5": {
+  "extra": [
+   {
+    "src": "| n c |\nn := 0.\nc := 0.\n[c := c + 1. n < 3] whileTrue: [n := n + 1].\nc printNl.",
+    "out": "4"
+   }
+  ]
+ },
+ "loops-6": {
+  "out": "1\n2\n3"
+ },
+ "loops-7": {
+  "out": "5\n4\n3"
+ },
+ "loops-8": {
+  "out": "Hi\nHi\nHi"
+ },
+ "loops-9": {
+  "out": "3\n2\n1\nGo!"
+ },
+ "loops-11": {
+  "fix": "[n > 0] whileTrue: [n := n - 3].",
+  "out": "-2"
+ },
+ "loops-12": {
+  "fix": "1 to: 5 do: [:i | total := total + i].",
+  "out": "15"
+ },
+ "collections-5": {
+  "extra": [
+   {
+    "src": "(#(10 20) at: 1) printNl.",
+    "out": "10"
+   },
+   {
+    "src": "(#(10 20) at: 0) printNl.",
+    "err": true
+   }
+  ]
+ },
+ "collections-7": {
+  "out": "(2 4 6 )"
+ },
+ "collections-8": {
+  "out": "3"
+ },
+ "collections-9": {
+  "tpl": "| nums |\nnums := #(1 2 3 4 5).\n({{CODE}}) printNl.",
+  "out": "(1 3 5 )"
+ },
+ "collections-10": {
+  "out": "OrderedCollection ('a' 'b' )"
+ },
+ "collections-12": {
+  "fix": "names at: 2 put: 'Alan'.",
+  "out": "('Ada' 'Alan' )"
+ },
+ "classes-1": {
+  "extra": [
+   {
+    "src": "Object subclass: T [\n    a [ ^5 ]\n    b [ 5 ]\n]\n\nT new a printNl.\nT new b printNl.",
+    "out": "5\na T"
+   }
+  ]
+ },
+ "classes-4": {
+  "extra": [
+   {
+    "src": "Object subclass: Counter [\n    | count |\n    reset [ count := 0 ]\n    increment [ count := count + 1 ]\n    count [ ^count ]\n]\n\n| a b |\na := Counter new.\nb := Counter new.\na reset; increment; increment.\nb reset; increment.\na count printNl.\nb count printNl.",
+    "out": "2\n1"
+   }
+  ]
+ },
+ "classes-6": {
+  "out": "5"
+ },
+ "classes-7": {
+  "out": "Ada"
+ },
+ "classes-8": {
+  "tpl": "Object subclass: Num [\n    | n |\n    n: x [ n := x ]\n    {{CODE}}\n]\n\n| x |\nx := Num new.\nx n: 4.\nx doubled printNl.",
+  "out": "8"
+ },
+ "classes-9": {
+  "out": "Hello, Ada"
+ },
+ "classes-11": {
+  "fix": "    count [ ^count ]",
+  "out": "1"
+ },
+ "classes-12": {
+  "fix": "p name: 'Bo'.",
+  "out": "Hi, Bo"
+ }
+}

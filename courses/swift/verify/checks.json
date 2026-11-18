@@ -1,0 +1,410 @@
+{
+  "hello-1": {
+    "variants": [
+      "print(\"Hello\")",
+      "Print(\"Hello\")",
+      "print(Hello)",
+      "echo \"Hello\""
+    ],
+    "out": "Hello"
+  },
+  "hello-4": {
+    "probe": [
+      "print(\"A\")\nprint(\"B\")",
+      "B\nA"
+    ]
+  },
+  "hello-5": {
+    "out": "Hi"
+  },
+  "hello-6": {
+    "out": "Score: 10"
+  },
+  "hello-7": {
+    "out": "3\n2\n1\nGo!"
+  },
+  "hello-8": {
+    "probes": [
+      [
+        "print(\"Hi\", 42, 6 * 7) // x",
+        "Hi 42 42"
+      ]
+    ]
+  },
+  "hello-9": {
+    "fix": "print(\"Middle\")",
+    "out": "Start\nMiddle\nEnd"
+  },
+  "hello-12": {
+    "probe": [
+      "Print(\"Hi\")",
+      "Hi"
+    ]
+  },
+  "variables-1": {
+    "probes": [
+      [
+        "let v = 1\nv = 2",
+        "!error"
+      ],
+      [
+        "var v = 1\nv = 2\nprint(v)",
+        "2"
+      ],
+      [
+        "const v = 1",
+        "!error"
+      ],
+      [
+        "val v = 1",
+        "!error"
+      ]
+    ]
+  },
+  "variables-4": {
+    "probe": [
+      "let n = 5\nn = 6\nprint(n)",
+      "6"
+    ]
+  },
+  "variables-5": {
+    "out": "8"
+  },
+  "variables-6": {
+    "probes": [
+      [
+        "print(type(of: 1), type(of: 1.5), type(of: \"a\"), type(of: true))",
+        "Int Double String Bool"
+      ]
+    ]
+  },
+  "variables-7": {
+    "after": "print(type(of: price))"
+  },
+  "variables-8": {
+    "fix": "print(visitors)",
+    "out": "Rome\n150"
+  },
+  "variables-9": {
+    "after": "print(price, type(of: price))",
+    "out": "9.5 Double"
+  },
+  "variables-10": {
+    "out": "5\nNow: 8"
+  },
+  "variables-12": {
+    "probe": [
+      "print(Int(3.9))",
+      "4"
+    ]
+  },
+  "strings-5": {
+    "out": "HELLO"
+  },
+  "strings-6": {
+    "probe": [
+      "print(\"Swift\" == \"swift\")",
+      "true"
+    ]
+  },
+  "strings-7": {
+    "fix": "print(\"Price: \\(price)\")",
+    "out": "Item: pen\nPrice: 2"
+  },
+  "strings-8": {
+    "cases": [
+      {
+        "before": "let word = \"banana\"",
+        "after": "print(isLong)",
+        "out": "true"
+      },
+      {
+        "before": "let word = \"kiwi\"",
+        "after": "print(isLong)",
+        "out": "false"
+      }
+    ]
+  },
+  "strings-9": {
+    "probes": [
+      [
+        "var p = 1\np += 2\nprint(7 % 3, 1 == 1, 1 != 1, p, \"x\\(p)\")",
+        "1 true false 3 x3"
+      ]
+    ]
+  },
+  "strings-10": {
+    "out": "Hello, Mia\n10"
+  },
+  "strings-12": {
+    "probe": [
+      "print(\"5\" + \"5\")",
+      "55"
+    ]
+  },
+  "conditions-2": {
+    "map": {
+      "A": 0,
+      "B": 1,
+      "C": 2,
+      "B\nC": 3
+    }
+  },
+  "conditions-3": {
+    "probe": [
+      "print(true || false)",
+      "true"
+    ]
+  },
+  "conditions-4": {
+    "out": "Welcome"
+  },
+  "conditions-6": {
+    "fix": "if level == 4 {",
+    "out": "Level four"
+  },
+  "conditions-7": {
+    "probes": [
+      [
+        "print(true && false, true || false, !true)",
+        "false true false"
+      ],
+      [
+        "switch 9 {\ncase 1...5:\n    print(\"in\")\ndefault:\n    print(\"other\")\n}",
+        "other"
+      ],
+      [
+        "switch 5 {\ncase 1...5:\n    print(\"in\")\ndefault:\n    print(\"other\")\n}",
+        "in"
+      ]
+    ]
+  },
+  "conditions-8": {
+    "cases": [
+      {
+        "before": "let hour = 9",
+        "out": "Good morning"
+      },
+      {
+        "before": "let hour = 15",
+        "out": "Good afternoon"
+      }
+    ]
+  },
+  "conditions-9": {
+    "cases": [
+      {
+        "before": "let n = 9\nswitch n {",
+        "after": "    print(\"yes\")\ndefault:\n    print(\"no\")\n}",
+        "out": "yes"
+      },
+      {
+        "before": "let n = 10\nswitch n {",
+        "after": "    print(\"yes\")\ndefault:\n    print(\"no\")\n}",
+        "out": "no"
+      }
+    ]
+  },
+  "conditions-10": {
+    "probes": [
+      [
+        "for n in 0...4 {\n    switch n {\n    case 1...3:\n        print(n)\n    default:\n        break\n    }\n}",
+        "1\n2\n3"
+      ]
+    ]
+  },
+  "conditions-12": {
+    "probe": [
+      "let n = 2\nswitch n {\ncase 1:\n    print(\"one\")\ncase 2:\n    print(\"two\")\n}",
+      "!ok"
+    ]
+  },
+  "loops-2": {
+    "map": {
+      "Hi\nHi\nHi": 0,
+      "Hi\nHi\nHi\nHi": 1,
+      "Hi\nHi\nHi\nHi\nHi": 2,
+      "Hi\nHi": 3
+    }
+  },
+  "loops-3": {
+    "probe": [
+      "for i in 1..<5 {\n    if i == 5 {\n        print(\"yes\")\n    }\n}",
+      "yes"
+    ]
+  },
+  "loops-4": {
+    "out": "0\n5\n10\n15"
+  },
+  "loops-6": {
+    "fix": "for n in 1...5 {",
+    "out": "15"
+  },
+  "loops-7": {
+    "probes": [
+      [
+        "print(Array(1...3), Array(1..<3), Array(stride(from: 0, to: 6, by: 2)))",
+        "[1, 2, 3] [1, 2] [0, 2, 4]"
+      ],
+      [
+        "while false {\n    print(\"w\")\n}\nrepeat {\n    print(\"r\")\n} while false",
+        "r"
+      ]
+    ]
+  },
+  "loops-8": {
+    "out": "1\n2\n3\nDone"
+  },
+  "loops-9": {
+    "after": "    print(x)\n}",
+    "out": "10\n8\n6\n4\n2\n0"
+  },
+  "loops-10": {
+    "probes": [
+      [
+        "repeat {\n    print(\"r\")\n} while false\nwhile false {\n    print(\"w\")\n}\nfor _ in 0..<0 {\n    print(\"f\")\n}",
+        "r"
+      ]
+    ]
+  },
+  "functions-2": {
+    "variants": [
+      "greet(name: \"Ann\")",
+      "greet(\"Ann\")",
+      "greet(String: \"Ann\")",
+      "func greet(\"Ann\")"
+    ],
+    "before": "func greet(name: String) {\n    print(\"Hi \\(name)\")\n}",
+    "out": "Hi Ann"
+  },
+  "functions-3": {
+    "probe": [
+      "func f() {\n    print(\"inside\")\n}\nprint(\"outside\")",
+      "outside"
+    ]
+  },
+  "functions-4": {
+    "out": "5"
+  },
+  "functions-6": {
+    "fix": "        return a",
+    "out": "7"
+  },
+  "functions-7": {
+    "probes": [
+      [
+        "func f(_ x: Int) -> Int {\n    return x + 1\n}\nlet g = { (x: Int) -> Int in x * 2 }\nprint(f(1), g(3))",
+        "2 6"
+      ]
+    ]
+  },
+  "functions-8": {
+    "out": "5"
+  },
+  "functions-9": {
+    "after": "    return n % 2 == 0\n}\nprint(isEven(4), isEven(3))",
+    "out": "true false"
+  },
+  "functions-12": {
+    "probe": [
+      "func add(_ a: Int, _ b: Int) -> Int {\n    a + b\n}\nprint(add(a: 3, b: 5))",
+      "8"
+    ]
+  },
+  "collections-3": {
+    "probes": [
+      [
+        "print([\"a\", \"b\"][0])",
+        "a"
+      ]
+    ]
+  },
+  "collections-4": {
+    "probe": [
+      "let letters = [\"a\", \"b\", \"c\"]\nprint(letters[3])",
+      "!error"
+    ]
+  },
+  "collections-5": {
+    "out": "[\"bread\", \"milk\"]"
+  },
+  "collections-7": {
+    "fix": "print(names[1])",
+    "out": "Linus"
+  },
+  "collections-8": {
+    "probes": [
+      [
+        "var items = [1, 2, 3]\nlet d = [\"a\": 1]\nitems.append(4)\nprint(items, items.count, d[\"a\"] ?? 0, d[\"b\"] ?? 0)",
+        "[1, 2, 3, 4] 4 1 0"
+      ]
+    ]
+  },
+  "collections-9": {
+    "out": "[\"hi\", \"you\"]"
+  },
+  "collections-10": {
+    "cases": [
+      {
+        "before": "let menu = [\"tea\": 2]",
+        "after": "print(price)",
+        "out": "2"
+      },
+      {
+        "before": "let menu = [\"cake\": 4]",
+        "after": "print(price)",
+        "out": "0"
+      }
+    ]
+  },
+  "collections-12": {
+    "probe": [
+      "let ages = [\"Ann\": 3]\nprint(ages[\"Zoe\"] == nil)",
+      "!error"
+    ]
+  },
+  "optionals-3": {
+    "probes": [
+      [
+        "print(type(of: Int(\"5\")))",
+        "Optional<Int>"
+      ]
+    ]
+  },
+  "optionals-4": {
+    "probe": [
+      "let text = \"4\"\nif let number = Int(text) {\n    print(type(of: number))\n}",
+      "Int"
+    ]
+  },
+  "optionals-5": {
+    "out": "8\nno"
+  },
+  "optionals-6": {
+    "fix": "    mutating func move(by dx: Int) {",
+    "out": "4"
+  },
+  "optionals-7": {
+    "probes": [
+      [
+        "let a: Int? = nil\nlet b: Int? = 2\nif let b {\n    print(a ?? 0, b)\n}\nstruct S {\n    var v: Int\n}\nprint(S(v: 3).v)",
+        "0 2\n3"
+      ]
+    ]
+  },
+  "optionals-8": {
+    "after": "print(double(\"10\"), double(\"x\"))",
+    "out": "20 0"
+  },
+  "optionals-9": {
+    "before": "struct Point {\n    var x: Int\n    var y: Int\n}",
+    "after": "print(p.x, p.y)",
+    "out": "2 5"
+  },
+  "optionals-12": {
+    "probe": [
+      "let x: Int = nil\nprint(1)",
+      "1"
+    ]
+  }
+}

@@ -1,0 +1,1890 @@
+{
+  "course": "nim",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Nim",
+      "chapter": "Basics",
+      "summary": "Write your first Nim program, print text and numbers with echo, and compile and run it.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Nim is a programming language that is easy to read and creates fast programs. A Nim program is a text file that ends in `.nim`. The command `echo` prints a line of text."
+        },
+        {
+          "type": "code",
+          "code": "echo \"Hello, Nim!\"",
+          "output": "Hello, Nim!"
+        },
+        {
+          "type": "text",
+          "md": "Text in double quotes, like `\"Hello, Nim!\"`, is a **string**. Nim runs the lines from top to bottom, and every `echo` prints its own line. You do not need a `main` function: the code at the top level of the file is the program."
+        },
+        {
+          "type": "code",
+          "code": "echo \"Line 1\"\necho \"Line 2\"",
+          "output": "Line 1\nLine 2"
+        },
+        {
+          "type": "heading",
+          "text": "Compiling and running"
+        },
+        {
+          "type": "text",
+          "md": "Nim is a **compiled** language: a compiler turns your code into a program that the computer can run. Save the code as `hello.nim` and run `nim c -r hello.nim` in a terminal. `c` compiles the file, and `-r` runs the program right after compiling it."
+        },
+        {
+          "type": "text",
+          "md": "`echo` can print several values: separate them with commas. Nim prints them directly one after the other and does not add spaces, so put the spaces into your strings. Numbers have no quotes, and Nim calculates `2 + 3` before it prints the result."
+        },
+        {
+          "type": "code",
+          "code": "echo \"Nim \", 2\necho \"2 + 3 = \", 2 + 3",
+          "output": "Nim 2\n2 + 3 = 5"
+        },
+        {
+          "type": "text",
+          "md": "A `#` starts a **comment**. Nim ignores everything from `#` to the end of the line. `echo \"\"` prints an empty line."
+        },
+        {
+          "type": "code",
+          "code": "echo \"A\" # A\necho \"\"\necho 10 * 3 # 30",
+          "output": "A\n\n30"
+        },
+        {
+          "type": "tip",
+          "md": "Nim also understands `nim r hello.nim`, which compiles and runs in one step. In this course, every program is short, and you can run each one with either command."
+        }
+      ],
+      "card": [
+        "`echo \"Hello\"` prints a line",
+        "`echo \"a\", 1` prints `a1` (no spaces added)",
+        "`nim c -r hello.nim` compiles and runs",
+        "`# note` is a comment"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which line prints `Hello` in Nim?",
+          "options": [
+            "`echo \"Hello\"`",
+            "`print(\"Hello\")`",
+            "`printf \"Hello\"`",
+            "`console.log(\"Hello\")`"
+          ],
+          "answer": 0,
+          "explain": "Nim prints with `echo`. The other commands come from other languages and do not exist in Nim."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "echo \"3 + 4 = \", 3 + 4",
+          "answers": [
+            "3 + 4 = 7"
+          ],
+          "explain": "The string is printed as it is. `3 + 4` has no quotes, so Nim calculates it and prints `7`."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-3",
+          "statement": "`echo \"a\", \"b\"` puts a space between `a` and `b`.",
+          "answer": false,
+          "explain": "`echo` prints the values directly one after the other. It prints `ab`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-4",
+          "prompt": "Complete the code so it prints `Hello, world!`.",
+          "code": "___ \"Hello, world!\"",
+          "options": [
+            "echo",
+            "print",
+            "say",
+            "write"
+          ],
+          "answer": 0,
+          "explain": "`echo` prints a value and ends the line."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-5",
+          "prompt": "Build the line that prints `Total: 12`.",
+          "tokens": [
+            "echo",
+            "\"Total: \",",
+            "5",
+            "+",
+            "7"
+          ],
+          "distractors": [
+            "print",
+            "\"Total: \""
+          ],
+          "explain": "`echo` prints the string and then the result of `5 + 7`. A comma separates the two values."
+        },
+        {
+          "type": "order",
+          "id": "hello-6",
+          "prompt": "Put the lines in order so the program prints `Ready`, then `Set`, then `Go!`.",
+          "lines": [
+            "echo \"Ready\"",
+            "echo \"Set\"",
+            "echo \"Go!\""
+          ],
+          "explain": "Nim runs the lines from top to bottom, so the first line prints first."
+        },
+        {
+          "type": "input",
+          "id": "hello-7",
+          "prompt": "What does this print?",
+          "code": "echo 6 * 7 # ?",
+          "answers": [
+            "42"
+          ],
+          "explain": "`*` multiplies, so Nim prints `42`. Everything after `#` is a comment."
+        },
+        {
+          "type": "choice",
+          "id": "hello-8",
+          "prompt": "What does this print?",
+          "code": "echo \"1 + 1\"",
+          "options": [
+            "`1 + 1`",
+            "`2`",
+            "`\"1 + 1\"`",
+            "It does not compile"
+          ],
+          "answer": 0,
+          "explain": "`\"1 + 1\"` is a string, so Nim prints the text as it is and does not calculate it. The quotes are not printed."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`echo`",
+              "prints a line"
+            ],
+            [
+              "`nim c hello.nim`",
+              "compiles the file"
+            ],
+            [
+              "`-r`",
+              "runs the program after compiling"
+            ],
+            [
+              "`# note`",
+              "a comment"
+            ],
+            [
+              "`\"Hi\"`",
+              "a string"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "This program does not compile. Which line has the bug?",
+          "lines": [
+            "echo \"Start\"",
+            "echo \"Middle",
+            "echo \"End\""
+          ],
+          "bug": 1,
+          "explain": "The string on this line has no closing quote. Write `echo \"Middle\"`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "This program should print three lines. Which line has the bug?",
+          "lines": [
+            "echo \"Hello\"",
+            "print \"World\"",
+            "echo \"!\""
+          ],
+          "bug": 1,
+          "explain": "Nim has no `print` command. Write `echo \"World\"`."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-12",
+          "statement": "A Nim program needs a `main` function to run.",
+          "answer": false,
+          "explain": "The code at the top level of a `.nim` file is the program. `echo \"Hi\"` alone is a complete program."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Store values with var, let and const, and get to know int, float, string and bool.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** stores a value under a name. `var` creates a variable that you can change later. `=` gives it a value. Nim sees the value and chooses the type for you: this is called **type inference**."
+        },
+        {
+          "type": "code",
+          "code": "var score = 10\necho score\nscore = 15\necho score",
+          "output": "10\n15"
+        },
+        {
+          "type": "text",
+          "md": "`let` creates a variable that keeps its first value: you cannot change it later. Use `let` whenever a value stays the same. `const` creates a **constant**, a value that the compiler must know before the program runs, like a fixed limit."
+        },
+        {
+          "type": "code",
+          "code": "let name = \"Ada\"\nconst maxScore = 100\necho name, \" \", maxScore",
+          "output": "Ada 100"
+        },
+        {
+          "type": "warning",
+          "md": "Giving a `let` variable or a constant a new value is an error. After `let name = \"Ada\"`, the line `name = \"Bob\"` does not compile."
+        },
+        {
+          "type": "heading",
+          "text": "Basic types"
+        },
+        {
+          "type": "text",
+          "md": "The basic types are `int` (whole numbers like `42`), `float` (numbers with a decimal point like `2.5`), `string` (text) and `bool` (`true` or `false`). You can write the type after a colon: `var age: int = 30`. A `var` without a value gets a default: `0`, `0.0`, `\"\"` or `false`."
+        },
+        {
+          "type": "code",
+          "code": "var age: int = 30\nlet price = 2.5\nlet ok = true\nvar count: int\necho age, \" \", price, \" \", ok, \" \", count",
+          "output": "30 2.5 true 0"
+        },
+        {
+          "type": "text",
+          "md": "A variable keeps its type. After `var x = 5`, the line `x = \"five\"` does not compile, because `x` is an `int`. `typeof(x)` gives the type of `x`. The type `float` is also called `float64`."
+        },
+        {
+          "type": "code",
+          "code": "let a = 7\nlet b = 2.0\necho typeof(a)\necho typeof(b)",
+          "output": "int\nfloat64"
+        },
+        {
+          "type": "text",
+          "md": "`+`, `-` and `*` calculate as usual. `/` always gives a `float`, even for two `int` values. `div` divides whole numbers and drops the rest, and `mod` gives the rest (the remainder)."
+        },
+        {
+          "type": "code",
+          "code": "echo 7 / 2\necho 7 div 2\necho 7 mod 2",
+          "output": "3.5\n3\n1"
+        },
+        {
+          "type": "text",
+          "md": "Nim does not mix `int` and `float` variables in one calculation. Convert an `int` with `float(x)` first. `int(x)` turns a `float` into an `int` and drops the decimal part."
+        },
+        {
+          "type": "code",
+          "code": "let apples = 3\nlet price = 0.5\necho float(apples) * price\necho int(2.9)",
+          "output": "1.5\n2"
+        }
+      ],
+      "card": [
+        "`var x = 5` can change, `let y = 2.5` cannot",
+        "`const limit = 10` is known before the program runs",
+        "`int`, `float`, `string`, `bool`",
+        "`7 / 2` is `3.5`, `7 div 2` is `3`, `7 mod 2` is `1`",
+        "`float(x)` and `int(x)` convert"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "variables-1",
+          "prompt": "What does this print?",
+          "code": "var x = 4\nx = x + 3\necho x",
+          "answers": [
+            "7"
+          ],
+          "explain": "`x` starts at 4. `x = x + 3` stores 4 + 3, so `x` is 7."
+        },
+        {
+          "type": "choice",
+          "id": "variables-2",
+          "prompt": "Which keyword creates a variable that keeps its first value and cannot change?",
+          "options": [
+            "`let`",
+            "`var`",
+            "`mut`",
+            "`val`"
+          ],
+          "answer": 0,
+          "explain": "A `let` variable cannot get a new value. A `var` variable can. `mut` and `val` are not Nim keywords."
+        },
+        {
+          "type": "input",
+          "id": "variables-3",
+          "prompt": "What does this print?",
+          "code": "echo 17 div 5, \" \", 17 mod 5",
+          "answers": [
+            "3 2"
+          ],
+          "explain": "5 fits 3 times into 17, so `17 div 5` is 3. The rest is 17 - 15 = 2, so `17 mod 5` is 2."
+        },
+        {
+          "type": "choice",
+          "id": "variables-4",
+          "prompt": "What does this print?",
+          "code": "let a = 9\nlet b = 2\necho a / b",
+          "options": [
+            "`4.5`",
+            "`4`",
+            "`5`",
+            "It does not compile"
+          ],
+          "answer": 0,
+          "explain": "`/` always gives a `float`, even for two `int` values. 9 / 2 is `4.5`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-5",
+          "statement": "`var count: int` without a value gives `count` the value `0`.",
+          "answer": true,
+          "explain": "A `var` without a value gets the default of its type. For `int` the default is `0`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-6",
+          "prompt": "Complete the code so it prints the remainder of 10 divided by 3.",
+          "code": "let rest = 10 ___ 3\necho rest",
+          "options": [
+            "mod",
+            "div",
+            "/",
+            "%"
+          ],
+          "answer": 0,
+          "explain": "`mod` gives the remainder: 10 = 3 * 3 + 1, so it prints `1`. `div` would give 3."
+        },
+        {
+          "type": "bug",
+          "id": "variables-7",
+          "prompt": "The program should print `Ana`, then `Ben`, but it does not compile. Which line must you change?",
+          "lines": [
+            "let name = \"Ana\"",
+            "echo name",
+            "name = \"Ben\"",
+            "echo name"
+          ],
+          "bug": 0,
+          "explain": "A `let` variable cannot get a new value. Create it with `var name = \"Ana\"`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-8",
+          "prompt": "Build the line that creates a constant `limit` with the value `50`.",
+          "tokens": [
+            "const",
+            "limit",
+            "=",
+            "50"
+          ],
+          "distractors": [
+            "var",
+            ":="
+          ],
+          "explain": "`const` creates a constant, and `=` gives it its value."
+        },
+        {
+          "type": "order",
+          "id": "variables-9",
+          "prompt": "Put the lines in order so the program prints `15`.",
+          "lines": [
+            "var total = 10",
+            "total = total * 2",
+            "total = total - 5",
+            "echo total"
+          ],
+          "explain": "10 * 2 is 20, and 20 - 5 is 15. In the other order you get (10 - 5) * 2 = 10."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-10",
+          "prompt": "Match the type or operator with its meaning.",
+          "pairs": [
+            [
+              "`int`",
+              "whole number"
+            ],
+            [
+              "`float`",
+              "number with a decimal point"
+            ],
+            [
+              "`string`",
+              "text"
+            ],
+            [
+              "`bool`",
+              "true or false"
+            ],
+            [
+              "`div`",
+              "division of whole numbers"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "variables-11",
+          "prompt": "This program does not compile. Which line has the error?",
+          "lines": [
+            "let apples = 3",
+            "let price = 1.5",
+            "let total = apples * price",
+            "echo total"
+          ],
+          "bug": 2,
+          "explain": "Nim does not multiply an `int` by a `float`. Convert first: `float(apples) * price`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-12",
+          "statement": "After `var price = 5`, the line `price = 2.5` compiles.",
+          "answer": false,
+          "explain": "`5` makes `price` an `int`, and an `int` variable cannot hold `2.5`. Write `var price = 5.0` instead."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings",
+      "chapter": "Basics",
+      "summary": "Join strings with &, convert values with $, and use len, indexes and the tools in strutils.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "The operator `&` joins two strings into one new string."
+        },
+        {
+          "type": "code",
+          "code": "let first = \"Ada\"\nlet last = \"Lovelace\"\nlet full = first & \" \" & last\necho full",
+          "output": "Ada Lovelace"
+        },
+        {
+          "type": "text",
+          "md": "`&` only joins strings. To add a number, first turn it into a string with `$`. The `$` operator converts almost any value into a string."
+        },
+        {
+          "type": "code",
+          "code": "let age = 36\nlet msg = \"Age: \" & $age\necho msg\necho $2.5 & \" kg\"",
+          "output": "Age: 36\n2.5 kg"
+        },
+        {
+          "type": "warning",
+          "md": "`\"Age: \" & age` does not compile, because `age` is an `int`. Write `\"Age: \" & $age`."
+        },
+        {
+          "type": "text",
+          "md": "`len` gives the number of characters. `s[0]` is the first character: the first index is `0`. `s[^1]` is the last character. A single character has the type `char` and is written in single quotes, like `'N'`."
+        },
+        {
+          "type": "code",
+          "code": "let word = \"Nim\"\necho word.len\necho word[0]\necho word[^1]",
+          "output": "3\nN\nm"
+        },
+        {
+          "type": "heading",
+          "text": "The strutils module"
+        },
+        {
+          "type": "text",
+          "md": "Many string tools are in the module `std/strutils`. The line `import std/strutils` at the top of the file makes them available. You can call them as `toUpperAscii(city)` or, shorter, as `city.toUpperAscii`. `contains` checks if a string contains another string, and `replace` replaces text."
+        },
+        {
+          "type": "code",
+          "code": "import std/strutils\n\nlet city = \"Paris\"\necho city.toUpperAscii\necho city.toLowerAscii\necho city.contains(\"ar\")\necho city.replace(\"P\", \"B\")",
+          "output": "PARIS\nparis\ntrue\nBaris"
+        },
+        {
+          "type": "text",
+          "md": "`add` appends text to the end of a `var` string. `s &= \"c\"` does the same as `s = s & \"c\"`."
+        },
+        {
+          "type": "code",
+          "code": "var log = \"a\"\nlog.add(\"b\")\nlog &= \"c\"\necho log",
+          "output": "abc"
+        },
+        {
+          "type": "tip",
+          "md": "`s[1..3]` takes the characters from index `1` to index `3`, both included: `\"hello\"[1..3]` is `\"ell\"`. Upper and lower case are different characters: `\"Nim\".contains(\"nim\")` is `false`."
+        }
+      ],
+      "card": [
+        "`\"a\" & \"b\"` joins strings",
+        "`$42` turns a value into a string",
+        "`s.len`, `s[0]`, `s[^1]`",
+        "`import std/strutils` for `toUpperAscii`, `contains`, `replace`",
+        "`s.add(\"x\")` appends"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this print?",
+          "code": "let a = \"sun\"\nlet b = \"flower\"\necho a & b",
+          "answers": [
+            "sunflower"
+          ],
+          "explain": "`&` joins the two strings without a space."
+        },
+        {
+          "type": "choice",
+          "id": "strings-2",
+          "prompt": "What happens?",
+          "code": "let n = 5\necho \"n = \" & n",
+          "options": [
+            "It prints `n = 5`",
+            "It prints `n = n`",
+            "It does not compile",
+            "It prints `5`"
+          ],
+          "answer": 2,
+          "explain": "`&` only joins strings, and `n` is an `int`. You need `\"n = \" & $n`."
+        },
+        {
+          "type": "gap",
+          "id": "strings-3",
+          "prompt": "Complete the code so it prints `Total: 12`.",
+          "code": "let total = 12\necho \"Total: \" & ___total",
+          "options": [
+            "$",
+            "#",
+            "%",
+            "@"
+          ],
+          "answer": 0,
+          "explain": "`$total` turns the `int` into the string `\"12\"`, and `&` can join it."
+        },
+        {
+          "type": "input",
+          "id": "strings-4",
+          "prompt": "What does this print?",
+          "code": "let fruit = \"banana\"\necho fruit.len",
+          "answers": [
+            "6"
+          ],
+          "explain": "`banana` has 6 characters."
+        },
+        {
+          "type": "input",
+          "id": "strings-5",
+          "prompt": "What does this print?",
+          "code": "let s = \"Nim\"\necho s[1]",
+          "answers": [
+            "i"
+          ],
+          "explain": "Indexes start at 0: `s[0]` is `N`, so `s[1]` is `i`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-6",
+          "prompt": "What does this print?",
+          "code": "import std/strutils\n\necho \"Hello World\".contains(\"world\")",
+          "options": [
+            "`true`",
+            "`false`",
+            "It does not compile"
+          ],
+          "answer": 1,
+          "explain": "Upper and lower case are different characters. The text contains `World`, not `world`."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-7",
+          "statement": "You need `import std/strutils` to use `toUpperAscii`.",
+          "answer": true,
+          "explain": "`toUpperAscii` is in the module `std/strutils`. Without the import, Nim does not know it."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-8",
+          "prompt": "Build the line that prints `Hi, Ana`. The variable `name` holds `\"Ana\"`.",
+          "tokens": [
+            "echo",
+            "\"Hi, \"",
+            "&",
+            "name"
+          ],
+          "distractors": [
+            "+",
+            "$"
+          ],
+          "explain": "`&` joins the string `\"Hi, \"` and the string in `name`."
+        },
+        {
+          "type": "order",
+          "id": "strings-9",
+          "prompt": "Put the lines in order so the program prints `abcabc`.",
+          "lines": [
+            "var s = \"ab\"",
+            "s.add(\"c\")",
+            "s = s & s",
+            "echo s"
+          ],
+          "explain": "First `s` becomes `abc`, then `s & s` doubles it. In the other order you get `ababc`."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`&`",
+              "joins two strings"
+            ],
+            [
+              "`$x`",
+              "turns x into a string"
+            ],
+            [
+              "`s.len`",
+              "number of characters"
+            ],
+            [
+              "`s[0]`",
+              "first character"
+            ],
+            [
+              "`s[^1]`",
+              "last character"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "strings-11",
+          "prompt": "This program does not compile. Which line has the bug?",
+          "lines": [
+            "let count = 3",
+            "let fruit = \"apples\"",
+            "echo \"I have \" & count & \" \" & fruit"
+          ],
+          "bug": 2,
+          "explain": "`count` is an `int`, and `&` only joins strings. Write `$count`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-12",
+          "prompt": "What does this print?",
+          "code": "let s = \"hello\"\necho s[1..3]",
+          "options": [
+            "`ell`",
+            "`hel`",
+            "`el`",
+            "`ello`"
+          ],
+          "answer": 0,
+          "explain": "`s[1..3]` takes the characters with index 1, 2 and 3, both ends included: `e`, `l`, `l`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program decide with if, elif and else, combine conditions with and, or, not, and use case.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`if` runs code only when a condition is `true`. The condition ends with a colon `:`. The lines that belong to the `if` are **indented**: they start with 2 spaces. The first line without the indentation is no longer part of the `if`."
+        },
+        {
+          "type": "code",
+          "code": "let temp = 25\nif temp > 20:\n  echo \"Warm\"\necho \"Done\"",
+          "output": "Warm\nDone"
+        },
+        {
+          "type": "text",
+          "md": "Comparisons give a `bool`: `==` (equal), `!=` (not equal), `<`, `>`, `<=` (less or equal) and `>=` (greater or equal)."
+        },
+        {
+          "type": "code",
+          "code": "echo 3 == 3\necho 3 != 3\necho 2 < 5\necho \"a\" == \"A\"",
+          "output": "true\nfalse\ntrue\nfalse"
+        },
+        {
+          "type": "text",
+          "md": "`elif` checks another condition when the ones before were `false`. `else` runs when no condition was `true`. Nim checks from top to bottom and runs only the first matching branch."
+        },
+        {
+          "type": "code",
+          "code": "let score = 72\nif score >= 90:\n  echo \"A\"\nelif score >= 70:\n  echo \"B\"\nelse:\n  echo \"C\"",
+          "output": "B"
+        },
+        {
+          "type": "text",
+          "md": "`and` is `true` when both sides are `true`. `or` is `true` when at least one side is `true`. `not` turns `true` into `false` and `false` into `true`."
+        },
+        {
+          "type": "code",
+          "code": "let age = 20\nlet hasTicket = true\nif age >= 18 and hasTicket:\n  echo \"Welcome\"\nif not hasTicket or age < 18:\n  echo \"Sorry\"",
+          "output": "Welcome"
+        },
+        {
+          "type": "warning",
+          "md": "`=` gives a value, `==` compares. `if x = 5:` does not compile. Write `if x == 5:`."
+        },
+        {
+          "type": "heading",
+          "text": "case"
+        },
+        {
+          "type": "text",
+          "md": "`case` compares one value with several `of` branches. A branch can list several values, like `of 6, 7:`, or a range, like `of 1..5:` (1 to 5). `else` covers all other values. Nim checks that every possible value is covered, so for numbers and strings you almost always need `else`."
+        },
+        {
+          "type": "code",
+          "code": "let day = 6\ncase day\nof 1..5:\n  echo \"Workday\"\nof 6, 7:\n  echo \"Weekend\"\nelse:\n  echo \"Unknown\"",
+          "output": "Weekend"
+        },
+        {
+          "type": "tip",
+          "md": "`case` also works with strings: `of \"yes\", \"y\":` runs when the string is `\"yes\"` or `\"y\"`."
+        }
+      ],
+      "card": [
+        "`if x > 0:` / `elif x == 0:` / `else:`",
+        "`==`, `!=`, `<`, `>`, `<=`, `>=`",
+        "`and`, `or`, `not`",
+        "`case x` / `of 1, 2:` / `of 3..5:` / `else:`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "let x = 8\nif x > 10:\n  echo \"big\"\nelif x > 5:\n  echo \"medium\"\nelse:\n  echo \"small\"",
+          "answers": [
+            "medium"
+          ],
+          "explain": "8 is not greater than 10, but it is greater than 5, so the `elif` branch runs."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "echo 5 >= 5 and 3 > 4",
+          "options": [
+            "`true`",
+            "`false`",
+            "It does not compile"
+          ],
+          "answer": 1,
+          "explain": "`5 >= 5` is `true`, but `3 > 4` is `false`. `and` needs both sides to be `true`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-3",
+          "statement": "A `case` on an `int` needs an `else` branch when the `of` branches do not cover every possible value.",
+          "answer": true,
+          "explain": "Nim checks that every value is covered. Without `else`, a `case` on an `int` does not compile."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-4",
+          "prompt": "Complete the code so it prints `Adult` for the age 18.",
+          "code": "let age = 18\nif age ___ 18:\n  echo \"Adult\"",
+          "options": [
+            ">=",
+            ">",
+            "<",
+            "="
+          ],
+          "answer": 0,
+          "explain": "`>=` means greater or equal, so 18 counts. With `>` nothing is printed, and `=` does not compile."
+        },
+        {
+          "type": "input",
+          "id": "conditions-5",
+          "prompt": "What does this print?",
+          "code": "let n = 4\ncase n\nof 1, 2:\n  echo \"low\"\nof 3..6:\n  echo \"mid\"\nelse:\n  echo \"high\"",
+          "answers": [
+            "mid"
+          ],
+          "explain": "4 is in the range `3..6`, so the second branch runs."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-6",
+          "prompt": "This program does not compile. Which line has the bug?",
+          "lines": [
+            "let x = 3",
+            "if x = 3:",
+            "  echo \"three\""
+          ],
+          "bug": 1,
+          "explain": "`=` gives a value. To compare, use `==`: `if x == 3:`."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-7",
+          "prompt": "Build the line that checks that `age` is at least 18 and less than 65.",
+          "tokens": [
+            "if",
+            "age",
+            ">=",
+            "18",
+            "and",
+            "age",
+            "<",
+            "65:"
+          ],
+          "distractors": [
+            "&&",
+            "then"
+          ],
+          "explain": "`and` combines the two comparisons. The line ends with a colon."
+        },
+        {
+          "type": "order",
+          "id": "conditions-8",
+          "prompt": "Put the lines in order: the program prints `hot` above 25, `mild` above 10 and `cold` otherwise.",
+          "lines": [
+            "let t = 15",
+            "if t > 25:",
+            "  echo \"hot\"",
+            "elif t > 10:",
+            "  echo \"mild\"",
+            "else:",
+            "  echo \"cold\""
+          ],
+          "explain": "`if` comes first, then `elif`, then `else`. Each `echo` is indented below its condition."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-9",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`==`",
+              "equal"
+            ],
+            [
+              "`!=`",
+              "not equal"
+            ],
+            [
+              "`and`",
+              "both are true"
+            ],
+            [
+              "`or`",
+              "at least one is true"
+            ],
+            [
+              "`not`",
+              "turns true into false"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "conditions-10",
+          "prompt": "Which keyword checks a second condition after an `if`?",
+          "options": [
+            "`elif`",
+            "`else if`",
+            "`elsif`",
+            "`elseif`"
+          ],
+          "answer": 0,
+          "explain": "Nim uses `elif`. The other spellings come from other languages and do not compile in Nim."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "This program does not compile. Which line has the bug?",
+          "lines": [
+            "let score = 80",
+            "if score > 50",
+            "  echo \"pass\"",
+            "else:",
+            "  echo \"fail\""
+          ],
+          "bug": 1,
+          "explain": "The condition of an `if` must end with a colon: `if score > 50:`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-12",
+          "prompt": "What does this print?",
+          "code": "let a = true\nlet b = false\necho a or b, \" \", not a",
+          "answers": [
+            "true false"
+          ],
+          "explain": "`a or b` is `true` because `a` is `true`. `not a` is `false`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with for and while, count up and down with ranges, and control loops with break and continue.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A `for` loop repeats code. `for i in 1..3:` runs the indented lines once for each number from 1 to 3. `1..3` is a **range**, and both ends are included. In each round, `i` holds the current number."
+        },
+        {
+          "type": "code",
+          "code": "for i in 1..3:\n  echo \"Round \", i",
+          "output": "Round 1\nRound 2\nRound 3"
+        },
+        {
+          "type": "text",
+          "md": "`..<` leaves out the end: `0..<3` gives `0`, `1` and `2`."
+        },
+        {
+          "type": "code",
+          "code": "for i in 0..<3:\n  echo i",
+          "output": "0\n1\n2"
+        },
+        {
+          "type": "text",
+          "md": "`countdown(3, 1)` counts backwards from 3 to 1. `countup(0, 10, 5)` counts up in steps of 5: `0`, `5`, `10`."
+        },
+        {
+          "type": "code",
+          "code": "for i in countdown(3, 1):\n  echo i\necho \"Go!\"",
+          "output": "3\n2\n1\nGo!"
+        },
+        {
+          "type": "text",
+          "md": "Loops often add up values. `total += n` is short for `total = total + n`. The same short form exists for `-=` and `*=`."
+        },
+        {
+          "type": "code",
+          "code": "var total = 0\nfor n in 1..4:\n  total += n\necho total",
+          "output": "10"
+        },
+        {
+          "type": "heading",
+          "text": "while"
+        },
+        {
+          "type": "text",
+          "md": "A `while` loop repeats as long as its condition is `true`. Make sure that something in the loop changes the condition, otherwise the loop never ends."
+        },
+        {
+          "type": "code",
+          "code": "var n = 1\nwhile n < 20:\n  n = n * 2\necho n",
+          "output": "32"
+        },
+        {
+          "type": "text",
+          "md": "`break` leaves the loop at once. `continue` skips the rest of the current round and starts the next one."
+        },
+        {
+          "type": "code",
+          "code": "for i in 1..10:\n  if i mod 2 == 0:\n    continue\n  if i > 7:\n    break\n  echo i",
+          "output": "1\n3\n5\n7"
+        },
+        {
+          "type": "tip",
+          "md": "A `for` loop can also visit every character of a string: `for c in \"Nim\":` gives `'N'`, `'i'` and `'m'`."
+        }
+      ],
+      "card": [
+        "`for i in 1..5:` (5 included)",
+        "`for i in 0..<5:` (5 left out)",
+        "`countdown(5, 1)`",
+        "`while x < 10:`",
+        "`break` leaves, `continue` skips a round"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "var total = 0\nfor i in 1..5:\n  total += i\necho total",
+          "answers": [
+            "15"
+          ],
+          "explain": "1 + 2 + 3 + 4 + 5 = 15. The range `1..5` includes 5."
+        },
+        {
+          "type": "choice",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "var count = 0\nfor i in 0..<4:\n  count += 1\necho count",
+          "options": [
+            "`4`",
+            "`5`",
+            "`3`",
+            "`0`"
+          ],
+          "answer": 0,
+          "explain": "`0..<4` gives 0, 1, 2 and 3: four rounds."
+        },
+        {
+          "type": "input",
+          "id": "loops-3",
+          "prompt": "What does this print?",
+          "code": "var s = \"\"\nfor i in countdown(3, 1):\n  s &= $i\necho s",
+          "answers": [
+            "321"
+          ],
+          "explain": "`countdown(3, 1)` gives 3, 2, 1, and each number is added to the end of `s`."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-4",
+          "statement": "`for i in 1..5:` runs the loop body 5 times.",
+          "answer": true,
+          "explain": "The range `1..5` includes both ends: 1, 2, 3, 4 and 5."
+        },
+        {
+          "type": "gap",
+          "id": "loops-5",
+          "prompt": "Complete the loop so it prints 1, 2 and 3.",
+          "code": "for i in 1___4:\n  echo i",
+          "options": [
+            "..<",
+            "..",
+            "...",
+            "to"
+          ],
+          "answer": 0,
+          "explain": "`1..<4` stops before 4. `1..4` would also print 4."
+        },
+        {
+          "type": "bug",
+          "id": "loops-6",
+          "prompt": "This program does not compile. Which line has the bug?",
+          "lines": [
+            "var total = 0",
+            "for i in 1..3",
+            "  total += i",
+            "echo total"
+          ],
+          "bug": 1,
+          "explain": "The `for` line must end with a colon: `for i in 1..3:`."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-7",
+          "prompt": "Build the line that repeats the loop as long as `n` is less than 100.",
+          "tokens": [
+            "while",
+            "n",
+            "<",
+            "100:"
+          ],
+          "distractors": [
+            "for",
+            "until"
+          ],
+          "explain": "`while` repeats while the condition is `true`. The line ends with a colon."
+        },
+        {
+          "type": "order",
+          "id": "loops-8",
+          "prompt": "Put the lines in order so the program prints only the even numbers from 1 to 5.",
+          "lines": [
+            "for i in 1..5:",
+            "  if i mod 2 == 1:",
+            "    continue",
+            "  echo i"
+          ],
+          "explain": "For odd numbers, `continue` skips the `echo`. So the check must come before `echo i`."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`1..5`",
+              "1 to 5, 5 included"
+            ],
+            [
+              "`0..<5`",
+              "0 to 4"
+            ],
+            [
+              "`break`",
+              "leaves the loop"
+            ],
+            [
+              "`continue`",
+              "starts the next round"
+            ],
+            [
+              "`countdown(5, 1)`",
+              "counts from 5 down to 1"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "loops-10",
+          "prompt": "What does this print?",
+          "code": "var n = 0\nwhile n < 10:\n  n += 3\necho n",
+          "options": [
+            "`12`",
+            "`9`",
+            "`10`",
+            "`3`"
+          ],
+          "answer": 0,
+          "explain": "`n` becomes 3, 6, 9 and 12. Only at 12 is `n < 10` false, so the loop stops."
+        },
+        {
+          "type": "input",
+          "id": "loops-11",
+          "prompt": "What does this print?",
+          "code": "var last = 0\nfor i in 1..10:\n  if i * i > 30:\n    break\n  last = i\necho last",
+          "answers": [
+            "5"
+          ],
+          "explain": "5 * 5 = 25 is not greater than 30, but 6 * 6 = 36 is. So the loop stops at 6, and `last` is 5."
+        },
+        {
+          "type": "bug",
+          "id": "loops-12",
+          "prompt": "This program should count down from 5 to 1, but it prints no numbers. Which line has the bug?",
+          "lines": [
+            "echo \"Start\"",
+            "for i in 5..1:",
+            "  echo i",
+            "echo \"End\""
+          ],
+          "bug": 1,
+          "explain": "A range like `5..1` is empty, because it only counts up. Use `countdown(5, 1)`."
+        }
+      ]
+    },
+    {
+      "id": "procs",
+      "title": "Procedures",
+      "chapter": "Building blocks",
+      "summary": "Write your own procedures with parameters and return types, use result, and call them with dot syntax.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **procedure** (`proc`) is a named block of code that you can run many times. You write `proc`, a name, parentheses, `=` and the indented body. To run, or **call**, the procedure, write its name with parentheses."
+        },
+        {
+          "type": "code",
+          "code": "proc sayHello() =\n  echo \"Hello!\"\n\nsayHello()\nsayHello()",
+          "output": "Hello!\nHello!"
+        },
+        {
+          "type": "text",
+          "md": "**Parameters** are inputs. Each one has a name and a type, like `name: string`. Separate parameters with commas. When you call the procedure, you pass a value for each parameter."
+        },
+        {
+          "type": "code",
+          "code": "proc greet(name: string, times: int) =\n  for i in 1..times:\n    echo \"Hi, \", name\n\ngreet(\"Ana\", 2)",
+          "output": "Hi, Ana\nHi, Ana"
+        },
+        {
+          "type": "text",
+          "md": "A procedure can give back a value. Write the return type after the parentheses, like `: int`. `return` gives back a value and ends the procedure. When the body is one expression, its value is returned."
+        },
+        {
+          "type": "code",
+          "code": "proc add(a, b: int): int =\n  return a + b\n\nproc double(x: int): int = x * 2\n\necho add(2, 3)\necho double(add(1, 4))",
+          "output": "5\n10"
+        },
+        {
+          "type": "text",
+          "md": "`a, b: int` gives both parameters the type `int`. Every procedure with a return type also has a hidden variable called `result`. It starts with the default value of the type, and its value at the end is returned. Most Nim code uses `result`."
+        },
+        {
+          "type": "code",
+          "code": "proc sumTo(n: int): int =\n  for i in 1..n:\n    result += i\n\necho sumTo(4)",
+          "output": "10"
+        },
+        {
+          "type": "warning",
+          "md": "Nim does not let you ignore a returned value. The line `add(2, 3)` alone does not compile. Use the value, or write `discard add(2, 3)` to throw it away."
+        },
+        {
+          "type": "heading",
+          "text": "Dot syntax"
+        },
+        {
+          "type": "text",
+          "md": "`x.f(y)` is the same as `f(x, y)`: the value before the dot becomes the first parameter. Without other parameters, you can leave out the parentheses: `x.f`. This is why `word.len` and `city.toUpperAscii` work."
+        },
+        {
+          "type": "code",
+          "code": "import std/strutils\n\nproc shout(text: string, mark: string): string =\n  result = text.toUpperAscii & mark\n\necho shout(\"hi\", \"!\")\necho \"hey\".shout(\"?\")",
+          "output": "HI!\nHEY?"
+        },
+        {
+          "type": "text",
+          "md": "Parameters are read-only inside the procedure. To change a variable of the caller, write `var` before the type of the parameter. You can only pass a `var` variable to it."
+        },
+        {
+          "type": "code",
+          "code": "proc addPoint(score: var int) =\n  score += 1\n\nvar points = 5\naddPoint(points)\necho points",
+          "output": "6"
+        }
+      ],
+      "card": [
+        "`proc add(a, b: int): int = a + b`",
+        "`result` holds the value to return",
+        "`discard f()` throws a value away",
+        "`x.f(y)` is the same as `f(x, y)`",
+        "`proc f(x: var int)` can change `x`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "procs-1",
+          "prompt": "What does this print?",
+          "code": "proc square(x: int): int = x * x\n\necho square(3) + 1",
+          "answers": [
+            "10"
+          ],
+          "explain": "`square(3)` is 9, and 9 + 1 is 10."
+        },
+        {
+          "type": "choice",
+          "id": "procs-2",
+          "prompt": "What does this print?",
+          "code": "proc f(n: int): int =\n  result = 1\n  for i in 1..n:\n    result *= 2\n\necho f(3)",
+          "options": [
+            "`8`",
+            "`6`",
+            "`3`",
+            "`1`"
+          ],
+          "answer": 0,
+          "explain": "`result` starts at 1 and is doubled three times: 2, 4, 8."
+        },
+        {
+          "type": "gap",
+          "id": "procs-3",
+          "prompt": "Complete the header so the procedure returns an `int`.",
+          "code": "proc area(w, h: int)___ =\n  w * h\n\necho area(3, 4)",
+          "options": [
+            ": int",
+            "-> int",
+            ": void"
+          ],
+          "answer": 0,
+          "explain": "The return type comes after the parentheses and a colon: `: int`."
+        },
+        {
+          "type": "true_false",
+          "id": "procs-4",
+          "statement": "In a procedure with a return type, you can use `result` without declaring it.",
+          "answer": true,
+          "explain": "Nim creates `result` for you. Its value at the end is returned."
+        },
+        {
+          "type": "bug",
+          "id": "procs-5",
+          "prompt": "The program should print `5`, but it does not compile. Which line has the bug?",
+          "lines": [
+            "proc add(a, b: int): int =",
+            "  a + b",
+            "add(2, 3)"
+          ],
+          "bug": 2,
+          "explain": "The returned value is not used, and Nim does not allow that. Print it: `echo add(2, 3)`."
+        },
+        {
+          "type": "input",
+          "id": "procs-6",
+          "prompt": "What does this print?",
+          "code": "proc greet(name: string): string =\n  \"Hi \" & name\n\necho \"Bo\".greet",
+          "answers": [
+            "Hi Bo"
+          ],
+          "explain": "`\"Bo\".greet` is the same as `greet(\"Bo\")`, which returns `\"Hi Bo\"`."
+        },
+        {
+          "type": "blocks",
+          "id": "procs-7",
+          "prompt": "Build the header of a procedure `isEven` with an `int` parameter `n` that returns a `bool`.",
+          "tokens": [
+            "proc",
+            "isEven(n:",
+            "int):",
+            "bool",
+            "="
+          ],
+          "distractors": [
+            "def",
+            "->"
+          ],
+          "explain": "`proc`, the name with the parameters, a colon with the return type, and `=`."
+        },
+        {
+          "type": "order",
+          "id": "procs-8",
+          "prompt": "Put the lines in order so the program prints the larger number, `7`.",
+          "lines": [
+            "proc maxOf(a, b: int): int =",
+            "  if a > b:",
+            "    return a",
+            "  return b",
+            "echo maxOf(3, 7)"
+          ],
+          "explain": "The `if` and the second `return` are the body of the procedure. `return a` belongs to the `if`."
+        },
+        {
+          "type": "pairs",
+          "id": "procs-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`proc`",
+              "defines a procedure"
+            ],
+            [
+              "`result`",
+              "the value that is returned"
+            ],
+            [
+              "`discard`",
+              "throws a value away"
+            ],
+            [
+              "`x: var int`",
+              "a parameter the procedure can change"
+            ],
+            [
+              "`5.double`",
+              "the same as double(5)"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "procs-10",
+          "prompt": "What does this print?",
+          "code": "proc addTwo(x: var int) =\n  x += 2\n\nvar a = 1\naddTwo(a)\naddTwo(a)\necho a",
+          "options": [
+            "`5`",
+            "`3`",
+            "`1`",
+            "It does not compile"
+          ],
+          "answer": 0,
+          "explain": "`x` is a `var` parameter, so each call changes `a`: 1, then 3, then 5."
+        },
+        {
+          "type": "bug",
+          "id": "procs-11",
+          "prompt": "This program does not compile. Which line must you change?",
+          "lines": [
+            "proc reset(n: int) =",
+            "  n = 0",
+            "var x = 5",
+            "reset(x)",
+            "echo x"
+          ],
+          "bug": 0,
+          "explain": "Parameters are read-only. Write `n: var int` so the procedure can change the variable."
+        },
+        {
+          "type": "input",
+          "id": "procs-12",
+          "prompt": "What does this print?",
+          "code": "proc count(s: string, c: char): int =\n  for x in s:\n    if x == c:\n      result += 1\n\necho count(\"banana\", 'a')",
+          "answers": [
+            "3"
+          ],
+          "explain": "The loop visits every character, and `banana` contains the character `a` three times."
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "Arrays and sequences",
+      "chapter": "Data",
+      "summary": "Keep many values in arrays and sequences: read, change, add and loop over elements.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** holds a fixed number of values of the same type. You write it in square brackets: `[10, 20, 30]`. Its type is `array[3, int]`: the length is part of the type. `nums[0]` is the first element, and `len` gives the number of elements."
+        },
+        {
+          "type": "code",
+          "code": "var nums = [10, 20, 30]\nnums[1] = 25\necho nums\necho nums[0], \" \", nums.len",
+          "output": "[10, 25, 30]\n10 3"
+        },
+        {
+          "type": "text",
+          "md": "A **sequence** (`seq`) can grow. `@[...]` creates one, and `add` puts a value at the end. The type of a sequence of strings is `seq[string]`. A `var` sequence without a value starts empty."
+        },
+        {
+          "type": "code",
+          "code": "var fruits = @[\"apple\", \"pear\"]\nfruits.add(\"plum\")\necho fruits\necho fruits.len\nvar names: seq[string]\necho names.len",
+          "output": "@[\"apple\", \"pear\", \"plum\"]\n3\n0"
+        },
+        {
+          "type": "text",
+          "md": "Like with strings, `s[^1]` is the last element. `in` checks if a value is in an array or a sequence."
+        },
+        {
+          "type": "code",
+          "code": "let primes = @[2, 3, 5, 7]\necho primes[^1]\necho 5 in primes\necho 4 in primes",
+          "output": "7\ntrue\nfalse"
+        },
+        {
+          "type": "warning",
+          "md": "An index that does not exist stops the program with an error (`IndexDefect`). With four elements, `primes[4]` fails, because the last index is `3`."
+        },
+        {
+          "type": "heading",
+          "text": "Looping over elements"
+        },
+        {
+          "type": "text",
+          "md": "`for x in s:` visits every element. `for i, x in s:` also gives you the index: `i` is the index and `x` the element."
+        },
+        {
+          "type": "code",
+          "code": "let colors = @[\"red\", \"green\", \"blue\"]\nfor i, c in colors:\n  echo i, \": \", c",
+          "output": "0: red\n1: green\n2: blue"
+        },
+        {
+          "type": "text",
+          "md": "With a loop, you can add up all elements. Start with `0.0` when the elements are `float` values."
+        },
+        {
+          "type": "code",
+          "code": "let prices = @[2.5, 4.0, 1.5]\nvar total = 0.0\nfor p in prices:\n  total += p\necho total",
+          "output": "8.0"
+        },
+        {
+          "type": "tip",
+          "md": "`for i in 0..<s.len:` also visits every index. The last index is always `s.len - 1`."
+        }
+      ],
+      "card": [
+        "`[1, 2, 3]` array, fixed length",
+        "`@[1, 2]` sequence; `s.add(3)`",
+        "`s.len`, `s[0]`, `s[^1]`",
+        "`for i, x in s:`",
+        "`x in s` checks if x is in s"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "collections-1",
+          "prompt": "What does this print?",
+          "code": "var s = @[4, 8]\ns.add(15)\necho s.len, \" \", s[^1]",
+          "answers": [
+            "3 15"
+          ],
+          "explain": "After `add` the sequence has 3 elements, and the last one is 15."
+        },
+        {
+          "type": "choice",
+          "id": "collections-2",
+          "prompt": "What does this print?",
+          "code": "let letters = [\"x\", \"y\", \"z\"]\necho letters[1]",
+          "options": [
+            "`y`",
+            "`x`",
+            "`z`",
+            "It stops with an error"
+          ],
+          "answer": 0,
+          "explain": "Indexes start at 0, so index 1 is the second element, `y`."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-3",
+          "statement": "In `for i, x in s:`, `i` is the element and `x` is the index.",
+          "answer": false,
+          "explain": "The index comes first: `i` is the index and `x` is the element."
+        },
+        {
+          "type": "gap",
+          "id": "collections-4",
+          "prompt": "Complete the code so `nums` is a sequence that can grow.",
+          "code": "var nums = ___[1, 2]\nnums.add(3)\necho nums",
+          "options": [
+            "@",
+            "$",
+            "seq",
+            "&"
+          ],
+          "answer": 0,
+          "explain": "`@[1, 2]` creates a sequence. Without `@` it would be an array, and arrays have no `add`."
+        },
+        {
+          "type": "input",
+          "id": "collections-5",
+          "prompt": "What does this print?",
+          "code": "var total = 0\nfor x in @[3, 5, 7]:\n  total += x\necho total",
+          "answers": [
+            "15"
+          ],
+          "explain": "The loop adds every element: 3 + 5 + 7 = 15."
+        },
+        {
+          "type": "bug",
+          "id": "collections-6",
+          "prompt": "This program stops with an `IndexDefect` error. Which line has the bug?",
+          "lines": [
+            "let nums = @[1, 2, 3]",
+            "for i in 0..nums.len:",
+            "  echo nums[i]"
+          ],
+          "bug": 1,
+          "explain": "`0..nums.len` includes 3, but the last index is 2. Use `0..<nums.len`."
+        },
+        {
+          "type": "blocks",
+          "id": "collections-7",
+          "prompt": "Build the line that creates an empty sequence of strings called `names`.",
+          "tokens": [
+            "var",
+            "names:",
+            "seq[string]"
+          ],
+          "distractors": [
+            "array[string]",
+            "@[string]"
+          ],
+          "explain": "`var names: seq[string]` creates a sequence variable without elements."
+        },
+        {
+          "type": "order",
+          "id": "collections-8",
+          "prompt": "Put the lines in order so the program collects the even numbers from 1 to 6 and prints `@[2, 4, 6]`.",
+          "lines": [
+            "var evens: seq[int]",
+            "for i in 1..6:",
+            "  if i mod 2 == 0:",
+            "    evens.add(i)",
+            "echo evens"
+          ],
+          "explain": "Create the empty sequence first, add each even number in the loop, and print after the loop."
+        },
+        {
+          "type": "pairs",
+          "id": "collections-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`[1, 2]`",
+              "array with a fixed length"
+            ],
+            [
+              "`@[1, 2]`",
+              "sequence that can grow"
+            ],
+            [
+              "`s.add(x)`",
+              "puts x at the end"
+            ],
+            [
+              "`s[^1]`",
+              "last element"
+            ],
+            [
+              "`s.len`",
+              "number of elements"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "collections-10",
+          "prompt": "What does this print?",
+          "code": "let s = @[5, 6, 7]\nfor i, x in s:\n  if x == 6:\n    echo i",
+          "options": [
+            "`1`",
+            "`6`",
+            "`2`",
+            "`0`"
+          ],
+          "answer": 0,
+          "explain": "`i` is the index. The element 6 has index 1."
+        },
+        {
+          "type": "input",
+          "id": "collections-11",
+          "prompt": "What does this print?",
+          "code": "var words = @[\"a\", \"b\"]\nwords[0] = \"c\"\nwords.add(\"d\")\necho words",
+          "answers": [
+            "@[\"c\", \"b\", \"d\"]"
+          ],
+          "explain": "`words[0] = \"c\"` replaces `a`, and `add` puts `d` at the end."
+        },
+        {
+          "type": "bug",
+          "id": "collections-12",
+          "prompt": "The program should print `4`, but it does not compile. Which line must you change?",
+          "lines": [
+            "var a = [1, 2, 3]",
+            "a.add(4)",
+            "echo a.len"
+          ],
+          "bug": 0,
+          "explain": "`a` is an array, and an array cannot grow. Make it a sequence: `var a = @[1, 2, 3]`."
+        }
+      ]
+    },
+    {
+      "id": "objects",
+      "title": "Objects",
+      "chapter": "Data",
+      "summary": "Define your own object types with fields, create and change objects, and write procedures for them.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **object** type groups values that belong together. Each value is a **field** with a name and a type. You define object types in a `type` section. Type names start with a capital letter. `Book(title: \"Dune\", pages: 412)` creates a `Book`, and `b.title` reads a field."
+        },
+        {
+          "type": "code",
+          "code": "type\n  Book = object\n    title: string\n    pages: int\n\nlet b = Book(title: \"Dune\", pages: 412)\necho b.title\necho b.pages",
+          "output": "Dune\n412"
+        },
+        {
+          "type": "text",
+          "md": "`echo` prints an object with all its fields in parentheses. In a `var` object, you can change a field with `=`. `x, y: int` creates two fields of the type `int`."
+        },
+        {
+          "type": "code",
+          "code": "type\n  Point = object\n    x, y: int\n\nvar p = Point(x: 1, y: 2)\np.x = 5\necho p",
+          "output": "(x: 5, y: 2)"
+        },
+        {
+          "type": "text",
+          "md": "Fields that you leave out get the default value of their type, like `0` for an `int`."
+        },
+        {
+          "type": "code",
+          "code": "type\n  Player = object\n    name: string\n    score: int\n\nvar pl = Player(name: \"Mia\")\necho pl.score\npl.score += 10\necho pl",
+          "output": "0\n(name: \"Mia\", score: 10)"
+        },
+        {
+          "type": "warning",
+          "md": "The fields of a `let` object cannot change. After `let p = Point(x: 1, y: 2)`, the line `p.x = 3` does not compile."
+        },
+        {
+          "type": "heading",
+          "text": "Procedures for objects"
+        },
+        {
+          "type": "text",
+          "md": "A procedure can take an object as a parameter. With dot syntax, `r.area` is the same as `area(r)`, so the procedure looks like a part of the object."
+        },
+        {
+          "type": "code",
+          "code": "type\n  Rect = object\n    width, height: int\n\nproc area(r: Rect): int =\n  r.width * r.height\n\nlet r = Rect(width: 3, height: 4)\necho r.area\necho area(r)",
+          "output": "12\n12"
+        },
+        {
+          "type": "text",
+          "md": "To change an object inside a procedure, use a `var` parameter, as you did with numbers."
+        },
+        {
+          "type": "code",
+          "code": "type\n  Account = object\n    owner: string\n    balance: float\n\nproc deposit(a: var Account, amount: float) =\n  a.balance += amount\n\nvar acc = Account(owner: \"Li\", balance: 10.0)\nacc.deposit(5.5)\necho acc.balance",
+          "output": "15.5"
+        },
+        {
+          "type": "text",
+          "md": "Objects work well together with sequences. A `seq[Item]` holds many `Item` objects, and a loop can visit each one."
+        },
+        {
+          "type": "code",
+          "code": "type\n  Item = object\n    name: string\n    price: float\n\nlet cart = @[Item(name: \"tea\", price: 3.5), Item(name: \"cake\", price: 2.0)]\nvar total = 0.0\nfor item in cart:\n  total += item.price\necho total",
+          "output": "5.5"
+        }
+      ],
+      "card": [
+        "`type Point = object` with fields like `x: int`",
+        "`Point(x: 1, y: 2)` creates an object",
+        "`p.x` reads a field, `p.x = 5` changes it (`var` only)",
+        "`proc area(r: Rect): int` is called as `r.area`",
+        "`proc grow(r: var Rect)` can change the object"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "objects-1",
+          "prompt": "What does this print?",
+          "code": "type\n  Dog = object\n    name: string\n    age: int\n\nlet d = Dog(name: \"Rex\", age: 3)\necho d.name, \" is \", d.age",
+          "answers": [
+            "Rex is 3"
+          ],
+          "explain": "`d.name` is `Rex` and `d.age` is 3. `echo` prints the three values one after the other."
+        },
+        {
+          "type": "choice",
+          "id": "objects-2",
+          "prompt": "What does this print?",
+          "code": "type\n  Point = object\n    x, y: int\n\nvar p = Point(x: 2)\np.y = p.x * 3\necho p",
+          "options": [
+            "`(x: 2, y: 6)`",
+            "`(x: 2, y: 0)`",
+            "`(x: 6, y: 2)`",
+            "It does not compile"
+          ],
+          "answer": 0,
+          "explain": "`y` starts at 0 because it was left out. Then `p.y = p.x * 3` sets it to 6."
+        },
+        {
+          "type": "true_false",
+          "id": "objects-3",
+          "statement": "Fields that you leave out when you create an object get their default value, like `0` for an `int`.",
+          "answer": true,
+          "explain": "Every field you do not set starts with the default value of its type."
+        },
+        {
+          "type": "gap",
+          "id": "objects-4",
+          "prompt": "Complete the code so it creates a `Circle`.",
+          "code": "let c = ___(radius: 2.0)\necho c.radius",
+          "options": [
+            "Circle",
+            "circle",
+            "object",
+            "new"
+          ],
+          "answer": 0,
+          "explain": "You create an object with the type name and the fields in parentheses: `Circle(radius: 2.0)`. The capital letter matters."
+        },
+        {
+          "type": "bug",
+          "id": "objects-5",
+          "prompt": "The program should print `10`, but it does not compile. Which line has the bug?",
+          "lines": [
+            "type",
+            "  Point = object",
+            "    x, y: int",
+            "let p = Point(x: 1, y: 2)",
+            "p.x = 10",
+            "echo p.x"
+          ],
+          "bug": 3,
+          "explain": "The fields of a `let` object cannot change. Create it with `var p = Point(x: 1, y: 2)`."
+        },
+        {
+          "type": "input",
+          "id": "objects-6",
+          "prompt": "What does this print?",
+          "code": "type\n  Square = object\n    side: int\n\nproc area(s: Square): int =\n  s.side * s.side\n\necho Square(side: 5).area",
+          "answers": [
+            "25"
+          ],
+          "explain": "`Square(side: 5).area` calls `area` with the new square: 5 * 5 = 25."
+        },
+        {
+          "type": "blocks",
+          "id": "objects-7",
+          "prompt": "Build the line that creates a `Point` `p` with `x` 3 and `y` 4.",
+          "tokens": [
+            "let",
+            "p",
+            "=",
+            "Point(x:",
+            "3,",
+            "y:",
+            "4)"
+          ],
+          "distractors": [
+            "Point{x:",
+            "new"
+          ],
+          "explain": "Write the type name, then the fields with `name: value` in parentheses, separated by commas."
+        },
+        {
+          "type": "order",
+          "id": "objects-8",
+          "prompt": "Put the lines in order: first the type, then the procedure, then the code that uses it. The program prints `6`.",
+          "lines": [
+            "type",
+            "  Counter = object",
+            "    value: int",
+            "proc bump(c: var Counter) =",
+            "  c.value += 1",
+            "var c = Counter(value: 5)",
+            "c.bump()",
+            "echo c.value"
+          ],
+          "explain": "The type comes first. `bump` adds 1 to `value`, so you must call it before `echo` to print 6."
+        },
+        {
+          "type": "pairs",
+          "id": "objects-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`type`",
+              "starts a type definition"
+            ],
+            [
+              "`object`",
+              "a type with named fields"
+            ],
+            [
+              "`p.x`",
+              "the field x of p"
+            ],
+            [
+              "`Point(x: 1)`",
+              "creates a Point"
+            ],
+            [
+              "`c: var Counter`",
+              "a parameter the procedure can change"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "objects-10",
+          "prompt": "What happens?",
+          "code": "type\n  Person = object\n    name: string\n\nproc rename(p: Person) =\n  p.name = \"Bo\"\n\nvar x = Person(name: \"Al\")\nrename(x)\necho x.name",
+          "options": [
+            "It does not compile",
+            "It prints `Bo`",
+            "It prints `Al`"
+          ],
+          "answer": 0,
+          "explain": "The parameter `p` is read-only. To change it, the procedure needs `p: var Person`."
+        },
+        {
+          "type": "bug",
+          "id": "objects-11",
+          "prompt": "This program does not compile. Which line has the bug?",
+          "lines": [
+            "type",
+            "  Item = object",
+            "    name: string",
+            "    price: float",
+            "let pen = Item(name: \"pen\", price: 1.5)",
+            "echo pen.name, \": \", pen.cost"
+          ],
+          "bug": 5,
+          "explain": "`Item` has no field `cost`. The field is called `price`: `pen.price`."
+        },
+        {
+          "type": "input",
+          "id": "objects-12",
+          "prompt": "What does this print?",
+          "code": "type\n  Person = object\n    name: string\n    age: int\n\nlet people = @[Person(name: \"Ana\", age: 30), Person(name: \"Ben\", age: 41), Person(name: \"Cy\", age: 35)]\nvar oldest = people[0]\nfor p in people:\n  if p.age > oldest.age:\n    oldest = p\necho oldest.name",
+          "answers": [
+            "Ben"
+          ],
+          "explain": "The loop keeps the person with the highest age. Ben is 41, the oldest."
+        }
+      ]
+    }
+  ]
+}

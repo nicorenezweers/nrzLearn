@@ -1,0 +1,1971 @@
+{
+  "course": "d",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, D",
+      "chapter": "Basics",
+      "summary": "Write your first D program: import std.stdio, start in main and print text and numbers with writeln and write.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A D program is a text file that ends in `.d`. A compiler such as `dmd` or `ldc2` turns it into a program that you can run. Here is the classic first program. It prints one line of text."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    writeln(\"Hello, world!\");\n}",
+          "output": "Hello, world!"
+        },
+        {
+          "type": "text",
+          "md": "Let us read it line by line. `import std.stdio;` loads the module for input and output (`stdio` means standard input and output) from Phobos, the standard library of D. `void main()` is the function where every program starts. `void` means that it gives back no value. The braces `{` and `}` hold the code of the function."
+        },
+        {
+          "type": "text",
+          "md": "`writeln` writes text to the screen and then ends the line. Text in double quotes, like `\"Hello, world!\"`, is called a **string**. Every statement ends with a semicolon `;`."
+        },
+        {
+          "type": "heading",
+          "text": "Printing several values"
+        },
+        {
+          "type": "text",
+          "md": "You can give `writeln` several values, separated by commas. It prints them one after another, **without** spaces between them. Numbers need no quotes, and D calculates `2 + 3` before it prints. Text in quotes is printed exactly as it is."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    writeln(\"Apples: \", 3);\n    writeln(2 + 3);\n    writeln(\"2 + 3\");\n}",
+          "output": "Apples: 3\n5\n2 + 3"
+        },
+        {
+          "type": "text",
+          "md": "`write` prints like `writeln`, but it does not end the line. The next output continues on the same line. `writeln()` with nothing inside only ends the line."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    write(\"Hello, \");\n    write(\"D\");\n    writeln(\"!\");\n    writeln(\"Done\");\n}",
+          "output": "Hello, D!\nDone"
+        },
+        {
+          "type": "text",
+          "md": "A **comment** starts with `//` and goes to the end of the line. The compiler ignores it. In this course, comments only show results. `*` multiplies and `-` subtracts."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    writeln(10 * 4); // 40\n    writeln(10 - 4); // 6\n}",
+          "output": "40\n6"
+        },
+        {
+          "type": "tip",
+          "md": "Inside a string, `\\n` starts a new line and `\\\"` prints a double quote. These pairs are called escape sequences."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    writeln(\"Line 1\\nLine 2\");\n    writeln(\"She said \\\"Hi\\\"\");\n}",
+          "output": "Line 1\nLine 2\nShe said \"Hi\""
+        },
+        {
+          "type": "warning",
+          "md": "D is case-sensitive: `writeln` works, but `Writeln` or `WRITELN` is an error. A missing semicolon is also an error, and the compiler tells you the line."
+        }
+      ],
+      "card": [
+        "`import std.stdio;` loads `writeln` and `write`",
+        "`void main() { }` is where the program starts",
+        "`writeln(\"Hi \", 5);` prints and ends the line",
+        "`write(...)` prints without a line break",
+        "`// comment` is ignored, `;` ends a statement"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which line prints `Hello` in D?",
+          "options": [
+            "`writeln(\"Hello\");`",
+            "`print(\"Hello\");`",
+            "`echo \"Hello\";`",
+            "`System.out.println(\"Hello\");`"
+          ],
+          "answer": 0,
+          "explain": "`writeln` comes from `std.stdio`. `print` and `echo` do not exist in D, and `System.out.println` is Java."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "writeln(\"Sum: \", 4 + 5);",
+          "answers": [
+            "Sum: 9"
+          ],
+          "explain": "D calculates `4 + 5` first and prints the result `9` right after the text."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "write(\"A\");\nwrite(\"B\");\nwriteln(\"C\");",
+          "answers": [
+            "ABC"
+          ],
+          "explain": "`write` does not end the line, so `A`, `B` and `C` appear on the same line."
+        },
+        {
+          "type": "choice",
+          "id": "hello-4",
+          "prompt": "What does this print?",
+          "code": "writeln(2, 3);",
+          "options": [
+            "`23`",
+            "`2 3`",
+            "`5`",
+            "`2, 3`"
+          ],
+          "answer": 0,
+          "explain": "`writeln` prints its values one after another without spaces. It does not add them."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-5",
+          "statement": "Every D program starts running in the function `main`.",
+          "answer": true,
+          "explain": "`void main()` is the starting point. A program without `main` cannot be built."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so that it prints `Hi` and `there` on two lines.",
+          "code": "___(\"Hi\");\nwriteln(\"there\");",
+          "options": [
+            "writeln",
+            "write",
+            "print",
+            "println"
+          ],
+          "answer": 0,
+          "explain": "`writeln` ends the line after `Hi`. With `write`, both words would be on one line."
+        },
+        {
+          "type": "gap",
+          "id": "hello-7",
+          "prompt": "Complete the import so that `writeln` works.",
+          "code": "import ___;\n\nvoid main() {\n    writeln(\"Ready\");\n}",
+          "options": [
+            "std.stdio",
+            "std.string",
+            "stdio",
+            "std.io"
+          ],
+          "answer": 0,
+          "explain": "`writeln` lives in the module `std.stdio` of the standard library."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-8",
+          "prompt": "Build the line that prints `Total: 12`.",
+          "tokens": [
+            "writeln",
+            "(",
+            "\"Total: \"",
+            ",",
+            "12",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            "print",
+            "+"
+          ],
+          "explain": "The text and the number are separated by a comma. `+` cannot join a string and a number."
+        },
+        {
+          "type": "order",
+          "id": "hello-9",
+          "prompt": "Put the lines in order so that the program prints `Start` and then `1 2 3`.",
+          "lines": [
+            "writeln(\"Start\");",
+            "write(\"1 \");",
+            "write(\"2 \");",
+            "writeln(\"3\");"
+          ],
+          "explain": "`Start` comes first and ends its line. The two `write` calls and the last `writeln` build the second line."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`writeln`",
+              "prints and ends the line"
+            ],
+            [
+              "`write`",
+              "prints without a line break"
+            ],
+            [
+              "`import std.stdio;`",
+              "loads the input and output module"
+            ],
+            [
+              "`//`",
+              "starts a comment"
+            ],
+            [
+              "`;`",
+              "ends a statement"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "import std.stdio;",
+            "void main() {",
+            "    writeln(\"Hello\")",
+            "    writeln(\"World\");",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "The semicolon is missing: `writeln(\"Hello\");`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "import std.stdio;",
+            "void main() {",
+            "    writeln(\"Hi\");",
+            "    Writeln(\"Bye\");",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "D is case-sensitive. The function is `writeln` with a small `w`: `writeln(\"Bye\");`."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Store values in variables with the types int, double, string and bool, and let auto and immutable help you.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a name for a value. In D you write the type first, then the name, then `=` and the value. `int` holds whole numbers, `double` holds decimal numbers, `string` holds text and `bool` holds `true` or `false`."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    int age = 30;\n    double price = 4.5;\n    string name = \"Ana\";\n    bool ready = true;\n    writeln(name, \" is \", age);\n    writeln(price, \" \", ready);\n}",
+          "output": "Ana is 30\n4.5 true"
+        },
+        {
+          "type": "text",
+          "md": "You give a variable a new value with `=`. `score += 2` is short for `score = score + 2`. `-=`, `*=` and `/=` work the same way. The type of a variable never changes: putting a string into an `int` variable is an error."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    int score = 10;\n    score = score + 5;\n    score += 2;\n    writeln(score);\n}",
+          "output": "17"
+        },
+        {
+          "type": "text",
+          "md": "D calculates with `+`, `-`, `*` and `/`, and `*` and `/` come before `+` and `-`. When you divide two `int` values, the result is an `int` and the rest is dropped. `%` gives the rest of a division. If one of the numbers is a `double`, like `7.0`, the result is a `double`."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    writeln(7 / 2);\n    writeln(7 % 2);\n    writeln(7.0 / 2);\n    writeln(2 + 3 * 4);\n}",
+          "output": "3\n1\n3.5\n14"
+        },
+        {
+          "type": "heading",
+          "text": "auto and immutable"
+        },
+        {
+          "type": "text",
+          "md": "With `auto` instead of a type, the compiler picks the type from the value. `typeof(x).stringof` gives the name of the type of `x` as text, so you can check it."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    auto count = 3;\n    auto pi = 3.14;\n    auto word = \"hi\";\n    writeln(typeof(count).stringof);\n    writeln(typeof(pi).stringof);\n    writeln(typeof(word).stringof);\n}",
+          "output": "int\ndouble\nstring"
+        },
+        {
+          "type": "text",
+          "md": "A variable marked `immutable` can never change after it gets its value. Use it for values that must stay fixed. Like `auto`, `immutable` can pick the type by itself: `immutable weeks = 3;` is an `int`."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    immutable int days = 7;\n    immutable weeks = 3;\n    writeln(days * weeks);\n}",
+          "output": "21"
+        },
+        {
+          "type": "warning",
+          "md": "If you try to change an `immutable` variable, for example with `days = 8;`, the program does not compile."
+        },
+        {
+          "type": "text",
+          "md": "A variable without a value gets a default value: `0` for `int`, `false` for `bool` and an empty text for `string`. A `double` starts as `nan`, which means \"not a number\". It reminds you that you forgot to set a value."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    int n;\n    bool flag;\n    double x;\n    writeln(n, \" \", flag, \" \", x);\n}",
+          "output": "0 false nan"
+        }
+      ],
+      "card": [
+        "`int n = 5;` type, name, value",
+        "`int`, `double`, `string`, `bool`",
+        "`auto x = 3.5;` the compiler picks the type",
+        "`immutable y = 7;` can never change",
+        "`7 / 2` is `3`, `7 % 2` is `1`, `7.0 / 2` is `3.5`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "variables-1",
+          "prompt": "What does this print?",
+          "code": "int a = 5;\nint b = a * 2;\na = 1;\nwriteln(a + b);",
+          "answers": [
+            "11"
+          ],
+          "explain": "`b` gets `10` when it is created. Changing `a` later does not change `b`, so `1 + 10` is `11`."
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this print?",
+          "code": "writeln(17 / 5, \" \", 17 % 5);",
+          "answers": [
+            "3 2"
+          ],
+          "explain": "17 divided by 5 is 3 with a rest of 2. With two `int` values, `/` gives `3` and `%` gives `2`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-3",
+          "prompt": "Which line creates a variable that can never change?",
+          "options": [
+            "`immutable x = 5;`",
+            "`auto x = 5;`",
+            "`int x = 5;`",
+            "`var x = 5;`"
+          ],
+          "answer": 0,
+          "explain": "`immutable` values are fixed. `auto` and `int` variables can change, and `var` is not a D keyword."
+        },
+        {
+          "type": "choice",
+          "id": "variables-4",
+          "prompt": "Which type does `x` get here?",
+          "code": "auto x = 2.5;",
+          "options": [
+            "`double`",
+            "`int`",
+            "`string`",
+            "`float`"
+          ],
+          "answer": 0,
+          "explain": "`2.5` has a decimal point, so `auto` makes `x` a `double`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-5",
+          "statement": "This code compiles.",
+          "code": "int n = 5;\nn = \"five\";",
+          "answer": false,
+          "explain": "`n` is an `int`. A variable keeps its type, so it cannot hold the string `\"five\"`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-6",
+          "statement": "This code prints `false`.",
+          "code": "bool done;\nwriteln(done);",
+          "answer": true,
+          "explain": "A `bool` without a value starts as `false`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-7",
+          "prompt": "Complete the code so that it prints `3.5`.",
+          "code": "writeln(___ / 2);",
+          "options": [
+            "7.0",
+            "7",
+            "\"7\""
+          ],
+          "answer": 0,
+          "explain": "With `7.0` the division uses decimal numbers. `7 / 2` would give `3`, and a string cannot be divided."
+        },
+        {
+          "type": "gap",
+          "id": "variables-8",
+          "prompt": "Complete the code so that it prints `Ben`.",
+          "code": "___ name = \"Ben\";\nwriteln(name);",
+          "options": [
+            "string",
+            "int",
+            "bool",
+            "char"
+          ],
+          "answer": 0,
+          "explain": "Text in double quotes is a `string`. It does not fit into `int`, `bool` or `char`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-9",
+          "prompt": "Build a line that creates a `double` variable `price` with the value 2.5.",
+          "tokens": [
+            "double",
+            "price",
+            "=",
+            "2.5",
+            ";"
+          ],
+          "distractors": [
+            "int",
+            ":="
+          ],
+          "explain": "Type, name, `=`, value and a semicolon. An `int` cannot hold `2.5`."
+        },
+        {
+          "type": "order",
+          "id": "variables-10",
+          "prompt": "Put the lines in order so that the program prints `12`.",
+          "lines": [
+            "int x = 3;",
+            "x *= 2;",
+            "x += 6;",
+            "writeln(x);"
+          ],
+          "explain": "`x` becomes `3 * 2 = 6`, then `6 + 6 = 12`. Adding first would give `(3 + 6) * 2 = 18`."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`int`",
+              "whole number"
+            ],
+            [
+              "`double`",
+              "decimal number"
+            ],
+            [
+              "`string`",
+              "text"
+            ],
+            [
+              "`bool`",
+              "true or false"
+            ],
+            [
+              "`auto`",
+              "type chosen by the compiler"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "variables-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "int apples = 3;",
+            "double price = 0.5;",
+            "int total = apples * price;",
+            "writeln(total);"
+          ],
+          "bug": 2,
+          "explain": "`apples * price` is a `double` (1.5), which does not fit into an `int`. Write `double total = apples * price;`."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings",
+      "chapter": "Basics",
+      "summary": "Join strings with ~, read characters and slices, use std.string functions and format output with writefln.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "In D you join two strings with `~` (the tilde), not with `+`. `s ~= \"!\"` adds text to the end of `s`."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    string first = \"Ada\";\n    string last = \"Lovelace\";\n    string full = first ~ \" \" ~ last;\n    writeln(full);\n    full ~= \"!\";\n    writeln(full);\n}",
+          "output": "Ada Lovelace\nAda Lovelace!"
+        },
+        {
+          "type": "text",
+          "md": "`s.length` gives the number of characters. `s[0]` is the first character, because counting starts at `0`. `s[1 .. 4]` is a **slice**: the characters from position 1 up to, but not including, position 4. Inside the brackets, `$` means the length, so `s[$ - 1]` is the last character."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    string word = \"planet\";\n    writeln(word.length);\n    writeln(word[0]);\n    writeln(word[1 .. 4]);\n    writeln(word[$ - 1]);\n}",
+          "output": "6\np\nlan\nt"
+        },
+        {
+          "type": "heading",
+          "text": "Functions from std.string"
+        },
+        {
+          "type": "text",
+          "md": "The module `std.string` has many useful functions. `strip` removes spaces at the start and the end, `toUpper` and `toLower` change the case, `indexOf` gives the position of a text (or `-1` if it is not there) and `replace` swaps one text for another. You call them with a dot after the string: `s.toUpper()`."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\nimport std.string;\n\nvoid main() {\n    string s = \"  Hello, D  \";\n    string t = s.strip();\n    writeln(t);\n    writeln(t.toUpper());\n    writeln(t.toLower());\n    writeln(t.indexOf(\"D\"));\n    writeln(t.replace(\"Hello\", \"Bye\"));\n}",
+          "output": "Hello, D\nHELLO, D\nhello, d\n7\nBye, D"
+        },
+        {
+          "type": "warning",
+          "md": "`\"a\" + \"b\"` does not compile, because `+` is only for numbers. `~` only joins strings, so `\"Age: \" ~ age` with an `int` variable `age` does not compile either."
+        },
+        {
+          "type": "heading",
+          "text": "Numbers and text"
+        },
+        {
+          "type": "text",
+          "md": "To turn a number into a string, use `to!string(n)` from the module `std.conv`. `to!int(\"42\")` goes the other way. The `!` gives `to` the type you want to get."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\nimport std.conv;\n\nvoid main() {\n    int count = 3;\n    string msg = \"Items: \" ~ to!string(count);\n    writeln(msg);\n    int n = to!int(\"42\");\n    writeln(n + 1);\n}",
+          "output": "Items: 3\n43"
+        },
+        {
+          "type": "heading",
+          "text": "writefln"
+        },
+        {
+          "type": "text",
+          "md": "`writefln` prints a format string and ends the line. Each placeholder is replaced by the next value: `%s` fits any value, `%d` a whole number and `%.2f` a decimal number with two digits after the point. `format` from `std.string` works the same way but gives back the string instead of printing it."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\nimport std.string;\n\nvoid main() {\n    string name = \"Ana\";\n    int age = 30;\n    double height = 1.6789;\n    writefln(\"%s is %d years old.\", name, age);\n    writefln(\"Height: %.2f m\", height);\n    string s = format(\"%s/%d\", name, age);\n    writeln(s);\n}",
+          "output": "Ana is 30 years old.\nHeight: 1.68 m\nAna/30"
+        }
+      ],
+      "card": [
+        "`a ~ b` joins strings, `s ~= \"!\"` appends",
+        "`s.length`, `s[0]`, `s[1 .. 3]`, `s[$ - 1]`",
+        "`import std.string;` gives `strip`, `toUpper`, `indexOf`, `replace`",
+        "`to!string(5)` and `to!int(\"5\")` from `std.conv`",
+        "`writefln(\"%s has %d\", name, n);`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this print?",
+          "code": "string a = \"sun\";\nstring b = \"flower\";\nwriteln(a ~ b);",
+          "answers": [
+            "sunflower"
+          ],
+          "explain": "`~` joins the two strings without adding a space."
+        },
+        {
+          "type": "input",
+          "id": "strings-2",
+          "prompt": "What does this print?",
+          "code": "string s = \"banana\";\nwriteln(s.length, s[1]);",
+          "answers": [
+            "6a"
+          ],
+          "explain": "`banana` has 6 characters, and `s[1]` is the second one, `a`. `writeln` prints both without a space."
+        },
+        {
+          "type": "input",
+          "id": "strings-3",
+          "prompt": "What does this print?",
+          "code": "string w = \"keyboard\";\nwriteln(w[3 .. 6]);",
+          "answers": [
+            "boa"
+          ],
+          "explain": "Positions 3, 4 and 5 are `b`, `o` and `a`. The end position 6 is not included."
+        },
+        {
+          "type": "choice",
+          "id": "strings-4",
+          "prompt": "What happens with this code?",
+          "code": "string s = \"Score: \" + 10;\nwriteln(s);",
+          "options": [
+            "It does not compile.",
+            "It prints `Score: 10`.",
+            "It prints `Score: `.",
+            "It prints `10`."
+          ],
+          "answer": 0,
+          "explain": "`+` does not work on strings. Use `~` together with `to!string(10)`, or `writeln(\"Score: \", 10)`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-5",
+          "prompt": "What does this print?",
+          "code": "import std.string;\nwriteln(\"Hello\".indexOf(\"l\"));",
+          "options": [
+            "`2`",
+            "`3`",
+            "`1`",
+            "`-1`"
+          ],
+          "answer": 0,
+          "explain": "Counting starts at 0: `H` is 0, `e` is 1, and the first `l` is at position 2."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-6",
+          "statement": "This code prints the last character, `t`.",
+          "code": "string s = \"cat\";\nwriteln(s[$ - 1]);",
+          "answer": true,
+          "explain": "`$` is the length of the string, so `s[$ - 1]` is the last character."
+        },
+        {
+          "type": "gap",
+          "id": "strings-7",
+          "prompt": "Complete the code so that it prints `Hi, Ana`.",
+          "code": "string name = \"Ana\";\nwriteln(\"Hi, \" ___ name);",
+          "options": [
+            "~",
+            "+",
+            "&",
+            "*"
+          ],
+          "answer": 0,
+          "explain": "In D, `~` joins strings. `+`, `&` and `*` do not work with strings."
+        },
+        {
+          "type": "gap",
+          "id": "strings-8",
+          "prompt": "Complete the code so that it prints `D IS FUN`.",
+          "code": "import std.string;\nstring s = \"d is fun\";\nwriteln(s.___());",
+          "options": [
+            "toUpper",
+            "toLower",
+            "upper",
+            "strip"
+          ],
+          "answer": 0,
+          "explain": "`toUpper` from `std.string` turns all letters into capital letters."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-9",
+          "prompt": "Build the line that prints `price` with two digits after the decimal point.",
+          "tokens": [
+            "writefln",
+            "(",
+            "\"%.2f\"",
+            ",",
+            "price",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            "writeln",
+            "\"%d\""
+          ],
+          "explain": "`writefln` reads the format string. `%.2f` prints a decimal number with two digits; `%d` is only for whole numbers."
+        },
+        {
+          "type": "order",
+          "id": "strings-10",
+          "prompt": "Put the lines in order so that the program prints `Hello, World!`.",
+          "lines": [
+            "string s = \"Hello\";",
+            "s ~= \", \";",
+            "s ~= \"World!\";",
+            "writeln(s);"
+          ],
+          "explain": "First create `s`, then add `, ` and `World!` in this order, and print at the end."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`~`",
+              "joins two strings"
+            ],
+            [
+              "`.length`",
+              "number of characters"
+            ],
+            [
+              "`strip`",
+              "removes spaces at the start and end"
+            ],
+            [
+              "`%d`",
+              "placeholder for a whole number"
+            ],
+            [
+              "`to!int`",
+              "turns text into a whole number"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "strings-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "import std.stdio;",
+            "import std.conv;",
+            "void main() {",
+            "    int age = 30;",
+            "    string text = \"Age: \" ~ age;",
+            "    writeln(text);",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "`~` cannot join a string and an `int`. Convert the number first: `\"Age: \" ~ to!string(age)`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program choose with if, else, the ?: operator and switch.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`if` runs code only when a condition is `true`. The condition goes in parentheses `( )`, the code in braces. `else if` checks another condition, and `else` runs when no condition was `true`. You compare values with `==` (equal), `!=` (not equal), `<`, `>`, `<=` and `>=`."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    int temp = 25;\n    if (temp > 30) {\n        writeln(\"Hot\");\n    } else if (temp > 20) {\n        writeln(\"Warm\");\n    } else {\n        writeln(\"Cold\");\n    }\n}",
+          "output": "Warm"
+        },
+        {
+          "type": "text",
+          "md": "You combine conditions with `&&` (and: both must be `true`), `||` (or: at least one must be `true`) and `!` (not: turns `true` into `false` and back)."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    int age = 20;\n    bool hasTicket = true;\n    if (age >= 18 && hasTicket) {\n        writeln(\"Welcome\");\n    }\n    if (!hasTicket || age < 12) {\n        writeln(\"Sorry\");\n    }\n}",
+          "output": "Welcome"
+        },
+        {
+          "type": "text",
+          "md": "The operator `? :` picks one of two values: `cond ? a : b` gives `a` when `cond` is `true` and `b` otherwise. Here `n % 2 == 0` checks if `n` is even."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    int n = 7;\n    string kind = n % 2 == 0 ? \"even\" : \"odd\";\n    writeln(n, \" is \", kind);\n}",
+          "output": "7 is odd"
+        },
+        {
+          "type": "warning",
+          "md": "`=` gives a value, `==` compares. If you write `if (x = 5)` by mistake, D stops with an error instead of running wrong code."
+        },
+        {
+          "type": "heading",
+          "text": "switch"
+        },
+        {
+          "type": "text",
+          "md": "`switch` compares one value with several `case` labels and runs the matching one. A case can list several values, separated by commas. Each case ends with `break`. D does not let a case run into the next one: forgetting `break` is an error. `default` runs when no case matches, and D requires it."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    int day = 6;\n    switch (day) {\n        case 1, 2, 3, 4, 5:\n            writeln(\"Weekday\");\n            break;\n        case 6, 7:\n            writeln(\"Weekend\");\n            break;\n        default:\n            writeln(\"Unknown day\");\n            break;\n    }\n}",
+          "output": "Weekend"
+        },
+        {
+          "type": "text",
+          "md": "`switch` also works with strings."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    string color = \"green\";\n    switch (color) {\n        case \"red\":\n            writeln(\"Stop\");\n            break;\n        case \"green\":\n            writeln(\"Go\");\n            break;\n        default:\n            writeln(\"Wait\");\n            break;\n    }\n}",
+          "output": "Go"
+        },
+        {
+          "type": "text",
+          "md": "`case 80: .. case 89:` matches every value from 80 to 89, both ends included."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    int score = 85;\n    switch (score) {\n        case 90: .. case 100:\n            writeln(\"A\");\n            break;\n        case 80: .. case 89:\n            writeln(\"B\");\n            break;\n        default:\n            writeln(\"C\");\n            break;\n    }\n}",
+          "output": "B"
+        }
+      ],
+      "card": [
+        "`if (x > 0) { } else if (x < 0) { } else { }`",
+        "`==` `!=` `<` `>` `<=` `>=` and `&&` `||` `!`",
+        "`cond ? a : b` picks a value",
+        "`switch (x) { case 1, 2: ...; break; default: ...; break; }`",
+        "`case 1: .. case 5:` matches a range"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "int points = 15;\nif (points >= 20) {\n    writeln(\"gold\");\n} else if (points >= 10) {\n    writeln(\"silver\");\n} else {\n    writeln(\"bronze\");\n}",
+          "answers": [
+            "silver"
+          ],
+          "explain": "15 is not at least 20, but it is at least 10, so the `else if` branch runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "int a = 4;\nint b = 9;\nif (a > 5 || b > 5) {\n    writeln(\"yes\");\n} else {\n    writeln(\"no\");\n}",
+          "answers": [
+            "yes"
+          ],
+          "explain": "`a > 5` is `false`, but `b > 5` is `true`. With `||` one `true` side is enough."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "What does this print?",
+          "code": "int n = 3;\nswitch (n) {\n    case 1:\n        writeln(\"one\");\n        break;\n    case 2, 3:\n        writeln(\"few\");\n        break;\n    default:\n        writeln(\"many\");\n        break;\n}",
+          "options": [
+            "`few`",
+            "`many`",
+            "`one`",
+            "Nothing"
+          ],
+          "answer": 0,
+          "explain": "`3` is listed in `case 2, 3:`, so that case runs and `break` ends the `switch`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-4",
+          "prompt": "What happens with this code?",
+          "code": "int n = 1;\nswitch (n) {\n    case 1:\n        writeln(\"one\");\n    case 2:\n        writeln(\"two\");\n        break;\n    default:\n        break;\n}",
+          "options": [
+            "It does not compile.",
+            "It prints `one`.",
+            "It prints `one` and `two`.",
+            "It prints `two`."
+          ],
+          "answer": 0,
+          "explain": "The first case has no `break`, so it would run into the next case. D does not allow this and stops with an error."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-5",
+          "statement": "This code compiles.",
+          "code": "int x = 3;\nif (x = 4) {\n    writeln(\"four\");\n}",
+          "answer": false,
+          "explain": "`x = 4` is an assignment, not a comparison. D does not accept it as a condition. Write `x == 4`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-6",
+          "statement": "This code prints `false`.",
+          "code": "writeln(!(5 > 3));",
+          "answer": true,
+          "explain": "`5 > 3` is `true`, and `!` turns it into `false`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Complete the code so that it prints `negative`.",
+          "code": "int n = -3;\nwriteln(n ___ 0 ? \"negative\" : \"positive\");",
+          "options": [
+            "<",
+            ">",
+            "==",
+            ">="
+          ],
+          "answer": 0,
+          "explain": "`-3 < 0` is `true`, so `? :` picks the first value, `negative`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-8",
+          "prompt": "Complete the code so that it prints `other`.",
+          "code": "string size = \"XL\";\nswitch (size) {\n    case \"S\":\n        writeln(\"small\");\n        break;\n    ___:\n        writeln(\"other\");\n        break;\n}",
+          "options": [
+            "default",
+            "else",
+            "case",
+            "otherwise"
+          ],
+          "answer": 0,
+          "explain": "`default` runs when no `case` matches. `XL` is not `S`."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-9",
+          "prompt": "Build the first line of an `if` that checks that `age` is at least 18 and `member` is `true`.",
+          "tokens": [
+            "if",
+            "(",
+            "age",
+            ">=",
+            "18",
+            "&&",
+            "member",
+            ")",
+            "{"
+          ],
+          "distractors": [
+            "and",
+            "="
+          ],
+          "explain": "The condition goes in parentheses. `&&` means and; D has no `and` keyword. `>=` means at least."
+        },
+        {
+          "type": "order",
+          "id": "conditions-10",
+          "prompt": "Put the lines in order so that the program prints `Warm`.",
+          "lines": [
+            "int t = 22;",
+            "if (t > 25) {",
+            "    writeln(\"Hot\");",
+            "} else {",
+            "    writeln(\"Warm\");",
+            "}"
+          ],
+          "explain": "`22 > 25` is `false`, so the `else` branch runs. It must contain the line that prints `Warm`."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`&&`",
+              "both must be true"
+            ],
+            [
+              "`||`",
+              "at least one must be true"
+            ],
+            [
+              "`!`",
+              "turns true into false"
+            ],
+            [
+              "`==`",
+              "checks if two values are equal"
+            ],
+            [
+              "`default`",
+              "runs when no case matches"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "int score = 72;",
+            "if (score >= 90) {",
+            "    writeln(\"A\");",
+            "} else if score >= 50 {",
+            "    writeln(\"pass\");",
+            "} else {",
+            "    writeln(\"fail\");",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "The condition needs parentheses: `} else if (score >= 50) {`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with for, foreach over ranges like 0 .. 5, while and do-while, and control loops with break and continue.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A `for` loop has three parts in its parentheses, separated by semicolons: a start (`int i = 1`), a condition that is checked before each round (`i <= 3`) and a step that runs after each round. `i++` adds 1 to `i`, and `i--` subtracts 1."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    for (int i = 1; i <= 3; i++) {\n        writeln(\"Step \", i);\n    }\n}",
+          "output": "Step 1\nStep 2\nStep 3"
+        },
+        {
+          "type": "heading",
+          "text": "foreach"
+        },
+        {
+          "type": "text",
+          "md": "`foreach (i; 0 .. 3)` is the easiest way to count. `0 .. 3` is a **range**: the numbers from 0 up to 3, **without** 3. The loop runs once for each number, and `i` holds the current one."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    foreach (i; 0 .. 3) {\n        writeln(\"Round \", i);\n    }\n    int sum = 0;\n    foreach (n; 1 .. 11) {\n        sum += n;\n    }\n    writeln(\"Sum: \", sum);\n}",
+          "output": "Round 0\nRound 1\nRound 2\nSum: 55"
+        },
+        {
+          "type": "text",
+          "md": "`foreach` also walks over the characters of a string, one after another. `foreach_reverse` walks backwards."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    foreach (c; \"abc\") {\n        writeln(c);\n    }\n    foreach_reverse (i; 1 .. 4) {\n        write(i);\n    }\n    writeln();\n}",
+          "output": "a\nb\nc\n321"
+        },
+        {
+          "type": "heading",
+          "text": "while"
+        },
+        {
+          "type": "text",
+          "md": "`while` repeats its code as long as the condition is `true`. Make sure something inside the loop changes, or the loop never ends."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    int n = 100;\n    int steps = 0;\n    while (n > 10) {\n        n /= 2;\n        steps++;\n    }\n    writeln(n, \" after \", steps, \" steps\");\n}",
+          "output": "6 after 4 steps"
+        },
+        {
+          "type": "text",
+          "md": "`do { } while (cond);` checks the condition **after** each round, so the code runs at least once."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    int tries = 0;\n    do {\n        tries++;\n    } while (tries < 3);\n    writeln(tries);\n}",
+          "output": "3"
+        },
+        {
+          "type": "text",
+          "md": "`continue` jumps straight to the next round, and `break` ends the loop at once."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    foreach (i; 1 .. 10) {\n        if (i % 2 == 0) {\n            continue;\n        }\n        if (i > 7) {\n            break;\n        }\n        writeln(i);\n    }\n}",
+          "output": "1\n3\n5\n7"
+        }
+      ],
+      "card": [
+        "`for (int i = 0; i < 3; i++) { }`",
+        "`foreach (i; 0 .. 3) { }` counts 0, 1, 2",
+        "`foreach (c; \"abc\") { }` walks over items",
+        "`while (cond) { }` and `do { } while (cond);`",
+        "`break` ends the loop, `continue` goes to the next round"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "int sum = 0;\nforeach (i; 1 .. 5) {\n    sum += i;\n}\nwriteln(sum);",
+          "answers": [
+            "10"
+          ],
+          "explain": "`1 .. 5` gives 1, 2, 3 and 4 (5 is not included). 1 + 2 + 3 + 4 is 10."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "int n = 1;\nint steps = 0;\nwhile (n < 20) {\n    n *= 2;\n    steps++;\n}\nwriteln(steps);",
+          "answers": [
+            "5"
+          ],
+          "explain": "`n` becomes 2, 4, 8, 16 and 32. After 5 rounds `n < 20` is `false`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "How many lines does this print?",
+          "code": "foreach (i; 2 .. 6) {\n    writeln(i);\n}",
+          "options": [
+            "`4`",
+            "`5`",
+            "`6`",
+            "`3`"
+          ],
+          "answer": 0,
+          "explain": "`2 .. 6` gives 2, 3, 4 and 5. The end, 6, is not included."
+        },
+        {
+          "type": "choice",
+          "id": "loops-4",
+          "prompt": "What does this print?",
+          "code": "foreach (i; 0 .. 6) {\n    if (i == 3) {\n        break;\n    }\n    write(i);\n}\nwriteln();",
+          "options": [
+            "`012`",
+            "`0123`",
+            "`012345`",
+            "`01245`"
+          ],
+          "answer": 0,
+          "explain": "When `i` is 3, `break` ends the loop before `write(i)`, so only 0, 1 and 2 are printed."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-5",
+          "statement": "`foreach (i; 0 .. 3)` runs its code 4 times.",
+          "answer": false,
+          "explain": "`0 .. 3` gives 0, 1 and 2, so the code runs 3 times."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-6",
+          "statement": "This code prints `5`.",
+          "code": "int x = 5;\ndo {\n    writeln(x);\n    x++;\n} while (x < 3);",
+          "answer": true,
+          "explain": "A `do`-`while` loop runs once before it checks the condition. `6 < 3` is `false`, so it stops after one round."
+        },
+        {
+          "type": "gap",
+          "id": "loops-7",
+          "prompt": "Complete the loop so that it prints 0, 1 and 2.",
+          "code": "foreach (i; 0 ___ 3) {\n    writeln(i);\n}",
+          "options": [
+            "..",
+            "...",
+            ",",
+            "to"
+          ],
+          "answer": 0,
+          "explain": "A range is written with two dots: `0 .. 3`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-8",
+          "prompt": "Complete the loop so that it prints 5, 4, 3, 2 and 1.",
+          "code": "int n = 5;\nwhile (n ___ 0) {\n    writeln(n);\n    n--;\n}",
+          "options": [
+            ">",
+            "<",
+            "==",
+            ">="
+          ],
+          "answer": 0,
+          "explain": "The loop runs while `n > 0`. With `>=` it would also print 0."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-9",
+          "prompt": "Build the first line of a loop that repeats as long as `count` is smaller than 10.",
+          "tokens": [
+            "while",
+            "(",
+            "count",
+            "<",
+            "10",
+            ")",
+            "{"
+          ],
+          "distractors": [
+            "for",
+            "until"
+          ],
+          "explain": "`while` checks its condition before each round. `until` is not a D keyword."
+        },
+        {
+          "type": "order",
+          "id": "loops-10",
+          "prompt": "Put the lines in order so that the program prints `15`.",
+          "lines": [
+            "int total = 0;",
+            "foreach (n; 1 .. 6) {",
+            "    total += n;",
+            "}",
+            "writeln(total);"
+          ],
+          "explain": "Create `total`, add 1 to 5 in the loop, and print once after the loop: 1 + 2 + 3 + 4 + 5 is 15."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`0 .. 5`",
+              "the numbers 0 to 4"
+            ],
+            [
+              "`i++`",
+              "adds 1 to i"
+            ],
+            [
+              "`break`",
+              "ends the loop"
+            ],
+            [
+              "`continue`",
+              "goes to the next round"
+            ],
+            [
+              "`foreach_reverse`",
+              "walks backwards"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "loops-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "int product = 1;",
+            "for (int i = 1, i <= 4, i++) {",
+            "    product *= i;",
+            "}",
+            "writeln(product);"
+          ],
+          "bug": 1,
+          "explain": "The three parts of a `for` loop are separated by semicolons: `for (int i = 1; i <= 4; i++) {`."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Write your own functions with parameters and return values, change variables with ref and chain calls with UFCS.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** is a named block of code that you can call again and again. You write the return type, the name and the parameters in parentheses, each with its type. `return` gives a value back to the caller. A `void` function gives nothing back. Functions are written outside of `main`."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nint add(int a, int b) {\n    return a + b;\n}\n\nvoid greet(string name) {\n    writeln(\"Hello, \", name, \"!\");\n}\n\nvoid main() {\n    writeln(add(2, 3));\n    greet(\"Mia\");\n}",
+          "output": "5\nHello, Mia!"
+        },
+        {
+          "type": "text",
+          "md": "In D, a function can come before or after `main`. A parameter can have a default value with `=`. If you leave it out in the call, the default is used."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    writeln(scale(3));\n    writeln(scale(3, 2));\n}\n\nint scale(int x, int factor = 10) {\n    return x * factor;\n}",
+          "output": "30\n6"
+        },
+        {
+          "type": "text",
+          "md": "A function can have several `return` statements. The first one that runs ends the function at once."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nstring sign(int n) {\n    if (n > 0) {\n        return \"positive\";\n    }\n    if (n < 0) {\n        return \"negative\";\n    }\n    return \"zero\";\n}\n\nvoid main() {\n    writeln(sign(5));\n    writeln(sign(-2));\n    writeln(sign(0));\n}",
+          "output": "positive\nnegative\nzero"
+        },
+        {
+          "type": "warning",
+          "md": "If the return type is not `void`, every way through the function must end with `return` and a value. Otherwise the program does not compile."
+        },
+        {
+          "type": "heading",
+          "text": "ref parameters"
+        },
+        {
+          "type": "text",
+          "md": "Normally a function gets a **copy** of each value. If it changes the copy, the caller's variable stays the same. With `ref` before the parameter, the function works on the caller's variable itself."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid addOne(int n) {\n    n += 1;\n}\n\nvoid addOneRef(ref int n) {\n    n += 1;\n}\n\nvoid main() {\n    int x = 5;\n    addOne(x);\n    writeln(x);\n    addOneRef(x);\n    writeln(x);\n}",
+          "output": "5\n6"
+        },
+        {
+          "type": "heading",
+          "text": "UFCS"
+        },
+        {
+          "type": "text",
+          "md": "D has **UFCS** (Uniform Function Call Syntax): you can write `f(x)` as `x.f()`, and `f(x, y)` as `x.f(y)`. When there is nothing left in the parentheses, you can drop them: `x.f`. This is why `s.toUpper()` from the strings unit works. Chains read from left to right."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nint square(int n) {\n    return n * n;\n}\n\nint plus(int n, int m) {\n    return n + m;\n}\n\nvoid main() {\n    writeln(square(4));\n    writeln(4.square());\n    writeln(4.square.plus(1));\n    writeln(3.plus(2).square);\n}",
+          "output": "16\n16\n17\n25"
+        },
+        {
+          "type": "tip",
+          "md": "Use UFCS when it makes the order of steps easier to read: `3.plus(2).square` first adds, then squares."
+        }
+      ],
+      "card": [
+        "`int add(int a, int b) { return a + b; }`",
+        "`void` functions give back no value",
+        "`int f(int x, int y = 10)` has a default value",
+        "`ref int n` changes the caller's variable",
+        "UFCS: `f(x, y)` is the same as `x.f(y)`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "int twice(int x) {\n    return x * 2;\n}\n\nvoid main() {\n    writeln(twice(twice(3)));\n}",
+          "answers": [
+            "12"
+          ],
+          "explain": "The inner call gives `6`, and the outer call doubles it to `12`."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print?",
+          "code": "void change(ref int a) {\n    a = 10;\n}\n\nvoid main() {\n    int v = 1;\n    change(v);\n    writeln(v);\n}",
+          "answers": [
+            "10"
+          ],
+          "explain": "With `ref`, `a` is the variable `v` itself, so `v` becomes `10`."
+        },
+        {
+          "type": "input",
+          "id": "functions-3",
+          "prompt": "What does this print?",
+          "code": "int sub(int a, int b) {\n    return a - b;\n}\n\nvoid main() {\n    writeln(10.sub(4));\n}",
+          "answers": [
+            "6"
+          ],
+          "explain": "With UFCS, `10.sub(4)` is the same as `sub(10, 4)`, which is `6`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-4",
+          "prompt": "What does this print?",
+          "code": "void bump(int n) {\n    n++;\n}\n\nvoid main() {\n    int x = 3;\n    bump(x);\n    writeln(x);\n}",
+          "options": [
+            "`3`",
+            "`4`",
+            "`0`",
+            "It does not compile."
+          ],
+          "answer": 0,
+          "explain": "Without `ref`, `bump` changes only its own copy. `x` in `main` stays `3`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-5",
+          "prompt": "Which call means the same as `add(5, 2)`?",
+          "options": [
+            "`5.add(2)`",
+            "`add.5(2)`",
+            "`5.add.2`",
+            "`2.add(5)`"
+          ],
+          "answer": 0,
+          "explain": "With UFCS the first argument goes before the dot: `add(5, 2)` becomes `5.add(2)`."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-6",
+          "statement": "This code compiles.",
+          "code": "int half(int n) {\n    if (n > 0) {\n        return n / 2;\n    }\n}\n\nvoid main() {\n    writeln(half(4));\n}",
+          "answer": false,
+          "explain": "When `n` is not greater than 0, the function reaches its end without `return`. D stops with an error."
+        },
+        {
+          "type": "gap",
+          "id": "functions-7",
+          "prompt": "Complete the function so that the program prints `9`.",
+          "code": "int square(int n) {\n    ___ n * n;\n}\n\nvoid main() {\n    writeln(square(3));\n}",
+          "options": [
+            "return",
+            "writeln",
+            "give",
+            "yield"
+          ],
+          "answer": 0,
+          "explain": "`return` gives the value back to the caller, and `main` prints it."
+        },
+        {
+          "type": "gap",
+          "id": "functions-8",
+          "prompt": "Complete the parameter so that the program prints `6`.",
+          "code": "void triple(___ int n) {\n    n *= 3;\n}\n\nvoid main() {\n    int x = 2;\n    triple(x);\n    writeln(x);\n}",
+          "options": [
+            "ref",
+            "const",
+            "immutable"
+          ],
+          "answer": 0,
+          "explain": "Only with `ref` does the function change `x` itself. `const` and `immutable` parameters cannot be changed at all."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-9",
+          "prompt": "Build the first line of a function `isAdult` that takes an `int` called `age` and gives back a `bool`.",
+          "tokens": [
+            "bool",
+            "isAdult",
+            "(",
+            "int",
+            "age",
+            ")",
+            "{"
+          ],
+          "distractors": [
+            "void",
+            "def"
+          ],
+          "explain": "The return type comes first, then the name and the parameter with its type. A `void` function could not return a `bool`."
+        },
+        {
+          "type": "order",
+          "id": "functions-10",
+          "prompt": "Put the lines in order so that `larger` gives back the larger of two numbers.",
+          "lines": [
+            "int larger(int a, int b) {",
+            "    if (a > b) {",
+            "        return a;",
+            "    }",
+            "    return b;",
+            "}"
+          ],
+          "explain": "If `a` is greater, the function returns `a`. Otherwise it reaches the last `return` and gives back `b`."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`return`",
+              "gives a value back"
+            ],
+            [
+              "`void`",
+              "the function gives back nothing"
+            ],
+            [
+              "`ref`",
+              "works on the caller's variable"
+            ],
+            [
+              "`x.f()`",
+              "the same as f(x)"
+            ],
+            [
+              "`int f(int y = 10)`",
+              "y has a default value"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "functions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "int multiply(int a, int b) {",
+            "    return a * b;",
+            "}",
+            "void main() {",
+            "    int r = multiply(3);",
+            "    writeln(r);",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "`multiply` needs two arguments, for example `multiply(3, 4)`."
+        }
+      ]
+    },
+    {
+      "id": "arrays",
+      "title": "Arrays",
+      "chapter": "Data",
+      "summary": "Keep many values in dynamic arrays, append with ~=, cut slices and look up values by key in associative arrays.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** holds several values of the same type in a fixed order. `int[]` is an array of `int` values. You write the values in square brackets. `a[0]` is the first element, `a.length` the number of elements, and `writeln` can print the whole array."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    int[] scores = [90, 75, 82];\n    writeln(scores);\n    writeln(scores[0]);\n    writeln(scores.length);\n    scores[1] = 80;\n    writeln(scores);\n}",
+          "output": "[90, 75, 82]\n90\n3\n[90, 80, 82]"
+        },
+        {
+          "type": "text",
+          "md": "These arrays are **dynamic**: they can grow. `~=` adds an element (or another array) at the end, and `~` joins two arrays into a new one."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    string[] fruits = [\"apple\"];\n    fruits ~= \"pear\";\n    fruits ~= \"plum\";\n    writeln(fruits);\n    writeln(fruits.length);\n    int[] a = [1, 2] ~ [3];\n    writeln(a);\n}",
+          "output": "[\"apple\", \"pear\", \"plum\"]\n3\n[1, 2, 3]"
+        },
+        {
+          "type": "text",
+          "md": "`foreach` walks over all elements. With two names, like `foreach (i, name; names)`, you also get the position."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    string[] names = [\"Ana\", \"Ben\", \"Cleo\"];\n    foreach (name; names) {\n        writeln(name);\n    }\n    foreach (i, name; names) {\n        writeln(i, \": \", name);\n    }\n}",
+          "output": "Ana\nBen\nCleo\n0: Ana\n1: Ben\n2: Cleo"
+        },
+        {
+          "type": "heading",
+          "text": "Slices"
+        },
+        {
+          "type": "text",
+          "md": "`a[1 .. 4]` is a slice, as with strings, and `$` is the length. A slice does not copy the elements: it **shares** them with the array, so a change through the slice changes the array too. The same is true for `b = a`. `.dup` makes a real copy."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    int[] nums = [10, 20, 30, 40, 50];\n    int[] middle = nums[1 .. 4];\n    writeln(middle);\n    writeln(nums[$ - 2 .. $]);\n    middle[0] = 99;\n    writeln(nums);\n    int[] copy = nums.dup;\n    copy[0] = 0;\n    writeln(nums[0], \" \", copy[0]);\n}",
+          "output": "[20, 30, 40]\n[40, 50]\n[10, 99, 30, 40, 50]\n10 0"
+        },
+        {
+          "type": "warning",
+          "md": "An index outside the array, like `nums[5]` for an array with 5 elements, stops the program with an error. The last valid index is `nums.length - 1`."
+        },
+        {
+          "type": "heading",
+          "text": "Associative arrays"
+        },
+        {
+          "type": "text",
+          "md": "An **associative array** stores values under keys. `int[string] ages` has `string` keys and `int` values: the value type comes first, the key type goes in the brackets. `ages[\"Ana\"] = 30` adds or changes a value. `\"Ben\" in ages` checks if a key exists, and `remove` deletes one."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nvoid main() {\n    int[string] ages;\n    ages[\"Ana\"] = 30;\n    ages[\"Ben\"] = 25;\n    ages[\"Ana\"] += 1;\n    writeln(ages[\"Ana\"]);\n    writeln(ages.length);\n    if (\"Ben\" in ages) {\n        writeln(\"Ben is here\");\n    }\n    ages.remove(\"Ben\");\n    writeln(ages.length);\n}",
+          "output": "31\n2\nBen is here\n1"
+        },
+        {
+          "type": "tip",
+          "md": "Reading a key that does not exist stops the program with an error. `ages.get(\"Zoe\", 0)` gives `0` instead. The order of the keys is not fixed, so do not rely on it."
+        }
+      ],
+      "card": [
+        "`int[] a = [1, 2, 3];` then `a[0]` and `a.length`",
+        "`a ~= 4;` appends, `a ~ b` joins",
+        "`a[1 .. 3]`, `a[$ - 1]`, `a.dup` makes a copy",
+        "`foreach (i, x; a) { }`",
+        "`int[string] m; m[\"k\"] = 1; if (\"k\" in m) { }`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arrays-1",
+          "prompt": "What does this print?",
+          "code": "int[] a = [4, 8, 15, 16];\nwriteln(a[1] + a[$ - 1]);",
+          "answers": [
+            "24"
+          ],
+          "explain": "`a[1]` is `8` and `a[$ - 1]` is the last element, `16`. 8 + 16 is 24."
+        },
+        {
+          "type": "input",
+          "id": "arrays-2",
+          "prompt": "What does this print?",
+          "code": "int[] a = [1, 2];\na ~= 3;\na ~= a[0];\nwriteln(a.length);",
+          "answers": [
+            "4"
+          ],
+          "explain": "Two elements are added to the two at the start: `[1, 2, 3, 1]` has 4 elements."
+        },
+        {
+          "type": "input",
+          "id": "arrays-3",
+          "prompt": "What does this print?",
+          "code": "int[] n = [5, 6, 7, 8, 9];\nwriteln(n[2 .. 4]);",
+          "answers": [
+            "[7, 8]"
+          ],
+          "explain": "The slice takes positions 2 and 3, which hold `7` and `8`. Position 4 is not included."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-4",
+          "prompt": "What does this print?",
+          "code": "int[] a = [1, 2, 3];\nint[] b = a;\nb[0] = 9;\nwriteln(a[0]);",
+          "options": [
+            "`9`",
+            "`1`",
+            "`0`",
+            "It does not compile."
+          ],
+          "answer": 0,
+          "explain": "`b = a` does not copy the elements. Both names share them, so the change through `b` is visible in `a`."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-5",
+          "prompt": "What happens with this code?",
+          "code": "int[] a = [1, 2, 3];\nwriteln(a[3]);",
+          "options": [
+            "The program stops with an error.",
+            "It prints `3`.",
+            "It prints `0`.",
+            "It prints `[1, 2, 3]`."
+          ],
+          "answer": 0,
+          "explain": "The array has the indexes 0, 1 and 2. Index 3 is outside, so the program stops with an error."
+        },
+        {
+          "type": "true_false",
+          "id": "arrays-6",
+          "statement": "After this code, `fruits.length` is `3`.",
+          "code": "string[] fruits = [\"fig\"];\nfruits ~= \"kiwi\";\nfruits ~= [\"lime\", \"date\"];",
+          "answer": false,
+          "explain": "`~=` with an array adds all of its elements. `fruits` has 4 elements: fig, kiwi, lime and date."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-7",
+          "prompt": "Complete the code so that it prints `[1, 2, 3]`.",
+          "code": "int[] a = [1, 2];\na ___ 3;\nwriteln(a);",
+          "options": [
+            "~=",
+            "+=",
+            "=",
+            "~"
+          ],
+          "answer": 0,
+          "explain": "`~=` adds an element at the end. `~` alone creates a new array but does not store it."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-8",
+          "prompt": "Complete the code so that it prints `found`.",
+          "code": "int[string] prices;\nprices[\"tea\"] = 3;\nif (\"tea\" ___ prices) {\n    writeln(\"found\");\n}",
+          "options": [
+            "in",
+            "==",
+            "has",
+            "of"
+          ],
+          "answer": 0,
+          "explain": "`key in array` checks if an associative array has the key."
+        },
+        {
+          "type": "blocks",
+          "id": "arrays-9",
+          "prompt": "Build a line that creates an array `colors` with the strings \"red\" and \"blue\".",
+          "tokens": [
+            "string[]",
+            "colors",
+            "=",
+            "[",
+            "\"red\"",
+            ",",
+            "\"blue\"",
+            "]",
+            ";"
+          ],
+          "distractors": [
+            "int[]",
+            "("
+          ],
+          "explain": "An array of strings has the type `string[]`, and its values go in square brackets."
+        },
+        {
+          "type": "order",
+          "id": "arrays-10",
+          "prompt": "Put the lines in order so that the program prints `[3, 4]`.",
+          "lines": [
+            "int[] a = [1, 2];",
+            "a ~= 3;",
+            "a ~= 4;",
+            "writeln(a[2 .. $]);"
+          ],
+          "explain": "After both appends `a` is `[1, 2, 3, 4]`, and the slice from position 2 to the end is `[3, 4]`."
+        },
+        {
+          "type": "pairs",
+          "id": "arrays-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`a.length`",
+              "number of elements"
+            ],
+            [
+              "`a ~= x`",
+              "adds x at the end"
+            ],
+            [
+              "`a[$ - 1]`",
+              "the last element"
+            ],
+            [
+              "`a.dup`",
+              "a copy of the array"
+            ],
+            [
+              "`int[string]`",
+              "values stored under string keys"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "arrays-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "string[] names = [\"Ana\", \"Ben\"];",
+            "names ~= \"Cleo\";",
+            "foreach (i, name; names) {",
+            "    writeln(i, \" \", name);",
+            "}",
+            "writeln(names[3]);"
+          ],
+          "bug": 5,
+          "explain": "There are 3 names with the indexes 0 to 2. The last one is `names[2]` (or `names[$ - 1]`)."
+        }
+      ]
+    },
+    {
+      "id": "structs",
+      "title": "Structs and classes",
+      "chapter": "Data",
+      "summary": "Build your own types: structs with fields and methods, and classes with constructors, new and inheritance.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A `struct` groups related values under one name and so creates a new type. The values inside are called **fields**. `Point(3, 4)` creates a `Point` and fills the fields in order. You reach a field with a dot: `p.x`."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nstruct Point {\n    int x;\n    int y;\n}\n\nvoid main() {\n    Point p = Point(3, 4);\n    writeln(p.x, \" \", p.y);\n    p.x = 10;\n    writeln(p);\n}",
+          "output": "3 4\nPoint(10, 4)"
+        },
+        {
+          "type": "text",
+          "md": "A function inside a struct is called a **method**. It can use the fields directly. You call it with a dot, like `r.area()`. As with UFCS, you can leave out empty parentheses."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nstruct Rect {\n    int width;\n    int height;\n\n    int area() {\n        return width * height;\n    }\n\n    void grow(int n) {\n        width += n;\n        height += n;\n    }\n}\n\nvoid main() {\n    auto r = Rect(2, 3);\n    writeln(r.area());\n    r.grow(1);\n    writeln(r.area);\n}",
+          "output": "6\n12"
+        },
+        {
+          "type": "text",
+          "md": "Structs are **values**: `b = a` copies all fields, so changing `b` leaves `a` as it was. A field can have a default value, like `int count = 0;`."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nstruct Counter {\n    string name;\n    int count = 0;\n}\n\nvoid main() {\n    Counter a = Counter(\"clicks\");\n    Counter b = a;\n    b.count = 5;\n    writeln(a.count, \" \", b.count);\n}",
+          "output": "0 5"
+        },
+        {
+          "type": "heading",
+          "text": "Classes"
+        },
+        {
+          "type": "text",
+          "md": "A `class` also has fields and methods, but you create objects with `new`. A class variable is a **reference**: after `b = a`, both names point to the same object. The method `this(...)` is the **constructor**; `new` calls it. Inside, `this.owner` means the field, while `owner` alone is the parameter."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nclass Account {\n    string owner;\n    int balance;\n\n    this(string owner, int balance) {\n        this.owner = owner;\n        this.balance = balance;\n    }\n\n    void deposit(int amount) {\n        balance += amount;\n    }\n}\n\nvoid main() {\n    Account a = new Account(\"Ana\", 100);\n    Account b = a;\n    b.deposit(50);\n    writeln(a.owner, \": \", a.balance);\n}",
+          "output": "Ana: 150"
+        },
+        {
+          "type": "text",
+          "md": "A class can build on another class: `class Dog : Animal` gets all fields and methods of `Animal`. `super(name)` calls the constructor of `Animal`, and `override` replaces a method. A `Dog` object can be stored in an `Animal` variable and still uses its own method."
+        },
+        {
+          "type": "code",
+          "code": "import std.stdio;\n\nclass Animal {\n    string name;\n\n    this(string name) {\n        this.name = name;\n    }\n\n    string sound() {\n        return \"...\";\n    }\n\n    void speak() {\n        writeln(name, \" says \", sound());\n    }\n}\n\nclass Dog : Animal {\n    this(string name) {\n        super(name);\n    }\n\n    override string sound() {\n        return \"Woof\";\n    }\n}\n\nvoid main() {\n    Animal a = new Animal(\"Generic\");\n    Animal d = new Dog(\"Rex\");\n    a.speak();\n    d.speak();\n}",
+          "output": "Generic says ...\nRex says Woof"
+        },
+        {
+          "type": "warning",
+          "md": "A class variable without `new` is `null`: it points to no object. Calling a method on it crashes the program."
+        },
+        {
+          "type": "tip",
+          "md": "Use a `struct` for small values like points or dates. Use a `class` when several parts of the program must share one object, or when you need inheritance."
+        }
+      ],
+      "card": [
+        "`struct P { int x; int y; }` and `P(1, 2)`",
+        "methods are functions inside a struct or class",
+        "structs are copied, class objects are shared",
+        "`new C(...)` calls the constructor `this(...)`",
+        "`class Dog : Animal` and `override`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "structs-1",
+          "prompt": "What does this print?",
+          "code": "struct Box {\n    int w;\n    int h;\n}\n\nvoid main() {\n    auto b = Box(4, 5);\n    b.h = 2;\n    writeln(b.w * b.h);\n}",
+          "answers": [
+            "8"
+          ],
+          "explain": "`b` starts as `Box(4, 5)`, then `h` becomes `2`. 4 * 2 is 8."
+        },
+        {
+          "type": "input",
+          "id": "structs-2",
+          "prompt": "What does this print?",
+          "code": "struct Pair {\n    int a;\n}\n\nvoid main() {\n    Pair p = Pair(1);\n    Pair q = p;\n    q.a = 7;\n    writeln(p.a, \" \", q.a);\n}",
+          "answers": [
+            "1 7"
+          ],
+          "explain": "A struct is copied on assignment. Changing `q` does not change `p`."
+        },
+        {
+          "type": "input",
+          "id": "structs-3",
+          "prompt": "What does this print?",
+          "code": "class Cell {\n    int v;\n}\n\nvoid main() {\n    Cell c = new Cell();\n    Cell d = c;\n    d.v = 4;\n    writeln(c.v);\n}",
+          "answers": [
+            "4"
+          ],
+          "explain": "`c` and `d` point to the same object, so the change through `d` is visible through `c`."
+        },
+        {
+          "type": "choice",
+          "id": "structs-4",
+          "prompt": "What does this print?",
+          "code": "struct Point {\n    int x;\n    int y;\n}\n\nvoid main() {\n    writeln(Point(1, 2));\n}",
+          "options": [
+            "`Point(1, 2)`",
+            "`1 2`",
+            "`{1, 2}`",
+            "`Point`"
+          ],
+          "answer": 0,
+          "explain": "`writeln` prints a struct as its name followed by the field values in parentheses."
+        },
+        {
+          "type": "choice",
+          "id": "structs-5",
+          "prompt": "What does this print?",
+          "code": "struct Temp {\n    double c;\n\n    double f() {\n        return c * 9 / 5 + 32;\n    }\n}\n\nvoid main() {\n    writeln(Temp(100).f());\n}",
+          "options": [
+            "`212`",
+            "`100`",
+            "`180`",
+            "`132`"
+          ],
+          "answer": 0,
+          "explain": "The method uses the field `c`: 100 * 9 / 5 + 32 is 212."
+        },
+        {
+          "type": "true_false",
+          "id": "structs-6",
+          "statement": "This code compiles.",
+          "code": "class Car {\n    string model;\n}\n\nvoid main() {\n    Car c = Car();\n    writeln(c.model);\n}",
+          "answer": false,
+          "explain": "Objects of a class are created with `new`: `Car c = new Car();`."
+        },
+        {
+          "type": "gap",
+          "id": "structs-7",
+          "prompt": "Complete the constructor so that the program prints `Lea`.",
+          "code": "class Person {\n    string name;\n\n    ___(string name) {\n        this.name = name;\n    }\n}\n\nvoid main() {\n    auto p = new Person(\"Lea\");\n    writeln(p.name);\n}",
+          "options": [
+            "this",
+            "Person",
+            "init",
+            "constructor"
+          ],
+          "answer": 0,
+          "explain": "In D the constructor is always called `this`, whatever the name of the class."
+        },
+        {
+          "type": "gap",
+          "id": "structs-8",
+          "prompt": "Complete the code so that `Cat` builds on `Animal` and the program prints `Meow`.",
+          "code": "class Animal {\n    string sound() {\n        return \"...\";\n    }\n}\n\nclass Cat ___ Animal {\n    override string sound() {\n        return \"Meow\";\n    }\n}\n\nvoid main() {\n    Animal a = new Cat();\n    writeln(a.sound());\n}",
+          "options": [
+            ":",
+            "extends",
+            "->",
+            "<"
+          ],
+          "answer": 0,
+          "explain": "D uses a colon for inheritance: `class Cat : Animal`. `extends` is Java."
+        },
+        {
+          "type": "blocks",
+          "id": "structs-9",
+          "prompt": "Build a line that creates a new `Account` for \"Ana\" with the balance 100 and stores it in the variable `acc`.",
+          "tokens": [
+            "acc",
+            "=",
+            "new",
+            "Account",
+            "(",
+            "\"Ana\"",
+            ",",
+            "100",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            "make",
+            "struct"
+          ],
+          "explain": "`new` creates the object and calls the constructor with the two arguments."
+        },
+        {
+          "type": "order",
+          "id": "structs-10",
+          "prompt": "Put the lines in order so that the program prints `1 5`.",
+          "lines": [
+            "Point p = Point(1, 2);",
+            "Point q = p;",
+            "q.x = 5;",
+            "writeln(p.x, \" \", q.x);"
+          ],
+          "explain": "`q` is a copy of `p`. Only the copy gets the new `x`, so `p.x` stays `1`."
+        },
+        {
+          "type": "pairs",
+          "id": "structs-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`struct`",
+              "value type, copied on assignment"
+            ],
+            [
+              "`class`",
+              "reference type, created with new"
+            ],
+            [
+              "`this(...)`",
+              "the constructor"
+            ],
+            [
+              "`override`",
+              "replaces a method of the parent class"
+            ],
+            [
+              "`super(...)`",
+              "calls the parent constructor"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "structs-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "class Lamp {",
+            "    bool on;",
+            "    void toggle() {",
+            "        on = !on;",
+            "    }",
+            "}",
+            "void main() {",
+            "    Lamp lamp;",
+            "    lamp.toggle();",
+            "    writeln(lamp.on);",
+            "}"
+          ],
+          "bug": 7,
+          "explain": "`lamp` is `null` because no object was created. Write `Lamp lamp = new Lamp();`."
+        }
+      ]
+    }
+  ]
+}

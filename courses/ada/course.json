@@ -1,0 +1,2014 @@
+{
+  "course": "ada",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Ada!",
+      "chapter": "Basics",
+      "summary": "Write your first Ada program and print text and numbers with Put_Line, Put and New_Line.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Ada is a programming language for software that must be reliable, for example in planes and trains. An Ada program is a **procedure**: a named list of steps. Here is a complete program that prints one line."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\nbegin\n   Put_Line (\"Hello, Ada!\");\nend Main;",
+          "output": "Hello, Ada!"
+        },
+        {
+          "type": "text",
+          "md": "Line by line: `with Ada.Text_IO;` makes the package `Ada.Text_IO` available. It contains the tools for text input and output. `use Ada.Text_IO;` lets you write `Put_Line` instead of the long name `Ada.Text_IO.Put_Line`. `procedure Main is` starts the program called `Main`. The steps (statements) go between `begin` and `end Main;`. Every statement ends with a semicolon `;`."
+        },
+        {
+          "type": "heading",
+          "text": "Printing text"
+        },
+        {
+          "type": "text",
+          "md": "`Put_Line` prints a text and then ends the line. `Put` prints a text and stays on the same line. `New_Line` ends the current line. If the line is empty, you get an empty line. A text (a **string**) goes in double quotes."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\nbegin\n   Put (\"One, \");\n   Put (\"two, \");\n   Put_Line (\"three.\");\n   New_Line;\n   Put_Line (\"Done\");\nend Main;",
+          "output": "One, two, three.\n\nDone"
+        },
+        {
+          "type": "text",
+          "md": "The operator `&` joins two strings into one longer string. You can join as many parts as you like."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\nbegin\n   Put_Line (\"Hello, \" & \"World!\");\n   Put_Line (\"Ada\" & \" \" & \"Lovelace\");\nend Main;",
+          "output": "Hello, World!\nAda Lovelace"
+        },
+        {
+          "type": "heading",
+          "text": "Printing numbers"
+        },
+        {
+          "type": "text",
+          "md": "Ada can calculate: `+` adds, `-` subtracts and `*` multiplies. But `Put_Line` only prints strings. `Integer'Image (5)` turns the whole number `5` into the string `\" 5\"`. The apostrophe `'` asks for an **attribute**, a property of a type. A positive number gets a space in front, where a negative number has its minus sign."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\nbegin\n   Put_Line (Integer'Image (2 + 3));\n   Put_Line (\"7 * 6 =\" & Integer'Image (7 * 6));\n   Put_Line (Integer'Image (10 - 15));\nend Main;",
+          "output": " 5\n7 * 6 = 42\n-5"
+        },
+        {
+          "type": "tip",
+          "md": "Ada does not care about upper and lower case in names: `PUT_LINE` and `Put_Line` are the same. The usual style is a capital letter at the start of each word, with `_` between words. A line that starts with `--` is a **comment**, and Ada ignores it."
+        },
+        {
+          "type": "warning",
+          "md": "`Put_Line (5);` does not compile. Ada never turns a number into a string by itself. Write `Put_Line (Integer'Image (5));` instead."
+        }
+      ],
+      "card": [
+        "`with Ada.Text_IO; use Ada.Text_IO;` loads the text tools",
+        "`procedure Main is begin ... end Main;` is the program",
+        "`Put_Line (\"Hi\");` prints a line, `Put` stays on it, `New_Line` ends it",
+        "`\"a\" & \"b\"` joins strings, `Integer'Image (5)` gives `\" 5\"`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which statement prints a text and then ends the line?",
+          "options": [
+            "`Put_Line (\"Hi\");`",
+            "`Put (\"Hi\");`",
+            "`New_Line (\"Hi\");`",
+            "`Print (\"Hi\");`"
+          ],
+          "answer": 0,
+          "explain": "`Put_Line` prints the text and ends the line. `Put` stays on the same line, and `New_Line` takes no text."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "Put_Line (Integer'Image (20 - 25));",
+          "answers": [
+            "-5"
+          ],
+          "explain": "`20 - 25` is `-5`. A negative number has its minus sign where a positive number has a space."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "Put_Line (\"10 - 4\");",
+          "answers": [
+            "10 - 4"
+          ],
+          "explain": "The text is in double quotes, so it is a string. Ada prints it as it is and does not calculate."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "Ada is case sensitive: `put_line` and `Put_Line` are two different names.",
+          "answer": false,
+          "explain": "Ada ignores upper and lower case in names. `put_line` works, but the usual style is `Put_Line`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Complete the program so it prints Ready.",
+          "code": "procedure Main is\n___\n   Put_Line (\"Ready\");\nend Main;",
+          "options": [
+            "begin",
+            "start",
+            "{",
+            "do"
+          ],
+          "answer": 0,
+          "explain": "The statements of a procedure come after `begin` and before `end Main;`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so it prints Hello, Ada.",
+          "code": "Put_Line (\"Hello, \" ___ \"Ada\");",
+          "options": [
+            "&",
+            "+",
+            ",",
+            "."
+          ],
+          "answer": 0,
+          "explain": "The operator `&` joins two strings. `+` only works with numbers."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build the statement that prints Hello! on its own line.",
+          "tokens": [
+            "Put_Line",
+            "(",
+            "\"Hello!\"",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            "Print",
+            "'Hello!'"
+          ],
+          "explain": "The procedure is `Put_Line`. The string goes in double quotes inside the parentheses, and the statement ends with `;`."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order to make a complete program.",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "begin",
+            "   Put_Line (\"Ready\");",
+            "end Main;"
+          ],
+          "explain": "First the `with` and `use` line, then the procedure header, then the statements between `begin` and `end Main;`."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`with Ada.Text_IO;`",
+              "makes the text package available"
+            ],
+            [
+              "`use Ada.Text_IO;`",
+              "allows short names like Put_Line"
+            ],
+            [
+              "`Put`",
+              "prints and stays on the line"
+            ],
+            [
+              "`New_Line`",
+              "ends the current line"
+            ],
+            [
+              "`&`",
+              "joins two strings"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "begin",
+            "   Put_Line (\"Start\")",
+            "   Put_Line (\"Stop\");",
+            "end Main;"
+          ],
+          "bug": 3,
+          "explain": "The semicolon is missing. Every statement ends with `;`: `Put_Line (\"Start\");`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "begin",
+            "   Put_Line (\"Answer:\");",
+            "   Put_Line (42);",
+            "end Main;"
+          ],
+          "bug": 4,
+          "explain": "`Put_Line` only prints strings. Write `Put_Line (Integer'Image (42));`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-12",
+          "prompt": "What does this print?",
+          "code": "Put_Line (\"Total:\" & Integer'Image (3 * 4));",
+          "options": [
+            "`Total: 12`",
+            "`Total:12`",
+            "`Total: 3 * 4`",
+            "`Total: 34`"
+          ],
+          "answer": 0,
+          "explain": "`3 * 4` is calculated first. `Integer'Image (12)` is `\" 12\"` with a space in front, and `&` joins it to `\"Total:\"`."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Store values in variables, meet Integer, Float, Boolean and String, and see why Ada never mixes types.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a named place for a value. In Ada, you declare variables between `is` and `begin`. A declaration has the name, a colon `:`, the type and, if you like, `:=` with a first value."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   Age  : Integer := 36;\n   Name : String  := \"Ada\";\nbegin\n   Put_Line (Name & \" is\" & Integer'Image (Age));\n   Age := Age + 1;\n   Put_Line (Name & \" is\" & Integer'Image (Age));\nend Main;",
+          "output": "Ada is 36\nAda is 37"
+        },
+        {
+          "type": "text",
+          "md": "`:=` gives a variable a new value. `Age := Age + 1;` takes the old value, adds `1` and stores the result. The single `=` does not assign in Ada. It compares two values, as you will see in the next unit."
+        },
+        {
+          "type": "heading",
+          "text": "Basic types"
+        },
+        {
+          "type": "text",
+          "md": "Every variable has a **type** that decides what it can hold. `Integer` holds whole numbers, `Float` holds numbers with a decimal point, `Boolean` holds `True` or `False`, and `String` holds text. Each type has its own `'Image` attribute."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   Count : Integer := 7;\n   Price : Float   := 2.5;\n   Ready : Boolean := True;\n   Word  : String  := \"apple\";\nbegin\n   Put_Line (Integer'Image (Count));\n   Put_Line (Float'Image (Price));\n   Put_Line (Boolean'Image (Ready));\n   Put_Line (Word);\nend Main;",
+          "output": " 7\n 2.50000E+00\nTRUE\napple"
+        },
+        {
+          "type": "text",
+          "md": "`Float'Image` uses scientific notation: `2.50000E+00` means 2.5 times 10 to the power 0. `Boolean'Image` writes the value in capitals. With two integers, `/` divides and drops the remainder, `mod` gives the remainder, and `**` raises to a power."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\nbegin\n   Put_Line (Integer'Image (17 / 5));\n   Put_Line (Integer'Image (17 mod 5));\n   Put_Line (Integer'Image (2 ** 10));\nend Main;",
+          "output": " 3\n 2\n 1024"
+        },
+        {
+          "type": "heading",
+          "text": "Strong typing"
+        },
+        {
+          "type": "text",
+          "md": "Ada never mixes types by itself. `Count * Price` with an `Integer` and a `Float` does not compile. You convert a value with the name of the target type: `Float (Count)`. `Integer (4.5)` rounds to the nearest whole number, and a value exactly in the middle goes away from zero, so it gives `5`."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   Count : Integer := 3;\n   Price : Float   := 1.5;\n   Total : Float;\nbegin\n   Total := Float (Count) * Price;\n   Put_Line (Float'Image (Total));\n   Put_Line (Integer'Image (Integer (Total)));\nend Main;",
+          "output": " 4.50000E+00\n 5"
+        },
+        {
+          "type": "text",
+          "md": "A **constant** is declared with the word `constant`. It gets its value once and can never change. A statement that assigns to a constant does not compile."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   Max_Speed : constant Integer := 120;\n   Speed     : Integer := 90;\nbegin\n   Put_Line (\"Left:\" & Integer'Image (Max_Speed - Speed));\nend Main;",
+          "output": "Left: 30"
+        },
+        {
+          "type": "warning",
+          "md": "An Ada `String` has a fixed length. `Name : String := \"Ada\";` has exactly 3 characters forever. `Name := \"Grace\";` stops the program with `Constraint_Error`, because 5 characters do not fit into 3."
+        }
+      ],
+      "card": [
+        "`X : Integer := 5;` declares a variable before `begin`",
+        "`X := X + 1;` assigns a new value",
+        "`Integer`, `Float`, `Boolean`, `String` are basic types",
+        "`Float (N)` converts, Ada never mixes types by itself",
+        "`Max : constant Integer := 9;` can never change"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "variables-1",
+          "prompt": "Where do you declare the variables of the procedure `Main`?",
+          "options": [
+            "between `is` and `begin`",
+            "between `begin` and `end Main;`",
+            "before `with Ada.Text_IO;`",
+            "after `end Main;`"
+          ],
+          "answer": 0,
+          "explain": "Declarations come between `procedure Main is` and `begin`. The statements that use them come after `begin`."
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   X : Integer := 4;\nbegin\n   X := X * 3;\n   X := X + 1;\n   Put_Line (Integer'Image (X));\nend Main;",
+          "answers": [
+            "13"
+          ],
+          "explain": "`X` starts at `4`. `X * 3` stores `12`, then `X + 1` stores `13`."
+        },
+        {
+          "type": "input",
+          "id": "variables-3",
+          "prompt": "What does this print?",
+          "code": "Put_Line (Integer'Image (23 / 4) & Integer'Image (23 mod 4));",
+          "answers": [
+            "5 3"
+          ],
+          "explain": "`23 / 4` is `5` because the remainder is dropped. `23 mod 4` is that remainder: `3`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-4",
+          "statement": "This program runs without an error, because a `String` variable can hold any text.",
+          "code": "procedure Main is\n   Name : String := \"Ada\";\nbegin\n   Name := \"Grace\";\n   Put_Line (Name);\nend Main;",
+          "answer": false,
+          "explain": "`Name` has exactly 3 characters. `\"Grace\"` has 5, so the program stops with `Constraint_Error`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-5",
+          "prompt": "Complete the declaration so `Pi` can never change.",
+          "code": "procedure Main is\n   Pi : ___ Float := 3.14159;\nbegin\n   Put_Line (Float'Image (Pi));\nend Main;",
+          "options": [
+            "constant",
+            "final",
+            "const",
+            "fixed"
+          ],
+          "answer": 0,
+          "explain": "Ada uses the word `constant`, written after the colon and before the type."
+        },
+        {
+          "type": "gap",
+          "id": "variables-6",
+          "prompt": "Complete the code so it prints half of `Apples` as a `Float`.",
+          "code": "procedure Main is\n   Apples : Integer := 7;\n   Half   : Float;\nbegin\n   Half := ___ / 2.0;\n   Put_Line (Float'Image (Half));\nend Main;",
+          "options": [
+            "Float (Apples)",
+            "Apples",
+            "Float'Image (Apples)"
+          ],
+          "answer": 0,
+          "explain": "`2.0` is a `Float`, so `Apples` must be converted with `Float (Apples)` first. `Float'Image` gives a string, not a number."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-7",
+          "prompt": "Build the declaration of a `Boolean` variable `Done` that starts with `False`.",
+          "tokens": [
+            "Done",
+            ":",
+            "Boolean",
+            ":=",
+            "False",
+            ";"
+          ],
+          "distractors": [
+            "=",
+            "bool"
+          ],
+          "explain": "Name, colon, type, then `:=` and the first value. The single `=` only compares."
+        },
+        {
+          "type": "order",
+          "id": "variables-8",
+          "prompt": "Put the lines in order so the program prints 10.",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   N : Integer := 5;",
+            "begin",
+            "   N := N * 2;",
+            "   Put_Line (Integer'Image (N));",
+            "end Main;"
+          ],
+          "explain": "The declaration goes before `begin`. `N` must be doubled before it is printed."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-9",
+          "prompt": "Match the type with what it holds.",
+          "pairs": [
+            [
+              "`Integer`",
+              "whole numbers"
+            ],
+            [
+              "`Float`",
+              "numbers with a decimal point"
+            ],
+            [
+              "`Boolean`",
+              "True or False"
+            ],
+            [
+              "`String`",
+              "text"
+            ],
+            [
+              "`constant`",
+              "a value that never changes"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "variables-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   Total : Integer := 0;",
+            "   Price : Integer := 5;",
+            "begin",
+            "   Total = Total + Price;",
+            "   Put_Line (Integer'Image (Total));",
+            "end Main;"
+          ],
+          "bug": 5,
+          "explain": "`=` compares. To assign a new value, write `Total := Total + Price;`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   Count : Integer := 4;",
+            "   Price : Float   := 2.5;",
+            "   Total : Float;",
+            "begin",
+            "   Total := Count * Price;",
+            "   Put_Line (Float'Image (Total));",
+            "end Main;"
+          ],
+          "bug": 6,
+          "explain": "Ada does not multiply an `Integer` by a `Float`. Convert first: `Total := Float (Count) * Price;`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-12",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   A : Integer := 2;\n   B : Integer := 3;\nbegin\n   A := B;\n   B := A;\n   Put_Line (Integer'Image (A) & Integer'Image (B));\nend Main;",
+          "options": [
+            "`3 3`",
+            "`3 2`",
+            "`2 3`",
+            "`2 2`"
+          ],
+          "answer": 0,
+          "explain": "`A := B` stores `3` in `A`. Then `B := A` stores that `3` in `B`. The old `2` is gone."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program choose with if, elsif and else, combine conditions with and then, and pick a branch with case.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An `if` statement runs code only when a condition is `True`. It has the form `if condition then`, the statements, and `end if;`. To compare values you use `=` (equal), `/=` (not equal), `<`, `>`, `<=` and `>=`."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   Temp : Integer := 25;\nbegin\n   if Temp > 20 then\n      Put_Line (\"Warm\");\n   end if;\n   if Temp /= 30 then\n      Put_Line (\"Not 30\");\n   end if;\nend Main;",
+          "output": "Warm\nNot 30"
+        },
+        {
+          "type": "heading",
+          "text": "else and elsif"
+        },
+        {
+          "type": "text",
+          "md": "`else` gives the statements for the case when the condition is `False`. `elsif` checks another condition. Ada checks the conditions from top to bottom and runs only the first branch whose condition is `True`. Note the spelling: `elsif`, not `else if`."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   Score : Integer := 72;\nbegin\n   if Score >= 90 then\n      Put_Line (\"Excellent\");\n   elsif Score >= 60 then\n      Put_Line (\"Passed\");\n   else\n      Put_Line (\"Try again\");\n   end if;\nend Main;",
+          "output": "Passed"
+        },
+        {
+          "type": "heading",
+          "text": "and, or, not"
+        },
+        {
+          "type": "text",
+          "md": "`and` is `True` when both sides are `True`, `or` when at least one side is `True`, and `not` turns `True` into `False`. With `and then`, Ada checks the right side only when the left side is `True`. With `or else`, only when the left side is `False`. Here `and then` protects the program from a division by zero."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   Count : Integer := 0;\n   Total : Integer := 10;\nbegin\n   if Count /= 0 and then Total / Count > 2 then\n      Put_Line (\"Big average\");\n   else\n      Put_Line (\"No average\");\n   end if;\n   if not (Count > 5) or else Total > 100 then\n      Put_Line (\"Small\");\n   end if;\nend Main;",
+          "output": "No average\nSmall"
+        },
+        {
+          "type": "heading",
+          "text": "case"
+        },
+        {
+          "type": "text",
+          "md": "A `case` statement picks a branch by the value of a variable. Each branch starts with `when` and `=>`. `|` means \"or\", `1 .. 5` means all values from 1 to 5, and `when others` covers every value not listed yet. Ada requires that every possible value is covered."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   Day : Integer := 6;\nbegin\n   case Day is\n      when 1 .. 5 =>\n         Put_Line (\"Work day\");\n      when 6 | 7 =>\n         Put_Line (\"Weekend\");\n      when others =>\n         Put_Line (\"No such day\");\n   end case;\nend Main;",
+          "output": "Weekend"
+        },
+        {
+          "type": "warning",
+          "md": "`=` compares and `:=` assigns. `if X := 5 then` does not compile. A `case` on an `Integer` without `when others` does not compile either, because it cannot list every whole number."
+        },
+        {
+          "type": "tip",
+          "md": "Use `and then` when the right side is only safe or useful if the left side is `True`. With a plain `and`, Ada may check both sides."
+        }
+      ],
+      "card": [
+        "`if X > 0 then ... elsif ... else ... end if;`",
+        "`=` `/=` `<` `>` `<=` `>=` compare values",
+        "`and then` / `or else` check the right side only when needed",
+        "`case N is when 1 | 2 => ... when others => ... end case;`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "conditions-1",
+          "prompt": "Which operator means \"not equal\" in Ada?",
+          "options": [
+            "`/=`",
+            "`!=`",
+            "`<>`",
+            "`=/`"
+          ],
+          "answer": 0,
+          "explain": "Ada writes \"not equal\" as `/=`, like the mathematical sign with a slash through it."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   N : Integer := 15;\nbegin\n   if N > 20 then\n      Put_Line (\"A\");\n   elsif N > 10 then\n      Put_Line (\"B\");\n   elsif N > 5 then\n      Put_Line (\"C\");\n   else\n      Put_Line (\"D\");\n   end if;\nend Main;",
+          "answers": [
+            "B"
+          ],
+          "explain": "`15 > 20` is `False`. `15 > 10` is `True`, so Ada prints `B` and skips the other branches, even though `15 > 5` is also `True`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-3",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   Code : Integer := 4;\nbegin\n   case Code is\n      when 1 | 2 =>\n         Put_Line (\"Low\");\n      when 3 .. 5 =>\n         Put_Line (\"Middle\");\n      when others =>\n         Put_Line (\"High\");\n   end case;\nend Main;",
+          "answers": [
+            "Middle"
+          ],
+          "explain": "`4` lies in the range `3 .. 5`, so the second branch runs."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-4",
+          "statement": "This program compiles.",
+          "code": "procedure Main is\n   N : Integer := 3;\nbegin\n   case N is\n      when 1 .. 5 =>\n         Put_Line (\"Small\");\n      when 6 .. 10 =>\n         Put_Line (\"Big\");\n   end case;\nend Main;",
+          "answer": false,
+          "explain": "A `case` must cover every possible value. An `Integer` can also be `0` or `11`, so the code needs `when others`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-5",
+          "prompt": "Complete the program so it prints Silver.",
+          "code": "procedure Main is\n   Score : Integer := 55;\nbegin\n   if Score >= 80 then\n      Put_Line (\"Gold\");\n   ___ Score >= 50 then\n      Put_Line (\"Silver\");\n   else\n      Put_Line (\"Bronze\");\n   end if;\nend Main;",
+          "options": [
+            "elsif",
+            "elseif",
+            "else if",
+            "elif"
+          ],
+          "answer": 0,
+          "explain": "Ada spells it `elsif`. With `else if` you would start a second `if` that needs its own `end if;`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-6",
+          "prompt": "Complete the condition so the program never divides by zero.",
+          "code": "procedure Main is\n   Count : Integer := 0;\n   Total : Integer := 9;\nbegin\n   if Count /= 0 ___ Total / Count > 3 then\n      Put_Line (\"High\");\n   else\n      Put_Line (\"Nothing to check\");\n   end if;\nend Main;",
+          "options": [
+            "and then",
+            "and",
+            "or else"
+          ],
+          "answer": 0,
+          "explain": "`and then` skips `Total / Count` when `Count /= 0` is `False`. With `and` or `or else`, Ada divides by zero and stops with `Constraint_Error`."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-7",
+          "prompt": "Build the first line of an `if` statement that checks whether `X` is greater than 10.",
+          "tokens": [
+            "if",
+            "X",
+            ">",
+            "10",
+            "then"
+          ],
+          "distractors": [
+            "do",
+            "=>"
+          ],
+          "explain": "An `if` line is `if`, the condition, and `then`."
+        },
+        {
+          "type": "order",
+          "id": "conditions-8",
+          "prompt": "Put the lines in order so that a `Day` of 6 or 7 prints Weekend.",
+          "lines": [
+            "case Day is",
+            "   when 6 | 7 =>",
+            "      Put_Line (\"Weekend\");",
+            "   when others =>",
+            "      Put_Line (\"Work day\");",
+            "end case;"
+          ],
+          "explain": "The `case` line comes first. Each `when` line is followed by its statement, `when others` must be the last branch, and `end case;` closes it."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`=`",
+              "equal to"
+            ],
+            [
+              "`/=`",
+              "not equal to"
+            ],
+            [
+              "`<=`",
+              "less than or equal to"
+            ],
+            [
+              "`and then`",
+              "checks the right side only if the left side is True"
+            ],
+            [
+              "`when others`",
+              "all remaining values"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   Age : Integer := 17;",
+            "begin",
+            "   if Age >= 18 then",
+            "      Put_Line (\"Adult\");",
+            "   else",
+            "      Put_Line (\"Young\");",
+            "   end;",
+            "end Main;"
+          ],
+          "bug": 8,
+          "explain": "An `if` statement ends with `end if;`, not with `end;`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   Level : Integer := 3;",
+            "begin",
+            "   if Level == 3 then",
+            "      Put_Line (\"Top\");",
+            "   end if;",
+            "end Main;"
+          ],
+          "bug": 4,
+          "explain": "Ada compares with a single `=`: `if Level = 3 then`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-12",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   A : Integer := 5;\n   B : Integer := 8;\nbegin\n   if A > 3 and B < 5 then\n      Put_Line (\"Both\");\n   elsif A > 3 or B < 5 then\n      Put_Line (\"One\");\n   else\n      Put_Line (\"None\");\n   end if;\nend Main;",
+          "options": [
+            "`One`",
+            "`Both`",
+            "`None`",
+            "nothing"
+          ],
+          "answer": 0,
+          "explain": "`A > 3` is `True` and `B < 5` is `False`. So `and` gives `False`, but `or` gives `True`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with for loops over ranges, count down with reverse, and use while loops and exit when.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A `for` loop repeats code for every value in a range. In `for I in 1 .. 5 loop`, the loop variable `I` takes the values 1, 2, 3, 4 and 5, one after the other. The loop ends with `end loop;`. You do not declare `I`: it exists only inside the loop, and you cannot change it."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\nbegin\n   for I in 1 .. 5 loop\n      Put (Integer'Image (I));\n   end loop;\n   New_Line;\nend Main;",
+          "output": " 1 2 3 4 5"
+        },
+        {
+          "type": "text",
+          "md": "With `reverse`, the loop counts down. The range itself is still written from small to large. A range like `5 .. 1` is empty, so its loop runs zero times."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\nbegin\n   for I in reverse 1 .. 3 loop\n      Put_Line (\"Countdown\" & Integer'Image (I));\n   end loop;\n   for I in 5 .. 1 loop\n      Put_Line (\"Never\");\n   end loop;\n   Put_Line (\"Go!\");\nend Main;",
+          "output": "Countdown 3\nCountdown 2\nCountdown 1\nGo!"
+        },
+        {
+          "type": "heading",
+          "text": "Adding up with a loop"
+        },
+        {
+          "type": "text",
+          "md": "A common pattern: declare a variable before the loop and update it in every round. Here `Sum` collects the numbers from 1 to 10."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   Sum : Integer := 0;\nbegin\n   for I in 1 .. 10 loop\n      Sum := Sum + I;\n   end loop;\n   Put_Line (\"Sum:\" & Integer'Image (Sum));\nend Main;",
+          "output": "Sum: 55"
+        },
+        {
+          "type": "heading",
+          "text": "while loops"
+        },
+        {
+          "type": "text",
+          "md": "A `while` loop repeats as long as its condition is `True`. Ada checks the condition before every round. Use it when you do not know in advance how many rounds you need."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   N : Integer := 1;\nbegin\n   while N < 100 loop\n      N := N * 2;\n   end loop;\n   Put_Line (Integer'Image (N));\nend Main;",
+          "output": " 128"
+        },
+        {
+          "type": "heading",
+          "text": "loop and exit when"
+        },
+        {
+          "type": "text",
+          "md": "A plain `loop ... end loop;` repeats forever, unless `exit when condition;` stops it. The `exit when` line can be anywhere inside the loop. When its condition is `True`, the program continues after `end loop;`."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   N : Integer := 0;\nbegin\n   loop\n      N := N + 3;\n      exit when N > 10;\n      Put (Integer'Image (N));\n   end loop;\n   New_Line;\n   Put_Line (\"Stopped at\" & Integer'Image (N));\nend Main;",
+          "output": " 3 6 9\nStopped at 12"
+        },
+        {
+          "type": "warning",
+          "md": "A `while` loop whose condition never becomes `False` runs forever. Make sure that something inside the loop changes the condition."
+        }
+      ],
+      "card": [
+        "`for I in 1 .. 5 loop ... end loop;` counts up",
+        "`for I in reverse 1 .. 5 loop` counts down",
+        "`while N < 10 loop ... end loop;` repeats while `True`",
+        "`loop ... exit when Done; ... end loop;` stops anywhere"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "How many times does this print Hi?",
+          "code": "for I in 3 .. 7 loop\n   Put_Line (\"Hi\");\nend loop;",
+          "answers": [
+            "5"
+          ],
+          "explain": "The range `3 .. 7` holds the values 3, 4, 5, 6 and 7. That is 5 values."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   Total : Integer := 0;\nbegin\n   for I in 1 .. 4 loop\n      Total := Total + I * 2;\n   end loop;\n   Put_Line (Integer'Image (Total));\nend Main;",
+          "answers": [
+            "20"
+          ],
+          "explain": "The loop adds 2, 4, 6 and 8. Together that is `20`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "What does this print?",
+          "code": "for I in reverse 2 .. 4 loop\n   Put (Integer'Image (I));\nend loop;",
+          "options": [
+            "`4 3 2`",
+            "`2 3 4`",
+            "`4 3 2 1`",
+            "nothing, the range is empty"
+          ],
+          "answer": 0,
+          "explain": "`reverse` goes through the range `2 .. 4` from the end: 4, 3, 2."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-4",
+          "statement": "A `for` loop over `5 .. 1` runs 5 times and counts down.",
+          "answer": false,
+          "explain": "`5 .. 1` is an empty range, so the loop runs zero times. To count down, write `reverse 1 .. 5`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-5",
+          "prompt": "Complete the loop so it prints 3 2 1.",
+          "code": "for I in ___ 1 .. 3 loop\n   Put (Integer'Image (I));\nend loop;",
+          "options": [
+            "reverse",
+            "down",
+            "backwards",
+            "-1"
+          ],
+          "answer": 0,
+          "explain": "The word `reverse` before the range makes the loop count down."
+        },
+        {
+          "type": "gap",
+          "id": "loops-6",
+          "prompt": "Complete the code so the loop stops when `N` reaches 5.",
+          "code": "procedure Main is\n   N : Integer := 0;\nbegin\n   loop\n      N := N + 1;\n      exit ___ N >= 5;\n   end loop;\n   Put_Line (Integer'Image (N));\nend Main;",
+          "options": [
+            "when",
+            "if",
+            "until",
+            "while"
+          ],
+          "answer": 0,
+          "explain": "Ada writes `exit when` followed by the condition."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-7",
+          "prompt": "Build the first line of a loop that counts from 1 to 10.",
+          "tokens": [
+            "for",
+            "I",
+            "in",
+            "1",
+            "..",
+            "10",
+            "loop"
+          ],
+          "distractors": [
+            "to",
+            "do"
+          ],
+          "explain": "A `for` loop names the loop variable, then `in`, the range with `..`, and `loop`."
+        },
+        {
+          "type": "order",
+          "id": "loops-8",
+          "prompt": "Put the lines in order so the program prints 1 2 4 8.",
+          "lines": [
+            "procedure Main is",
+            "   N : Integer := 1;",
+            "begin",
+            "   while N < 10 loop",
+            "      Put (Integer'Image (N));",
+            "      N := N * 2;",
+            "   end loop;",
+            "end Main;"
+          ],
+          "explain": "`N` is printed first and doubled after that. When `N` becomes `16`, the condition `N < 10` is `False` and the loop ends."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`1 .. 5`",
+              "the numbers from 1 to 5"
+            ],
+            [
+              "`reverse`",
+              "counts down"
+            ],
+            [
+              "`exit when`",
+              "leaves the loop if a condition is True"
+            ],
+            [
+              "`while`",
+              "repeats as long as a condition is True"
+            ],
+            [
+              "`end loop;`",
+              "closes the loop"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "loops-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   Sum : Integer := 0;",
+            "begin",
+            "   for I in 1 .. 3 loop",
+            "      Sum := Sum + I;",
+            "   end for;",
+            "   Put_Line (Integer'Image (Sum));",
+            "end Main;"
+          ],
+          "bug": 6,
+          "explain": "Every loop in Ada ends with `end loop;`, also a `for` loop."
+        },
+        {
+          "type": "bug",
+          "id": "loops-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "begin",
+            "   for I in 1 to 5 loop",
+            "      Put (Integer'Image (I));",
+            "   end loop;",
+            "   New_Line;",
+            "end Main;"
+          ],
+          "bug": 3,
+          "explain": "A range is written with two dots: `for I in 1 .. 5 loop`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-12",
+          "prompt": "What happens with this code?",
+          "code": "for I in 1 .. 3 loop\n   I := I * 2;\n   Put (Integer'Image (I));\nend loop;",
+          "options": [
+            "It does not compile, because `I` cannot be changed.",
+            "It prints `2 4 6`.",
+            "It runs forever.",
+            "It prints `2 6`."
+          ],
+          "answer": 0,
+          "explain": "The loop variable of a `for` loop is read-only. Use another variable if you need a changed value."
+        }
+      ]
+    },
+    {
+      "id": "subprograms",
+      "title": "Procedures and functions",
+      "chapter": "Subprograms",
+      "summary": "Group code into procedures and functions, pass parameters with the modes in, out and in out, and return results.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **procedure** is a named group of statements. You declare it inside `Main`, between `is` and `begin`, like a variable. Then you **call** it by writing its name as a statement. Procedures and functions together are called **subprograms**."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   procedure Greet is\n   begin\n      Put_Line (\"Hello!\");\n   end Greet;\nbegin\n   Greet;\n   Greet;\nend Main;",
+          "output": "Hello!\nHello!"
+        },
+        {
+          "type": "heading",
+          "text": "Parameters"
+        },
+        {
+          "type": "text",
+          "md": "**Parameters** pass values into a subprogram. You list them in parentheses with name and type, like declarations. Several parameters are separated by `;` in the declaration and by `,` in the call."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   procedure Greet (Name : String; Times : Integer) is\n   begin\n      for I in 1 .. Times loop\n         Put_Line (\"Hi, \" & Name);\n      end loop;\n   end Greet;\nbegin\n   Greet (\"Ada\", 2);\n   Greet (\"Bob\", 1);\nend Main;",
+          "output": "Hi, Ada\nHi, Ada\nHi, Bob"
+        },
+        {
+          "type": "heading",
+          "text": "Functions"
+        },
+        {
+          "type": "text",
+          "md": "A **function** calculates a value and gives it back with `return`. Its declaration names the result type after the word `return`. You call a function inside an expression, wherever you need its value. `A, B : Integer` declares two parameters of the same type."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   function Square (X : Integer) return Integer is\n   begin\n      return X * X;\n   end Square;\n\n   function Max (A, B : Integer) return Integer is\n   begin\n      if A > B then\n         return A;\n      else\n         return B;\n      end if;\n   end Max;\nbegin\n   Put_Line (Integer'Image (Square (4)));\n   Put_Line (Integer'Image (Max (3, 9) + 1));\nend Main;",
+          "output": " 16\n 10"
+        },
+        {
+          "type": "heading",
+          "text": "in, out and in out"
+        },
+        {
+          "type": "text",
+          "md": "Every parameter has a **mode**. `in` is the default: the subprogram can only read the value. With `out`, the procedure writes a result into the variable of the caller. With `in out`, it reads the value and can change it. For `out` and `in out` the caller must pass a variable, not a fixed value like `7`."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   Score : Integer := 5;\n   H, R  : Integer;\n\n   procedure Add_Bonus (Points : in out Integer) is\n   begin\n      Points := Points + 10;\n   end Add_Bonus;\n\n   procedure Split (Total : in Integer; Half : out Integer; Rest : out Integer) is\n   begin\n      Half := Total / 2;\n      Rest := Total mod 2;\n   end Split;\nbegin\n   Add_Bonus (Score);\n   Put_Line (\"Score:\" & Integer'Image (Score));\n   Split (7, H, R);\n   Put_Line (Integer'Image (H) & Integer'Image (R));\nend Main;",
+          "output": "Score: 15\n 3 1"
+        },
+        {
+          "type": "warning",
+          "md": "An `in` parameter is read-only. A statement like `Total := 0;` inside `Split` does not compile."
+        },
+        {
+          "type": "tip",
+          "md": "Declare a subprogram before the code that calls it. The `end` of a subprogram repeats its name, for example `end Greet;`, so you always see what ends there."
+        }
+      ],
+      "card": [
+        "`procedure Greet (Name : String) is begin ... end Greet;`",
+        "`function Square (X : Integer) return Integer is ...`",
+        "`return X * X;` gives the result back",
+        "`in` reads, `out` writes, `in out` reads and changes"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "subprograms-1",
+          "prompt": "What is the difference between a function and a procedure?",
+          "options": [
+            "A function returns a value, a procedure does not.",
+            "A procedure returns a value, a function does not.",
+            "A function cannot have parameters.",
+            "A procedure cannot print text."
+          ],
+          "answer": 0,
+          "explain": "A function gives back a result with `return`, so you use it inside an expression. A procedure is called as a statement."
+        },
+        {
+          "type": "input",
+          "id": "subprograms-2",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   function Triple (N : Integer) return Integer is\n   begin\n      return N * 3;\n   end Triple;\nbegin\n   Put_Line (Integer'Image (Triple (Triple (2))));\nend Main;",
+          "answers": [
+            "18"
+          ],
+          "explain": "The inner call gives `Triple (2) = 6`. The outer call gives `Triple (6) = 18`."
+        },
+        {
+          "type": "input",
+          "id": "subprograms-3",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   Count : Integer := 1;\n\n   procedure Bump (X : in out Integer) is\n   begin\n      X := X * 2 + 1;\n   end Bump;\nbegin\n   Bump (Count);\n   Bump (Count);\n   Put_Line (Integer'Image (Count));\nend Main;",
+          "answers": [
+            "7"
+          ],
+          "explain": "`in out` changes the variable of the caller. `1` becomes `3`, then `3` becomes `7`."
+        },
+        {
+          "type": "true_false",
+          "id": "subprograms-4",
+          "statement": "A procedure can change an `in` parameter.",
+          "answer": false,
+          "explain": "`in` parameters are read-only. Use `out` or `in out` if the procedure must write to the parameter."
+        },
+        {
+          "type": "gap",
+          "id": "subprograms-5",
+          "prompt": "Complete the function header.",
+          "code": "procedure Main is\n   function Half (N : Integer) ___ Integer is\n   begin\n      return N / 2;\n   end Half;\nbegin\n   Put_Line (Integer'Image (Half (9)));\nend Main;",
+          "options": [
+            "return",
+            "returns",
+            "->",
+            ":"
+          ],
+          "answer": 0,
+          "explain": "The result type of a function follows the word `return`."
+        },
+        {
+          "type": "gap",
+          "id": "subprograms-6",
+          "prompt": "Complete the mode so the procedure can give a value back to `Result`.",
+          "code": "procedure Main is\n   Result : Integer;\n\n   procedure Compute (Value : ___ Integer) is\n   begin\n      Value := 42;\n   end Compute;\nbegin\n   Compute (Result);\n   Put_Line (Integer'Image (Result));\nend Main;",
+          "options": [
+            "out",
+            "in",
+            "return",
+            "constant"
+          ],
+          "answer": 0,
+          "explain": "With `out`, the procedure writes into the variable of the caller. An `in` parameter is read-only."
+        },
+        {
+          "type": "blocks",
+          "id": "subprograms-7",
+          "prompt": "Build the statement that returns `A` minus `B`.",
+          "tokens": [
+            "return",
+            "A",
+            "-",
+            "B",
+            ";"
+          ],
+          "distractors": [
+            "=",
+            "result"
+          ],
+          "explain": "`return` is followed by the expression whose value the function gives back."
+        },
+        {
+          "type": "order",
+          "id": "subprograms-8",
+          "prompt": "Put the lines in order to make a function that doubles a number.",
+          "lines": [
+            "function Double (N : Integer) return Integer is",
+            "begin",
+            "   return N * 2;",
+            "end Double;"
+          ],
+          "explain": "First the header with parameters and result type, then `begin`, the `return` statement and `end Double;`."
+        },
+        {
+          "type": "pairs",
+          "id": "subprograms-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`in`",
+              "the subprogram only reads the value"
+            ],
+            [
+              "`out`",
+              "the procedure writes a result"
+            ],
+            [
+              "`in out`",
+              "the procedure reads and changes the value"
+            ],
+            [
+              "`return`",
+              "gives back the result of a function"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "subprograms-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   function Square (X : Integer) is",
+            "   begin",
+            "      return X * X;",
+            "   end Square;",
+            "begin",
+            "   Put_Line (Integer'Image (Square (5)));",
+            "end Main;"
+          ],
+          "bug": 2,
+          "explain": "A function must name its result type: `function Square (X : Integer) return Integer is`."
+        },
+        {
+          "type": "bug",
+          "id": "subprograms-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   X : Integer;",
+            "   procedure Get_Answer (A : out Integer) is",
+            "   begin",
+            "      A := 42;",
+            "   end Get_Answer;",
+            "begin",
+            "   Get_Answer (42);",
+            "   Put_Line (Integer'Image (X));",
+            "end Main;"
+          ],
+          "bug": 8,
+          "explain": "An `out` parameter needs a variable that can receive the result. Write `Get_Answer (X);`."
+        },
+        {
+          "type": "choice",
+          "id": "subprograms-12",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   procedure Show (Text : String; Times : Integer) is\n   begin\n      for I in 1 .. Times loop\n         Put (Text);\n      end loop;\n      New_Line;\n   end Show;\nbegin\n   Show (\"ab\", 3);\nend Main;",
+          "options": [
+            "`ababab`",
+            "`ab ab ab`",
+            "`ab3`",
+            "`aaabbb`"
+          ],
+          "answer": 0,
+          "explain": "`Put` prints `ab` three times on the same line, without spaces. Then `New_Line` ends the line."
+        }
+      ]
+    },
+    {
+      "id": "arrays",
+      "title": "Arrays",
+      "chapter": "Data",
+      "summary": "Store many values in arrays, use 'First, 'Last, 'Length and 'Range, and loop over every element.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** holds many values of the same type. Each value (an **element**) has a number, its **index**. In Ada, you first declare an array type, for example `type Scores is array (1 .. 3) of Integer;`. Then you declare variables of that type."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Scores is array (1 .. 3) of Integer;\n   S : Scores := (10, 20, 30);\nbegin\n   Put_Line (Integer'Image (S (1)));\n   S (2) := 25;\n   Put_Line (Integer'Image (S (2) + S (3)));\nend Main;",
+          "output": " 10\n 55"
+        },
+        {
+          "type": "text",
+          "md": "`(10, 20, 30)` is an **aggregate**: it lists a value for every element. You read or change one element with its index in parentheses, as in `S (2)`. The index starts where the range of the type starts, here at 1."
+        },
+        {
+          "type": "heading",
+          "text": "Attributes of arrays"
+        },
+        {
+          "type": "text",
+          "md": "`'First` gives the first index, `'Last` the last index and `'Length` the number of elements. The aggregate `(others => 0)` sets every element to `0`. The range of an array does not have to start at 1."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Temps is array (0 .. 6) of Integer;\n   T : Temps := (others => 0);\nbegin\n   Put_Line (Integer'Image (T'First));\n   Put_Line (Integer'Image (T'Last));\n   Put_Line (Integer'Image (T'Length));\nend Main;",
+          "output": " 0\n 6\n 7"
+        },
+        {
+          "type": "heading",
+          "text": "Looping over arrays"
+        },
+        {
+          "type": "text",
+          "md": "`P'Range` means `P'First .. P'Last`, so `for I in P'Range loop` visits every index. If you only need the values, `for X of P loop` gives you each element directly."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Prices is array (1 .. 4) of Integer;\n   P     : Prices := (3, 8, 2, 5);\n   Total : Integer := 0;\nbegin\n   for I in P'Range loop\n      Total := Total + P (I);\n   end loop;\n   Put_Line (\"Total:\" & Integer'Image (Total));\n   for X of P loop\n      Put (Integer'Image (X * 10));\n   end loop;\n   New_Line;\nend Main;",
+          "output": "Total: 18\n 30 80 20 50"
+        },
+        {
+          "type": "text",
+          "md": "An aggregate can also name indexes with `=>`. `(2 => 7, 4 => 9, others => 0)` sets element 2 to `7`, element 4 to `9` and all other elements to `0`."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Row is array (1 .. 5) of Integer;\n   R : Row := (2 => 7, 4 => 9, others => 0);\nbegin\n   for X of R loop\n      Put (Integer'Image (X));\n   end loop;\n   New_Line;\nend Main;",
+          "output": " 0 7 0 9 0"
+        },
+        {
+          "type": "text",
+          "md": "A `String` is an array of characters with indexes starting at 1. A single **character** is written in single quotes, like `'-'`. `Put` can print one character."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   Name : String := \"Ada\";\nbegin\n   Put_Line (Integer'Image (Name'Length));\n   Put (Name (1));\n   New_Line;\n   for C of Name loop\n      Put (C);\n      Put ('-');\n   end loop;\n   New_Line;\nend Main;",
+          "output": " 3\nA\nA-d-a-"
+        },
+        {
+          "type": "warning",
+          "md": "An index outside the range stops the program with `Constraint_Error`. With the type `Scores` above, `S (4)` or `S (0)` is an error. Ada checks every index for you."
+        }
+      ],
+      "card": [
+        "`type Row is array (1 .. 5) of Integer;` declares an array type",
+        "`R : Row := (others => 0);` fills every element",
+        "`R (2) := 7;` reads or writes one element",
+        "`R'First`, `R'Last`, `R'Length`, `R'Range`",
+        "`for X of R loop` visits every element"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "arrays-1",
+          "prompt": "With `type Days is array (1 .. 7) of Integer;`, what is the index of the first element?",
+          "options": [
+            "`1`",
+            "`0`",
+            "`7`",
+            "It depends on the values."
+          ],
+          "answer": 0,
+          "explain": "The index starts where the range of the type starts. Here the range is `1 .. 7`."
+        },
+        {
+          "type": "input",
+          "id": "arrays-2",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   type Nums is array (1 .. 4) of Integer;\n   N : Nums := (5, 1, 8, 3);\nbegin\n   Put_Line (Integer'Image (N (3) - N (2)));\nend Main;",
+          "answers": [
+            "7"
+          ],
+          "explain": "`N (3)` is `8` and `N (2)` is `1`, because the index starts at 1. `8 - 1` is `7`."
+        },
+        {
+          "type": "input",
+          "id": "arrays-3",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   type Slots is array (10 .. 15) of Boolean;\n   S : Slots := (others => False);\nbegin\n   Put_Line (Integer'Image (S'Length));\nend Main;",
+          "answers": [
+            "6"
+          ],
+          "explain": "The indexes are 10, 11, 12, 13, 14 and 15. That is 6 elements."
+        },
+        {
+          "type": "true_false",
+          "id": "arrays-4",
+          "statement": "Reading `A (6)` from an array with the range `1 .. 5` stops the program with `Constraint_Error`.",
+          "answer": true,
+          "explain": "Ada checks every index. `6` lies outside `1 .. 5`, so the program stops with `Constraint_Error`."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-5",
+          "prompt": "Complete the loop so it visits every index of `P`.",
+          "code": "procedure Main is\n   type Prices is array (1 .. 3) of Integer;\n   P   : Prices := (4, 5, 6);\n   Sum : Integer := 0;\nbegin\n   for I in P___ loop\n      Sum := Sum + P (I);\n   end loop;\n   Put_Line (Integer'Image (Sum));\nend Main;",
+          "options": [
+            "'Range",
+            "'Length",
+            "'Last",
+            "'Size"
+          ],
+          "answer": 0,
+          "explain": "`P'Range` is the range `P'First .. P'Last`. `'Length` and `'Last` are single numbers, not ranges."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-6",
+          "prompt": "Complete the aggregate so every element is 1.",
+          "code": "procedure Main is\n   type Vec is array (1 .. 3) of Integer;\n   V : Vec := (___ => 1);\nbegin\n   for X of V loop\n      Put (Integer'Image (X));\n   end loop;\nend Main;",
+          "options": [
+            "others",
+            "all",
+            "each",
+            "*"
+          ],
+          "answer": 0,
+          "explain": "`others => 1` gives the value `1` to every element that is not named."
+        },
+        {
+          "type": "blocks",
+          "id": "arrays-7",
+          "prompt": "Build the declaration of an array type `Data` with 10 `Float` elements, numbered from 1.",
+          "tokens": [
+            "type",
+            "Data",
+            "is",
+            "array",
+            "(1 .. 10)",
+            "of",
+            "Float",
+            ";"
+          ],
+          "distractors": [
+            "[1 .. 10]",
+            "list"
+          ],
+          "explain": "An array type is `type Name is array (range) of Element_Type;`."
+        },
+        {
+          "type": "order",
+          "id": "arrays-8",
+          "prompt": "Put the lines in order so the program doubles every element and then prints the last one.",
+          "lines": [
+            "   type Vec is array (1 .. 3) of Integer;",
+            "   V : Vec := (4, 9, 2);",
+            "begin",
+            "   for I in V'Range loop",
+            "      V (I) := V (I) * 2;",
+            "   end loop;",
+            "   Put_Line (Integer'Image (V (3)));"
+          ],
+          "explain": "The type comes before the variable that uses it. After `begin`, the loop doubles each element, and the last element is printed after the loop."
+        },
+        {
+          "type": "pairs",
+          "id": "arrays-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`A'First`",
+              "the first index"
+            ],
+            [
+              "`A'Last`",
+              "the last index"
+            ],
+            [
+              "`A'Length`",
+              "the number of elements"
+            ],
+            [
+              "`A'Range`",
+              "all indexes from first to last"
+            ],
+            [
+              "`(others => 0)`",
+              "every element is 0"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "arrays-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   type List is array (1 .. 3) of Integer;",
+            "   L : List := (7, 8, 9);",
+            "begin",
+            "   for I in 0 .. 2 loop",
+            "      Put (Integer'Image (L (I)));",
+            "   end loop;",
+            "   New_Line;",
+            "end Main;"
+          ],
+          "bug": 5,
+          "explain": "The indexes of `List` are 1 to 3, so `L (0)` raises `Constraint_Error`. Write `for I in L'Range loop`."
+        },
+        {
+          "type": "bug",
+          "id": "arrays-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   type Trio is array (1 .. 3) of Integer;",
+            "   T : Trio := (1, 2, 3, 4);",
+            "begin",
+            "   Put_Line (Integer'Image (T (3)));",
+            "end Main;"
+          ],
+          "bug": 3,
+          "explain": "A `Trio` has exactly 3 elements, so the aggregate needs 3 values: `(1, 2, 3)`."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-12",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   Word : String := \"Hello\";\nbegin\n   Put (Word (Word'Last));\n   Put_Line (Integer'Image (Word'Length));\nend Main;",
+          "options": [
+            "`o 5`",
+            "`H 5`",
+            "`o 4`",
+            "`l 5`"
+          ],
+          "answer": 0,
+          "explain": "`Word'Last` is `5`, the index of the last character `o`. `Word'Length` is `5`."
+        }
+      ]
+    },
+    {
+      "id": "types",
+      "title": "Your own types",
+      "chapter": "Types",
+      "summary": "Create range types, enumerations and subtypes so that Ada finds mistakes for you.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "In Ada, you create your own types to describe your data. A **range type** is a whole number type with limits: `type Percent is range 0 .. 100;`. A variable of this type can only hold values from 0 to 100."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Percent is range 0 .. 100;\n   Battery : Percent := 80;\nbegin\n   Battery := Battery + 15;\n   Put_Line (Percent'Image (Battery));\n   Put_Line (Percent'Image (Percent'Last));\nend Main;",
+          "output": " 95\n 100"
+        },
+        {
+          "type": "text",
+          "md": "Two different types never mix, even if both hold numbers. `A + O` with the types below does not compile, so you cannot add apples to oranges by mistake. If you really want to, convert both values to `Integer`. The `_` in `1_000` only makes the number easier to read."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Apples  is range 0 .. 1_000;\n   type Oranges is range 0 .. 1_000;\n   A     : Apples  := 12;\n   O     : Oranges := 30;\n   Fruit : Integer;\nbegin\n   Fruit := Integer (A) + Integer (O);\n   Put_Line (\"Fruit:\" & Integer'Image (Fruit));\nend Main;",
+          "output": "Fruit: 42"
+        },
+        {
+          "type": "heading",
+          "text": "Enumerations"
+        },
+        {
+          "type": "text",
+          "md": "An **enumeration** type lists all its values by name: `type Day is (Mon, Tue, Wed, Thu, Fri, Sat, Sun);`. `'Image` gives the name in capitals. `'Succ` gives the next value, `'Pred` the previous one, and `'Pos` the position, counted from 0."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Day is (Mon, Tue, Wed, Thu, Fri, Sat, Sun);\n   Today : Day := Wed;\nbegin\n   Put_Line (Day'Image (Today));\n   Put_Line (Day'Image (Day'Succ (Today)));\n   Put_Line (Day'Image (Day'Last));\n   Put_Line (Integer'Image (Day'Pos (Today)));\nend Main;",
+          "output": "WED\nTHU\nSUN\n 2"
+        },
+        {
+          "type": "text",
+          "md": "`for L in Light loop` visits every value of the type. A `case` on an enumeration can list all values, so it needs no `when others`."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Light is (Red, Yellow, Green);\nbegin\n   for L in Light loop\n      case L is\n         when Red =>\n            Put_Line (\"Stop\");\n         when Yellow =>\n            Put_Line (\"Wait\");\n         when Green =>\n            Put_Line (\"Go\");\n      end case;\n   end loop;\nend Main;",
+          "output": "Stop\nWait\nGo"
+        },
+        {
+          "type": "heading",
+          "text": "Subtypes"
+        },
+        {
+          "type": "text",
+          "md": "A **subtype** limits an existing type but stays compatible with it: `subtype Weekday is Day range Mon .. Fri;`. Ada has two useful subtypes of `Integer`: `Natural` (0 and up) and `Positive` (1 and up). You can mix a subtype with its type freely."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Day is (Mon, Tue, Wed, Thu, Fri, Sat, Sun);\n   subtype Weekday is Day range Mon .. Fri;\n   Count : Natural := 0;\n   N     : Integer := 3;\nbegin\n   for D in Weekday loop\n      Count := Count + 1;\n   end loop;\n   Count := Count + N;\n   Put_Line (Integer'Image (Count));\n   Put_Line (Day'Image (Weekday'Last));\nend Main;",
+          "output": " 8\nFRI"
+        },
+        {
+          "type": "warning",
+          "md": "Ada checks the limits when the program runs. `Battery := 101;` or `Count := -1;` with a `Natural` stops the program with `Constraint_Error`. This finds mistakes early instead of storing wrong values."
+        }
+      ],
+      "card": [
+        "`type Percent is range 0 .. 100;` a new number type",
+        "`type Color is (Red, Green, Blue);` an enumeration",
+        "`subtype Small is Integer range 1 .. 9;` limits a type",
+        "`Natural` is 0 and up, `Positive` is 1 and up",
+        "`Color'Succ (Red)`, `Color'Pos (Blue)`, `for C in Color loop`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "types-1",
+          "prompt": "Which line declares an enumeration type?",
+          "options": [
+            "`type Size is (Small, Medium, Large);`",
+            "`type Size is range 1 .. 3;`",
+            "`subtype Size is Integer range 1 .. 3;`",
+            "`type Size is array (1 .. 3) of Integer;`"
+          ],
+          "answer": 0,
+          "explain": "An enumeration lists its values by name in parentheses. The others declare a range type, a subtype and an array type."
+        },
+        {
+          "type": "input",
+          "id": "types-2",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   type Fruit is (Apple, Banana, Cherry, Date);\nbegin\n   Put_Line (Fruit'Image (Fruit'Pred (Cherry)));\nend Main;",
+          "answers": [
+            "BANANA"
+          ],
+          "explain": "`'Pred` gives the value before `Cherry`, which is `Banana`. `'Image` writes it in capitals."
+        },
+        {
+          "type": "input",
+          "id": "types-3",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   type Level is (Low, Medium, High);\nbegin\n   Put_Line (Integer'Image (Level'Pos (High)));\nend Main;",
+          "answers": [
+            "2"
+          ],
+          "explain": "Positions count from 0: `Low` is 0, `Medium` is 1 and `High` is 2."
+        },
+        {
+          "type": "true_false",
+          "id": "types-4",
+          "statement": "This program compiles.",
+          "code": "procedure Main is\n   type Euros   is range 0 .. 1_000;\n   type Dollars is range 0 .. 1_000;\n   E : Euros   := 10;\n   D : Dollars := 20;\nbegin\n   E := E + D;\n   Put_Line (Euros'Image (E));\nend Main;",
+          "answer": false,
+          "explain": "`Euros` and `Dollars` are two different types, so Ada does not add them. You would need a conversion like `Euros (D)`."
+        },
+        {
+          "type": "gap",
+          "id": "types-5",
+          "prompt": "Complete the code so `Digit` can be mixed with `Integer`.",
+          "code": "procedure Main is\n   ___ Digit is Integer range 0 .. 9;\n   D : Digit   := 7;\n   N : Integer := 2;\nbegin\n   Put_Line (Integer'Image (D + N));\nend Main;",
+          "options": [
+            "subtype",
+            "type",
+            "new",
+            "range"
+          ],
+          "answer": 0,
+          "explain": "A `subtype` limits `Integer` to 0 .. 9 and stays compatible with it, so `D + N` works."
+        },
+        {
+          "type": "gap",
+          "id": "types-6",
+          "prompt": "Complete the loop so it prints every color.",
+          "code": "procedure Main is\n   type Color is (Red, Green, Blue);\nbegin\n   for C in ___ loop\n      Put_Line (Color'Image (C));\n   end loop;\nend Main;",
+          "options": [
+            "Color",
+            "Color'Length",
+            "1 .. 3",
+            "Color'Last"
+          ],
+          "answer": 0,
+          "explain": "`for C in Color loop` visits every value of the type. `1 .. 3` would give numbers, not colors."
+        },
+        {
+          "type": "blocks",
+          "id": "types-7",
+          "prompt": "Build the declaration of a whole number type `Speed` with values from 0 to 300.",
+          "tokens": [
+            "type",
+            "Speed",
+            "is",
+            "range",
+            "0",
+            "..",
+            "300",
+            ";"
+          ],
+          "distractors": [
+            "subtype",
+            "to"
+          ],
+          "explain": "A range type is `type Name is range First .. Last;`."
+        },
+        {
+          "type": "order",
+          "id": "types-8",
+          "prompt": "Put the lines in order so the program prints MIDDLE.",
+          "lines": [
+            "   type Step is (Start, Middle, Finish);",
+            "   S : Step := Start;",
+            "begin",
+            "   S := Step'Succ (S);",
+            "   Put_Line (Step'Image (S));"
+          ],
+          "explain": "The type is declared before the variable. After `begin`, `'Succ` moves `S` from `Start` to `Middle`, and then it is printed."
+        },
+        {
+          "type": "pairs",
+          "id": "types-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`range 0 .. 100`",
+              "values from 0 to 100"
+            ],
+            [
+              "`Natural`",
+              "whole numbers from 0 up"
+            ],
+            [
+              "`Positive`",
+              "whole numbers from 1 up"
+            ],
+            [
+              "`'Succ`",
+              "the next value"
+            ],
+            [
+              "`'Pos`",
+              "the position of a value"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "types-10",
+          "prompt": "This program stops with `Constraint_Error`. Which line causes it?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   type Percent is range 0 .. 100;",
+            "   P : Percent := 90;",
+            "begin",
+            "   P := P + 20;",
+            "   Put_Line (Percent'Image (P));",
+            "end Main;"
+          ],
+          "bug": 5,
+          "explain": "`90 + 20` is `110`, which is outside `0 .. 100`. Adding at most 10, for example `P := P + 10;`, stays in range."
+        },
+        {
+          "type": "bug",
+          "id": "types-11",
+          "prompt": "This program stops with `Constraint_Error`. Which line causes it?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   Count : Positive := 0;",
+            "begin",
+            "   for I in 1 .. 3 loop",
+            "      Count := Count + I;",
+            "   end loop;",
+            "   Put_Line (Integer'Image (Count));",
+            "end Main;"
+          ],
+          "bug": 2,
+          "explain": "`Positive` starts at 1, so it cannot hold `0`. Use `Count : Natural := 0;`."
+        },
+        {
+          "type": "choice",
+          "id": "types-12",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   type Day is (Mon, Tue, Wed, Thu, Fri, Sat, Sun);\n   subtype Weekend is Day range Sat .. Sun;\nbegin\n   Put_Line (Day'Image (Weekend'First) & Integer'Image (Day'Pos (Weekend'First)));\nend Main;",
+          "options": [
+            "`SAT 5`",
+            "`SAT 0`",
+            "`SAT 6`",
+            "`MON 0`"
+          ],
+          "answer": 0,
+          "explain": "`Weekend'First` is `Sat`. A subtype keeps the positions of its type, and `Sat` has position 5 in `Day`."
+        }
+      ]
+    },
+    {
+      "id": "records",
+      "title": "Records",
+      "chapter": "Data",
+      "summary": "Group related values into records, create them with aggregates, and keep records in arrays.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **record** groups several values, which may have different types, under one name. Each part is a **component**. You declare a record type between `record` and `end record;`, and reach a component with a dot, as in `P.X`."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Point is record\n      X : Integer;\n      Y : Integer;\n   end record;\n   P : Point;\nbegin\n   P.X := 3;\n   P.Y := 4;\n   Put_Line (Integer'Image (P.X + P.Y));\nend Main;",
+          "output": " 7"
+        },
+        {
+          "type": "heading",
+          "text": "Aggregates"
+        },
+        {
+          "type": "text",
+          "md": "An aggregate sets all components at once. In a **named** aggregate like `(Name => \"Ada\", Age => 36)` you write each component name with `=>`. In a **positional** aggregate like `(\"Bob\", 41)` the values follow the order of the components. A string component needs a fixed length, for example `String (1 .. 3)` for exactly 3 characters."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Person is record\n      Name : String (1 .. 3);\n      Age  : Natural;\n   end record;\n   A : Person := (Name => \"Ada\", Age => 36);\n   B : Person := (\"Bob\", 41);\nbegin\n   Put_Line (A.Name & Integer'Image (A.Age));\n   Put_Line (B.Name & Integer'Image (B.Age));\nend Main;",
+          "output": "Ada 36\nBob 41"
+        },
+        {
+          "type": "text",
+          "md": "A component can have a default value in the type. `B := A;` copies all components, so later changes to `B` do not change `A`. `A = B` compares all components."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Point is record\n      X, Y : Integer := 0;\n   end record;\n   A : Point := (X => 1, Y => 2);\n   B : Point;\nbegin\n   Put_Line (Integer'Image (B.X) & Integer'Image (B.Y));\n   B := A;\n   B.Y := 5;\n   Put_Line (Integer'Image (A.Y) & Integer'Image (B.Y));\n   Put_Line (Boolean'Image (A = B));\nend Main;",
+          "output": " 0 0\n 2 5\nFALSE"
+        },
+        {
+          "type": "heading",
+          "text": "Records in arrays"
+        },
+        {
+          "type": "text",
+          "md": "Arrays can hold records. `C (2).Price` reads the component `Price` of element 2. In `for It of C loop`, each `It` is a whole record."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Item is record\n      Name  : String (1 .. 5);\n      Price : Natural;\n   end record;\n   type Cart is array (1 .. 3) of Item;\n   C     : Cart := ((\"Apple\", 3), (\"Bread\", 2), (\"Juice\", 4));\n   Total : Natural := 0;\nbegin\n   for It of C loop\n      Total := Total + It.Price;\n   end loop;\n   Put_Line (C (2).Name & Integer'Image (C (2).Price));\n   Put_Line (\"Total:\" & Integer'Image (Total));\nend Main;",
+          "output": "Bread 2\nTotal: 9"
+        },
+        {
+          "type": "text",
+          "md": "Records work well as parameters. With `in out`, a procedure can change components of the record that the caller passes."
+        },
+        {
+          "type": "code",
+          "code": "with Ada.Text_IO; use Ada.Text_IO;\n\nprocedure Main is\n   type Account is record\n      Owner   : String (1 .. 3);\n      Balance : Integer;\n   end record;\n   Acc : Account := (Owner => \"Kim\", Balance => 50);\n\n   procedure Deposit (A : in out Account; Amount : Integer) is\n   begin\n      A.Balance := A.Balance + Amount;\n   end Deposit;\nbegin\n   Deposit (Acc, 25);\n   Put_Line (Acc.Owner & \":\" & Integer'Image (Acc.Balance));\nend Main;",
+          "output": "Kim: 75"
+        },
+        {
+          "type": "warning",
+          "md": "A component of type `String (1 .. 5)` holds exactly 5 characters. `\"Pear\"` has only 4, so it does not fit and Ada reports an error. Fill up with spaces, like `\"Pear \"`."
+        }
+      ],
+      "card": [
+        "`type Point is record X, Y : Integer; end record;`",
+        "`P.X := 3;` reads or writes a component",
+        "`P := (X => 3, Y => 4);` sets all components",
+        "`C (2).Price` reads a component of an array element"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "records-1",
+          "prompt": "How do you read the component `Age` of the record variable `P`?",
+          "options": [
+            "`P.Age`",
+            "`P (Age)`",
+            "`P'Age`",
+            "`P->Age`"
+          ],
+          "answer": 0,
+          "explain": "Components are reached with a dot. `'` asks for an attribute, and parentheses are for array indexes and calls."
+        },
+        {
+          "type": "input",
+          "id": "records-2",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   type Box is record\n      W, H : Integer;\n   end record;\n   B : Box := (W => 4, H => 5);\nbegin\n   B.W := B.W + 1;\n   Put_Line (Integer'Image (B.W * B.H));\nend Main;",
+          "answers": [
+            "25"
+          ],
+          "explain": "`B.W` becomes `5`. Then `5 * 5` is `25`."
+        },
+        {
+          "type": "input",
+          "id": "records-3",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   type Point is record\n      X, Y : Integer;\n   end record;\n   A : Point := (1, 2);\n   B : Point;\nbegin\n   B := A;\n   A.X := 10;\n   Put_Line (Integer'Image (B.X));\nend Main;",
+          "answers": [
+            "1"
+          ],
+          "explain": "`B := A` copies the values. Changing `A.X` later does not change the copy in `B`."
+        },
+        {
+          "type": "true_false",
+          "id": "records-4",
+          "statement": "`=` compares two records component by component.",
+          "answer": true,
+          "explain": "Two records are equal when all their components are equal."
+        },
+        {
+          "type": "gap",
+          "id": "records-5",
+          "prompt": "Complete the record type.",
+          "code": "procedure Main is\n   type Size is record\n      Width  : Integer;\n      Height : Integer;\n   end ___;\n   S : Size := (Width => 3, Height => 2);\nbegin\n   Put_Line (Integer'Image (S.Width * S.Height));\nend Main;",
+          "options": [
+            "record",
+            "Size",
+            "type",
+            "loop"
+          ],
+          "answer": 0,
+          "explain": "A record type always ends with `end record;`."
+        },
+        {
+          "type": "gap",
+          "id": "records-6",
+          "prompt": "Complete the named aggregate.",
+          "code": "procedure Main is\n   type Pixel is record\n      X, Y : Integer;\n      Lit  : Boolean;\n   end record;\n   P : Pixel := (X => 2, Y => 3, Lit ___ True);\nbegin\n   Put_Line (Boolean'Image (P.Lit));\nend Main;",
+          "options": [
+            "=>",
+            ":=",
+            "=",
+            ":"
+          ],
+          "answer": 0,
+          "explain": "In a named aggregate, each component name is followed by `=>` and its value."
+        },
+        {
+          "type": "blocks",
+          "id": "records-7",
+          "prompt": "Build the declaration of a `Point` named `Start` with `X` 0 and `Y` 5.",
+          "tokens": [
+            "Start",
+            ":",
+            "Point",
+            ":=",
+            "(X => 0,",
+            "Y => 5)",
+            ";"
+          ],
+          "distractors": [
+            "=",
+            "{X => 0,"
+          ],
+          "explain": "A declaration with a named aggregate: `Start : Point := (X => 0, Y => 5);`."
+        },
+        {
+          "type": "order",
+          "id": "records-8",
+          "prompt": "Put the lines in order so the program prints Rex 4.",
+          "lines": [
+            "   type Pet is record",
+            "      Name : String (1 .. 3);",
+            "      Legs : Natural;",
+            "   end record;",
+            "   P : Pet := (\"Rex\", 4);",
+            "begin",
+            "   Put_Line (P.Name & Integer'Image (P.Legs));"
+          ],
+          "explain": "The record type lists its components in the order the positional aggregate uses: first `Name`, then `Legs`. The variable comes after the type."
+        },
+        {
+          "type": "pairs",
+          "id": "records-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`record ... end record`",
+              "groups values into one type"
+            ],
+            [
+              "`P.X`",
+              "the component X of P"
+            ],
+            [
+              "`(X => 1, Y => 2)`",
+              "a named aggregate"
+            ],
+            [
+              "`A (3).Name`",
+              "the component Name of element 3"
+            ],
+            [
+              "`B := A;`",
+              "copies all components"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "records-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   type Person is record",
+            "      Name : String (1 .. 3);",
+            "      Age  : Natural;",
+            "   end record;",
+            "   P : Person := (36, \"Ada\");",
+            "begin",
+            "   Put_Line (P.Name & Integer'Image (P.Age));",
+            "end Main;"
+          ],
+          "bug": 6,
+          "explain": "A positional aggregate follows the order of the components: first `Name`, then `Age`. Write `(\"Ada\", 36)`."
+        },
+        {
+          "type": "bug",
+          "id": "records-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "with Ada.Text_IO; use Ada.Text_IO;",
+            "procedure Main is",
+            "   type Point is record",
+            "      X, Y : Integer;",
+            "   end record;",
+            "   P : Point := (X => 2, Y => 3);",
+            "begin",
+            "   X := 5;",
+            "   Put_Line (Integer'Image (P.X));",
+            "end Main;"
+          ],
+          "bug": 7,
+          "explain": "`X` is a component of `P`, not a variable of its own. Write `P.X := 5;`."
+        },
+        {
+          "type": "choice",
+          "id": "records-12",
+          "prompt": "What does this print?",
+          "code": "procedure Main is\n   type Item is record\n      Name  : String (1 .. 3);\n      Price : Natural;\n   end record;\n   type List is array (1 .. 3) of Item;\n   L   : List := ((\"Pen\", 2), (\"Cup\", 5), (\"Hat\", 9));\n   Max : Natural := 0;\nbegin\n   for It of L loop\n      if It.Price > Max then\n         Max := It.Price;\n      end if;\n   end loop;\n   Put_Line (Integer'Image (Max));\nend Main;",
+          "options": [
+            "`9`",
+            "`2`",
+            "`16`",
+            "`5`"
+          ],
+          "answer": 0,
+          "explain": "The loop keeps the largest `Price` it has seen so far. The largest of 2, 5 and 9 is `9`."
+        }
+      ]
+    }
+  ]
+}

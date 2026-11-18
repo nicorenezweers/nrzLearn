@@ -1,0 +1,10 @@
+[package]
+name = "nrzlearn-model"
+version = "1.0.0"
+edition = "2024"
+publish = false
+license = "MIT"
+description = "Course data model of nrzLearn (JSON courses), shared by the web app and the site tool."
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }

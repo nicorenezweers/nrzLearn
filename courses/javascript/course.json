@@ -1,0 +1,1863 @@
+{
+  "course": "javascript",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, JavaScript",
+      "chapter": "Basics",
+      "summary": "Write your first program, print text and numbers with console.log and learn what a statement is.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "JavaScript is the language of the web. Every browser can run it, and with Node.js it also runs on your computer and on servers. A program is a list of instructions that the computer runs from top to bottom."
+        },
+        {
+          "type": "text",
+          "md": "To show something on the screen, you use `console.log()`. Put the value you want to show between the parentheses."
+        },
+        {
+          "type": "code",
+          "code": "console.log(\"Hello, world!\");",
+          "output": "Hello, world!"
+        },
+        {
+          "type": "heading",
+          "text": "Statements"
+        },
+        {
+          "type": "text",
+          "md": "Each instruction is a **statement**. You end a statement with a semicolon `;` and usually write one statement per line. The program runs the lines in order."
+        },
+        {
+          "type": "code",
+          "code": "console.log(\"One\");\nconsole.log(\"Two\");\nconsole.log(\"Three\");",
+          "output": "One\nTwo\nThree"
+        },
+        {
+          "type": "heading",
+          "text": "Strings and numbers"
+        },
+        {
+          "type": "text",
+          "md": "Text in quotes is a **string**. You can use double quotes `\"Hi\"` or single quotes `'Hi'`. Numbers have no quotes. JavaScript can calculate with them: `+` adds, `-` subtracts, `*` multiplies and `/` divides."
+        },
+        {
+          "type": "code",
+          "code": "console.log('Hi');\nconsole.log(42);\nconsole.log(3.5);\nconsole.log(2 + 3);\nconsole.log(10 / 4);",
+          "output": "Hi\n42\n3.5\n5\n2.5"
+        },
+        {
+          "type": "text",
+          "md": "`console.log()` can show several values at once. Separate them with commas. It prints them on one line with a space between them. Note the difference: `\"2 + 3\"` is a string, so it is printed as it is."
+        },
+        {
+          "type": "code",
+          "code": "console.log(\"2 + 3\");\nconsole.log(2 + 3);\nconsole.log(\"Total:\", 10 * 2);",
+          "output": "2 + 3\n5\nTotal: 20"
+        },
+        {
+          "type": "tip",
+          "md": "A **comment** starts with `//`. JavaScript ignores everything after `//` until the end of the line. In this course, comments only show results, for example `// 5`."
+        },
+        {
+          "type": "warning",
+          "md": "JavaScript is **case-sensitive**. `console.log` works, but `Console.log` or `console.Log` stops the program with an error."
+        }
+      ],
+      "card": [
+        "`console.log(x)` prints a value on its own line",
+        "`\"Hi\"` and `'Hi'` are strings, `42` is a number",
+        "`console.log(\"a\", 1)` prints `a 1`",
+        "End statements with `;`, comments start with `//`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which line prints `Hello`?",
+          "options": [
+            "`console.log(\"Hello\");`",
+            "`print(\"Hello\");`",
+            "`console.write(\"Hello\");`",
+            "`log.console(\"Hello\");`"
+          ],
+          "answer": 0,
+          "explain": "`console.log()` prints a value. The other lines cause an error in JavaScript."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "console.log(4 + 5);",
+          "answers": [
+            "9"
+          ],
+          "explain": "There are no quotes, so `4 + 5` is a calculation and the result `9` is printed."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "console.log(\"4 + 5\");",
+          "answers": [
+            "4 + 5"
+          ],
+          "explain": "The value is in quotes, so it is a string. A string is printed exactly as it is written."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "The program prints `B` before `A`.",
+          "code": "console.log(\"A\");\nconsole.log(\"B\");",
+          "answer": false,
+          "explain": "A program runs from top to bottom, so it prints `A` first and then `B`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Fill the gap so the program prints `Hi`.",
+          "code": "console.___(\"Hi\");",
+          "options": [
+            "log",
+            "print",
+            "show"
+          ],
+          "answer": 0,
+          "explain": "The method that prints a value is `console.log()`."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-6",
+          "prompt": "Build a line that prints `Score: 10` with two values.",
+          "tokens": [
+            "console.log",
+            "(",
+            "\"Score:\"",
+            ",",
+            "10",
+            ");"
+          ],
+          "distractors": [
+            "print",
+            "+"
+          ],
+          "explain": "Values separated by a comma are printed with a space between them: `console.log(\"Score:\", 10);`."
+        },
+        {
+          "type": "order",
+          "id": "hello-7",
+          "prompt": "Put the lines in order so the program prints `Ready`, then `Set`, then `Go!`.",
+          "lines": [
+            "console.log(\"Ready\");",
+            "console.log(\"Set\");",
+            "console.log(\"Go!\");"
+          ],
+          "explain": "The lines run from top to bottom, so the first line to print must come first."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-8",
+          "prompt": "Match the code to what it is.",
+          "pairs": [
+            [
+              "`\"7\"`",
+              "a string"
+            ],
+            [
+              "`7`",
+              "a number"
+            ],
+            [
+              "`console.log(7)`",
+              "prints 7"
+            ],
+            [
+              "`// 7`",
+              "a comment"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-9",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "console.log(\"Start\");",
+            "console.log(\"Middle);",
+            "console.log(\"End\");"
+          ],
+          "bug": 1,
+          "explain": "The string `\"Middle` has no closing quote. The fix is `console.log(\"Middle\");`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-10",
+          "prompt": "What does this print?",
+          "code": "console.log(\"Total:\", 2 * 6);",
+          "options": [
+            "`Total: 12`",
+            "`Total:12`",
+            "`Total: 2 * 6`",
+            "`\"Total:\" 12`"
+          ],
+          "answer": 0,
+          "explain": "`2 * 6` has no quotes, so it is calculated. `console.log` puts a space between the two values."
+        },
+        {
+          "type": "input",
+          "id": "hello-11",
+          "prompt": "What does this print?",
+          "code": "console.log(\"Age:\", 30 + 1);",
+          "answers": [
+            "Age: 31"
+          ],
+          "explain": "`30 + 1` is calculated first. Then both values are printed with a space between them."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-12",
+          "statement": "`Console.log(\"Hi\");` prints `Hi`.",
+          "answer": false,
+          "explain": "JavaScript is case-sensitive. `Console` with a capital C does not exist, so the program stops with an error."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Store values with let and const and meet the basic types: number, string, boolean, undefined and null.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a name for a value. You create one with `let`, a name, `=` and a value. After that, you use the name instead of the value. Names with several words are usually written in **camelCase**, like `firstName`."
+        },
+        {
+          "type": "code",
+          "code": "let name = \"Ada\";\nlet age = 36;\nconsole.log(name);\nconsole.log(age);",
+          "output": "Ada\n36"
+        },
+        {
+          "type": "text",
+          "md": "A variable created with `let` can change. To give it a new value, write the name, `=` and the new value, without `let`. The old value is gone. The new value can use the old one."
+        },
+        {
+          "type": "code",
+          "code": "let score = 10;\nconsole.log(score);\nscore = 15;\nconsole.log(score);\nscore = score + 5;\nconsole.log(score);",
+          "output": "10\n15\n20"
+        },
+        {
+          "type": "heading",
+          "text": "Constants with const"
+        },
+        {
+          "type": "text",
+          "md": "Use `const` for a value that never changes. If you assign a new value to a `const`, the program stops with a `TypeError`. Many programmers use `const` by default and `let` only when the value must change."
+        },
+        {
+          "type": "code",
+          "code": "const city = \"Paris\";\nconst pi = 3.14;\nconsole.log(city, pi);",
+          "output": "Paris 3.14"
+        },
+        {
+          "type": "heading",
+          "text": "Types"
+        },
+        {
+          "type": "text",
+          "md": "Every value has a **type**. A `number` is any number, with or without a decimal point. A `string` is text. A `boolean` is either `true` or `false`."
+        },
+        {
+          "type": "text",
+          "md": "Two special values mean that there is no value. `undefined` is the value of a variable that did not get a value yet. `null` is a value you set on purpose to say: empty."
+        },
+        {
+          "type": "code",
+          "code": "let winner;\nconsole.log(winner);\nwinner = null;\nconsole.log(winner);",
+          "output": "undefined\nnull"
+        },
+        {
+          "type": "text",
+          "md": "The `typeof` operator gives you the type of a value, as a string."
+        },
+        {
+          "type": "code",
+          "code": "console.log(typeof 42);\nconsole.log(typeof 3.5);\nconsole.log(typeof \"hi\");\nconsole.log(typeof true);\nconsole.log(typeof undefined);",
+          "output": "number\nnumber\nstring\nboolean\nundefined"
+        },
+        {
+          "type": "warning",
+          "md": "`typeof null` gives `\"object\"`. This is an old mistake in JavaScript that can no longer be changed. Remember that `null` is a type of its own."
+        }
+      ],
+      "card": [
+        "`let x = 5;` creates a variable you can change",
+        "`const y = 10;` creates a variable that cannot change",
+        "Types: `number`, `string`, `boolean`, `undefined`, `null`",
+        "`typeof x` gives the type as a string, e.g. `\"number\"`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "variables-1",
+          "prompt": "What does this print?",
+          "code": "let a = 3;\na = a + 4;\nconsole.log(a);",
+          "answers": [
+            "7"
+          ],
+          "explain": "`a` starts as `3`. Then `a = a + 4` stores `3 + 4`, which is `7`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-2",
+          "prompt": "Which keyword creates a variable that cannot get a new value?",
+          "options": [
+            "`let`",
+            "`const`",
+            "`fixed`"
+          ],
+          "answer": 1,
+          "explain": "A `const` cannot get a new value. A `let` variable can change, and `fixed` is not a JavaScript keyword."
+        },
+        {
+          "type": "input",
+          "id": "variables-3",
+          "prompt": "What does this print?",
+          "code": "console.log(typeof \"42\");",
+          "answers": [
+            "string"
+          ],
+          "explain": "The value is in quotes, so `\"42\"` is a string, not a number."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-4",
+          "statement": "This program prints `0`.",
+          "code": "let count;\nconsole.log(count);",
+          "answer": false,
+          "explain": "The variable has no value yet, so it is `undefined`, not `0`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-5",
+          "prompt": "Fill the gap so the program prints `boolean`.",
+          "code": "const isOpen = ___;\nconsole.log(typeof isOpen);",
+          "options": [
+            "true",
+            "\"true\"",
+            "null",
+            "1"
+          ],
+          "answer": 0,
+          "explain": "`true` without quotes is a boolean. `\"true\"` is a string, `null` gives `\"object\"` and `1` is a number."
+        },
+        {
+          "type": "bug",
+          "id": "variables-6",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "let total = 10;",
+            "const tax = 2;",
+            "total = total + tax;",
+            "console.log(Total);"
+          ],
+          "bug": 3,
+          "explain": "Names are case-sensitive. There is no variable `Total`, only `total`. The fix is `console.log(total);`."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-7",
+          "prompt": "Match each value to its meaning.",
+          "pairs": [
+            [
+              "`42`",
+              "a number"
+            ],
+            [
+              "`\"42\"`",
+              "text (a string)"
+            ],
+            [
+              "`false`",
+              "a boolean"
+            ],
+            [
+              "`null`",
+              "empty on purpose"
+            ],
+            [
+              "`undefined`",
+              "no value yet"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "variables-8",
+          "prompt": "What does this print?",
+          "code": "let x = 5;\nlet y = x;\nx = 8;\nconsole.log(y);",
+          "options": [
+            "`5`",
+            "`8`",
+            "`13`",
+            "`undefined`"
+          ],
+          "answer": 0,
+          "explain": "`let y = x` copies the value `5` into `y`. Changing `x` later does not change `y`."
+        },
+        {
+          "type": "order",
+          "id": "variables-9",
+          "prompt": "Put the lines in order so the program prints `12`.",
+          "lines": [
+            "const base = 10;",
+            "let points = base;",
+            "points = points + 2;",
+            "console.log(points);"
+          ],
+          "explain": "A variable must be created before you use it. `points` needs `base`, and the print comes after the change."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-10",
+          "prompt": "Build a line that creates a constant named `city` with the value `\"Rome\"`.",
+          "tokens": [
+            "const",
+            "city",
+            "=",
+            "\"Rome\";"
+          ],
+          "distractors": [
+            "let",
+            "==",
+            "Rome;"
+          ],
+          "explain": "A constant is created with `const`, the name, `=` and the value: `const city = \"Rome\";`. Text needs quotes."
+        },
+        {
+          "type": "input",
+          "id": "variables-11",
+          "prompt": "What does this print?",
+          "code": "let message;\nconsole.log(typeof message);",
+          "answers": [
+            "undefined"
+          ],
+          "explain": "`message` has no value yet, so its value and its type are both `undefined`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-12",
+          "statement": "`typeof null` gives `\"null\"`.",
+          "answer": false,
+          "explain": "`typeof null` gives `\"object\"`. This is an old mistake in JavaScript."
+        }
+      ]
+    },
+    {
+      "id": "operators",
+      "title": "Operators and strings",
+      "chapter": "Basics",
+      "summary": "Calculate with numbers, compare values with === and !==, and build and change strings.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "JavaScript has the usual **arithmetic operators**: `+`, `-`, `*` and `/`. The operator `%` gives the remainder of a division, and `**` raises a number to a power: `2 ** 3` is `8`. `*` and `/` are calculated before `+` and `-`, like in math."
+        },
+        {
+          "type": "code",
+          "code": "console.log(7 + 2);\nconsole.log(7 - 2);\nconsole.log(7 * 2);\nconsole.log(7 / 2);\nconsole.log(7 % 2);\nconsole.log(2 ** 3);",
+          "output": "9\n5\n14\n3.5\n1\n8"
+        },
+        {
+          "type": "text",
+          "md": "`x += 5` is a short form of `x = x + 5`. It also works with `-=`, `*=` and `/=`. `x++` adds `1` to `x`, and `x--` subtracts `1`."
+        },
+        {
+          "type": "code",
+          "code": "let count = 10;\ncount += 5;\ncount++;\nconsole.log(count);",
+          "output": "16"
+        },
+        {
+          "type": "heading",
+          "text": "Comparing values"
+        },
+        {
+          "type": "text",
+          "md": "`===` checks if two values are equal and gives `true` or `false`. `!==` checks if they are different. `<`, `>`, `<=` and `>=` compare sizes."
+        },
+        {
+          "type": "code",
+          "code": "console.log(5 === 5);\nconsole.log(5 === \"5\");\nconsole.log(5 !== 3);\nconsole.log(4 >= 4);",
+          "output": "true\nfalse\ntrue\ntrue"
+        },
+        {
+          "type": "warning",
+          "md": "Always use `===` and `!==`. The older `==` changes the types before it compares, so `5 == \"5\"` is `true`. This causes bugs that are hard to find."
+        },
+        {
+          "type": "heading",
+          "text": "Working with strings"
+        },
+        {
+          "type": "text",
+          "md": "`+` joins strings. A **template literal** is often easier: write the string between backticks and put values inside `${...}`. JavaScript puts the value in place."
+        },
+        {
+          "type": "code",
+          "code": "const name = \"Ada\";\nconst age = 36;\nconsole.log(\"Hi \" + name + \"!\");\nconsole.log(`${name} is ${age} years old.`);\nconsole.log(`Next year: ${age + 1}`);",
+          "output": "Hi Ada!\nAda is 36 years old.\nNext year: 37"
+        },
+        {
+          "type": "text",
+          "md": "`length` is the number of characters in a string. `word[0]` is the first character, because positions start at `0`. Strings also have **methods**, which you call with a dot, like `toUpperCase()`. They return a new string and do not change the original."
+        },
+        {
+          "type": "code",
+          "code": "const word = \"Hello\";\nconsole.log(word.length);\nconsole.log(word[0]);\nconsole.log(word.toUpperCase());\nconsole.log(word.includes(\"ell\"));\nconsole.log(\"  hi  \".trim());",
+          "output": "5\nH\nHELLO\ntrue\nhi"
+        },
+        {
+          "type": "warning",
+          "md": "`+` with a string and a number joins them as text. `\"5\" + 2` gives `\"52\"`, not `7`."
+        }
+      ],
+      "card": [
+        "`+ - * / % **` calculate: `2 ** 3` is `8`",
+        "`x += 1` and `x++` change `x`",
+        "`===` equal, `!==` not equal, `< > <= >=` compare",
+        "Template literal: backticks with `${name}` inside",
+        "`s.length`, `s[0]`, `s.toUpperCase()`, `s.includes(\"a\")`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "operators-1",
+          "prompt": "What does this print?",
+          "code": "console.log(17 % 5);",
+          "answers": [
+            "2"
+          ],
+          "explain": "`17` divided by `5` is `3` with a remainder of `2`. `%` gives the remainder."
+        },
+        {
+          "type": "input",
+          "id": "operators-2",
+          "prompt": "What does this print?",
+          "code": "const city = \"Oslo\";\nconsole.log(`I live in ${city}.`);",
+          "answers": [
+            "I live in Oslo.",
+            "I live in Oslo"
+          ],
+          "explain": "In a template literal, `${city}` is replaced by the value of `city`."
+        },
+        {
+          "type": "choice",
+          "id": "operators-3",
+          "prompt": "What does this print?",
+          "code": "console.log(\"5\" + 2);",
+          "options": [
+            "`52`",
+            "`7`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "`\"5\"` is a string. `+` with a string joins the values as text, so the result is `\"52\"`."
+        },
+        {
+          "type": "true_false",
+          "id": "operators-4",
+          "statement": "This program prints `true`.",
+          "code": "console.log(10 === \"10\");",
+          "answer": false,
+          "explain": "`===` also compares the types. `10` is a number and `\"10\"` is a string, so the result is `false`."
+        },
+        {
+          "type": "gap",
+          "id": "operators-5",
+          "prompt": "Fill the gap so the program prints `true`.",
+          "code": "const a = 4;\nconst b = 9;\nconsole.log(a ___ b);",
+          "options": [
+            "===",
+            "!==",
+            ">"
+          ],
+          "answer": 1,
+          "explain": "`4` and `9` are different, so `a !== b` is `true`. The other two give `false`."
+        },
+        {
+          "type": "blocks",
+          "id": "operators-6",
+          "prompt": "Build a line that stores the length of `name` in `size`.",
+          "tokens": [
+            "const",
+            "size",
+            "=",
+            "name.length;"
+          ],
+          "distractors": [
+            "name.size;",
+            "==",
+            "length(name);"
+          ],
+          "explain": "`length` is a property of the string, so you write `name.length`: `const size = name.length;`."
+        },
+        {
+          "type": "order",
+          "id": "operators-7",
+          "prompt": "Put the lines in order so the program prints `Total: 12`.",
+          "lines": [
+            "let total = 10;",
+            "total += 2;",
+            "const text = `Total: ${total}`;",
+            "console.log(text);"
+          ],
+          "explain": "First create `total`, then add `2`. Only then build the text and print it."
+        },
+        {
+          "type": "pairs",
+          "id": "operators-8",
+          "prompt": "Match the operator to its meaning.",
+          "pairs": [
+            [
+              "`%`",
+              "remainder of a division"
+            ],
+            [
+              "`**`",
+              "power"
+            ],
+            [
+              "`===`",
+              "is equal to"
+            ],
+            [
+              "`!==`",
+              "is not equal to"
+            ],
+            [
+              "`+=`",
+              "adds to the variable"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "operators-9",
+          "prompt": "The program should print `Hello, Sam!`. Which line has the bug?",
+          "lines": [
+            "const name = \"Sam\";",
+            "const message = \"Hello, ${name}!\";",
+            "console.log(message);"
+          ],
+          "bug": 1,
+          "explain": "`${name}` only works in a template literal. Write the string between backticks instead of double quotes."
+        },
+        {
+          "type": "choice",
+          "id": "operators-10",
+          "prompt": "What does this print?",
+          "code": "const text = \"JavaScript\";\nconsole.log(text.length);",
+          "options": [
+            "`9`",
+            "`10`",
+            "`11`"
+          ],
+          "answer": 1,
+          "explain": "`JavaScript` has 10 characters, so `length` is `10`."
+        },
+        {
+          "type": "input",
+          "id": "operators-11",
+          "prompt": "What does this print?",
+          "code": "console.log(2 + 3 * 4);",
+          "answers": [
+            "14"
+          ],
+          "explain": "`*` is calculated before `+`: `3 * 4` is `12`, and `2 + 12` is `14`."
+        },
+        {
+          "type": "true_false",
+          "id": "operators-12",
+          "statement": "This program prints `c`.",
+          "code": "const word = \"cat\";\nconsole.log(word[1]);",
+          "answer": false,
+          "explain": "Positions start at `0`. `word[0]` is `\"c\"`, so `word[1]` is `\"a\"`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program choose with if and else, combine conditions with && and ||, and learn what truthy and falsy mean.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An `if` statement runs code only when a condition is `true`. Write the condition in parentheses and the code in curly braces `{ }`."
+        },
+        {
+          "type": "code",
+          "code": "const temperature = 30;\nif (temperature > 25) {\n  console.log(\"It is hot.\");\n}\nconsole.log(\"Done.\");",
+          "output": "It is hot.\nDone."
+        },
+        {
+          "type": "text",
+          "md": "Add `else` for code that runs when the condition is `false`. With `else if`, you can check more conditions one after the other. Only the first block whose condition is `true` runs."
+        },
+        {
+          "type": "code",
+          "code": "const score = 72;\nif (score >= 90) {\n  console.log(\"Excellent\");\n} else if (score >= 60) {\n  console.log(\"Passed\");\n} else {\n  console.log(\"Try again\");\n}",
+          "output": "Passed"
+        },
+        {
+          "type": "heading",
+          "text": "Logical operators"
+        },
+        {
+          "type": "text",
+          "md": "**Logical operators** combine conditions. `&&` (and) is `true` when both sides are `true`. `||` (or) is `true` when at least one side is `true`. `!` (not) turns `true` into `false` and `false` into `true`."
+        },
+        {
+          "type": "code",
+          "code": "const age = 20;\nconst hasTicket = true;\nconsole.log(age >= 18 && hasTicket);\nconsole.log(age < 16 || hasTicket);\nconsole.log(!hasTicket);",
+          "output": "true\ntrue\nfalse"
+        },
+        {
+          "type": "heading",
+          "text": "The ternary operator"
+        },
+        {
+          "type": "text",
+          "md": "The **ternary operator** `condition ? a : b` is a short `if` and `else` that gives a value. The value is `a` if the condition is `true`, otherwise `b`."
+        },
+        {
+          "type": "code",
+          "code": "const hour = 9;\nconst greeting = hour < 12 ? \"Good morning\" : \"Good day\";\nconsole.log(greeting);",
+          "output": "Good morning"
+        },
+        {
+          "type": "heading",
+          "text": "Truthy and falsy"
+        },
+        {
+          "type": "text",
+          "md": "A condition does not have to be a boolean. These values count as `false` and are called **falsy**: `false`, `0`, `\"\"` (an empty string), `null`, `undefined` and `NaN` (not a number). All other values are **truthy**, even `\"0\"` and `\"false\"`. `Boolean(x)` shows you which one a value is."
+        },
+        {
+          "type": "code",
+          "code": "const name = \"\";\nif (name) {\n  console.log(`Hello, ${name}!`);\n} else {\n  console.log(\"No name given.\");\n}\nconsole.log(Boolean(0));\nconsole.log(Boolean(\"0\"));",
+          "output": "No name given.\nfalse\ntrue"
+        },
+        {
+          "type": "tip",
+          "md": "Indent the code inside `{ }` by two spaces. JavaScript does not need it, but it makes your code much easier to read."
+        }
+      ],
+      "card": [
+        "`if (x > 0) { ... } else { ... }`",
+        "`&&` and, `||` or, `!` not",
+        "`cond ? a : b` gives `a` or `b`",
+        "Falsy: `false`, `0`, `\"\"`, `null`, `undefined`, `NaN`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "const n = 7;\nif (n % 2 === 0) {\n  console.log(\"even\");\n} else {\n  console.log(\"odd\");\n}",
+          "answers": [
+            "odd"
+          ],
+          "explain": "`7 % 2` is `1`, not `0`, so the condition is `false` and the `else` block runs."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "const x = 15;\nif (x > 20) {\n  console.log(\"A\");\n} else if (x > 10) {\n  console.log(\"B\");\n} else if (x > 5) {\n  console.log(\"C\");\n} else {\n  console.log(\"D\");\n}",
+          "options": [
+            "`A`",
+            "`B`",
+            "`C`",
+            "`B` and `C`"
+          ],
+          "answer": 1,
+          "explain": "`15 > 20` is `false`, `15 > 10` is `true`. Only the first block whose condition is `true` runs."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-3",
+          "statement": "`true && false` is `true`.",
+          "answer": false,
+          "explain": "`&&` is only `true` when both sides are `true`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-4",
+          "prompt": "Fill the gap so the program prints `Welcome`.",
+          "code": "const isMember = false;\nconst isGuest = true;\nif (isMember ___ isGuest) {\n  console.log(\"Welcome\");\n}",
+          "options": [
+            "&&",
+            "||",
+            "==="
+          ],
+          "answer": 1,
+          "explain": "`||` is `true` when at least one side is `true`. `isGuest` is `true`, so the condition is `true`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-5",
+          "prompt": "What does this print?",
+          "code": "const items = 0;\nconsole.log(items ? \"full\" : \"empty\");",
+          "answers": [
+            "empty"
+          ],
+          "explain": "`0` is falsy, so the ternary operator gives the second value."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-6",
+          "prompt": "The program should print `Weekend`. Which line has the bug?",
+          "lines": [
+            "const day = \"Sunday\";",
+            "if (day === \"Saturday\" && day === \"Sunday\") {",
+            "  console.log(\"Weekend\");",
+            "} else {",
+            "  console.log(\"Workday\");",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "A day cannot be Saturday and Sunday at the same time, so `&&` is always `false`. Use `||` instead."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-7",
+          "prompt": "Match the code to its meaning.",
+          "pairs": [
+            [
+              "`&&`",
+              "and"
+            ],
+            [
+              "`||`",
+              "or"
+            ],
+            [
+              "`!`",
+              "not"
+            ],
+            [
+              "`? :`",
+              "a short if and else that gives a value"
+            ],
+            [
+              "`else if`",
+              "checks another condition"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "conditions-8",
+          "prompt": "Put the lines in order so the program prints `Win` when `points` is greater than `50`, otherwise `Lose`.",
+          "lines": [
+            "if (points > 50) {",
+            "  console.log(\"Win\");",
+            "} else {",
+            "  console.log(\"Lose\");",
+            "}"
+          ],
+          "explain": "The `if` line opens the first block, `} else {` closes it and opens the second one, and `}` closes the second one."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-9",
+          "prompt": "Build a line that stores `\"yes\"` in `answer` when `ok` is truthy, otherwise `\"no\"`.",
+          "tokens": [
+            "const",
+            "answer",
+            "=",
+            "ok",
+            "?",
+            "\"yes\"",
+            ":",
+            "\"no\";"
+          ],
+          "distractors": [
+            "if",
+            "else"
+          ],
+          "explain": "The ternary operator is `condition ? a : b`: `const answer = ok ? \"yes\" : \"no\";`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-10",
+          "prompt": "Which of these values is truthy?",
+          "options": [
+            "`0`",
+            "`\"\"`",
+            "`\"0\"`",
+            "`null`"
+          ],
+          "answer": 2,
+          "explain": "`\"0\"` is a string that is not empty, so it is truthy. `0`, `\"\"` and `null` are falsy."
+        },
+        {
+          "type": "input",
+          "id": "conditions-11",
+          "prompt": "What does this print?",
+          "code": "const a = 5;\nconst b = 10;\nconsole.log(a > 3 && b < 10);",
+          "answers": [
+            "false"
+          ],
+          "explain": "`5 > 3` is `true`, but `10 < 10` is `false`. With `&&`, both sides must be `true`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-12",
+          "statement": "This program prints `yes`.",
+          "code": "if (\"false\") {\n  console.log(\"yes\");\n}",
+          "answer": true,
+          "explain": "`\"false\"` is a string that is not empty, so it is truthy."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with for, while and for...of, and control loops with break and continue.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **loop** repeats code. The `for` loop is the most common one. Its parentheses have three parts, separated by semicolons: a start (`let i = 1`), a condition (`i <= 3`) and a step (`i++`)."
+        },
+        {
+          "type": "code",
+          "code": "for (let i = 1; i <= 3; i++) {\n  console.log(i);\n}",
+          "output": "1\n2\n3"
+        },
+        {
+          "type": "text",
+          "md": "First, the loop runs the start. Then it checks the condition, runs the code in the braces and runs the step. It repeats this until the condition is `false`. A common pattern adds up values in a variable that you create before the loop."
+        },
+        {
+          "type": "code",
+          "code": "let sum = 0;\nfor (let i = 1; i <= 4; i++) {\n  sum += i;\n}\nconsole.log(sum);",
+          "output": "10"
+        },
+        {
+          "type": "heading",
+          "text": "while"
+        },
+        {
+          "type": "text",
+          "md": "A `while` loop repeats as long as its condition is `true`. Use it when you do not know in advance how many times the loop must run."
+        },
+        {
+          "type": "code",
+          "code": "let money = 100;\nlet years = 0;\nwhile (money < 150) {\n  money = money * 1.1;\n  years++;\n}\nconsole.log(years);",
+          "output": "5"
+        },
+        {
+          "type": "warning",
+          "md": "Make sure that the condition becomes `false` at some point. If it never does, the loop runs forever and your program does not stop."
+        },
+        {
+          "type": "heading",
+          "text": "for...of"
+        },
+        {
+          "type": "text",
+          "md": "`for...of` goes through the items of a collection, one by one. With a string, you get each character. You will use it a lot in the world about arrays."
+        },
+        {
+          "type": "code",
+          "code": "for (const letter of \"Hey\") {\n  console.log(letter);\n}",
+          "output": "H\ne\ny"
+        },
+        {
+          "type": "heading",
+          "text": "break and continue"
+        },
+        {
+          "type": "text",
+          "md": "`break` stops the loop at once. `continue` skips the rest of the current round and goes on with the next round."
+        },
+        {
+          "type": "code",
+          "code": "for (let i = 1; i <= 10; i++) {\n  if (i % 2 === 0) {\n    continue;\n  }\n  if (i > 7) {\n    break;\n  }\n  console.log(i);\n}",
+          "output": "1\n3\n5\n7"
+        }
+      ],
+      "card": [
+        "`for (let i = 0; i < 3; i++) { ... }`",
+        "`while (cond) { ... }` repeats while `cond` is true",
+        "`for (const x of items) { ... }` goes through each item",
+        "`break` stops the loop, `continue` skips to the next round"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "How many times does this print `Hi`?",
+          "code": "for (let i = 2; i <= 6; i++) {\n  console.log(\"Hi\");\n}",
+          "answers": [
+            "5"
+          ],
+          "explain": "`i` takes the values `2`, `3`, `4`, `5` and `6`. That is 5 rounds."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "let total = 0;\nfor (let i = 1; i <= 5; i++) {\n  total += i;\n}\nconsole.log(total);",
+          "answers": [
+            "15"
+          ],
+          "explain": "The loop adds `1 + 2 + 3 + 4 + 5` to `total`, which is `15`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "What does this print?",
+          "code": "let n = 1;\nwhile (n < 20) {\n  n = n * 3;\n}\nconsole.log(n);",
+          "options": [
+            "`9`",
+            "`27`",
+            "`20`",
+            "`81`"
+          ],
+          "answer": 1,
+          "explain": "`n` becomes `3`, then `9`, then `27`. Now `27 < 20` is `false`, so the loop stops."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-4",
+          "statement": "This program prints `0`, `1`, `3` and `4`.",
+          "code": "for (let i = 0; i < 5; i++) {\n  if (i === 2) {\n    break;\n  }\n  console.log(i);\n}",
+          "answer": false,
+          "explain": "When `i` is `2`, `break` stops the whole loop. The program only prints `0` and `1`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-5",
+          "prompt": "Fill the gap so the loop prints `5`, `4`, `3`, `2` and `1`.",
+          "code": "for (let i = 5; i >= 1; ___) {\n  console.log(i);\n}",
+          "options": [
+            "i++",
+            "i--",
+            "i -= 2"
+          ],
+          "answer": 1,
+          "explain": "`i--` subtracts `1` in every round. `i -= 2` skips numbers, and `i++` never makes the condition `false`."
+        },
+        {
+          "type": "bug",
+          "id": "loops-6",
+          "prompt": "The program should print `1`, `2` and `3`. Which line has the bug?",
+          "lines": [
+            "let i = 1;",
+            "while (i <= 3) {",
+            "  console.log(i);",
+            "  i--;",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "`i--` makes `i` smaller, so `i <= 3` stays `true` forever. The fix is `i++;`."
+        },
+        {
+          "type": "order",
+          "id": "loops-7",
+          "prompt": "Put the lines in order so the program prints `6`.",
+          "lines": [
+            "let sum = 0;",
+            "for (let i = 1; i <= 3; i++) {",
+            "  sum += i;",
+            "}",
+            "console.log(sum);"
+          ],
+          "explain": "Create `sum` before the loop, add inside the loop, and print after the loop. Otherwise it prints more than once."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-8",
+          "prompt": "Match the code to what it does.",
+          "pairs": [
+            [
+              "`break`",
+              "stops the loop"
+            ],
+            [
+              "`continue`",
+              "skips to the next round"
+            ],
+            [
+              "`i++`",
+              "adds 1 to `i`"
+            ],
+            [
+              "`while (x)`",
+              "repeats while `x` is truthy"
+            ],
+            [
+              "`for...of`",
+              "goes through each item"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "loops-9",
+          "prompt": "Build the first line of a loop that counts from `0` to `4`.",
+          "tokens": [
+            "for",
+            "(let i = 0;",
+            "i < 5;",
+            "i++) {"
+          ],
+          "distractors": [
+            "i <= 5;",
+            "while"
+          ],
+          "explain": "`i < 5` is `true` for `0` to `4`. With `i <= 5`, the loop would also count `5`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-10",
+          "prompt": "What does this print?",
+          "code": "for (const ch of \"abc\") {\n  console.log(ch.toUpperCase());\n}",
+          "options": [
+            "`A`, `B` and `C` on three lines",
+            "`ABC` on one line",
+            "`abc` on one line",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "`for...of` gives one character per round, and every `console.log` prints on its own line."
+        },
+        {
+          "type": "input",
+          "id": "loops-11",
+          "prompt": "What does this print?",
+          "code": "let count = 0;\nfor (let i = 1; i <= 10; i++) {\n  if (i % 3 !== 0) {\n    continue;\n  }\n  count++;\n}\nconsole.log(count);",
+          "answers": [
+            "3"
+          ],
+          "explain": "`continue` skips every number that cannot be divided by `3`. Only `3`, `6` and `9` are counted."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-12",
+          "statement": "A `while` loop whose condition is `false` at the start never runs its code.",
+          "answer": true,
+          "explain": "`while` checks the condition before every round, also before the first one."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Building blocks",
+      "summary": "Write reusable code with functions: parameters, return values, arrow functions and default parameters.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** is a named block of code that you can run again and again. You define it with `function`, a name, parentheses and the code in curly braces. You run it by **calling** it: its name followed by `()`."
+        },
+        {
+          "type": "code",
+          "code": "function greet() {\n  console.log(\"Hello!\");\n}\n\ngreet();\ngreet();",
+          "output": "Hello!\nHello!"
+        },
+        {
+          "type": "text",
+          "md": "**Parameters** are names in the parentheses of the function. They get the values that you pass when you call the function. These values are called **arguments**."
+        },
+        {
+          "type": "code",
+          "code": "function greet(name, time) {\n  console.log(`Good ${time}, ${name}!`);\n}\n\ngreet(\"Ada\", \"morning\");\ngreet(\"Linus\", \"evening\");",
+          "output": "Good morning, Ada!\nGood evening, Linus!"
+        },
+        {
+          "type": "heading",
+          "text": "Returning a value"
+        },
+        {
+          "type": "text",
+          "md": "`return` sends a value back to the place where the function was called. The function stops at `return`. A function without `return` gives `undefined`."
+        },
+        {
+          "type": "code",
+          "code": "function square(x) {\n  return x * x;\n}\n\nconst result = square(4);\nconsole.log(result);\nconsole.log(square(3) + square(2));",
+          "output": "16\n13"
+        },
+        {
+          "type": "warning",
+          "md": "`console.log` only shows a value. It does not give the value back. If you want to use the result of a function, use `return`."
+        },
+        {
+          "type": "heading",
+          "text": "Arrow functions"
+        },
+        {
+          "type": "text",
+          "md": "An **arrow function** is a shorter way to write a function. You usually store it in a `const`. If the code is a single expression, you can leave out the curly braces and `return`. The value is then returned automatically."
+        },
+        {
+          "type": "code",
+          "code": "const double = (n) => n * 2;\nconst add = (a, b) => {\n  return a + b;\n};\nconsole.log(double(5));\nconsole.log(add(2, 3));",
+          "output": "10\n5"
+        },
+        {
+          "type": "heading",
+          "text": "Default parameters"
+        },
+        {
+          "type": "text",
+          "md": "A **default parameter** has a value that is used when the call leaves out the argument. Write it with `=` after the parameter name."
+        },
+        {
+          "type": "code",
+          "code": "function power(base, exponent = 2) {\n  return base ** exponent;\n}\n\nconsole.log(power(5));\nconsole.log(power(2, 10));",
+          "output": "25\n1024"
+        }
+      ],
+      "card": [
+        "`function add(a, b) { return a + b; }`",
+        "Call it: `add(1, 2)` gives `3`",
+        "`const f = (x) => x * 2;` is an arrow function",
+        "`function f(x = 1) { ... }` sets a default value"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "function triple(n) {\n  return n * 3;\n}\nconsole.log(triple(4));",
+          "answers": [
+            "12"
+          ],
+          "explain": "`triple(4)` returns `4 * 3`, which is `12`."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print?",
+          "code": "const sub = (a, b) => a - b;\nconsole.log(sub(3, 8));",
+          "answers": [
+            "-5"
+          ],
+          "explain": "The arguments go to the parameters in order: `a` is `3` and `b` is `8`, so `a - b` is `-5`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-3",
+          "prompt": "What does this print?",
+          "code": "function show(x) {\n  console.log(x);\n}\nconst value = show(5);\nconsole.log(value);",
+          "options": [
+            "`5` and then `5`",
+            "`5` and then `undefined`",
+            "Only `undefined`",
+            "Only `5`"
+          ],
+          "answer": 1,
+          "explain": "`show(5)` prints `5`, but it has no `return`. So `value` is `undefined`, and that is printed next."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-4",
+          "statement": "Calling `test()` prints `after`.",
+          "code": "function test() {\n  return 1;\n  console.log(\"after\");\n}",
+          "answer": false,
+          "explain": "The function stops at `return`, so the line after it never runs."
+        },
+        {
+          "type": "gap",
+          "id": "functions-5",
+          "prompt": "Fill the gap so the program prints `8`.",
+          "code": "function add(a, b) {\n  ___ a + b;\n}\nconsole.log(add(3, 5));",
+          "options": [
+            "console.log",
+            "give",
+            "return"
+          ],
+          "answer": 2,
+          "explain": "`return` gives the result back to the call. With `console.log`, the function would return `undefined`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-6",
+          "prompt": "Build an arrow function `half` that divides a number by 2.",
+          "tokens": [
+            "const",
+            "half",
+            "=",
+            "(n)",
+            "=>",
+            "n / 2;"
+          ],
+          "distractors": [
+            "function",
+            "return"
+          ],
+          "explain": "An arrow function with one expression needs no braces and no `return`: `const half = (n) => n / 2;`."
+        },
+        {
+          "type": "order",
+          "id": "functions-7",
+          "prompt": "Put the lines in order so the program prints `Hi, Sam`.",
+          "lines": [
+            "const hello = (name) => {",
+            "  return `Hi, ${name}`;",
+            "};",
+            "console.log(hello(\"Sam\"));"
+          ],
+          "explain": "The arrow function must be created before you call it. Its code goes between `{` and `};`."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-8",
+          "prompt": "Match the code to its meaning.",
+          "pairs": [
+            [
+              "`function f() {}`",
+              "defines a function"
+            ],
+            [
+              "`f()`",
+              "calls the function"
+            ],
+            [
+              "`return x;`",
+              "gives back a value"
+            ],
+            [
+              "`(x) => x * 2`",
+              "an arrow function"
+            ],
+            [
+              "`(x = 1)`",
+              "a default parameter"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "functions-9",
+          "prompt": "The program should print `20`. Which line has the bug?",
+          "lines": [
+            "function area(width, height) {",
+            "  width * height;",
+            "}",
+            "console.log(area(4, 5));"
+          ],
+          "bug": 1,
+          "explain": "The function calculates the value but does not give it back, so it returns `undefined`. The fix is `return width * height;`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-10",
+          "prompt": "Which call returns `\"Pen x1\"`?",
+          "code": "function label(text, count = 1) {\n  return `${text} x${count}`;\n}",
+          "options": [
+            "`label(\"Pen\")`",
+            "`label(\"Pen\", 0)`",
+            "`label(1, \"Pen\")`",
+            "`label()`"
+          ],
+          "answer": 0,
+          "explain": "When you leave out `count`, its default value `1` is used."
+        },
+        {
+          "type": "input",
+          "id": "functions-11",
+          "prompt": "What does this print?",
+          "code": "function greet(name = \"friend\") {\n  return `Hello, ${name}!`;\n}\nconsole.log(greet());",
+          "answers": [
+            "Hello, friend!",
+            "Hello, friend"
+          ],
+          "explain": "The call has no argument, so `name` gets its default value `\"friend\"`."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-12",
+          "statement": "`const f = (x) => x + 1;` returns `x + 1` without the word `return`.",
+          "answer": true,
+          "explain": "An arrow function without curly braces returns the value of its expression automatically."
+        }
+      ]
+    },
+    {
+      "id": "arrays",
+      "title": "Arrays",
+      "chapter": "Data",
+      "summary": "Keep many values in one list: read and change items, add and remove them, and transform arrays with map and filter.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** is an ordered list of values. You write it with square brackets `[ ]` and separate the items with commas. `console.log` shows the whole array, and `length` is the number of items."
+        },
+        {
+          "type": "code",
+          "code": "const fruits = [\"apple\", \"banana\", \"cherry\"];\nconsole.log(fruits);\nconsole.log(fruits.length);",
+          "output": "[ 'apple', 'banana', 'cherry' ]\n3"
+        },
+        {
+          "type": "text",
+          "md": "Each item has an **index**, its position. The first item has index `0`, the second has index `1`, and so on. The last item has index `length - 1`. You can also change an item through its index."
+        },
+        {
+          "type": "code",
+          "code": "const colors = [\"red\", \"green\", \"blue\"];\nconsole.log(colors[0]);\nconsole.log(colors[colors.length - 1]);\ncolors[1] = \"yellow\";\nconsole.log(colors);",
+          "output": "red\nblue\n[ 'red', 'yellow', 'blue' ]"
+        },
+        {
+          "type": "tip",
+          "md": "You can change the items of an array in a `const`. `const` only means that the variable always holds the same array."
+        },
+        {
+          "type": "heading",
+          "text": "Adding and removing"
+        },
+        {
+          "type": "text",
+          "md": "`push()` adds an item at the end. `pop()` removes the last item and returns it. `includes()` checks if an item is in the array."
+        },
+        {
+          "type": "code",
+          "code": "const stack = [1, 2];\nstack.push(3);\nconsole.log(stack);\nconst last = stack.pop();\nconsole.log(last);\nconsole.log(stack);\nconsole.log(stack.includes(2));",
+          "output": "[ 1, 2, 3 ]\n3\n[ 1, 2 ]\ntrue"
+        },
+        {
+          "type": "heading",
+          "text": "Going through an array"
+        },
+        {
+          "type": "text",
+          "md": "`for...of` gives you each item. The method `forEach()` does the same with a function: it calls the function once for every item."
+        },
+        {
+          "type": "code",
+          "code": "const names = [\"Ada\", \"Grace\"];\nfor (const name of names) {\n  console.log(`Hi, ${name}`);\n}\nnames.forEach((name) => console.log(name.length));",
+          "output": "Hi, Ada\nHi, Grace\n3\n5"
+        },
+        {
+          "type": "text",
+          "md": "`map()` creates a **new** array: it calls a function for every item and keeps the results. `filter()` creates a new array with only the items for which the function returns `true`. The original array does not change."
+        },
+        {
+          "type": "code",
+          "code": "const numbers = [1, 2, 3, 4, 5];\nconst doubled = numbers.map((n) => n * 2);\nconst even = numbers.filter((n) => n % 2 === 0);\nconsole.log(doubled);\nconsole.log(even);\nconsole.log(numbers);",
+          "output": "[ 2, 4, 6, 8, 10 ]\n[ 2, 4 ]\n[ 1, 2, 3, 4, 5 ]"
+        }
+      ],
+      "card": [
+        "`const a = [1, 2, 3];` and `a[0]` is the first item",
+        "`a.length`, `a.push(x)`, `a.pop()`, `a.includes(x)`",
+        "`a.map((x) => x * 2)` makes a new array",
+        "`a.filter((x) => x > 1)` keeps the matching items",
+        "`a.forEach((x) => console.log(x))` runs code for each item"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arrays-1",
+          "prompt": "What does this print?",
+          "code": "const letters = [\"a\", \"b\", \"c\", \"d\"];\nconsole.log(letters[2]);",
+          "answers": [
+            "c"
+          ],
+          "explain": "Indexes start at `0`: `\"a\"` is `0`, `\"b\"` is `1` and `\"c\"` is `2`."
+        },
+        {
+          "type": "input",
+          "id": "arrays-2",
+          "prompt": "What does this print?",
+          "code": "const list = [5, 10, 15];\nlist.push(20);\nconsole.log(list.length);",
+          "answers": [
+            "4"
+          ],
+          "explain": "The array starts with 3 items. `push()` adds one more, so `length` is `4`."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-3",
+          "prompt": "What does this print?",
+          "code": "const nums = [3, 8, 1, 6];\nconst big = nums.filter((n) => n > 4);\nconsole.log(big);",
+          "options": [
+            "`[ 8, 6 ]`",
+            "`[ 3, 1 ]`",
+            "`[ false, true, false, true ]`",
+            "`[ 6, 8 ]`"
+          ],
+          "answer": 0,
+          "explain": "`filter()` keeps the items for which `n > 4` is `true`, in their original order."
+        },
+        {
+          "type": "true_false",
+          "id": "arrays-4",
+          "statement": "This program prints `cup`.",
+          "code": "const items = [\"pen\", \"cup\"];\nconsole.log(items[2]);",
+          "answer": false,
+          "explain": "The array has the indexes `0` and `1`. There is no item at index `2`, so it prints `undefined`."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-5",
+          "prompt": "Fill the gap so the program prints `[ 1, 4, 9 ]`.",
+          "code": "const nums = [1, 2, 3];\nconst squares = nums.___((n) => n * n);\nconsole.log(squares);",
+          "options": [
+            "filter",
+            "map",
+            "forEach"
+          ],
+          "answer": 1,
+          "explain": "`map()` makes a new array with the result for every item. `forEach()` returns `undefined`, and `filter()` only keeps or drops items."
+        },
+        {
+          "type": "blocks",
+          "id": "arrays-6",
+          "prompt": "Build a line that creates `long`, an array with the words of `words` that have more than 3 letters.",
+          "tokens": [
+            "const",
+            "long",
+            "=",
+            "words.filter(",
+            "(w)",
+            "=>",
+            "w.length > 3",
+            ");"
+          ],
+          "distractors": [
+            "words.map(",
+            "return"
+          ],
+          "explain": "`filter()` keeps the items for which the function returns `true`: `const long = words.filter((w) => w.length > 3);`."
+        },
+        {
+          "type": "order",
+          "id": "arrays-7",
+          "prompt": "Put the lines in order so the program prints `[ 'a', 'b', 'c' ]`.",
+          "lines": [
+            "const letters = [\"a\"];",
+            "letters.push(\"b\");",
+            "letters.push(\"c\");",
+            "console.log(letters);"
+          ],
+          "explain": "`push()` adds at the end, so `\"b\"` must be added before `\"c\"`."
+        },
+        {
+          "type": "pairs",
+          "id": "arrays-8",
+          "prompt": "Match the code to its meaning.",
+          "pairs": [
+            [
+              "`a.push(x)`",
+              "adds `x` at the end"
+            ],
+            [
+              "`a.pop()`",
+              "removes the last item"
+            ],
+            [
+              "`a.length`",
+              "the number of items"
+            ],
+            [
+              "`a[0]`",
+              "the first item"
+            ],
+            [
+              "`a.includes(x)`",
+              "checks if `x` is in the array"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "arrays-9",
+          "prompt": "The program should print the last fruit, `plum`. Which line has the bug?",
+          "lines": [
+            "const fruits = [\"apple\", \"pear\", \"plum\"];",
+            "const last = fruits[fruits.length];",
+            "console.log(last);"
+          ],
+          "bug": 1,
+          "explain": "The last index is `length - 1`, because indexes start at `0`. The fix is `fruits[fruits.length - 1]`."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-10",
+          "prompt": "What does this print?",
+          "code": "const a = [1, 2, 3];\nconst b = a.map((n) => n + 1);\nconsole.log(a);",
+          "options": [
+            "`[ 1, 2, 3 ]`",
+            "`[ 2, 3, 4 ]`",
+            "`undefined`"
+          ],
+          "answer": 0,
+          "explain": "`map()` returns a new array and does not change the original. `b` is `[ 2, 3, 4 ]`, but `a` stays the same."
+        },
+        {
+          "type": "input",
+          "id": "arrays-11",
+          "prompt": "What does this print?",
+          "code": "const stack = [\"x\", \"y\", \"z\"];\nconst top = stack.pop();\nconsole.log(top);",
+          "answers": [
+            "z"
+          ],
+          "explain": "`pop()` removes the last item and returns it."
+        },
+        {
+          "type": "true_false",
+          "id": "arrays-12",
+          "statement": "You cannot call `push()` on an array that is stored in a `const`.",
+          "answer": false,
+          "explain": "`const` only means that the variable always holds the same array. You can still add, remove and change its items."
+        }
+      ]
+    },
+    {
+      "id": "objects",
+      "title": "Objects",
+      "chapter": "Data",
+      "summary": "Group related data in objects: read and change properties, write methods, use destructuring and turn objects into JSON.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **object** groups values that belong together. Each value has a name, called a **key**. Together they form a **property**. You write an object with curly braces and `key: value` pairs, separated by commas."
+        },
+        {
+          "type": "code",
+          "code": "const user = {\n  name: \"Ada\",\n  age: 36,\n};\nconsole.log(user);\nconsole.log(user.name);",
+          "output": "{ name: 'Ada', age: 36 }\nAda"
+        },
+        {
+          "type": "text",
+          "md": "You read and change a property with a dot, like `user.age`. You add a new property in the same way. A property that does not exist gives `undefined`."
+        },
+        {
+          "type": "code",
+          "code": "const user = { name: \"Ada\", age: 36 };\nuser.age = 37;\nuser.city = \"London\";\nconsole.log(user.age);\nconsole.log(user.city);\nconsole.log(user.email);",
+          "output": "37\nLondon\nundefined"
+        },
+        {
+          "type": "text",
+          "md": "With square brackets, you write the key as a string: `user[\"name\"]`. This is useful when the key is stored in a variable."
+        },
+        {
+          "type": "code",
+          "code": "const prices = { apple: 2, bread: 3 };\nconst item = \"bread\";\nconsole.log(prices[\"apple\"]);\nconsole.log(prices[item]);",
+          "output": "2\n3"
+        },
+        {
+          "type": "heading",
+          "text": "Methods"
+        },
+        {
+          "type": "text",
+          "md": "A function inside an object is called a **method**. Inside a method, `this` is the object itself, so the method can use the other properties."
+        },
+        {
+          "type": "code",
+          "code": "const counter = {\n  count: 0,\n  increase() {\n    this.count++;\n    return this.count;\n  },\n};\ncounter.increase();\nconsole.log(counter.increase());",
+          "output": "2"
+        },
+        {
+          "type": "heading",
+          "text": "Destructuring"
+        },
+        {
+          "type": "text",
+          "md": "**Destructuring** takes properties out of an object and stores them in variables with the same names, all in one line."
+        },
+        {
+          "type": "code",
+          "code": "const book = { title: \"Dune\", year: 1965, pages: 412 };\nconst { title, year } = book;\nconsole.log(`${title} (${year})`);",
+          "output": "Dune (1965)"
+        },
+        {
+          "type": "text",
+          "md": "`JSON.stringify()` turns an object into a string in the **JSON** format. Programs often use JSON to send data to each other, for example over the internet."
+        },
+        {
+          "type": "code",
+          "code": "const point = { x: 3, y: 4, label: \"A\" };\nconsole.log(JSON.stringify(point));",
+          "output": "{\"x\":3,\"y\":4,\"label\":\"A\"}"
+        }
+      ],
+      "card": [
+        "`const p = { name: \"Ada\", age: 36 };`",
+        "`p.name` or `p[\"name\"]` reads a property",
+        "`this` inside a method is the object",
+        "`const { name, age } = p;` destructures",
+        "`JSON.stringify(p)` makes a JSON string"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "objects-1",
+          "prompt": "What does this print?",
+          "code": "const car = { brand: \"Volvo\", year: 2020 };\nconsole.log(car.brand);",
+          "answers": [
+            "Volvo"
+          ],
+          "explain": "`car.brand` reads the property `brand` of the object."
+        },
+        {
+          "type": "input",
+          "id": "objects-2",
+          "prompt": "What does this print?",
+          "code": "const p = { x: 1, y: 2 };\np.y = 5;\nconsole.log(p.x + p.y);",
+          "answers": [
+            "6"
+          ],
+          "explain": "`p.y = 5` changes `y` from `2` to `5`. Then `1 + 5` is `6`."
+        },
+        {
+          "type": "choice",
+          "id": "objects-3",
+          "prompt": "What does this print?",
+          "code": "const pet = { name: \"Rex\" };\nconsole.log(pet.age);",
+          "options": [
+            "`null`",
+            "`0`",
+            "`undefined`",
+            "An error"
+          ],
+          "answer": 2,
+          "explain": "The object has no property `age`. A property that does not exist gives `undefined`."
+        },
+        {
+          "type": "true_false",
+          "id": "objects-4",
+          "statement": "This program prints `red`.",
+          "code": "const key = \"color\";\nconst car = { color: \"red\" };\nconsole.log(car.key);",
+          "answer": false,
+          "explain": "`car.key` looks for a property with the name `key`, which does not exist. `car[key]` would use the value of the variable and print `red`."
+        },
+        {
+          "type": "gap",
+          "id": "objects-5",
+          "prompt": "Fill the gap so the program prints `blue`.",
+          "code": "const settings = { theme: \"blue\" };\nconst name = \"theme\";\nconsole.log(settings___);",
+          "options": [
+            ".name",
+            "[name]",
+            "(name)"
+          ],
+          "answer": 1,
+          "explain": "`settings[name]` uses the value of `name`, which is `\"theme\"`. `settings.name` looks for a property called `name`."
+        },
+        {
+          "type": "blocks",
+          "id": "objects-6",
+          "prompt": "Build a line that takes `name` and `age` out of `user`.",
+          "tokens": [
+            "const",
+            "{",
+            "name,",
+            "age",
+            "}",
+            "=",
+            "user;"
+          ],
+          "distractors": [
+            "[",
+            "]"
+          ],
+          "explain": "Destructuring of an object uses curly braces: `const { name, age } = user;`."
+        },
+        {
+          "type": "order",
+          "id": "objects-7",
+          "prompt": "Put the lines in order so the program prints `Ada is 36`.",
+          "lines": [
+            "const user = { name: \"Ada\" };",
+            "user.age = 36;",
+            "const { name, age } = user;",
+            "console.log(`${name} is ${age}`);"
+          ],
+          "explain": "Add `age` before the destructuring. Otherwise `age` would be `undefined`."
+        },
+        {
+          "type": "pairs",
+          "id": "objects-8",
+          "prompt": "Match the code to its meaning.",
+          "pairs": [
+            [
+              "`obj.key`",
+              "dot access"
+            ],
+            [
+              "`obj[\"key\"]`",
+              "bracket access"
+            ],
+            [
+              "`const { a } = obj;`",
+              "destructuring"
+            ],
+            [
+              "`JSON.stringify(obj)`",
+              "turns the object into a JSON string"
+            ],
+            [
+              "`this`",
+              "the object inside a method"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "objects-9",
+          "prompt": "The program should print `Hi, I am Max`. Which line has the bug?",
+          "lines": [
+            "const person = {",
+            "  name: \"Max\",",
+            "  greet() {",
+            "    return `Hi, I am ${name}`;",
+            "  },",
+            "};",
+            "console.log(person.greet());"
+          ],
+          "bug": 3,
+          "explain": "Inside a method, you reach the other properties through `this`. The fix is `this.name` instead of `name`."
+        },
+        {
+          "type": "choice",
+          "id": "objects-10",
+          "prompt": "What does this print?",
+          "code": "console.log(JSON.stringify({ a: 1, b: \"x\" }));",
+          "options": [
+            "`{\"a\":1,\"b\":\"x\"}`",
+            "`{ a: 1, b: 'x' }`",
+            "`{a:1,b:x}`",
+            "`[object Object]`"
+          ],
+          "answer": 0,
+          "explain": "JSON puts double quotes around keys and strings and has no spaces."
+        },
+        {
+          "type": "input",
+          "id": "objects-11",
+          "prompt": "What does this print?",
+          "code": "const size = { width: 4, height: 3 };\nconst { width, height } = size;\nconsole.log(width * height);",
+          "answers": [
+            "12"
+          ],
+          "explain": "Destructuring stores `4` in `width` and `3` in `height`. `4 * 3` is `12`."
+        },
+        {
+          "type": "true_false",
+          "id": "objects-12",
+          "statement": "Inside a method, `this` is the object that the method belongs to.",
+          "answer": true,
+          "explain": "That is why a method can read and change the other properties with `this.name` or `this.count`."
+        }
+      ]
+    }
+  ]
+}

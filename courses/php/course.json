@@ -1,0 +1,1917 @@
+{
+  "course": "php",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, PHP!",
+      "chapter": "Basics",
+      "summary": "Write your first PHP script, print text and numbers with echo, and learn why every statement ends with a semicolon.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "PHP is a programming language for websites and scripts. A PHP file starts with the tag `<?php`. Everything after it is PHP code. The command `echo` prints text, and every statement ends with a semicolon `;`."
+        },
+        {
+          "type": "code",
+          "code": "<?php\necho \"Hello, PHP!\";",
+          "output": "Hello, PHP!"
+        },
+        {
+          "type": "text",
+          "md": "Line by line: `<?php` tells PHP that the code begins here. `echo` prints the value after it. The text between the double quotes is a **string**, which means a piece of text. The semicolon `;` ends the statement, like a full stop ends a sentence."
+        },
+        {
+          "type": "heading",
+          "text": "Printing several lines"
+        },
+        {
+          "type": "text",
+          "md": "`echo` does not start a new line by itself. Inside double quotes, `\\n` stands for a new line. You can also give `echo` several values separated by commas. It prints them one after the other, without spaces in between."
+        },
+        {
+          "type": "code",
+          "code": "<?php\necho \"One\";\necho \"Two\\n\";\necho \"A\", \"B\", \"C\", \"\\n\";\necho \"Done\\n\";",
+          "output": "OneTwo\nABC\nDone"
+        },
+        {
+          "type": "text",
+          "md": "PHP can calculate for you. Numbers are written without quotes. Use `+` to add, `-` to subtract, `*` to multiply and `/` to divide. `2 + 3` without quotes is a calculation, but `\"2 + 3\"` in quotes is only text."
+        },
+        {
+          "type": "code",
+          "code": "<?php\necho 2 + 3, \"\\n\";\necho \"2 + 3\\n\";\necho 7 * 6, \"\\n\";\necho 10 / 4, \"\\n\";",
+          "output": "5\n2 + 3\n42\n2.5"
+        },
+        {
+          "type": "heading",
+          "text": "Single and double quotes"
+        },
+        {
+          "type": "text",
+          "md": "You can also write strings in single quotes, like `'Hello'`. PHP prints single-quoted strings exactly as they are written. So `'\\n'` is a backslash and the letter `n`, not a new line. Use double quotes when you need `\\n`."
+        },
+        {
+          "type": "code",
+          "code": "<?php\necho 'Hello\\n';\necho \"\\n\";\necho \"Hello\\n\";",
+          "output": "Hello\\n\nHello"
+        },
+        {
+          "type": "tip",
+          "md": "To run a script, save it in a file such as `hello.php` and type `php hello.php` in a terminal. A line that starts with `//` is a comment, and PHP ignores it. In the exercises, short examples often leave out the `<?php` line."
+        },
+        {
+          "type": "warning",
+          "md": "If you forget a semicolon, PHP stops with a **parse error** and does not run any line of the script. The error message names the line where PHP noticed the problem, which is often the line after the missing `;`."
+        }
+      ],
+      "card": [
+        "`<?php` starts the PHP code",
+        "`echo \"Hi\\n\";` prints text, `\\n` starts a new line",
+        "Every statement ends with `;`",
+        "`'\\n'` in single quotes is not a new line",
+        "Run a script with `php hello.php`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which tag must come first in a PHP script?",
+          "options": [
+            "`<php>`",
+            "`<?php`",
+            "`#php`",
+            "`<script php>`"
+          ],
+          "answer": 1,
+          "explain": "A PHP script starts with `<?php`. Everything after this tag is PHP code."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "echo 10 - 4, \" apples\";",
+          "answers": [
+            "6 apples"
+          ],
+          "explain": "`10 - 4` has no quotes, so PHP calculates `6`. Then `echo` prints the string right after it."
+        },
+        {
+          "type": "choice",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "echo 10 / 4;",
+          "options": [
+            "`2`",
+            "`10 / 4`",
+            "`2.5`",
+            "`2,5`"
+          ],
+          "answer": 2,
+          "explain": "`/` divides. When the result is not a whole number, PHP prints the decimal number `2.5` with a dot."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "`echo` starts a new line automatically after it prints.",
+          "answer": false,
+          "explain": "`echo` prints exactly what you give it. Add `\"\\n\"` when you want a new line."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-5",
+          "statement": "This prints `Line` and then starts a new line.",
+          "code": "echo 'Line\\n';",
+          "answer": false,
+          "explain": "In single quotes, `\\n` is not a new line. PHP prints the two characters `\\` and `n`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so it prints Hello and starts a new line.",
+          "code": "echo \"Hello___\";",
+          "options": [
+            "\\n",
+            "/n",
+            "n\\",
+            "\\l"
+          ],
+          "answer": 0,
+          "explain": "`\\n` with a backslash is the new line character. It only works in double quotes."
+        },
+        {
+          "type": "gap",
+          "id": "hello-7",
+          "prompt": "Complete the code so it prints Ready.",
+          "code": "___ \"Ready\\n\";",
+          "options": [
+            "echo",
+            "say",
+            "write",
+            "puts"
+          ],
+          "answer": 0,
+          "explain": "`echo` prints values in PHP. The other words are not PHP commands."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-8",
+          "prompt": "Build the line that prints the result of 2 + 3 and then a new line.",
+          "tokens": [
+            "echo",
+            "2",
+            "+",
+            "3",
+            ",",
+            "\"\\n\"",
+            ";"
+          ],
+          "distractors": [
+            "\"2 + 3\"",
+            ":"
+          ],
+          "explain": "`2 + 3` without quotes is calculated. The comma separates the second value `\"\\n\"`, and `;` ends the statement."
+        },
+        {
+          "type": "order",
+          "id": "hello-9",
+          "prompt": "Put the lines in order so the script prints Start, 2 and End on three lines.",
+          "lines": [
+            "<?php",
+            "echo \"Start\\n\";",
+            "echo 1 + 1, \"\\n\";",
+            "echo \"End\\n\";"
+          ],
+          "explain": "The script starts with `<?php`. Then the lines run from top to bottom."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`<?php`",
+              "starts the PHP code"
+            ],
+            [
+              "`echo`",
+              "prints values"
+            ],
+            [
+              "`;`",
+              "ends a statement"
+            ],
+            [
+              "`\"\\n\"`",
+              "a new line"
+            ],
+            [
+              "`//`",
+              "starts a comment"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "<?php",
+            "echo \"Start\\n\";",
+            "echo \"Middle\\n\"",
+            "echo \"End\\n\";"
+          ],
+          "bug": 2,
+          "explain": "The semicolon is missing. Write `echo \"Middle\\n\";`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-12",
+          "prompt": "The script should print three lines. Which line has the bug?",
+          "lines": [
+            "<?php",
+            "echo \"Name: Ada\\n\";",
+            "echo 'Age: 36\\n';",
+            "echo \"City: Paris\\n\";"
+          ],
+          "bug": 2,
+          "explain": "In single quotes, `\\n` is not a new line. Write `echo \"Age: 36\\n\";` with double quotes."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Store values in variables, get to know int, float, string and bool, and look at them with var_dump and gettype.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** stores a value under a name, so you can use it later. In PHP, every variable name starts with a dollar sign `$`. The equals sign `=` puts the value on the right into the variable on the left."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$name = \"Ada\";\n$age = 36;\necho $name, \"\\n\";\necho $age, \"\\n\";\n$age = 37;\necho $age, \"\\n\";",
+          "output": "Ada\n36\n37"
+        },
+        {
+          "type": "text",
+          "md": "A variable can get a new value at any time: `$age = 37;` replaces `36`. After the `$`, a name starts with a letter or an underscore `_`. Names are case sensitive, so `$age` and `$Age` are two different variables. For names with several words, write `$firstName`."
+        },
+        {
+          "type": "heading",
+          "text": "Four basic types"
+        },
+        {
+          "type": "text",
+          "md": "Every value has a **type**. An `int` is a whole number like `42`. A `float` is a number with a decimal point like `9.99`. A `string` is text like `\"Paris\"`. A `bool` is either `true` or `false`. PHP sees the type from the value, so you do not write it yourself."
+        },
+        {
+          "type": "text",
+          "md": "The function `var_dump` shows the type and the value of a variable. For a string, it also shows the number of characters. This is very useful when you want to know what a variable holds."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$count = 42;\n$price = 9.99;\n$city = \"Paris\";\n$open = true;\nvar_dump($count);\nvar_dump($price);\nvar_dump($city);\nvar_dump($open);",
+          "output": "int(42)\nfloat(9.99)\nstring(5) \"Paris\"\nbool(true)"
+        },
+        {
+          "type": "text",
+          "md": "The function `gettype` returns the name of the type as a string. Note that it calls a float `double` and a bool `boolean`, for historical reasons."
+        },
+        {
+          "type": "code",
+          "code": "<?php\necho gettype(42), \"\\n\";\necho gettype(1.5), \"\\n\";\necho gettype(\"hi\"), \"\\n\";\necho gettype(false), \"\\n\";",
+          "output": "integer\ndouble\nstring\nboolean"
+        },
+        {
+          "type": "heading",
+          "text": "Calculating with variables"
+        },
+        {
+          "type": "text",
+          "md": "Besides `+`, `-`, `*` and `/`, there is `%` for the remainder of a division and `**` for powers. `/` gives a float when the result is not whole; `intdiv` divides and keeps only the whole part. `$a += 10` is short for `$a = $a + 10`, and `$b++` adds 1 to `$b`."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$a = 7;\n$b = 2;\necho $a + $b, \"\\n\";\necho $a / $b, \"\\n\";\necho intdiv($a, $b), \"\\n\";\necho $a % $b, \"\\n\";\necho $a ** $b, \"\\n\";\n$a += 10;\necho $a, \"\\n\";\n$b++;\necho $b, \"\\n\";",
+          "output": "9\n3.5\n3\n1\n49\n17\n3"
+        },
+        {
+          "type": "warning",
+          "md": "`echo` prints `true` as `1` and `false` as nothing at all. When you want to see what a variable really holds, use `var_dump`."
+        }
+      ],
+      "card": [
+        "`$name = \"Ada\";` creates a variable",
+        "Types: `int`, `float`, `string`, `bool`",
+        "`var_dump($x)` shows type and value",
+        "`gettype($x)` returns the type name",
+        "`%` remainder, `**` power, `intdiv(7, 2)` is `3`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "variables-1",
+          "prompt": "Which of these is a valid variable name in PHP?",
+          "options": [
+            "`total`",
+            "`$1total`",
+            "`@total`",
+            "`$total`"
+          ],
+          "answer": 3,
+          "explain": "Variable names start with `$`, followed by a letter or `_`. A digit right after `$` is not allowed."
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this print?",
+          "code": "$x = 5;\n$x = $x + 3;\necho $x;",
+          "answers": [
+            "8"
+          ],
+          "explain": "The right side is calculated first: `5 + 3` is `8`. Then `8` is stored in `$x`."
+        },
+        {
+          "type": "input",
+          "id": "variables-3",
+          "prompt": "What does this print?",
+          "code": "$a = 17;\n$b = 5;\necho $a % $b;",
+          "answers": [
+            "2"
+          ],
+          "explain": "`%` gives the remainder: `17` divided by `5` is `3`, remainder `2`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-4",
+          "prompt": "What does this print?",
+          "code": "var_dump(3.0 * 2);",
+          "options": [
+            "`int(6)`",
+            "`float(6)`",
+            "`float(6.0)`",
+            "`6`"
+          ],
+          "answer": 1,
+          "explain": "`3.0` is a float, so the result is a float too. `var_dump` shows a whole float without `.0`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-5",
+          "statement": "`$name` and `$Name` are the same variable.",
+          "answer": false,
+          "explain": "Variable names are case sensitive. `$name` and `$Name` are two different variables."
+        },
+        {
+          "type": "input",
+          "id": "variables-6",
+          "prompt": "What does this print?",
+          "code": "echo gettype(3.5);",
+          "answers": [
+            "double"
+          ],
+          "explain": "`3.5` is a float. `gettype` calls this type `double`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-7",
+          "prompt": "Complete the code so it prints `int(10)`.",
+          "code": "$n = ___;\nvar_dump($n);",
+          "options": [
+            "10",
+            "\"10\"",
+            "10.0",
+            "1e1"
+          ],
+          "answer": 0,
+          "explain": "`10` without quotes and without a decimal point is an `int`. `\"10\"` is a string and `10.0` is a float."
+        },
+        {
+          "type": "gap",
+          "id": "variables-8",
+          "prompt": "Complete the code so it prints 15.",
+          "code": "$score = 10;\n$score ___ 5;\necho $score;",
+          "options": [
+            "+=",
+            "=+",
+            "+",
+            "=="
+          ],
+          "answer": 0,
+          "explain": "`$score += 5` adds `5` to the value in `$score`. `=+ 5` would store `+5`, so the result would be `5`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-9",
+          "prompt": "Build the line that stores 9.99 in the variable $price.",
+          "tokens": [
+            "$price",
+            "=",
+            "9.99",
+            ";"
+          ],
+          "distractors": [
+            "price",
+            ":="
+          ],
+          "explain": "The variable name starts with `$`, and `=` stores the value. The statement ends with `;`."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-10",
+          "prompt": "Match each value with its type.",
+          "pairs": [
+            [
+              "`42`",
+              "int"
+            ],
+            [
+              "`4.2`",
+              "float"
+            ],
+            [
+              "`\"42\"`",
+              "string"
+            ],
+            [
+              "`true`",
+              "bool"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "variables-11",
+          "prompt": "The code should print 12. Which line has the bug?",
+          "lines": [
+            "<?php",
+            "$width = 4;",
+            "$height = 3;",
+            "$area = $width * height;",
+            "echo $area;"
+          ],
+          "bug": 3,
+          "explain": "`height` has no `$`, so PHP does not see a variable. Write `$area = $width * $height;`."
+        },
+        {
+          "type": "order",
+          "id": "variables-12",
+          "prompt": "Put the lines in order so the script prints 20.",
+          "lines": [
+            "<?php",
+            "$price = 5;",
+            "$total = $price * 2;",
+            "$total += 10;",
+            "echo $total;"
+          ],
+          "explain": "`$price` must exist before you use it. `$total` becomes `10`, then `+= 10` makes it `20`."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Working with strings",
+      "chapter": "Basics",
+      "summary": "Join strings with the dot, put variables into text, and use strlen, strtoupper, str_replace and substr.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "To join two strings, PHP uses the dot `.` as an operator. This is called **concatenation**. PHP does not use `+` for this. `.=` adds text to the end of a variable."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$first = \"Ada\";\n$last = \"Lovelace\";\n$full = $first . \" \" . $last;\necho $full . \"\\n\";\necho \"Age: \" . 36 . \"\\n\";\n$text = \"Hello\";\n$text .= \", World!\";\necho $text . \"\\n\";",
+          "output": "Ada Lovelace\nAge: 36\nHello, World!"
+        },
+        {
+          "type": "heading",
+          "text": "Variables inside strings"
+        },
+        {
+          "type": "text",
+          "md": "In double quotes, PHP replaces a variable with its value. This is called **interpolation**. In single quotes, PHP does not do this and prints the name with the `$`."
+        },
+        {
+          "type": "text",
+          "md": "When letters follow the variable name directly, put curly braces around the variable: `{$fruit}s`. Without them, PHP would look for a variable called `$fruits`."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$name = \"Ada\";\n$count = 3;\n$fruit = \"apple\";\necho \"Hi $name!\\n\";\necho 'Hi $name!' . \"\\n\";\necho \"You have $count new messages.\\n\";\necho \"Two {$fruit}s\\n\";",
+          "output": "Hi Ada!\nHi $name!\nYou have 3 new messages.\nTwo apples"
+        },
+        {
+          "type": "heading",
+          "text": "Useful string functions"
+        },
+        {
+          "type": "text",
+          "md": "PHP has many functions for strings. `strlen` counts the characters. `strtoupper` changes all letters to capital letters, and `strtolower` to small letters. `str_replace` takes three values: what to search for, what to put instead, and the string to change."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$word = \"banana\";\necho strlen($word), \"\\n\";\necho strtoupper($word), \"\\n\";\necho strtolower(\"HeLLo\"), \"\\n\";\necho str_replace(\"a\", \"o\", $word), \"\\n\";",
+          "output": "6\nBANANA\nhello\nbonono"
+        },
+        {
+          "type": "text",
+          "md": "`substr` cuts out a part of a string. The positions of the characters are counted from `0`, not from `1`. `substr($s, 0, 4)` returns 4 characters starting at position `0`. Without a length, it goes to the end. A negative start counts from the end. `$s[0]` returns the character at position `0`."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$language = \"JavaScript\";\necho substr($language, 0, 4), \"\\n\";\necho substr($language, 4), \"\\n\";\necho substr($language, -3), \"\\n\";\necho $language[0], \"\\n\";",
+          "output": "Java\nScript\nipt\nJ"
+        },
+        {
+          "type": "warning",
+          "md": "`+` always calculates. `\"5\" + \"3\"` gives the number `8`, but `\"5\" . \"3\"` gives the string `\"53\"`. With text that is not a number, like `\"Hi\" + \"Ada\"`, PHP stops with an error."
+        },
+        {
+          "type": "tip",
+          "md": "`strlen` counts bytes. Letters such as `é` or `ü` take two bytes, so `strlen(\"é\")` is `2`. For English letters, digits and spaces, one character is one byte."
+        }
+      ],
+      "card": [
+        "`$a . $b` joins strings, `$s .= \"x\"` appends",
+        "`\"Hi $name\"` inserts variables, `'...'` does not",
+        "`strlen`, `strtoupper`, `strtolower`",
+        "`str_replace(\"a\", \"o\", $s)` replaces text",
+        "`substr($s, 0, 3)` cuts out a part, positions start at `0`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this print?",
+          "code": "$a = \"5\";\n$b = \"3\";\necho $a . $b;",
+          "answers": [
+            "53"
+          ],
+          "explain": "The dot joins the two strings. It does not add numbers, so the result is `53`."
+        },
+        {
+          "type": "input",
+          "id": "strings-2",
+          "prompt": "What does this print?",
+          "code": "echo strlen(\"Hello, PHP\");",
+          "answers": [
+            "10"
+          ],
+          "explain": "`strlen` counts every character, including the comma and the space: 5 + 1 + 1 + 3 = 10."
+        },
+        {
+          "type": "choice",
+          "id": "strings-3",
+          "prompt": "What does this print?",
+          "code": "$name = \"Sam\";\necho 'Hi $name';",
+          "options": [
+            "`Hi Sam`",
+            "`Hi $name`",
+            "`Hi`",
+            "An error"
+          ],
+          "answer": 1,
+          "explain": "In single quotes, PHP does not replace variables. It prints `$name` as it is."
+        },
+        {
+          "type": "choice",
+          "id": "strings-4",
+          "prompt": "Which operator joins two strings in PHP?",
+          "options": [
+            "`+`",
+            "`&`",
+            "`.`",
+            "`~`"
+          ],
+          "answer": 2,
+          "explain": "The dot `.` is the concatenation operator. `+` always calculates with numbers."
+        },
+        {
+          "type": "input",
+          "id": "strings-5",
+          "prompt": "What does this print?",
+          "code": "echo substr(\"Programming\", 0, 3);",
+          "answers": [
+            "Pro"
+          ],
+          "explain": "`substr` starts at position `0` and takes `3` characters: `P`, `r` and `o`."
+        },
+        {
+          "type": "input",
+          "id": "strings-6",
+          "prompt": "What does this print?",
+          "code": "echo str_replace(\"cat\", \"dog\", \"cat and cat\");",
+          "answers": [
+            "dog and dog"
+          ],
+          "explain": "`str_replace` replaces every `cat` in the string, not only the first one."
+        },
+        {
+          "type": "gap",
+          "id": "strings-7",
+          "prompt": "Complete the code so it prints HELLO.",
+          "code": "echo ___(\"hello\");",
+          "options": [
+            "strtoupper",
+            "upper",
+            "toUpperCase",
+            "strtolower"
+          ],
+          "answer": 0,
+          "explain": "`strtoupper` changes all letters to capital letters. `strtolower` does the opposite."
+        },
+        {
+          "type": "gap",
+          "id": "strings-8",
+          "prompt": "Complete the code so it prints Hi Ada.",
+          "code": "$name = \"Ada\";\necho ___;",
+          "options": [
+            "\"Hi $name\"",
+            "'Hi $name'",
+            "\"Hi \" + $name",
+            "\"Hi name\""
+          ],
+          "answer": 0,
+          "explain": "Double quotes replace `$name` with its value. Single quotes do not, and `+` cannot join strings."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-9",
+          "statement": "In PHP, `\"5\" + \"3\"` gives `8`.",
+          "answer": true,
+          "explain": "`+` always calculates. Both strings contain numbers, so PHP adds them and gets `8`."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-10",
+          "prompt": "Build the line that stores Hi, Ada in $greeting. The variable $name holds Ada.",
+          "tokens": [
+            "$greeting",
+            "=",
+            "\"Hi, \"",
+            ".",
+            "$name",
+            ";"
+          ],
+          "distractors": [
+            "+",
+            ","
+          ],
+          "explain": "The dot joins the string `\"Hi, \"` with the value of `$name`."
+        },
+        {
+          "type": "bug",
+          "id": "strings-11",
+          "prompt": "The code should print I live in Rome. Which line has the bug?",
+          "lines": [
+            "<?php",
+            "$city = \"Rome\";",
+            "$text = \"I live in \" + $city;",
+            "echo $text;"
+          ],
+          "bug": 2,
+          "explain": "`+` cannot join strings. Use the dot: `$text = \"I live in \" . $city;`."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-12",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`strlen($s)`",
+              "number of characters"
+            ],
+            [
+              "`strtoupper($s)`",
+              "all capital letters"
+            ],
+            [
+              "`str_replace($a, $b, $s)`",
+              "replaces text"
+            ],
+            [
+              "`substr($s, 0, 2)`",
+              "the first two characters"
+            ],
+            [
+              "`$a . $b`",
+              "joins two strings"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your code decide with if, elseif and else, compare with == and ===, combine conditions and pick values with match.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Comparisons give a bool: `true` or `false`. You compare with `<` (less than), `>` (greater than), `<=` (less or equal), `>=` (greater or equal), `===` (equal) and `!==` (not equal)."
+        },
+        {
+          "type": "text",
+          "md": "`if` runs a block of code only when its condition is `true`. The condition goes in parentheses `( )`, the block in curly braces `{ }`. `elseif` checks another condition, and `else` runs when no condition was `true`."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$temperature = 25;\nif ($temperature > 30) {\n    echo \"Hot\\n\";\n} elseif ($temperature > 20) {\n    echo \"Warm\\n\";\n} else {\n    echo \"Cold\\n\";\n}",
+          "output": "Warm"
+        },
+        {
+          "type": "text",
+          "md": "PHP checks the conditions from top to bottom and runs only the first block whose condition is `true`. Here `25 > 30` is `false`, but `25 > 20` is `true`, so PHP prints `Warm` and skips the rest."
+        },
+        {
+          "type": "heading",
+          "text": "== versus ==="
+        },
+        {
+          "type": "text",
+          "md": "PHP has two ways to test if values are equal. `==` (loose) converts the types first, so the string `\"5\"` and the int `5` count as equal. `===` (strict) also checks the type. The opposites are `!=` and `!==`. Use `===` and `!==` whenever you can, because they hold fewer surprises."
+        },
+        {
+          "type": "code",
+          "code": "<?php\nvar_dump(\"5\" == 5);\nvar_dump(\"5\" === 5);\nvar_dump(5 === 5);\nvar_dump(5 !== 5.0);",
+          "output": "bool(true)\nbool(false)\nbool(true)\nbool(true)"
+        },
+        {
+          "type": "heading",
+          "text": "Combining conditions"
+        },
+        {
+          "type": "text",
+          "md": "You can combine conditions with **logical operators**. `&&` (and) is `true` when both sides are `true`. `||` (or) is `true` when at least one side is `true`. `!` (not) turns `true` into `false` and the other way round."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$age = 70;\n$hasTicket = true;\nif ($age >= 18 && $hasTicket) {\n    echo \"Welcome\\n\";\n}\nif ($age < 12 || $age > 65) {\n    echo \"Discount\\n\";\n}\nif (!$hasTicket) {\n    echo \"Buy a ticket\\n\";\n}",
+          "output": "Welcome\nDiscount"
+        },
+        {
+          "type": "heading",
+          "text": "Choosing a value with match"
+        },
+        {
+          "type": "text",
+          "md": "`match` compares a value with several options and returns the result of the first option that fits. It compares with `===`. Each option is written as `value => result`, and options end with a comma. Several values can share one result. `default` is used when nothing fits. Without `default`, a value that fits nothing causes an error."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$day = 6;\n$type = match ($day) {\n    1, 2, 3, 4, 5 => \"Workday\",\n    6, 7 => \"Weekend\",\n    default => \"Unknown\",\n};\necho $type, \"\\n\";",
+          "output": "Weekend"
+        },
+        {
+          "type": "warning",
+          "md": "Do not confuse `=` with `===`. `$x = 5` stores `5` in `$x`, while `$x === 5` asks whether `$x` is `5`. A condition like `if ($x = 5)` stores the value and is always `true`."
+        }
+      ],
+      "card": [
+        "`if (...) { } elseif (...) { } else { }`",
+        "`===` same value and type, `==` converts types",
+        "`&&` and, `||` or, `!` not",
+        "`match ($x) { 1, 2 => \"a\", default => \"b\" };`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "$x = 15;\nif ($x > 10) {\n    echo \"big\";\n} else {\n    echo \"small\";\n}",
+          "options": [
+            "`small`",
+            "`bigsmall`",
+            "Nothing",
+            "`big`"
+          ],
+          "answer": 3,
+          "explain": "`15 > 10` is `true`, so the `if` block runs and the `else` block is skipped."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "var_dump(\"10\" === 10);",
+          "answers": [
+            "bool(false)"
+          ],
+          "explain": "`===` also compares the types. `\"10\"` is a string and `10` is an int, so they are not identical."
+        },
+        {
+          "type": "input",
+          "id": "conditions-3",
+          "prompt": "What does this print?",
+          "code": "$n = 7;\nif ($n % 2 === 0) {\n    echo \"even\";\n} else {\n    echo \"odd\";\n}",
+          "answers": [
+            "odd"
+          ],
+          "explain": "`7 % 2` is `1`, not `0`, so the condition is `false` and the `else` block runs."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-4",
+          "statement": "`\"5\" == 5` is `true` in PHP.",
+          "answer": true,
+          "explain": "`==` converts the types before it compares. The string `\"5\"` becomes the number `5`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-5",
+          "statement": "`$a > 5 && $b > 5` is `true`.",
+          "code": "$a = 3;\n$b = 8;",
+          "answer": false,
+          "explain": "`&&` needs both sides to be `true`. `$b > 5` is `true`, but `$a > 5` is `false`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-6",
+          "prompt": "What does this print?",
+          "code": "$light = \"yellow\";\necho match ($light) {\n    \"green\" => \"Go\",\n    \"yellow\" => \"Wait\",\n    \"red\" => \"Stop\",\n};",
+          "options": [
+            "`Go`",
+            "`Wait`",
+            "`Stop`",
+            "An error"
+          ],
+          "answer": 1,
+          "explain": "`match` returns the result of the option that fits `\"yellow\"`, and `echo` prints it."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Complete the code so it prints Adult.",
+          "code": "$age = 18;\nif ($age ___ 18) {\n    echo \"Adult\";\n}",
+          "options": [
+            ">",
+            ">=",
+            "=>",
+            "=<"
+          ],
+          "answer": 1,
+          "explain": "`>=` means greater than or equal. `18 > 18` is `false`, and `=>` and `=<` are not comparison operators."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-8",
+          "prompt": "Complete the code so it prints Other.",
+          "code": "$size = \"XL\";\n$label = match ($size) {\n    \"S\" => \"Small\",\n    \"M\" => \"Medium\",\n    ___ => \"Other\",\n};\necho $label;",
+          "options": [
+            "else",
+            "default",
+            "_",
+            "*"
+          ],
+          "answer": 1,
+          "explain": "`default` is the option that `match` uses when no other value fits."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-9",
+          "prompt": "Build the line that starts an if block. It should run when $a and $b have the same value and the same type.",
+          "tokens": [
+            "if",
+            "(",
+            "$a",
+            "===",
+            "$b",
+            ")",
+            "{"
+          ],
+          "distractors": [
+            "=",
+            "then"
+          ],
+          "explain": "The condition goes in parentheses. `===` checks value and type, and `{` starts the block."
+        },
+        {
+          "type": "order",
+          "id": "conditions-10",
+          "prompt": "Put the lines in order so the code prints Positive.",
+          "lines": [
+            "$n = 5;",
+            "if ($n > 0) {",
+            "    echo \"Positive\";",
+            "} else {",
+            "    echo \"Not positive\";",
+            "}"
+          ],
+          "explain": "The `if` block comes first and runs because `5 > 0`. The `else` block is only for other numbers."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "The code should print Access denied. Which line has the bug?",
+          "lines": [
+            "$password = \"secret\";",
+            "if ($password = \"1234\") {",
+            "    echo \"Access granted\";",
+            "} else {",
+            "    echo \"Access denied\";",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "`=` stores `\"1234\"` and the condition is always `true`. Compare with `===`: `if ($password === \"1234\") {`."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-12",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`&&`",
+              "both sides must be true"
+            ],
+            [
+              "`||`",
+              "at least one side must be true"
+            ],
+            [
+              "`!`",
+              "turns true into false"
+            ],
+            [
+              "`===`",
+              "same value and same type"
+            ],
+            [
+              "`!==`",
+              "not the same value or type"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with while, for and foreach, and control loops with break and continue.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **loop** repeats code. A `while` loop runs its block again and again, as long as its condition is `true`. `$count--` subtracts 1 from `$count`, so the condition becomes `false` at some point."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$count = 3;\nwhile ($count > 0) {\n    echo $count, \"\\n\";\n    $count--;\n}\necho \"Go!\\n\";",
+          "output": "3\n2\n1\nGo!"
+        },
+        {
+          "type": "heading",
+          "text": "The for loop"
+        },
+        {
+          "type": "text",
+          "md": "A `for` loop is the usual way to count. Its parentheses hold three parts, separated by semicolons: the start (`$i = 1`), the condition (`$i <= 3`) and the step that runs after each round (`$i++`). The step can also be `$i -= 3` to count down by 3."
+        },
+        {
+          "type": "code",
+          "code": "<?php\nfor ($i = 1; $i <= 3; $i++) {\n    echo \"Line $i\\n\";\n}\nfor ($i = 10; $i > 0; $i -= 3) {\n    echo $i, \"\\n\";\n}",
+          "output": "Line 1\nLine 2\nLine 3\n10\n7\n4\n1"
+        },
+        {
+          "type": "heading",
+          "text": "The foreach loop"
+        },
+        {
+          "type": "text",
+          "md": "An **array** is a list of values in square brackets, like `[\"apple\", \"banana\"]`. You learn more about arrays in a later unit. `foreach` goes through every element of an array: `foreach ($fruits as $fruit)` puts each element into `$fruit`, one after the other."
+        },
+        {
+          "type": "text",
+          "md": "With `foreach ($fruits as $index => $fruit)`, you also get the position of each element. Positions start at `0`."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$fruits = [\"apple\", \"banana\", \"cherry\"];\nforeach ($fruits as $fruit) {\n    echo \"I like $fruit\\n\";\n}\nforeach ($fruits as $index => $fruit) {\n    echo \"$index: $fruit\\n\";\n}",
+          "output": "I like apple\nI like banana\nI like cherry\n0: apple\n1: banana\n2: cherry"
+        },
+        {
+          "type": "heading",
+          "text": "break and continue"
+        },
+        {
+          "type": "text",
+          "md": "`break` ends the loop at once. `continue` skips the rest of the current round and goes on with the next one. In this example, `continue` skips the even numbers and `break` stops the loop after `7`."
+        },
+        {
+          "type": "code",
+          "code": "<?php\nfor ($i = 1; $i <= 10; $i++) {\n    if ($i % 2 === 0) {\n        continue;\n    }\n    if ($i > 7) {\n        break;\n    }\n    echo $i, \"\\n\";\n}",
+          "output": "1\n3\n5\n7"
+        },
+        {
+          "type": "warning",
+          "md": "If the condition of a loop never becomes `false`, the loop runs forever. This is called an **infinite loop**. Check that something inside the loop changes the condition, for example `$count--`."
+        },
+        {
+          "type": "tip",
+          "md": "Use `foreach` to go through an array, `for` when you know how many rounds you need, and `while` when you do not know it in advance."
+        }
+      ],
+      "card": [
+        "`while ($x > 0) { ... }` repeats while true",
+        "`for ($i = 0; $i < 3; $i++) { ... }`",
+        "`foreach ($list as $item) { ... }`",
+        "`foreach ($list as $i => $item)` also gives the position",
+        "`break` stops the loop, `continue` skips a round"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "for ($i = 0; $i < 3; $i++) {\n    echo $i;\n}",
+          "answers": [
+            "012"
+          ],
+          "explain": "`$i` starts at `0` and the loop runs while `$i < 3`, so it prints `0`, `1` and `2` without spaces."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "$total = 0;\nforeach ([2, 4, 6] as $n) {\n    $total += $n;\n}\necho $total;",
+          "answers": [
+            "12"
+          ],
+          "explain": "The loop adds each number to `$total`: 2 + 4 + 6 = 12."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "How many times does this print Hi?",
+          "code": "for ($i = 1; $i <= 4; $i++) {\n    echo \"Hi\\n\";\n}",
+          "options": [
+            "`3`",
+            "`5`",
+            "`4`",
+            "`0`"
+          ],
+          "answer": 2,
+          "explain": "`$i` takes the values `1`, `2`, `3` and `4`. With `<=`, the value `4` is included."
+        },
+        {
+          "type": "input",
+          "id": "loops-4",
+          "prompt": "What does this print?",
+          "code": "$n = 1;\nwhile (true) {\n    if ($n > 3) {\n        break;\n    }\n    echo $n;\n    $n++;\n}",
+          "answers": [
+            "123"
+          ],
+          "explain": "`while (true)` would run forever, but `break` ends the loop as soon as `$n` is greater than `3`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-5",
+          "prompt": "What does this print?",
+          "code": "for ($i = 1; $i <= 5; $i++) {\n    if ($i === 3) {\n        continue;\n    }\n    echo $i;\n}",
+          "options": [
+            "`12`",
+            "`1245`",
+            "`12345`",
+            "`345`"
+          ],
+          "answer": 1,
+          "explain": "`continue` skips only the round where `$i` is `3`. The loop goes on with `4` and `5`."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-6",
+          "statement": "A `while` loop whose condition is `false` at the start never runs its block.",
+          "answer": true,
+          "explain": "`while` checks the condition before each round, also before the first one."
+        },
+        {
+          "type": "gap",
+          "id": "loops-7",
+          "prompt": "Complete the code so it prints every name.",
+          "code": "$names = [\"Ada\", \"Bob\"];\nforeach ($names ___ $name) {\n    echo \"$name\\n\";\n}",
+          "options": [
+            "in",
+            "of",
+            "as",
+            "=>"
+          ],
+          "answer": 2,
+          "explain": "The syntax is `foreach ($array as $element)`. `in` and `of` are used in other languages."
+        },
+        {
+          "type": "gap",
+          "id": "loops-8",
+          "prompt": "Complete the code so it prints 01234.",
+          "code": "for ($i = 0; $i < 5; ___) {\n    echo $i;\n}",
+          "options": [
+            "$i++",
+            "i++",
+            "++",
+            "$i+"
+          ],
+          "answer": 0,
+          "explain": "The step `$i++` adds 1 to `$i` after each round. The variable needs its `$`."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-9",
+          "prompt": "Build the first line of a loop that counts from 1 to 10.",
+          "tokens": [
+            "for",
+            "(",
+            "$i = 1;",
+            "$i <= 10;",
+            "$i++",
+            ")",
+            "{"
+          ],
+          "distractors": [
+            "$i < 10;",
+            "foreach"
+          ],
+          "explain": "Start at `1`, run while `$i <= 10` so that `10` is included, and add 1 after each round."
+        },
+        {
+          "type": "order",
+          "id": "loops-10",
+          "prompt": "Put the lines in order so the code prints 3, 2 and 1 on three lines.",
+          "lines": [
+            "$n = 3;",
+            "while ($n > 0) {",
+            "    echo \"$n\\n\";",
+            "    $n--;",
+            "}"
+          ],
+          "explain": "First print the value, then subtract 1. The other way round, the code would print `2`, `1` and `0`."
+        },
+        {
+          "type": "bug",
+          "id": "loops-11",
+          "prompt": "The code should print each color on its own line. Which line has the bug?",
+          "lines": [
+            "$colors = [\"red\", \"green\", \"blue\"];",
+            "foreach ($colors as $color) {",
+            "    echo $colors, \"\\n\";",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "`$colors` is the whole array. Print the current element: `echo $color, \"\\n\";`."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-12",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`break`",
+              "ends the loop"
+            ],
+            [
+              "`continue`",
+              "skips to the next round"
+            ],
+            [
+              "`$i++`",
+              "adds 1 to `$i`"
+            ],
+            [
+              "`foreach`",
+              "goes through every element"
+            ],
+            [
+              "`while`",
+              "repeats while a condition is true"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Write your own functions with parameters, default values and types, call them with named arguments and use arrow functions.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** is a named block of code that you can use again and again. You define it with `function`, a name and parentheses for the **parameters**. To call it, write its name and put the values, called **arguments**, in the parentheses."
+        },
+        {
+          "type": "code",
+          "code": "<?php\nfunction greet($name) {\n    echo \"Hello, $name!\\n\";\n}\n\ngreet(\"Ada\");\ngreet(\"Linus\");",
+          "output": "Hello, Ada!\nHello, Linus!"
+        },
+        {
+          "type": "text",
+          "md": "`return` sends a value back to the place where the function was called. The function stops there. You can store the returned value in a variable or use it directly in a calculation."
+        },
+        {
+          "type": "code",
+          "code": "<?php\nfunction add($a, $b) {\n    return $a + $b;\n}\n\n$sum = add(2, 3);\necho $sum, \"\\n\";\necho add(10, 20) * 2, \"\\n\";",
+          "output": "5\n60"
+        },
+        {
+          "type": "heading",
+          "text": "Types and default values"
+        },
+        {
+          "type": "text",
+          "md": "You can write a type before each parameter, and the **return type** after a colon `:` behind the parentheses. Use `void` when a function returns nothing. A parameter with `=` and a value has a **default value**, so you can leave it out when you call the function."
+        },
+        {
+          "type": "code",
+          "code": "<?php\nfunction area(float $width, float $height = 1.0): float {\n    return $width * $height;\n}\n\necho area(3, 4), \"\\n\";\necho area(5), \"\\n\";",
+          "output": "12\n5"
+        },
+        {
+          "type": "warning",
+          "md": "PHP checks the types when the function runs. If a value does not fit, for example the text `\"abc\"` for an `int` parameter, PHP stops with a `TypeError`."
+        },
+        {
+          "type": "heading",
+          "text": "Named arguments"
+        },
+        {
+          "type": "text",
+          "md": "You can also pass arguments by the name of their parameter: `size: \"L\"`. Then the order does not matter, and you can skip parameters that have a default value."
+        },
+        {
+          "type": "code",
+          "code": "<?php\nfunction order(string $item, int $count = 1, string $size = \"M\"): string {\n    return \"$count x $item ($size)\";\n}\n\necho order(\"Tea\"), \"\\n\";\necho order(\"Coffee\", size: \"L\"), \"\\n\";\necho order(count: 3, item: \"Juice\"), \"\\n\";",
+          "output": "1 x Tea (M)\n1 x Coffee (L)\n3 x Juice (M)"
+        },
+        {
+          "type": "heading",
+          "text": "Arrow functions"
+        },
+        {
+          "type": "text",
+          "md": "An **arrow function** is a short function without a name: `fn($x) => $x * 2`. It returns the value after `=>` without `return`. You can store it in a variable and call it like `$double(4)`. It can use variables from outside, with the value they have when the arrow function is created."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$double = fn($x) => $x * 2;\necho $double(4), \"\\n\";\n\n$factor = 3;\n$times = fn($x) => $x * $factor;\necho $times(5), \"\\n\";",
+          "output": "8\n15"
+        }
+      ],
+      "card": [
+        "`function add($a, $b) { return $a + $b; }`",
+        "`function f(int $n = 1): string` adds types and a default",
+        "`f(size: \"L\")` passes a named argument",
+        "`$double = fn($x) => $x * 2;`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "function square($n) {\n    return $n * $n;\n}\n\necho square(4);",
+          "answers": [
+            "16"
+          ],
+          "explain": "The function returns `$n * $n`, and `4 * 4` is `16`."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print?",
+          "code": "function greet(string $name = \"friend\"): string {\n    return \"Hi, $name\";\n}\n\necho greet();",
+          "answers": [
+            "Hi, friend"
+          ],
+          "explain": "The call has no argument, so `$name` gets its default value `\"friend\"`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-3",
+          "prompt": "What does this print?",
+          "code": "function test() {\n    return \"A\";\n    echo \"B\";\n}\n\necho test();",
+          "options": [
+            "`AB`",
+            "`B`",
+            "`BA`",
+            "`A`"
+          ],
+          "answer": 3,
+          "explain": "`return` ends the function, so the line `echo \"B\";` never runs."
+        },
+        {
+          "type": "choice",
+          "id": "functions-4",
+          "prompt": "Which keyword sends a value back from a function?",
+          "options": [
+            "`echo`",
+            "`return`",
+            "`send`",
+            "`back`"
+          ],
+          "answer": 1,
+          "explain": "`return` gives the value back to the caller. `echo` only prints it."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-5",
+          "statement": "The arrow function `fn($x) => $x + 1` needs the keyword `return`.",
+          "answer": false,
+          "explain": "An arrow function returns the value after `=>` automatically."
+        },
+        {
+          "type": "input",
+          "id": "functions-6",
+          "prompt": "What does this print?",
+          "code": "function box(int $width = 1, int $height = 1): int {\n    return $width * $height;\n}\n\necho box(height: 5);",
+          "answers": [
+            "5"
+          ],
+          "explain": "The named argument sets only `$height` to `5`. `$width` keeps its default value `1`, and 1 * 5 = 5."
+        },
+        {
+          "type": "gap",
+          "id": "functions-7",
+          "prompt": "Complete the code so it prints 42.",
+          "code": "function double(int $n): ___ {\n    return $n * 2;\n}\n\necho double(21);",
+          "options": [
+            "void",
+            "int",
+            "return",
+            "=>"
+          ],
+          "answer": 1,
+          "explain": "The function returns a whole number, so the return type is `int`. A `void` function cannot return a value."
+        },
+        {
+          "type": "gap",
+          "id": "functions-8",
+          "prompt": "Complete the code so it prints 5.",
+          "code": "$add = ___($a, $b) => $a + $b;\necho $add(2, 3);",
+          "options": [
+            "fn",
+            "function",
+            "func",
+            "def"
+          ],
+          "answer": 0,
+          "explain": "Arrow functions start with `fn`. A function written with `function` needs braces and `return`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-9",
+          "prompt": "Build the first line of a function half that takes a float and returns a float.",
+          "tokens": [
+            "function",
+            "half",
+            "(float $n)",
+            ":",
+            "float",
+            "{"
+          ],
+          "distractors": [
+            "fn",
+            "->"
+          ],
+          "explain": "First `function` and the name, then the parameter with its type, then `:` and the return type."
+        },
+        {
+          "type": "order",
+          "id": "functions-10",
+          "prompt": "Put the lines in order so the script prints 20.",
+          "lines": [
+            "$rate = 2;",
+            "$scale = fn($x) => $x * $rate;",
+            "$result = $scale(10);",
+            "echo $result;"
+          ],
+          "explain": "`$rate` must exist when the arrow function is created, because it uses its value at that moment."
+        },
+        {
+          "type": "bug",
+          "id": "functions-11",
+          "prompt": "The code should print 5. Which line has the bug?",
+          "lines": [
+            "function total(int $a, int $b): int {",
+            "    $sum = $a + $b;",
+            "}",
+            "echo total(2, 3);"
+          ],
+          "bug": 1,
+          "explain": "The function calculates the sum but does not return it. Write `return $a + $b;`."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-12",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`return $x;`",
+              "sends a value back"
+            ],
+            [
+              "`: int`",
+              "the function returns an int"
+            ],
+            [
+              "`int $n = 1`",
+              "parameter with a default value"
+            ],
+            [
+              "`fn($x) => $x * 2`",
+              "short arrow function"
+            ],
+            [
+              "`f(size: \"L\")`",
+              "named argument"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arrays",
+      "title": "Arrays",
+      "chapter": "Data",
+      "summary": "Keep many values in indexed and associative arrays, and use count, in_array, implode, array_map and array_filter.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** keeps many values in one variable. You write the values in square brackets `[ ]`, separated by commas. Each value has an **index**, its position, starting at `0`. `$colors[0]` reads the first element."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$colors = [\"red\", \"green\", \"blue\"];\necho $colors[0], \"\\n\";\necho $colors[2], \"\\n\";\n$colors[] = \"yellow\";\n$colors[1] = \"lime\";\necho count($colors), \"\\n\";\necho implode(\", \", $colors), \"\\n\";",
+          "output": "red\nblue\n4\nred, lime, blue, yellow"
+        },
+        {
+          "type": "text",
+          "md": "`$colors[] = \"yellow\"` adds a value to the end of the array. `$colors[1] = \"lime\"` replaces the element at index `1`. `count` returns the number of elements, and `implode` joins all elements into one string, with the separator you give first."
+        },
+        {
+          "type": "heading",
+          "text": "Associative arrays"
+        },
+        {
+          "type": "text",
+          "md": "In an **associative array**, each value has a name, called a **key**, instead of a number. You write `key => value`. Read a value with its key: `$person[\"name\"]`. Inside double quotes, put curly braces around it: `{$person[\"age\"]}`."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$person = [\"name\" => \"Ada\", \"age\" => 36];\necho $person[\"name\"], \"\\n\";\n$person[\"city\"] = \"London\";\nforeach ($person as $key => $value) {\n    echo \"$key: $value\\n\";\n}\necho \"Age: {$person[\"age\"]}\\n\";",
+          "output": "Ada\nname: Ada\nage: 36\ncity: London\nAge: 36"
+        },
+        {
+          "type": "heading",
+          "text": "Searching in an array"
+        },
+        {
+          "type": "text",
+          "md": "`in_array($value, $array)` returns `true` when the value is in the array. The value must match exactly, including capital and small letters."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$fruits = [\"apple\", \"pear\", \"plum\"];\nvar_dump(in_array(\"pear\", $fruits));\nvar_dump(in_array(\"kiwi\", $fruits));\nif (in_array(\"plum\", $fruits)) {\n    echo \"We have plums\\n\";\n}",
+          "output": "bool(true)\nbool(false)\nWe have plums"
+        },
+        {
+          "type": "heading",
+          "text": "Transforming arrays"
+        },
+        {
+          "type": "text",
+          "md": "`array_map` calls a function for every element and returns a new array with the results. `array_filter` returns a new array with only the elements for which the function returns `true`. `array_sum` adds up all numbers in an array. Arrow functions are a good fit here."
+        },
+        {
+          "type": "code",
+          "code": "<?php\n$numbers = [1, 2, 3, 4, 5, 6];\n$squares = array_map(fn($n) => $n * $n, $numbers);\necho implode(\" \", $squares), \"\\n\";\n$even = array_filter($numbers, fn($n) => $n % 2 === 0);\necho implode(\" \", $even), \"\\n\";\necho array_sum($numbers), \"\\n\";",
+          "output": "1 4 9 16 25 36\n2 4 6\n21"
+        },
+        {
+          "type": "warning",
+          "md": "The order of the arguments is different: `array_map` takes the function first, but `array_filter` takes the array first. Also, `array_filter` keeps the original indexes of the elements it keeps."
+        },
+        {
+          "type": "tip",
+          "md": "Reading an index or key that does not exist, like `$colors[10]`, gives the warning `Undefined array key`. Use `count` to know how many elements an array has."
+        }
+      ],
+      "card": [
+        "`$a = [1, 2]; $a[] = 3;` and the index starts at `0`",
+        "`[\"name\" => \"Ada\"]` and `$p[\"name\"]`",
+        "`count($a)`, `in_array($x, $a)`, `implode(\", \", $a)`",
+        "`array_map(fn($x) => $x * 2, $a)`",
+        "`array_filter($a, fn($x) => $x > 0)`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arrays-1",
+          "prompt": "What does this print?",
+          "code": "$letters = [\"a\", \"b\", \"c\", \"d\"];\necho $letters[1];",
+          "answers": [
+            "b"
+          ],
+          "explain": "The index starts at `0`, so `$letters[1]` is the second element."
+        },
+        {
+          "type": "input",
+          "id": "arrays-2",
+          "prompt": "What does this print?",
+          "code": "$nums = [5, 10];\n$nums[] = 15;\necho count($nums);",
+          "answers": [
+            "3"
+          ],
+          "explain": "`$nums[] = 15` adds a third element, so `count` returns `3`."
+        },
+        {
+          "type": "input",
+          "id": "arrays-3",
+          "prompt": "What does this print?",
+          "code": "echo implode(\"-\", [\"x\", \"y\", \"z\"]);",
+          "answers": [
+            "x-y-z"
+          ],
+          "explain": "`implode` puts the separator `-` between the elements."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-4",
+          "prompt": "What does this print?",
+          "code": "$prices = [\"tea\" => 2, \"cake\" => 4];\necho $prices[\"cake\"];",
+          "options": [
+            "`2`",
+            "`cake`",
+            "`4`",
+            "`1`"
+          ],
+          "answer": 2,
+          "explain": "`$prices[\"cake\"]` reads the value with the key `\"cake\"`, which is `4`."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-5",
+          "prompt": "What does this print?",
+          "code": "$result = array_map(fn($n) => $n + 1, [1, 2, 3]);\necho implode(\",\", $result);",
+          "options": [
+            "`1,2,3`",
+            "`2,3,4`",
+            "`6`",
+            "`3,4,5`"
+          ],
+          "answer": 1,
+          "explain": "`array_map` adds 1 to every element and returns the new array `[2, 3, 4]`."
+        },
+        {
+          "type": "true_false",
+          "id": "arrays-6",
+          "statement": "The first element of an array like `[\"x\", \"y\"]` has the index `1`.",
+          "answer": false,
+          "explain": "Indexes start at `0`. The first element is `$a[0]`."
+        },
+        {
+          "type": "true_false",
+          "id": "arrays-7",
+          "statement": "`in_array(\"ada\", $names)` returns `true`.",
+          "code": "$names = [\"Ada\", \"Bob\"];",
+          "answer": false,
+          "explain": "`in_array` compares exactly. `\"ada\"` with a small `a` is not the same as `\"Ada\"`."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-8",
+          "prompt": "Complete the code so it prints 7 9.",
+          "code": "$nums = [3, 7, 1, 9];\n$big = array_filter($nums, ___);\necho implode(\" \", $big);",
+          "options": [
+            "fn($n) => $n < 5",
+            "fn($n) => $n > 5",
+            "$n > 5",
+            "fn($n) => $n * 2"
+          ],
+          "answer": 1,
+          "explain": "`array_filter` keeps the elements for which the function returns `true`, here the numbers greater than `5`."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-9",
+          "prompt": "Complete the code so it prints Ada.",
+          "code": "$user = [\"name\" ___ \"Ada\"];\necho $user[\"name\"];",
+          "options": [
+            "=>",
+            ":",
+            "=",
+            "->"
+          ],
+          "answer": 0,
+          "explain": "In an array, `=>` connects a key with its value."
+        },
+        {
+          "type": "blocks",
+          "id": "arrays-10",
+          "prompt": "Build the line that adds \"kiwi\" to the end of $fruits.",
+          "tokens": [
+            "$fruits",
+            "[]",
+            "=",
+            "\"kiwi\"",
+            ";"
+          ],
+          "distractors": [
+            ".=",
+            "+="
+          ],
+          "explain": "Empty square brackets after the variable add a new element to the end of the array."
+        },
+        {
+          "type": "bug",
+          "id": "arrays-11",
+          "prompt": "The code should print the average 80. Which line has the bug?",
+          "lines": [
+            "$scores = [80, 90, 70];",
+            "$total = 0;",
+            "foreach ($scores as $score) {",
+            "    $total += $score;",
+            "}",
+            "echo $total / count(scores);"
+          ],
+          "bug": 5,
+          "explain": "`scores` has no `$`, so it is not the variable. Write `echo $total / count($scores);`."
+        },
+        {
+          "type": "pairs",
+          "id": "arrays-12",
+          "prompt": "Match the function with its meaning.",
+          "pairs": [
+            [
+              "`count($a)`",
+              "number of elements"
+            ],
+            [
+              "`in_array($x, $a)`",
+              "checks if a value is in the array"
+            ],
+            [
+              "`implode(\", \", $a)`",
+              "joins the elements into a string"
+            ],
+            [
+              "`array_map($f, $a)`",
+              "applies a function to every element"
+            ],
+            [
+              "`array_filter($a, $f)`",
+              "keeps the elements that pass a test"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "classes",
+      "title": "Classes and objects",
+      "chapter": "Objects",
+      "summary": "Build your own classes with properties and methods, create objects with new and write short constructors with promotion.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **class** is a blueprint. It describes data, called **properties**, and functions, called **methods**. From one class you can create many **objects** with the keyword `new`."
+        },
+        {
+          "type": "code",
+          "code": "<?php\nclass Dog {\n    public string $name = \"Rex\";\n\n    public function bark(): string {\n        return \"Woof!\";\n    }\n}\n\n$dog = new Dog();\necho $dog->name, \"\\n\";\necho $dog->bark(), \"\\n\";",
+          "output": "Rex\nWoof!"
+        },
+        {
+          "type": "text",
+          "md": "`public` means that code outside the class can use the property or method. `string` is the type of the property. The arrow `->` reads a property or calls a method of an object: `$dog->name` and `$dog->bark()`. By convention, class names start with a capital letter."
+        },
+        {
+          "type": "heading",
+          "text": "The constructor"
+        },
+        {
+          "type": "text",
+          "md": "The method `__construct` is the **constructor**. It runs automatically when you create an object, and it gets the arguments you pass to `new`. Inside a method, `$this` is the current object, so `$this->title` is the property `title` of this object."
+        },
+        {
+          "type": "code",
+          "code": "<?php\nclass Book {\n    public string $title;\n    public int $pages;\n\n    public function __construct(string $title, int $pages) {\n        $this->title = $title;\n        $this->pages = $pages;\n    }\n}\n\n$book = new Book(\"Dune\", 412);\necho $book->title, \" has \", $book->pages, \" pages\\n\";",
+          "output": "Dune has 412 pages"
+        },
+        {
+          "type": "heading",
+          "text": "Constructor property promotion"
+        },
+        {
+          "type": "text",
+          "md": "There is a shorter way. When you write `public` before a constructor parameter, PHP creates the property and stores the argument in it for you. This is called **constructor property promotion**. The body of the constructor can then stay empty: `{}`."
+        },
+        {
+          "type": "code",
+          "code": "<?php\nclass Point {\n    public function __construct(\n        public int $x,\n        public int $y,\n    ) {}\n\n    public function describe(): string {\n        return \"($this->x, $this->y)\";\n    }\n}\n\n$p = new Point(3, 4);\necho $p->describe(), \"\\n\";\n$p->x = 10;\necho $p->describe(), \"\\n\";",
+          "output": "(3, 4)\n(10, 4)"
+        },
+        {
+          "type": "heading",
+          "text": "Private properties"
+        },
+        {
+          "type": "text",
+          "md": "A `private` property can only be used inside the class. Code outside must call the methods instead. This way, the class controls how its data changes. Here, the only way to change the balance is the method `deposit`."
+        },
+        {
+          "type": "code",
+          "code": "<?php\nclass Account {\n    public function __construct(\n        private float $balance = 0,\n    ) {}\n\n    public function deposit(float $amount): void {\n        $this->balance += $amount;\n    }\n\n    public function getBalance(): float {\n        return $this->balance;\n    }\n}\n\n$account = new Account(50);\n$account->deposit(25);\n$account->deposit(10.5);\necho $account->getBalance(), \"\\n\";",
+          "output": "85.5"
+        },
+        {
+          "type": "warning",
+          "md": "Reading a `private` property from outside the class, like `$account->balance`, stops the script with an error. Use a public method such as `getBalance()` instead."
+        },
+        {
+          "type": "tip",
+          "md": "Every `new` creates a separate object with its own properties. If you change `$a->x`, the property `x` of another object `$b` stays the same."
+        }
+      ],
+      "card": [
+        "`class Dog { ... }` and `$d = new Dog();`",
+        "`$d->name` and `$d->bark()` use the arrow `->`",
+        "`$this` is the current object inside a method",
+        "`public function __construct(public int $x) {}`",
+        "`private` can only be used inside the class"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "classes-1",
+          "prompt": "Which keyword creates an object from a class?",
+          "options": [
+            "`create`",
+            "`class`",
+            "`new`",
+            "`object`"
+          ],
+          "answer": 2,
+          "explain": "`new` creates an object, for example `new Dog()`. `class` defines the blueprint."
+        },
+        {
+          "type": "input",
+          "id": "classes-2",
+          "prompt": "What does this print?",
+          "code": "class Cat {\n    public string $sound = \"Meow\";\n}\n\n$cat = new Cat();\necho $cat->sound;",
+          "answers": [
+            "Meow"
+          ],
+          "explain": "`$cat->sound` reads the property `sound` of the object, which is `\"Meow\"`."
+        },
+        {
+          "type": "input",
+          "id": "classes-3",
+          "prompt": "What does this print?",
+          "code": "class Counter {\n    public int $count = 0;\n\n    public function add(): void {\n        $this->count++;\n    }\n}\n\n$c = new Counter();\n$c->add();\n$c->add();\n$c->add();\necho $c->count;",
+          "answers": [
+            "3"
+          ],
+          "explain": "Each call of `add` increases the property `count` of the same object by 1."
+        },
+        {
+          "type": "choice",
+          "id": "classes-4",
+          "prompt": "What does this print?",
+          "code": "class User {\n    public function __construct(\n        public string $name,\n    ) {}\n}\n\n$a = new User(\"Ada\");\n$b = new User(\"Bob\");\necho $b->name;",
+          "options": [
+            "`Ada`",
+            "`Bob`",
+            "`AdaBob`",
+            "`name`"
+          ],
+          "answer": 1,
+          "explain": "Each object has its own properties. `$b` was created with `\"Bob\"`."
+        },
+        {
+          "type": "true_false",
+          "id": "classes-5",
+          "statement": "Inside a method, `$this` refers to the current object.",
+          "answer": true,
+          "explain": "`$this` is the object that the method was called on, so `$this->name` is its property."
+        },
+        {
+          "type": "true_false",
+          "id": "classes-6",
+          "statement": "This code prints `1234`.",
+          "code": "class Safe {\n    public function __construct(\n        private string $code,\n    ) {}\n}\n\n$s = new Safe(\"1234\");\necho $s->code;",
+          "answer": false,
+          "explain": "`$code` is `private`, so code outside the class cannot read it. PHP stops with an error."
+        },
+        {
+          "type": "gap",
+          "id": "classes-7",
+          "prompt": "Complete the code so it prints Rex.",
+          "code": "class Dog {\n    public string $name = \"Rex\";\n}\n\n$dog = new Dog();\necho $dog___name;",
+          "options": [
+            ".",
+            "->",
+            "::",
+            "=>"
+          ],
+          "answer": 1,
+          "explain": "The arrow `->` reads a property of an object. The dot joins strings."
+        },
+        {
+          "type": "gap",
+          "id": "classes-8",
+          "prompt": "Complete the code so it prints Volvo.",
+          "code": "class Car {\n    public function ___(public string $brand) {}\n}\n\n$car = new Car(\"Volvo\");\necho $car->brand;",
+          "options": [
+            "construct",
+            "Car",
+            "__construct",
+            "__init__"
+          ],
+          "answer": 2,
+          "explain": "The constructor is always called `__construct`, with two underscores at the start."
+        },
+        {
+          "type": "blocks",
+          "id": "classes-9",
+          "prompt": "Build the line that creates a Point with x = 2 and y = 5.",
+          "tokens": [
+            "$p",
+            "=",
+            "new",
+            "Point",
+            "(2, 5)",
+            ";"
+          ],
+          "distractors": [
+            "Point::new",
+            "->"
+          ],
+          "explain": "`new` followed by the class name creates the object. The arguments go to the constructor."
+        },
+        {
+          "type": "bug",
+          "id": "classes-10",
+          "prompt": "The code should print `bool(true)`. Which line has the bug?",
+          "lines": [
+            "class Light {",
+            "    private bool $on = false;",
+            "    public function switchOn(): void {",
+            "        $on = true;",
+            "    }",
+            "    public function isOn(): bool {",
+            "        return $this->on;",
+            "    }",
+            "}",
+            "$light = new Light();",
+            "$light->switchOn();",
+            "var_dump($light->isOn());"
+          ],
+          "bug": 3,
+          "explain": "`$on` is a new local variable, not the property. Write `$this->on = true;`."
+        },
+        {
+          "type": "bug",
+          "id": "classes-11",
+          "prompt": "The code should print Pen. Which line has the bug?",
+          "lines": [
+            "class Product {",
+            "    public function __construct(",
+            "        public string $name,",
+            "        public float $price,",
+            "    ) {}",
+            "}",
+            "$item = new Product(\"Pen\", 1.5);",
+            "echo $item.name;"
+          ],
+          "bug": 7,
+          "explain": "The dot joins strings. Use the arrow to read a property: `echo $item->name;`."
+        },
+        {
+          "type": "pairs",
+          "id": "classes-12",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`class`",
+              "defines a blueprint"
+            ],
+            [
+              "`new`",
+              "creates an object"
+            ],
+            [
+              "`->`",
+              "uses a property or method"
+            ],
+            [
+              "`$this`",
+              "the current object"
+            ],
+            [
+              "`private`",
+              "only usable inside the class"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

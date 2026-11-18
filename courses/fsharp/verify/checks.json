@@ -1,0 +1,470 @@
+{
+  "hello-1": {
+    "extra": [
+      {
+        "src": "printfn \"Hi\"\nprintfn \"x\"\n",
+        "out": "Hi\nx"
+      },
+      {
+        "src": "printf \"Hi\"\nprintfn \"x\"\n",
+        "out": "Hix"
+      },
+      {
+        "src": "printfn 'Hi'\n",
+        "err": true
+      },
+      {
+        "src": "print \"Hi\"\n",
+        "err": true
+      }
+    ]
+  },
+  "hello-2": {
+    "out": "Goodbye"
+  },
+  "hello-3": {
+    "out": "Hello, world!"
+  },
+  "hello-4": {
+    "extra": [
+      {
+        "src": "printf \"a\"\nprintf \"b\"\nprintfn \"\"\n",
+        "out": "ab"
+      }
+    ]
+  },
+  "hello-5": {
+    "out": "Name: Ada"
+  },
+  "hello-6": {
+    "out": "Hello, Bo!"
+  },
+  "hello-7": {
+    "tpl": "{{CODE}}\nprintfn \"%s\" greeting\n",
+    "out": "Hi",
+    "distractors": true
+  },
+  "hello-8": {
+    "out": "Hello, Ada!\nBye"
+  },
+  "hello-10": {
+    "fix": "printfn \"%d %s\" count item",
+    "out": "Shop\n6 apples"
+  },
+  "hello-11": {
+    "fix": "printfn \"Middle\"",
+    "out": "Start\nMiddle\nEnd"
+  },
+  "hello-12": {
+    "out": "34"
+  },
+  "values-1": {
+    "out": "3"
+  },
+  "values-2": {
+    "out": "2"
+  },
+  "values-3": {
+    "extra": [
+      {
+        "src": "let x = 4.0\nlet y: float = x\nprintfn \"%.1f\" y\n",
+        "out": "4.0"
+      },
+      {
+        "src": "let x = 4.0\nlet y: int = x\nprintfn \"%d\" y\n",
+        "err": true
+      }
+    ]
+  },
+  "values-4": {
+    "extra": [
+      {
+        "src": "let total = 2 + 1.5\nprintfn \"%.1f\" total\n",
+        "err": true
+      },
+      {
+        "src": "let total = float 2 + 1.5\nprintfn \"%.1f\" total\n",
+        "out": "3.5"
+      }
+    ]
+  },
+  "values-5": {
+    "out": "5.0"
+  },
+  "values-6": {
+    "out": "11"
+  },
+  "values-7": {
+    "fix": "let mutable count = 0",
+    "out": "1"
+  },
+  "values-8": {
+    "out": "2.5"
+  },
+  "values-10": {
+    "tpl": "{{CODE}}\nspeed <- speed + 5\nprintfn \"%d\" speed\n",
+    "out": "35",
+    "distractors": true
+  },
+  "values-11": {
+    "out": "12"
+  },
+  "values-12": {
+    "fix": "let total = price * float count",
+    "out": "10.0"
+  },
+  "functions-1": {
+    "out": "36"
+  },
+  "functions-2": {
+    "out": "4"
+  },
+  "functions-3": {
+    "extra": [
+      {
+        "src": "let add x y = x + y\nprintfn \"%d\" (add 2 3)\n",
+        "out": "5"
+      },
+      {
+        "src": "let add x y = x + y\nprintfn \"%d\" (add(2, 3))\n",
+        "err": true
+      },
+      {
+        "src": "let add x y = x + y\nprintfn \"%d\" (add 2, 3)\n",
+        "err": true
+      },
+      {
+        "src": "let add x y = x + y\nprintfn \"%d\" (add [2 3])\n",
+        "err": true
+      }
+    ]
+  },
+  "functions-4": {
+    "extra": [
+      {
+        "src": "let f x =\n    let y = x * 2\n    y + 1\nprintfn \"%d\" (f 3)\n",
+        "out": "7"
+      },
+      {
+        "src": "let f x = return x + 1\nprintfn \"%d\" (f 3)\n",
+        "err": true
+      }
+    ]
+  },
+  "functions-5": {
+    "out": "12"
+  },
+  "functions-6": {
+    "out": "9"
+  },
+  "functions-7": {
+    "tpl": "{{CODE}}\nprintfn \"%d\" (half 10)\n",
+    "out": "5",
+    "distractors": true
+  },
+  "functions-8": {
+    "out": "Hello, Bo!"
+  },
+  "functions-9": {
+    "fix": "printfn \"%d\" (add 4 5)",
+    "out": "Sum:\n9"
+  },
+  "functions-11": {
+    "out": "25"
+  },
+  "functions-12": {
+    "fix": "let inc = fun x -> x + 1",
+    "out": "8"
+  },
+  "conditions-1": {
+    "out": "true"
+  },
+  "conditions-2": {
+    "out": "odd"
+  },
+  "conditions-3": {
+    "extra": [
+      {
+        "src": "printfn \"%b\" (1 <> 2)\n",
+        "out": "true"
+      },
+      {
+        "src": "printfn \"%b\" (1 != 2)\n",
+        "err": true
+      },
+      {
+        "src": "printfn \"%b\" (1 =/= 2)\n",
+        "err": true
+      },
+      {
+        "src": "printfn \"%b\" (1 ~= 2)\n",
+        "err": true
+      }
+    ]
+  },
+  "conditions-4": {
+    "extra": [
+      {
+        "src": "let ok = true\nlet x = if ok then 1 else 2\nprintfn \"%d\" x\n",
+        "out": "1"
+      }
+    ]
+  },
+  "conditions-5": {
+    "out": "small"
+  },
+  "conditions-6": {
+    "out": "Weekend"
+  },
+  "conditions-7": {
+    "out": "many"
+  },
+  "conditions-8": {
+    "tpl": "let x = 5\nlet size = {{CODE}}\nprintfn \"%s\" size\n",
+    "out": "big",
+    "distractors": true
+  },
+  "conditions-9": {
+    "fix": "let msg = if x = 10 then \"ten\" else \"other\"",
+    "out": "ten"
+  },
+  "conditions-10": {
+    "out": "A B"
+  },
+  "conditions-12": {
+    "fix": "    else \"zero\"",
+    "out": "zero"
+  },
+  "lists-1": {
+    "out": "10"
+  },
+  "lists-2": {
+    "out": "3"
+  },
+  "lists-3": {
+    "out": "[2; 3; 4]"
+  },
+  "lists-4": {
+    "extra": [
+      {
+        "src": "printfn \"%A\" [1; 2; 3]\n",
+        "out": "[1; 2; 3]"
+      },
+      {
+        "src": "printfn \"%A\" [1 2 3]\n",
+        "err": true
+      },
+      {
+        "src": "printfn \"%A\" {1; 2; 3}\n",
+        "err": true
+      },
+      {
+        "src": "printfn \"%A\" <1; 2; 3>\n",
+        "err": true
+      }
+    ]
+  },
+  "lists-5": {
+    "extra": [
+      {
+        "src": "let xs = [1; 2]\nlet ys = 0 :: xs\nprintfn \"%A %A\" xs ys\n",
+        "out": "[1; 2] [0; 1; 2]"
+      }
+    ]
+  },
+  "lists-6": {
+    "out": "[3; 6; 9]"
+  },
+  "lists-7": {
+    "out": "[5; 6; 7]"
+  },
+  "lists-8": {
+    "tpl": "let double x = x * 2\nlet nums = [1; 2; 3]\n{{CODE}}\nprintfn \"%A\" doubled\n",
+    "out": "[2; 4; 6]",
+    "distractors": true
+  },
+  "lists-9": {
+    "out": "14"
+  },
+  "lists-10": {
+    "fix": "let prices = [4; 8; 2]",
+    "out": "14 3"
+  },
+  "lists-12": {
+    "fix": "let big = List.filter (fun x -> x > 2) numbers",
+    "out": "[3; 4; 5]"
+  },
+  "recursion-1": {
+    "out": "10"
+  },
+  "recursion-2": {
+    "out": "3"
+  },
+  "recursion-3": {
+    "extra": [
+      {
+        "src": "let f n =\n    if n = 0 then 0 else f (n - 1)\nprintfn \"%d\" (f 3)\n",
+        "err": true
+      },
+      {
+        "src": "let rec f n =\n    if n = 0 then 0 else f (n - 1)\nprintfn \"%d\" (f 3)\n",
+        "out": "0"
+      }
+    ]
+  },
+  "recursion-4": {
+    "extra": [
+      {
+        "src": "printfn \"%A\" [for x in 1..3 -> x * 10]\n",
+        "out": "[10; 20; 30]"
+      }
+    ]
+  },
+  "recursion-5": {
+    "out": "16"
+  },
+  "recursion-6": {
+    "out": "120"
+  },
+  "recursion-7": {
+    "out": "[2; 4; 6]"
+  },
+  "recursion-8": {
+    "tpl": "{{CODE}}\n    printfn \"%d\" i\n",
+    "out": "1\n2\n3",
+    "distractors": true
+  },
+  "recursion-9": {
+    "out": "2\n1\nGo!"
+  },
+  "recursion-10": {
+    "fix": "let rec total list =",
+    "out": "6"
+  },
+  "recursion-12": {
+    "fix": "    printfn \"%d\" i",
+    "out": "1\n2\n3\nDone"
+  },
+  "types-1": {
+    "out": "7"
+  },
+  "types-2": {
+    "out": "2 10"
+  },
+  "types-3": {
+    "out": "yellow"
+  },
+  "types-4": {
+    "extra": [
+      {
+        "src": "type Person = { Name: string; Age: int }\nlet p = { Name = \"Bo\"; Age = 30 }\nlet q = { p with Age = 40 }\nprintfn \"%d %d\" p.Age q.Age\n",
+        "out": "30 40"
+      }
+    ]
+  },
+  "types-5": {
+    "out": "Dune 412"
+  },
+  "types-6": {
+    "out": "2.5"
+  },
+  "types-7": {
+    "tpl": "{{CODE}}\nlet d = { Name = \"Rex\" }\nprintfn \"%s\" d.Name\n",
+    "out": "Rex",
+    "distractors": true
+  },
+  "types-8": {
+    "out": "apple 2"
+  },
+  "types-9": {
+    "fix": "let older = { bo with Age = 26 }",
+    "out": "26"
+  },
+  "types-11": {
+    "extra": [
+      {
+        "src": "type Shape = Rectangle of float * float\nlet area s =\n    match s with\n    | Rectangle (w, h) -> w * h\nprintfn \"%.1f\" (area (Rectangle (2.0, 3.0)))\n",
+        "out": "6.0"
+      },
+      {
+        "src": "type Shape = Rectangle of float * float\nlet area s =\n    match s with\n    | Rectangle w h -> w * h\nprintfn \"%.1f\" (area (Rectangle (2.0, 3.0)))\n",
+        "err": true
+      },
+      {
+        "src": "type Shape = Rectangle of float * float\nlet area s =\n    match s with\n    | Rectangle [w; h] -> w * h\nprintfn \"%.1f\" (area (Rectangle (2.0, 3.0)))\n",
+        "err": true
+      },
+      {
+        "src": "type Shape = Rectangle of float * float\nlet area s =\n    match s with\n    | Rectangle {w, h} -> w * h\nprintfn \"%.1f\" (area (Rectangle (2.0, 3.0)))\n",
+        "err": true
+      }
+    ]
+  },
+  "types-12": {
+    "fix": "    | Square of float",
+    "out": "8.0"
+  },
+  "options-1": {
+    "out": "5"
+  },
+  "options-2": {
+    "out": "3"
+  },
+  "options-3": {
+    "out": "Some 4"
+  },
+  "options-4": {
+    "extra": [
+      {
+        "src": "let m = Map.ofList [(\"a\", 1)]\nlet m2 = Map.add \"b\" 2 m\nprintfn \"%d %d\" (Map.count m) (Map.count m2)\n",
+        "out": "1 2"
+      }
+    ]
+  },
+  "options-5": {
+    "out": "Nothing"
+  },
+  "options-6": {
+    "out": "3"
+  },
+  "options-7": {
+    "tpl": "let ages = Map.ofList [(\"Ada\", 36); (\"Bo\", 25)]\n{{CODE}}\nprintfn \"%A\" age\n",
+    "out": "Some 25",
+    "distractors": true
+  },
+  "options-8": {
+    "out": "3"
+  },
+  "options-9": {
+    "fix": "let total = best + Map.find \"Bo\" scores",
+    "out": "16"
+  },
+  "options-11": {
+    "extra": [
+      {
+        "src": "let x: int option = None\nprintfn \"%d\" (Option.defaultValue 0 x)\n",
+        "out": "0"
+      },
+      {
+        "src": "let x = Some 5\nprintfn \"%d\" (Option.defaultValue 0 x)\n",
+        "out": "5"
+      },
+      {
+        "src": "let x: int option = None\nprintfn \"%d\" (Option.defaultValue x 0)\n",
+        "err": true
+      },
+      {
+        "src": "let x: int option = None\nprintfn \"%d\" (Some x 0)\n",
+        "err": true
+      },
+      {
+        "src": "let x: int option = None\nprintfn \"%d\" (Map.find 0 x)\n",
+        "err": true
+      }
+    ]
+  },
+  "options-12": {
+    "fix": "| Some n -> printfn \"Found %d\" n",
+    "out": "Found 15"
+  }
+}

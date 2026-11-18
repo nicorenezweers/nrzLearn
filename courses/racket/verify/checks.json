@@ -1,0 +1,471 @@
+{
+  "_claims": {
+    "hello": [
+      {
+        "src": "(printf \"a\")\n(printf \"b\")",
+        "out": "ab",
+        "exact": true
+      },
+      {
+        "src": "(displayln 42) ; 42",
+        "out": "42"
+      }
+    ],
+    "values": [
+      {
+        "src": "(displayln (2 + 3))",
+        "err": true
+      },
+      {
+        "src": "(displayln (+ 2 3))",
+        "out": "5"
+      }
+    ],
+    "functions": [
+      {
+        "src": "(define (square x) (* x x))\n(square 2 3)",
+        "err": true
+      },
+      {
+        "src": "(define triple (lambda (x) (* 3 x)))\n(define (triple2 x) (* 3 x))\n(displayln (= (triple 7) (triple2 7)))",
+        "out": "#t"
+      }
+    ],
+    "conditions": [
+      {
+        "src": "(displayln (if \"\" \"yes\" \"no\"))",
+        "out": "yes"
+      },
+      {
+        "src": "(displayln (if 1 \"yes\"))",
+        "err": true
+      }
+    ],
+    "lists": [
+      {
+        "src": "(displayln (1 2 3))",
+        "err": true
+      },
+      {
+        "src": "(displayln (first '()))",
+        "err": true
+      },
+      {
+        "src": "(displayln (equal? empty '()))",
+        "out": "#t"
+      }
+    ],
+    "higher": [
+      {
+        "src": "(displayln (map + (list 1 2) (list 10 20)))",
+        "out": "(11 22)"
+      },
+      {
+        "src": "(displayln (sub1 5))",
+        "out": "4"
+      },
+      {
+        "src": "(displayln (foldl (lambda (x acc) (list x acc)) 0 (list 1 2 3)))",
+        "out": "(3 (2 (1 0)))"
+      }
+    ],
+    "recursion": [
+      {
+        "src": "(displayln (for/sum ([i (range 1 5)]) i))",
+        "out": "10"
+      }
+    ],
+    "structs": [
+      {
+        "src": "(define h (hash \"a\" 1))\n(displayln (hash-ref h \"b\"))",
+        "err": true
+      },
+      {
+        "src": "(struct point (x y))\n(println (point 1 2))",
+        "out": "#<point>"
+      },
+      {
+        "src": "(displayln (string-downcase \"HeLLo\"))",
+        "out": "hello"
+      }
+    ]
+  },
+  "hello-1": {
+    "out": "Hi!"
+  },
+  "hello-3": {
+    "out": "2 + 3"
+  },
+  "hello-4": {
+    "out": "\"cat\""
+  },
+  "hello-5": {
+    "extra": [
+      {
+        "src": "(displayln \"a\")\n(displayln \"b\")",
+        "out": "a\nb"
+      }
+    ]
+  },
+  "hello-6": {
+    "out": "Hello\nBye"
+  },
+  "hello-7": {
+    "out": "1-2"
+  },
+  "hello-8": {
+    "out": "A\nB"
+  },
+  "hello-10": {
+    "out": "One\nTwo\nThree",
+    "fix": "(displayln \"Two\")"
+  },
+  "hello-11": {
+    "out": "salt and pepper\nDone",
+    "fix": "(printf \"~a and ~a\\n\" \"salt\" \"pepper\")"
+  },
+  "hello-12": {
+    "extra": [
+      {
+        "src": "(displayln \"Hi\")\n(display \"|\")",
+        "out": "Hi\n|",
+        "exact": true
+      },
+      {
+        "src": "(display \"Hi\")\n(display \"|\")",
+        "out": "Hi|",
+        "exact": true
+      },
+      {
+        "src": "(print \"Hi\")\n(display \"|\")",
+        "out": "\"Hi\"|",
+        "exact": true
+      },
+      {
+        "src": "(printf \"Hi\")\n(display \"|\")",
+        "out": "Hi|",
+        "exact": true
+      }
+    ]
+  },
+  "values-1": {
+    "out": "8"
+  },
+  "values-2": {
+    "out": "3/2"
+  },
+  "values-3": {
+    "out": "3.5"
+  },
+  "values-4": {
+    "out": "3 2"
+  },
+  "values-5": {
+    "extra": [
+      {
+        "src": "(displayln (3 * 4))",
+        "err": true
+      },
+      {
+        "src": "(displayln (* 3 4))",
+        "out": "12"
+      }
+    ]
+  },
+  "values-6": {
+    "out": "20"
+  },
+  "values-7": {
+    "out": "6",
+    "tpl": "{{CODE}}\n(displayln left)"
+  },
+  "values-8": {
+    "out": "15"
+  },
+  "values-10": {
+    "out": "12",
+    "fix": "(define total (* price qty))"
+  },
+  "values-11": {
+    "out": "11"
+  },
+  "values-12": {
+    "out": "42"
+  },
+  "functions-1": {
+    "out": "7"
+  },
+  "functions-2": {
+    "out": "6"
+  },
+  "functions-3": {
+    "out": "36"
+  },
+  "functions-4": {
+    "extra": [
+      {
+        "src": "(define (half x) (/ x 2))\n(displayln (half 8))",
+        "out": "4"
+      },
+      {
+        "src": "(define half x (/ x 2))\n(displayln (half 8))",
+        "err": true
+      },
+      {
+        "src": "(define (half) (/ x 2))\n(displayln (half 8))",
+        "err": true
+      },
+      {
+        "src": "(function half (x) (/ x 2))\n(displayln (half 8))",
+        "err": true
+      }
+    ]
+  },
+  "functions-5": {
+    "out": "6"
+  },
+  "functions-6": {
+    "out": "Hi, Bo!"
+  },
+  "functions-7": {
+    "out": "8",
+    "tpl": "{{CODE}}\n(displayln (cube 2))"
+  },
+  "functions-8": {
+    "out": "42",
+    "tpl": "{{CODE}}\n(displayln (double 21))"
+  },
+  "functions-9": {
+    "out": "Hi, Ana!\nHi, Ben!"
+  },
+  "functions-11": {
+    "out": "12",
+    "fix": "(displayln (area 3 4))"
+  },
+  "functions-12": {
+    "out": "12",
+    "fix": "  (let ([tax (* price 1/5)])"
+  },
+  "conditions-1": {
+    "out": "big"
+  },
+  "conditions-2": {
+    "out": "M"
+  },
+  "conditions-3": {
+    "out": "yes"
+  },
+  "conditions-4": {
+    "out": "#f"
+  },
+  "conditions-5": {
+    "extra": [
+      {
+        "src": "(displayln (= \"a\" \"a\"))",
+        "err": true
+      },
+      {
+        "src": "(displayln (equal? \"a\" \"a\"))",
+        "out": "#t"
+      }
+    ]
+  },
+  "conditions-6": {
+    "out": "zero"
+  },
+  "conditions-7": {
+    "out": "even"
+  },
+  "conditions-8": {
+    "out": "8",
+    "tpl": "(define a 3)\n(define b 8)\n(displayln {{CODE}})"
+  },
+  "conditions-9": {
+    "out": "too big\nok",
+    "tpl": "{{CODE}}\n(displayln (check 500))\n(displayln (check 50))"
+  },
+  "conditions-11": {
+    "out": "yes\nno",
+    "fix": "  (if (>= age 18) \"yes\" \"no\"))"
+  },
+  "conditions-12": {
+    "out": "end"
+  },
+  "lists-1": {
+    "out": "(5 6)"
+  },
+  "lists-2": {
+    "out": "3"
+  },
+  "lists-3": {
+    "out": "(0 1 2)"
+  },
+  "lists-4": {
+    "out": "b"
+  },
+  "lists-5": {
+    "out": "(1 2 3)"
+  },
+  "lists-6": {
+    "out": "1"
+  },
+  "lists-7": {
+    "out": "(1 2 3)"
+  },
+  "lists-8": {
+    "out": "(x y z)",
+    "tpl": "(displayln {{CODE}})"
+  },
+  "lists-9": {
+    "out": "(0 1 2 3)"
+  },
+  "lists-11": {
+    "out": "pen\ncup",
+    "fix": "(displayln (list-ref items 1))"
+  },
+  "lists-12": {
+    "out": "3\n1",
+    "fix": "(define nums (list 1 2 3))"
+  },
+  "higher-1": {
+    "out": "(2 3 4)"
+  },
+  "higher-2": {
+    "out": "(1 3 5)"
+  },
+  "higher-3": {
+    "out": "16"
+  },
+  "higher-4": {
+    "out": "(b a)"
+  },
+  "higher-5": {
+    "extra": [
+      {
+        "src": "(define words (list \"hi\" \"tree\" \"go\" \"sun\"))\n(displayln (filter (lambda (s) (> (string-length s) 2)) words))",
+        "out": "(tree sun)"
+      },
+      {
+        "src": "(define words (list \"hi\" \"tree\" \"go\" \"sun\"))\n(displayln (map (lambda (s) (> (string-length s) 2)) words))",
+        "out": "(#f #t #f #t)"
+      },
+      {
+        "src": "(define words (list \"hi\" \"tree\" \"go\" \"sun\"))\n(displayln (filter (> (string-length s) 2) words))",
+        "err": true
+      },
+      {
+        "src": "(define words (list \"hi\" \"tree\" \"go\" \"sun\"))\n(displayln (filter string-length words))",
+        "out": "(hi tree go sun)"
+      }
+    ]
+  },
+  "higher-6": {
+    "out": "(1 2 3)"
+  },
+  "higher-7": {
+    "out": "(20 15)"
+  },
+  "higher-8": {
+    "out": "(2 4 6)"
+  },
+  "higher-9": {
+    "out": "15",
+    "tpl": "(define nums (list 4 5 6))\n(displayln {{CODE}})"
+  },
+  "higher-10": {
+    "out": "(9 16)"
+  },
+  "higher-12": {
+    "out": "10",
+    "fix": "(define total (foldl + 0 lengths))"
+  },
+  "recursion-1": {
+    "out": "10"
+  },
+  "recursion-2": {
+    "out": "012"
+  },
+  "recursion-3": {
+    "out": "(2 4 6)"
+  },
+  "recursion-4": {
+    "out": "321"
+  },
+  "recursion-5": {
+    "extra": [
+      {
+        "src": "(for ([i (range 3)])\n  (display i))",
+        "out": "012",
+        "exact": true
+      }
+    ]
+  },
+  "recursion-6": {
+    "out": "11"
+  },
+  "recursion-7": {
+    "out": "(2 3 4)"
+  },
+  "recursion-8": {
+    "out": "0\n1\n2"
+  },
+  "recursion-9": {
+    "out": "24"
+  },
+  "recursion-11": {
+    "out": "6",
+    "fix": "      0"
+  },
+  "recursion-12": {
+    "out": "(2 4 6)",
+    "fix": "  (for/list ([x nums])"
+  },
+  "structs-1": {
+    "out": "snowman"
+  },
+  "structs-2": {
+    "out": "3"
+  },
+  "structs-3": {
+    "out": "0"
+  },
+  "structs-4": {
+    "out": "ack"
+  },
+  "structs-5": {
+    "extra": [
+      {
+        "src": "(struct point (x y))\n(displayln (point-x (point 1 2)))",
+        "out": "1"
+      },
+      {
+        "src": "(struct point (x y))\n(displayln (x-point (point 1 2)))",
+        "err": true
+      },
+      {
+        "src": "(struct point (x y))\n(displayln (point.x (point 1 2)))",
+        "err": true
+      }
+    ]
+  },
+  "structs-6": {
+    "out": "1"
+  },
+  "structs-7": {
+    "out": "Score: 10"
+  },
+  "structs-8": {
+    "out": "Tom"
+  },
+  "structs-9": {
+    "out": "3",
+    "tpl": "(define prices (hash \"tea\" 3))\n(displayln {{CODE}})"
+  },
+  "structs-10": {
+    "out": "6"
+  },
+  "structs-12": {
+    "out": "ANA\nana@example.com",
+    "fix": "(displayln (user-email u))"
+  }
+}

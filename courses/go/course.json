@@ -1,0 +1,1981 @@
+{
+  "course": "go",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Go!",
+      "chapter": "Basics",
+      "summary": "Write your first Go program and print text and numbers with fmt.Println and fmt.Printf.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Every Go program is made of **packages**. A program that you can run uses `package main` and has a function called `main`. Go starts the program there."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Hello, Go!\")\n}",
+          "output": "Hello, Go!"
+        },
+        {
+          "type": "text",
+          "md": "Line by line: `package main` says that this file belongs to the main package. `import \"fmt\"` loads the `fmt` package, which can print text. `func main()` defines the function where the program starts. Its code goes between the braces `{` and `}`."
+        },
+        {
+          "type": "heading",
+          "text": "Printing with Println"
+        },
+        {
+          "type": "text",
+          "md": "`fmt.Println` prints its values, puts a space between them and ends the line. Text goes in double quotes, numbers do not. `fmt.Println()` without values prints an empty line."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Go\", \"is\", \"fun\")\n    fmt.Println(1, 2, 3)\n    fmt.Println()\n    fmt.Println(\"Done\")\n}",
+          "output": "Go is fun\n1 2 3\n\nDone"
+        },
+        {
+          "type": "text",
+          "md": "Go can calculate for you. `2 + 3` without quotes is a calculation, but `\"2 + 3\"` in quotes is only text. Use `*` to multiply and `/` to divide."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(2 + 3)\n    fmt.Println(\"2 + 3\")\n    fmt.Println(7 * 6)\n}",
+          "output": "5\n2 + 3\n42"
+        },
+        {
+          "type": "heading",
+          "text": "Formatted output with Printf"
+        },
+        {
+          "type": "text",
+          "md": "`fmt.Printf` prints a **format string** and fills in values. Each verb is a placeholder: `%s` for text, `%d` for a whole number and `%v` for any value. `Printf` does not end the line, so you add `\\n` (a new line) yourself."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Printf(\"%s is %d years old.\\n\", \"Ada\", 36)\n    fmt.Printf(\"%v, %v and %v\\n\", \"text\", 42, true)\n    fmt.Printf(\"One line. \")\n    fmt.Printf(\"Same line.\\n\")\n}",
+          "output": "Ada is 36 years old.\ntext, 42 and true\nOne line. Same line."
+        },
+        {
+          "type": "tip",
+          "md": "Go is strict about tidy code. If you import a package and do not use it, the program does not compile. A line that starts with `//` is a comment, and Go ignores it."
+        },
+        {
+          "type": "warning",
+          "md": "The opening brace `{` must be on the same line as `func main()`. Go ends lines with an invisible semicolon, so a brace on the next line is an error. Go is also case sensitive: `Println` works, `println` from `fmt` does not."
+        }
+      ],
+      "card": [
+        "`package main` + `func main()` make a runnable program",
+        "`import \"fmt\"` loads the printing package",
+        "`fmt.Println(a, b)` prints with spaces and a new line",
+        "`fmt.Printf(\"%s %d %v\\n\", s, n, x)` fills in values"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which function does Go run when the program starts?",
+          "options": [
+            "`main`",
+            "`start`",
+            "`run`",
+            "`Println`"
+          ],
+          "answer": 0,
+          "explain": "A runnable program starts in the function `main` of the package `main`."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "fmt.Println(\"Go\", \"is\", \"fun\")",
+          "answers": [
+            "Go is fun"
+          ],
+          "explain": "`Println` puts a space between its values."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "fmt.Println(10-4, \"apples\")",
+          "answers": [
+            "6 apples"
+          ],
+          "explain": "`10-4` has no quotes, so Go calculates `6`. Then `Println` adds a space and the text."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "`fmt.Printf` ends the line automatically, like `fmt.Println`.",
+          "answer": false,
+          "explain": "`Printf` prints exactly the format string. You need `\\n` at the end to start a new line."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Complete the program so it compiles and prints Hi.",
+          "code": "package main\n\nimport ___\n\nfunc main() {\n    fmt.Println(\"Hi\")\n}",
+          "options": [
+            "\"fmt\"",
+            "fmt",
+            "<fmt>",
+            "\"print\""
+          ],
+          "answer": 0,
+          "explain": "The package name goes in double quotes: `import \"fmt\"`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so it prints `Name: Ada`.",
+          "code": "fmt.Printf(\"Name: ___\\n\", \"Ada\")",
+          "options": [
+            "%s",
+            "%d",
+            "$s",
+            "{}"
+          ],
+          "answer": 0,
+          "explain": "`%s` is the placeholder for a string. `%d` only works for whole numbers."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build the line that prints Hello, Go! on its own line.",
+          "tokens": [
+            "fmt.Println",
+            "(",
+            "\"Hello, Go!\"",
+            ")"
+          ],
+          "distractors": [
+            "console.log",
+            "fmt.println"
+          ],
+          "explain": "The function is `fmt.Println` with a capital P. The text goes in double quotes inside the parentheses."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order to make a complete program.",
+          "lines": [
+            "package main",
+            "import \"fmt\"",
+            "func main() {",
+            "    fmt.Println(\"Ready\")",
+            "}"
+          ],
+          "explain": "First the package, then the imports, then the function `main` with its code between the braces."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`package main`",
+              "names the runnable package"
+            ],
+            [
+              "`import \"fmt\"`",
+              "loads the printing package"
+            ],
+            [
+              "`func main()`",
+              "where the program starts"
+            ],
+            [
+              "`%d`",
+              "placeholder for a whole number"
+            ],
+            [
+              "`\\n`",
+              "starts a new line"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "package main",
+            "import \"fmt\"",
+            "func main() {",
+            "    fmt.Println(\"Start\")",
+            "    fmt.Println(\"Stop)",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "The closing quote is missing. Write `fmt.Println(\"Stop\")`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "package main",
+            "import \"fmt\"",
+            "func main() {",
+            "    fmt.Println(\"Line 1\")",
+            "    fmt.println(\"Line 2\")",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "Go is case sensitive. The function is `fmt.Println` with a capital P."
+        },
+        {
+          "type": "choice",
+          "id": "hello-12",
+          "prompt": "What does this print?",
+          "code": "fmt.Printf(\"%d + %d = %d\\n\", 2, 3, 2+3)",
+          "options": [
+            "`2 + 3 = 5`",
+            "`%d + %d = %d`",
+            "`2 3 5`",
+            "`2 + 3 = 2+3`"
+          ],
+          "answer": 0,
+          "explain": "Each `%d` is replaced by the next value. `2+3` is calculated first, so the last value is `5`."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Store values in variables, get to know int, float64, string and bool, and convert between types.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** stores a value under a name. With `var` you write the name, the type and the value: `var age int = 13`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    var name string = \"Gopher\"\n    var age int = 13\n    fmt.Println(name, age)\n}",
+          "output": "Gopher 13"
+        },
+        {
+          "type": "text",
+          "md": "Inside a function you usually write the short form `:=`. Go finds the type from the value. To change a variable later, use `=`. `count++` adds 1, `count--` subtracts 1, and `count += 10` adds 10 (there are also `-=` and `*=`)."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    city := \"Lisbon\"\n    count := 3\n    count = count + 1\n    count++\n    count += 10\n    fmt.Println(city, count)\n}",
+          "output": "Lisbon 15"
+        },
+        {
+          "type": "warning",
+          "md": "`:=` creates a **new** variable, so you can use it only once per name. Go also refuses to compile a program with a variable that is declared but never used."
+        },
+        {
+          "type": "heading",
+          "text": "Basic types"
+        },
+        {
+          "type": "text",
+          "md": "The most common types are `int` (whole numbers), `float64` (decimal numbers), `string` (text) and `bool` (`true` or `false`). The verb `%T` in `Printf` prints the type of a value."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    n := 42\n    price := 9.99\n    word := \"hi\"\n    ok := true\n    fmt.Printf(\"%T %T %T %T\\n\", n, price, word, ok)\n}",
+          "output": "int float64 string bool"
+        },
+        {
+          "type": "text",
+          "md": "A variable without a value gets the **zero value** of its type: `0` for numbers, `\"\"` (the empty string) for `string` and `false` for `bool`. The verb `%q` prints a string in quotes, so you can see the empty string."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    var i int\n    var f float64\n    var s string\n    var b bool\n    fmt.Println(i, f, b)\n    fmt.Printf(\"%q\\n\", s)\n}",
+          "output": "0 0 false\n\"\""
+        },
+        {
+          "type": "text",
+          "md": "A **constant** is declared with `const`. Its value is fixed and can never change. The operator `+` adds numbers and also joins strings."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    const greeting = \"Welcome\"\n    const maxUsers = 100\n    message := greeting + \", Ana\"\n    fmt.Println(message)\n    fmt.Println(maxUsers * 2)\n}",
+          "output": "Welcome, Ana\n200"
+        },
+        {
+          "type": "text",
+          "md": "Go never mixes types by itself. To convert, write the type like a function: `float64(n)` or `int(x)`. Dividing two `int` values gives an `int`, so `7 / 2` is `3`. `int(1.99)` cuts off the decimals and gives `1`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    total := 7\n    parts := 2\n    fmt.Println(total / parts)\n    fmt.Println(float64(total) / float64(parts))\n    height := 1.99\n    fmt.Println(int(height))\n}",
+          "output": "3\n3.5\n1"
+        }
+      ],
+      "card": [
+        "`x := 5` declares a variable and sets it",
+        "`var s string` gets the zero value `\"\"`",
+        "Types: `int`, `float64`, `string`, `bool`",
+        "`const pi = 3.14` can never change",
+        "`float64(n)` converts; `7 / 2` is `3`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "variables-1",
+          "prompt": "What does this print?",
+          "code": "a := 10\nb := 4\nfmt.Println(a / b)",
+          "answers": [
+            "2"
+          ],
+          "explain": "Both values are `int`, so the division drops the rest: 10 / 4 is 2."
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this print?",
+          "code": "var count int\ncount = count + 5\nfmt.Println(count)",
+          "answers": [
+            "5"
+          ],
+          "explain": "`count` starts with the zero value `0`. Then 5 is added."
+        },
+        {
+          "type": "choice",
+          "id": "variables-3",
+          "prompt": "What is the zero value of a `bool`?",
+          "options": [
+            "`false`",
+            "`true`",
+            "`nil`",
+            "`0`"
+          ],
+          "answer": 0,
+          "explain": "Every type has a zero value. For `bool` it is `false`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-4",
+          "prompt": "What is the type of `x`?",
+          "code": "x := 2.5",
+          "options": [
+            "`float64`",
+            "`float32`",
+            "`int`",
+            "`double`"
+          ],
+          "answer": 0,
+          "explain": "A number with a decimal point gets the type `float64` when you use `:=`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-5",
+          "statement": "This code compiles.",
+          "code": "const limit = 10\nlimit = 20",
+          "answer": false,
+          "explain": "`limit` is a constant. You cannot assign a new value to a constant."
+        },
+        {
+          "type": "gap",
+          "id": "variables-6",
+          "prompt": "Complete the code so it prints 3.5.",
+          "code": "a := 7\nfmt.Println(___(a) / 2)",
+          "options": [
+            "float64",
+            "int",
+            "string",
+            "float"
+          ],
+          "answer": 0,
+          "explain": "`float64(a)` converts 7 to a decimal number, so the division keeps the .5. With `int` you get 3."
+        },
+        {
+          "type": "gap",
+          "id": "variables-7",
+          "prompt": "Complete the code so `rate` can never change.",
+          "code": "___ rate = 0.2\nfmt.Println(rate)",
+          "options": [
+            "const",
+            "let",
+            "final",
+            "static"
+          ],
+          "answer": 0,
+          "explain": "Go declares constants with `const`. `let`, `final` and `static` are not Go keywords."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-8",
+          "prompt": "Use `var` to declare `price` of type `float64` with the value `4.5`.",
+          "tokens": [
+            "var",
+            "price",
+            "float64",
+            "=",
+            "4.5"
+          ],
+          "distractors": [
+            ":=",
+            "float"
+          ],
+          "explain": "With `var` the order is: keyword, name, type, `=`, value."
+        },
+        {
+          "type": "order",
+          "id": "variables-9",
+          "prompt": "Put the lines in order so the program prints 15.",
+          "lines": [
+            "x := 3",
+            "x = x * 4",
+            "x = x + 3",
+            "fmt.Println(x)"
+          ],
+          "explain": "3 times 4 is 12, plus 3 is 15. In the other order you get (3 + 3) * 4 = 24."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-10",
+          "prompt": "Match the type with what it stores.",
+          "pairs": [
+            [
+              "`int`",
+              "a whole number"
+            ],
+            [
+              "`float64`",
+              "a decimal number"
+            ],
+            [
+              "`string`",
+              "text"
+            ],
+            [
+              "`bool`",
+              "true or false"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "variables-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "package main",
+            "import \"fmt\"",
+            "func main() {",
+            "    name := \"Ana\"",
+            "    age := 30",
+            "    name := \"Bea\"",
+            "    fmt.Println(name, age)",
+            "}"
+          ],
+          "bug": 5,
+          "explain": "`name` already exists, so `:=` is not allowed. Write `name = \"Bea\"`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-12",
+          "prompt": "The compiler rejects one line. Which one?",
+          "lines": [
+            "count := 3",
+            "price := 2.5",
+            "total := count * price",
+            "fmt.Println(total)"
+          ],
+          "bug": 2,
+          "explain": "`count` is an `int` and `price` is a `float64`. Go does not mix them: write `float64(count) * price`."
+        }
+      ]
+    },
+    {
+      "id": "control",
+      "title": "Control flow",
+      "chapter": "Control flow",
+      "summary": "Make decisions with if and switch, and repeat code with the different forms of the for loop.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`if` runs code only when a condition is `true`. Go needs no parentheses around the condition, but the braces are required. You compare with `==`, `!=`, `<`, `>`, `<=` and `>=`, and combine conditions with `&&` (and), `||` (or) and `!` (not)."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    temp := 25\n    if temp > 30 {\n        fmt.Println(\"Hot\")\n    } else if temp > 20 {\n        fmt.Println(\"Warm\")\n    } else {\n        fmt.Println(\"Cold\")\n    }\n}",
+          "output": "Warm"
+        },
+        {
+          "type": "text",
+          "md": "An `if` can start with a short statement, followed by a semicolon. A variable created there exists only inside the `if` and its `else` branches. The operator `%` gives the rest of a division, so `n%2 == 0` checks for an even number."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    if n := 17; n%2 == 0 {\n        fmt.Println(n, \"is even\")\n    } else {\n        fmt.Println(n, \"is odd\")\n    }\n}",
+          "output": "17 is odd"
+        },
+        {
+          "type": "heading",
+          "text": "Loops with for"
+        },
+        {
+          "type": "text",
+          "md": "Go has only one loop keyword: `for`. The classic form has three parts: a start statement, a condition and a statement that runs after each round."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    for i := 1; i <= 3; i++ {\n        fmt.Println(\"Step\", i)\n    }\n}",
+          "output": "Step 1\nStep 2\nStep 3"
+        },
+        {
+          "type": "text",
+          "md": "With only a condition, `for` repeats while the condition is `true`. Other languages call this a while loop. `for { }` without a condition repeats forever, until a `break`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    n := 1\n    for n < 50 {\n        n = n * 3\n    }\n    fmt.Println(n)\n}",
+          "output": "81"
+        },
+        {
+          "type": "text",
+          "md": "`for i := range 6` counts from `0` to `5`. `continue` jumps to the next round, and `break` ends the loop at once."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    for i := range 6 {\n        if i == 1 {\n            continue\n        }\n        if i == 4 {\n            break\n        }\n        fmt.Println(i)\n    }\n}",
+          "output": "0\n2\n3"
+        },
+        {
+          "type": "heading",
+          "text": "switch"
+        },
+        {
+          "type": "text",
+          "md": "`switch` compares a value with several cases and runs the first one that matches. A case can list several values. Go stops after the matching case, so you need no `break`. `default` runs when no case matches. A `switch` without a value checks conditions, like a chain of `if` and `else if`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    day := \"Sat\"\n    switch day {\n    case \"Sat\", \"Sun\":\n        fmt.Println(\"Weekend\")\n    default:\n        fmt.Println(\"Weekday\")\n    }\n    score := 72\n    switch {\n    case score >= 90:\n        fmt.Println(\"A\")\n    case score >= 70:\n        fmt.Println(\"B\")\n    default:\n        fmt.Println(\"C\")\n    }\n}",
+          "output": "Weekend\nB"
+        }
+      ],
+      "card": [
+        "`if x > 0 { } else { }` (no parentheses)",
+        "`if v := f(); v > 0 { }` runs a statement first",
+        "`for i := 0; i < 3; i++ { }` and `for cond { }`",
+        "`for i := range 3 { }` counts 0, 1, 2",
+        "`switch x { case 1, 2: ... default: ... }`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "control-1",
+          "prompt": "What does this print?",
+          "code": "x := 8\nif x > 10 {\n    fmt.Println(\"big\")\n} else if x > 5 {\n    fmt.Println(\"medium\")\n} else {\n    fmt.Println(\"small\")\n}",
+          "answers": [
+            "medium"
+          ],
+          "explain": "8 is not greater than 10, but it is greater than 5, so the `else if` branch runs."
+        },
+        {
+          "type": "input",
+          "id": "control-2",
+          "prompt": "What does this print?",
+          "code": "sum := 0\nfor i := 1; i <= 4; i++ {\n    sum += i\n}\nfmt.Println(sum)",
+          "answers": [
+            "10"
+          ],
+          "explain": "The loop adds 1, 2, 3 and 4. 1 + 2 + 3 + 4 is 10."
+        },
+        {
+          "type": "choice",
+          "id": "control-3",
+          "prompt": "How many lines does this print?",
+          "code": "for i := 10; i > 0; i -= 3 {\n    fmt.Println(i)\n}",
+          "options": [
+            "`4`",
+            "`3`",
+            "`10`",
+            "`0`"
+          ],
+          "answer": 0,
+          "explain": "`i` takes the values 10, 7, 4 and 1. The next value, -2, is not greater than 0."
+        },
+        {
+          "type": "choice",
+          "id": "control-4",
+          "prompt": "What does this print?",
+          "code": "x := 2\nswitch x {\ncase 1:\n    fmt.Println(\"one\")\ncase 2:\n    fmt.Println(\"two\")\ncase 3:\n    fmt.Println(\"three\")\n}",
+          "options": [
+            "`two`",
+            "`two` and `three`",
+            "`one`, `two` and `three`",
+            "Nothing"
+          ],
+          "answer": 0,
+          "explain": "Only the matching case runs. Go does not continue into the next case."
+        },
+        {
+          "type": "true_false",
+          "id": "control-5",
+          "statement": "This code compiles.",
+          "code": "if n := 5; n > 3 {\n    fmt.Println(\"yes\")\n}\nfmt.Println(n)",
+          "answer": false,
+          "explain": "`n` is created in the `if` statement, so it exists only inside the `if`. The last line cannot use it."
+        },
+        {
+          "type": "gap",
+          "id": "control-6",
+          "prompt": "Complete the loop so it prints 0, 1 and 2.",
+          "code": "for i := 0; i ___ 3; i++ {\n    fmt.Println(i)\n}",
+          "options": [
+            "<",
+            "<=",
+            ">",
+            "=="
+          ],
+          "answer": 0,
+          "explain": "The loop runs while `i < 3`, so for 0, 1 and 2. With `<=` it would also print 3."
+        },
+        {
+          "type": "gap",
+          "id": "control-7",
+          "prompt": "Complete the condition so the code prints `odd`.",
+          "code": "n := 7\nif n%2 ___ 0 {\n    fmt.Println(\"even\")\n} else {\n    fmt.Println(\"odd\")\n}",
+          "options": [
+            "==",
+            "!=",
+            "=",
+            ":="
+          ],
+          "answer": 0,
+          "explain": "7 % 2 is 1, so `n%2 == 0` is `false` and the `else` branch prints `odd`. A single `=` is an assignment, not a comparison."
+        },
+        {
+          "type": "blocks",
+          "id": "control-8",
+          "prompt": "Build the first line of a loop that runs while `n` is less than `100`.",
+          "tokens": [
+            "for",
+            "n",
+            "<",
+            "100",
+            "{"
+          ],
+          "distractors": [
+            "while",
+            "do"
+          ],
+          "explain": "Go has no `while`. A `for` with only a condition does the same job."
+        },
+        {
+          "type": "order",
+          "id": "control-9",
+          "prompt": "Put the lines in order so the program prints 0, 2 and 4.",
+          "lines": [
+            "for i := range 5 {",
+            "    if i%2 == 0 {",
+            "        fmt.Println(i)",
+            "    }",
+            "}"
+          ],
+          "explain": "The loop counts from 0 to 4, and the `if` inside the loop prints only the even numbers."
+        },
+        {
+          "type": "pairs",
+          "id": "control-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`for i := range 3`",
+              "repeats with i = 0, 1, 2"
+            ],
+            [
+              "`break`",
+              "ends the loop"
+            ],
+            [
+              "`continue`",
+              "jumps to the next round"
+            ],
+            [
+              "`default`",
+              "runs when no case matches"
+            ],
+            [
+              "`&&`",
+              "both conditions must be true"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "control-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "total := 0",
+            "for i := 1, i <= 5, i++ {",
+            "    if i == 3 {",
+            "        continue",
+            "    }",
+            "    total += i",
+            "}",
+            "fmt.Println(total)"
+          ],
+          "bug": 1,
+          "explain": "The three parts of a `for` loop are separated by semicolons: `for i := 1; i <= 5; i++ {`."
+        },
+        {
+          "type": "bug",
+          "id": "control-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "x := 4",
+            "y := 9",
+            "if x = 4 {",
+            "    fmt.Println(\"x is four\")",
+            "}",
+            "fmt.Println(y)"
+          ],
+          "bug": 2,
+          "explain": "A comparison needs two equals signs: `if x == 4 {`. A single `=` assigns a value."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Write your own functions with parameters, return one or more values, and accept any number of arguments.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** gives a piece of code a name. You define it with `func`, outside of `main`, and call it by its name. Each parameter has a name followed by its type."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc greet(name string) {\n    fmt.Println(\"Hello,\", name)\n}\n\nfunc main() {\n    greet(\"Ana\")\n    greet(\"Ben\")\n}",
+          "output": "Hello, Ana\nHello, Ben"
+        },
+        {
+          "type": "text",
+          "md": "The result type comes after the parentheses. `return` sends a value back to the caller. When parameters share a type, you write it once: `a, b int`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc add(a, b int) int {\n    return a + b\n}\n\nfunc main() {\n    sum := add(3, 4)\n    fmt.Println(sum)\n    fmt.Println(add(sum, 10))\n}",
+          "output": "7\n17"
+        },
+        {
+          "type": "warning",
+          "md": "Arguments must match the parameter types exactly. `add(2.5, 1)` does not compile, because `add` expects `int` values."
+        },
+        {
+          "type": "heading",
+          "text": "Multiple return values"
+        },
+        {
+          "type": "text",
+          "md": "A Go function can return several values. List their types in parentheses. The caller receives them with `q, r := divide(17, 5)`. The blank name `_` throws away a value you do not need."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc divide(a, b int) (int, int) {\n    return a / b, a % b\n}\n\nfunc main() {\n    q, r := divide(17, 5)\n    fmt.Println(q, r)\n    _, rest := divide(9, 4)\n    fmt.Println(rest)\n}",
+          "output": "3 2\n1"
+        },
+        {
+          "type": "tip",
+          "md": "The order of functions in a file does not matter. You can define `divide` below `main` and still call it from `main`."
+        },
+        {
+          "type": "heading",
+          "text": "Variadic functions"
+        },
+        {
+          "type": "text",
+          "md": "A **variadic** function accepts any number of values. Write `...` before the type of the last parameter. Inside the function, `nums` holds all the values, and `for _, n := range nums` visits each one. You learn more about this in the next world."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc total(nums ...int) int {\n    sum := 0\n    for _, n := range nums {\n        sum += n\n    }\n    return sum\n}\n\nfunc main() {\n    fmt.Println(total(1, 2, 3))\n    fmt.Println(total(10, 20))\n    fmt.Println(total())\n}",
+          "output": "6\n30\n0"
+        },
+        {
+          "type": "text",
+          "md": "You already know a variadic function: `fmt.Println` accepts any number of values. That is why `fmt.Println(1, \"a\", true)` works."
+        }
+      ],
+      "card": [
+        "`func add(a, b int) int { return a + b }`",
+        "`func f() (int, string)` returns two values",
+        "`q, r := divide(7, 2)`; `_` ignores a value",
+        "`func sum(nums ...int)` takes any number of ints"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "func double(n int) int {\n    return n * 2\n}\n\nfunc main() {\n    fmt.Println(double(double(3)))\n}",
+          "answers": [
+            "12"
+          ],
+          "explain": "`double(3)` is 6, and `double(6)` is 12."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print?",
+          "code": "func order(a, b int) (int, int) {\n    if a < b {\n        return a, b\n    }\n    return b, a\n}\n\nfunc main() {\n    lo, hi := order(9, 4)\n    fmt.Println(lo, hi)\n}",
+          "answers": [
+            "4 9"
+          ],
+          "explain": "9 is not less than 4, so the function returns `b, a`, which is 4 and 9."
+        },
+        {
+          "type": "choice",
+          "id": "functions-3",
+          "prompt": "Which line correctly starts a function that takes two `int` values and returns an `int`?",
+          "options": [
+            "`func sum(a int, b int) int {`",
+            "`func sum(int a, int b) int {`",
+            "`int sum(a, b int) {`",
+            "`func sum(a, b) int {`"
+          ],
+          "answer": 0,
+          "explain": "In Go the type comes after the parameter name, and the result type comes after the parentheses."
+        },
+        {
+          "type": "choice",
+          "id": "functions-4",
+          "prompt": "What does this print?",
+          "code": "func info() (string, int) {\n    return \"Go\", 2009\n}\n\nfunc main() {\n    _, year := info()\n    fmt.Println(year)\n}",
+          "options": [
+            "`2009`",
+            "`Go`",
+            "`Go 2009`",
+            "Nothing, it does not compile"
+          ],
+          "answer": 0,
+          "explain": "`_` throws away the first result, so `year` gets the second one."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-5",
+          "statement": "This function compiles.",
+          "code": "func half(n int) int {\n    fmt.Println(n / 2)\n}",
+          "answer": false,
+          "explain": "The function promises an `int` result but has no `return`. Go reports a missing return."
+        },
+        {
+          "type": "gap",
+          "id": "functions-6",
+          "prompt": "Complete the function so it returns two values.",
+          "code": "func split(total int) ___ {\n    return total / 2, total % 2\n}",
+          "options": [
+            "(int, int)",
+            "int, int",
+            "int",
+            "[int, int]"
+          ],
+          "answer": 0,
+          "explain": "Several result types go in parentheses: `(int, int)`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-7",
+          "prompt": "Complete the function so it accepts any number of names.",
+          "code": "func show(names ___) {\n    for _, n := range names {\n        fmt.Println(n)\n    }\n}",
+          "options": [
+            "...string",
+            "string...",
+            "string",
+            "..string"
+          ],
+          "answer": 0,
+          "explain": "A variadic parameter has three dots before its type: `names ...string`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-8",
+          "prompt": "Declare `q` and `r` and store the two results of `divide(17, 5)` in them.",
+          "tokens": [
+            "q,",
+            "r",
+            ":=",
+            "divide(17,",
+            "5)"
+          ],
+          "distractors": [
+            "=",
+            "return"
+          ],
+          "explain": "`:=` declares both new variables, and each one gets one of the two results."
+        },
+        {
+          "type": "order",
+          "id": "functions-9",
+          "prompt": "Put the lines in order so `countdown(3)` prints 3, 2, 1 and then Go!",
+          "lines": [
+            "func countdown(n int) {",
+            "    for n > 0 {",
+            "        fmt.Println(n)",
+            "        n--",
+            "    }",
+            "    fmt.Println(\"Go!\")",
+            "}"
+          ],
+          "explain": "The loop prints `n` and then makes it smaller. After the loop ends, the function prints `Go!`."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`func`",
+              "starts a function definition"
+            ],
+            [
+              "`return`",
+              "sends a value back to the caller"
+            ],
+            [
+              "`_`",
+              "throws away a value"
+            ],
+            [
+              "`...int`",
+              "any number of int values"
+            ],
+            [
+              "`(int, int)`",
+              "two result values"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "functions-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "func add(a int, b int) int {",
+            "    return a + b",
+            "}",
+            "func main() {",
+            "    result := add(2, \"3\")",
+            "    fmt.Println(result)",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "`\"3\"` is a string, but `add` expects an `int`. Write `add(2, 3)`."
+        },
+        {
+          "type": "bug",
+          "id": "functions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "func pair() (int, int) {",
+            "    return 1, 2",
+            "}",
+            "func main() {",
+            "    a := pair()",
+            "    fmt.Println(a)",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "`pair` returns two values, so you need two names on the left, for example `a, _ := pair()`."
+        }
+      ]
+    },
+    {
+      "id": "slices",
+      "title": "Slices and maps",
+      "chapter": "Data",
+      "summary": "Keep many values in arrays, slices and maps: add, read, loop over and delete elements.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** has a fixed length that is part of its type: `[3]int` holds exactly three `int` values. A **slice** like `[]string` has no fixed length and can grow. You read an element by its index, and the first index is `0`. `len` gives the number of elements."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    nums := [3]int{10, 20, 30}\n    nums[1] = 25\n    fmt.Println(nums, len(nums))\n    fruits := []string{\"apple\", \"banana\"}\n    fmt.Println(fruits[0], len(fruits))\n}",
+          "output": "[10 25 30] 3\napple 2"
+        },
+        {
+          "type": "text",
+          "md": "`append` adds values to a slice and returns the new slice, so you assign the result back. `s[1:3]` takes the elements from index `1` up to, but not including, index `3`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    var names []string\n    names = append(names, \"Ada\")\n    names = append(names, \"Bob\", \"Cy\")\n    fmt.Println(names, len(names))\n    fmt.Println(names[1:3])\n}",
+          "output": "[Ada Bob Cy] 3\n[Bob Cy]"
+        },
+        {
+          "type": "warning",
+          "md": "An index that does not exist stops the program with a **panic** (a run-time error). With three elements, `names[3]` panics, because the last index is `2`."
+        },
+        {
+          "type": "heading",
+          "text": "Looping with range"
+        },
+        {
+          "type": "text",
+          "md": "`for i, v := range s` visits every element: `i` is the index and `v` the value. Write `_` instead of `i` when you do not need the index."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    prices := []float64{1.5, 2.25, 4}\n    total := 0.0\n    for i, p := range prices {\n        fmt.Println(i, p)\n        total += p\n    }\n    fmt.Println(\"Total:\", total)\n}",
+          "output": "0 1.5\n1 2.25\n2 4\nTotal: 7.75"
+        },
+        {
+          "type": "heading",
+          "text": "Maps"
+        },
+        {
+          "type": "text",
+          "md": "A **map** stores pairs of keys and values. `map[string]int` has `string` keys and `int` values. `m[key] = value` adds a pair or changes it, `delete(m, key)` removes it, and `len(m)` counts the pairs."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    ages := map[string]int{\"Ana\": 31}\n    ages[\"Ben\"] = 25\n    ages[\"Ana\"] = 32\n    fmt.Println(ages[\"Ana\"], len(ages))\n    delete(ages, \"Ben\")\n    fmt.Println(ages)\n}",
+          "output": "32 2\nmap[Ana:32]"
+        },
+        {
+          "type": "text",
+          "md": "`make(map[string]int)` creates an empty map. Reading a missing key gives the zero value. To find out if a key exists, read two values: `v, ok := m[key]`. `ok` is `true` only when the key is in the map."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    stock := make(map[string]int)\n    stock[\"pens\"] = 0\n    fmt.Println(stock[\"pens\"], stock[\"cups\"])\n    if n, ok := stock[\"cups\"]; ok {\n        fmt.Println(\"cups:\", n)\n    } else {\n        fmt.Println(\"no cups\")\n    }\n    _, ok := stock[\"pens\"]\n    fmt.Println(ok)\n}",
+          "output": "0 0\nno cups\ntrue"
+        },
+        {
+          "type": "tip",
+          "md": "`for k, v := range m` loops over a map, but the order changes from run to run. `fmt.Println` prints maps with sorted keys. A map declared with `var m map[string]int` is `nil`, and writing to it panics, so create maps with `make` or `{}`."
+        }
+      ],
+      "card": [
+        "`s := []int{1, 2}`; `s = append(s, 3)`",
+        "`len(s)`, `s[0]`, `s[1:3]`",
+        "`for i, v := range s { }`",
+        "`m := map[string]int{}`; `m[\"a\"] = 1`; `delete(m, \"a\")`",
+        "`v, ok := m[key]` checks if a key exists"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "slices-1",
+          "prompt": "What does this print?",
+          "code": "s := []int{4, 8, 15}\ns = append(s, 16)\nfmt.Println(len(s), s[3])",
+          "answers": [
+            "4 16"
+          ],
+          "explain": "After `append` the slice has 4 elements, and the new value 16 has index 3."
+        },
+        {
+          "type": "choice",
+          "id": "slices-2",
+          "prompt": "What does this print?",
+          "code": "letters := []string{\"a\", \"b\", \"c\", \"d\", \"e\"}\nfmt.Println(letters[1:4])",
+          "options": [
+            "`[b c d]`",
+            "`[b c d e]`",
+            "`[a b c d]`",
+            "`[c d e]`"
+          ],
+          "answer": 0,
+          "explain": "`[1:4]` starts at index 1 (`b`) and stops before index 4 (`e`)."
+        },
+        {
+          "type": "choice",
+          "id": "slices-3",
+          "prompt": "What does this print?",
+          "code": "m := map[string]int{\"x\": 1}\nm[\"y\"] = 2\nm[\"x\"] = 5\nfmt.Println(m[\"x\"] + m[\"y\"] + m[\"z\"])",
+          "options": [
+            "`7`",
+            "`8`",
+            "It panics because `z` is missing",
+            "It does not compile"
+          ],
+          "answer": 0,
+          "explain": "`x` is now 5 and `y` is 2. The missing key `z` gives the zero value 0, so the sum is 7."
+        },
+        {
+          "type": "true_false",
+          "id": "slices-4",
+          "statement": "`append(s, 5)` changes `s` directly, so you do not need to use its result.",
+          "answer": false,
+          "explain": "`append` returns the new slice. You must assign it: `s = append(s, 5)`. Go does not even compile a call whose result is not used."
+        },
+        {
+          "type": "input",
+          "id": "slices-5",
+          "prompt": "What does this print?",
+          "code": "m := map[string]bool{\"a\": true}\n_, ok := m[\"b\"]\nfmt.Println(ok, len(m))",
+          "answers": [
+            "false 1"
+          ],
+          "explain": "The key `b` is not in the map, so `ok` is `false`. The map has one pair."
+        },
+        {
+          "type": "gap",
+          "id": "slices-6",
+          "prompt": "Complete the code so it removes `Ana` from the map and prints 0.",
+          "code": "ages := map[string]int{\"Ana\": 31}\n___(ages, \"Ana\")\nfmt.Println(len(ages))",
+          "options": [
+            "delete",
+            "remove",
+            "drop",
+            "pop"
+          ],
+          "answer": 0,
+          "explain": "The built-in function `delete(m, key)` removes a key from a map."
+        },
+        {
+          "type": "gap",
+          "id": "slices-7",
+          "prompt": "Complete the loop so it adds up the values (the result is 15).",
+          "code": "nums := []int{3, 5, 7}\nsum := 0\nfor ___ := range nums {\n    sum += n\n}\nfmt.Println(sum)",
+          "options": [
+            "_, n",
+            "n",
+            "n, _",
+            "i, n"
+          ],
+          "answer": 0,
+          "explain": "`range` gives the index first and the value second. `_, n` skips the index and keeps the value."
+        },
+        {
+          "type": "blocks",
+          "id": "slices-8",
+          "prompt": "Build the line that adds `\"kiwi\"` to the slice `fruits`.",
+          "tokens": [
+            "fruits",
+            "=",
+            "append(fruits,",
+            "\"kiwi\")"
+          ],
+          "distractors": [
+            ":=",
+            "push(fruits,"
+          ],
+          "explain": "`append` returns the longer slice, and you assign it back to `fruits` with `=`."
+        },
+        {
+          "type": "order",
+          "id": "slices-9",
+          "prompt": "Put the lines in order so the program counts how often each word appears.",
+          "lines": [
+            "counts := map[string]int{}",
+            "for _, w := range words {",
+            "    counts[w]++",
+            "}",
+            "fmt.Println(counts)"
+          ],
+          "explain": "First create the empty map, then add 1 for each word in the loop, and print the map after the loop."
+        },
+        {
+          "type": "pairs",
+          "id": "slices-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`len(s)`",
+              "number of elements"
+            ],
+            [
+              "`append(s, x)`",
+              "returns s with x added"
+            ],
+            [
+              "`delete(m, k)`",
+              "removes a key from a map"
+            ],
+            [
+              "`[3]int`",
+              "array with a fixed length of 3"
+            ],
+            [
+              "`make(map[string]int)`",
+              "creates an empty map"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "slices-11",
+          "prompt": "This program panics. Which line has the bug?",
+          "lines": [
+            "nums := []int{1, 2, 3}",
+            "for i := 0; i <= len(nums); i++ {",
+            "    fmt.Println(nums[i])",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "The last index is `len(nums) - 1`. Use `i < len(nums)`, otherwise `nums[3]` panics."
+        },
+        {
+          "type": "bug",
+          "id": "slices-12",
+          "prompt": "This program panics. Which line must you change?",
+          "lines": [
+            "var scores map[string]int",
+            "scores[\"Ana\"] = 90",
+            "scores[\"Ben\"] = 70",
+            "fmt.Println((scores[\"Ana\"] + scores[\"Ben\"]) / len(scores))"
+          ],
+          "bug": 0,
+          "explain": "A map declared with `var` is `nil`, and writing to it panics. Create it with `scores := map[string]int{}`."
+        }
+      ]
+    },
+    {
+      "id": "structs",
+      "title": "Structs and methods",
+      "chapter": "Types",
+      "summary": "Group data in your own struct types and add methods with value and pointer receivers.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **struct** groups several values, called **fields**, into one new type. You define it with `type Name struct { ... }`, create a value with `Book{Title: \"Go Basics\", Pages: 120}` and reach a field with a dot: `b.Title`. The verb `%+v` prints a struct with its field names."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\ntype Book struct {\n    Title string\n    Pages int\n}\n\nfunc main() {\n    b := Book{Title: \"Go Basics\", Pages: 120}\n    fmt.Println(b.Title, b.Pages)\n    b.Pages = 150\n    fmt.Println(b)\n    fmt.Printf(\"%+v\\n\", b)\n}",
+          "output": "Go Basics 120\n{Go Basics 150}\n{Title:Go Basics Pages:150}"
+        },
+        {
+          "type": "text",
+          "md": "Fields that you do not set get their zero value. Fields of the same type can share one line: `X, Y int`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\ntype Point struct {\n    X, Y int\n}\n\nfunc main() {\n    var p Point\n    q := Point{X: 3}\n    fmt.Println(p, q)\n}",
+          "output": "{0 0} {3 0}"
+        },
+        {
+          "type": "heading",
+          "text": "Methods"
+        },
+        {
+          "type": "text",
+          "md": "A **method** is a function that belongs to a type. It has a **receiver** in parentheses before its name: `func (r Rect) Area() float64`. You call it with a dot: `r.Area()`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\ntype Rect struct {\n    Width, Height float64\n}\n\nfunc (r Rect) Area() float64 {\n    return r.Width * r.Height\n}\n\nfunc main() {\n    r := Rect{Width: 3, Height: 4.5}\n    fmt.Println(r.Area())\n}",
+          "output": "13.5"
+        },
+        {
+          "type": "heading",
+          "text": "Pointer receivers"
+        },
+        {
+          "type": "text",
+          "md": "A **value receiver** like `(c Counter)` gets a copy, so its changes are lost. A **pointer receiver** like `(c *Counter)` works on the original value and can change it. When you call `c.Inc()` on a variable, Go passes the pointer for you."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\ntype Counter struct {\n    Count int\n}\n\nfunc (c Counter) IncCopy() {\n    c.Count++\n}\n\nfunc (c *Counter) Inc() {\n    c.Count++\n}\n\nfunc main() {\n    c := Counter{}\n    c.IncCopy()\n    fmt.Println(c.Count)\n    c.Inc()\n    c.Inc()\n    fmt.Println(c.Count)\n}",
+          "output": "0\n2"
+        },
+        {
+          "type": "text",
+          "md": "`&` gives the address of a value, which is a **pointer**. `&Player{Name: \"Ana\"}` has the type `*Player`. You use the same dot to reach fields and methods through a pointer."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\ntype Player struct {\n    Name  string\n    Score int\n}\n\nfunc (p *Player) AddPoints(n int) {\n    p.Score += n\n}\n\nfunc main() {\n    ana := &Player{Name: \"Ana\"}\n    ana.AddPoints(5)\n    ana.AddPoints(3)\n    fmt.Println(ana.Name, ana.Score)\n}",
+          "output": "Ana 8"
+        },
+        {
+          "type": "tip",
+          "md": "A good rule: use a pointer receiver when the method changes the struct. If one method of a type needs a pointer receiver, give all its methods pointer receivers."
+        }
+      ],
+      "card": [
+        "`type Point struct { X, Y int }`",
+        "`p := Point{X: 1, Y: 2}`; `p.X`",
+        "`func (r Rect) Area() float64`: value receiver (a copy)",
+        "`func (c *Counter) Inc()`: pointer receiver (can change)",
+        "`%+v` prints field names"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "structs-1",
+          "prompt": "What does this print?",
+          "code": "type Dog struct {\n    Name string\n    Age  int\n}\n\nfunc main() {\n    d := Dog{Name: \"Rex\", Age: 3}\n    d.Age++\n    fmt.Println(d.Name, d.Age)\n}",
+          "answers": [
+            "Rex 4"
+          ],
+          "explain": "`d.Age++` adds 1 to the field `Age`, so 3 becomes 4."
+        },
+        {
+          "type": "input",
+          "id": "structs-2",
+          "prompt": "What does this print?",
+          "code": "type Box struct {\n    W, H int\n}\n\nfunc main() {\n    b := Box{W: 2}\n    fmt.Println(b)\n}",
+          "answers": [
+            "{2 0}"
+          ],
+          "explain": "`H` is not set, so it has the zero value 0. `Println` prints the fields in braces."
+        },
+        {
+          "type": "choice",
+          "id": "structs-3",
+          "prompt": "What does this print?",
+          "code": "type Lamp struct {\n    On bool\n}\n\nfunc (l Lamp) Switch() {\n    l.On = !l.On\n}\n\nfunc main() {\n    l := Lamp{}\n    l.Switch()\n    fmt.Println(l.On)\n}",
+          "options": [
+            "`false`",
+            "`true`",
+            "It does not compile",
+            "`{true}`"
+          ],
+          "answer": 0,
+          "explain": "`Switch` has a value receiver, so it changes a copy. The original `l.On` stays `false`."
+        },
+        {
+          "type": "choice",
+          "id": "structs-4",
+          "prompt": "Which method can change the fields of the original `Account`?",
+          "options": [
+            "`func (a *Account) Deposit(n int)`",
+            "`func (a Account) Deposit(n int)`",
+            "`func Deposit(a Account, n int)`",
+            "`func (Account) Deposit(n int)`"
+          ],
+          "answer": 0,
+          "explain": "Only a pointer receiver works on the original value. The other forms get a copy."
+        },
+        {
+          "type": "true_false",
+          "id": "structs-5",
+          "statement": "`fmt.Printf(\"%+v\\n\", p)` prints the struct `p` together with its field names.",
+          "answer": true,
+          "explain": "`%v` prints only the values, `%+v` adds the field names, for example `{X:1 Y:2}`."
+        },
+        {
+          "type": "gap",
+          "id": "structs-6",
+          "prompt": "Complete the receiver so the program prints 10.",
+          "code": "type Wallet struct {\n    Money int\n}\n\nfunc (w ___) Add(n int) {\n    w.Money += n\n}\n\nfunc main() {\n    w := Wallet{}\n    w.Add(10)\n    fmt.Println(w.Money)\n}",
+          "options": [
+            "*Wallet",
+            "Wallet",
+            "&Wallet",
+            "Wallet*"
+          ],
+          "answer": 0,
+          "explain": "With the pointer receiver `*Wallet`, `Add` changes the original wallet. With `Wallet` it would change a copy and print 0."
+        },
+        {
+          "type": "gap",
+          "id": "structs-7",
+          "prompt": "Complete the line so it creates a `City`.",
+          "code": "type City struct {\n    Name string\n    Pop  int\n}\n\nfunc main() {\n    c := City___\n    fmt.Println(c.Name, c.Pop)\n}",
+          "options": [
+            "{Name: \"Oslo\", Pop: 700000}",
+            "(Name: \"Oslo\", Pop: 700000)",
+            "{Name = \"Oslo\", Pop = 700000}",
+            "[\"Oslo\", 700000]"
+          ],
+          "answer": 0,
+          "explain": "A struct value is written with braces, and each field with `Name: value`."
+        },
+        {
+          "type": "blocks",
+          "id": "structs-8",
+          "prompt": "Build the first line of the method `Area` on `Square` that returns a `float64`.",
+          "tokens": [
+            "func",
+            "(s Square)",
+            "Area()",
+            "float64",
+            "{"
+          ],
+          "distractors": [
+            "(Square s)",
+            "Square.Area()"
+          ],
+          "explain": "First `func`, then the receiver in parentheses, then the method name, the result type and the brace."
+        },
+        {
+          "type": "order",
+          "id": "structs-9",
+          "prompt": "`Birthday` adds 1 to `Age`. Put the lines in order so the program prints `{Sam 31}`.",
+          "lines": [
+            "u := User{Name: \"Sam\"}",
+            "u.Age = 30",
+            "u.Birthday()",
+            "fmt.Println(u)"
+          ],
+          "explain": "Create the user, set the age to 30, then `Birthday` makes it 31. In the other order the age would end as 30."
+        },
+        {
+          "type": "pairs",
+          "id": "structs-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`type T struct { }`",
+              "defines a new struct type"
+            ],
+            [
+              "`p.X`",
+              "reads a field"
+            ],
+            [
+              "`&p`",
+              "the address of p (a pointer)"
+            ],
+            [
+              "`func (t T) M()`",
+              "method with a value receiver"
+            ],
+            [
+              "`func (t *T) M()`",
+              "method with a pointer receiver"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "structs-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "type Car struct {",
+            "    Brand string",
+            "    Speed int",
+            "}",
+            "func (c *Car) Faster() {",
+            "    c.speed += 10",
+            "}",
+            "func main() {",
+            "    c := Car{Brand: \"Volvo\"}",
+            "    c.Faster()",
+            "    fmt.Println(c.Speed)",
+            "}"
+          ],
+          "bug": 5,
+          "explain": "Go is case sensitive. The field is called `Speed`: write `c.Speed += 10`."
+        },
+        {
+          "type": "bug",
+          "id": "structs-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "type Point {",
+            "    X, Y int",
+            "}",
+            "func main() {",
+            "    p := Point{X: 1, Y: 2}",
+            "    fmt.Println(p.X + p.Y)",
+            "}"
+          ],
+          "bug": 0,
+          "explain": "The keyword `struct` is missing. Write `type Point struct {`."
+        }
+      ]
+    },
+    {
+      "id": "interfaces",
+      "title": "Interfaces",
+      "chapter": "Types",
+      "summary": "Describe behavior with interfaces, make your types printable with fmt.Stringer and check types with a type switch.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **interface** is a list of methods. Every type that has these methods satisfies the interface automatically. There is no `implements` keyword. A slice of an interface type can hold values of different types."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\ntype Shape interface {\n    Area() float64\n}\n\ntype Rect struct {\n    W, H float64\n}\n\ntype Square struct {\n    Side float64\n}\n\nfunc (r Rect) Area() float64 {\n    return r.W * r.H\n}\n\nfunc (s Square) Area() float64 {\n    return s.Side * s.Side\n}\n\nfunc main() {\n    shapes := []Shape{Rect{W: 2, H: 3}, Square{Side: 4}}\n    total := 0.0\n    for _, s := range shapes {\n        fmt.Println(s.Area())\n        total += s.Area()\n    }\n    fmt.Println(\"Total:\", total)\n}",
+          "output": "6\n16\nTotal: 22"
+        },
+        {
+          "type": "text",
+          "md": "A function with an interface parameter accepts every type that satisfies the interface. The function only uses the methods of the interface."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\ntype Speaker interface {\n    Speak() string\n}\n\ntype Dog struct{}\n\ntype Robot struct {\n    Model string\n}\n\nfunc (d Dog) Speak() string {\n    return \"Woof\"\n}\n\nfunc (r Robot) Speak() string {\n    return \"Beep from \" + r.Model\n}\n\nfunc introduce(s Speaker) {\n    fmt.Println(s.Speak())\n}\n\nfunc main() {\n    introduce(Dog{})\n    introduce(Robot{Model: \"R2\"})\n}",
+          "output": "Woof\nBeep from R2"
+        },
+        {
+          "type": "warning",
+          "md": "A method with a pointer receiver belongs to the pointer type only. If `Speak` had the receiver `*Dog`, then `&Dog{}` would satisfy `Speaker`, but `Dog{}` would not."
+        },
+        {
+          "type": "heading",
+          "text": "fmt.Stringer"
+        },
+        {
+          "type": "text",
+          "md": "The `fmt` package defines the interface `fmt.Stringer` with one method: `String() string`. When your type has this method, `fmt.Println` and `%v` use it. `fmt.Sprintf` works like `Printf`, but it returns the text instead of printing it."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\ntype Person struct {\n    Name string\n    Age  int\n}\n\nfunc (p Person) String() string {\n    return fmt.Sprintf(\"%s (%d)\", p.Name, p.Age)\n}\n\nfunc main() {\n    p := Person{Name: \"Ana\", Age: 31}\n    fmt.Println(p)\n    fmt.Printf(\"Hello, %v!\\n\", p)\n    var s fmt.Stringer = p\n    fmt.Println(s.String())\n}",
+          "output": "Ana (31)\nHello, Ana (31)!\nAna (31)"
+        },
+        {
+          "type": "heading",
+          "text": "Type switches"
+        },
+        {
+          "type": "text",
+          "md": "The type `any` has no methods, so it can hold a value of any type. A **type switch** `switch v := x.(type)` checks which type the value really has. Inside each case, `v` has the type of that case."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc describe(x any) string {\n    switch v := x.(type) {\n    case int:\n        return fmt.Sprintf(\"int %d\", v*2)\n    case string:\n        return \"string \" + v\n    case bool:\n        return \"bool\"\n    default:\n        return fmt.Sprintf(\"other %T\", v)\n    }\n}\n\nfunc main() {\n    fmt.Println(describe(21))\n    fmt.Println(describe(\"hi\"))\n    fmt.Println(describe(true))\n    fmt.Println(describe(2.5))\n}",
+          "output": "int 42\nstring hi\nbool\nother float64"
+        },
+        {
+          "type": "text",
+          "md": "To check for one single type, use a **type assertion** with two results: `s, ok := x.(string)`. If `x` holds a `string`, `ok` is `true`. Otherwise `ok` is `false` and `s` gets the zero value."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    var x any = \"hello\"\n    s, ok := x.(string)\n    fmt.Println(s, ok)\n    n, ok := x.(int)\n    fmt.Println(n, ok)\n}",
+          "output": "hello true\n0 false"
+        },
+        {
+          "type": "tip",
+          "md": "Keep interfaces small. Many useful interfaces in Go have only one method, like `fmt.Stringer`."
+        }
+      ],
+      "card": [
+        "`type Shape interface { Area() float64 }`",
+        "A type satisfies an interface by having its methods (no `implements`)",
+        "`String() string` makes a type a `fmt.Stringer`",
+        "`switch v := x.(type) { case int: ... }`",
+        "`s, ok := x.(string)` is a type assertion"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "interfaces-1",
+          "prompt": "What does this print?",
+          "code": "type Animal interface {\n    Sound() string\n}\n\ntype Cat struct{}\n\nfunc (c Cat) Sound() string {\n    return \"Meow\"\n}\n\nfunc main() {\n    var a Animal = Cat{}\n    fmt.Println(a.Sound())\n}",
+          "answers": [
+            "Meow"
+          ],
+          "explain": "`Cat` has the method `Sound() string`, so it satisfies `Animal`. The call runs the method of `Cat`."
+        },
+        {
+          "type": "input",
+          "id": "interfaces-2",
+          "prompt": "What does this print?",
+          "code": "type Point struct {\n    X, Y int\n}\n\nfunc (p Point) String() string {\n    return fmt.Sprintf(\"(%d|%d)\", p.X, p.Y)\n}\n\nfunc main() {\n    fmt.Println(Point{X: 2, Y: 5})\n}",
+          "answers": [
+            "(2|5)"
+          ],
+          "explain": "`Point` has a `String` method, so `fmt.Println` uses it instead of printing `{2 5}`."
+        },
+        {
+          "type": "choice",
+          "id": "interfaces-3",
+          "prompt": "What does this print?",
+          "code": "func kind(x any) string {\n    switch x.(type) {\n    case int:\n        return \"number\"\n    case string:\n        return \"text\"\n    default:\n        return \"unknown\"\n    }\n}\n\nfunc main() {\n    fmt.Println(kind(3.5))\n}",
+          "options": [
+            "`unknown`",
+            "`number`",
+            "`text`",
+            "It does not compile"
+          ],
+          "answer": 0,
+          "explain": "`3.5` is a `float64`, not an `int` or a `string`, so the `default` case runs."
+        },
+        {
+          "type": "choice",
+          "id": "interfaces-4",
+          "prompt": "How does a type satisfy an interface in Go?",
+          "options": [
+            "It has all the methods that the interface lists",
+            "It declares `implements` and the interface name",
+            "It calls a function that registers it",
+            "It is defined in the same file as the interface"
+          ],
+          "answer": 0,
+          "explain": "Go checks the methods automatically. There is no `implements` keyword."
+        },
+        {
+          "type": "true_false",
+          "id": "interfaces-5",
+          "statement": "This program compiles.",
+          "code": "type Walker interface {\n    Walk() string\n}\n\ntype Duck struct{}\n\nfunc (d *Duck) Walk() string {\n    return \"waddle\"\n}\n\nfunc main() {\n    var w Walker = Duck{}\n    fmt.Println(w.Walk())\n}",
+          "answer": false,
+          "explain": "`Walk` has the pointer receiver `*Duck`, so only `*Duck` satisfies `Walker`. `var w Walker = &Duck{}` would work."
+        },
+        {
+          "type": "gap",
+          "id": "interfaces-6",
+          "prompt": "Complete the method so `English` satisfies `Greeter`.",
+          "code": "type Greeter interface {\n    Greet() string\n}\n\ntype English struct{}\n\nfunc (e English) ___ {\n    return \"Hello\"\n}\n\nfunc main() {\n    var g Greeter = English{}\n    fmt.Println(g.Greet())\n}",
+          "options": [
+            "Greet() string",
+            "Greet()",
+            "Greet() int",
+            "Greeter() string"
+          ],
+          "answer": 0,
+          "explain": "The method must have exactly the name and result type from the interface: `Greet() string`."
+        },
+        {
+          "type": "gap",
+          "id": "interfaces-7",
+          "prompt": "Complete the type switch.",
+          "code": "var x any = 42\nswitch v := x.___ {\ncase int:\n    fmt.Println(\"int\", v)\ncase string:\n    fmt.Println(\"string\", v)\n}",
+          "options": [
+            "(type)",
+            "type()",
+            "(kind)",
+            "Type()"
+          ],
+          "answer": 0,
+          "explain": "A type switch uses the special form `x.(type)`. It only works inside a `switch`."
+        },
+        {
+          "type": "blocks",
+          "id": "interfaces-8",
+          "prompt": "Build the line that checks whether `x` holds a `string`.",
+          "tokens": [
+            "s,",
+            "ok",
+            ":=",
+            "x.(string)"
+          ],
+          "distractors": [
+            "x.(type)",
+            "string(x)"
+          ],
+          "explain": "A type assertion with two results: the value and `ok`, which tells you if `x` really holds a `string`."
+        },
+        {
+          "type": "order",
+          "id": "interfaces-9",
+          "prompt": "Put the lines in order so the program prints `Woof` and then `Tweet`.",
+          "lines": [
+            "var list []Animal",
+            "list = append(list, Dog{})",
+            "list = append(list, Bird{})",
+            "for _, a := range list {",
+            "    fmt.Println(a.Sound())",
+            "}"
+          ],
+          "explain": "Declare the slice first, add the dog before the bird, then loop over the slice and call `Sound` on each animal."
+        },
+        {
+          "type": "pairs",
+          "id": "interfaces-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`interface { M() }`",
+              "a list of methods"
+            ],
+            [
+              "`any`",
+              "can hold a value of any type"
+            ],
+            [
+              "`x.(string)`",
+              "type assertion"
+            ],
+            [
+              "`x.(type)`",
+              "used in a type switch"
+            ],
+            [
+              "`String() string`",
+              "the method of `fmt.Stringer`"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "interfaces-11",
+          "prompt": "The program should print 7, but it panics. Which line has the bug?",
+          "lines": [
+            "var x any = 3.5",
+            "f := x.(int)",
+            "fmt.Println(f * 2)"
+          ],
+          "bug": 1,
+          "explain": "`x` holds a `float64`, so the assertion to `int` panics. Write `f := x.(float64)`."
+        },
+        {
+          "type": "bug",
+          "id": "interfaces-12",
+          "prompt": "The program should print `20 C`, but it prints `{20}`. Which line has the bug?",
+          "lines": [
+            "type Temp struct {",
+            "    C int",
+            "}",
+            "func (t Temp) string() string {",
+            "    return fmt.Sprintf(\"%d C\", t.C)",
+            "}",
+            "func main() {",
+            "    fmt.Println(Temp{C: 20})",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "`fmt.Stringer` needs a method called `String` with a capital S: `func (t Temp) String() string {`."
+        }
+      ]
+    },
+    {
+      "id": "errors",
+      "title": "Errors",
+      "chapter": "Errors",
+      "summary": "Handle errors the Go way: check if err != nil, create errors with errors.New and fmt.Errorf, and return them.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "In Go an error is a normal value of the type `error`. A function that can fail returns an `error` as its **last** result. The value `nil` means that there was no error. `strconv.Atoi` converts text to an `int` and returns such an error."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport (\n    \"fmt\"\n    \"strconv\"\n)\n\nfunc main() {\n    n, err := strconv.Atoi(\"42\")\n    fmt.Println(n, err)\n    _, err = strconv.Atoi(\"abc\")\n    fmt.Println(err)\n}",
+          "output": "42 <nil>\nstrconv.Atoi: parsing \"abc\": invalid syntax"
+        },
+        {
+          "type": "text",
+          "md": "Check the error right after the call with `if err != nil`. Handle the problem there, for example with `continue` or `return`. The normal code continues after the `if`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport (\n    \"fmt\"\n    \"strconv\"\n)\n\nfunc main() {\n    inputs := []string{\"10\", \"x\", \"7\"}\n    sum := 0\n    for _, s := range inputs {\n        n, err := strconv.Atoi(s)\n        if err != nil {\n            fmt.Println(\"skip:\", s)\n            continue\n        }\n        sum += n\n    }\n    fmt.Println(\"sum:\", sum)\n}",
+          "output": "skip: x\nsum: 17"
+        },
+        {
+          "type": "warning",
+          "md": "When `err` is not `nil`, the other results usually hold zero values. Do not use them before you have checked the error."
+        },
+        {
+          "type": "heading",
+          "text": "Creating errors"
+        },
+        {
+          "type": "text",
+          "md": "`errors.New` creates an error with a fixed message. Your function returns it as the last value, and returns `nil` when everything works. Error messages start with a lowercase letter and have no period at the end."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport (\n    \"errors\"\n    \"fmt\"\n)\n\nfunc divide(a, b int) (int, error) {\n    if b == 0 {\n        return 0, errors.New(\"division by zero\")\n    }\n    return a / b, nil\n}\n\nfunc main() {\n    if q, err := divide(10, 2); err == nil {\n        fmt.Println(\"result:\", q)\n    }\n    _, err := divide(1, 0)\n    if err != nil {\n        fmt.Println(\"error:\", err)\n    }\n}",
+          "output": "result: 5\nerror: division by zero"
+        },
+        {
+          "type": "text",
+          "md": "`fmt.Errorf` builds the message with verbs, like `fmt.Sprintf`, and returns an `error`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"fmt\"\n\nfunc checkAge(age int) error {\n    if age < 0 {\n        return fmt.Errorf(\"invalid age %d\", age)\n    }\n    return nil\n}\n\nfunc main() {\n    fmt.Println(checkAge(30))\n    fmt.Println(checkAge(-5))\n}",
+          "output": "<nil>\ninvalid age -5"
+        },
+        {
+          "type": "heading",
+          "text": "Returning errors"
+        },
+        {
+          "type": "text",
+          "md": "Often a function cannot fix an error itself. It returns the error to its caller and adds context with the verb `%w`, which wraps the original error. `errors.Is(err, target)` checks if `err` is `target` or wraps it."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport (\n    \"errors\"\n    \"fmt\"\n)\n\nvar ErrNotFound = errors.New(\"not found\")\n\nfunc findUser(id int) (string, error) {\n    if id == 1 {\n        return \"Ana\", nil\n    }\n    return \"\", ErrNotFound\n}\n\nfunc greet(id int) error {\n    name, err := findUser(id)\n    if err != nil {\n        return fmt.Errorf(\"greet user %d: %w\", id, err)\n    }\n    fmt.Println(\"Hello,\", name)\n    return nil\n}\n\nfunc main() {\n    if err := greet(1); err != nil {\n        fmt.Println(err)\n    }\n    err := greet(7)\n    fmt.Println(err)\n    fmt.Println(errors.Is(err, ErrNotFound))\n}",
+          "output": "Hello, Ana\ngreet user 7: not found\ntrue"
+        },
+        {
+          "type": "tip",
+          "md": "Handle each error once: either print it, or return it to the caller. Doing both prints the same problem twice."
+        }
+      ],
+      "card": [
+        "`func f() (int, error)`: the error is the last result",
+        "`if err != nil { return err }`",
+        "`errors.New(\"msg\")` creates an error",
+        "`fmt.Errorf(\"load %s: %w\", name, err)` adds context",
+        "`nil` means no error"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "errors-1",
+          "prompt": "What does this print?",
+          "code": "n, err := strconv.Atoi(\"12\")\nfmt.Println(n*2, err)",
+          "answers": [
+            "24 <nil>",
+            "24 nil"
+          ],
+          "explain": "\"12\" is a valid number, so `n` is 12 and `err` is `nil`, which prints as `<nil>`."
+        },
+        {
+          "type": "input",
+          "id": "errors-2",
+          "prompt": "What does this print?",
+          "code": "func check(n int) error {\n    if n > 10 {\n        return fmt.Errorf(\"%d is too big\", n)\n    }\n    return nil\n}\n\nfunc main() {\n    fmt.Println(check(5), check(50))\n}",
+          "answers": [
+            "<nil> 50 is too big",
+            "nil 50 is too big"
+          ],
+          "explain": "`check(5)` returns `nil`. `check(50)` returns an error with the message `50 is too big`."
+        },
+        {
+          "type": "choice",
+          "id": "errors-3",
+          "prompt": "A function returns `nil` as its `error`. What does that mean?",
+          "options": [
+            "The function worked without a problem",
+            "The function failed",
+            "The error message is empty",
+            "The function returned no other values"
+          ],
+          "answer": 0,
+          "explain": "`nil` means there is no error. Only a non-`nil` error reports a problem."
+        },
+        {
+          "type": "choice",
+          "id": "errors-4",
+          "prompt": "What does this print?",
+          "code": "func safeDiv(a, b int) (int, error) {\n    if b == 0 {\n        return 0, errors.New(\"cannot divide by zero\")\n    }\n    return a / b, nil\n}\n\nfunc main() {\n    r, err := safeDiv(8, 0)\n    if err != nil {\n        fmt.Println(\"failed:\", err)\n        return\n    }\n    fmt.Println(\"result:\", r)\n}",
+          "options": [
+            "`failed: cannot divide by zero`",
+            "`result: 0`",
+            "`failed: cannot divide by zero` and then `result: 0`",
+            "It panics"
+          ],
+          "answer": 0,
+          "explain": "`b` is 0, so `safeDiv` returns an error. The program prints it and `return` ends `main`."
+        },
+        {
+          "type": "true_false",
+          "id": "errors-5",
+          "statement": "A Go function that can fail usually returns its `error` as the **first** result.",
+          "answer": false,
+          "explain": "By convention the `error` is the **last** result, for example `(int, error)`."
+        },
+        {
+          "type": "gap",
+          "id": "errors-6",
+          "prompt": "Complete the check so the code prints `not a number`.",
+          "code": "n, err := strconv.Atoi(\"7a\")\nif err ___ nil {\n    fmt.Println(\"not a number\")\n    return\n}\nfmt.Println(n)",
+          "options": [
+            "!=",
+            "==",
+            "=",
+            "is"
+          ],
+          "answer": 0,
+          "explain": "\"7a\" is not a number, so `err` is not `nil`. `err != nil` is the check for an error."
+        },
+        {
+          "type": "gap",
+          "id": "errors-7",
+          "prompt": "Complete the function so it returns an error that contains the file name.",
+          "code": "func open(name string) error {\n    return ___(\"cannot open %s\", name)\n}",
+          "options": [
+            "fmt.Errorf",
+            "errors.New",
+            "fmt.Sprintf",
+            "fmt.Printf"
+          ],
+          "answer": 0,
+          "explain": "`fmt.Errorf` fills in the verbs and returns an `error`. `errors.New` takes only a fixed message, and `fmt.Sprintf` returns a `string`."
+        },
+        {
+          "type": "blocks",
+          "id": "errors-8",
+          "prompt": "Build the line that starts the error check.",
+          "tokens": [
+            "if",
+            "err",
+            "!=",
+            "nil",
+            "{"
+          ],
+          "distractors": [
+            "==",
+            "null"
+          ],
+          "explain": "The code inside the `if` runs only when there is an error, so you compare with `!=`."
+        },
+        {
+          "type": "order",
+          "id": "errors-9",
+          "prompt": "Put the lines in order so `check` returns an error for negative numbers and `nil` otherwise.",
+          "lines": [
+            "func check(n int) error {",
+            "    if n < 0 {",
+            "        return errors.New(\"negative\")",
+            "    }",
+            "    return nil",
+            "}"
+          ],
+          "explain": "The `if` returns the error for negative numbers. Only after the `if` does the function return `nil`."
+        },
+        {
+          "type": "pairs",
+          "id": "errors-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`error`",
+              "the built-in type for errors"
+            ],
+            [
+              "`nil`",
+              "no error"
+            ],
+            [
+              "`errors.New`",
+              "creates an error from a fixed message"
+            ],
+            [
+              "`fmt.Errorf`",
+              "creates an error from a format string"
+            ],
+            [
+              "`%w`",
+              "wraps another error in the message"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "errors-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "func parse(s string) (int, error) {",
+            "    n, err := strconv.Atoi(s)",
+            "    if err != nil {",
+            "        return 0, err",
+            "    }",
+            "    return n",
+            "}"
+          ],
+          "bug": 5,
+          "explain": "The function has two results, so it must return two values: `return n, nil`."
+        },
+        {
+          "type": "bug",
+          "id": "errors-12",
+          "prompt": "The program should print the error, but it prints `0`. Which line has the bug?",
+          "lines": [
+            "func main() {",
+            "    value, err := strconv.Atoi(\"abc\")",
+            "    if err == nil {",
+            "        fmt.Println(\"error:\", err)",
+            "        return",
+            "    }",
+            "    fmt.Println(value)",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "The error branch must run when there is an error: `if err != nil {`."
+        }
+      ]
+    }
+  ]
+}

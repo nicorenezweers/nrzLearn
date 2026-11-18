@@ -1,0 +1,386 @@
+{
+  "hello-2": {
+    "out": "ABC"
+  },
+  "hello-3": {
+    "extra": [
+      {
+        "src": "DISPLAY \"One\" WITH NO ADVANCING\nDISPLAY \"Two\"\nDISPLAY \"Three\"",
+        "out": "OneTwo\nThree"
+      }
+    ]
+  },
+  "hello-4": {
+    "out": "Price: 15 EUR"
+  },
+  "hello-5": {
+    "extra": [
+      {
+        "src": ">>SOURCE FORMAT FREE\nDATA DIVISION.\nIDENTIFICATION DIVISION.\nPROGRAM-ID. DEMO.\nPROCEDURE DIVISION.\n    DISPLAY \"Hi\"\n    STOP RUN.",
+        "err": true
+      }
+    ]
+  },
+  "hello-6": {
+    "extra": [
+      {
+        "src": "display \"Hi\"",
+        "out": "Hi"
+      }
+    ]
+  },
+  "hello-7": {
+    "tpl": ">>SOURCE FORMAT FREE\n{{CODE}}",
+    "out": "Hello"
+  },
+  "hello-8": {
+    "tpl": ">>SOURCE FORMAT FREE\n{{CODE}}",
+    "out": "Bye"
+  },
+  "hello-9": {
+    "tpl": "{{CODE}}\nDISPLAY \"!\"",
+    "out": "Hi!"
+  },
+  "hello-10": {
+    "tpl": ">>SOURCE FORMAT FREE\n{{CODE}}",
+    "out": "Ready"
+  },
+  "hello-12": {
+    "tpl": ">>SOURCE FORMAT FREE\n{{CODE}}",
+    "fix": "PROCEDURE DIVISION.",
+    "out": "Hello"
+  },
+  "data-1": {
+    "out": "0042"
+  },
+  "data-2": {
+    "extra": [
+      {
+        "src": "01 N PIC X(10).\nMOVE \"Maria\" TO N\nDISPLAY N(1:5)",
+        "out": "Maria"
+      },
+      {
+        "src": "01 N PIC X.\nMOVE \"Maria\" TO N\nDISPLAY N",
+        "out": "M"
+      }
+    ]
+  },
+  "data-3": {
+    "out": "Barce"
+  },
+  "data-4": {
+    "out": "25"
+  },
+  "data-5": {
+    "extra": [
+      {
+        "src": "01 A PIC 9(3) VALUE 42.\n01 B PIC 999 VALUE 42.\nDISPLAY A \" \" B",
+        "out": "042 042"
+      }
+    ]
+  },
+  "data-6": {
+    "out": "30"
+  },
+  "data-7": {
+    "out": "5"
+  },
+  "data-8": {
+    "tpl": "01 PRICE PIC 99 VALUE 12.\n01 OLD-PRICE PIC 99.\n{{CODE}}\nDISPLAY OLD-PRICE",
+    "out": "12"
+  },
+  "data-9": {
+    "out": "ABC07"
+  },
+  "data-11": {
+    "fix": "MOVE \"Rome\" TO TOWN",
+    "out": "Oslo 12\nRome"
+  },
+  "data-12": {
+    "fix": "01 DAYS PIC 999 VALUE 100.",
+    "out": "100\n03"
+  },
+  "arithmetic-1": {
+    "out": "12"
+  },
+  "arithmetic-2": {
+    "out": "Q=3 R=2"
+  },
+  "arithmetic-3": {
+    "out": "12"
+  },
+  "arithmetic-4": {
+    "out": "14"
+  },
+  "arithmetic-5": {
+    "out": "4",
+    "extra": [
+      {
+        "src": "01 Y PIC 9.\nCOMPUTE Y = 7 / 2\nDISPLAY Y",
+        "out": "3"
+      }
+    ]
+  },
+  "arithmetic-6": {
+    "out": "[  7]"
+  },
+  "arithmetic-7": {
+    "out": "00"
+  },
+  "arithmetic-8": {
+    "out": "12"
+  },
+  "arithmetic-9": {
+    "out": "025"
+  },
+  "arithmetic-10": {
+    "tpl": "01 TOTAL PIC 99 VALUE 10.\n{{CODE}}\nDISPLAY TOTAL",
+    "out": "06"
+  },
+  "arithmetic-11": {
+    "fix": "COMPUTE C = A - B",
+    "out": "06"
+  },
+  "conditions-1": {
+    "out": "Young"
+  },
+  "conditions-2": {
+    "out": "B"
+  },
+  "conditions-3": {
+    "out": "Big",
+    "no_option": true
+  },
+  "conditions-4": {
+    "extra": [
+      {
+        "src": "01 N PIC 9 VALUE 7.\nEVALUATE TRUE\n    WHEN N > 5\n        DISPLAY \"Big\"\n    WHEN N > 0\n        DISPLAY \"Positive\"\nEND-EVALUATE",
+        "out": "Big"
+      }
+    ]
+  },
+  "conditions-5": {
+    "out": "Not ten"
+  },
+  "conditions-6": {
+    "out": "Even"
+  },
+  "conditions-7": {
+    "tpl": "01 TOTAL PIC 999 VALUE 150.\n{{CODE}}",
+    "out": "Big"
+  },
+  "conditions-8": {
+    "tpl": "01 N PIC 9 VALUE 3.\n{{CODE}}",
+    "out": "Positive"
+  },
+  "conditions-10": {
+    "fix": "SET IS-GREEN TO TRUE",
+    "out": "G"
+  },
+  "conditions-11": {
+    "fix": "    DISPLAY \"Big\"",
+    "out": "Big"
+  },
+  "conditions-12": {
+    "out": "Pass"
+  },
+  "loops-1": {
+    "extra": [
+      {
+        "src": "PERFORM 4 TIMES\n    DISPLAY \"Hi\"\nEND-PERFORM",
+        "out": "Hi\nHi\nHi\nHi"
+      }
+    ]
+  },
+  "loops-2": {
+    "out": "10"
+  },
+  "loops-3": {
+    "out": "4"
+  },
+  "loops-4": {
+    "out": "1357"
+  },
+  "loops-5": {
+    "out": "Done"
+  },
+  "loops-6": {
+    "out": "123"
+  },
+  "loops-7": {
+    "out": "Hi\nHi\nHi"
+  },
+  "loops-8": {
+    "tpl": "01 I PIC 99.\n{{CODE}}\n    DISPLAY I\nEND-PERFORM",
+    "out": "01\n03\n05\n07\n09"
+  },
+  "loops-9": {
+    "tpl": "01 N PIC 9.\n{{CODE}}",
+    "out": "3\n2\n1"
+  },
+  "loops-10": {
+    "fix": "01 I PIC 99.",
+    "out": "45"
+  },
+  "loops-11": {
+    "fix": "END-PERFORM",
+    "out": "6"
+  },
+  "paragraphs-1": {
+    "extra": [
+      {
+        "src": "MAIN-PARA.\n    PERFORM SAY-HI 3 TIMES\n    STOP RUN.\nSAY-HI.\n    DISPLAY \"Hi\".",
+        "out": "Hi\nHi\nHi"
+      }
+    ]
+  },
+  "paragraphs-2": {
+    "out": "B\nA",
+    "no_option": true
+  },
+  "paragraphs-3": {
+    "out": "08"
+  },
+  "paragraphs-4": {
+    "extra": [
+      {
+        "src": "MAIN-PARA.\n    PERFORM SHOW-IT\n    STOP RUN.\nSHOW-IT\n    DISPLAY \"Shown\".",
+        "err": true
+      },
+      {
+        "src": "MAIN-PARA.\n    PERFORM SHOW-IT\n    STOP RUN.\nSHOW-IT.\n    DISPLAY \"Shown\".",
+        "out": "Shown"
+      }
+    ]
+  },
+  "paragraphs-5": {
+    "extra": [
+      {
+        "src": "MAIN-PARA.\n    PERFORM CALC\n    DISPLAY \"Back\"\n    STOP RUN.\nCALC.\n    DISPLAY \"Calc\".",
+        "out": "Calc\nBack"
+      }
+    ]
+  },
+  "paragraphs-6": {
+    "out": "Total\nDone"
+  },
+  "paragraphs-7": {
+    "out": "Hello"
+  },
+  "paragraphs-8": {
+    "tpl": "MAIN-PARA.\n    {{CODE}}\n    STOP RUN.\nPRINT-ROW.\n    DISPLAY \"*\".",
+    "out": "*\n*\n*"
+  },
+  "paragraphs-9": {
+    "out": "Start\nWork\nEnd"
+  },
+  "paragraphs-11": {
+    "fix": "    STOP RUN.",
+    "out": "Hi\nBye"
+  },
+  "paragraphs-12": {
+    "fix": "SHOW-N.",
+    "out": "N is 3"
+  },
+  "tables-1": {
+    "out": "22"
+  },
+  "tables-2": {
+    "extra": [
+      {
+        "src": "01 T VALUE \"0102\".\n    05 SCORE PIC 99 OCCURS 2 TIMES.\nDISPLAY SCORE(1)",
+        "out": "01"
+      },
+      {
+        "src": "01 T VALUE \"0102\".\n    05 SCORE PIC 99 OCCURS 2 TIMES.\nDISPLAY SCORE[1]",
+        "err": true
+      },
+      {
+        "src": "01 T VALUE \"0102\".\n    05 SCORE PIC 99 OCCURS 2 TIMES.\nDISPLAY SCORE.1",
+        "err": true
+      }
+    ]
+  },
+  "tables-3": {
+    "out": "15"
+  },
+  "tables-4": {
+    "out": "30"
+  },
+  "tables-5": {
+    "extra": [
+      {
+        "src": "01 T VALUE \"0102\".\n    05 N PIC 99 OCCURS 2 TIMES.\nDISPLAY N(1)",
+        "out": "01"
+      },
+      {
+        "src": "01 T VALUE \"0102\".\n    05 N PIC 99 OCCURS 2 TIMES.\nDISPLAY N(0)",
+        "err": true
+      }
+    ]
+  },
+  "tables-6": {
+    "out": "42"
+  },
+  "tables-7": {
+    "out": "Lima"
+  },
+  "tables-8": {
+    "tpl": "01 T.\n    05 QTY PIC 9 OCCURS 3 TIMES.\n01 I PIC 9 VALUE 2.\n{{CODE}}\nDISPLAY T",
+    "out": "050"
+  },
+  "tables-9": {
+    "tpl": "01 T.\n    05 SQ PIC 99 OCCURS 3 TIMES.\n01 I PIC 9.\n{{CODE}}",
+    "out": "09"
+  },
+  "tables-11": {
+    "fix": "PERFORM VARYING I FROM 1 BY 1 UNTIL I > 3",
+    "out": "60"
+  },
+  "tables-12": {
+    "fix": "    ADD N(I) TO TOTAL",
+    "out": "60"
+  },
+  "strings-1": {
+    "out": "COMP"
+  },
+  "strings-2": {
+    "out": "PUT"
+  },
+  "strings-3": {
+    "out": "Ada-Bob"
+  },
+  "strings-4": {
+    "out": "03"
+  },
+  "strings-5": {
+    "extra": [
+      {
+        "src": "01 OUT-TEXT PIC X(6) VALUE \"XXXXXX\".\nSTRING \"ab\" DELIMITED BY SIZE INTO OUT-TEXT\nEND-STRING\nDISPLAY OUT-TEXT",
+        "out": "abXXXX"
+      }
+    ]
+  },
+  "strings-6": {
+    "out": "red\nblue"
+  },
+  "strings-7": {
+    "out": "bonono"
+  },
+  "strings-8": {
+    "tpl": "01 CITY PIC X(8) VALUE \"Lima\".\n01 OUT-TEXT PIC X(6) VALUE \"------\".\n{{CODE}}\nDISPLAY OUT-TEXT",
+    "out": "Lima--"
+  },
+  "strings-9": {
+    "tpl": "01 DATE-TEXT PIC X(10).\n01 YY PIC X(4).\n01 MM PIC XX.\n01 DD PIC XX.\n{{CODE}}",
+    "out": "17.05.2024"
+  },
+  "strings-11": {
+    "fix": "DISPLAY WORD(1:3)",
+    "out": "COM\nTER"
+  },
+  "strings-12": {
+    "fix": "STRING CITY DELIMITED BY SIZE",
+    "out": "New York!"
+  }
+}

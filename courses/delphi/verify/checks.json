@@ -1,0 +1,468 @@
+{
+ "hello-1": [
+  {
+   "kind": "options",
+   "src": "begin\n  @OPTION@\n  Write('!');\nend.",
+   "expect": "Hello\n!"
+  }
+ ],
+ "hello-2": [
+  {}
+ ],
+ "hello-3": [
+  {}
+ ],
+ "hello-4": [
+  {
+   "src": "begin\n  writeln('ok');\n  WRITELN('ok');\nend.",
+   "expect": "ok\nok"
+  }
+ ],
+ "hello-5": [
+  {
+   "expect": "Hello\nWorld"
+  }
+ ],
+ "hello-6": [
+  {
+   "expect": "Done"
+  }
+ ],
+ "hello-7": [
+  {
+   "expect": "Total: 10"
+  }
+ ],
+ "hello-8": [
+  {
+   "expect": "Good morning"
+  }
+ ],
+ "hello-10": [
+  {
+   "fix": "  Writeln('World');",
+   "expect": "Hello\nWorld"
+  }
+ ],
+ "hello-11": [
+  {
+   "fix": "end.",
+   "expect": "One\nTwo"
+  }
+ ],
+ "hello-12": [
+  {}
+ ],
+ "variables-1": [
+  {
+   "kind": "options",
+   "src": "var\n  @OPTION@\nbegin\n  Count := 5;\n  Writeln(Count);\nend.",
+   "expect": "5"
+  }
+ ],
+ "variables-2": [
+  {}
+ ],
+ "variables-3": [
+  {}
+ ],
+ "variables-4": [
+  {
+   "kind": "fail",
+   "src": "var\n  R: Integer;\nbegin\n  R := 6 / 3;\n  Writeln(R);\nend."
+  },
+  {
+   "src": "var\n  R: Integer;\nbegin\n  R := 6 div 3;\n  Writeln(R);\nend.",
+   "expect": "2"
+  }
+ ],
+ "variables-5": [
+  {
+   "expect": "Ada"
+  }
+ ],
+ "variables-6": [
+  {
+   "expect": "3.50"
+  }
+ ],
+ "variables-7": [
+  {
+   "src": "@ANSWER@\nbegin\n  Writeln(Max);\nend.",
+   "expect": "100"
+  }
+ ],
+ "variables-8": [
+  {
+   "expect": "15"
+  }
+ ],
+ "variables-10": [
+  {
+   "fix": "  Count := 2;",
+   "expect": "2"
+  }
+ ],
+ "variables-11": [
+  {
+   "fix": "  Max = 10;",
+   "expect": "20"
+  }
+ ],
+ "variables-12": [
+  {}
+ ],
+ "strings-1": [
+  {}
+ ],
+ "strings-2": [
+  {}
+ ],
+ "strings-3": [
+  {}
+ ],
+ "strings-4": [
+  {
+   "src": "var\n  S: string;\nbegin\n  S := 'Hi';\n  Writeln(S[1]);\nend.",
+   "expect": "H"
+  },
+  {
+   "kind": "manual",
+   "note": "Delphi strings are 1-based on all current platforms; S[1] is the first character."
+  }
+ ],
+ "strings-5": [
+  {
+   "expect": "Age: 30"
+  }
+ ],
+ "strings-6": [
+  {
+   "expect": "3 x apple"
+  }
+ ],
+ "strings-7": [
+  {
+   "src": "var\n  Name, Short: string;\nbegin\n  Name := 'Delphi';\n  @ANSWER@\n  Writeln(Short);\nend.",
+   "expect": "Del"
+  }
+ ],
+ "strings-8": [
+  {
+   "expect": "DELPHI!"
+  }
+ ],
+ "strings-10": [
+  {
+   "fix": "  Writeln(Name + ' is ', Age);",
+   "expect": "Ada is 36"
+  }
+ ],
+ "strings-11": [
+  {
+   "fix": "  Writeln(Copy(Code, 4, 3));",
+   "expect": "AB\n123"
+  }
+ ],
+ "strings-12": [
+  {}
+ ],
+ "conditions-1": [
+  {}
+ ],
+ "conditions-2": [
+  {}
+ ],
+ "conditions-3": [
+  {}
+ ],
+ "conditions-4": [
+  {
+   "kind": "fail",
+   "src": "var\n  A, B: Integer;\nbegin\n  A := 1;\n  B := 1;\n  if A > 0 and B > 0 then\n    Writeln('yes');\nend."
+  },
+  {
+   "src": "var\n  A, B: Integer;\nbegin\n  A := 1;\n  B := 1;\n  if (A > 0) and (B > 0) then\n    Writeln('yes');\nend.",
+   "expect": "yes"
+  }
+ ],
+ "conditions-5": [
+  {
+   "src": "var\n  Answer: Integer;\nbegin\n  Answer := 42;\n  @CODE@\nend.",
+   "expect": "Correct"
+  }
+ ],
+ "conditions-6": [
+  {
+   "src": "var\n  Age: Integer;\nbegin\n  Age := 15;\n  @CODE@\n  Writeln('end');\nend.",
+   "expect": "Teen\nend"
+  },
+  {
+   "src": "var\n  Age: Integer;\nbegin\n  Age := 25;\n  @CODE@\n  Writeln('end');\nend.",
+   "expect": "end"
+  }
+ ],
+ "conditions-7": [
+  {
+   "src": "var\n  X: Integer;\nbegin\n  X := 3;\n  @ANSWER@\n  X := 0;\n  @ANSWER@\nend.",
+   "expect": "Not zero"
+  }
+ ],
+ "conditions-8": [
+  {
+   "src": "var\n  Score: Integer;\nbegin\n  Score := 95;\n  @ANSWER@\n  Score := 75;\n  @ANSWER@\n  Score := 10;\n  @ANSWER@\nend.",
+   "expect": "A\nB\nC"
+  }
+ ],
+ "conditions-10": [
+  {
+   "fix": "    Writeln('positive')",
+   "expect": "positive"
+  }
+ ],
+ "conditions-11": [
+  {
+   "fix": "    2: Writeln('Tue');",
+   "expect": "Tue"
+  }
+ ],
+ "conditions-12": [
+  {}
+ ],
+ "loops-1": [
+  {}
+ ],
+ "loops-2": [
+  {}
+ ],
+ "loops-3": [
+  {}
+ ],
+ "loops-4": [
+  {
+   "src": "begin\n  repeat\n    Writeln('once');\n  until True;\nend.",
+   "expect": "once"
+  }
+ ],
+ "loops-5": [
+  {
+   "expect": "end"
+  }
+ ],
+ "loops-6": [
+  {
+   "src": "var\n  I: Integer;\nbegin\n  @CODE@\n  Writeln;\nend.",
+   "expect": "54321"
+  }
+ ],
+ "loops-7": [
+  {
+   "src": "var\n  N: Integer;\nbegin\n  @CODE@\nend.",
+   "expect": "20"
+  }
+ ],
+ "loops-8": [
+  {
+   "src": "var\n  I, Total: Integer;\nbegin\n  Total := 0;\n  @ANSWER@\n    Total := Total + I;\n  Writeln(Total);\nend.",
+   "expect": "55"
+  }
+ ],
+ "loops-9": [
+  {
+   "src": "var\n  N: Integer;\nbegin\n  @ANSWER@\nend.",
+   "expect": "3\n2\n1"
+  }
+ ],
+ "loops-11": [
+  {
+   "delete": true,
+   "expect": "1\n2\n3"
+  }
+ ],
+ "loops-12": [
+  {
+   "fix": "  for Name in Names do",
+   "expect": "Ada\nBob"
+  }
+ ],
+ "routines-1": [
+  {}
+ ],
+ "routines-2": [
+  {}
+ ],
+ "routines-3": [
+  {}
+ ],
+ "routines-4": [
+  {
+   "src": "function Five: Integer;\nbegin\n  Result := 5;\nend;\n\nbegin\n  Writeln(Five);\nend.",
+   "expect": "5"
+  }
+ ],
+ "routines-5": [
+  {
+   "kind": "manual",
+   "note": "Delphi docs: out parameters are for output only; the initial value is discarded."
+  },
+  {
+   "src": "procedure Get(out N: Integer);\nbegin\n  N := 7;\nend;\n\nvar\n  X: Integer;\nbegin\n  Get(X);\n  Writeln(X);\nend.",
+   "expect": "7"
+  }
+ ],
+ "routines-6": [
+  {
+   "src": "@CODE@\n\nbegin\n  Writeln(Add(2, 3));\nend.",
+   "expect": "5"
+  }
+ ],
+ "routines-7": [
+  {
+   "expect": "8"
+  }
+ ],
+ "routines-8": [
+  {
+   "src": "@ANSWER@\nbegin\n  Result := N mod 2 = 0;\nend;\n\nbegin\n  Writeln(IsEven(4), ' ', IsEven(7));\nend.",
+   "expect": "TRUE FALSE"
+  }
+ ],
+ "routines-9": [
+  {
+   "src": "@ANSWER@\n\nbegin\n  Writeln(Larger(3, 9), ' ', Larger(8, 2));\nend.",
+   "expect": "9 8"
+  }
+ ],
+ "routines-11": [
+  {
+   "fix": "function Square(X: Integer): Integer;",
+   "expect": "25"
+  }
+ ],
+ "routines-12": [
+  {
+   "fix": "  Increment(Count);",
+   "expect": "2"
+  }
+ ],
+ "arrays-1": [
+  {}
+ ],
+ "arrays-2": [
+  {}
+ ],
+ "arrays-3": [
+  {}
+ ],
+ "arrays-4": [
+  {
+   "src": "var\n  A: array of Integer;\nbegin\n  SetLength(A, 2);\n  Writeln(Low(A), ' ', High(A));\nend.",
+   "expect": "0 1"
+  }
+ ],
+ "arrays-5": [
+  {
+   "expect": "Bob"
+  }
+ ],
+ "arrays-6": [
+  {
+   "src": "var\n  Prices: array of Integer;\n  I, Total: Integer;\nbegin\n  Prices := [3, 4, 5];\n  Total := 0;\n  @CODE@\n  Writeln(Total);\nend.",
+   "expect": "12"
+  }
+ ],
+ "arrays-7": [
+  {
+   "src": "var\n  @ANSWER@\nbegin\n  Writeln(Low(Values), ' ', High(Values));\nend.",
+   "expect": "1 10"
+  }
+ ],
+ "arrays-8": [
+  {
+   "expect": "8"
+  }
+ ],
+ "arrays-10": [
+  {
+   "fix": "  for I := 0 to High(Nums) do",
+   "expect": "4\n5\n6"
+  }
+ ],
+ "arrays-11": [
+  {
+   "fix": "  Days[7] := 'Sun';",
+   "expect": "Mon"
+  }
+ ],
+ "arrays-12": [
+  {}
+ ],
+ "classes-1": [
+  {
+   "kind": "options",
+   "src": "type\n  TDog = class\n  end;\n\nvar\n  D: TDog;\nbegin\n  @OPTION@\n  Writeln('ok');\n  D.Free;\nend.",
+   "expect": "ok"
+  }
+ ],
+ "classes-2": [
+  {}
+ ],
+ "classes-3": [
+  {}
+ ],
+ "classes-4": [
+  {
+   "kind": "manual",
+   "note": "Delphi classes have no garbage collector on the desktop compilers (and since 10.4 on all platforms); objects are freed with Free."
+  }
+ ],
+ "classes-5": [
+  {
+   "src": "@CODE@\n\nvar\n  C: TCat;\nbegin\n  C := TCat.Create;\n  C.Name := 'Tom';\n  Writeln(C.Name);\n  C.Free;\nend.",
+   "expect": "Tom"
+  }
+ ],
+ "classes-6": [
+  {
+   "src": "type\n  TDog = class\n    procedure Bark;\n  end;\n\n@CODE@\n\nvar\n  D: TDog;\nbegin\n  D := TDog.Create;\n  D.Bark;\n  D.Free;\nend.",
+   "expect": "Woof"
+  }
+ ],
+ "classes-7": [
+  {
+   "src": "type\n  TPerson = class\n    Name: string;\n    constructor Create(const AName: string);\n  end;\n\nconstructor TPerson.Create(const AName: string);\nbegin\n  inherited Create;\n  Name := AName;\nend;\n\nvar\n  P: TPerson;\nbegin\n  @ANSWER@\n  Writeln(P.Name);\n  P.Free;\nend.",
+   "expect": "Ada"
+  }
+ ],
+ "classes-8": [
+  {
+   "src": "type\n  TPerson = class\n    Name: string;\n    constructor Create(const AName: string);\n    procedure Greet;\n  end;\n\nconstructor TPerson.Create(const AName: string);\nbegin\n  inherited Create;\n  Name := AName;\nend;\n\nprocedure TPerson.Greet;\nbegin\n  Writeln('Hi, ', Name);\nend;\n\nvar\n  P: TPerson;\nbegin\n  @ANSWER@\nend.",
+   "expect": "Hi, Ada",
+   "swaps": false
+  }
+ ],
+ "classes-10": [
+  {
+   "src": "type\n  TPerson = class\n    Name: string;\n  end;\n\n@LINES@",
+   "fix": "  P := TPerson.Create;",
+   "expect": "Ada"
+  }
+ ],
+ "classes-11": [
+  {
+   "src": "@LINES@\n\nvar\n  L: TLamp;\nbegin\n  L := TLamp.Create;\n  L.Switch;\n  Writeln(L.IsOn);\n  L.Free;\nend.",
+   "fix": "procedure TLamp.Switch;",
+   "expect": "TRUE"
+  }
+ ],
+ "classes-12": [
+  {
+   "kind": "fail",
+   "src": "type\n  TAccount = class\n  private\n    FBalance: Integer;\n  public\n    constructor Create(const AOwner: string);\n    property Balance: Integer read FBalance;\n  end;\n\nconstructor TAccount.Create(const AOwner: string);\nbegin\n  inherited Create;\nend;\n\nvar\n  Acc: TAccount;\nbegin\n  @CODE@\n  Acc.Free;\nend."
+  },
+  {
+   "src": "type\n  TAccount = class\n  private\n    FBalance: Integer;\n  public\n    constructor Create(const AOwner: string);\n    property Balance: Integer read FBalance;\n  end;\n\nconstructor TAccount.Create(const AOwner: string);\nbegin\n  inherited Create;\nend;\n\nvar\n  Acc: TAccount;\nbegin\n  Acc := TAccount.Create('Ada');\n  Writeln(Acc.Balance);\n  Acc.Free;\nend.",
+   "expect": "0"
+  }
+ ]
+}

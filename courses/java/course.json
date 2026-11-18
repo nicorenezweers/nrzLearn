@@ -1,0 +1,1947 @@
+{
+  "course": "java",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Java",
+      "chapter": "First steps",
+      "summary": "Write your first Java program with a class, a main method and System.out.println, and learn how to compile and run it.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Java programs are made of **classes**. A class is a named block of code. Every program needs at least one class; here it is called `Main`. Inside the class, the program starts in a **method** called `main`. Curly braces `{ }` mark where a block begins and where it ends."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, Java!\");\n    }\n}",
+          "output": "Hello, Java!"
+        },
+        {
+          "type": "text",
+          "md": "The line `public static void main(String[] args)` is the same in every program. For now, copy it as it is. You learn what `public`, `static`, `void` and `String[] args` mean later in this course. `System.out.println` prints the value in the parentheses and then starts a new line. Text in double quotes, like `\"Hello\"`, is a **string**."
+        },
+        {
+          "type": "text",
+          "md": "Every instruction is called a **statement** and ends with a semicolon `;`. `System.out.print` (without `ln`) prints without starting a new line, so the next output continues on the same line. Java is **case-sensitive**: `System` and `system` are different names, and only `System` works."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"One\");\n        System.out.print(\"Two \");\n        System.out.print(\"and \");\n        System.out.println(\"three\");\n        System.out.println(\"Four\");\n    }\n}",
+          "output": "One\nTwo and three\nFour"
+        },
+        {
+          "type": "heading",
+          "text": "Compiling and running"
+        },
+        {
+          "type": "text",
+          "md": "You save the code in a file that ends in `.java`. A `public class` must be in a file with the same name, so the class `Main` goes into `Main.java`. The command `javac Main.java` **compiles** the code: it checks it for errors and translates it into a file called `Main.class`. Then `java Main` runs the program. If the code has an error, `javac` reports it and nothing runs."
+        },
+        {
+          "type": "tip",
+          "md": "Since Java 11, the command `java Main.java` compiles and runs a single file in one step. This is handy for small programs like the ones in this course."
+        },
+        {
+          "type": "heading",
+          "text": "Numbers"
+        },
+        {
+          "type": "text",
+          "md": "Numbers do not need quotes. Java calculates with `+`, `-`, `*` (times) and `/` (divided by). It calculates the result first and then prints it. As in mathematics, `*` and `/` come before `+` and `-`, and parentheses come first."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(2 + 3);\n        System.out.println(10 - 4);\n        System.out.println(6 * 7);\n        System.out.println(2 + 3 * 4);\n        System.out.println((2 + 3) * 4);\n    }\n}",
+          "output": "5\n6\n42\n14\n20"
+        },
+        {
+          "type": "text",
+          "md": "When you divide two whole numbers with `/`, Java drops the rest: `7 / 2` is `3`. The operator `%` gives you the rest of a division: `7 % 2` is `1`. Write `7.0 / 2` to get a result with decimals: `3.5`."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(7 / 2);\n        System.out.println(7 % 2);\n        System.out.println(7.0 / 2);\n    }\n}",
+          "output": "3\n1\n3.5"
+        },
+        {
+          "type": "warning",
+          "md": "`\"5\"` with quotes is a string, `5` without quotes is a number. For strings, `+` joins the text: `\"2\" + \"3\"` gives `23`, but `2 + 3` gives `5`."
+        }
+      ],
+      "card": [
+        "`public class Main { }` holds the program",
+        "`public static void main(String[] args) { }` is where it starts",
+        "`System.out.println(x);` prints `x` and a new line, `print` does not",
+        "`javac Main.java` compiles, `java Main` runs",
+        "`7 / 2` is `3`, `7 % 2` is `1`, `7.0 / 2` is `3.5`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which line prints Hello and then starts a new line?",
+          "options": [
+            "`System.out.println(\"Hello\");`",
+            "`System.out.print(\"Hello\");`",
+            "`println(\"Hello\");`",
+            "`System.out.println(Hello);`"
+          ],
+          "answer": 0,
+          "explain": "`System.out.println` prints the string and starts a new line. `print` stays on the same line, `println` alone does not exist, and text needs double quotes."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this program print?",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(3 + 4 * 2);\n    }\n}",
+          "answers": [
+            "11"
+          ],
+          "explain": "`*` comes before `+`: `4 * 2` is `8`, and `3 + 8` is `11`."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this program print?",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(17 % 5);\n    }\n}",
+          "answers": [
+            "2"
+          ],
+          "explain": "`17` divided by `5` is `3` with a rest of `2`. The operator `%` gives the rest."
+        },
+        {
+          "type": "choice",
+          "id": "hello-4",
+          "prompt": "What does this program print?",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.print(\"A\");\n        System.out.println(\"B\");\n        System.out.println(\"C\");\n    }\n}",
+          "options": [
+            "`AB` and then `C` on the next line",
+            "`A`, `B` and `C` on three lines",
+            "`ABC` on one line",
+            "`A` and then `BC` on the next line"
+          ],
+          "answer": 0,
+          "explain": "`print` does not start a new line, so `B` follows `A` directly. `println(\"B\")` ends the line, and `C` comes on the next one."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-5",
+          "statement": "The class `public class Main` must be saved in a file called `Main.java`.",
+          "answer": true,
+          "explain": "A `public class` must be in a file with the same name as the class, plus `.java`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Fill the gap so the program prints Hi.",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.___(\"Hi\");\n    }\n}",
+          "options": [
+            "println",
+            "echo",
+            "printLine",
+            "say"
+          ],
+          "answer": 0,
+          "explain": "Java prints with `System.out.println` (or `print`). `echo`, `printLine` and `say` do not exist."
+        },
+        {
+          "type": "gap",
+          "id": "hello-7",
+          "prompt": "Fill the gap so the program prints 3.5.",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(___ / 2);\n    }\n}",
+          "options": [
+            "7.0",
+            "7",
+            "3.5"
+          ],
+          "answer": 0,
+          "explain": "`7 / 2` divides two whole numbers and gives `3`. With `7.0` the result has decimals: `3.5`."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-8",
+          "prompt": "Build a statement that prints the result of 6 times 7.",
+          "tokens": [
+            "System.out.println",
+            "(",
+            "6",
+            "*",
+            "7",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            "x",
+            "+"
+          ],
+          "explain": "`System.out.println(6 * 7);` calculates `6 * 7` first and prints `42`. The statement ends with `;`."
+        },
+        {
+          "type": "order",
+          "id": "hello-9",
+          "prompt": "Put the lines in order so the program prints Java on the first line and Done on the second.",
+          "lines": [
+            "public class Main {",
+            "    public static void main(String[] args) {",
+            "        System.out.print(\"Ja\");",
+            "        System.out.println(\"va\");",
+            "        System.out.println(\"Done\");",
+            "    }",
+            "}"
+          ],
+          "explain": "The class contains `main`, and `main` contains the statements. `print(\"Ja\")` stays on the line, `println(\"va\")` completes `Java` and ends the line, then `Done` follows."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`System.out.println`",
+              "prints and starts a new line"
+            ],
+            [
+              "`System.out.print`",
+              "prints without a new line"
+            ],
+            [
+              "`%`",
+              "rest of a division"
+            ],
+            [
+              "`;`",
+              "ends a statement"
+            ],
+            [
+              "`javac`",
+              "compiles the code"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "public class Main {",
+            "    public static void main(String[] args) {",
+            "        System.out.println(\"Start\");",
+            "        System.out.println(\"Middle\")",
+            "        System.out.println(\"End\");",
+            "    }",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "Every statement ends with a semicolon. Write `System.out.println(\"Middle\");`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "public class Main {",
+            "    public static void main(String[] args) {",
+            "        System.out.println(\"Hi\");",
+            "        system.out.println(\"Bye\");",
+            "    }",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "Java is case-sensitive. `system` does not exist; write `System` with a capital `S`."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Store values in variables and meet the types int, double, boolean, char and String, plus var and final.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a name for a value. In Java, every variable has a **type** that says what kind of value it holds. You write the type, the name, `=` and the value: `int age = 30;`. Here `=` means \"store\", not \"is equal to\"."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        int age = 30;\n        String name = \"Ana\";\n        System.out.println(name);\n        System.out.println(age);\n        System.out.println(name + \" is \" + age);\n    }\n}",
+          "output": "Ana\n30\nAna is 30"
+        },
+        {
+          "type": "text",
+          "md": "To change a variable, assign a new value without the type: `score = score + 5;` takes the old value, adds `5` and stores the result. `score += 3;` is a short form of `score = score + 3;`. `score++;` adds `1`, and `score--;` subtracts `1`."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 10;\n        score = score + 5;\n        System.out.println(score);\n        score += 3;\n        System.out.println(score);\n        score++;\n        System.out.println(score);\n    }\n}",
+          "output": "15\n18\n19"
+        },
+        {
+          "type": "heading",
+          "text": "Basic types"
+        },
+        {
+          "type": "text",
+          "md": "`int` holds whole numbers, `double` holds numbers with decimals, and `boolean` holds `true` or `false`. `char` holds one single character in single quotes, like `'A'`. `String` holds text in double quotes. It starts with a capital `S` because it is a class, not a basic type."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        int year = 2024;\n        double height = 1.75;\n        boolean sunny = true;\n        char grade = 'A';\n        String city = \"Lima\";\n        System.out.println(year);\n        System.out.println(height);\n        System.out.println(sunny);\n        System.out.println(grade);\n        System.out.println(city);\n    }\n}",
+          "output": "2024\n1.75\ntrue\nA\nLima"
+        },
+        {
+          "type": "text",
+          "md": "Java checks the types when it compiles. A `String` never fits into an `int` variable. An `int` fits into a `double`: `double x = 7;` stores `7.0`. A `double` does not fit into an `int` on its own. You need a **cast**: `(int) 3.9` cuts off the decimals and gives `3`."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        double x = 7;\n        System.out.println(x);\n        int n = (int) 3.9;\n        System.out.println(n);\n    }\n}",
+          "output": "7.0\n3"
+        },
+        {
+          "type": "heading",
+          "text": "var and final"
+        },
+        {
+          "type": "text",
+          "md": "With `var`, Java finds the type from the value: `var count = 5;` creates an `int`. The type is still fixed, so `count` can never hold a `String` later. You can use `var` only for variables inside a method that get a value right away."
+        },
+        {
+          "type": "text",
+          "md": "A variable marked `final` cannot change after it gets its value. If you try, the program does not compile. Names of such constants are often written in capital letters with `_` between the words, like `MAX_SPEED`."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        var count = 5;\n        var city = \"Oslo\";\n        final double PI = 3.14159;\n        System.out.println(count + 1);\n        System.out.println(city);\n        System.out.println(PI * 2);\n    }\n}",
+          "output": "6\nOslo\n6.28318"
+        },
+        {
+          "type": "tip",
+          "md": "From now on, short code in the exercises often shows only the lines inside `main`, or only the parts inside the class. To run such code, you put it into a full program like the ones above."
+        }
+      ],
+      "card": [
+        "`int age = 30;` creates a variable with a type",
+        "`int`, `double`, `boolean`, `char` (`'A'`), `String` (`\"Hi\"`)",
+        "`x += 2;` and `x++;` change a variable",
+        "`(int) 3.9` is `3`",
+        "`var n = 5;` finds the type, `final` makes it constant"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "variables-1",
+          "prompt": "Which line creates a variable for a whole number?",
+          "options": [
+            "`int age = 30;`",
+            "`int age = \"30\";`",
+            "`age int = 30;`",
+            "`Int age = 30;`"
+          ],
+          "answer": 0,
+          "explain": "First the type `int`, then the name, then `=` and the value. `\"30\"` is a string, and `Int` with a capital letter is not a Java type."
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this code print?",
+          "code": "int x = 5;\nx = x + 3;\nx *= 2;\nSystem.out.println(x);",
+          "answers": [
+            "16"
+          ],
+          "explain": "`x` starts at `5`, becomes `8`, and `x *= 2` doubles it to `16`."
+        },
+        {
+          "type": "input",
+          "id": "variables-3",
+          "prompt": "What does this code print?",
+          "code": "double price = 9.99;\nint whole = (int) price;\nSystem.out.println(whole);",
+          "answers": [
+            "9"
+          ],
+          "explain": "The cast `(int)` cuts off the decimals. It does not round, so `9.99` becomes `9`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-4",
+          "prompt": "What does this code print?",
+          "code": "double d = 4;\nSystem.out.println(d);",
+          "options": [
+            "`4.0`",
+            "`4`",
+            "`4.00`",
+            "Nothing, it does not compile"
+          ],
+          "answer": 0,
+          "explain": "The `int` value `4` fits into a `double` and becomes `4.0`. A `double` always prints with a decimal point."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-5",
+          "statement": "A variable created with `var` can later hold a value of a different type.",
+          "answer": false,
+          "explain": "`var` only saves you from writing the type. Java still gives the variable a fixed type, so `var x = 5;` followed by `x = \"five\";` does not compile."
+        },
+        {
+          "type": "gap",
+          "id": "variables-6",
+          "prompt": "Fill the gap so that the value of RATE can never change.",
+          "code": "___ double RATE = 0.2;\nSystem.out.println(RATE * 10);",
+          "options": [
+            "final",
+            "var",
+            "const",
+            "static"
+          ],
+          "answer": 0,
+          "explain": "`final` makes a variable constant. `var double` is not valid, `const` is not used in Java, and `static` is not allowed for a variable inside a method."
+        },
+        {
+          "type": "gap",
+          "id": "variables-7",
+          "prompt": "Fill the gap with the right type.",
+          "code": "___ letter = 'J';\nSystem.out.println(letter);",
+          "options": [
+            "char",
+            "String",
+            "Char",
+            "string"
+          ],
+          "answer": 0,
+          "explain": "Single quotes hold one `char`. A `String` needs double quotes, and `Char` and `string` are not Java types."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-8",
+          "prompt": "Build a statement that creates a variable price with the value 9.5.",
+          "tokens": [
+            "double",
+            "price",
+            "=",
+            "9.5",
+            ";"
+          ],
+          "distractors": [
+            "int",
+            "\"9.5\""
+          ],
+          "explain": "`9.5` has decimals, so the type is `double`. An `int` cannot hold it, and `\"9.5\"` is a string."
+        },
+        {
+          "type": "order",
+          "id": "variables-9",
+          "prompt": "Put the lines in order so the code prints 12.",
+          "lines": [
+            "int n = 2;",
+            "n = n * 5;",
+            "n = n + 2;",
+            "System.out.println(n);"
+          ],
+          "explain": "`n` starts at `2`, times `5` is `10`, plus `2` is `12`. The other way round, you get `(2 + 2) * 5`, which is `20`."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-10",
+          "prompt": "Match the type with what it holds.",
+          "pairs": [
+            [
+              "`int`",
+              "a whole number"
+            ],
+            [
+              "`double`",
+              "a number with decimals"
+            ],
+            [
+              "`boolean`",
+              "true or false"
+            ],
+            [
+              "`char`",
+              "one character"
+            ],
+            [
+              "`String`",
+              "text"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "variables-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "String item = \"Book\";",
+            "int price = 4.99;",
+            "int count = 2;",
+            "System.out.println(item);",
+            "System.out.println(price * count);"
+          ],
+          "bug": 1,
+          "explain": "`4.99` has decimals and does not fit into an `int`. Write `double price = 4.99;`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "String name = 'Ana';",
+            "int age = 25;",
+            "System.out.println(name);",
+            "System.out.println(age);"
+          ],
+          "bug": 0,
+          "explain": "Single quotes are for one `char`. A `String` needs double quotes: `String name = \"Ana\";`."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings",
+      "chapter": "Basics",
+      "summary": "Join strings with +, work with length, charAt, substring and toUpperCase, and compare text with equals.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "The operator `+` joins strings. This is called **concatenation**. When one side is a string and the other side is a number, Java turns the number into text first."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        String first = \"Ada\";\n        String last = \"Lovelace\";\n        String full = first + \" \" + last;\n        System.out.println(full);\n        int age = 36;\n        System.out.println(full + \" is \" + age);\n    }\n}",
+          "output": "Ada Lovelace\nAda Lovelace is 36"
+        },
+        {
+          "type": "warning",
+          "md": "Java reads `+` from left to right. `\"Sum: \" + 2 + 3` first gives `\"Sum: 2\"` and then `\"Sum: 23\"`. Use parentheses to calculate first: `\"Sum: \" + (2 + 3)`. In `2 + 3 + \" apples\"`, the numbers come first, so Java adds them."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Sum: \" + 2 + 3);\n        System.out.println(\"Sum: \" + (2 + 3));\n        System.out.println(2 + 3 + \" apples\");\n    }\n}",
+          "output": "Sum: 23\nSum: 5\n5 apples"
+        },
+        {
+          "type": "heading",
+          "text": "String methods"
+        },
+        {
+          "type": "text",
+          "md": "A string has **methods**: actions you call with a dot and parentheses. `word.length()` gives the number of characters. `toUpperCase()` and `toLowerCase()` give a new string in capital or small letters. The original string never changes: strings in Java are **immutable**."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        String word = \"Java\";\n        System.out.println(word.length());\n        System.out.println(word.toUpperCase());\n        System.out.println(word.toLowerCase());\n        System.out.println(word);\n    }\n}",
+          "output": "4\nJAVA\njava\nJava"
+        },
+        {
+          "type": "text",
+          "md": "Every character has a position, called its **index**. The index starts at `0`. `charAt(i)` gives the `char` at index `i`. `substring(start, end)` gives the characters from `start` up to, but not including, `end`. `substring(start)` goes to the end of the string."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        String text = \"Hello\";\n        System.out.println(text.charAt(0));\n        System.out.println(text.charAt(4));\n        System.out.println(text.substring(1, 4));\n        System.out.println(text.substring(2));\n        System.out.println(text.charAt(text.length() - 1));\n    }\n}",
+          "output": "H\no\nell\nllo\no"
+        },
+        {
+          "type": "warning",
+          "md": "The last index is `length() - 1`. `\"Hello\".charAt(5)` stops the program with an error called `StringIndexOutOfBoundsException`."
+        },
+        {
+          "type": "heading",
+          "text": "Comparing strings"
+        },
+        {
+          "type": "text",
+          "md": "To check if two strings contain the same text, use `a.equals(b)`. It gives `true` or `false`. Do not use `==` for strings: it checks if both names point to the very same object in memory. Two strings with the same text can be different objects. `equalsIgnoreCase` compares and ignores capital and small letters."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        String a = \"hello\";\n        String b = \"HELLO\".toLowerCase();\n        System.out.println(a.equals(b));\n        System.out.println(a == b);\n        System.out.println(\"Java\".equalsIgnoreCase(\"JAVA\"));\n    }\n}",
+          "output": "true\nfalse\ntrue"
+        }
+      ],
+      "card": [
+        "`\"Hi \" + name` joins strings",
+        "`s.length()`, `s.toUpperCase()`, `s.toLowerCase()`",
+        "`s.charAt(0)` is the first character, the index starts at `0`",
+        "`s.substring(1, 3)` gives index `1` and `2`",
+        "Compare text with `a.equals(b)`, not `==`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this code print?",
+          "code": "System.out.println(\"Total: \" + 4 + 5);",
+          "answers": [
+            "Total: 45"
+          ],
+          "explain": "Java reads from left to right. `\"Total: \" + 4` is a string, so `5` is joined as text: `Total: 45`."
+        },
+        {
+          "type": "input",
+          "id": "strings-2",
+          "prompt": "What does this code print?",
+          "code": "String drink = \"Coffee\";\nSystem.out.println(drink.length());",
+          "answers": [
+            "6"
+          ],
+          "explain": "`Coffee` has six characters: `C`, `o`, `f`, `f`, `e`, `e`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-3",
+          "prompt": "What does this code print?",
+          "code": "String w = \"Planet\";\nSystem.out.println(w.charAt(2));",
+          "options": [
+            "`a`",
+            "`l`",
+            "`n`",
+            "`P`"
+          ],
+          "answer": 0,
+          "explain": "The index starts at `0`: `P` is `0`, `l` is `1`, and `a` is `2`."
+        },
+        {
+          "type": "input",
+          "id": "strings-4",
+          "prompt": "What does this code print?",
+          "code": "String room = \"Kitchen\";\nSystem.out.println(room.substring(1, 4));",
+          "answers": [
+            "itc"
+          ],
+          "explain": "`substring(1, 4)` takes index `1`, `2` and `3`, but not `4`: `i`, `t`, `c`."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-5",
+          "statement": "This code prints `JAVA`.",
+          "code": "String s = \"Java\";\ns.toUpperCase();\nSystem.out.println(s);",
+          "answer": false,
+          "explain": "Strings never change. `toUpperCase()` returns a new string, but the code does not store it, so `s` is still `Java`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-6",
+          "prompt": "Which expression checks if the strings a and b contain the same text?",
+          "options": [
+            "`a.equals(b)`",
+            "`a == b`",
+            "`a = b`",
+            "`a.same(b)`"
+          ],
+          "answer": 0,
+          "explain": "`equals` compares the text. `==` checks if both are the same object, `=` stores a value, and `same` does not exist."
+        },
+        {
+          "type": "gap",
+          "id": "strings-7",
+          "prompt": "Fill the gap so the code prints Ann.",
+          "code": "String name = \"Annabel\";\nString start = name.___(0, 3);\nSystem.out.println(start);",
+          "options": [
+            "substring",
+            "charAt",
+            "slice",
+            "sub"
+          ],
+          "answer": 0,
+          "explain": "`substring(0, 3)` gives index `0` to `2`: `Ann`. `charAt` takes only one index, and `slice` and `sub` do not exist for Java strings."
+        },
+        {
+          "type": "bug",
+          "id": "strings-8",
+          "prompt": "Which line has the bug? The code should print the last letter.",
+          "lines": [
+            "String word = \"Tiger\";",
+            "char last = word.charAt(word.length());",
+            "System.out.println(last);"
+          ],
+          "bug": 1,
+          "explain": "The last index is `length() - 1`. Write `word.charAt(word.length() - 1)`; `charAt(word.length())` stops with an error."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-9",
+          "prompt": "Build a statement that joins first and last with a space between them.",
+          "tokens": [
+            "String",
+            "full",
+            "=",
+            "first",
+            "+",
+            "\" \"",
+            "+",
+            "last",
+            ";"
+          ],
+          "distractors": [
+            "-",
+            "int"
+          ],
+          "explain": "`+` joins strings. `\" \"` is a string with one space, so `full` becomes `Ada King`."
+        },
+        {
+          "type": "order",
+          "id": "strings-10",
+          "prompt": "Put the lines in order so the code prints NANA 4.",
+          "lines": [
+            "String word = \"banana\";",
+            "String part = word.substring(2);",
+            "String big = part.toUpperCase();",
+            "System.out.println(big + \" \" + big.length());"
+          ],
+          "explain": "Each line uses the variable from the line before: `substring(2)` gives `nana`, `toUpperCase()` gives `NANA`, and `NANA` has `4` characters."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`s.length()`",
+              "number of characters"
+            ],
+            [
+              "`s.charAt(0)`",
+              "the first character"
+            ],
+            [
+              "`s.toUpperCase()`",
+              "all letters as capitals"
+            ],
+            [
+              "`a.equals(b)`",
+              "same text?"
+            ],
+            [
+              "`s.substring(2)`",
+              "everything from index 2"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "strings-12",
+          "prompt": "Which line has the bug? The code should print true.",
+          "lines": [
+            "String a = \"yes\";",
+            "String b = \"YES\".toLowerCase();",
+            "boolean same = a == b;",
+            "System.out.println(same);"
+          ],
+          "bug": 2,
+          "explain": "`==` checks if both are the same object, and here they are not. Compare the text with `a.equals(b)`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Make decisions with if and else, comparison and logical operators, switch expressions and the ternary operator.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An `if` statement runs a block of code only when a condition is `true`. The condition goes in parentheses `( )`, the code in curly braces `{ }`. After the block, the program continues as normal."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        int temperature = 25;\n        if (temperature > 20) {\n            System.out.println(\"Warm\");\n        }\n        System.out.println(\"Done\");\n    }\n}",
+          "output": "Warm\nDone"
+        },
+        {
+          "type": "text",
+          "md": "Comparisons give a `boolean`: `==` (equal to), `!=` (not equal to), `<` (less than), `>` (greater than), `<=` (less than or equal to) and `>=` (greater than or equal to). Do not mix up `==` and `=`: `=` stores a value, `==` compares two values."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        int a = 5;\n        System.out.println(a == 5);\n        System.out.println(a != 5);\n        System.out.println(a >= 6);\n    }\n}",
+          "output": "true\nfalse\nfalse"
+        },
+        {
+          "type": "heading",
+          "text": "else and else if"
+        },
+        {
+          "type": "text",
+          "md": "The block after `else` runs when the condition is `false`. With `else if` you can test more conditions. Java checks them from top to bottom and runs only the first block whose condition is `true`."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        int score = 72;\n        if (score >= 90) {\n            System.out.println(\"Grade A\");\n        } else if (score >= 70) {\n            System.out.println(\"Grade B\");\n        } else {\n            System.out.println(\"Grade C\");\n        }\n    }\n}",
+          "output": "Grade B"
+        },
+        {
+          "type": "text",
+          "md": "**Logical operators** combine conditions. `&&` (and) is `true` when both sides are `true`. `||` (or) is `true` when at least one side is `true`. `!` (not) turns `true` into `false` and `false` into `true`."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        int age = 20;\n        boolean member = false;\n        System.out.println(age >= 18 && member);\n        System.out.println(age >= 18 || member);\n        System.out.println(!member);\n        if (age >= 18 && !member) {\n            System.out.println(\"Adult guest\");\n        }\n    }\n}",
+          "output": "false\ntrue\ntrue\nAdult guest"
+        },
+        {
+          "type": "heading",
+          "text": "switch expressions"
+        },
+        {
+          "type": "text",
+          "md": "A `switch` expression picks a value depending on another value. Each `case` lists one or more values, then an arrow `->` and the result. `default` covers all other values. Because the whole `switch` gives a value, a semicolon follows the closing brace."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        int day = 6;\n        String type = switch (day) {\n            case 6, 7 -> \"Weekend\";\n            default -> \"Workday\";\n        };\n        System.out.println(type);\n        String fruit = \"apple\";\n        int price = switch (fruit) {\n            case \"apple\" -> 2;\n            case \"melon\" -> 5;\n            default -> 0;\n        };\n        System.out.println(price);\n    }\n}",
+          "output": "Weekend\n2"
+        },
+        {
+          "type": "text",
+          "md": "The **ternary operator** `condition ? a : b` is a short `if` that gives a value: `a` when the condition is `true`, otherwise `b`."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 7;\n        String kind = n % 2 == 0 ? \"even\" : \"odd\";\n        System.out.println(n + \" is \" + kind);\n    }\n}",
+          "output": "7 is odd"
+        }
+      ],
+      "card": [
+        "`if (x > 0) { } else if (x < 0) { } else { }`",
+        "`==`, `!=`, `<`, `>`, `<=`, `>=` compare values",
+        "`&&` and, `||` or, `!` not",
+        "`switch (d) { case 6, 7 -> \"Weekend\"; default -> \"Workday\"; }`",
+        "`x > 0 ? \"yes\" : \"no\"` picks one of two values"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this code print?",
+          "code": "int x = 8;\nif (x > 5) {\n    System.out.println(\"big\");\n} else {\n    System.out.println(\"small\");\n}",
+          "answers": [
+            "big"
+          ],
+          "explain": "`8 > 5` is `true`, so the first block runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this code print?",
+          "code": "int n = 15;\nif (n > 20) {\n    System.out.println(\"A\");\n} else if (n > 10) {\n    System.out.println(\"B\");\n} else {\n    System.out.println(\"C\");\n}",
+          "answers": [
+            "B"
+          ],
+          "explain": "`15 > 20` is `false`, but `15 > 10` is `true`. Java runs only that block and skips the `else`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "What does this code print?",
+          "code": "int a = 3;\nint b = 7;\nSystem.out.println(a > 2 && b < 5);",
+          "options": [
+            "`false`",
+            "`true`",
+            "`7`",
+            "Nothing, it does not compile"
+          ],
+          "answer": 0,
+          "explain": "`a > 2` is `true`, but `b < 5` is `false`. `&&` needs both sides to be `true`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-4",
+          "statement": "`if (x = 5)` checks if `x` is equal to `5`.",
+          "answer": false,
+          "explain": "`=` stores a value; it does not compare. For an `int`, `if (x = 5)` does not even compile. Write `if (x == 5)`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-5",
+          "prompt": "What does this code print?",
+          "code": "int n = 4;\nString size = switch (n) {\n    case 1 -> \"S\";\n    case 2 -> \"M\";\n    case 3 -> \"L\";\n    default -> \"?\";\n};\nSystem.out.println(size);",
+          "options": [
+            "`?`",
+            "`L`",
+            "Nothing",
+            "`S`"
+          ],
+          "answer": 0,
+          "explain": "No `case` matches `4`, so `default` gives the value `?`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-6",
+          "prompt": "What does this code print?",
+          "code": "int age = 15;\nString group = age >= 18 ? \"adult\" : \"teen\";\nSystem.out.println(group);",
+          "answers": [
+            "teen"
+          ],
+          "explain": "`15 >= 18` is `false`, so the ternary operator gives the value after the `:`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Fill the gap so that Enter is printed only when both conditions are true.",
+          "code": "int age = 20;\nboolean hasTicket = false;\nif (age >= 18 ___ hasTicket) {\n    System.out.println(\"Enter\");\n} else {\n    System.out.println(\"Wait\");\n}",
+          "options": [
+            "&&",
+            "||",
+            "!",
+            "and"
+          ],
+          "answer": 0,
+          "explain": "`&&` is `true` only when both sides are `true`. With `||`, one `true` side is enough. `and` is not a Java operator."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-8",
+          "prompt": "Fill the gap to complete the switch expression.",
+          "code": "String light = \"red\";\nString action = switch (light) {\n    case \"red\" ___ \"stop\";\n    case \"green\" -> \"go\";\n    default -> \"wait\";\n};\nSystem.out.println(action);",
+          "options": [
+            "->",
+            "=>",
+            "=",
+            ":"
+          ],
+          "answer": 0,
+          "explain": "In a `switch` expression, each `case` uses the arrow `->` before its value."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-9",
+          "prompt": "Build a statement that stores positive when n is greater than 0, otherwise negative.",
+          "tokens": [
+            "String",
+            "result",
+            "=",
+            "n > 0",
+            "?",
+            "\"positive\"",
+            ":",
+            "\"negative\"",
+            ";"
+          ],
+          "distractors": [
+            "if",
+            "else"
+          ],
+          "explain": "The ternary operator is `condition ? valueIfTrue : valueIfFalse`. It does not use `if` or `else`."
+        },
+        {
+          "type": "order",
+          "id": "conditions-10",
+          "prompt": "Put the lines in order so the code prints Hot.",
+          "lines": [
+            "int temp = 30;",
+            "if (temp > 25) {",
+            "    System.out.println(\"Hot\");",
+            "} else {",
+            "    System.out.println(\"Mild\");",
+            "}"
+          ],
+          "explain": "The variable comes first. `30 > 25` is `true`, so the block right after the `if` must print `Hot`."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-11",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`==`",
+              "is equal to"
+            ],
+            [
+              "`!=`",
+              "is not equal to"
+            ],
+            [
+              "`&&`",
+              "both must be true"
+            ],
+            [
+              "`||`",
+              "at least one must be true"
+            ],
+            [
+              "`!`",
+              "turns true into false"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "int age = 16;",
+            "if (age >= 18) {",
+            "    System.out.println(\"Adult\");",
+            "} else (age >= 13) {",
+            "    System.out.println(\"Teen\");",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "A second condition needs `else if`. Write `} else if (age >= 13) {`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with for, while and do-while loops, go through arrays with the enhanced for, and use break and continue.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A `for` loop repeats a block of code. Its header has three parts, separated by semicolons: the start (`int i = 1`), the condition (`i <= 3`) and the update (`i++`). Java runs the block as long as the condition is `true` and does the update after each round."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        for (int i = 1; i <= 3; i++) {\n            System.out.println(\"Round \" + i);\n        }\n    }\n}",
+          "output": "Round 1\nRound 2\nRound 3"
+        },
+        {
+          "type": "text",
+          "md": "The update can be anything that changes the variable. `i += 5` counts in steps of five, and `i--` counts down. A variable outside the loop can collect a result, for example a sum."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        for (int i = 0; i <= 10; i += 5) {\n            System.out.println(i);\n        }\n        int sum = 0;\n        for (int i = 3; i > 0; i--) {\n            sum += i;\n        }\n        System.out.println(\"Sum: \" + sum);\n    }\n}",
+          "output": "0\n5\n10\nSum: 6"
+        },
+        {
+          "type": "heading",
+          "text": "while and do-while"
+        },
+        {
+          "type": "text",
+          "md": "A `while` loop repeats as long as its condition is `true`. It checks the condition before each round. Make sure that something in the block changes the condition, or the loop never ends."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        int n = 1;\n        while (n < 50) {\n            n = n * 3;\n        }\n        System.out.println(n);\n    }\n}",
+          "output": "81"
+        },
+        {
+          "type": "text",
+          "md": "A `do-while` loop runs the block first and checks the condition after it. So the block always runs at least once. Note the semicolon after `while (...)`."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        int count = 10;\n        do {\n            System.out.println(\"count is \" + count);\n            count++;\n        } while (count < 3);\n    }\n}",
+          "output": "count is 10"
+        },
+        {
+          "type": "heading",
+          "text": "The enhanced for loop"
+        },
+        {
+          "type": "text",
+          "md": "An **array** holds several values of the same type: `String[] names = {\"Ana\", \"Ben\"};`. The unit about arrays and lists explains them in detail. The enhanced `for` loop goes through all values: read `for (String name : names)` as \"for each `name` in `names`\"."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        String[] names = {\"Ana\", \"Ben\", \"Cleo\"};\n        for (String name : names) {\n            System.out.println(\"Hi, \" + name);\n        }\n    }\n}",
+          "output": "Hi, Ana\nHi, Ben\nHi, Cleo"
+        },
+        {
+          "type": "text",
+          "md": "`break` ends a loop right away. `continue` skips the rest of the current round and goes on with the next one."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        for (int i = 1; i <= 10; i++) {\n            if (i % 2 == 0) {\n                continue;\n            }\n            if (i > 7) {\n                break;\n            }\n            System.out.println(i);\n        }\n    }\n}",
+          "output": "1\n3\n5\n7"
+        }
+      ],
+      "card": [
+        "`for (int i = 0; i < 3; i++) { }` counts 0, 1, 2",
+        "`while (x < 10) { }` checks first",
+        "`do { } while (x < 10);` runs at least once",
+        "`for (String s : names) { }` goes through all values",
+        "`break` ends the loop, `continue` skips a round"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this code print?",
+          "code": "for (int i = 0; i < 4; i++) {\n    System.out.print(i);\n}",
+          "answers": [
+            "0123"
+          ],
+          "explain": "`i` starts at `0` and the loop runs while `i < 4`, so it prints `0`, `1`, `2` and `3` on one line."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this code print?",
+          "code": "int sum = 0;\nfor (int i = 1; i <= 5; i++) {\n    sum += i;\n}\nSystem.out.println(sum);",
+          "answers": [
+            "15"
+          ],
+          "explain": "The loop adds `1 + 2 + 3 + 4 + 5`, which is `15`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "How many times does this code print Hi?",
+          "code": "for (int i = 2; i < 8; i += 2) {\n    System.out.println(\"Hi\");\n}",
+          "options": [
+            "3 times",
+            "4 times",
+            "6 times",
+            "8 times"
+          ],
+          "answer": 0,
+          "explain": "`i` takes the values `2`, `4` and `6`. At `8`, the condition `i < 8` is `false`."
+        },
+        {
+          "type": "input",
+          "id": "loops-4",
+          "prompt": "What does this code print?",
+          "code": "int n = 100;\nwhile (n > 10) {\n    n = n / 2;\n}\nSystem.out.println(n);",
+          "answers": [
+            "6"
+          ],
+          "explain": "`n` goes `100`, `50`, `25`, `12`, `6`. Dividing whole numbers drops the rest, so `25 / 2` is `12`. At `6`, `n > 10` is `false`."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-5",
+          "statement": "A `do-while` loop runs its block at least once, even when the condition is `false` from the start.",
+          "answer": true,
+          "explain": "`do-while` checks the condition only after the block, so the block runs once before the first check."
+        },
+        {
+          "type": "choice",
+          "id": "loops-6",
+          "prompt": "What does this code print?",
+          "code": "for (int i = 1; i <= 10; i++) {\n    if (i == 4) {\n        break;\n    }\n    System.out.print(i);\n}",
+          "options": [
+            "`123`",
+            "`1234`",
+            "`12345678910`",
+            "`4`"
+          ],
+          "answer": 0,
+          "explain": "When `i` is `4`, `break` ends the loop before the `print`. So only `1`, `2` and `3` are printed."
+        },
+        {
+          "type": "input",
+          "id": "loops-7",
+          "prompt": "What does this code print?",
+          "code": "for (int i = 1; i <= 6; i++) {\n    if (i % 3 == 0) {\n        continue;\n    }\n    System.out.print(i);\n}",
+          "answers": [
+            "1245"
+          ],
+          "explain": "`continue` skips the `print` for `3` and `6`, which can be divided by `3`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-8",
+          "prompt": "Fill the gap so the code prints the numbers 1 to 5.",
+          "code": "for (int i = 1; i ___ 5; i++) {\n    System.out.println(i);\n}",
+          "options": [
+            "<=",
+            "<",
+            ">=",
+            "=>"
+          ],
+          "answer": 0,
+          "explain": "`i <= 5` includes `5`. With `<` the loop stops at `4`, with `>=` it never runs, and `=>` is not a Java operator."
+        },
+        {
+          "type": "gap",
+          "id": "loops-9",
+          "prompt": "Fill the gap so the loop goes through all numbers in the array.",
+          "code": "int[] numbers = {4, 8, 15};\nfor (int n ___ numbers) {\n    System.out.println(n);\n}",
+          "options": [
+            ":",
+            "in",
+            "of",
+            ";"
+          ],
+          "answer": 0,
+          "explain": "The enhanced `for` loop uses a colon: `for (int n : numbers)`. `in` and `of` are used in other languages, not in Java."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-10",
+          "prompt": "Build a loop header that counts 0, 1, 2.",
+          "tokens": [
+            "for",
+            "(",
+            "int i = 0",
+            ";",
+            "i < 3",
+            ";",
+            "i++",
+            ")"
+          ],
+          "distractors": [
+            ",",
+            "i--"
+          ],
+          "explain": "The three parts of the header are separated by semicolons: start `int i = 0`, condition `i < 3`, update `i++`."
+        },
+        {
+          "type": "order",
+          "id": "loops-11",
+          "prompt": "Put the lines in order so the code prints 3, 2, 1 on separate lines and then Go!",
+          "lines": [
+            "int i = 3;",
+            "while (i > 0) {",
+            "    System.out.println(i);",
+            "    i--;",
+            "}",
+            "System.out.println(\"Go!\");"
+          ],
+          "explain": "Inside the loop, print `i` first and then count down. `Go!` comes after the loop, so it is printed once."
+        },
+        {
+          "type": "bug",
+          "id": "loops-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "int n = 0;",
+            "do {",
+            "    System.out.println(n);",
+            "    n++;",
+            "} while (n < 3)"
+          ],
+          "bug": 4,
+          "explain": "A `do-while` loop ends with a semicolon. Write `} while (n < 3);`."
+        }
+      ]
+    },
+    {
+      "id": "methods",
+      "title": "Methods",
+      "chapter": "Building blocks",
+      "summary": "Write your own static methods with parameters and return values, and overload a method for different types.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **method** is a named block of code that you can run again and again by calling its name. `main` is a method too. You write your own methods inside the class, next to `main`. For now, start each one with `static`. The word `void` means that the method gives no result back."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    static void greet() {\n        System.out.println(\"Hello!\");\n    }\n\n    public static void main(String[] args) {\n        greet();\n        greet();\n    }\n}",
+          "output": "Hello!\nHello!"
+        },
+        {
+          "type": "text",
+          "md": "A method can take **parameters**: values it gets from the caller. You list them in the parentheses, each with a type and a name, separated by commas. When you call the method, you pass the values, called **arguments**, in the same order."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    static void greet(String name, int times) {\n        for (int i = 0; i < times; i++) {\n            System.out.println(\"Hi, \" + name);\n        }\n    }\n\n    public static void main(String[] args) {\n        greet(\"Ana\", 2);\n        greet(\"Ben\", 1);\n    }\n}",
+          "output": "Hi, Ana\nHi, Ana\nHi, Ben"
+        },
+        {
+          "type": "heading",
+          "text": "Return values"
+        },
+        {
+          "type": "text",
+          "md": "Instead of `void`, you can write the type of a result, for example `int`. Then the method must end with `return` and a value of that type. `return` sends the value back to the caller, which can store it, print it or calculate with it."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    static int square(int n) {\n        return n * n;\n    }\n\n    static double average(int a, int b) {\n        return (a + b) / 2.0;\n    }\n\n    public static void main(String[] args) {\n        int s = square(4);\n        System.out.println(s);\n        System.out.println(square(3) + square(2));\n        System.out.println(average(3, 4));\n    }\n}",
+          "output": "16\n13\n3.5"
+        },
+        {
+          "type": "text",
+          "md": "`return` ends the method right away. So a method can return early from inside an `if`, and the code after it does not run."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    static String sign(int n) {\n        if (n > 0) {\n            return \"positive\";\n        }\n        if (n < 0) {\n            return \"negative\";\n        }\n        return \"zero\";\n    }\n\n    public static void main(String[] args) {\n        System.out.println(sign(5));\n        System.out.println(sign(-2));\n        System.out.println(sign(0));\n    }\n}",
+          "output": "positive\nnegative\nzero"
+        },
+        {
+          "type": "warning",
+          "md": "A parameter is a copy of the argument. If a method changes its parameter, the variable of the caller stays the same. Variables you create inside a method exist only in that method."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    static void addOne(int n) {\n        n = n + 1;\n        System.out.println(\"inside: \" + n);\n    }\n\n    public static void main(String[] args) {\n        int x = 5;\n        addOne(x);\n        System.out.println(\"outside: \" + x);\n    }\n}",
+          "output": "inside: 6\noutside: 5"
+        },
+        {
+          "type": "heading",
+          "text": "Overloading"
+        },
+        {
+          "type": "text",
+          "md": "Several methods can have the same name if their parameters are different: a different number of parameters or different types. This is called **overloading**. Java picks the method whose parameters match the arguments."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    static int add(int a, int b) {\n        return a + b;\n    }\n\n    static double add(double a, double b) {\n        return a + b;\n    }\n\n    static int add(int a, int b, int c) {\n        return a + b + c;\n    }\n\n    public static void main(String[] args) {\n        System.out.println(add(2, 3));\n        System.out.println(add(2.5, 1.5));\n        System.out.println(add(1, 2, 3));\n    }\n}",
+          "output": "5\n4.0\n6"
+        }
+      ],
+      "card": [
+        "`static void greet() { }` gives nothing back",
+        "`static int square(int n) { return n * n; }`",
+        "`square(4)` calls the method with the argument `4`",
+        "`return` ends the method and gives back a value",
+        "Same name, different parameters: overloading"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "methods-1",
+          "prompt": "What does this code print?",
+          "code": "static int triple(int n) {\n    return n * 3;\n}\n\npublic static void main(String[] args) {\n    System.out.println(triple(4) + 1);\n}",
+          "answers": [
+            "13"
+          ],
+          "explain": "`triple(4)` returns `12`, and `12 + 1` is `13`."
+        },
+        {
+          "type": "input",
+          "id": "methods-2",
+          "prompt": "What does this code print?",
+          "code": "static String repeat(String s, int n) {\n    String result = \"\";\n    for (int i = 0; i < n; i++) {\n        result += s;\n    }\n    return result;\n}\n\npublic static void main(String[] args) {\n    System.out.println(repeat(\"ab\", 3));\n}",
+          "answers": [
+            "ababab"
+          ],
+          "explain": "The loop runs three times and adds `ab` each time, so the method returns `ababab`."
+        },
+        {
+          "type": "choice",
+          "id": "methods-3",
+          "prompt": "What does `void` mean in `static void greet()`?",
+          "options": [
+            "The method gives no value back.",
+            "The method has no parameters.",
+            "The method is empty.",
+            "The method can run only once."
+          ],
+          "answer": 0,
+          "explain": "`void` is the return type for \"nothing\". The empty parentheses `()` are what show that there are no parameters."
+        },
+        {
+          "type": "choice",
+          "id": "methods-4",
+          "prompt": "What does this code print?",
+          "code": "static String describe(int n) {\n    return \"int\";\n}\n\nstatic String describe(double d) {\n    return \"double\";\n}\n\nstatic String describe(String s) {\n    return \"String\";\n}\n\npublic static void main(String[] args) {\n    System.out.println(describe(2.0));\n}",
+          "options": [
+            "`double`",
+            "`int`",
+            "`String`",
+            "Nothing, it does not compile"
+          ],
+          "answer": 0,
+          "explain": "`2.0` has a decimal point, so it is a `double`. Java picks the overloaded method with a `double` parameter."
+        },
+        {
+          "type": "true_false",
+          "id": "methods-5",
+          "statement": "This code prints `100`.",
+          "code": "static void change(int n) {\n    n = 100;\n}\n\npublic static void main(String[] args) {\n    int x = 1;\n    change(x);\n    System.out.println(x);\n}",
+          "answer": false,
+          "explain": "The parameter `n` is a copy of `x`. Changing `n` does not change `x`, so the code prints `1`."
+        },
+        {
+          "type": "input",
+          "id": "methods-6",
+          "prompt": "What does this code print?",
+          "code": "static boolean isEven(int n) {\n    return n % 2 == 0;\n}\n\npublic static void main(String[] args) {\n    System.out.println(isEven(7));\n}",
+          "answers": [
+            "false"
+          ],
+          "explain": "`7 % 2` is `1`, so `n % 2 == 0` is `false`, and the method returns `false`."
+        },
+        {
+          "type": "gap",
+          "id": "methods-7",
+          "prompt": "Fill the gap with the right return type.",
+          "code": "static ___ area(int w, int h) {\n    return w * h;\n}\n\npublic static void main(String[] args) {\n    System.out.println(area(3, 4));\n}",
+          "options": [
+            "int",
+            "void",
+            "String",
+            "return"
+          ],
+          "answer": 0,
+          "explain": "`w * h` is an `int`, so the return type is `int`. A `void` method cannot return a value, and an `int` is not a `String`."
+        },
+        {
+          "type": "gap",
+          "id": "methods-8",
+          "prompt": "Fill the gap so the method gives back the larger number.",
+          "code": "static int max(int a, int b) {\n    if (a > b) {\n        ___ a;\n    }\n    return b;\n}\n\npublic static void main(String[] args) {\n    System.out.println(max(9, 4));\n}",
+          "options": [
+            "return",
+            "print",
+            "yield",
+            "give"
+          ],
+          "answer": 0,
+          "explain": "`return a;` sends `a` back and ends the method, so `return b;` does not run."
+        },
+        {
+          "type": "blocks",
+          "id": "methods-9",
+          "prompt": "Build the header of a method half that takes a double and returns a double.",
+          "tokens": [
+            "static",
+            "double",
+            "half",
+            "(",
+            "double x",
+            ")"
+          ],
+          "distractors": [
+            "void",
+            "return"
+          ],
+          "explain": "First `static`, then the return type `double`, the name `half` and the parameter `double x` in parentheses."
+        },
+        {
+          "type": "order",
+          "id": "methods-10",
+          "prompt": "Put the lines in order so that grade(70) returns pass and grade(20) returns fail.",
+          "lines": [
+            "static String grade(int points) {",
+            "    if (points >= 50) {",
+            "        return \"pass\";",
+            "    }",
+            "    return \"fail\";",
+            "}"
+          ],
+          "explain": "With `70` points, the `if` returns `pass` and the method ends. With `20`, the `if` block is skipped and the method returns `fail`."
+        },
+        {
+          "type": "pairs",
+          "id": "methods-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`void`",
+              "gives no value back"
+            ],
+            [
+              "`return x;`",
+              "gives back the value of x"
+            ],
+            [
+              "`(int a, int b)`",
+              "two parameters"
+            ],
+            [
+              "`square(4)`",
+              "calls a method"
+            ],
+            [
+              "`static boolean isEven(int n)`",
+              "a method that gives back true or false"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "methods-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "static void square(int n) {",
+            "    return n * n;",
+            "}",
+            "public static void main(String[] args) {",
+            "    System.out.println(square(5));",
+            "}"
+          ],
+          "bug": 0,
+          "explain": "The method returns an `int`, so its return type must be `int`, not `void`. Write `static int square(int n) {`."
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "Arrays and lists",
+      "chapter": "Data",
+      "summary": "Store many values in arrays and ArrayLists, read and change them by index, and go through them with loops.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** holds a fixed number of values of the same type. `int[] scores = {90, 75, 82};` creates an array with three `int` values: `[]` after the type means \"array of\". You read a value by its index in square brackets, starting at `0`: `scores[0]`. You change it with `scores[1] = 80;`."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        int[] scores = {90, 75, 82};\n        System.out.println(scores[0]);\n        scores[1] = 80;\n        System.out.println(scores[1]);\n        System.out.println(scores.length);\n    }\n}",
+          "output": "90\n80\n3"
+        },
+        {
+          "type": "text",
+          "md": "`scores.length` gives the size of an array, without parentheses. `new int[3]` creates an array with three zeros. To print a whole array, use `Arrays.toString`. It is in the package `java.util`, so the file needs the line `import java.util.Arrays;` before the class."
+        },
+        {
+          "type": "code",
+          "code": "import java.util.Arrays;\n\npublic class Main {\n    public static void main(String[] args) {\n        int[] counts = new int[3];\n        counts[2] = 7;\n        System.out.println(Arrays.toString(counts));\n        String[] days = {\"Mon\", \"Tue\"};\n        System.out.println(Arrays.toString(days));\n    }\n}",
+          "output": "[0, 0, 7]\n[Mon, Tue]"
+        },
+        {
+          "type": "text",
+          "md": "You can go through an array with a counting `for` loop, from `0` to `length - 1`, or with the enhanced `for` loop. Use the counting loop when you need the index."
+        },
+        {
+          "type": "code",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        double[] prices = {2.5, 4.0, 1.5};\n        double total = 0;\n        for (double p : prices) {\n            total += p;\n        }\n        System.out.println(total);\n        for (int i = 0; i < prices.length; i++) {\n            System.out.println(i + \": \" + prices[i]);\n        }\n    }\n}",
+          "output": "8.0\n0: 2.5\n1: 4.0\n2: 1.5"
+        },
+        {
+          "type": "warning",
+          "md": "The last index is `length - 1`. An index outside the array stops the program with an `ArrayIndexOutOfBoundsException`."
+        },
+        {
+          "type": "tip",
+          "md": "Now you can read `String[] args` in `main`: it is an array of strings. It holds the words you type after `java Main` on the command line."
+        },
+        {
+          "type": "heading",
+          "text": "ArrayList"
+        },
+        {
+          "type": "text",
+          "md": "An array cannot grow. An `ArrayList` can. `ArrayList<String> names = new ArrayList<>();` creates an empty list of strings: the type of the values goes in angle brackets `< >`, and `new` creates the list. Its methods are `add`, `get`, `set`, `remove`, `size` and `contains`. It needs `import java.util.ArrayList;`."
+        },
+        {
+          "type": "code",
+          "code": "import java.util.ArrayList;\n\npublic class Main {\n    public static void main(String[] args) {\n        ArrayList<String> names = new ArrayList<>();\n        names.add(\"Ana\");\n        names.add(\"Ben\");\n        names.add(\"Cleo\");\n        System.out.println(names);\n        System.out.println(names.get(1));\n        names.set(0, \"Alex\");\n        names.remove(\"Ben\");\n        System.out.println(names);\n        System.out.println(names.size());\n        System.out.println(names.contains(\"Cleo\"));\n    }\n}",
+          "output": "[Ana, Ben, Cleo]\nBen\n[Alex, Cleo]\n2\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "Lists hold objects, so for numbers you write `Integer` instead of `int` (and `Double` instead of `double`). `List.of(4, 8, 15)` creates a short list in one step. The type `List<Integer>` and `List.of` need `import java.util.List;`. The enhanced `for` loop works with lists too."
+        },
+        {
+          "type": "code",
+          "code": "import java.util.ArrayList;\nimport java.util.List;\n\npublic class Main {\n    public static void main(String[] args) {\n        List<Integer> numbers = List.of(4, 8, 15);\n        int sum = 0;\n        for (int n : numbers) {\n            sum += n;\n        }\n        System.out.println(sum);\n        ArrayList<Integer> evens = new ArrayList<>();\n        for (int n : numbers) {\n            if (n % 2 == 0) {\n                evens.add(n);\n            }\n        }\n        System.out.println(evens);\n    }\n}",
+          "output": "27\n[4, 8]"
+        },
+        {
+          "type": "warning",
+          "md": "A list from `List.of` cannot change. Calling `add` on it stops the program with an `UnsupportedOperationException`. If you need to change it, make an `ArrayList` copy: `new ArrayList<>(List.of(1, 2))`."
+        }
+      ],
+      "card": [
+        "`int[] a = {1, 2, 3};` then `a[0]`, `a.length`",
+        "`ArrayList<String> list = new ArrayList<>();`",
+        "`list.add(x)`, `list.get(0)`, `list.set(0, x)`, `list.size()`",
+        "`List.of(1, 2, 3)` cannot change; use `Integer`, not `int`",
+        "`for (int n : numbers) { }` goes through all values"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "collections-1",
+          "prompt": "What does this code print?",
+          "code": "int[] a = {4, 7, 1, 9};\nSystem.out.println(a[2]);",
+          "answers": [
+            "1"
+          ],
+          "explain": "The index starts at `0`: `a[0]` is `4`, `a[1]` is `7`, and `a[2]` is `1`."
+        },
+        {
+          "type": "input",
+          "id": "collections-2",
+          "prompt": "What does this code print?",
+          "code": "int[] a = {3, 6, 9};\nSystem.out.println(a.length + a[a.length - 1]);",
+          "answers": [
+            "12"
+          ],
+          "explain": "`a.length` is `3`, and `a[2]` is the last value, `9`. `3 + 9` is `12`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-3",
+          "prompt": "What does this code print?",
+          "code": "ArrayList<String> list = new ArrayList<>();\nlist.add(\"a\");\nlist.add(\"b\");\nlist.add(\"c\");\nlist.remove(\"b\");\nSystem.out.println(list.size());",
+          "options": [
+            "`2`",
+            "`3`",
+            "`1`",
+            "Nothing, it stops with an error"
+          ],
+          "answer": 0,
+          "explain": "The list has three values, and `remove(\"b\")` takes one away, so `size()` is `2`."
+        },
+        {
+          "type": "input",
+          "id": "collections-4",
+          "prompt": "What does this code print?",
+          "code": "ArrayList<Integer> nums = new ArrayList<>();\nnums.add(1);\nnums.add(2);\nnums.set(0, 5);\nSystem.out.println(nums);",
+          "answers": [
+            "[5, 2]"
+          ],
+          "explain": "`set(0, 5)` replaces the value at index `0`, so `1` becomes `5`. A list prints in square brackets."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-5",
+          "statement": "You can add values to a list created with `List.of`.",
+          "answer": false,
+          "explain": "A list from `List.of` cannot change. `add` stops the program with an `UnsupportedOperationException`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-6",
+          "prompt": "Which line creates an empty list for whole numbers?",
+          "options": [
+            "`ArrayList<Integer> nums = new ArrayList<>();`",
+            "`ArrayList<int> nums = new ArrayList<>();`",
+            "`int[] nums = new ArrayList<>();`",
+            "`ArrayList<Integer> nums = ArrayList();`"
+          ],
+          "answer": 0,
+          "explain": "Lists hold objects, so the type is `Integer`, not `int`. And `new` is needed to create the list."
+        },
+        {
+          "type": "gap",
+          "id": "collections-7",
+          "prompt": "Fill the gap so the code prints Ana.",
+          "code": "ArrayList<String> names = new ArrayList<>();\nnames.add(\"Ana\");\nnames.add(\"Ben\");\nSystem.out.println(names.___(0));",
+          "options": [
+            "get",
+            "at",
+            "charAt",
+            "index"
+          ],
+          "answer": 0,
+          "explain": "`get(0)` returns the value at index `0` of a list. `charAt` is a method of strings, not of lists."
+        },
+        {
+          "type": "gap",
+          "id": "collections-8",
+          "prompt": "Fill the gap so the loop goes through the whole array.",
+          "code": "int[] nums = {2, 4, 6};\nint sum = 0;\nfor (int i = 0; i < nums.___; i++) {\n    sum += nums[i];\n}\nSystem.out.println(sum);",
+          "options": [
+            "length",
+            "length()",
+            "size()",
+            "size"
+          ],
+          "answer": 0,
+          "explain": "An array has `length` without parentheses. `length()` is for strings, and `size()` is for lists."
+        },
+        {
+          "type": "blocks",
+          "id": "collections-9",
+          "prompt": "Build a statement that creates an array colors with red and blue, in this order.",
+          "tokens": [
+            "String[]",
+            "colors",
+            "=",
+            "{",
+            "\"red\"",
+            ",",
+            "\"blue\"",
+            "}",
+            ";"
+          ],
+          "distractors": [
+            "[",
+            "("
+          ],
+          "explain": "The type `String[]` means an array of strings. The values go in curly braces, separated by commas."
+        },
+        {
+          "type": "order",
+          "id": "collections-10",
+          "prompt": "Put the lines in order so the code prints [pen, ink].",
+          "lines": [
+            "ArrayList<String> items = new ArrayList<>();",
+            "items.add(\"pen\");",
+            "items.add(\"cup\");",
+            "items.set(1, \"ink\");",
+            "System.out.println(items);"
+          ],
+          "explain": "First create the list, then add `pen` and `cup`. `set(1, \"ink\")` replaces `cup`, the value at index `1`."
+        },
+        {
+          "type": "pairs",
+          "id": "collections-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`a.length`",
+              "size of an array"
+            ],
+            [
+              "`list.size()`",
+              "size of a list"
+            ],
+            [
+              "`list.get(0)`",
+              "first value of a list"
+            ],
+            [
+              "`list.add(x)`",
+              "adds a value at the end"
+            ],
+            [
+              "`a[1]`",
+              "second value of an array"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "collections-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "int[] values = {5, 10, 15};",
+            "int sum = 0;",
+            "for (int i = 0; i <= values.length; i++) {",
+            "    sum += values[i];",
+            "}",
+            "System.out.println(sum);"
+          ],
+          "bug": 2,
+          "explain": "The last index is `length - 1`, so `i` must stay below `values.length`. Write `i < values.length`."
+        }
+      ]
+    },
+    {
+      "id": "classes",
+      "title": "Classes and records",
+      "chapter": "Data",
+      "summary": "Create your own types with classes, fields, constructors and methods, and hold data in short records.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A class is a plan for your own type. **Fields** are the variables that each object of the class has. You create an **object** with `new`, and you reach its fields with a dot."
+        },
+        {
+          "type": "code",
+          "code": "class Dog {\n    String name;\n    int age;\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Dog rex = new Dog();\n        rex.name = \"Rex\";\n        rex.age = 3;\n        System.out.println(rex.name + \" is \" + rex.age);\n    }\n}",
+          "output": "Rex is 3"
+        },
+        {
+          "type": "text",
+          "md": "Here the class `Dog` is in the same file as `Main`, before it. Only one class in a file can be `public`. In bigger projects, each class has its own file. Fields that you do not set get a default value: `0` for numbers and `false` for `boolean`."
+        },
+        {
+          "type": "heading",
+          "text": "Constructors and this"
+        },
+        {
+          "type": "text",
+          "md": "A **constructor** sets up a new object. It has the same name as the class and no return type, and it runs when you call `new`. Inside it, `this` means the object being created: `this.name` is the field, and `name` alone is the parameter."
+        },
+        {
+          "type": "code",
+          "code": "class Dog {\n    String name;\n    int age;\n\n    Dog(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Dog a = new Dog(\"Rex\", 3);\n        Dog b = new Dog(\"Bella\", 5);\n        System.out.println(a.name);\n        System.out.println(b.name + \" \" + b.age);\n    }\n}",
+          "output": "Rex\nBella 5"
+        },
+        {
+          "type": "text",
+          "md": "Methods without `static` belong to an object. You call them on an object with a dot, like `acc.deposit(50)`, and they can read and change the fields of that object. A `static` method belongs to the class itself and needs no object. That is why `main` is `static`."
+        },
+        {
+          "type": "code",
+          "code": "class Account {\n    String owner;\n    double balance;\n\n    Account(String owner) {\n        this.owner = owner;\n    }\n\n    void deposit(double amount) {\n        balance += amount;\n    }\n\n    String describe() {\n        return owner + \": \" + balance;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Account acc = new Account(\"Mia\");\n        acc.deposit(50);\n        acc.deposit(25.5);\n        System.out.println(acc.describe());\n    }\n}",
+          "output": "Mia: 75.5"
+        },
+        {
+          "type": "tip",
+          "md": "`public` means that all classes can use something. In real projects, fields are often `private`, like `private double balance;`. Then only the class itself can use them, and other code must call its methods."
+        },
+        {
+          "type": "heading",
+          "text": "Records"
+        },
+        {
+          "type": "text",
+          "md": "A **record** is a short way to write a class that only holds data: `record Point(int x, int y) {}`. Java creates the fields, the constructor and a method for each value, like `p.x()`. A record also prints in a readable form, `equals` compares the values, and the values cannot change."
+        },
+        {
+          "type": "code",
+          "code": "record Point(int x, int y) {}\n\npublic class Main {\n    public static void main(String[] args) {\n        Point p = new Point(3, 4);\n        System.out.println(p.x());\n        System.out.println(p);\n        Point q = new Point(3, 4);\n        System.out.println(p.equals(q));\n    }\n}",
+          "output": "3\nPoint[x=3, y=4]\ntrue"
+        },
+        {
+          "type": "warning",
+          "md": "If you print an object of a normal class, you get something like `Dog@1b6d3586`, the class name and a code. Records print their values instead."
+        }
+      ],
+      "card": [
+        "`class Dog { String name; }` defines fields",
+        "`Dog(String name) { this.name = name; }` is a constructor",
+        "`Dog d = new Dog(\"Rex\");` creates an object",
+        "`d.bark()` calls a method on the object",
+        "`record Point(int x, int y) {}` with `p.x()`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "classes-1",
+          "prompt": "What does this program print?",
+          "code": "class Counter {\n    int count;\n\n    void add(int n) {\n        count += n;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Counter c = new Counter();\n        c.add(5);\n        c.add(2);\n        System.out.println(c.count);\n    }\n}",
+          "answers": [
+            "7"
+          ],
+          "explain": "`count` starts at `0`. The two calls of `add` change the field of the same object: `0 + 5 + 2` is `7`."
+        },
+        {
+          "type": "input",
+          "id": "classes-2",
+          "prompt": "What does this program print?",
+          "code": "record Item(String name, double price) {}\n\npublic class Main {\n    public static void main(String[] args) {\n        Item tea = new Item(\"Tea\", 2.5);\n        System.out.println(tea.name() + \" \" + tea.price());\n    }\n}",
+          "answers": [
+            "Tea 2.5"
+          ],
+          "explain": "A record creates a method for each value: `name()` returns `Tea` and `price()` returns `2.5`."
+        },
+        {
+          "type": "choice",
+          "id": "classes-3",
+          "prompt": "What does `new Dog(\"Rex\")` do?",
+          "options": [
+            "It creates a new object of the class `Dog`.",
+            "It creates a new class called `Dog`.",
+            "It changes the name of every `Dog` object.",
+            "It prints `Rex`."
+          ],
+          "answer": 0,
+          "explain": "`new` creates an object and runs the constructor with the argument `\"Rex\"`. The class must already exist."
+        },
+        {
+          "type": "choice",
+          "id": "classes-4",
+          "prompt": "What does this program print?",
+          "code": "class Dog {\n    String name;\n\n    Dog(String name) {\n        this.name = name;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Dog a = new Dog(\"Rex\");\n        Dog b = new Dog(\"Max\");\n        a.name = \"Bo\";\n        System.out.println(b.name);\n    }\n}",
+          "options": [
+            "`Max`",
+            "`Bo`",
+            "`Rex`",
+            "Nothing, it does not compile"
+          ],
+          "answer": 0,
+          "explain": "Each object has its own fields. Changing `a.name` does not change `b.name`."
+        },
+        {
+          "type": "true_false",
+          "id": "classes-5",
+          "statement": "A constructor needs a return type, for example `void`.",
+          "answer": false,
+          "explain": "A constructor has the name of the class and no return type. With `void` in front, it becomes a normal method and is no longer a constructor."
+        },
+        {
+          "type": "input",
+          "id": "classes-6",
+          "prompt": "What does this program print?",
+          "code": "record Size(int w, int h) {}\n\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(new Size(2, 5));\n    }\n}",
+          "answers": [
+            "Size[w=2, h=5]"
+          ],
+          "explain": "A record prints its name and its values in square brackets."
+        },
+        {
+          "type": "gap",
+          "id": "classes-7",
+          "prompt": "Fill the gap so the constructor stores the name in the field.",
+          "code": "class Cat {\n    String name;\n\n    Cat(String name) {\n        ___.name = name;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Cat c = new Cat(\"Tom\");\n        System.out.println(c.name);\n    }\n}",
+          "options": [
+            "this",
+            "self",
+            "Cat",
+            "name"
+          ],
+          "answer": 0,
+          "explain": "`this.name` is the field of the new object, and `name` is the parameter. Java uses `this`, not `self`."
+        },
+        {
+          "type": "gap",
+          "id": "classes-8",
+          "prompt": "Fill the gap to create a Point object.",
+          "code": "record Point(int x, int y) {}\n\npublic class Main {\n    public static void main(String[] args) {\n        Point p = ___ Point(1, 2);\n        System.out.println(p);\n    }\n}",
+          "options": [
+            "new",
+            "create",
+            "make",
+            "Point"
+          ],
+          "answer": 0,
+          "explain": "`new` creates an object, for classes and for records."
+        },
+        {
+          "type": "blocks",
+          "id": "classes-9",
+          "prompt": "Build a record Book with a String title and an int pages, in this order.",
+          "tokens": [
+            "record",
+            "Book",
+            "(",
+            "String title",
+            ",",
+            "int pages",
+            ")",
+            "{",
+            "}"
+          ],
+          "distractors": [
+            "class",
+            "="
+          ],
+          "explain": "A record lists its values in parentheses after the name, followed by a body in curly braces, here empty."
+        },
+        {
+          "type": "order",
+          "id": "classes-10",
+          "prompt": "There is a record Point(int x, int y). Put the lines in order so the code prints Point[x=4, y=2].",
+          "lines": [
+            "Point start = new Point(1, 2);",
+            "Point moved = new Point(start.x() + 3, start.y());",
+            "System.out.println(moved);"
+          ],
+          "explain": "`moved` uses the values of `start`, so `start` comes first. `1 + 3` is `4`, and `y` stays `2`."
+        },
+        {
+          "type": "pairs",
+          "id": "classes-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`class`",
+              "defines a new type"
+            ],
+            [
+              "`new`",
+              "creates an object"
+            ],
+            [
+              "`this`",
+              "the current object"
+            ],
+            [
+              "`record`",
+              "a short class that holds data"
+            ],
+            [
+              "`Dog(String name) { }`",
+              "a constructor"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "classes-12",
+          "prompt": "Which line has the bug? new Box(5).size should be 5.",
+          "lines": [
+            "class Box {",
+            "    int size;",
+            "    Box(int size) {",
+            "        size = size;",
+            "    }",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "`size = size;` stores the parameter in itself, so the field stays `0`. Write `this.size = size;`."
+        }
+      ]
+    }
+  ]
+}

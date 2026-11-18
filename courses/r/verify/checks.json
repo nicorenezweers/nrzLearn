@@ -1,0 +1,427 @@
+{
+  "hello-3": {
+    "runs": [
+      {
+        "code": "cat(\"Hello\\n\")",
+        "expect": "Hello"
+      },
+      {
+        "code": "print(\"Hello\")",
+        "expect": "[1] \"Hello\""
+      },
+      {
+        "code": "Print(\"Hello\")",
+        "error": true
+      },
+      {
+        "code": "cat(Hello)",
+        "error": true
+      }
+    ]
+  },
+  "hello-4": {
+    "auto": true
+  },
+  "hello-5": {
+    "runs": [
+      {
+        "code": "print(7 %/% 2)",
+        "expect": "[1] 3"
+      }
+    ]
+  },
+  "hello-6": {
+    "expect": "[1] 1"
+  },
+  "hello-7": {
+    "expect": "Good morning \nBye"
+  },
+  "hello-8": {
+    "expect": "Hello R"
+  },
+  "hello-9": {
+    "expect": "Start\n[1] 6\nEnd"
+  },
+  "hello-11": {
+    "fixed": "print(5 + 5)",
+    "expect": "[1] \"Welcome\"\nLine one\n[1] 10\n[1] 5"
+  },
+  "hello-12": {
+    "fixed": "print(\"Hello\")",
+    "expect": "[1] 3\n[1] \"Hello\"\nDone"
+  },
+  "variables-3": {
+    "auto": true
+  },
+  "variables-4": {
+    "runs": [
+      {
+        "code": "name <- \"Ana\"\nprint(name)",
+        "expect": "[1] \"Ana\""
+      },
+      {
+        "code": "name <- Ana\nprint(name)",
+        "error": true
+      },
+      {
+        "code": "name < - \"Ana\"\nprint(name)",
+        "error": true
+      },
+      {
+        "code": "name == \"Ana\"\nprint(name)",
+        "error": true
+      }
+    ]
+  },
+  "variables-5": {
+    "runs": [
+      {
+        "code": "print(class(7))",
+        "expect": "[1] \"numeric\""
+      }
+    ]
+  },
+  "variables-6": {
+    "expect": "[1] \"HelloWorld\""
+  },
+  "variables-7": {
+    "expect": "[1] 43"
+  },
+  "variables-8": {
+    "prelude": "name <- \"Ana\"",
+    "suffix": "print(greeting)",
+    "expect": "[1] \"Hi, Ana\""
+  },
+  "variables-9": {
+    "expect": "[1] 11"
+  },
+  "variables-11": {
+    "fixed": "age <- age + 1",
+    "expect": "Ben 26"
+  },
+  "variables-12": {
+    "fixed": "print(toupper(city))",
+    "expect": "[1] 4\n[1] \"ROME\""
+  },
+  "vectors-3": {
+    "auto": true
+  },
+  "vectors-4": {
+    "runs": [
+      {
+        "code": "x <- c(7, 8, 9)\nprint(x[1])",
+        "expect": "[1] 7"
+      },
+      {
+        "code": "x <- c(7, 8, 9)\nprint(x[0])",
+        "expect": "numeric(0)"
+      },
+      {
+        "code": "x <- c(7, 8, 9)\nprint(x[-1])",
+        "expect": "[1] 8 9"
+      },
+      {
+        "code": "x <- c(7, 8, 9)\nprint(x(1))",
+        "error": true
+      }
+    ]
+  },
+  "vectors-5": {
+    "runs": [
+      {
+        "code": "x <- c(10, 20, 30)\ny <- x[-1]\nprint(y)",
+        "expect": "[1] 20 30"
+      }
+    ]
+  },
+  "vectors-6": {
+    "expect": "[1] 3"
+  },
+  "vectors-7": {
+    "expect": "[1] 3 4 5 6"
+  },
+  "vectors-8": {
+    "suffix": "print(nums)",
+    "expect": "[1] 1 2 3"
+  },
+  "vectors-9": {
+    "expect": "[1] 11 21 31"
+  },
+  "vectors-11": {
+    "fixed": "first <- scores[1]",
+    "expect": "[1] 7"
+  },
+  "vectors-12": {
+    "fixed": "x <- c(1, 2, 3)",
+    "expect": "[1] 2 4 6"
+  },
+  "conditions-3": {
+    "auto": true
+  },
+  "conditions-4": {
+    "runs": [
+      {
+        "code": "print(3 != 4)",
+        "expect": "[1] TRUE"
+      },
+      {
+        "code": "print(3 <> 4)",
+        "error": true
+      },
+      {
+        "code": "print(3 =! 4)",
+        "error": true
+      },
+      {
+        "code": "print(3 !== 4)",
+        "error": true
+      }
+    ]
+  },
+  "conditions-5": {
+    "runs": [
+      {
+        "code": "x <- 3\nprint(x > 1 && x < 5)",
+        "expect": "[1] TRUE"
+      }
+    ]
+  },
+  "conditions-6": {
+    "expect": "adult"
+  },
+  "conditions-7": {
+    "expect": "[1] \"low\"  \"high\" \"low\"  \"high\""
+  },
+  "conditions-8": {
+    "prelude": "x <- c(5, 12, 30)",
+    "suffix": "print(big)",
+    "expect": "[1] 12 30"
+  },
+  "conditions-9": {
+    "expect": "cold"
+  },
+  "conditions-11": {
+    "runs": [
+      {
+        "code": "x <- 5\nif (x > 3) {\n  cat(\"big\\n\")\n}\nelse {\n  cat(\"small\\n\")\n}",
+        "error": true
+      },
+      {
+        "code": "x <- 5\nif (x > 3) {\n  cat(\"big\\n\")\n} else {\n  cat(\"small\\n\")\n}",
+        "expect": "big"
+      }
+    ]
+  },
+  "conditions-12": {
+    "fixed": "if (age == 20) {",
+    "expect": "twenty"
+  },
+  "loops-3": {
+    "runs": [
+      {
+        "code": "for (i in 1:5) {\n  if (i == 3) {\n    next\n  }\n  print(i)\n}",
+        "expect": "[1] 1\n[1] 2\n[1] 4\n[1] 5"
+      }
+    ]
+  },
+  "loops-4": {
+    "runs": [
+      {
+        "code": "v <- c(7, 8, 9)\nfor (i in seq_along(v)) {\n  print(i)\n}",
+        "expect": "[1] 1\n[1] 2\n[1] 3"
+      },
+      {
+        "code": "v <- c(7, 8, 9)\nfor (i in v) {\n  print(i)\n}",
+        "expect": "[1] 7\n[1] 8\n[1] 9"
+      },
+      {
+        "code": "v <- c(7, 8, 9)\nfor (i in length(v)) {\n  print(i)\n}",
+        "expect": "[1] 3"
+      },
+      {
+        "code": "v <- c(7, 8, 9)\nfor (i = 1 to 3) {\n  print(i)\n}",
+        "error": true
+      }
+    ]
+  },
+  "loops-5": {
+    "runs": [
+      {
+        "code": "x <- c(2, 4, 6)\ntotal <- 0\nfor (n in x) {\n  total <- total + n\n}\nprint(total)\nprint(sum(x))",
+        "expect": "[1] 12\n[1] 12"
+      }
+    ]
+  },
+  "loops-6": {
+    "expect": "[1] 1\n[1] 4\n[1] 9"
+  },
+  "loops-7": {
+    "expect": "[1] 1\n[1] 2\n[1] 3"
+  },
+  "loops-8": {
+    "suffix": "print(i)\n}",
+    "expect": "[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n[1] 6\n[1] 7\n[1] 8\n[1] 9\n[1] 10"
+  },
+  "loops-9": {
+    "expect": "[1] 12"
+  },
+  "loops-11": {
+    "fixed": "  n <- n + 1",
+    "expect": "[1] 1\n[1] 2\n[1] 3",
+    "skip_original": true
+  },
+  "loops-12": {
+    "fixed": "  print(words[i])",
+    "expect": "[1] \"a\"\n[1] \"b\"\n[1] \"c\""
+  },
+  "functions-3": {
+    "auto": true
+  },
+  "functions-4": {
+    "runs": [
+      {
+        "code": "add <- function(a, b) { a + b }\nprint(add(2, 3))",
+        "expect": "[1] 5"
+      },
+      {
+        "code": "add <- function { a + b }\nprint(add(2, 3))",
+        "error": true
+      },
+      {
+        "code": "function add(a, b) { a + b }\nprint(add(2, 3))",
+        "error": true
+      },
+      {
+        "code": "add(a, b) <- { a + b }\nprint(add(2, 3))",
+        "error": true
+      }
+    ]
+  },
+  "functions-5": {
+    "runs": [
+      {
+        "code": "f <- function() {\n  total <- 5\n}\nf()\nprint(total)",
+        "error": true
+      }
+    ]
+  },
+  "functions-6": {
+    "expect": "[1] \"Hi, friend\""
+  },
+  "functions-7": {
+    "expect": "[1] 4.5"
+  },
+  "functions-8": {
+    "suffix": "print(cube(2))",
+    "expect": "[1] 8"
+  },
+  "functions-9": {
+    "expect": "[1] 120"
+  },
+  "functions-11": {
+    "fixed": "  total / length(x)",
+    "expect": "[1] 3"
+  },
+  "functions-12": {
+    "fixed": "}",
+    "expect": "[1] 3"
+  },
+  "lists-3": {
+    "auto": true
+  },
+  "lists-4": {
+    "runs": [
+      {
+        "code": "print(class(lapply(1:3, function(n) n * 2)))",
+        "expect": "[1] \"list\""
+      },
+      {
+        "code": "print(class(sapply(1:3, function(n) n * 2)))",
+        "expect": "[1] \"numeric\""
+      }
+    ]
+  },
+  "lists-5": {
+    "runs": [
+      {
+        "code": "x <- list(1, \"a\", c(2, 3))\nprint(length(x))\nprint(x[[3]])",
+        "expect": "[1] 3\n[1] 2 3"
+      }
+    ]
+  },
+  "lists-6": {
+    "expect": "[1] -3"
+  },
+  "lists-7": {
+    "expect": "[1]  3 12"
+  },
+  "lists-8": {
+    "prelude": "p <- list(name = \"Ana\")",
+    "suffix": "print(names(p))",
+    "expect": "[1] \"name\" \"city\""
+  },
+  "lists-9": {
+    "expect": "[1] 31"
+  },
+  "lists-11": {
+    "fixed": "print(p$name)",
+    "expect": "[1] \"Ana\""
+  },
+  "lists-12": {
+    "fixed": "totals <- sapply(nums, sum)",
+    "expect": "[1] 3 7"
+  },
+  "dataframes-3": {
+    "auto": true
+  },
+  "dataframes-4": {
+    "runs": [
+      {
+        "code": "df <- data.frame(a = c(1, 2), b = c(3, 4))\nprint(df[2, ])",
+        "expect": "  a b\n2 2 4"
+      },
+      {
+        "code": "df <- data.frame(a = c(1, 2), b = c(3, 4))\nprint(df[, 2])",
+        "expect": "[1] 3 4"
+      },
+      {
+        "code": "df <- data.frame(a = c(1, 2), b = c(3, 4))\nprint(df[2])",
+        "expect": "  b\n1 3\n2 4"
+      },
+      {
+        "code": "df <- data.frame(a = c(1, 2), b = c(3, 4))\nprint(df$2)",
+        "error": true
+      }
+    ]
+  },
+  "dataframes-5": {
+    "runs": [
+      {
+        "code": "df <- data.frame(a = c(5, 6), b = c(7, 8))\nprint(df[1, \"b\"])",
+        "expect": "[1] 7"
+      }
+    ]
+  },
+  "dataframes-6": {
+    "expect": "[1] 3"
+  },
+  "dataframes-7": {
+    "expect": "[1] \"Ana\"  \"Cleo\""
+  },
+  "dataframes-8": {
+    "prelude": "df <- data.frame(price = c(10, 20), discount = c(1, 5))",
+    "suffix": "print(df$final)",
+    "expect": "[1]  9 15"
+  },
+  "dataframes-9": {
+    "expect": "[1] 2"
+  },
+  "dataframes-11": {
+    "fixed": "avg <- total / nrow(df)",
+    "expect": "[1] 32"
+  },
+  "dataframes-12": {
+    "fixed": "first <- df[1, ]",
+    "expect": "  name age\n1  Ana  30"
+  }
+}

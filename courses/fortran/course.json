@@ -1,0 +1,1999 @@
+{
+  "course": "fortran",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Fortran!",
+      "chapter": "Basics",
+      "summary": "Write your first Fortran program and print text and numbers with print and simple formats.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Fortran is one of the oldest programming languages, and scientists and engineers still use it for fast number crunching. Every program starts with `program` and a name, and it ends with `end program` and the same name."
+        },
+        {
+          "type": "code",
+          "code": "program hello\n  implicit none\n  print '(A)', \"Hello, Fortran!\"\nend program hello",
+          "output": "Hello, Fortran!"
+        },
+        {
+          "type": "text",
+          "md": "Line by line: `program hello` starts a program called `hello`. `implicit none` tells the compiler that you declare every variable yourself, which you learn in the next unit. Always write it as the second line. `print` writes one line of output. `end program hello` ends the program."
+        },
+        {
+          "type": "heading",
+          "text": "Print and formats"
+        },
+        {
+          "type": "text",
+          "md": "After `print` comes a **format**, then a comma `,` and the values. The format `'(A)'` is a short text in single quotes with parentheses inside. The letter `A` stands for one piece of text. Text values go in double quotes, like `\"Hello\"`. Every `print` starts a new line."
+        },
+        {
+          "type": "code",
+          "code": "program greet\n  implicit none\n  print '(A)', \"Good morning\"\n  print '(A, A)', \"Fortran \", \"is fast\"\n  print '(A)', \"Bye\"\nend program greet",
+          "output": "Good morning\nFortran is fast\nBye"
+        },
+        {
+          "type": "text",
+          "md": "The format `'(A, A)'` has room for two texts. Fortran prints them right next to each other, so the space after `Fortran` comes from the first text. To print a whole number, use `I0`: the letter `I` stands for integer (a whole number), and `0` means \"no extra spaces\"."
+        },
+        {
+          "type": "code",
+          "code": "program numbers\n  implicit none\n  print '(I0)', 2 + 3\n  print '(A)', \"2 + 3\"\n  print '(A, I0)', \"Answer: \", 6 * 7\nend program numbers",
+          "output": "5\n2 + 3\nAnswer: 42"
+        },
+        {
+          "type": "text",
+          "md": "Without quotes, `2 + 3` is a calculation and Fortran prints `5`. In quotes, `\"2 + 3\"` is only text. The star `*` multiplies. A format can mix text and numbers: `'(A, I0)'` prints a text and then a whole number."
+        },
+        {
+          "type": "tip",
+          "md": "You will often see `print *, \"Hi\"`. The star lets the compiler choose the layout, and it usually adds a space at the start of the line. This course uses formats such as `'(A)'`, so you always know the exact output."
+        },
+        {
+          "type": "text",
+          "md": "An exclamation mark `!` starts a **comment**: Fortran ignores the rest of the line. Fortran is also not case sensitive, so `PRINT`, `Print` and `print` mean the same. Old programs are often written in capital letters."
+        },
+        {
+          "type": "code",
+          "code": "program comments\n  implicit none\n  ! print '(A)', \"Hidden\"\n  print '(I0)', 10 - 4  ! 6\n  PRINT '(A)', \"Done\"\nend program comments",
+          "output": "6\nDone"
+        },
+        {
+          "type": "warning",
+          "md": "The name after `end program` must be the same as the name after `program`. Every text needs a closing quote, and a comma must separate the format from the values."
+        }
+      ],
+      "card": [
+        "`program name` … `end program name` frame a program",
+        "`implicit none` comes right after `program`",
+        "`print '(A)', \"Hi\"` prints text and ends the line",
+        "`'(I0)'` prints a whole number, `!` starts a comment"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "What does `implicit none` do?",
+          "options": [
+            "It makes you declare every variable yourself",
+            "It hides all output",
+            "It ends the program",
+            "It loads a math library"
+          ],
+          "answer": 0,
+          "explain": "With `implicit none`, every variable must be declared. A variable that is not declared is an error, so typos are found early."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "print '(A, A)', \"Hello\", \"World\"",
+          "answers": [
+            "HelloWorld"
+          ],
+          "explain": "`'(A, A)'` prints the two texts right next to each other. There is no space because neither text contains one."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "print '(I0)', 7 * 6 - 2",
+          "answers": [
+            "40"
+          ],
+          "explain": "`7 * 6` is `42`, minus `2` gives `40`. `I0` prints the whole number without extra spaces."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "Fortran is case sensitive: `PRINT` and `print` are different.",
+          "answer": false,
+          "explain": "Fortran ignores the case of letters. `PRINT`, `Print` and `print` all work the same way."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Complete the program so it prints Hello.",
+          "code": "program hi\n  implicit none\n  print ___, \"Hello\"\nend program hi",
+          "options": [
+            "'(A)'",
+            "'(I0)'",
+            "(A)",
+            "\"Hello\""
+          ],
+          "answer": 0,
+          "explain": "The format for text is `'(A)'`, with the parentheses inside the quotes. `I0` is only for whole numbers."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the last line of the program.",
+          "code": "program first\n  implicit none\n  print '(A)', \"Ready\"\n___",
+          "options": [
+            "end program first",
+            "end program last",
+            "stop first",
+            "end print"
+          ],
+          "answer": 0,
+          "explain": "A program ends with `end program` and the same name as in the first line, here `first`."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build the line that prints 6, the result of 10 minus 4.",
+          "tokens": [
+            "print",
+            "'(I0)'",
+            ",",
+            "10",
+            "-",
+            "4"
+          ],
+          "distractors": [
+            "'(A)'",
+            "printf"
+          ],
+          "explain": "First `print`, then the format `'(I0)'` for a whole number, a comma, and the calculation `10 - 4`."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order so the program prints One, then Two.",
+          "lines": [
+            "program start",
+            "  implicit none",
+            "  print '(A)', \"One\"",
+            "  print '(A)', \"Two\"",
+            "end program start"
+          ],
+          "explain": "The program starts with `program` and `implicit none`. The `print` lines run from top to bottom, and `end program` comes last."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`program`",
+              "starts a program"
+            ],
+            [
+              "`implicit none`",
+              "every variable must be declared"
+            ],
+            [
+              "`!`",
+              "starts a comment"
+            ],
+            [
+              "`'(I0)'`",
+              "format for a whole number"
+            ],
+            [
+              "`'(A)'`",
+              "format for text"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "program hello",
+            "  implicit none",
+            "  print '(A)', \"Hello",
+            "end program hello"
+          ],
+          "bug": 2,
+          "explain": "The text has no closing quote. Write `\"Hello\"`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "program add",
+            "  implicit none",
+            "  print '(I0)', 2 + 3",
+            "end program total"
+          ],
+          "bug": 3,
+          "explain": "The name after `end program` must match the first line. Write `end program add`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-12",
+          "prompt": "What does this print?",
+          "code": "print '(A)', \"4 + 4\"\nprint '(I0)', 4 + 4",
+          "options": [
+            "`4 + 4`, then `8`",
+            "`8`, then `8`",
+            "`4 + 4`, then `4 + 4`",
+            "`8`, then `4 + 4`"
+          ],
+          "answer": 0,
+          "explain": "The first value is text in quotes, so it is printed as it is. The second one has no quotes, so Fortran calculates `8`."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Declare variables of type integer, real, character and logical, and name fixed values with parameter.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a named place for a value. In Fortran you declare every variable at the top of the program: after `implicit none` and before the first statement. `integer :: age` declares a variable `age` for whole numbers. The sign `=` stores a value in it."
+        },
+        {
+          "type": "code",
+          "code": "program age_demo\n  implicit none\n  integer :: age\n  age = 36\n  print '(A, I0)', \"Age: \", age\n  age = age + 1\n  print '(A, I0)', \"Next year: \", age\nend program age_demo",
+          "output": "Age: 36\nNext year: 37"
+        },
+        {
+          "type": "text",
+          "md": "`age = age + 1` is not an equation. Fortran first calculates the right side, here `36 + 1`, and then stores the result `37` in the variable on the left."
+        },
+        {
+          "type": "heading",
+          "text": "Four basic types"
+        },
+        {
+          "type": "text",
+          "md": "`integer` holds whole numbers. `real` holds numbers with a decimal point, such as `2.5`. `character(len=5)` holds a text of exactly 5 characters. `logical` holds `.true.` or `.false.`, and the dots belong to the value. You can give a variable a start value in its declaration."
+        },
+        {
+          "type": "code",
+          "code": "program types\n  implicit none\n  integer :: count = 3\n  real :: price = 2.5\n  character(len=5) :: fruit = \"apple\"\n  logical :: ripe = .true.\n  print '(I0)', count\n  print '(F0.2)', price\n  print '(A)', fruit\n  print '(L1)', ripe\nend program types",
+          "output": "3\n2.50\napple\nT"
+        },
+        {
+          "type": "text",
+          "md": "Each type has its own format. `F0.2` prints a real number with 2 digits after the decimal point. `L1` prints a logical value as `T` for true or `F` for false."
+        },
+        {
+          "type": "text",
+          "md": "A `character(len=10)` variable always holds 10 characters. Shorter text is filled up with spaces at the end, and longer text is cut. `trim(name)` removes the spaces at the end, `//` joins two texts, and `len(name)` gives the length."
+        },
+        {
+          "type": "code",
+          "code": "program names\n  implicit none\n  character(len=10) :: first\n  character(len=3) :: short\n  first = \"Ada\"\n  short = \"Fortran\"\n  print '(A)', trim(first) // \" Lovelace\"\n  print '(A)', short\n  print '(I0)', len(first)\nend program names",
+          "output": "Ada Lovelace\nFor\n10"
+        },
+        {
+          "type": "heading",
+          "text": "Constants with parameter"
+        },
+        {
+          "type": "text",
+          "md": "Add `parameter` to a declaration to make a **named constant**. You give the value in the declaration, and it can never change. Trying to store a new value in it is an error. Several variables of the same type can share one declaration, separated by commas."
+        },
+        {
+          "type": "code",
+          "code": "program circle\n  implicit none\n  real, parameter :: pi = 3.14159\n  real :: radius, area\n  radius = 2.0\n  area = pi * radius * radius\n  print '(A, F0.2)', \"Area: \", area\nend program circle",
+          "output": "Area: 12.57"
+        },
+        {
+          "type": "warning",
+          "md": "All declarations come before the first statement. A declaration after a `print` or after `x = 1` is an error. Without `implicit none`, Fortran guesses the type of an undeclared name from its first letter, so a typo quietly creates a new variable."
+        }
+      ],
+      "card": [
+        "`integer :: n = 5` declares a whole number",
+        "`real :: x`, `character(len=5) :: s`, `logical :: ok`",
+        "`real, parameter :: pi = 3.14159` is a constant",
+        "`'(F0.2)'` for real, `'(L1)'` for logical, `trim(s) // \"!\"` joins text"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "variables-1",
+          "prompt": "Which type should you use to store `3.75`?",
+          "options": [
+            "`real`",
+            "`integer`",
+            "`logical`",
+            "`character(len=1)`"
+          ],
+          "answer": 0,
+          "explain": "`real` holds numbers with a decimal point. An `integer` variable would lose the part after the decimal point."
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this print?",
+          "code": "integer :: n\nn = 10\nn = n * 2\nn = n - 5\nprint '(I0)', n",
+          "answers": [
+            "15"
+          ],
+          "explain": "`n` becomes `10`, then `20`, then `15`. Each line uses the value from the line before."
+        },
+        {
+          "type": "input",
+          "id": "variables-3",
+          "prompt": "What does this print?",
+          "code": "character(len=4) :: word\nword = \"planet\"\nprint '(A)', word",
+          "answers": [
+            "plan"
+          ],
+          "explain": "`word` has room for only 4 characters, so Fortran cuts the text to `plan`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-4",
+          "statement": "A variable declared with `parameter` can get a new value later in the program.",
+          "answer": false,
+          "explain": "A `parameter` is a constant. Its value is fixed in the declaration, and assigning a new value is an error."
+        },
+        {
+          "type": "gap",
+          "id": "variables-5",
+          "prompt": "Complete the declaration so the program prints T.",
+          "code": "___ :: done\ndone = .true.\nprint '(L1)', done",
+          "options": [
+            "logical",
+            "integer",
+            "character",
+            "real"
+          ],
+          "answer": 0,
+          "explain": "`.true.` and `.false.` are values of type `logical`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-6",
+          "prompt": "Complete the code so it prints `Hi, Ada` with no spaces at the end.",
+          "code": "character(len=10) :: name\nname = \"Ada\"\nprint '(A)', \"Hi, \" // ___",
+          "options": [
+            "trim(name)",
+            "name",
+            "len(name)",
+            "\"name\""
+          ],
+          "answer": 0,
+          "explain": "`name` holds `Ada` plus 7 spaces. `trim(name)` removes the spaces at the end."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-7",
+          "prompt": "Build the declaration of a real constant `rate` with the value 1.5.",
+          "tokens": [
+            "real",
+            ",",
+            "parameter",
+            "::",
+            "rate",
+            "=",
+            "1.5"
+          ],
+          "distractors": [
+            "const",
+            "integer"
+          ],
+          "explain": "The type comes first, then `, parameter`, then `::`, the name and the value."
+        },
+        {
+          "type": "order",
+          "id": "variables-8",
+          "prompt": "Put the lines in order so the program prints `Total: 7`.",
+          "lines": [
+            "program total",
+            "  implicit none",
+            "  integer :: a",
+            "  a = 3",
+            "  a = a + 4",
+            "  print '(A, I0)', \"Total: \", a",
+            "end program total"
+          ],
+          "explain": "`implicit none` and the declaration come first. Then `a` gets `3`, then `3 + 4`, and only then is it printed."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`integer`",
+              "whole number"
+            ],
+            [
+              "`real`",
+              "number with a decimal point"
+            ],
+            [
+              "`character(len=5)`",
+              "text of 5 characters"
+            ],
+            [
+              "`logical`",
+              "true or false"
+            ],
+            [
+              "`parameter`",
+              "value that never changes"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "variables-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "program price",
+            "  implicit none",
+            "  real :: cost",
+            "  cost = 4.5",
+            "  integer :: count",
+            "  count = 2",
+            "  print '(F0.2)', cost * count",
+            "end program price"
+          ],
+          "bug": 4,
+          "explain": "All declarations must come before the first statement. Move `integer :: count` up, before `cost = 4.5`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "program flags",
+            "  implicit none",
+            "  logical :: ready",
+            "  ready = true",
+            "  print '(L1)', ready",
+            "end program flags"
+          ],
+          "bug": 3,
+          "explain": "Logical values are written with dots: `ready = .true.`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-12",
+          "prompt": "What does this print?",
+          "code": "real, parameter :: pi = 3.14159\nreal :: d\nd = 2.0 * pi\nprint '(F0.2)', d",
+          "options": [
+            "`6.28`",
+            "`6.283`",
+            "`6.29`",
+            "`6.28318`"
+          ],
+          "answer": 0,
+          "explain": "`d` is about `6.28318`. `F0.2` shows 2 digits after the decimal point and rounds, so you see `6.28`."
+        }
+      ]
+    },
+    {
+      "id": "operators",
+      "title": "Arithmetic and formatted output",
+      "chapter": "Basics",
+      "summary": "Calculate with numbers and powers, learn how integer division works and control the layout of numbers with write and formats.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Fortran calculates with `+`, `-`, `*` (multiply), `/` (divide) and `**` (power). The order is the same as in mathematics: first `**`, then `*` and `/`, then `+` and `-`. Parentheses change the order."
+        },
+        {
+          "type": "code",
+          "code": "program math\n  implicit none\n  print '(I0)', 2 + 3 * 4\n  print '(I0)', (2 + 3) * 4\n  print '(I0)', 2 ** 10\nend program math",
+          "output": "14\n20\n1024"
+        },
+        {
+          "type": "heading",
+          "text": "Integer division"
+        },
+        {
+          "type": "text",
+          "md": "When both numbers are integers, `/` gives an integer and cuts off the decimal part: `7 / 2` is `3`. `mod(7, 2)` gives the remainder of the division, `1`. When at least one number is real, the result is real: `7.0 / 2` is `3.5`."
+        },
+        {
+          "type": "code",
+          "code": "program division\n  implicit none\n  print '(I0)', 7 / 2\n  print '(I0)', mod(7, 2)\n  print '(F0.2)', 7.0 / 2\n  print '(F0.2)', real(7) / 2\nend program division",
+          "output": "3\n1\n3.50\n3.50"
+        },
+        {
+          "type": "text",
+          "md": "`real(n)` turns an integer into a real number. `int(x)` turns a real into an integer and cuts off the decimal part. `nint(x)` rounds to the nearest integer. When you store a real value in an integer variable, Fortran also cuts off the decimal part."
+        },
+        {
+          "type": "code",
+          "code": "program convert\n  implicit none\n  integer :: n\n  real :: x\n  x = 7.8\n  n = x\n  print '(I0)', n\n  print '(I0)', int(x)\n  print '(I0)', nint(x)\n  print '(F0.1)', real(n) / 2\nend program convert",
+          "output": "7\n7\n8\n3.5"
+        },
+        {
+          "type": "heading",
+          "text": "Formats and write"
+        },
+        {
+          "type": "text",
+          "md": "`write(*, '(I5)') n` works like `print '(I5)', n`. The `*` means the screen. Inside a format, each letter code describes one value: `I5` is an integer in 5 characters, aligned to the right. `F8.3` is a real in 8 characters with 3 digits after the decimal point. `1X` adds one space."
+        },
+        {
+          "type": "code",
+          "code": "program table\n  implicit none\n  write(*, '(I5)') 42\n  write(*, '(F8.3)') 3.14159\n  write(*, '(A, 1X, I0)') \"Items:\", 12\n  write(*, '(3I4)') 1, 20, 300\nend program table",
+          "output": "   42\n   3.142\nItems: 12\n   1  20 300"
+        },
+        {
+          "type": "text",
+          "md": "A number in front of a letter code repeats it: `3I4` is the same as `I4, I4, I4`. When a number does not fit into its width, Fortran prints stars instead. `I0` and `F0.2` always use as many characters as the number needs."
+        },
+        {
+          "type": "code",
+          "code": "program widths\n  implicit none\n  write(*, '(I3)') 12345\n  write(*, '(I0)') 12345\n  write(*, '(A, F0.2, A)') \"Weight: \", 9.5, \" kg\"\nend program widths",
+          "output": "***\n12345\nWeight: 9.50 kg"
+        },
+        {
+          "type": "warning",
+          "md": "For numbers between -1 and 1, many compilers, gfortran too, leave out the zero before the decimal point with `F0.2`: `0.5` prints as `.50`. Use a fixed width such as `F4.2` when you want `0.50`."
+        }
+      ],
+      "card": [
+        "`**` is the power: `2 ** 3` is `8`",
+        "`7 / 2` is `3`, `7.0 / 2` is `3.5`, `mod(7, 2)` is `1`",
+        "`real(n)`, `int(x)` and `nint(x)` convert numbers",
+        "`write(*, '(I5, 1X, F8.3)') n, x` sets the widths"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "operators-1",
+          "prompt": "What does this print?",
+          "code": "print '(I0)', 17 / 5",
+          "answers": [
+            "3"
+          ],
+          "explain": "Both numbers are integers, so `/` cuts off the decimal part of `3.4`."
+        },
+        {
+          "type": "input",
+          "id": "operators-2",
+          "prompt": "What does this print?",
+          "code": "print '(I0)', mod(17, 5)",
+          "answers": [
+            "2"
+          ],
+          "explain": "`17` is `3 * 5 + 2`, so the remainder is `2`."
+        },
+        {
+          "type": "input",
+          "id": "operators-3",
+          "prompt": "What does this print?",
+          "code": "print '(I0)', 2 + 3 ** 2",
+          "answers": [
+            "11"
+          ],
+          "explain": "`**` comes first: `3 ** 2` is `9`, and `2 + 9` is `11`."
+        },
+        {
+          "type": "choice",
+          "id": "operators-4",
+          "prompt": "What does this print?",
+          "code": "print '(F0.2)', 10.0 / 4",
+          "options": [
+            "`2.50`",
+            "`2`",
+            "`2.5`",
+            "`2.00`"
+          ],
+          "answer": 0,
+          "explain": "`10.0` is real, so the result is the real number `2.5`. `F0.2` shows it with 2 digits after the decimal point."
+        },
+        {
+          "type": "true_false",
+          "id": "operators-5",
+          "statement": "This code prints `9`.",
+          "code": "print '(I0)', 9 / 2 * 2",
+          "answer": false,
+          "explain": "Fortran calculates from left to right: `9 / 2` is `4` because the decimal part is cut off, and `4 * 2` is `8`."
+        },
+        {
+          "type": "gap",
+          "id": "operators-6",
+          "prompt": "Complete the code so it prints `2.50`.",
+          "code": "integer :: a, b\na = 5\nb = 2\nprint '(F0.2)', ___ / b",
+          "options": [
+            "real(a)",
+            "a",
+            "int(a)",
+            "nint(a)"
+          ],
+          "answer": 0,
+          "explain": "`real(a)` makes the division real, so the result is `2.5`. With two integers the result would be `2`, and `F0.2` cannot print an integer."
+        },
+        {
+          "type": "gap",
+          "id": "operators-7",
+          "prompt": "Complete the format so it prints `Total: 42`.",
+          "code": "write(*, '(A, ___)') \"Total: \", 42",
+          "options": [
+            "I0",
+            "I5",
+            "F0.2",
+            "A"
+          ],
+          "answer": 0,
+          "explain": "`I0` prints the integer with no extra spaces. `I5` would add three spaces in front of `42`."
+        },
+        {
+          "type": "blocks",
+          "id": "operators-8",
+          "prompt": "Build the line that prints 2 to the power of 8.",
+          "tokens": [
+            "print",
+            "'(I0)'",
+            ",",
+            "2",
+            "**",
+            "8"
+          ],
+          "distractors": [
+            "^",
+            "*"
+          ],
+          "explain": "The power operator in Fortran is `**`. The result `256` is a whole number, so the format is `'(I0)'`."
+        },
+        {
+          "type": "pairs",
+          "id": "operators-9",
+          "prompt": "Match the format code with its meaning.",
+          "pairs": [
+            [
+              "`I5`",
+              "whole number in 5 characters"
+            ],
+            [
+              "`F8.3`",
+              "real in 8 characters, 3 decimals"
+            ],
+            [
+              "`1X`",
+              "one space"
+            ],
+            [
+              "`A`",
+              "text"
+            ],
+            [
+              "`I0`",
+              "whole number, no extra spaces"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "operators-10",
+          "prompt": "The program should print `3.50`. Which line has the bug?",
+          "lines": [
+            "program half",
+            "  implicit none",
+            "  integer :: n",
+            "  real :: h",
+            "  n = 7",
+            "  h = n / 2",
+            "  print '(F0.2)', h",
+            "end program half"
+          ],
+          "bug": 5,
+          "explain": "`n / 2` is an integer division and gives `3`. Write `h = real(n) / 2` to get `3.5`."
+        },
+        {
+          "type": "order",
+          "id": "operators-11",
+          "prompt": "Put the lines in order so the program prints `Area: 6.00`.",
+          "lines": [
+            "program area",
+            "  implicit none",
+            "  real :: w, h",
+            "  w = 2.0",
+            "  h = w + 1.0",
+            "  write(*, '(A, F0.2)') \"Area: \", w * h",
+            "end program area"
+          ],
+          "explain": "The declaration comes first. `w` must have its value before `h` is calculated from it, and the result is printed last: `2.0 * 3.0` is `6.0`."
+        },
+        {
+          "type": "choice",
+          "id": "operators-12",
+          "prompt": "Which format prints the integer `7` as `   7`, with three spaces in front?",
+          "options": [
+            "`'(I4)'`",
+            "`'(I0)'`",
+            "`'(I3)'`",
+            "`'(F4.0)'`"
+          ],
+          "answer": 0,
+          "explain": "`I4` uses 4 characters and aligns the number to the right, so three spaces come before `7`. `F` is only for real numbers."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Run code only when a condition is true with if, else if and select case, and combine conditions with .and., .or. and .not.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`if (condition) then` runs the following lines only when the condition is true. `end if` closes the block. The condition goes in parentheses. You compare values with `==` (equal), `/=` (not equal), `<`, `<=`, `>` and `>=`."
+        },
+        {
+          "type": "code",
+          "code": "program check\n  implicit none\n  integer :: temp\n  temp = 25\n  if (temp > 20) then\n    print '(A)', \"Warm\"\n  end if\n  if (temp /= 25) then\n    print '(A)', \"Not 25\"\n  end if\n  print '(A)', \"Done\"\nend program check",
+          "output": "Warm\nDone"
+        },
+        {
+          "type": "text",
+          "md": "`else` adds code for the case that the condition is false. `else if` checks another condition. Fortran checks the conditions from top to bottom and runs only the first block whose condition is true."
+        },
+        {
+          "type": "code",
+          "code": "program grade\n  implicit none\n  integer :: score\n  score = 72\n  if (score >= 90) then\n    print '(A)', \"A\"\n  else if (score >= 70) then\n    print '(A)', \"B\"\n  else\n    print '(A)', \"C\"\n  end if\nend program grade",
+          "output": "B"
+        },
+        {
+          "type": "text",
+          "md": "For a single statement there is a short form without `then` and `end if`: `if (x < 0) x = -x` changes `x` only when it is negative."
+        },
+        {
+          "type": "code",
+          "code": "program single\n  implicit none\n  integer :: x\n  x = -8\n  if (x < 0) x = -x\n  print '(I0)', x\nend program single",
+          "output": "8"
+        },
+        {
+          "type": "heading",
+          "text": "Combining conditions"
+        },
+        {
+          "type": "text",
+          "md": "`.and.` is true when both sides are true. `.or.` is true when at least one side is true. `.not.` turns true into false and false into true. A `logical` variable can be a condition on its own. In old code you may see `.eq.`, `.ne.`, `.lt.` and `.gt.` instead of `==`, `/=`, `<` and `>`."
+        },
+        {
+          "type": "code",
+          "code": "program logic\n  implicit none\n  integer :: age\n  logical :: member\n  age = 15\n  member = .true.\n  if (age >= 12 .and. age < 18) then\n    print '(A)', \"Teen\"\n  end if\n  if (age > 65 .or. member) then\n    print '(A)', \"Discount\"\n  end if\n  if (.not. member) then\n    print '(A)', \"Guest\"\n  end if\nend program logic",
+          "output": "Teen\nDiscount"
+        },
+        {
+          "type": "heading",
+          "text": "select case"
+        },
+        {
+          "type": "text",
+          "md": "`select case (x)` compares one value with many cases. `case (1)` matches one value, `case (2, 3)` a list, and `case (4:6)` a range from 4 to 6. `case default` matches all other values. It works with integers and texts, but not with real numbers."
+        },
+        {
+          "type": "code",
+          "code": "program days\n  implicit none\n  integer :: day\n  day = 6\n  select case (day)\n  case (1:5)\n    print '(A)', \"Workday\"\n  case (6, 7)\n    print '(A)', \"Weekend\"\n  case default\n    print '(A)', \"Unknown\"\n  end select\nend program days",
+          "output": "Weekend"
+        },
+        {
+          "type": "warning",
+          "md": "`=` stores a value and `==` compares two values, so `if (x = 5)` is an error. \"Not equal\" is `/=`, not `!=`, because `!` starts a comment in Fortran."
+        }
+      ],
+      "card": [
+        "`if (x > 0) then` … `else if (…) then` … `else` … `end if`",
+        "`==` equal, `/=` not equal, `<`, `<=`, `>`, `>=`",
+        "`.and.`, `.or.` and `.not.` combine conditions",
+        "`select case (n)` with `case (1:5)` and `case default`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "integer :: n\nn = 15\nif (n > 10) then\n  print '(A)', \"big\"\nelse\n  print '(A)', \"small\"\nend if",
+          "answers": [
+            "big"
+          ],
+          "explain": "`15 > 10` is true, so the first block runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "integer :: n\nn = 7\nselect case (n)\ncase (1:3)\n  print '(A)', \"low\"\ncase (4:6)\n  print '(A)', \"mid\"\ncase default\n  print '(A)', \"high\"\nend select",
+          "answers": [
+            "high"
+          ],
+          "explain": "`7` is not in `1:3` or `4:6`, so `case default` runs."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "Which operator means \"not equal\" in Fortran?",
+          "options": [
+            "`/=`",
+            "`!=`",
+            "`<>`",
+            "`=/`"
+          ],
+          "answer": 0,
+          "explain": "Fortran writes \"not equal\" as `/=`. `!` starts a comment, so `!=` does not work."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-4",
+          "statement": "This code prints `yes`.",
+          "code": "logical :: a, b\na = .true.\nb = .false.\nif (a .and. b) then\n  print '(A)', \"yes\"\nelse\n  print '(A)', \"no\"\nend if",
+          "answer": false,
+          "explain": "`.and.` needs both sides to be true. `b` is false, so the `else` block prints `no`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-5",
+          "prompt": "What does this print?",
+          "code": "integer :: x\nx = 50\nif (x > 10) then\n  print '(A)', \"over 10\"\nelse if (x > 40) then\n  print '(A)', \"over 40\"\nelse\n  print '(A)', \"small\"\nend if",
+          "options": [
+            "`over 10`",
+            "`over 40`",
+            "`over 10`, then `over 40`",
+            "`small`"
+          ],
+          "answer": 0,
+          "explain": "Fortran runs only the first block whose condition is true. `50 > 10` is already true, so the other conditions are not checked."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-6",
+          "prompt": "Complete the condition so the code prints `Even`.",
+          "code": "integer :: n\nn = 8\nif (mod(n, 2) ___ 0) then\n  print '(A)', \"Even\"\nend if",
+          "options": [
+            "==",
+            "=",
+            "/=",
+            ".eq"
+          ],
+          "answer": 0,
+          "explain": "`==` compares two values. `mod(8, 2)` is `0`, so the condition is true. `=` only stores values."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Complete the code so it prints `Other`.",
+          "code": "character(len=1) :: c\nc = \"x\"\nselect case (c)\ncase (\"a\")\n  print '(A)', \"Letter a\"\n___\n  print '(A)', \"Other\"\nend select",
+          "options": [
+            "case default",
+            "else",
+            "default",
+            "case else"
+          ],
+          "answer": 0,
+          "explain": "`case default` matches every value that no other `case` matches."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-8",
+          "prompt": "Build the first line of an if block that runs when `done` is false.",
+          "tokens": [
+            "if",
+            "(",
+            ".not.",
+            "done",
+            ")",
+            "then"
+          ],
+          "distractors": [
+            "!",
+            "not"
+          ],
+          "explain": "`.not.` turns false into true. The condition goes in parentheses, and `then` ends the line."
+        },
+        {
+          "type": "order",
+          "id": "conditions-9",
+          "prompt": "Put the lines in order so the code prints `Cold` when `t` is less than 10, and `Warm` otherwise.",
+          "lines": [
+            "if (t < 10) then",
+            "  print '(A)', \"Cold\"",
+            "else",
+            "  print '(A)', \"Warm\"",
+            "end if"
+          ],
+          "explain": "The `if` line opens the block, the code for a true condition follows, then `else` with the other code, and `end if` closes the block."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-10",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`==`",
+              "equal"
+            ],
+            [
+              "`/=`",
+              "not equal"
+            ],
+            [
+              "`.and.`",
+              "both sides are true"
+            ],
+            [
+              "`.or.`",
+              "at least one side is true"
+            ],
+            [
+              "`.not.`",
+              "turns true into false"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "The program should print `Adult`. Which line has the bug?",
+          "lines": [
+            "program adult",
+            "  implicit none",
+            "  integer :: age",
+            "  age = 20",
+            "  if (age >= 18)",
+            "    print '(A)', \"Adult\"",
+            "  end if",
+            "end program adult"
+          ],
+          "bug": 4,
+          "explain": "An `if` block needs `then` at the end of the line: `if (age >= 18) then`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "program sign",
+            "  implicit none",
+            "  integer :: n",
+            "  n = -3",
+            "  if (n < 0) then",
+            "    print '(A)', \"negative\"",
+            "  else if (n == 0) then",
+            "    print '(A)', \"zero\"",
+            "  else",
+            "    print '(A)', \"positive\"",
+            "  end",
+            "end program sign"
+          ],
+          "bug": 10,
+          "explain": "An `if` block is closed with `end if`. A plain `end` would end the whole program."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with do loops and do while, and control loops with exit and cycle.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`do i = 1, 3` … `end do` repeats the lines in between. The **loop variable** `i` must be a declared integer. It starts at `1` and goes up to `3`, and both ends are included."
+        },
+        {
+          "type": "code",
+          "code": "program count\n  implicit none\n  integer :: i\n  do i = 1, 3\n    print '(A, I0)', \"Round \", i\n  end do\nend program count",
+          "output": "Round 1\nRound 2\nRound 3"
+        },
+        {
+          "type": "text",
+          "md": "A third number sets the **step**: `do i = 0, 10, 5` counts `0`, `5`, `10`. A negative step counts down. When the start is already past the end, the loop runs zero times."
+        },
+        {
+          "type": "code",
+          "code": "program steps\n  implicit none\n  integer :: i\n  do i = 0, 10, 5\n    print '(I0)', i\n  end do\n  do i = 3, 1, -1\n    print '(I0)', i\n  end do\n  do i = 5, 1\n    print '(A)', \"never\"\n  end do\nend program steps",
+          "output": "0\n5\n10\n3\n2\n1"
+        },
+        {
+          "type": "text",
+          "md": "A loop often builds up a result. Here `total` starts at `0`, and each round adds the current value of `i`."
+        },
+        {
+          "type": "code",
+          "code": "program sum_up\n  implicit none\n  integer :: i, total\n  total = 0\n  do i = 1, 4\n    total = total + i\n  end do\n  print '(A, I0)', \"Sum: \", total\nend program sum_up",
+          "output": "Sum: 10"
+        },
+        {
+          "type": "heading",
+          "text": "do while"
+        },
+        {
+          "type": "text",
+          "md": "`do while (condition)` repeats as long as the condition is true. Fortran checks the condition before every round, so the loop can also run zero times."
+        },
+        {
+          "type": "code",
+          "code": "program doubling\n  implicit none\n  integer :: n\n  n = 1\n  do while (n < 50)\n    n = n * 2\n  end do\n  print '(I0)', n\nend program doubling",
+          "output": "64"
+        },
+        {
+          "type": "heading",
+          "text": "exit and cycle"
+        },
+        {
+          "type": "text",
+          "md": "`exit` leaves the loop at once. `cycle` skips the rest of the current round and continues with the next one. A `do` with nothing after it repeats forever, until an `exit` stops it."
+        },
+        {
+          "type": "code",
+          "code": "program control\n  implicit none\n  integer :: i\n  do i = 1, 10\n    if (mod(i, 2) == 0) cycle\n    if (i > 7) exit\n    print '(I0)', i\n  end do\nend program control",
+          "output": "1\n3\n5\n7"
+        },
+        {
+          "type": "code",
+          "code": "program endless\n  implicit none\n  integer :: n\n  n = 0\n  do\n    n = n + 3\n    if (n > 10) exit\n  end do\n  print '(I0)', n\nend program endless",
+          "output": "12"
+        },
+        {
+          "type": "warning",
+          "md": "Do not change the loop variable inside a `do i = …` loop: that is an error. In a `do while` loop, make sure that something inside the loop changes the condition, or the loop never ends."
+        }
+      ],
+      "card": [
+        "`do i = 1, n` … `end do` counts from 1 to n",
+        "`do i = 10, 0, -2` counts down in steps",
+        "`do while (x < 100)` repeats while the condition is true",
+        "`exit` leaves the loop, `cycle` jumps to the next round"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "integer :: i, total\ntotal = 0\ndo i = 2, 8, 3\n  total = total + i\nend do\nprint '(I0)', total",
+          "answers": [
+            "15"
+          ],
+          "explain": "`i` is `2`, `5` and `8`. Their sum is `15`."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "integer :: n, steps\nn = 100\nsteps = 0\ndo while (n > 1)\n  n = n / 2\n  steps = steps + 1\nend do\nprint '(I0)', steps",
+          "answers": [
+            "6"
+          ],
+          "explain": "`n` goes `100`, `50`, `25`, `12`, `6`, `3`, `1`. That is 6 rounds, because integer division cuts off the decimal part."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "How many times does this print `Hi`?",
+          "code": "integer :: i\ndo i = 10, 1\n  print '(A)', \"Hi\"\nend do",
+          "options": [
+            "`0`",
+            "`1`",
+            "`9`",
+            "`10`"
+          ],
+          "answer": 0,
+          "explain": "Without a step, `do` counts up. `10` is already past `1`, so the loop runs zero times."
+        },
+        {
+          "type": "choice",
+          "id": "loops-4",
+          "prompt": "What does this print?",
+          "code": "integer :: i\ndo i = 1, 5\n  if (i == 3) cycle\n  print '(I0)', i\nend do",
+          "options": [
+            "`1`, `2`, `4`, `5`",
+            "`1`, `2`",
+            "`1`, `2`, `3`, `4`, `5`",
+            "`3`"
+          ],
+          "answer": 0,
+          "explain": "`cycle` skips the rest of the round when `i` is `3`. The loop then continues with `4` and `5`."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-5",
+          "statement": "`exit` ends only the current round, and the loop continues with the next value.",
+          "answer": false,
+          "explain": "`exit` leaves the whole loop. `cycle` is the statement that jumps to the next round."
+        },
+        {
+          "type": "gap",
+          "id": "loops-6",
+          "prompt": "Complete the loop so it prints 5, 4, 3, 2, 1, one number per line.",
+          "code": "integer :: i\ndo i = 5, 1, ___\n  print '(I0)', i\nend do",
+          "options": [
+            "-1",
+            "1",
+            "0",
+            "-5"
+          ],
+          "answer": 0,
+          "explain": "A step of `-1` counts down by one. With a step of `1`, the loop would run zero times."
+        },
+        {
+          "type": "gap",
+          "id": "loops-7",
+          "prompt": "Complete the code so it prints `16`.",
+          "code": "integer :: n\nn = 1\n___ (n < 10)\n  n = n * 2\nend do\nprint '(I0)', n",
+          "options": [
+            "do while",
+            "while",
+            "do until",
+            "if"
+          ],
+          "answer": 0,
+          "explain": "`do while` repeats while `n < 10`: `n` becomes `2`, `4`, `8` and `16`."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-8",
+          "prompt": "Build the first line of a loop that counts `i` from 1 to 10.",
+          "tokens": [
+            "do",
+            "i",
+            "=",
+            "1",
+            ",",
+            "10"
+          ],
+          "distractors": [
+            "for",
+            "to"
+          ],
+          "explain": "A counting loop is `do`, the loop variable, `=`, then the start and the end separated by a comma."
+        },
+        {
+          "type": "order",
+          "id": "loops-9",
+          "prompt": "Put the lines in order so the code prints `24`, which is 1 * 2 * 3 * 4.",
+          "lines": [
+            "f = 1",
+            "do i = 1, 4",
+            "  f = f * i",
+            "end do",
+            "print '(I0)', f"
+          ],
+          "explain": "`f` must start at `1` before the loop. The loop multiplies it by `1`, `2`, `3` and `4`, and the result is printed after the loop."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`do i = 1, n`",
+              "counts from 1 to n"
+            ],
+            [
+              "`do while (x > 0)`",
+              "repeats while the condition is true"
+            ],
+            [
+              "`exit`",
+              "leaves the loop"
+            ],
+            [
+              "`cycle`",
+              "jumps to the next round"
+            ],
+            [
+              "`end do`",
+              "ends the loop body"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "loops-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "program add",
+            "  implicit none",
+            "  integer :: i, total",
+            "  total = 0",
+            "  do i = 1 to 4",
+            "    total = total + i",
+            "  end do",
+            "  print '(I0)', total",
+            "end program add"
+          ],
+          "bug": 4,
+          "explain": "Fortran separates the start and the end with a comma: `do i = 1, 4`."
+        },
+        {
+          "type": "bug",
+          "id": "loops-12",
+          "prompt": "The program should print 3, 2 and 1, one number per line. Which line has the bug?",
+          "lines": [
+            "program countdown",
+            "  implicit none",
+            "  integer :: n",
+            "  n = 3",
+            "  do while (n > 1)",
+            "    print '(I0)', n",
+            "    n = n - 1",
+            "  end do",
+            "end program countdown"
+          ],
+          "bug": 4,
+          "explain": "With `n > 1` the loop stops before it prints `1`. Write `do while (n > 0)`."
+        }
+      ]
+    },
+    {
+      "id": "arrays",
+      "title": "Arrays",
+      "chapter": "Data",
+      "summary": "Store many values in one array, count indexes from 1, work on whole arrays at once and use sum, size and maxval.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** holds many values of the same type under one name. `integer :: scores(3)` declares an array of 3 integers. You reach one element with its **index** in parentheses. The first element is `scores(1)`, not `scores(0)`."
+        },
+        {
+          "type": "code",
+          "code": "program first_array\n  implicit none\n  integer :: scores(3)\n  scores(1) = 70\n  scores(2) = 85\n  scores(3) = 90\n  print '(I0)', scores(2)\n  print '(I0)', scores(1) + scores(3)\nend program first_array",
+          "output": "85\n160"
+        },
+        {
+          "type": "text",
+          "md": "`[3, 1, 4, 1]` creates an array with these values, and older code writes it as `(/ 3, 1, 4, 1 /)`. `size(a)` gives the number of elements. The format `'(*(I0, :, 1X))'` prints all values in one line: `*` repeats the part in parentheses as often as needed, `1X` adds a space, and `:` stops when no values are left, so there is no space after the last number."
+        },
+        {
+          "type": "code",
+          "code": "program list\n  implicit none\n  integer :: a(4)\n  a = [3, 1, 4, 1]\n  print '(I0)', size(a)\n  print '(*(I0, :, 1X))', a\nend program list",
+          "output": "4\n3 1 4 1"
+        },
+        {
+          "type": "heading",
+          "text": "Whole-array operations"
+        },
+        {
+          "type": "text",
+          "md": "Calculations work on every element at once: `a * 2` doubles each element, and `a + b` adds two arrays of the same size element by element. `b = 10` stores `10` in every element of `b`."
+        },
+        {
+          "type": "code",
+          "code": "program whole\n  implicit none\n  integer :: a(3), b(3)\n  a = [1, 2, 3]\n  b = 10\n  print '(*(I0, :, 1X))', a * 2\n  print '(*(I0, :, 1X))', a + b\nend program whole",
+          "output": "2 4 6\n11 12 13"
+        },
+        {
+          "type": "text",
+          "md": "Fortran has built-in functions for arrays: `sum(a)` adds all elements, `product(a)` multiplies them, and `maxval(a)` and `minval(a)` give the largest and the smallest element."
+        },
+        {
+          "type": "code",
+          "code": "program stats\n  implicit none\n  real :: temps(4)\n  temps = [12.0, 15.5, 9.5, 11.0]\n  print '(A, F0.1)', \"Max: \", maxval(temps)\n  print '(A, F0.1)', \"Min: \", minval(temps)\n  print '(A, F0.2)', \"Average: \", sum(temps) / size(temps)\nend program stats",
+          "output": "Max: 15.5\nMin: 9.5\nAverage: 12.00"
+        },
+        {
+          "type": "heading",
+          "text": "Loops and slices"
+        },
+        {
+          "type": "text",
+          "md": "A `do` loop from `1` to `size(a)` visits every element. A **slice** such as `a(2:4)` is a part of the array, here the elements 2, 3 and 4. You can use a slice like a small array."
+        },
+        {
+          "type": "code",
+          "code": "program slices\n  implicit none\n  integer :: a(5), i\n  a = [10, 20, 30, 40, 50]\n  do i = 1, size(a), 2\n    print '(I0)', a(i)\n  end do\n  print '(*(I0, :, 1X))', a(2:4)\n  print '(I0)', sum(a(4:5))\nend program slices",
+          "output": "10\n30\n50\n20 30 40\n90"
+        },
+        {
+          "type": "warning",
+          "md": "An index outside the array, such as `a(0)` or `a(6)` for an array of 5 elements, is an error. Fortran does not always stop with a message: the program may read or change wrong memory, so check your indexes."
+        }
+      ],
+      "card": [
+        "`integer :: a(5)` has 5 elements, `a(1)` is the first",
+        "`a = [1, 2, 3, 4, 5]` fills the array",
+        "`a * 2` and `a + b` work on every element",
+        "`sum(a)`, `size(a)`, `maxval(a)`, slice `a(2:4)`",
+        "`'(*(I0, :, 1X))'` prints all values in one line"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arrays-1",
+          "prompt": "What does this print?",
+          "code": "integer :: a(4)\na = [5, 8, 2, 7]\nprint '(I0)', a(2)",
+          "answers": [
+            "8"
+          ],
+          "explain": "Indexes start at `1`, so `a(2)` is the second element, `8`."
+        },
+        {
+          "type": "input",
+          "id": "arrays-2",
+          "prompt": "What does this print?",
+          "code": "integer :: a(5)\na = [1, 2, 3, 4, 5]\nprint '(I0)', sum(a(2:4))",
+          "answers": [
+            "9"
+          ],
+          "explain": "`a(2:4)` is `2`, `3` and `4`. Their sum is `9`."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-3",
+          "prompt": "What does this print?",
+          "code": "integer :: a(3)\na = [4, 5, 6]\na = a * 10\nprint '(I0)', a(3)",
+          "options": [
+            "`60`",
+            "`6`",
+            "`40`",
+            "`150`"
+          ],
+          "answer": 0,
+          "explain": "`a * 10` multiplies every element, so `a` becomes `40`, `50`, `60`. The third element is `60`."
+        },
+        {
+          "type": "true_false",
+          "id": "arrays-4",
+          "statement": "The first element of `integer :: a(5)` is `a(0)`.",
+          "answer": false,
+          "explain": "Fortran arrays start at index `1` unless you say otherwise. The elements are `a(1)` to `a(5)`."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-5",
+          "prompt": "Complete the code so it prints the number of elements, `3`.",
+          "code": "integer :: a(3)\na = [7, 8, 9]\nprint '(I0)', ___(a)",
+          "options": [
+            "size",
+            "len",
+            "sum",
+            "count"
+          ],
+          "answer": 0,
+          "explain": "`size(a)` gives the number of elements. `sum(a)` would add them and print `24`."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-6",
+          "prompt": "Complete the code so it prints the largest element, `9`.",
+          "code": "integer :: a(4)\na = [4, 9, 2, 6]\nprint '(I0)', ___",
+          "options": [
+            "maxval(a)",
+            "max(a)",
+            "a(4)",
+            "size(a)"
+          ],
+          "answer": 0,
+          "explain": "`maxval(a)` returns the largest element of an array. `a(4)` is only the last element, `6`."
+        },
+        {
+          "type": "blocks",
+          "id": "arrays-7",
+          "prompt": "Build the declaration of an integer array `days` with 7 elements.",
+          "tokens": [
+            "integer",
+            "::",
+            "days",
+            "(",
+            "7",
+            ")"
+          ],
+          "distractors": [
+            "[",
+            "]"
+          ],
+          "explain": "The type comes first, then `::`, the name and the number of elements in parentheses."
+        },
+        {
+          "type": "order",
+          "id": "arrays-8",
+          "prompt": "Put the lines in order so the code prints 4, 8 and 12, one number per line.",
+          "lines": [
+            "a = [2, 4, 6]",
+            "a = a * 2",
+            "do i = 1, size(a)",
+            "  print '(I0)', a(i)",
+            "end do"
+          ],
+          "explain": "First the array gets its values, then every element is doubled, and then the loop prints the elements one by one."
+        },
+        {
+          "type": "pairs",
+          "id": "arrays-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`a(1)`",
+              "the first element"
+            ],
+            [
+              "`size(a)`",
+              "number of elements"
+            ],
+            [
+              "`sum(a)`",
+              "all elements added"
+            ],
+            [
+              "`a(2:4)`",
+              "elements 2 to 4"
+            ],
+            [
+              "`maxval(a)`",
+              "the largest element"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "arrays-10",
+          "prompt": "The program should print `First: 5`. Which line has the bug?",
+          "lines": [
+            "program arr",
+            "  implicit none",
+            "  integer :: a(3)",
+            "  a = [5, 6, 7]",
+            "  print '(A, I0)', \"First: \", a(0)",
+            "end program arr"
+          ],
+          "bug": 4,
+          "explain": "The first element is `a(1)`. There is no `a(0)` in this array."
+        },
+        {
+          "type": "bug",
+          "id": "arrays-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "program double",
+            "  implicit none",
+            "  integer :: a(3)",
+            "  a = (1, 2, 3)",
+            "  a = a * 2",
+            "  print '(*(I0, :, 1X))', a",
+            "end program double"
+          ],
+          "bug": 3,
+          "explain": "An array of values is written with square brackets: `a = [1, 2, 3]`."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-12",
+          "prompt": "What does this print?",
+          "code": "integer :: a(4)\na = [2, 3, 4, 5]\nprint '(*(I0, :, 1X))', a(2:3) + 1",
+          "options": [
+            "`4 5`",
+            "`3 4`",
+            "`4 5 6`",
+            "`3 5`"
+          ],
+          "answer": 0,
+          "explain": "`a(2:3)` is `3` and `4`. Adding `1` to every element gives `4` and `5`."
+        }
+      ]
+    },
+    {
+      "id": "procedures",
+      "title": "Functions and subroutines",
+      "chapter": "Structure",
+      "summary": "Split a program into functions and subroutines after contains, pass arguments with intent and return results.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **procedure** is a named block of code that you can run many times. A **subroutine** does a task, and you start it with `call`. You write procedures after the word `contains`, at the end of the program and before `end program`."
+        },
+        {
+          "type": "code",
+          "code": "program greet_demo\n  implicit none\n  call greet(\"Ada\")\n  call greet(\"Alan\")\ncontains\n  subroutine greet(name)\n    character(len=*), intent(in) :: name\n    print '(A)', \"Hello, \" // name // \"!\"\n  end subroutine greet\nend program greet_demo",
+          "output": "Hello, Ada!\nHello, Alan!"
+        },
+        {
+          "type": "text",
+          "md": "The values in parentheses are **arguments**. You declare them inside the procedure. `character(len=*)` accepts a text of any length. `intent(in)` says that the procedure only reads the argument and does not change it."
+        },
+        {
+          "type": "heading",
+          "text": "Functions"
+        },
+        {
+          "type": "text",
+          "md": "A **function** calculates a value, and you use it inside an expression. `function square(x) result(y)` names the function, its argument `x` and its result variable `y`. You declare `y` inside the function and store the result in it."
+        },
+        {
+          "type": "code",
+          "code": "program functions\n  implicit none\n  print '(I0)', square(4)\n  print '(I0)', square(3) + square(2)\ncontains\n  function square(x) result(y)\n    integer, intent(in) :: x\n    integer :: y\n    y = x * x\n  end function square\nend program functions",
+          "output": "16\n13"
+        },
+        {
+          "type": "text",
+          "md": "A function can take several arguments, separated by commas. Here both arguments and the result are real numbers."
+        },
+        {
+          "type": "code",
+          "code": "program average_demo\n  implicit none\n  real :: a\n  a = average(3.0, 4.0)\n  print '(F0.2)', a\ncontains\n  function average(x, y) result(m)\n    real, intent(in) :: x, y\n    real :: m\n    m = (x + y) / 2\n  end function average\nend program average_demo",
+          "output": "3.50"
+        },
+        {
+          "type": "heading",
+          "text": "intent(out) and intent(inout)"
+        },
+        {
+          "type": "text",
+          "md": "A subroutine can give values back through its arguments. With `intent(inout)` it reads the argument and may change it. With `intent(out)` it only sets the argument. You pass variables, and after the `call` they hold the new values."
+        },
+        {
+          "type": "code",
+          "code": "program swap_demo\n  implicit none\n  integer :: a, b\n  a = 1\n  b = 2\n  call swap(a, b)\n  print '(I0, 1X, I0)', a, b\ncontains\n  subroutine swap(x, y)\n    integer, intent(inout) :: x, y\n    integer :: tmp\n    tmp = x\n    x = y\n    y = tmp\n  end subroutine swap\nend program swap_demo",
+          "output": "2 1"
+        },
+        {
+          "type": "code",
+          "code": "program divide_demo\n  implicit none\n  integer :: q, r\n  call divide(17, 5, q, r)\n  print '(A, I0, A, I0)', \"17 = 5 * \", q, \" + \", r\ncontains\n  subroutine divide(a, b, quotient, remainder)\n    integer, intent(in) :: a, b\n    integer, intent(out) :: quotient, remainder\n    quotient = a / b\n    remainder = mod(a, b)\n  end subroutine divide\nend program divide_demo",
+          "output": "17 = 5 * 3 + 2"
+        },
+        {
+          "type": "tip",
+          "md": "Variables that you declare inside a procedure, such as `tmp`, are **local**: they exist only inside that procedure. The `implicit none` of the program also applies to the procedures after `contains`."
+        },
+        {
+          "type": "warning",
+          "md": "Changing an `intent(in)` argument is an error. Do not give a local variable a start value in its declaration, like `integer :: n = 0`, inside a procedure: Fortran sets it only once, not at every call. Use a separate line `n = 0` instead."
+        }
+      ],
+      "card": [
+        "`call name(a, b)` runs a subroutine",
+        "`function f(x) result(y)` returns the value of `y`",
+        "`intent(in)` read only, `intent(out)` set, `intent(inout)` both",
+        "Procedures go after `contains`, before `end program`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "procedures-1",
+          "prompt": "What does this print?",
+          "code": "program p\n  implicit none\n  print '(I0)', triple(5) - 1\ncontains\n  function triple(n) result(t)\n    integer, intent(in) :: n\n    integer :: t\n    t = 3 * n\n  end function triple\nend program p",
+          "answers": [
+            "14"
+          ],
+          "explain": "`triple(5)` returns `15`, and `15 - 1` is `14`."
+        },
+        {
+          "type": "input",
+          "id": "procedures-2",
+          "prompt": "What does this print?",
+          "code": "program p\n  implicit none\n  integer :: x\n  x = 10\n  call change(x)\n  print '(I0)', x\ncontains\n  subroutine change(n)\n    integer, intent(inout) :: n\n    n = n + 5\n  end subroutine change\nend program p",
+          "answers": [
+            "15"
+          ],
+          "explain": "With `intent(inout)`, the change to `n` goes back to `x`. So `x` is `15` after the call."
+        },
+        {
+          "type": "choice",
+          "id": "procedures-3",
+          "prompt": "How do you run a subroutine named `report` that has no arguments?",
+          "options": [
+            "`call report()`",
+            "`report()`",
+            "`run report()`",
+            "`print report()`"
+          ],
+          "answer": 0,
+          "explain": "A subroutine is always started with `call`."
+        },
+        {
+          "type": "true_false",
+          "id": "procedures-4",
+          "statement": "You start a function with `call`, in the same way as a subroutine.",
+          "answer": false,
+          "explain": "A function returns a value, so you use it in an expression, such as `x = square(2)`. Only subroutines are started with `call`."
+        },
+        {
+          "type": "gap",
+          "id": "procedures-5",
+          "prompt": "Complete the declaration so the subroutine only reads `n`.",
+          "code": "program p\n  implicit none\n  call show(7)\ncontains\n  subroutine show(n)\n    integer, ___ :: n\n    print '(I0)', n\n  end subroutine show\nend program p",
+          "options": [
+            "intent(in)",
+            "intent(out)",
+            "intent(inout)",
+            "parameter"
+          ],
+          "answer": 0,
+          "explain": "`intent(in)` means the subroutine reads the argument but does not change it. That also allows a fixed value such as `7` as the argument."
+        },
+        {
+          "type": "gap",
+          "id": "procedures-6",
+          "prompt": "Complete the first line of the function so it returns `r`.",
+          "code": "program p\n  implicit none\n  print '(I0)', twice(21)\ncontains\n  ___\n    integer, intent(in) :: n\n    integer :: r\n    r = 2 * n\n  end function twice\nend program p",
+          "options": [
+            "function twice(n) result(r)",
+            "function twice(n) return(r)",
+            "subroutine twice(n)",
+            "function twice result(r)"
+          ],
+          "answer": 0,
+          "explain": "The first line names the function and its arguments, and `result(r)` names the variable that holds the return value."
+        },
+        {
+          "type": "blocks",
+          "id": "procedures-7",
+          "prompt": "Build the line that runs the subroutine `move` with the arguments `x` and `y`, in this order.",
+          "tokens": [
+            "call",
+            "move",
+            "(",
+            "x",
+            ",",
+            "y",
+            ")"
+          ],
+          "distractors": [
+            "run",
+            ";"
+          ],
+          "explain": "`call` starts a subroutine. The arguments go in parentheses, separated by commas."
+        },
+        {
+          "type": "order",
+          "id": "procedures-8",
+          "prompt": "Put the lines in order to make a complete program that prints Hello.",
+          "lines": [
+            "program main",
+            "  implicit none",
+            "  call hello()",
+            "contains",
+            "  subroutine hello()",
+            "    print '(A)', \"Hello\"",
+            "  end subroutine hello",
+            "end program main"
+          ],
+          "explain": "The main code with `call` comes first. After `contains` follows the subroutine, and `end program` closes the whole program."
+        },
+        {
+          "type": "pairs",
+          "id": "procedures-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`intent(in)`",
+              "the argument is only read"
+            ],
+            [
+              "`intent(out)`",
+              "the argument is only set"
+            ],
+            [
+              "`intent(inout)`",
+              "the argument is read and changed"
+            ],
+            [
+              "`contains`",
+              "starts the list of procedures"
+            ],
+            [
+              "`result(y)`",
+              "names the return value"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "procedures-10",
+          "prompt": "The program should print `5`. Which line has the bug?",
+          "lines": [
+            "program p",
+            "  implicit none",
+            "  print '(I0)', add(2, 3)",
+            "contains",
+            "  function add(a, b) result(s)",
+            "    integer, intent(in) :: a, b",
+            "    integer :: s",
+            "    a = a + b",
+            "  end function add",
+            "end program p"
+          ],
+          "bug": 7,
+          "explain": "`a` has `intent(in)` and must not change, and the result `s` never gets a value. Write `s = a + b`."
+        },
+        {
+          "type": "bug",
+          "id": "procedures-11",
+          "prompt": "The program should print `9`. Which line has the bug?",
+          "lines": [
+            "program p",
+            "  implicit none",
+            "  integer :: n",
+            "  n = 3",
+            "  square(n)",
+            "  print '(I0)', n",
+            "contains",
+            "  subroutine square(x)",
+            "    integer, intent(inout) :: x",
+            "    x = x * x",
+            "  end subroutine square",
+            "end program p"
+          ],
+          "bug": 4,
+          "explain": "A subroutine is started with `call`: `call square(n)`."
+        },
+        {
+          "type": "choice",
+          "id": "procedures-12",
+          "prompt": "What does this print?",
+          "code": "program p\n  implicit none\n  integer :: a\n  a = 4\n  call reset(a)\n  print '(I0)', a\ncontains\n  subroutine reset(n)\n    integer, intent(out) :: n\n    n = 0\n  end subroutine reset\nend program p",
+          "options": [
+            "`0`",
+            "`4`",
+            "`40`",
+            "Nothing, the program does not compile"
+          ],
+          "answer": 0,
+          "explain": "With `intent(out)`, the subroutine sets the argument, and the new value goes back to `a`."
+        }
+      ]
+    },
+    {
+      "id": "types",
+      "title": "Derived types and modules",
+      "chapter": "Structure",
+      "summary": "Group data in your own derived types, put types and procedures into modules and use them in a program.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **derived type** groups several values into one new type. You define it with `type :: point` … `end type point`, and each value inside is a **component**. `type(point) :: p` declares a variable of the type, and `%` reaches a component: `p%x`."
+        },
+        {
+          "type": "code",
+          "code": "program points\n  implicit none\n  type :: point\n    real :: x\n    real :: y\n  end type point\n  type(point) :: p\n  p%x = 1.5\n  p%y = 4.0\n  print '(F0.1, 1X, F0.1)', p%x, p%y\nend program points",
+          "output": "1.5 4.0"
+        },
+        {
+          "type": "text",
+          "md": "`person(\"Ada\", 36)` creates a value with all components, in the order of the type definition. `b = a` copies all components, so changing `b` later does not change `a`."
+        },
+        {
+          "type": "code",
+          "code": "program people\n  implicit none\n  type :: person\n    character(len=10) :: name\n    integer :: age\n  end type person\n  type(person) :: a, b\n  a = person(\"Ada\", 36)\n  b = a\n  b%age = b%age + 1\n  print '(A, 1X, I0)', trim(a%name), a%age\n  print '(A, 1X, I0)', trim(b%name), b%age\nend program people",
+          "output": "Ada 36\nAda 37"
+        },
+        {
+          "type": "heading",
+          "text": "Modules"
+        },
+        {
+          "type": "text",
+          "md": "A **module** collects constants, types and procedures, so that many programs can share them. Here the module comes before the program in the same file. In the program, `use geometry` comes right after the `program` line, before `implicit none`."
+        },
+        {
+          "type": "code",
+          "code": "module geometry\n  implicit none\n  real, parameter :: pi = 3.14159\ncontains\n  function circle_area(r) result(a)\n    real, intent(in) :: r\n    real :: a\n    a = pi * r ** 2\n  end function circle_area\nend module geometry\n\nprogram shapes\n  use geometry\n  implicit none\n  print '(F0.2)', circle_area(1.0)\n  print '(F0.2)', circle_area(2.0)\nend program shapes",
+          "output": "3.14\n12.57"
+        },
+        {
+          "type": "text",
+          "md": "Types and procedures work well together in a module. Here the subroutine `deposit` takes an `account` and changes its balance."
+        },
+        {
+          "type": "code",
+          "code": "module bank\n  implicit none\n  type :: account\n    character(len=10) :: owner\n    real :: balance\n  end type account\ncontains\n  subroutine deposit(acc, amount)\n    type(account), intent(inout) :: acc\n    real, intent(in) :: amount\n    acc%balance = acc%balance + amount\n  end subroutine deposit\nend module bank\n\nprogram banking\n  use bank\n  implicit none\n  type(account) :: acc\n  acc = account(\"Ada\", 100.0)\n  call deposit(acc, 25.5)\n  print '(A, A, F0.2)', trim(acc%owner), \": \", acc%balance\nend program banking",
+          "output": "Ada: 125.50"
+        },
+        {
+          "type": "text",
+          "md": "`use constants, only: g` makes only the listed names available. In bigger programs this shows clearly where each name comes from."
+        },
+        {
+          "type": "code",
+          "code": "module constants\n  implicit none\n  real, parameter :: g = 9.81\n  real, parameter :: c = 299792.458\nend module constants\n\nprogram physics\n  use constants, only: g\n  implicit none\n  print '(F0.2)', g * 2.0\nend program physics",
+          "output": "19.62"
+        },
+        {
+          "type": "tip",
+          "md": "In bigger projects, each module goes into its own file, and the compiler translates it before the programs that use it. The order inside a program is always: `use` lines, `implicit none`, declarations, statements, and then `contains` with the procedures."
+        },
+        {
+          "type": "warning",
+          "md": "`use` must come before `implicit none` and before all declarations. Components are reached with `%`, not with a dot: write `p%x`, not `p.x`."
+        }
+      ],
+      "card": [
+        "`type :: point` … `end type point` defines a type",
+        "`type(point) :: p` declares a variable, `p%x` is a component",
+        "`p = point(1.0, 2.0)` sets all components",
+        "`module m` … `contains` … `end module m`, then `use m`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "types-1",
+          "prompt": "What does this print?",
+          "code": "type :: box\n  integer :: w\n  integer :: h\nend type box\ntype(box) :: b\nb = box(3, 4)\nprint '(I0)', b%w * b%h",
+          "answers": [
+            "12"
+          ],
+          "explain": "`box(3, 4)` sets `w` to `3` and `h` to `4`, and `3 * 4` is `12`."
+        },
+        {
+          "type": "input",
+          "id": "types-2",
+          "prompt": "What does this print?",
+          "code": "module counter\n  implicit none\n  integer, parameter :: start = 10\ncontains\n  function next(n) result(m)\n    integer, intent(in) :: n\n    integer :: m\n    m = n + 1\n  end function next\nend module counter\n\nprogram main\n  use counter\n  implicit none\n  print '(I0)', next(next(start))\nend program main",
+          "answers": [
+            "12"
+          ],
+          "explain": "`start` is `10`. The inner `next` returns `11`, and the outer one returns `12`."
+        },
+        {
+          "type": "choice",
+          "id": "types-3",
+          "prompt": "Which character reaches a component of a derived type, as in `p ? x`?",
+          "options": [
+            "`%`",
+            "`.`",
+            "`->`",
+            "`:`"
+          ],
+          "answer": 0,
+          "explain": "Fortran uses `%` for components: `p%x`."
+        },
+        {
+          "type": "true_false",
+          "id": "types-4",
+          "statement": "In a program, `use` comes after `implicit none`.",
+          "answer": false,
+          "explain": "`use` lines come first, right after the `program` line. `implicit none` follows them."
+        },
+        {
+          "type": "gap",
+          "id": "types-5",
+          "prompt": "Complete the program so it can call `hello` from the module.",
+          "code": "module greetings\n  implicit none\ncontains\n  subroutine hello()\n    print '(A)', \"Hello from a module\"\n  end subroutine hello\nend module greetings\n\nprogram main\n  ___ greetings\n  implicit none\n  call hello()\nend program main",
+          "options": [
+            "use",
+            "import",
+            "include",
+            "call"
+          ],
+          "answer": 0,
+          "explain": "`use greetings` makes everything from the module `greetings` available in the program."
+        },
+        {
+          "type": "gap",
+          "id": "types-6",
+          "prompt": "Complete the code so it prints `Ada`.",
+          "code": "type :: person\n  character(len=3) :: name\n  integer :: age\nend type person\ntype(person) :: p\np = person(\"Ada\", 36)\nprint '(A)', ___",
+          "options": [
+            "p%name",
+            "p.name",
+            "person%name",
+            "name"
+          ],
+          "answer": 0,
+          "explain": "You reach a component through the variable, here `p`, followed by `%` and the component name."
+        },
+        {
+          "type": "blocks",
+          "id": "types-7",
+          "prompt": "Build the declaration of a variable `home` of the derived type `place`.",
+          "tokens": [
+            "type",
+            "(",
+            "place",
+            ")",
+            "::",
+            "home"
+          ],
+          "distractors": [
+            "new",
+            "%"
+          ],
+          "explain": "A variable of a derived type is declared with `type(place)`, then `::` and the name."
+        },
+        {
+          "type": "order",
+          "id": "types-8",
+          "prompt": "The module `settings` defines the constant `limit = 50`. Put the lines in order so the program prints `100`.",
+          "lines": [
+            "program main",
+            "  use settings",
+            "  implicit none",
+            "  integer :: n",
+            "  n = limit * 2",
+            "  print '(I0)', n",
+            "end program main"
+          ],
+          "explain": "After the `program` line come the `use` line, `implicit none` and the declarations. Then the statements run in order."
+        },
+        {
+          "type": "pairs",
+          "id": "types-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`type :: point`",
+              "starts a type definition"
+            ],
+            [
+              "`type(point) :: p`",
+              "declares a variable of the type"
+            ],
+            [
+              "`p%x`",
+              "the component x of p"
+            ],
+            [
+              "`module`",
+              "collects code to share"
+            ],
+            [
+              "`use`",
+              "makes a module available"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "types-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "program main",
+            "  implicit none",
+            "  type :: point",
+            "    real :: x, y",
+            "  end type point",
+            "  type(point) :: p",
+            "  p = point(1.0, 2.0)",
+            "  print '(F0.1)', p.y",
+            "end program main"
+          ],
+          "bug": 7,
+          "explain": "Components are reached with `%`. Write `p%y`."
+        },
+        {
+          "type": "bug",
+          "id": "types-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "module tools",
+            "  implicit none",
+            "  integer, parameter :: answer = 42",
+            "end module tools",
+            "program main",
+            "  use toolbox",
+            "  implicit none",
+            "  print '(I0)', answer",
+            "end program main"
+          ],
+          "bug": 5,
+          "explain": "The module is called `tools`, so the program must say `use tools`."
+        },
+        {
+          "type": "choice",
+          "id": "types-12",
+          "prompt": "What does this print?",
+          "code": "type :: pair\n  integer :: a\n  integer :: b\nend type pair\ntype(pair) :: p, q\np = pair(1, 2)\nq = p\nq%a = 5\nprint '(I0, 1X, I0)', p%a, q%a",
+          "options": [
+            "`1 5`",
+            "`5 5`",
+            "`1 1`",
+            "`5 1`"
+          ],
+          "answer": 0,
+          "explain": "`q = p` copies the values. Changing `q%a` afterwards does not change `p%a`."
+        }
+      ]
+    }
+  ]
+}

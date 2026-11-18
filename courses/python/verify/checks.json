@@ -1,0 +1,245 @@
+{
+  "hello-1": {
+    "options_template": "___",
+    "expect": "Hello"
+  },
+  "hello-3": {
+    "proof": "print('\"' in output())"
+  },
+  "hello-4": {
+    "expect": "8"
+  },
+  "hello-5": {
+    "expect": "Score: 10"
+  },
+  "hello-6": {
+    "expect": "Start\n2\nEnd"
+  },
+  "hello-7": {
+    "fix": "print(\"Line 2\")",
+    "expect": "Line 1\nLine 2\nLine 3"
+  },
+  "hello-8": {
+    "proof": "print(output('print(\"2 + 3\")'), output(\"print(2 + 3)\"), repr(output(\"# print(5)\")), output(\"print(2, 3)\"), sep=\"|\")",
+    "proof_out": "2 + 3|5|''|2 3"
+  },
+  "hello-11": {
+    "proof": "print(output(\"print(1)  # print(2)\") == \"1\")"
+  },
+  "hello-12": {
+    "fix": "print(\"Bye\")",
+    "expect": "Hello\n3\nBye"
+  },
+  "variables-3": {
+    "proof": "print(type(42).__name__, type(4.2).__name__, type(\"42\").__name__, type(False).__name__)",
+    "proof_out": "int float str bool"
+  },
+  "variables-4": {
+    "proof": "age = 1\nAge = 2\nprint(age == Age)"
+  },
+  "variables-5": {
+    "options_template": "___ = \"Ana\"\nprint(\"ok\")",
+    "expect": "ok"
+  },
+  "variables-6": {
+    "expect": "<class 'float'>"
+  },
+  "variables-7": {
+    "setup": "price = 9.99",
+    "expect": "<class 'float'>"
+  },
+  "variables-8": {
+    "expect": "Start: 10\nEnd: 15"
+  },
+  "variables-9": {
+    "fix": "first_name = \"Lena\"",
+    "expect": "Lena Rome"
+  },
+  "variables-11": {
+    "proof": "print(type(3.0) == int)"
+  },
+  "variables-12": {
+    "fix": "print(score)",
+    "expect": "6"
+  },
+  "numbers-4": {
+    "expect": "1"
+  },
+  "numbers-5": {
+    "proof": "print(int(4.8) == 5)"
+  },
+  "numbers-6": {
+    "proof": "print(7 // 2, 7 % 2, 7 ** 2, 7 / 2)",
+    "proof_out": "3 1 49 3.5"
+  },
+  "numbers-7": {
+    "expect": "25"
+  },
+  "numbers-8": {
+    "expect": "7.5"
+  },
+  "numbers-9": {
+    "fix": "average = (a + b) / 2",
+    "expect": "2.5"
+  },
+  "numbers-10": {
+    "options_template": "___",
+    "expect": "8"
+  },
+  "numbers-12": {
+    "fix": "print(\"Total: \" + str(total))",
+    "expect": "Total: 15"
+  },
+  "strings-4": {
+    "expect": "Hi, Ana!"
+  },
+  "strings-5": {
+    "proof": "print(output() == \"HELLO\")"
+  },
+  "strings-6": {
+    "proof": "s = \" ab cd \"\nprint(s.upper(), s.strip(), s.split(), len(s), sep=\"|\")",
+    "proof_out": " AB CD |ab cd|['ab', 'cd']|7"
+  },
+  "strings-7": {
+    "setup": "word = \"yes\"",
+    "expect": "YES"
+  },
+  "strings-8": {
+    "expect": "HELLO!"
+  },
+  "strings-9": {
+    "fix": "last = word[-1]",
+    "expect": "o"
+  },
+  "strings-12": {
+    "fix": "print(f\"{name} has {count} cats.\")",
+    "expect": "Tom has 3 cats."
+  },
+  "conditions-3": {
+    "proof": "try:\n    compile(\"if a = 3:\\n    print(a)\", \"test\", \"exec\")\n    print(True)\nexcept SyntaxError:\n    print(False)"
+  },
+  "conditions-4": {
+    "expect": "even"
+  },
+  "conditions-5": {
+    "expect": "cold"
+  },
+  "conditions-6": {
+    "fix": "if age >= 18:",
+    "expect": "child"
+  },
+  "conditions-7": {
+    "proof": "a = True\nb = False\nprint(a and b, a or b, not a, a != b)",
+    "proof_out": "False True False True"
+  },
+  "conditions-8": {
+    "setup": "age = 20",
+    "expect": "True"
+  },
+  "conditions-9": {
+    "options_template": "a = 5\nb = 10\nprint(___)",
+    "expect": "False"
+  },
+  "conditions-11": {
+    "proof": "print(output() == \"A\\nB\")"
+  },
+  "conditions-12": {
+    "fix": "if age < 12 or age > 65:",
+    "expect": "Discount"
+  },
+  "loops-2": {
+    "not_output": true,
+    "proof": "print(output().count(\"Hi\"))",
+    "proof_out": "5"
+  },
+  "loops-3": {
+    "proof": "print(5 in range(5))"
+  },
+  "loops-4": {
+    "expect": "1\n2\n3"
+  },
+  "loops-5": {
+    "expect": "6"
+  },
+  "loops-6": {
+    "fix": "while n > 0:",
+    "expect": "3\n2\n1"
+  },
+  "loops-7": {
+    "after": "    print(i)",
+    "expect": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10"
+  },
+  "loops-8": {
+    "proof": "print(list(range(3)), list(range(1, 4)), list(range(0, 7, 3)), list(range(2, 4)))",
+    "proof_out": "[0, 1, 2] [1, 2, 3] [0, 3, 6] [2, 3]"
+  },
+  "loops-9": {
+    "proof": "print(output().split())",
+    "proof_out": "['0', '1']"
+  },
+  "loops-11": {
+    "proof": "print(output() == \"\")"
+  },
+  "loops-12": {
+    "fix": "for n in range(1, 6):",
+    "expect": "15"
+  },
+  "collections-4": {
+    "proof": "numbers = [2, 1]\nprint(numbers.sort() == [1, 2])"
+  },
+  "collections-5": {
+    "expect": "25"
+  },
+  "collections-6": {
+    "setup": "fruits = [\"apple\"]",
+    "after": "print(fruits)",
+    "expect": "['apple', 'orange']"
+  },
+  "collections-7": {
+    "expect": "Ben\nCleo"
+  },
+  "collections-8": {
+    "proof": "a = [3, 1]\na.append(2)\nb = [3, 1]\nb.insert(0, 2)\nc = [3, 1]\nc.pop()\nd = [3, 1]\nd.sort()\nprint(a, b, c, d)",
+    "proof_out": "[3, 1, 2] [2, 3, 1] [3] [1, 3]"
+  },
+  "collections-9": {
+    "fix": "count = stock.get(\"green\", 0)",
+    "expect": "0"
+  },
+  "collections-11": {
+    "fix": "numbers.sort()",
+    "expect": "[1, 3, 4]"
+  },
+  "collections-12": {
+    "options_template": "prices = {\"tea\": 2, \"cake\": 3, \"pie\": 4}\n___",
+    "expect": "3"
+  },
+  "functions-3": {
+    "proof": "print(output('def show():\\n    print(\"x\")') == \"x\")"
+  },
+  "functions-4": {
+    "expect": "7"
+  },
+  "functions-5": {
+    "after": "    return n * n\nprint(square(4))",
+    "expect": "16"
+  },
+  "functions-6": {
+    "expect": "10"
+  },
+  "functions-7": {
+    "proof": "def f(y=1):\n    return y\nprint(f(), f(5))",
+    "proof_out": "1 5"
+  },
+  "functions-8": {
+    "fix": "    return a + b",
+    "expect": "8"
+  },
+  "functions-11": {
+    "proof": "print(output().splitlines()[-1] == \"None\")"
+  },
+  "functions-12": {
+    "fix": "def greet(name):",
+    "expect": "Hello, Mia!"
+  }
+}

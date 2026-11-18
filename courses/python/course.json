@@ -1,0 +1,1856 @@
+{
+  "course": "python",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Python!",
+      "chapter": "First steps",
+      "summary": "Write your first program with print() and learn the difference between text and numbers.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A program is a list of instructions for the computer. Python runs them from top to bottom, one line after the other. Your first instruction is `print()`: it shows a value on the screen."
+        },
+        {
+          "type": "code",
+          "code": "print(\"Hello, Python!\")",
+          "output": "Hello, Python!"
+        },
+        {
+          "type": "text",
+          "md": "Text in Python is called a **string**. You write a string between quotes: `\"Hello\"` or `'Hello'`. Both kinds of quotes work. The quotes are not part of the text, so `print()` does not show them."
+        },
+        {
+          "type": "code",
+          "code": "print(\"Hello\")\nprint('Hello')\nprint(\"Python runs line by line.\")",
+          "output": "Hello\nHello\nPython runs line by line."
+        },
+        {
+          "type": "warning",
+          "md": "Python is strict about spelling. `Print(\"Hi\")` with a capital `P`, a missing quote or a missing bracket is an error, and the program does not run."
+        },
+        {
+          "type": "heading",
+          "text": "Strings and numbers"
+        },
+        {
+          "type": "text",
+          "md": "Numbers are written without quotes, and Python can calculate with them: `print(2 + 3)` shows `5`. But `\"2 + 3\"` in quotes is a string, and Python shows it exactly as it is."
+        },
+        {
+          "type": "code",
+          "code": "print(2 + 3)\nprint(\"2 + 3\")\nprint(10 - 4)",
+          "output": "5\n2 + 3\n6"
+        },
+        {
+          "type": "text",
+          "md": "You can give `print()` several values, separated by commas. It shows them on one line with a space between them. Each new `print()` starts a new line."
+        },
+        {
+          "type": "code",
+          "code": "print(\"I am\", 12, \"years old\")\nprint(\"Sum:\", 4 + 5)",
+          "output": "I am 12 years old\nSum: 9"
+        },
+        {
+          "type": "heading",
+          "text": "Comments"
+        },
+        {
+          "type": "text",
+          "md": "A **comment** starts with `#`. Python ignores everything from `#` to the end of the line. Comments are notes for people who read the code. You can also put `#` in front of a line of code to switch it off for a moment."
+        },
+        {
+          "type": "code",
+          "code": "# print(\"Hello\")\nprint(\"Bye\")\nprint(1 + 1)  # 2",
+          "output": "Bye\n2"
+        }
+      ],
+      "card": [
+        "`print(\"Hi\")` shows text on the screen",
+        "Strings go in quotes: `\"Hi\"` or `'Hi'`",
+        "Numbers have no quotes: `print(2 + 3)` shows `5`",
+        "`print(\"a\", 1)` shows `a 1`",
+        "`#` starts a comment that Python ignores"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which line shows the text Hello on the screen?",
+          "options": [
+            "`print(\"Hello\")`",
+            "`print(Hello)`",
+            "`Print(\"Hello\")`",
+            "`print \"Hello\"`"
+          ],
+          "answer": 0,
+          "explain": "Text needs quotes, `print` is written in lowercase, and the value goes inside the brackets."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "print(\"5 + 5\")",
+          "answers": [
+            "5 + 5"
+          ],
+          "explain": "The quotes make `\"5 + 5\"` a string, so Python shows the text as it is and does not calculate."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-3",
+          "statement": "This program shows the quotes too: `\"Hi\"`.",
+          "code": "print(\"Hi\")",
+          "answer": false,
+          "explain": "The quotes only mark where the string starts and ends. `print()` shows `Hi` without them."
+        },
+        {
+          "type": "gap",
+          "id": "hello-4",
+          "prompt": "Complete the code so it prints 8.",
+          "code": "print(5 ___ 3)",
+          "options": [
+            "+",
+            "-",
+            ","
+          ],
+          "answer": 0,
+          "explain": "`5 + 3` is `8`. With `-` you get `2`, and with a comma `print()` shows `5 3`."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-5",
+          "prompt": "Build a line that prints: Score: 10",
+          "tokens": [
+            "print",
+            "(",
+            "\"Score:\"",
+            ",",
+            "10",
+            ")"
+          ],
+          "distractors": [
+            "Print",
+            ";"
+          ],
+          "explain": "`print()` takes the string and the number, separated by a comma, and puts a space between them."
+        },
+        {
+          "type": "order",
+          "id": "hello-6",
+          "prompt": "Put the lines in order so the program prints Start, then 2, then End.",
+          "lines": [
+            "print(\"Start\")",
+            "print(1 + 1)",
+            "print(\"End\")"
+          ],
+          "explain": "Python runs the lines from top to bottom, and each `print()` starts a new line."
+        },
+        {
+          "type": "bug",
+          "id": "hello-7",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "print(\"Line 1\")",
+            "print(\"Line 2)",
+            "print(\"Line 3\")"
+          ],
+          "bug": 1,
+          "explain": "The string in line 2 has no closing quote. Write `print(\"Line 2\")`."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-8",
+          "prompt": "Match the code with what it shows.",
+          "pairs": [
+            [
+              "`print(\"2 + 3\")`",
+              "the text 2 + 3"
+            ],
+            [
+              "`print(2 + 3)`",
+              "the number 5"
+            ],
+            [
+              "`print(2, 3)`",
+              "2 and 3 with a space between them"
+            ],
+            [
+              "`# print(5)`",
+              "nothing, because it is a comment"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "hello-9",
+          "prompt": "What does this print?",
+          "code": "print(\"A\", \"B\")",
+          "options": [
+            "`AB`",
+            "`A B`",
+            "`A, B`",
+            "`\"A\" \"B\"`"
+          ],
+          "answer": 1,
+          "explain": "`print()` puts a space between the values you separate with commas."
+        },
+        {
+          "type": "input",
+          "id": "hello-10",
+          "prompt": "What does this print?",
+          "code": "print(\"Total:\", 2 + 2)",
+          "answers": [
+            "Total: 4"
+          ],
+          "explain": "Python calculates `2 + 2` first and then shows the string and the result with a space between them."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-11",
+          "statement": "Python ignores everything after `#` on a line.",
+          "answer": true,
+          "explain": "`#` starts a comment, and a comment goes to the end of the line."
+        },
+        {
+          "type": "bug",
+          "id": "hello-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "print(\"Hello\")",
+            "print(1 + 2)",
+            "Print(\"Bye\")"
+          ],
+          "bug": 2,
+          "explain": "Python is case-sensitive: `Print` is not the same as `print`. Write `print(\"Bye\")`."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "First steps",
+      "summary": "Store values in variables and meet the four basic types: int, float, str and bool.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a name for a value. You create it with `=`: the name goes on the left, the value on the right. After that, you can use the name instead of the value."
+        },
+        {
+          "type": "code",
+          "code": "name = \"Mia\"\nage = 12\nprint(name)\nprint(age)\nprint(name, \"is\", age)",
+          "output": "Mia\n12\nMia is 12"
+        },
+        {
+          "type": "warning",
+          "md": "In Python, `=` does not mean \"is equal to\" like in math. It means **store**: take the value on the right and put it into the name on the left."
+        },
+        {
+          "type": "heading",
+          "text": "Four basic types"
+        },
+        {
+          "type": "text",
+          "md": "Every value has a **type**. Whole numbers like `7` are `int`. Numbers with a decimal point like `3.5` are `float`. Text like `\"hi\"` is `str`. `True` and `False` are `bool`. The function `type()` shows the type of a value."
+        },
+        {
+          "type": "code",
+          "code": "count = 7\nprice = 3.5\ncity = \"Paris\"\nis_open = True\nprint(type(count))\nprint(type(price))\nprint(type(city))\nprint(type(is_open))",
+          "output": "<class 'int'>\n<class 'float'>\n<class 'str'>\n<class 'bool'>"
+        },
+        {
+          "type": "text",
+          "md": "Look carefully at quotes and decimal points. `\"7\"` in quotes is a `str`, not a number. And `7.0` is a `float`, because it has a decimal point."
+        },
+        {
+          "type": "code",
+          "code": "print(type(\"7\"))\nprint(type(7.0))",
+          "output": "<class 'str'>\n<class 'float'>"
+        },
+        {
+          "type": "heading",
+          "text": "Changing a variable"
+        },
+        {
+          "type": "text",
+          "md": "You can give a variable a new value at any time, and the old value is gone. You can also use the current value to compute the new one: `score = score + 5` takes the old score, adds `5` and stores the result in `score`."
+        },
+        {
+          "type": "code",
+          "code": "score = 10\nprint(score)\nscore = 20\nprint(score)\nscore = score + 5\nprint(score)",
+          "output": "10\n20\n25"
+        },
+        {
+          "type": "heading",
+          "text": "Naming rules"
+        },
+        {
+          "type": "text",
+          "md": "Names may contain letters, digits and `_`. They cannot start with a digit and cannot contain spaces. Python is case-sensitive: `age` and `Age` are two different variables. Most Python code uses lowercase names with `_` between words, like `first_name`."
+        },
+        {
+          "type": "tip",
+          "md": "Choose names that explain the value: `price` is easier to understand than `p`."
+        }
+      ],
+      "card": [
+        "`x = 5` stores `5` in the variable `x`",
+        "Types: `7` is `int`, `3.5` is `float`, `\"hi\"` is `str`, `True` is `bool`",
+        "`type(x)` shows the type of `x`",
+        "`x = x + 1` uses the old value to compute a new one",
+        "Names: letters, digits and `_`, no digit at the start"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "variables-1",
+          "prompt": "What does this print?",
+          "code": "x = 4\nx = 9\nprint(x)",
+          "options": [
+            "`4`",
+            "`9`",
+            "`13`",
+            "`x`"
+          ],
+          "answer": 1,
+          "explain": "The second assignment replaces the old value, so `x` holds `9`."
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this print?",
+          "code": "a = 3\nb = a + 2\nprint(b)",
+          "answers": [
+            "5"
+          ],
+          "explain": "`a` holds `3`, so `b` gets `3 + 2`, which is `5`."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-3",
+          "prompt": "Match each value with its type.",
+          "pairs": [
+            [
+              "`42`",
+              "whole number (int)"
+            ],
+            [
+              "`4.2`",
+              "decimal number (float)"
+            ],
+            [
+              "`\"42\"`",
+              "text (str)"
+            ],
+            [
+              "`False`",
+              "truth value (bool)"
+            ]
+          ]
+        },
+        {
+          "type": "true_false",
+          "id": "variables-4",
+          "statement": "`Age` and `age` are the same variable.",
+          "answer": false,
+          "explain": "Python is case-sensitive, so `Age` and `age` are two different names."
+        },
+        {
+          "type": "choice",
+          "id": "variables-5",
+          "prompt": "Which is a valid variable name?",
+          "options": [
+            "`2nd_name`",
+            "`first name`",
+            "`first_name`",
+            "`first-name`"
+          ],
+          "answer": 2,
+          "explain": "Names may use letters, digits and `_`, but no spaces, no `-` and no digit at the start."
+        },
+        {
+          "type": "gap",
+          "id": "variables-6",
+          "prompt": "Complete the code so it prints `<class 'float'>`.",
+          "code": "value = ___\nprint(type(value))",
+          "options": [
+            "3",
+            "3.0",
+            "\"3.0\"",
+            "True"
+          ],
+          "answer": 1,
+          "explain": "`3.0` has a decimal point, so it is a `float`. `\"3.0\"` in quotes is a `str`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-7",
+          "prompt": "Build a line that prints the type of the variable price.",
+          "tokens": [
+            "print",
+            "(",
+            "type",
+            "(",
+            "price",
+            ")",
+            ")"
+          ],
+          "distractors": [
+            "\"price\"",
+            "int"
+          ],
+          "explain": "`type(price)` gives the type, and `print()` shows it. Without quotes, `price` is the variable, not the text."
+        },
+        {
+          "type": "order",
+          "id": "variables-8",
+          "prompt": "Put the lines in order so the program prints Start: 10 and then End: 15.",
+          "lines": [
+            "points = 10",
+            "print(\"Start:\", points)",
+            "points = points + 5",
+            "print(\"End:\", points)"
+          ],
+          "explain": "A variable must exist before you use it. The first `print()` comes before `points` changes."
+        },
+        {
+          "type": "bug",
+          "id": "variables-9",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "city = \"Rome\"",
+            "first name = \"Lena\"",
+            "print(first_name, city)"
+          ],
+          "bug": 1,
+          "explain": "A name cannot contain a space. Write `first_name = \"Lena\"`."
+        },
+        {
+          "type": "input",
+          "id": "variables-10",
+          "prompt": "What does this print?",
+          "code": "a = 2\nb = a\na = 7\nprint(b)",
+          "answers": [
+            "2"
+          ],
+          "explain": "`b = a` stores the value `2` in `b`. Changing `a` later does not change `b`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-11",
+          "statement": "After this line, `n` has the type `int`.",
+          "code": "n = 3.0",
+          "answer": false,
+          "explain": "`3.0` has a decimal point, so `n` is a `float`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "score = 5",
+            "score = score + 1",
+            "print(Score)"
+          ],
+          "bug": 2,
+          "explain": "The variable is called `score` in lowercase. Write `print(score)`."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "Numbers and operators",
+      "chapter": "Working with data",
+      "summary": "Calculate with Python: basic operators, whole-number division, remainder, powers and converting types.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Python is a good calculator. `+` adds, `-` subtracts, `*` multiplies and `/` divides."
+        },
+        {
+          "type": "code",
+          "code": "print(7 + 2)\nprint(7 - 2)\nprint(7 * 2)\nprint(7 / 2)\nprint(8 / 2)",
+          "output": "9\n5\n14\n3.5\n4.0"
+        },
+        {
+          "type": "warning",
+          "md": "Division with `/` always gives a `float`, even when the result is a whole number: `8 / 2` is `4.0`, not `4`."
+        },
+        {
+          "type": "heading",
+          "text": "More operators"
+        },
+        {
+          "type": "text",
+          "md": "`//` divides and drops the decimal part: `7 // 2` is `3`. `%` gives the **remainder** of a division: `7 % 2` is `1`. `**` is the power operator: `2 ** 3` is `2 * 2 * 2`."
+        },
+        {
+          "type": "code",
+          "code": "print(7 // 2)\nprint(7 % 2)\nprint(10 % 5)\nprint(2 ** 3)",
+          "output": "3\n1\n0\n8"
+        },
+        {
+          "type": "tip",
+          "md": "`%` tells you if a number is even: `n % 2` is `0` for even numbers and `1` for odd numbers."
+        },
+        {
+          "type": "heading",
+          "text": "Order of operations"
+        },
+        {
+          "type": "text",
+          "md": "Python follows the rules from math: first `**`, then `*`, `/`, `//` and `%`, and last `+` and `-`. So `2 * 3 ** 2` is `2 * 9`. Parentheses change the order: what is inside them comes first."
+        },
+        {
+          "type": "code",
+          "code": "print(2 + 3 * 4)\nprint((2 + 3) * 4)\nprint(2 * 3 ** 2)",
+          "output": "14\n20\n18"
+        },
+        {
+          "type": "heading",
+          "text": "Converting types"
+        },
+        {
+          "type": "text",
+          "md": "`int()`, `float()` and `str()` convert a value to another type. `int()` drops the decimal part; it does not round. To round, use `round()`: `round(x)` gives a whole number, and `round(x, 2)` keeps two decimals."
+        },
+        {
+          "type": "code",
+          "code": "print(int(\"42\") + 1)\nprint(float(\"2.5\") * 2)\nprint(int(3.9))\nprint(round(3.9))\nprint(round(3.14159, 2))\nprint(\"Age: \" + str(30))",
+          "output": "43\n5.0\n3\n4\n3.14\nAge: 30"
+        },
+        {
+          "type": "warning",
+          "md": "With two strings, `+` joins them: `\"5\" + \"3\"` is `\"53\"`. But `\"5\" + 3` is an error, because Python does not mix strings and numbers. Convert first: `int(\"5\") + 3` is `8`, and `\"5\" + str(3)` is `\"53\"`."
+        }
+      ],
+      "card": [
+        "`+ - * /`, and `/` always gives a float: `8 / 2` is `4.0`",
+        "`//` whole-number division, `%` remainder, `**` power: `2 ** 3` is `8`",
+        "`*` comes before `+`; parentheses first: `(2 + 3) * 4`",
+        "`int(\"42\")`, `float(\"2.5\")`, `str(30)` convert types",
+        "`round(3.14159, 2)` is `3.14`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "numbers-1",
+          "prompt": "What does this print?",
+          "code": "print(17 // 5, 17 % 5)",
+          "answers": [
+            "3 2"
+          ],
+          "explain": "`5` fits into `17` three times (`15`), and `2` is left over."
+        },
+        {
+          "type": "choice",
+          "id": "numbers-2",
+          "prompt": "What does this print?",
+          "code": "print(9 / 3)",
+          "options": [
+            "`3`",
+            "`3.0`",
+            "`3.3`",
+            "`0`"
+          ],
+          "answer": 1,
+          "explain": "`/` always gives a `float`, even when the division has no remainder."
+        },
+        {
+          "type": "input",
+          "id": "numbers-3",
+          "prompt": "What does this print?",
+          "code": "print(2 + 4 * 3)",
+          "answers": [
+            "14"
+          ],
+          "explain": "`*` comes before `+`: `4 * 3` is `12`, and `2 + 12` is `14`."
+        },
+        {
+          "type": "gap",
+          "id": "numbers-4",
+          "prompt": "Complete the code so it prints 1.",
+          "code": "print(10 ___ 3)",
+          "options": [
+            "//",
+            "%",
+            "/",
+            "-"
+          ],
+          "answer": 1,
+          "explain": "`%` gives the remainder: `10` divided by `3` is `3`, and `1` is left over."
+        },
+        {
+          "type": "true_false",
+          "id": "numbers-5",
+          "statement": "`int(4.8)` gives `5`.",
+          "answer": false,
+          "explain": "`int()` drops the decimal part and does not round, so `int(4.8)` is `4`. Use `round(4.8)` to get `5`."
+        },
+        {
+          "type": "pairs",
+          "id": "numbers-6",
+          "prompt": "Match each operator with what it does.",
+          "pairs": [
+            [
+              "`7 // 2`",
+              "whole-number division"
+            ],
+            [
+              "`7 % 2`",
+              "remainder of a division"
+            ],
+            [
+              "`7 ** 2`",
+              "power"
+            ],
+            [
+              "`7 / 2`",
+              "division with a decimal result"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "numbers-7",
+          "prompt": "Build a line that prints 5 to the power of 2.",
+          "tokens": [
+            "print",
+            "(",
+            "5",
+            "**",
+            "2",
+            ")"
+          ],
+          "distractors": [
+            "^",
+            "*"
+          ],
+          "explain": "`**` is the power operator: `5 ** 2` is `5 * 5`, which is `25`."
+        },
+        {
+          "type": "order",
+          "id": "numbers-8",
+          "prompt": "Put the lines in order so the program prints 7.5.",
+          "lines": [
+            "total = 5 + 10",
+            "half = total / 2",
+            "print(half)"
+          ],
+          "explain": "`total` must exist before you divide it, and `half` must exist before you print it."
+        },
+        {
+          "type": "bug",
+          "id": "numbers-9",
+          "prompt": "This program should print the average of 2 and 3, which is 2.5. Which line has the bug?",
+          "lines": [
+            "a = 2",
+            "b = 3",
+            "average = a + b / 2",
+            "print(average)"
+          ],
+          "bug": 2,
+          "explain": "`/` comes before `+`, so the program computes `2 + 1.5`. Write `average = (a + b) / 2`."
+        },
+        {
+          "type": "choice",
+          "id": "numbers-10",
+          "prompt": "Which line prints 8?",
+          "options": [
+            "`print(\"5\" + 3)`",
+            "`print(\"5\" + \"3\")`",
+            "`print(int(\"5\") + 3)`",
+            "`print(str(5) + 3)`"
+          ],
+          "answer": 2,
+          "explain": "`int(\"5\")` turns the string into the number `5`, and `5 + 3` is `8`. Joining two strings gives `53`."
+        },
+        {
+          "type": "input",
+          "id": "numbers-11",
+          "prompt": "What does this print?",
+          "code": "print(round(7.456, 1))",
+          "answers": [
+            "7.5"
+          ],
+          "explain": "`round(x, 1)` keeps one decimal. `7.456` is closer to `7.5` than to `7.4`."
+        },
+        {
+          "type": "bug",
+          "id": "numbers-12",
+          "prompt": "This program should print Total: 15. Which line has the bug?",
+          "lines": [
+            "price = 5",
+            "count = 3",
+            "total = price * count",
+            "print(\"Total: \" + total)"
+          ],
+          "bug": 3,
+          "explain": "You cannot add a string and a number. Write `print(\"Total: \" + str(total))`."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings",
+      "chapter": "Working with data",
+      "summary": "Build text with f-strings, measure and slice strings, and change them with string methods.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **f-string** puts values into text. Write `f` before the opening quote and put a variable or a calculation in curly braces `{}`. Python replaces each pair of braces with the value."
+        },
+        {
+          "type": "code",
+          "code": "name = \"Sam\"\nage = 15\nprint(f\"{name} is {age} years old.\")\nprint(f\"Next year: {age + 1}\")",
+          "output": "Sam is 15 years old.\nNext year: 16"
+        },
+        {
+          "type": "text",
+          "md": "`len()` gives the length of a string: the number of characters. Spaces count too."
+        },
+        {
+          "type": "code",
+          "code": "word = \"Python\"\nprint(len(word))\nprint(len(\"Hi there\"))",
+          "output": "6\n8"
+        },
+        {
+          "type": "heading",
+          "text": "Indexing and slicing"
+        },
+        {
+          "type": "text",
+          "md": "Each character has a position, called its **index**. The first index is `0`, not `1`. `word[0]` is the first character, and `word[-1]` is the last one."
+        },
+        {
+          "type": "code",
+          "code": "word = \"Python\"\nprint(word[0])\nprint(word[2])\nprint(word[-1])",
+          "output": "P\nt\nn"
+        },
+        {
+          "type": "text",
+          "md": "A **slice** `word[start:end]` takes a part of the string. It starts at index `start` and stops **before** index `end`. Without `start`, the slice begins at the first character; without `end`, it goes to the last one."
+        },
+        {
+          "type": "code",
+          "code": "word = \"Python\"\nprint(word[0:2])\nprint(word[2:5])\nprint(word[:3])\nprint(word[3:])",
+          "output": "Py\ntho\nPyt\nhon"
+        },
+        {
+          "type": "heading",
+          "text": "String methods"
+        },
+        {
+          "type": "text",
+          "md": "A **method** is a function that belongs to a value. You call it with a dot: `text.upper()`. `upper()` and `lower()` change the case, `strip()` removes spaces at the start and the end, and `replace(a, b)` replaces every `a` with `b`. `split()` cuts the text at the spaces into a **list** of words; you learn more about lists later. `x in text` checks if `x` is part of the text."
+        },
+        {
+          "type": "code",
+          "code": "text = \"  Hello World  \"\nclean = text.strip()\nprint(clean)\nprint(clean.upper())\nprint(clean.lower())\nprint(clean.replace(\"World\", \"Python\"))\nprint(clean.split())\nprint(\"World\" in clean)",
+          "output": "Hello World\nHELLO WORLD\nhello world\nHello Python\n['Hello', 'World']\nTrue"
+        },
+        {
+          "type": "warning",
+          "md": "String methods never change the original string; they return a new one. `text.upper()` alone does not change `text`. Store the result: `text = text.upper()`."
+        }
+      ],
+      "card": [
+        "`f\"Hi {name}\"` puts values into text",
+        "`len(s)` counts characters; `s[0]` is the first, `s[-1]` the last",
+        "`s[1:4]` takes the characters at index 1, 2 and 3",
+        "`s.upper()`, `s.lower()`, `s.strip()`, `s.replace(a, b)`, `s.split()`",
+        "`\"a\" in s` is `True` if `s` contains `\"a\"`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this print?",
+          "code": "word = \"banana\"\nprint(len(word))",
+          "answers": [
+            "6"
+          ],
+          "explain": "`banana` has six characters: b, a, n, a, n, a."
+        },
+        {
+          "type": "choice",
+          "id": "strings-2",
+          "prompt": "What does this print?",
+          "code": "s = \"Python\"\nprint(s[1])",
+          "options": [
+            "`P`",
+            "`y`",
+            "`t`",
+            "`Py`"
+          ],
+          "answer": 1,
+          "explain": "Indexes start at `0`: `s[0]` is `P`, so `s[1]` is `y`."
+        },
+        {
+          "type": "input",
+          "id": "strings-3",
+          "prompt": "What does this print?",
+          "code": "s = \"Hello\"\nprint(s[1:4])",
+          "answers": [
+            "ell"
+          ],
+          "explain": "The slice starts at index `1` (`e`) and stops before index `4`, so you get `ell`."
+        },
+        {
+          "type": "gap",
+          "id": "strings-4",
+          "prompt": "Complete the code so it prints Hi, Ana!",
+          "code": "name = \"Ana\"\nprint(___\"Hi, {name}!\")",
+          "options": [
+            "str",
+            "f",
+            "+"
+          ],
+          "answer": 1,
+          "explain": "Only an f-string, with `f` before the quote, replaces `{name}` with the value."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-5",
+          "statement": "This program prints HELLO.",
+          "code": "text = \"hello\"\ntext.upper()\nprint(text)",
+          "answer": false,
+          "explain": "`upper()` returns a new string, but the program does not store it. `text` is still `hello`."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-6",
+          "prompt": "Match each method with what it gives.",
+          "pairs": [
+            [
+              "`s.upper()`",
+              "all letters in capitals"
+            ],
+            [
+              "`s.strip()`",
+              "no spaces at the start and the end"
+            ],
+            [
+              "`s.split()`",
+              "a list of the words"
+            ],
+            [
+              "`len(s)`",
+              "the number of characters"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "strings-7",
+          "prompt": "Build a line that prints the word in capital letters.",
+          "tokens": [
+            "print(",
+            "word",
+            ".upper()",
+            ")"
+          ],
+          "distractors": [
+            ".lower()",
+            ".upper"
+          ],
+          "explain": "`word.upper()` returns the word in capital letters. Without `()`, the method is not called."
+        },
+        {
+          "type": "order",
+          "id": "strings-8",
+          "prompt": "Put the lines in order so the program prints HELLO!",
+          "lines": [
+            "text = \"hello world\"",
+            "first = text[:5]",
+            "loud = first.upper()",
+            "print(f\"{loud}!\")"
+          ],
+          "explain": "Each line uses the variable that the line before it creates."
+        },
+        {
+          "type": "bug",
+          "id": "strings-9",
+          "prompt": "This program should print the last letter. Which line has the bug?",
+          "lines": [
+            "word = \"Hello\"",
+            "last = word[5]",
+            "print(last)"
+          ],
+          "bug": 1,
+          "explain": "`Hello` has the indexes `0` to `4`, so `word[5]` does not exist. Write `last = word[-1]`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-10",
+          "prompt": "What does this print?",
+          "code": "print(\"cat\" in \"concatenate\")",
+          "options": [
+            "`False`",
+            "`True`",
+            "`cat`",
+            "`1`"
+          ],
+          "answer": 1,
+          "explain": "`in` checks if the text appears anywhere: `concatenate` contains `cat`."
+        },
+        {
+          "type": "input",
+          "id": "strings-11",
+          "prompt": "What does this print?",
+          "code": "s = \"a-b-c\"\nprint(s.replace(\"-\", \"\"))",
+          "answers": [
+            "abc"
+          ],
+          "explain": "`replace()` replaces every `-` with an empty string, so all dashes disappear."
+        },
+        {
+          "type": "bug",
+          "id": "strings-12",
+          "prompt": "This program should print: Tom has 3 cats. Which line has the bug?",
+          "lines": [
+            "name = \"Tom\"",
+            "count = 3",
+            "print(\"{name} has {count} cats.\")"
+          ],
+          "bug": 2,
+          "explain": "Without `f` before the quote, the braces stay as text. Write `print(f\"{name} has {count} cats.\")`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Compare values and let your program choose with if, elif and else, combined with and, or and not.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **comparison** checks two values and gives a `bool`: `True` or `False`. Python has six comparison operators: `==` (equal), `!=` (not equal), `<` (less than), `>` (greater than), `<=` (less than or equal) and `>=` (greater than or equal)."
+        },
+        {
+          "type": "code",
+          "code": "age = 15\nprint(age == 15)\nprint(age != 15)\nprint(age > 18)\nprint(age <= 15)\nprint(\"a\" == \"A\")",
+          "output": "True\nFalse\nFalse\nTrue\nFalse"
+        },
+        {
+          "type": "warning",
+          "md": "`=` stores a value, and `==` compares two values. If you write `if age = 18:`, Python stops with an error."
+        },
+        {
+          "type": "heading",
+          "text": "if"
+        },
+        {
+          "type": "text",
+          "md": "`if` runs a block of code only when a condition is `True`. The `if` line ends with a colon `:`, and the lines below it are **indented** by 4 spaces. These indented lines are the block that belongs to the `if`."
+        },
+        {
+          "type": "code",
+          "code": "temperature = 30\nif temperature > 25:\n    print(\"It is hot.\")\n    print(\"Drink water.\")\nprint(\"Done\")",
+          "output": "It is hot.\nDrink water.\nDone"
+        },
+        {
+          "type": "heading",
+          "text": "else and elif"
+        },
+        {
+          "type": "text",
+          "md": "The block under `else` runs when the condition is `False`. With `elif` (short for \"else if\") you can test more conditions. Python checks them from top to bottom and runs only the **first** block whose condition is `True`."
+        },
+        {
+          "type": "code",
+          "code": "score = 72\nif score >= 90:\n    print(\"Grade A\")\nelif score >= 70:\n    print(\"Grade B\")\nelif score >= 50:\n    print(\"Grade C\")\nelse:\n    print(\"Try again\")",
+          "output": "Grade B"
+        },
+        {
+          "type": "heading",
+          "text": "and, or, not"
+        },
+        {
+          "type": "text",
+          "md": "`and` is `True` only when both sides are `True`. `or` is `True` when at least one side is `True`. `not` turns `True` into `False` and `False` into `True`."
+        },
+        {
+          "type": "code",
+          "code": "age = 20\nhas_ticket = True\nif age >= 18 and has_ticket:\n    print(\"You can enter.\")\nif age < 12 or age > 65:\n    print(\"Discount\")\nelse:\n    print(\"Full price\")\nprint(not has_ticket)",
+          "output": "You can enter.\nFull price\nFalse"
+        },
+        {
+          "type": "tip",
+          "md": "Indentation is part of the syntax in Python. Use 4 spaces for each level, and give all lines of a block the same indentation."
+        }
+      ],
+      "card": [
+        "`==` `!=` `<` `>` `<=` `>=` compare and give `True` or `False`",
+        "`if x > 0:` followed by a block indented by 4 spaces",
+        "`elif` tests the next condition, `else` catches the rest",
+        "`and`: both are true; `or`: at least one is true; `not`: the opposite"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "x = 7\nif x > 10:\n    print(\"big\")\nelif x > 5:\n    print(\"medium\")\nelse:\n    print(\"small\")",
+          "options": [
+            "`big`",
+            "`medium`",
+            "`small`"
+          ],
+          "answer": 1,
+          "explain": "`7 > 10` is `False`, but `7 > 5` is `True`, so Python runs the `elif` block and skips `else`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "print(5 >= 5 and 2 > 3)",
+          "answers": [
+            "False"
+          ],
+          "explain": "`5 >= 5` is `True`, but `2 > 3` is `False`. `and` needs both sides to be `True`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-3",
+          "statement": "`=` and `==` mean the same thing in Python.",
+          "answer": false,
+          "explain": "`=` stores a value in a variable, and `==` compares two values."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-4",
+          "prompt": "Complete the code so it prints even.",
+          "code": "n = 8\nif n % 2 ___ 0:\n    print(\"even\")\nelse:\n    print(\"odd\")",
+          "options": [
+            "=",
+            "==",
+            "!=",
+            ">"
+          ],
+          "answer": 1,
+          "explain": "`8 % 2` is `0`, and `==` checks if two values are equal. A single `=` is an error here."
+        },
+        {
+          "type": "order",
+          "id": "conditions-5",
+          "prompt": "Put the lines in order so the program prints cold.",
+          "lines": [
+            "temp = 5",
+            "if temp > 20:",
+            "    print(\"warm\")",
+            "else:",
+            "    print(\"cold\")"
+          ],
+          "explain": "The variable comes first. `5 > 20` is `False`, so the block under `else` runs."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-6",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "age = 16",
+            "if age >= 18",
+            "    print(\"adult\")",
+            "else:",
+            "    print(\"child\")"
+          ],
+          "bug": 1,
+          "explain": "An `if` line must end with a colon. Write `if age >= 18:`."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-7",
+          "prompt": "Match each expression with its meaning.",
+          "pairs": [
+            [
+              "`a and b`",
+              "True if both are True"
+            ],
+            [
+              "`a or b`",
+              "True if at least one is True"
+            ],
+            [
+              "`not a`",
+              "the opposite truth value"
+            ],
+            [
+              "`a != b`",
+              "True if the values are different"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-8",
+          "prompt": "Build a line that prints True if age is 18 or more.",
+          "tokens": [
+            "print",
+            "(",
+            "age",
+            ">=",
+            "18",
+            ")"
+          ],
+          "distractors": [
+            "=>",
+            "="
+          ],
+          "explain": "`>=` means greater than or equal. Python has no `=>` operator, and `=` stores a value."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-9",
+          "prompt": "Which condition is False?",
+          "code": "a = 5\nb = 10",
+          "options": [
+            "`a < b`",
+            "`a != b`",
+            "`a > 3 and b > 3`",
+            "`a > 3 and b < 3`"
+          ],
+          "answer": 3,
+          "explain": "`b < 3` is `False`, so the whole `and` is `False`. The other three conditions are `True`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-10",
+          "prompt": "What does this print?",
+          "code": "x = 15\nif x > 10:\n    x = x - 10\nif x > 3:\n    x = x * 2\nprint(x)",
+          "answers": [
+            "10"
+          ],
+          "explain": "After the first `if`, `x` is `5`. `5 > 3` is `True`, so `x` becomes `10`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-11",
+          "statement": "This program prints both A and B.",
+          "code": "n = 50\nif n > 10:\n    print(\"A\")\nelif n > 20:\n    print(\"B\")",
+          "answer": false,
+          "explain": "Only the first `True` condition runs. `50 > 10` is `True`, so Python prints `A` and skips the `elif`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "This program should print Discount for children under 12 and for people over 65. Which line has the bug?",
+          "lines": [
+            "age = 70",
+            "if age < 12 and age > 65:",
+            "    print(\"Discount\")",
+            "else:",
+            "    print(\"Full price\")"
+          ],
+          "bug": 1,
+          "explain": "No age can be under 12 and over 65 at the same time. Write `if age < 12 or age > 65:`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with for and while loops, count with range(), stop early with break and add up values.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **loop** repeats code. A `for` loop runs its block once for every item in a sequence, for example a **list**: several values in square brackets. Like `if`, the `for` line ends with `:`, and the block is indented."
+        },
+        {
+          "type": "code",
+          "code": "for color in [\"red\", \"green\", \"blue\"]:\n    print(color)",
+          "output": "red\ngreen\nblue"
+        },
+        {
+          "type": "heading",
+          "text": "Counting with range()"
+        },
+        {
+          "type": "text",
+          "md": "`range(5)` gives the numbers `0` to `4`: it starts at `0` and stops **before** `5`. `range(2, 6)` gives `2` to `5`. A third value sets the step: `range(10, 30, 10)` gives `10` and `20`."
+        },
+        {
+          "type": "code",
+          "code": "for i in range(3):\n    print(\"Round\", i)\nfor n in range(10, 30, 10):\n    print(n)",
+          "output": "Round 0\nRound 1\nRound 2\n10\n20"
+        },
+        {
+          "type": "heading",
+          "text": "Adding up"
+        },
+        {
+          "type": "text",
+          "md": "To add up numbers, create a variable with the value `0` before the loop, and add to it inside the loop. After the loop, it holds the total. `total += n` is a short way to write `total = total + n`."
+        },
+        {
+          "type": "code",
+          "code": "total = 0\nfor n in range(1, 5):\n    total += n\nprint(total)",
+          "output": "10"
+        },
+        {
+          "type": "heading",
+          "text": "while loops"
+        },
+        {
+          "type": "text",
+          "md": "A `while` loop repeats as long as its condition is `True`. Something inside the loop must change the condition, or the loop never ends. `count -= 1` is a short way to write `count = count - 1`."
+        },
+        {
+          "type": "code",
+          "code": "count = 3\nwhile count > 0:\n    print(count)\n    count -= 1\nprint(\"Go!\")",
+          "output": "3\n2\n1\nGo!"
+        },
+        {
+          "type": "heading",
+          "text": "break and continue"
+        },
+        {
+          "type": "text",
+          "md": "`break` stops the loop at once. `continue` skips the rest of the block and goes on with the next round of the loop."
+        },
+        {
+          "type": "code",
+          "code": "for n in range(1, 10):\n    if n == 3:\n        continue\n    if n == 6:\n        break\n    print(n)",
+          "output": "1\n2\n4\n5"
+        }
+      ],
+      "card": [
+        "`for x in [1, 2, 3]:` repeats the block for each item",
+        "`range(3)` gives `0, 1, 2`; `range(2, 6)` gives `2` to `5`",
+        "`while x > 0:` repeats while the condition is `True`",
+        "`total += n` adds `n` to `total`",
+        "`break` ends the loop, `continue` goes to the next round"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "total = 0\nfor i in range(5):\n    total += i\nprint(total)",
+          "answers": [
+            "10"
+          ],
+          "explain": "`range(5)` gives `0, 1, 2, 3, 4`, and `0 + 1 + 2 + 3 + 4` is `10`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-2",
+          "prompt": "How many times does this program print Hi?",
+          "code": "for i in range(2, 7):\n    print(\"Hi\")",
+          "options": [
+            "`4`",
+            "`5`",
+            "`6`",
+            "`7`"
+          ],
+          "answer": 1,
+          "explain": "`range(2, 7)` gives `2, 3, 4, 5, 6`: five numbers, because it stops before `7`."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-3",
+          "statement": "`range(5)` includes the number `5`.",
+          "answer": false,
+          "explain": "`range(5)` stops before `5`: it gives `0, 1, 2, 3, 4`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-4",
+          "prompt": "Complete the loop so it prints 1, 2 and 3.",
+          "code": "for n in range(1, ___):\n    print(n)",
+          "options": [
+            "3",
+            "4",
+            "5"
+          ],
+          "answer": 1,
+          "explain": "`range()` stops before the second value, so you need `4` to include `3`."
+        },
+        {
+          "type": "order",
+          "id": "loops-5",
+          "prompt": "Put the lines in order so the program prints 6, the sum of 1, 2 and 3.",
+          "lines": [
+            "total = 0",
+            "for n in [1, 2, 3]:",
+            "    total += n",
+            "print(total)"
+          ],
+          "explain": "Start the total at `0` before the loop, add inside the loop, and print after the loop."
+        },
+        {
+          "type": "bug",
+          "id": "loops-6",
+          "prompt": "This program should print 3, 2 and 1. Which line has the bug?",
+          "lines": [
+            "n = 3",
+            "while n < 0:",
+            "    print(n)",
+            "    n -= 1"
+          ],
+          "bug": 1,
+          "explain": "`3 < 0` is `False`, so the loop never runs. Write `while n > 0:`."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-7",
+          "prompt": "Build the first line of a loop that counts from 1 to 10.",
+          "tokens": [
+            "for",
+            "i",
+            "in",
+            "range",
+            "(1, 11)",
+            ":"
+          ],
+          "distractors": [
+            "(1, 10)",
+            "while"
+          ],
+          "explain": "`range(1, 11)` starts at `1` and stops before `11`, so it ends with `10`."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-8",
+          "prompt": "Match each range with the numbers it gives.",
+          "pairs": [
+            [
+              "`range(3)`",
+              "0, 1, 2"
+            ],
+            [
+              "`range(1, 4)`",
+              "1, 2, 3"
+            ],
+            [
+              "`range(0, 7, 3)`",
+              "0, 3, 6"
+            ],
+            [
+              "`range(2, 4)`",
+              "2, 3"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "loops-9",
+          "prompt": "What does this program print?",
+          "code": "for n in range(5):\n    if n == 2:\n        break\n    print(n)",
+          "options": [
+            "`0` and `1`",
+            "`0`, `1` and `2`",
+            "`0`, `1`, `3` and `4`",
+            "Nothing"
+          ],
+          "answer": 0,
+          "explain": "When `n` is `2`, `break` ends the loop before `print(n)` runs. So only `0` and `1` are printed."
+        },
+        {
+          "type": "input",
+          "id": "loops-10",
+          "prompt": "What does this print?",
+          "code": "count = 0\nfor n in [4, 7, 2, 9]:\n    if n > 5:\n        count += 1\nprint(count)",
+          "answers": [
+            "2"
+          ],
+          "explain": "Only `7` and `9` are greater than `5`, so `count` grows twice."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-11",
+          "statement": "This program prints nothing.",
+          "code": "for i in range(3):\n    continue\n    print(i)",
+          "answer": true,
+          "explain": "`continue` jumps to the next round every time, so `print(i)` never runs."
+        },
+        {
+          "type": "bug",
+          "id": "loops-12",
+          "prompt": "This program should print 15, the sum of 1 to 5. Which line has the bug?",
+          "lines": [
+            "total = 0",
+            "for n in range(1, 5):",
+            "    total += n",
+            "print(total)"
+          ],
+          "bug": 1,
+          "explain": "`range(1, 5)` stops before `5`, so the sum is only `10`. Write `for n in range(1, 6):`."
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "Lists and dictionaries",
+      "chapter": "Data structures",
+      "summary": "Keep many values in a list, change it, and look up values by key in a dictionary.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **list** stores several values in order. You write it with square brackets and commas. Like strings, lists have indexes that start at `0`, and `len()` gives the number of items."
+        },
+        {
+          "type": "code",
+          "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nprint(fruits)\nprint(fruits[0])\nprint(fruits[-1])\nprint(len(fruits))",
+          "output": "['apple', 'banana', 'cherry']\napple\ncherry\n3"
+        },
+        {
+          "type": "text",
+          "md": "You can change a list. `append(x)` adds `x` at the end, `insert(i, x)` puts `x` at index `i`, and `pop()` removes the last item and gives it back. You can also replace an item: `fruits[1] = \"mango\"`."
+        },
+        {
+          "type": "code",
+          "code": "fruits = [\"apple\", \"banana\"]\nfruits.append(\"cherry\")\nfruits.insert(0, \"kiwi\")\nprint(fruits)\nlast = fruits.pop()\nprint(last)\nfruits[1] = \"mango\"\nprint(fruits)",
+          "output": "['kiwi', 'apple', 'banana', 'cherry']\ncherry\n['kiwi', 'mango', 'banana']"
+        },
+        {
+          "type": "text",
+          "md": "`sort()` puts the items in order: numbers from small to large, strings from A to Z. A `for` loop goes through all items of a list."
+        },
+        {
+          "type": "code",
+          "code": "numbers = [5, 2, 9, 1]\nnumbers.sort()\nprint(numbers)\ntotal = 0\nfor n in numbers:\n    total += n\nprint(total)",
+          "output": "[1, 2, 5, 9]\n17"
+        },
+        {
+          "type": "warning",
+          "md": "`sort()` changes the list itself and gives back `None`, which means \"no value\". Write `numbers.sort()` on its own line, not `numbers = numbers.sort()`."
+        },
+        {
+          "type": "heading",
+          "text": "Dictionaries"
+        },
+        {
+          "type": "text",
+          "md": "A **dictionary** stores pairs of **keys** and **values**. You write it with curly braces: `{key: value}`, with commas between the pairs. You look up a value by its key in square brackets, and you add or change a pair the same way."
+        },
+        {
+          "type": "code",
+          "code": "ages = {\"Ana\": 31, \"Ben\": 25}\nprint(ages[\"Ana\"])\nages[\"Cleo\"] = 40\nages[\"Ben\"] = 26\nprint(ages)\nprint(len(ages))",
+          "output": "31\n{'Ana': 31, 'Ben': 26, 'Cleo': 40}\n3"
+        },
+        {
+          "type": "text",
+          "md": "Looking up a key that does not exist is an error. `get(key)` is safer: it gives `None` if the key is missing, or a default value if you give one. `key in d` checks if a key exists."
+        },
+        {
+          "type": "code",
+          "code": "ages = {\"Ana\": 31, \"Ben\": 25}\nprint(ages.get(\"Ana\"))\nprint(ages.get(\"Zoe\"))\nprint(ages.get(\"Zoe\", 0))\nprint(\"Ben\" in ages)",
+          "output": "31\nNone\n0\nTrue"
+        },
+        {
+          "type": "text",
+          "md": "`keys()` gives all keys, and `items()` gives all key-value pairs. With `items()`, a `for` loop can use the key and the value at the same time."
+        },
+        {
+          "type": "code",
+          "code": "prices = {\"tea\": 2, \"cake\": 3}\nfor name in prices.keys():\n    print(name)\nfor name, price in prices.items():\n    print(f\"{name}: {price}\")",
+          "output": "tea\ncake\ntea: 2\ncake: 3"
+        }
+      ],
+      "card": [
+        "`items = [1, 2, 3]`; `items[0]` is `1`; `len(items)` is `3`",
+        "`append(x)`, `insert(i, x)`, `pop()` and `sort()` change a list",
+        "`d = {\"a\": 1}`; `d[\"a\"]` is `1`; `d[\"b\"] = 2` adds a pair",
+        "`d.get(\"x\", 0)` gives `0` if the key is missing",
+        "`for k, v in d.items():` loops over keys and values"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "collections-1",
+          "prompt": "What does this print?",
+          "code": "nums = [10, 20, 30]\nprint(nums[1])",
+          "options": [
+            "`10`",
+            "`20`",
+            "`30`",
+            "`[20]`"
+          ],
+          "answer": 1,
+          "explain": "Indexes start at `0`, so `nums[1]` is the second item."
+        },
+        {
+          "type": "input",
+          "id": "collections-2",
+          "prompt": "What does this print?",
+          "code": "nums = [3, 1, 2]\nnums.append(5)\nprint(len(nums))",
+          "answers": [
+            "4"
+          ],
+          "explain": "The list has three items, and `append()` adds a fourth one."
+        },
+        {
+          "type": "input",
+          "id": "collections-3",
+          "prompt": "What does this print?",
+          "code": "items = [\"a\", \"b\", \"c\"]\nitems.insert(1, \"x\")\nprint(items)",
+          "answers": [
+            "['a', 'x', 'b', 'c']"
+          ],
+          "explain": "`insert(1, \"x\")` puts `x` at index `1`, and the other items move one place to the right."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-4",
+          "statement": "`numbers.sort()` gives back the sorted list.",
+          "answer": false,
+          "explain": "`sort()` changes the list itself and gives back `None`."
+        },
+        {
+          "type": "gap",
+          "id": "collections-5",
+          "prompt": "Complete the code so it prints 25.",
+          "code": "ages = {\"Ana\": 31, \"Ben\": 25}\nprint(ages[___])",
+          "options": [
+            "1",
+            "\"Ben\"",
+            "Ben",
+            "\"Ana\""
+          ],
+          "answer": 1,
+          "explain": "You look up a value by its key, and the key is the string `\"Ben\"`. A dictionary has no index `1`."
+        },
+        {
+          "type": "blocks",
+          "id": "collections-6",
+          "prompt": "Build a line that adds orange at the end of the list fruits.",
+          "tokens": [
+            "fruits",
+            ".append(",
+            "\"orange\"",
+            ")"
+          ],
+          "distractors": [
+            ".add(",
+            ".insert("
+          ],
+          "explain": "`append()` adds an item at the end of a list. Lists have no `add()` method."
+        },
+        {
+          "type": "order",
+          "id": "collections-7",
+          "prompt": "Put the lines in order so the program prints only the names with a score above 4.",
+          "lines": [
+            "scores = {\"Ana\": 3, \"Ben\": 5, \"Cleo\": 7}",
+            "for name, score in scores.items():",
+            "    if score > 4:",
+            "        print(name)"
+          ],
+          "explain": "Create the dictionary first, loop over its pairs, and print a name only when the `if` is `True`."
+        },
+        {
+          "type": "pairs",
+          "id": "collections-8",
+          "prompt": "Match each list method with what it does.",
+          "pairs": [
+            [
+              "`items.append(x)`",
+              "adds `x` at the end"
+            ],
+            [
+              "`items.insert(0, x)`",
+              "adds `x` at the start"
+            ],
+            [
+              "`items.pop()`",
+              "removes the last item"
+            ],
+            [
+              "`items.sort()`",
+              "puts the items in order"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "collections-9",
+          "prompt": "This program should print 0 because there are no green items. Which line has the bug?",
+          "lines": [
+            "stock = {\"red\": 4, \"blue\": 2}",
+            "count = stock[\"green\"]",
+            "print(count)"
+          ],
+          "bug": 1,
+          "explain": "The key `\"green\"` does not exist, so `stock[\"green\"]` is an error. Write `count = stock.get(\"green\", 0)`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-10",
+          "prompt": "What does this print?",
+          "code": "d = {\"x\": 1, \"y\": 2}\nd[\"x\"] = 5\nprint(d)",
+          "options": [
+            "`{'x': 1, 'y': 2}`",
+            "`{'x': 5, 'y': 2}`",
+            "`{'x': 1, 'y': 2, 'x': 5}`",
+            "`{'x': 6, 'y': 2}`"
+          ],
+          "answer": 1,
+          "explain": "A key can appear only once. Assigning to an existing key replaces its value."
+        },
+        {
+          "type": "bug",
+          "id": "collections-11",
+          "prompt": "This program should print the numbers from small to large. Which line has the bug?",
+          "lines": [
+            "numbers = [4, 1, 3]",
+            "numbers = numbers.sort()",
+            "print(numbers)"
+          ],
+          "bug": 1,
+          "explain": "`sort()` gives back `None`, so `numbers` becomes `None`. Write `numbers.sort()` on its own."
+        },
+        {
+          "type": "choice",
+          "id": "collections-12",
+          "prompt": "Which line prints the number of keys in `prices`?",
+          "code": "prices = {\"tea\": 2, \"cake\": 3, \"pie\": 4}",
+          "options": [
+            "`print(prices.len())`",
+            "`print(len(prices))`",
+            "`print(prices[3])`",
+            "`print(count(prices))`"
+          ],
+          "answer": 1,
+          "explain": "`len()` works for dictionaries too and gives the number of key-value pairs."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Write your own functions with def, pass in parameters, return results and learn where variables live.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** is a named block of code that you can run again and again. You already know functions like `print()` and `len()`. With `def`, you write your own."
+        },
+        {
+          "type": "code",
+          "code": "def greet():\n    print(\"Hello!\")\n    print(\"Nice to see you.\")\n\ngreet()\ngreet()",
+          "output": "Hello!\nNice to see you.\nHello!\nNice to see you."
+        },
+        {
+          "type": "text",
+          "md": "After `def` come the name, parentheses and a colon. The indented block is the **body** of the function. Defining a function does not run it: the body runs only when you **call** the function with its name and `()`."
+        },
+        {
+          "type": "text",
+          "md": "**Parameters** are variables in the parentheses of the `def` line. When you call the function, you pass **arguments**: the values for the parameters."
+        },
+        {
+          "type": "code",
+          "code": "def greet(name):\n    print(f\"Hello, {name}!\")\n\ngreet(\"Ana\")\ngreet(\"Ben\")",
+          "output": "Hello, Ana!\nHello, Ben!"
+        },
+        {
+          "type": "heading",
+          "text": "Returning a result"
+        },
+        {
+          "type": "text",
+          "md": "`return` sends a value back to the code that called the function, and it ends the function. You can store the result in a variable or use it directly."
+        },
+        {
+          "type": "code",
+          "code": "def add(a, b):\n    return a + b\n\nresult = add(2, 3)\nprint(result)\nprint(add(10, add(1, 1)))",
+          "output": "5\n12"
+        },
+        {
+          "type": "warning",
+          "md": "`print()` and `return` are different. `print()` only shows a value on the screen. `return` gives the value back, so other code can use it. A function without `return` gives back `None`."
+        },
+        {
+          "type": "text",
+          "md": "A parameter can have a **default value**, like `greeting=\"Hello\"` below. If you leave out that argument, Python uses the default."
+        },
+        {
+          "type": "code",
+          "code": "def greet(name, greeting=\"Hello\"):\n    return f\"{greeting}, {name}!\"\n\nprint(greet(\"Ana\"))\nprint(greet(\"Ben\", \"Hi\"))",
+          "output": "Hello, Ana!\nHi, Ben!"
+        },
+        {
+          "type": "heading",
+          "text": "Scope"
+        },
+        {
+          "type": "text",
+          "md": "Variables that you create inside a function are **local**: they exist only while the function runs, and code outside cannot see them. A function can read variables from outside, but an assignment inside the function creates a new local variable."
+        },
+        {
+          "type": "code",
+          "code": "total = 100\n\ndef change():\n    total = 5\n    print(total)\n\nchange()\nprint(total)",
+          "output": "5\n100"
+        }
+      ],
+      "card": [
+        "`def name(a, b):` defines a function; the body is indented",
+        "`name(1, 2)` calls it; the arguments fill the parameters",
+        "`return x` sends `x` back to the caller",
+        "`def f(x, y=1):` gives `y` a default value",
+        "Variables created inside a function are local"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "def double(n):\n    return n * 2\n\nprint(double(4) + 1)",
+          "options": [
+            "`8`",
+            "`9`",
+            "`10`",
+            "`5`"
+          ],
+          "answer": 1,
+          "explain": "`double(4)` returns `8`, and `8 + 1` is `9`."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print?",
+          "code": "def area(w, h):\n    return w * h\n\nprint(area(3, 5))",
+          "answers": [
+            "15"
+          ],
+          "explain": "The arguments `3` and `5` fill the parameters `w` and `h`, and `3 * 5` is `15`."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-3",
+          "statement": "Defining a function with `def` also runs its body.",
+          "answer": false,
+          "explain": "The body runs only when you call the function, for example with `greet()`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-4",
+          "prompt": "Complete the function so the program prints 7.",
+          "code": "def add(a, b):\n    ___ a + b\n\nprint(add(3, 4))",
+          "options": [
+            "print",
+            "return",
+            "def"
+          ],
+          "answer": 1,
+          "explain": "`return` sends the sum back, and `print()` outside the function shows it."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-5",
+          "prompt": "Build the first line of a function square with one parameter n.",
+          "tokens": [
+            "def",
+            "square",
+            "(",
+            "n",
+            ")",
+            ":"
+          ],
+          "distractors": [
+            "function",
+            "return"
+          ],
+          "explain": "A function starts with `def`, then the name, the parameters in parentheses and a colon."
+        },
+        {
+          "type": "order",
+          "id": "functions-6",
+          "prompt": "Put the lines in order so the program prints 10.",
+          "lines": [
+            "def total(prices):",
+            "    result = 0",
+            "    for p in prices:",
+            "        result += p",
+            "    return result",
+            "print(total([2, 3, 5]))"
+          ],
+          "explain": "Define the function first. Inside it, start at `0`, add in the loop and return after the loop."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-7",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`def`",
+              "starts a function definition"
+            ],
+            [
+              "`return result`",
+              "sends a value back"
+            ],
+            [
+              "`greet(\"Ana\")`",
+              "calls a function with an argument"
+            ],
+            [
+              "`def f(y=1):`",
+              "a parameter with a default value"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "functions-8",
+          "prompt": "This program should print 8. Which line has the bug?",
+          "lines": [
+            "def add(a, b):",
+            "    a + b",
+            "result = add(3, 5)",
+            "print(result)"
+          ],
+          "bug": 1,
+          "explain": "The function calculates the sum but does not give it back, so it returns `None`. Write `return a + b`."
+        },
+        {
+          "type": "input",
+          "id": "functions-9",
+          "prompt": "What does this print?",
+          "code": "def greet(name, greeting=\"Hi\"):\n    return f\"{greeting} {name}\"\n\nprint(greet(\"Leo\"))",
+          "answers": [
+            "Hi Leo"
+          ],
+          "explain": "The call gives only `name`, so `greeting` uses its default value `\"Hi\"`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-10",
+          "prompt": "What does this print?",
+          "code": "x = 1\n\ndef f():\n    x = 2\n\nf()\nprint(x)",
+          "options": [
+            "`1`",
+            "`2`",
+            "`None`"
+          ],
+          "answer": 0,
+          "explain": "`x = 2` inside the function creates a new local variable. The `x` outside stays `1`."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-11",
+          "statement": "The last line prints `None`.",
+          "code": "def show(n):\n    print(n)\n\nvalue = show(5)\nprint(value)",
+          "answer": true,
+          "explain": "`show()` prints `5` but has no `return`, so it gives back `None`, and `value` holds `None`."
+        },
+        {
+          "type": "bug",
+          "id": "functions-12",
+          "prompt": "This program should print Hello, Mia! Which line has the bug?",
+          "lines": [
+            "def greet():",
+            "    return f\"Hello, {name}!\"",
+            "print(greet(\"Mia\"))"
+          ],
+          "bug": 0,
+          "explain": "The function uses `name` and gets an argument, but it has no parameter. Write `def greet(name):`."
+        }
+      ]
+    }
+  ]
+}

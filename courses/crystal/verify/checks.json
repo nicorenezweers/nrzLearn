@@ -1,0 +1,364 @@
+{
+  "hello-1": {
+    "extra": [
+      {
+        "src": "puts \"Hello\"",
+        "out": "Hello"
+      },
+      {
+        "src": "puts 'Hello'",
+        "err": true
+      },
+      {
+        "src": "puts Hello",
+        "err": true
+      }
+    ]
+  },
+  "hello-2": {
+    "out": "20"
+  },
+  "hello-3": {
+    "out": "4"
+  },
+  "hello-4": {
+    "out": "4.5"
+  },
+  "hello-5": {
+    "out": "3.0"
+  },
+  "hello-6": {
+    "out": "3"
+  },
+  "hello-8": {
+    "out": "6"
+  },
+  "hello-9": {
+    "out": "Hello, Crystal!"
+  },
+  "hello-10": {
+    "fix": "puts 3 * 4",
+    "out": "Start\n12\nEnd"
+  },
+  "hello-11": {
+    "out": "\"Crystal\""
+  },
+  "hello-12": {
+    "fix": "print \"Sam\"",
+    "out": "Hi, Sam!"
+  },
+  "variables-1": {
+    "out": "12"
+  },
+  "variables-2": {
+    "out": "Float64"
+  },
+  "variables-3": {
+    "out": "Bool"
+  },
+  "variables-4": {
+    "err": true
+  },
+  "variables-5": {
+    "out": "43"
+  },
+  "variables-6": {
+    "out": "7"
+  },
+  "variables-7": {
+    "fix": "puts price * amount",
+    "out": "12"
+  },
+  "variables-9": {
+    "tpl": "{{CODE}}\nputs typeof(limit)\nputs limit",
+    "out": "Int32\n10"
+  },
+  "variables-10": {
+    "out": "20"
+  },
+  "variables-11": {
+    "extra": [
+      {
+        "src": "MAX = 100\nMAX = 5\nputs MAX",
+        "err": true
+      },
+      {
+        "src": "max = 100\nmax = 5\nputs max",
+        "out": "5"
+      }
+    ]
+  },
+  "variables-12": {
+    "fix": "b = a.to_i",
+    "out": "3.5"
+  },
+  "strings-1": {
+    "out": "Hi, Bo!"
+  },
+  "strings-2": {
+    "out": "5"
+  },
+  "strings-3": {
+    "out": "false"
+  },
+  "strings-4": {
+    "out": "Total: 6"
+  },
+  "strings-5": {
+    "out": "r"
+  },
+  "strings-6": {
+    "out": "ababab"
+  },
+  "strings-7": {
+    "fix": "greeting = \"Hello, #{name}!\"",
+    "out": "Hello, Kim!"
+  },
+  "strings-9": {
+    "tpl": "word = \"crystal\"\n{{CODE}}",
+    "out": "CRYSTAL!",
+    "distractors": true
+  },
+  "strings-10": {
+    "out": "Hi, ADA"
+  },
+  "strings-11": {
+    "out": "2"
+  },
+  "strings-12": {
+    "fix": "first = word[0]",
+    "out": "C"
+  },
+  "conditions-1": {
+    "out": "medium"
+  },
+  "conditions-2": {
+    "extra": [
+      {
+        "src": "puts 3 == 3",
+        "out": "true"
+      },
+      {
+        "src": "puts 3 != 3",
+        "out": "false"
+      }
+    ]
+  },
+  "conditions-3": {
+    "out": "false"
+  },
+  "conditions-4": {
+    "out": "Closed"
+  },
+  "conditions-5": {
+    "out": "even"
+  },
+  "conditions-6": {
+    "out": "okay"
+  },
+  "conditions-7": {
+    "fix": "if age >= 18",
+    "out": "Adult"
+  },
+  "conditions-9": {
+    "out": "Cold"
+  },
+  "conditions-10": {
+    "tpl": "temp = 35\n{{CODE}}\nputs \"-\"\ntemp = 20\n{{CODE}}",
+    "out": "Hot\n-",
+    "distractors": true
+  },
+  "conditions-11": {
+    "out": "true"
+  },
+  "conditions-12": {
+    "fix": "  puts \"Found at #{pos}\"",
+    "out": "Found at 1"
+  },
+  "loops-1": {
+    "out": "6"
+  },
+  "loops-2": {
+    "out": "1\n2\n3\n4",
+    "lines": 4
+  },
+  "loops-3": {
+    "out": "15"
+  },
+  "loops-4": {
+    "out": "1\n2\n3"
+  },
+  "loops-5": {
+    "out": "1\n2\n3\n4\n5"
+  },
+  "loops-6": {
+    "fix": "while n > 0",
+    "out": "3\n2\n1"
+  },
+  "loops-7": {
+    "out": "123"
+  },
+  "loops-9": {
+    "out": "2\n4\n6"
+  },
+  "loops-10": {
+    "out": "Hi\nHi\nHi\nHi\nHi",
+    "distractors": true
+  },
+  "loops-11": {
+    "out": "5"
+  },
+  "loops-12": {
+    "fix": "  puts \"Round #{i + 1}\"",
+    "out": "Round 1\nRound 2\nRound 3"
+  },
+  "methods-1": {
+    "out": "14"
+  },
+  "methods-2": {
+    "out": "Hi, you"
+  },
+  "methods-3": {
+    "err": true
+  },
+  "methods-4": {
+    "out": "5"
+  },
+  "methods-5": {
+    "out": "big"
+  },
+  "methods-6": {
+    "fix": "def square(n : Int32) : Int32",
+    "out": "9"
+  },
+  "methods-8": {
+    "out": "12"
+  },
+  "methods-9": {
+    "tpl": "{{CODE}}\n  n / 2\nend\n\nputs half(5)",
+    "out": "2.5"
+  },
+  "methods-10": {
+    "extra": [
+      {
+        "src": "def area(width : Int32, height : Int32)\n  width * height\nend\n\nputs area(width: 3, height: 2)",
+        "out": "6"
+      },
+      {
+        "src": "def area(width : Int32, height : Int32)\n  width * height\nend\n\nputs area(3)",
+        "err": true
+      },
+      {
+        "src": "def area(width : Int32, height : Int32)\n  width * height\nend\n\nputs area(\"3\", \"2\")",
+        "err": true
+      },
+      {
+        "src": "def area(width : Int32, height : Int32)\n  width * height\nend\n\nputs area(w: 3, h: 2)",
+        "err": true
+      }
+    ]
+  },
+  "methods-11": {
+    "out": "false"
+  },
+  "methods-12": {
+    "fix": "def greet(name = \"World\")",
+    "out": "Hello, World!"
+  },
+  "collections-1": {
+    "out": "8"
+  },
+  "collections-2": {
+    "out": "[1, 4, 9]"
+  },
+  "collections-3": {
+    "out": "14"
+  },
+  "collections-4": {
+    "out": "nil"
+  },
+  "collections-5": {
+    "out": "3"
+  },
+  "collections-6": {
+    "fix": "nums = [] of Int32",
+    "out": "6"
+  },
+  "collections-8": {
+    "out": "apple: 3\npear: 1"
+  },
+  "collections-9": {
+    "tpl": "nums = [1, 2, 3]\n{{CODE}}",
+    "out": "[2, 4, 6]",
+    "distractors": true
+  },
+  "collections-10": {
+    "extra": [
+      {
+        "src": "names = [] of String\nnames << \"Ada\"\np names",
+        "out": "[\"Ada\"]"
+      },
+      {
+        "src": "names = []\nnames << \"Ada\"\np names",
+        "err": true
+      },
+      {
+        "src": "names = {} of String\nnames << \"Ada\"\np names",
+        "err": true
+      },
+      {
+        "src": "names = [String]\nnames << \"Ada\"\np names",
+        "err": true
+      }
+    ]
+  },
+  "collections-11": {
+    "out": "62"
+  },
+  "collections-12": {
+    "fix": "  puts c",
+    "out": "red\ngreen\nblue"
+  },
+  "classes-1": {
+    "out": "Meow, I am Tom"
+  },
+  "classes-2": {
+    "extra": [
+      {
+        "src": "class Dog\n  def initialize(name : String)\n    puts \"init #{name}\"\n  end\nend\n\nDog.new(\"Rex\")",
+        "out": "init Rex"
+      }
+    ]
+  },
+  "classes-3": {
+    "err": true
+  },
+  "classes-4": {
+    "out": "8"
+  },
+  "classes-5": {
+    "out": "7"
+  },
+  "classes-6": {
+    "out": "1"
+  },
+  "classes-7": {
+    "fix": "  def initialize(@name : String)",
+    "out": "Rex"
+  },
+  "classes-9": {
+    "out": "7"
+  },
+  "classes-10": {
+    "tpl": "class Pet\n  {{CODE}}\n\n  def initialize(@name : String)\n  end\nend\n\npet = Pet.new(\"Rex\")\npet.name = \"Max\"\nputs pet.name",
+    "out": "Max",
+    "distractors": true
+  },
+  "classes-11": {
+    "out": "9"
+  },
+  "classes-12": {
+    "fix": "pt = Point.new(2, 3)",
+    "out": "5"
+  }
+}

@@ -1,0 +1,1917 @@
+{
+  "course": "assembly",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, assembly",
+      "chapter": "Basics",
+      "summary": "Write your first assembly program and print text with the write and exit system calls.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A processor (CPU) does not understand Python or Go. It runs **machine code**: numbers that stand for very small steps, like \"copy this number\" or \"add these two numbers\". **Assembly language** gives each step a short name, such as `mov` or `add`. A program called an **assembler** turns your assembly text into machine code. In this course you write assembly for x86-64 processors on Linux, with the assembler NASM."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nmsg db \"Hello, world!\", 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 14\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "Hello, world!"
+        },
+        {
+          "type": "text",
+          "md": "The first line, `default rel`, is a setting for NASM: it tells NASM how to find the data. Write it at the top of every program. After it, a program has **sections**: `section .data` holds data and `section .text` holds the instructions. The line `msg db \"Hello, world!\", 10` puts bytes into memory. `msg` is a **label**: a name for the place where the bytes start. `db` (define bytes) stores the characters of the text, and `10` is the newline character that ends the line."
+        },
+        {
+          "type": "heading",
+          "text": "Where the program starts"
+        },
+        {
+          "type": "text",
+          "md": "`_start:` is a label for the first instruction. A label in the code ends with a colon `:`. Linux starts your program at `_start`. The line `global _start` makes this name visible to the **linker**, the tool that turns the assembled code into a program you can run."
+        },
+        {
+          "type": "text",
+          "md": "Each line after `_start:` is one **instruction**. `mov rax, 1` copies the number `1` into `rax`. The names `rax`, `rdi`, `rsi` and `rdx` are **registers**: small, fast storage places inside the CPU. The next unit explains them."
+        },
+        {
+          "type": "heading",
+          "text": "System calls"
+        },
+        {
+          "type": "text",
+          "md": "Your program cannot print by itself. It asks Linux to do it with a **system call**. You put the number of the system call into `rax` and its inputs into `rdi`, `rsi` and `rdx`. Then the instruction `syscall` hands the work to Linux."
+        },
+        {
+          "type": "text",
+          "md": "System call `1` is **write**. `rdi` says where to write: `1` is the screen (standard output). `rsi` is the address of the first byte, here `msg`. `rdx` is the number of bytes: `Hello, world!` has 13 characters, plus 1 for the newline, so `14`. System call `60` is **exit**: it ends the program, and `rdi` holds the exit code. `0` means that everything went well."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nfirst db \"Hello, world!\", 10\nsecond db \"Bye\", 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, first\n    mov rdx, 5\n    syscall\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, second\n    mov rdx, 4\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "HelloBye"
+        },
+        {
+          "type": "text",
+          "md": "The first write prints only 5 bytes, so you see `Hello` without a newline, and `Bye` follows on the same line. `syscall` puts its result into `rax` (for write, the number of bytes written). That is why you set `rax` again before the next system call."
+        },
+        {
+          "type": "warning",
+          "md": "Never forget the exit call. Without it, the CPU continues with whatever bytes come after your last instruction, and the program crashes with a **segmentation fault**."
+        },
+        {
+          "type": "tip",
+          "md": "Text after a semicolon `;` is a comment, and NASM ignores it. Empty lines and the spaces at the start of a line only make the code easier to read."
+        }
+      ],
+      "card": [
+        "`default rel` first, then `section .data` for data and `section .text` for code",
+        "`global _start` and `_start:` mark where the program begins",
+        "write: `rax` = 1, `rdi` = 1, `rsi` = address, `rdx` = length, `syscall`",
+        "exit: `rax` = 60, `rdi` = exit code, `syscall`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "What does an assembler do?",
+          "options": [
+            "It turns assembly text into machine code",
+            "It runs Python programs",
+            "It prints text on the screen",
+            "It starts the program at `_start`"
+          ],
+          "answer": 0,
+          "explain": "An assembler such as NASM translates the instructions you write into the numbers the CPU runs. Linux starts the finished program."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this program print?",
+          "code": "default rel\n\nsection .data\nmsg db \"Good morning\", 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 4\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "answers": [
+            "Good"
+          ],
+          "explain": "`rdx` is `4`, so the write call prints only the first 4 bytes of the text."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-3",
+          "statement": "Linux starts a program at the first line of `section .data`.",
+          "answer": false,
+          "explain": "Linux starts at the label `_start`. `section .data` holds data, not instructions."
+        },
+        {
+          "type": "choice",
+          "id": "hello-4",
+          "prompt": "Which value in `rax` selects the system call exit?",
+          "options": [
+            "`60`",
+            "`1`",
+            "`0`",
+            "`14`"
+          ],
+          "answer": 0,
+          "explain": "Exit is system call `60`. Write is system call `1`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Complete the code so it prints Hi.",
+          "code": "section .data\nmsg db \"Hi\", 10\n\nsection .text\n    mov rax, ___\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 3\n    syscall",
+          "options": [
+            "1",
+            "60",
+            "14",
+            "msg"
+          ],
+          "answer": 0,
+          "explain": "System call `1` is write. `60` would end the program, and `msg` is an address, not a system call number."
+        },
+        {
+          "type": "input",
+          "id": "hello-6",
+          "prompt": "How many bytes must `rdx` hold to print this whole line, including the newline?",
+          "code": "section .data\n    msg db \"Assembly is fun\", 10",
+          "answers": [
+            "16"
+          ],
+          "explain": "`Assembly is fun` has 15 characters (the spaces count too), and the newline `10` is one more byte."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build the line that selects the system call exit.",
+          "tokens": [
+            "mov",
+            "rax",
+            ",",
+            "60"
+          ],
+          "distractors": [
+            "rdi",
+            "1"
+          ],
+          "explain": "The system call number goes into `rax`, and exit is `60`. The destination comes first."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-8",
+          "prompt": "Build the data line that stores Hi followed by a newline.",
+          "tokens": [
+            "msg",
+            "db",
+            "\"Hi\",",
+            "10"
+          ],
+          "distractors": [
+            "mov",
+            "\"Hi\\n\""
+          ],
+          "explain": "`db` stores bytes, and the newline is the number `10` after a comma. NASM does not turn `\\n` in double quotes into a newline."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`mov rax, 1`",
+              "selects the system call write"
+            ],
+            [
+              "`mov rax, 60`",
+              "selects the system call exit"
+            ],
+            [
+              "`syscall`",
+              "asks Linux to do the work"
+            ],
+            [
+              "`db`",
+              "stores bytes in memory"
+            ],
+            [
+              "`_start:`",
+              "the place where the program starts"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "These lines should print Hi. Which line has the bug?",
+          "lines": [
+            "    mov rax, 60",
+            "    mov rdi, 1",
+            "    mov rsi, msg",
+            "    mov rdx, 3",
+            "    syscall"
+          ],
+          "bug": 0,
+          "explain": "`60` is the system call exit, so the program ends without printing. Write `mov rax, 1`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "These lines should print OK. Which line has the bug?",
+          "lines": [
+            "section .data",
+            "    msg db OK, 10",
+            "section .text",
+            "    mov rax, 1",
+            "    mov rdi, 1",
+            "    mov rsi, msg",
+            "    mov rdx, 3",
+            "    syscall"
+          ],
+          "bug": 1,
+          "explain": "Text needs quotes. Without them, NASM looks for a label called `OK`. Write `msg db \"OK\", 10`."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-12",
+          "statement": "After `syscall`, `rax` still holds the number of the system call.",
+          "answer": false,
+          "explain": "`syscall` puts its result into `rax`. After a write, `rax` holds the number of bytes written, so you set `rax` again before the next system call."
+        }
+      ]
+    },
+    {
+      "id": "registers",
+      "title": "Registers and mov",
+      "chapter": "Basics",
+      "summary": "Store numbers and characters in registers, copy them with mov and use the smaller parts of a register.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **register** is a small storage place inside the CPU. The CPU works with registers much faster than with memory. An x86-64 CPU has 16 general-purpose registers, and each one holds 64 bits (8 bytes)."
+        },
+        {
+          "type": "text",
+          "md": "Their names are `rax`, `rbx`, `rcx`, `rdx`, `rsi`, `rdi`, `rbp`, `rsp` and `r8` to `r15`. You can use most of them for your own values. `rsp` is special: it always points to the stack (unit 7), so do not use it for other values."
+        },
+        {
+          "type": "heading",
+          "text": "Copying values with mov"
+        },
+        {
+          "type": "text",
+          "md": "`mov destination, source` copies the source into the destination. The destination comes first. The source can be a number written in the code (an **immediate**) or another register. The source keeps its value."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nmsg db \"Hello, world!\", 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 5\n    mov rdx, rbx\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "Hello"
+        },
+        {
+          "type": "text",
+          "md": "`mov rbx, 5` puts `5` into `rbx`. `mov rdx, rbx` copies it into `rdx`, so the write call prints 5 bytes. After the copy, both registers hold `5`."
+        },
+        {
+          "type": "heading",
+          "text": "Smaller parts of a register"
+        },
+        {
+          "type": "text",
+          "md": "You can also use parts of a register. `eax` is the lower 32 bits of `rax`, `ax` the lower 16 bits and `al` the lowest 8 bits (one byte). `ah` is the byte above `al` (bits 8 to 15). `rbx`, `rcx` and `rdx` have the same parts, for example `ebx`, `bx`, `bl` and `bh`. For `r8` to `r15` the parts are called `r8d`, `r8w` and `r8b`."
+        },
+        {
+          "type": "text",
+          "md": "Characters are numbers too. In the ASCII table, `'A'` is `65`, `'B'` is `66`, `'0'` is `48` and the newline is `10`. NASM turns a character in single quotes into its number. A number that starts with `0x` is hexadecimal: `0x41` is `65`, and every two hex digits are one byte."
+        },
+        {
+          "type": "text",
+          "md": "To print a character from a register, copy its byte into memory and write that memory. `mov [char], bl` copies the byte in `bl` to the label `char`. The square brackets mean the memory at that address. The unit about memory explains them in detail."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nchar db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 0x4F4B\n    mov [char], bh\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, char\n    mov rdx, 2\n    syscall\n    mov [char], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, char\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "O\nK"
+        },
+        {
+          "type": "text",
+          "md": "`0x4F4B` has two bytes: `0x4F` is `'O'` and `0x4B` is `'K'`. The low byte `0x4B` is in `bl`, and the byte above it, `0x4F`, is in `bh`."
+        },
+        {
+          "type": "warning",
+          "md": "Writing to a 32-bit part like `eax` sets the upper 32 bits of `rax` to zero. Writing to `ax`, `al` or `ah` changes only that part and keeps the rest of `rax`."
+        },
+        {
+          "type": "tip",
+          "md": "Both sides of `mov` must have the same size. `mov rax, rbx` and `mov al, bl` work, but `mov al, rbx` is an error."
+        }
+      ],
+      "card": [
+        "`mov dst, src` copies `src` into `dst`",
+        "parts of `rax`: `eax` (32 bits), `ax` (16), `al` (8), `ah` (bits 8–15)",
+        "`r8` to `r15`: `r8d`, `r8w`, `r8b`",
+        "writing `eax` clears the upper half of `rax`",
+        "`'A'` is the number `65`, and `0x41` is hex for `65`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "registers-1",
+          "prompt": "What is in `rbx` after this code?",
+          "code": "    mov rax, 7\n    mov rbx, rax\n    mov rax, 2",
+          "options": [
+            "`7`",
+            "`2`",
+            "`9`",
+            "`0`"
+          ],
+          "answer": 0,
+          "explain": "`mov rbx, rax` copies the `7`. Changing `rax` later does not change `rbx`."
+        },
+        {
+          "type": "input",
+          "id": "registers-2",
+          "prompt": "What is in `rcx` at the end?",
+          "code": "    mov rcx, 10\n    mov rdx, 3\n    mov rcx, rdx",
+          "answers": [
+            "3"
+          ],
+          "explain": "The last `mov` copies the value of `rdx`, which is `3`, into `rcx`."
+        },
+        {
+          "type": "true_false",
+          "id": "registers-3",
+          "statement": "`mov rax, rbx` copies the value of `rax` into `rbx`.",
+          "answer": false,
+          "explain": "The destination comes first: `mov rax, rbx` copies `rbx` into `rax`."
+        },
+        {
+          "type": "pairs",
+          "id": "registers-4",
+          "prompt": "Match each name with the part of the register.",
+          "pairs": [
+            [
+              "`rax`",
+              "all 64 bits"
+            ],
+            [
+              "`eax`",
+              "the lower 32 bits"
+            ],
+            [
+              "`ax`",
+              "the lower 16 bits"
+            ],
+            [
+              "`al`",
+              "the lowest 8 bits"
+            ],
+            [
+              "`ah`",
+              "bits 8 to 15"
+            ]
+          ]
+        },
+        {
+          "type": "gap",
+          "id": "registers-5",
+          "prompt": "Complete the code so it prints Hello.",
+          "code": "section .data\nmsg db \"Hello, world!\", 10\n\nsection .text\n    mov rbx, 5\n    mov rcx, 13\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, ___\n    syscall",
+          "options": [
+            "rbx",
+            "rcx",
+            "bl",
+            "rsi"
+          ],
+          "answer": 0,
+          "explain": "`rdx` is the number of bytes to write, and `rbx` holds `5`. `bl` is too small for `rdx`, and `rsi` holds an address."
+        },
+        {
+          "type": "choice",
+          "id": "registers-6",
+          "prompt": "Which instruction is an error?",
+          "options": [
+            "`mov rax, rbx`",
+            "`mov eax, ecx`",
+            "`mov al, bl`",
+            "`mov al, rbx`"
+          ],
+          "answer": 3,
+          "explain": "`al` has 8 bits and `rbx` has 64 bits. Both sides of `mov` must have the same size."
+        },
+        {
+          "type": "input",
+          "id": "registers-7",
+          "prompt": "What does this print?",
+          "code": "section .data\nchar db 0, 10\n\nsection .text\n    mov rbx, 0x4344\n    mov [char], bh\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, char\n    mov rdx, 2\n    syscall",
+          "answers": [
+            "C"
+          ],
+          "explain": "`0x43` is the byte in `bh`, and `0x43` is `67`, the letter `C`. `bl` holds `0x44`, the letter `D`."
+        },
+        {
+          "type": "blocks",
+          "id": "registers-8",
+          "prompt": "Build the line that copies the value of `rsi` into `rdi`.",
+          "tokens": [
+            "mov",
+            "rdi",
+            ",",
+            "rsi"
+          ],
+          "distractors": [
+            "copy",
+            "rax"
+          ],
+          "explain": "The destination `rdi` comes first, then the source `rsi`."
+        },
+        {
+          "type": "choice",
+          "id": "registers-9",
+          "prompt": "What is in `rax` after this code?",
+          "code": "    mov rax, 0x1122334455667788\n    mov eax, 5",
+          "options": [
+            "`0x5`",
+            "`0x1122334400000005`",
+            "`0x1122334455667705`",
+            "`0x1122334455660005`"
+          ],
+          "answer": 0,
+          "explain": "Writing to `eax` sets the upper 32 bits of `rax` to zero, so only `5` is left."
+        },
+        {
+          "type": "true_false",
+          "id": "registers-10",
+          "statement": "After this code, `rax` holds `0x1200`.",
+          "code": "    mov rax, 0x1234\n    mov al, 0",
+          "answer": true,
+          "explain": "Writing to `al` changes only the lowest byte. The `0x12` above it stays."
+        },
+        {
+          "type": "bug",
+          "id": "registers-11",
+          "prompt": "These lines should print Hello. Which line has the bug?",
+          "lines": [
+            "    mov rcx, 5",
+            "    mov rax, 1",
+            "    mov rdi, 1",
+            "    mov rsi, msg",
+            "    mov rcx, rdx",
+            "    syscall"
+          ],
+          "bug": 4,
+          "explain": "The destination comes first. To copy `5` from `rcx` into `rdx`, write `mov rdx, rcx`."
+        },
+        {
+          "type": "order",
+          "id": "registers-12",
+          "prompt": "Put the lines in order so that `rax` and `rbx` swap their values.",
+          "lines": [
+            "    mov rcx, rax",
+            "    mov rax, rbx",
+            "    mov rbx, rcx"
+          ],
+          "explain": "First save `rax` in `rcx`, then overwrite `rax` with `rbx`, and finally copy the saved value into `rbx`."
+        }
+      ]
+    },
+    {
+      "id": "arithmetic",
+      "title": "Arithmetic",
+      "chapter": "Basics",
+      "summary": "Calculate with add, sub, inc, dec, imul and div, and print the result as a single digit.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`add destination, source` adds the source to the destination and stores the result in the destination. `sub destination, source` subtracts in the same way. Like with `mov`, the source can be an immediate or a register."
+        },
+        {
+          "type": "text",
+          "md": "To print a number from 0 to 9, turn it into its character. The digits `'0'` to `'9'` are the numbers `48` to `57`, in this order. So you add `'0'` (that is `48`) to the number: `3 + '0'` is `'3'`. This works only for one digit."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 3\n    add rbx, 4\n    add rbx, '0'\n    mov [digit], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "7"
+        },
+        {
+          "type": "heading",
+          "text": "Adding and subtracting 1"
+        },
+        {
+          "type": "text",
+          "md": "`inc` adds 1 to a register and `dec` subtracts 1. They are shorter than `add rbx, 1` and `sub rbx, 1`, and you see them often in loops."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 9\n    mov rcx, 5\n    sub rbx, rcx\n    inc rbx\n    dec rbx\n    dec rbx\n    add rbx, '0'\n    mov [digit], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "3"
+        },
+        {
+          "type": "heading",
+          "text": "Multiplying"
+        },
+        {
+          "type": "text",
+          "md": "`imul destination, source` multiplies the destination by the source and keeps the result in the destination. The source can be a register or an immediate, for example `imul rbx, 3`."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 2\n    mov rcx, 4\n    imul rbx, rcx\n    add rbx, '0'\n    mov [digit], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "8"
+        },
+        {
+          "type": "heading",
+          "text": "Dividing"
+        },
+        {
+          "type": "text",
+          "md": "`div` works differently. It divides the number in `rdx` and `rax` together (`rdx` is the upper half) by the register you give it. The **quotient** goes into `rax` and the **remainder** into `rdx`. So you put the number into `rax`, set `rdx` to `0` and then divide. Here `17 / 5` is `3` with remainder `2`."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nquotient db 0, 10\nremainder db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rax, 17\n    mov rdx, 0\n    mov rcx, 5\n    div rcx\n    add al, '0'\n    mov [quotient], al\n    add dl, '0'\n    mov [remainder], dl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, quotient\n    mov rdx, 4\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "3\n2"
+        },
+        {
+          "type": "text",
+          "md": "The data of `quotient` and `remainder` lies next to each other in memory, 4 bytes in total. That is why one write with `rdx` = `4` prints both lines."
+        },
+        {
+          "type": "warning",
+          "md": "Always set `rdx` to `0` before `div`. Otherwise its old value becomes part of the number, and the result is wrong or the program crashes. Dividing by `0` also crashes the program. `div` needs a register: `div 5` is an error."
+        }
+      ],
+      "card": [
+        "`add rbx, 5` and `sub rbx, rcx` store the result in `rbx`",
+        "`inc rbx` adds 1, `dec rbx` subtracts 1",
+        "`imul rbx, rcx` multiplies `rbx` by `rcx`",
+        "`div rcx` divides `rdx:rax` by `rcx`: quotient in `rax`, remainder in `rdx`",
+        "`add bl, '0'` turns 0–9 into its digit character"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arithmetic-1",
+          "prompt": "What is in `rbx` at the end?",
+          "code": "    mov rbx, 10\n    sub rbx, 3\n    add rbx, 2",
+          "answers": [
+            "9"
+          ],
+          "explain": "`10 - 3` is `7`, and `7 + 2` is `9`."
+        },
+        {
+          "type": "choice",
+          "id": "arithmetic-2",
+          "prompt": "What is in `rax` at the end?",
+          "code": "    mov rax, 6\n    inc rax\n    inc rax\n    dec rax",
+          "options": [
+            "`7`",
+            "`8`",
+            "`6`",
+            "`5`"
+          ],
+          "answer": 0,
+          "explain": "Two times `inc` and one `dec`: `6 + 1 + 1 - 1` is `7`."
+        },
+        {
+          "type": "input",
+          "id": "arithmetic-3",
+          "prompt": "What is in `rdx` after `div`?",
+          "code": "    mov rax, 23\n    mov rdx, 0\n    mov rcx, 4\n    div rcx",
+          "answers": [
+            "3"
+          ],
+          "explain": "`23 / 4` is `5` with remainder `3`. The remainder goes into `rdx`."
+        },
+        {
+          "type": "choice",
+          "id": "arithmetic-4",
+          "prompt": "After `div rcx`, which register holds the quotient?",
+          "options": [
+            "`rax`",
+            "`rdx`",
+            "`rcx`",
+            "`rbx`"
+          ],
+          "answer": 0,
+          "explain": "`div` puts the quotient into `rax` and the remainder into `rdx`. `rcx` keeps the divisor."
+        },
+        {
+          "type": "true_false",
+          "id": "arithmetic-5",
+          "statement": "`add rax, rbx` stores the sum in `rbx`.",
+          "answer": false,
+          "explain": "The result always goes into the first operand, the destination. Here that is `rax`."
+        },
+        {
+          "type": "gap",
+          "id": "arithmetic-6",
+          "prompt": "Complete the code so it prints 6.",
+          "code": "section .data\ndigit db 0, 10\n\nsection .text\n    mov rbx, 6\n    add rbx, ___\n    mov [digit], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall",
+          "options": [
+            "'0'",
+            "0",
+            "'6'",
+            "10"
+          ],
+          "answer": 0,
+          "explain": "Adding `'0'` (48) turns the number `6` into the character `'6'` (54)."
+        },
+        {
+          "type": "blocks",
+          "id": "arithmetic-7",
+          "prompt": "Build the line that multiplies `rbx` by `rcx` and keeps the result in `rbx`.",
+          "tokens": [
+            "imul",
+            "rbx",
+            ",",
+            "rcx"
+          ],
+          "distractors": [
+            "mul",
+            "*"
+          ],
+          "explain": "`imul` stores the product in its first operand, so `rbx` comes first."
+        },
+        {
+          "type": "bug",
+          "id": "arithmetic-8",
+          "prompt": "These lines should put the digit of `20 / 4` into `digit`. Which line has the bug?",
+          "lines": [
+            "    mov rax, 20",
+            "    mov rcx, 4",
+            "    mov rdx, 0",
+            "    div rax",
+            "    add al, '0'",
+            "    mov [digit], al"
+          ],
+          "bug": 3,
+          "explain": "`div rax` divides by `20` itself. The divisor `4` is in `rcx`, so write `div rcx`."
+        },
+        {
+          "type": "pairs",
+          "id": "arithmetic-9",
+          "prompt": "Match the instruction with what it does.",
+          "pairs": [
+            [
+              "`add rbx, rcx`",
+              "adds `rcx` to `rbx`"
+            ],
+            [
+              "`sub rbx, rcx`",
+              "subtracts `rcx` from `rbx`"
+            ],
+            [
+              "`imul rbx, rcx`",
+              "multiplies `rbx` by `rcx`"
+            ],
+            [
+              "`inc rbx`",
+              "adds 1 to `rbx`"
+            ],
+            [
+              "`dec rbx`",
+              "subtracts 1 from `rbx`"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "arithmetic-10",
+          "prompt": "Put the lines in order so that `rbx` ends up with 20.",
+          "lines": [
+            "    mov rbx, 2",
+            "    add rbx, 3",
+            "    imul rbx, 4"
+          ],
+          "explain": "First `rbx` gets `2`, then `2 + 3` is `5`, and `5 * 4` is `20`."
+        },
+        {
+          "type": "choice",
+          "id": "arithmetic-11",
+          "prompt": "What does this print?",
+          "code": "section .data\ndigit db 0, 10\n\nsection .text\n    mov rbx, 3\n    imul rbx, 3\n    add rbx, '0'\n    mov [digit], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall",
+          "options": [
+            "`9`",
+            "`6`",
+            "`3`",
+            "`33`"
+          ],
+          "answer": 0,
+          "explain": "`3 * 3` is `9`, and adding `'0'` turns it into the character `9`."
+        },
+        {
+          "type": "input",
+          "id": "arithmetic-12",
+          "prompt": "What does this print?",
+          "code": "section .data\ndigit db 0, 10\n\nsection .text\n    mov rax, 7\n    mov rdx, 0\n    mov rcx, 2\n    div rcx\n    add dl, '0'\n    mov [digit], dl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall",
+          "answers": [
+            "1"
+          ],
+          "explain": "`7 / 2` is `3` with remainder `1`. The code prints the remainder from `dl`."
+        }
+      ]
+    },
+    {
+      "id": "jumps",
+      "title": "Comparisons and jumps",
+      "chapter": "Control flow",
+      "summary": "Compare values with cmp and use jumps to build if and else in assembly.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "The CPU runs instructions one after another. A **jump** makes it continue at a label instead. `jmp label` always jumps."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\none db \"one\", 10\ntwo db \"two\", 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rsi, one\n    jmp print\n    mov rsi, two\nprint:\n    mov rax, 1\n    mov rdi, 1\n    mov rdx, 4\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "one"
+        },
+        {
+          "type": "text",
+          "md": "`jmp print` skips `mov rsi, two`, so `rsi` still holds the address of `one`. A label like `print:` can mark any place in the code."
+        },
+        {
+          "type": "heading",
+          "text": "Comparing with cmp"
+        },
+        {
+          "type": "text",
+          "md": "`cmp a, b` compares two values. It calculates `a - b`, but it does not store the result. Instead it sets **flags**: single bits in the CPU that describe the result. For example, the zero flag is set when the result is `0`, that is, when `a` and `b` are equal."
+        },
+        {
+          "type": "text",
+          "md": "A **conditional jump** reads the flags. It jumps only if its condition is true; otherwise the CPU continues with the next line. After `cmp a, b`, `je` jumps if `a` is equal to `b`, `jne` if they are not equal, `jl` if `a` is less than `b` and `jg` if it is greater. `jle` means less or equal, `jge` greater or equal."
+        },
+        {
+          "type": "heading",
+          "text": "If and else"
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nbig db \"big\", 10\nsmall db \"small\", 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 7\n    cmp rbx, 5\n    jg is_big\n    mov rsi, small\n    mov rdx, 6\n    jmp print\nis_big:\n    mov rsi, big\n    mov rdx, 4\nprint:\n    mov rax, 1\n    mov rdi, 1\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "big"
+        },
+        {
+          "type": "text",
+          "md": "If `rbx` is greater than `5`, the program jumps to `is_big`. Otherwise it runs the lines after `jg` (the else part) and then jumps over the if part with `jmp print`. Both ways meet again at `print`."
+        },
+        {
+          "type": "heading",
+          "text": "If without else"
+        },
+        {
+          "type": "text",
+          "md": "For an if without else, jump over the code when the condition is false. So you use the opposite condition. This code keeps the bigger of two numbers in `rax`: it copies `rbx` into `rax` only when `rax` is less than `rbx`, so it skips the copy with `jge`."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rax, 4\n    mov rbx, 9\n    cmp rax, rbx\n    jge done\n    mov rax, rbx\ndone:\n    add al, '0'\n    mov [digit], al\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "9"
+        },
+        {
+          "type": "tip",
+          "md": "`je` and `jz` (jump if zero) are the same instruction, and so are `jne` and `jnz`. `add`, `sub`, `inc` and `dec` also set the flags, so a conditional jump can follow them directly."
+        },
+        {
+          "type": "warning",
+          "md": "The first operand of `cmp` cannot be an immediate. `cmp 5, rax` is an error; write `cmp rax, 5` and choose the jump for that order."
+        }
+      ],
+      "card": [
+        "`cmp a, b` compares and sets the flags",
+        "`jmp label` always jumps",
+        "`je`, `jne`, `jl`, `jg`, `jle`, `jge` jump only if the condition is true",
+        "if: `cmp`, then jump over the code with the opposite condition"
+      ],
+      "exercises": [
+        {
+          "type": "true_false",
+          "id": "jumps-1",
+          "statement": "`cmp rax, rbx` stores the difference `rax - rbx` in `rax`.",
+          "answer": false,
+          "explain": "`cmp` only sets the flags. Both registers keep their values."
+        },
+        {
+          "type": "input",
+          "id": "jumps-2",
+          "prompt": "What is in `rbx` at the end?",
+          "code": "    mov rax, 5\n    cmp rax, 5\n    je equal\n    mov rbx, 1\n    jmp done\nequal:\n    mov rbx, 2\ndone:",
+          "answers": [
+            "2"
+          ],
+          "explain": "`rax` is equal to `5`, so `je` jumps to `equal`, and `rbx` gets `2`."
+        },
+        {
+          "type": "choice",
+          "id": "jumps-3",
+          "prompt": "What does this print?",
+          "code": "section .data\nbig db \"big\", 10\nsmall db \"small\", 10\n\nsection .text\n    mov rax, 3\n    cmp rax, 7\n    jg is_big\n    mov rsi, small\n    mov rdx, 6\n    jmp print\nis_big:\n    mov rsi, big\n    mov rdx, 4\nprint:\n    mov rax, 1\n    mov rdi, 1\n    syscall",
+          "options": [
+            "`small`",
+            "`big`",
+            "`big` and then `small`",
+            "nothing"
+          ],
+          "answer": 0,
+          "explain": "`3` is not greater than `7`, so `jg` does not jump. The else part chooses `small` and then jumps to `print`."
+        },
+        {
+          "type": "gap",
+          "id": "jumps-4",
+          "prompt": "Complete the code so it jumps to `less` only when `rax` is less than 10.",
+          "code": "    cmp rax, 10\n    ___ less\n    mov rbx, 1\n    jmp done\nless:\n    mov rbx, 2\ndone:",
+          "options": [
+            "jl",
+            "jg",
+            "jmp",
+            "jle"
+          ],
+          "answer": 0,
+          "explain": "`jl` jumps if `rax` is less than `10`. `jle` would also jump when `rax` is `10`."
+        },
+        {
+          "type": "blocks",
+          "id": "jumps-5",
+          "prompt": "Build the line that compares `rcx` with 0.",
+          "tokens": [
+            "cmp",
+            "rcx",
+            ",",
+            "0"
+          ],
+          "distractors": [
+            "==",
+            "if"
+          ],
+          "explain": "`cmp` takes the register first and the immediate second. `cmp 0, rcx` is an error."
+        },
+        {
+          "type": "pairs",
+          "id": "jumps-6",
+          "prompt": "Match the jump with its condition.",
+          "pairs": [
+            [
+              "`je`",
+              "jump if equal"
+            ],
+            [
+              "`jne`",
+              "jump if not equal"
+            ],
+            [
+              "`jl`",
+              "jump if less"
+            ],
+            [
+              "`jg`",
+              "jump if greater"
+            ],
+            [
+              "`jmp`",
+              "jump always"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "jumps-7",
+          "prompt": "These lines should keep the bigger number in `rax`. Which line has the bug?",
+          "lines": [
+            "    mov rax, 8",
+            "    mov rbx, 3",
+            "    cmp rax, rbx",
+            "    jle done",
+            "    mov rax, rbx",
+            "done:"
+          ],
+          "bug": 3,
+          "explain": "The copy must be skipped when `rax` is already the bigger number. Write `jge done`."
+        },
+        {
+          "type": "order",
+          "id": "jumps-8",
+          "prompt": "Put the lines in order: if `rax` is less than 5, add 10 to it; otherwise subtract 1.",
+          "lines": [
+            "    cmp rax, 5",
+            "    jge other",
+            "    add rax, 10",
+            "    jmp done",
+            "other:",
+            "    dec rax"
+          ],
+          "explain": "First compare. If `rax` is not less than `5`, jump to `other` and subtract 1. Otherwise add 10 and jump over the else part."
+        },
+        {
+          "type": "choice",
+          "id": "jumps-9",
+          "prompt": "After `cmp rax, rbx`, which jump jumps only when `rax` is greater than or equal to `rbx`?",
+          "options": [
+            "`jge`",
+            "`jg`",
+            "`jle`",
+            "`jne`"
+          ],
+          "answer": 0,
+          "explain": "`jge` means jump if greater or equal. `jg` does not jump when the values are equal."
+        },
+        {
+          "type": "input",
+          "id": "jumps-10",
+          "prompt": "What does this print?",
+          "code": "section .data\ndigit db 0, 10\n\nsection .text\n    mov rax, 6\n    cmp rax, 4\n    jl done\n    sub rax, 4\ndone:\n    add al, '0'\n    mov [digit], al\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall",
+          "answers": [
+            "2"
+          ],
+          "explain": "`6` is not less than `4`, so `jl` does not jump, and `sub` makes `rax` `2`."
+        },
+        {
+          "type": "true_false",
+          "id": "jumps-11",
+          "statement": "This code jumps to `skip`.",
+          "code": "    mov rax, 1\n    cmp rax, 2\n    jg skip",
+          "answer": false,
+          "explain": "`1` is not greater than `2`, so `jg` does not jump, and the CPU continues with the next line."
+        },
+        {
+          "type": "bug",
+          "id": "jumps-12",
+          "prompt": "These lines should print small. Which line has the bug?",
+          "lines": [
+            "    mov rbx, 2",
+            "    cmp rbx, 5",
+            "    jg is_big",
+            "    mov rsi, small",
+            "    mov rdx, 6",
+            "    jmp is_big",
+            "is_big:",
+            "    mov rsi, big",
+            "    mov rdx, 4",
+            "print:"
+          ],
+          "bug": 5,
+          "explain": "After the else part, the code must jump over the if part. Write `jmp print`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with a counter and a jump back, and write loops that print digits and letters.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A loop is a jump backwards. You put a label at the top of the code you want to repeat. At the end, a conditional jump goes back to the label as long as there is work left."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nmsg db \"Hi\", 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 3\nagain:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 3\n    syscall\n    dec rbx\n    jnz again\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "Hi\nHi\nHi"
+        },
+        {
+          "type": "text",
+          "md": "`rbx` is the **counter**. It starts at `3`, and `dec rbx` subtracts 1 after every print. `dec` also sets the zero flag, and `jnz again` (jump if not zero) jumps back while `rbx` is not `0`. After the third print, `rbx` is `0` and the loop ends."
+        },
+        {
+          "type": "warning",
+          "md": "`syscall` changes `rcx` and `r11` (and puts its result into `rax`). So a loop that makes system calls must not keep its counter in `rcx`. Use `rbx` or `r12` to `r15`: system calls keep their values."
+        },
+        {
+          "type": "heading",
+          "text": "Counting up"
+        },
+        {
+          "type": "text",
+          "md": "A counter can also count up. Here `rbx` goes from `0` to `4`. Each round copies the counter into `al`, turns it into a digit and prints it. `cmp rbx, 5` and `jl next` repeat the loop while `rbx` is less than `5`."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 0\nnext:\n    mov al, bl\n    add al, '0'\n    mov [digit], al\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    inc rbx\n    cmp rbx, 5\n    jl next\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "0\n1\n2\n3\n4"
+        },
+        {
+          "type": "heading",
+          "text": "Checking first"
+        },
+        {
+          "type": "text",
+          "md": "Sometimes the loop must check its condition before the first round, like a `while` loop in Python. Then the check comes at the top, and a `jmp` at the end goes back to it. This loop adds `1 + 2 + 3`. It makes no system calls, so `rcx` is fine as a counter."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 0\n    mov rcx, 1\ncheck:\n    cmp rcx, 3\n    jg done\n    add rbx, rcx\n    inc rcx\n    jmp check\ndone:\n    add bl, '0'\n    mov [digit], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "6"
+        },
+        {
+          "type": "heading",
+          "text": "Printing letters"
+        },
+        {
+          "type": "text",
+          "md": "Letters follow each other in the ASCII table, so `inc` turns `'A'` into `'B'`. This loop prints the letters from `A` to `E` and then a newline. It stops when `bl` reaches `'F'`."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nchar db 0\nnewline db 10\n\nsection .text\nglobal _start\n\n_start:\n    mov bl, 'A'\nnext:\n    mov [char], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, char\n    mov rdx, 1\n    syscall\n    inc bl\n    cmp bl, 'F'\n    jne next\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, newline\n    mov rdx, 1\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "ABCDE"
+        },
+        {
+          "type": "warning",
+          "md": "Make sure that the loop condition becomes false at some point. If the counter never reaches its end value, the loop never stops."
+        }
+      ],
+      "card": [
+        "loop: a label at the top and a conditional jump back",
+        "`dec rbx` and `jnz top` repeat until `rbx` is 0",
+        "`inc rbx`, `cmp rbx, 5` and `jl top` count up to 5",
+        "`syscall` changes `rax`, `rcx` and `r11`: keep counters in `rbx` or `r12`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What is in `rax` at the end?",
+          "code": "    mov rax, 0\n    mov rcx, 4\ntop:\n    add rax, 2\n    dec rcx\n    jnz top",
+          "answers": [
+            "8"
+          ],
+          "explain": "The loop runs 4 times, because `rcx` goes from `4` down to `0`. Each round adds `2`, so `rax` is `8`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "section .data\nchar db 0\n\nsection .text\n    mov bl, 'a'\nnext:\n    mov [char], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, char\n    mov rdx, 1\n    syscall\n    inc bl\n    cmp bl, 'd'\n    jne next",
+          "options": [
+            "`abc`",
+            "`abcd`",
+            "`bcd`",
+            "`a`"
+          ],
+          "answer": 0,
+          "explain": "The loop prints `a`, `b` and `c`. When `bl` becomes `'d'`, `jne` does not jump, so `d` is not printed."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-3",
+          "statement": "`syscall` keeps the value in `rcx`.",
+          "answer": false,
+          "explain": "`syscall` overwrites `rcx` and `r11`. That is why a loop with system calls keeps its counter in `rbx` or `r12` to `r15`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-4",
+          "prompt": "Complete the code so it prints three stars.",
+          "code": "section .data\nstar db \"*\"\nnewline db 10\n\nsection .text\n    mov rbx, ___\nagain:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, star\n    mov rdx, 1\n    syscall\n    dec rbx\n    jnz again\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, newline\n    mov rdx, 1\n    syscall",
+          "options": [
+            "3",
+            "2",
+            "4",
+            "1"
+          ],
+          "answer": 0,
+          "explain": "The counter starts at `3`, and `dec` with `jnz` repeats the print until it reaches `0`: 3 rounds."
+        },
+        {
+          "type": "gap",
+          "id": "loops-5",
+          "prompt": "Complete the code so the loop repeats until `rbx` is 0.",
+          "code": "section .data\nstar db \"*\"\nnewline db 10\n\nsection .text\n    mov rbx, 3\nagain:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, star\n    mov rdx, 1\n    syscall\n    dec rbx\n    ___ again\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, newline\n    mov rdx, 1\n    syscall",
+          "options": [
+            "jnz",
+            "jz",
+            "jl",
+            "je"
+          ],
+          "answer": 0,
+          "explain": "`jnz` jumps back while the result of `dec` is not zero. `jz` and `je` would jump only when it is zero."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-6",
+          "prompt": "Build the line that compares the character in `bl` with the letter Z.",
+          "tokens": [
+            "cmp",
+            "bl",
+            ",",
+            "'Z'"
+          ],
+          "distractors": [
+            "Z",
+            "=="
+          ],
+          "explain": "A character goes in single quotes. Without them, NASM looks for a label called `Z`."
+        },
+        {
+          "type": "order",
+          "id": "loops-7",
+          "prompt": "`rax` starts at 0. Put the lines in order so that `rax` ends up with 15.",
+          "lines": [
+            "    mov rbx, 3",
+            "next:",
+            "    add rax, 5",
+            "    dec rbx",
+            "    jnz next"
+          ],
+          "explain": "The counter is set once before the label. Inside the loop, `add` comes before `dec`, so that `jnz` checks the flags of `dec`."
+        },
+        {
+          "type": "bug",
+          "id": "loops-8",
+          "prompt": "These lines should print the digits 0 to 4. Which line has the bug?",
+          "lines": [
+            "    mov bl, '0'",
+            "next:",
+            "    mov [digit], bl",
+            "    mov rax, 1",
+            "    mov rdi, 1",
+            "    mov rsi, digit",
+            "    mov rdx, 2",
+            "    syscall",
+            "    inc bl",
+            "    cmp bl, '5'",
+            "    jg next"
+          ],
+          "bug": 10,
+          "explain": "The loop must go back while `bl` is less than `'5'`. With `jg` it stops after the first digit. Write `jl next`."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-9",
+          "prompt": "Match the code with its role in a loop.",
+          "pairs": [
+            [
+              "`top:`",
+              "marks the start of the loop"
+            ],
+            [
+              "`dec rbx`",
+              "counts down and sets the flags"
+            ],
+            [
+              "`jnz top`",
+              "jumps back while the result is not zero"
+            ],
+            [
+              "`cmp rbx, 5`",
+              "compares the counter with 5"
+            ],
+            [
+              "`jmp top`",
+              "jumps back without a condition"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "loops-10",
+          "prompt": "A loop makes a system call in every round. Which register is a safe counter?",
+          "options": [
+            "`rbx`",
+            "`rcx`",
+            "`r11`",
+            "`rax`"
+          ],
+          "answer": 0,
+          "explain": "`syscall` changes `rax`, `rcx` and `r11`, but it keeps `rbx`."
+        },
+        {
+          "type": "input",
+          "id": "loops-11",
+          "prompt": "How many times does this code print Hi?",
+          "code": "section .data\nmsg db \"Hi\", 10\n\nsection .text\n    mov rbx, 0\nnext:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 3\n    syscall\n    add rbx, 2\n    cmp rbx, 6\n    jl next",
+          "answers": [
+            "3"
+          ],
+          "explain": "`rbx` takes the values `0`, `2` and `4` when the loop prints. After the third round it is `6`, which is not less than `6`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-12",
+          "prompt": "What is in `rbx` after this loop?",
+          "code": "    mov rbx, 0\n    mov rcx, 4\nadd_next:\n    add rbx, rcx\n    dec rcx\n    jnz add_next",
+          "options": [
+            "`10`",
+            "`4`",
+            "`6`",
+            "`3`"
+          ],
+          "answer": 0,
+          "explain": "The loop adds `4`, `3`, `2` and `1` before `rcx` reaches `0`: `4 + 3 + 2 + 1` is `10`."
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "title": "Memory and data",
+      "chapter": "Data",
+      "summary": "Define data in section .data and .bss, read and change memory with [address] and give the size with byte or qword.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Memory is a long row of bytes. Every byte has a number, its **address**. A label is a name for an address. `mov rsi, msg` puts the address of `msg` into `rsi`. With square brackets you get what is stored there: `mov al, [msg]` copies the first byte of `msg` into `al`."
+        },
+        {
+          "type": "text",
+          "md": "In `section .data` you define data with a start value. `db` defines bytes (1 byte each), `dw` words (2 bytes), `dd` double words (4 bytes) and `dq` quad words (8 bytes). For example, `count dq 5` reserves 8 bytes that hold the number `5`."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nname db \"Cat\", 10\nchar db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov al, [name]\n    mov [char], al\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, char\n    mov rdx, 2\n    syscall\n    mov al, [name+2]\n    mov [char], al\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, char\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "C\nt"
+        },
+        {
+          "type": "text",
+          "md": "`[name+2]` is the byte 2 places after `name`, so the third letter. The offset can also be a register: `[numbers+rbx]` uses the value of `rbx`, which is perfect for loops. For `dq` data, each item has 8 bytes, so the item after `values` is at `[values+8]`."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nnumbers db 2, 3, 4\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 0\n    mov al, 0\nnext:\n    add al, [numbers+rbx]\n    inc rbx\n    cmp rbx, 3\n    jl next\n    add al, '0'\n    mov [digit], al\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "9"
+        },
+        {
+          "type": "heading",
+          "text": "Changing memory"
+        },
+        {
+          "type": "text",
+          "md": "To store an immediate in memory, you must tell NASM the size, because no register shows it. The size words are `byte` (1 byte), `word` (2), `dword` (4) and `qword` (8). `mov byte [name], 'B'` changes only the first letter."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nname db \"Cat\", 10\n\nsection .text\nglobal _start\n\n_start:\n    mov byte [name], 'B'\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, name\n    mov rdx, 4\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "Bat"
+        },
+        {
+          "type": "text",
+          "md": "Numbers in memory work the same way. `add qword [count], 4` adds `4` to the 8 bytes at `count`. `mov rax, [count]` reads 8 bytes, because `rax` has 8 bytes, so no size word is needed there."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\ncount dq 3\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    add qword [count], 4\n    mov rax, [count]\n    add al, '0'\n    mov [digit], al\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "7"
+        },
+        {
+          "type": "heading",
+          "text": "Reserving memory and lengths"
+        },
+        {
+          "type": "text",
+          "md": "`section .bss` reserves memory without a start value; Linux fills it with zeros. `resb 3` reserves 3 bytes, and `resw`, `resd` and `resq` reserve words, double words and quad words. In `section .data`, `len equ $ - msg` calculates a length for you: `$` is the current address, so `$ - msg` is the number of bytes since `msg`. `equ` gives a name to a number; it does not use memory."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nmsg db \"Buffer: \"\nlen equ $ - msg\n\nsection .bss\nbuffer resb 3\n\nsection .text\nglobal _start\n\n_start:\n    mov byte [buffer], 'O'\n    mov byte [buffer+1], 'K'\n    mov byte [buffer+2], 10\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, len\n    syscall\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, buffer\n    mov rdx, 3\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "Buffer: OK"
+        },
+        {
+          "type": "warning",
+          "md": "Always give the size when you store an immediate in memory, as in `mov qword [count], 5`. Without it, NASM reports an error or guesses the size, depending on its version. One instruction also cannot copy from memory to memory: `mov [a], [b]` is an error, so go through a register."
+        }
+      ],
+      "card": [
+        "`db`, `dw`, `dd`, `dq` define 1, 2, 4 and 8 bytes",
+        "`mov rsi, msg` gives the address, `mov al, [msg]` the byte there",
+        "`[msg+2]` and `[numbers+rbx]` add an offset to the address",
+        "`mov byte [x], 'A'` and `add qword [n], 1` name the size",
+        "`.bss`: `buffer resb 16`; length: `len equ $ - msg`"
+      ],
+      "exercises": [
+        {
+          "type": "pairs",
+          "id": "memory-1",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`db`",
+              "defines bytes"
+            ],
+            [
+              "`dw`",
+              "defines words of 2 bytes"
+            ],
+            [
+              "`dd`",
+              "defines double words of 4 bytes"
+            ],
+            [
+              "`dq`",
+              "defines quad words of 8 bytes"
+            ],
+            [
+              "`resb 10`",
+              "reserves 10 bytes"
+            ]
+          ]
+        },
+        {
+          "type": "input",
+          "id": "memory-2",
+          "prompt": "What does this print?",
+          "code": "section .data\nname db \"Rust\", 10\nchar db 0, 10\n\nsection .text\n    mov al, [name+2]\n    mov [char], al\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, char\n    mov rdx, 2\n    syscall",
+          "answers": [
+            "s"
+          ],
+          "explain": "`[name+2]` is the third byte of `Rust`, which is `s`. The first byte is at `name+0`."
+        },
+        {
+          "type": "choice",
+          "id": "memory-3",
+          "prompt": "What does `mov rsi, msg` put into `rsi`?",
+          "options": [
+            "the address of `msg`",
+            "the first byte of the text",
+            "the length of the text",
+            "all bytes of the text"
+          ],
+          "answer": 0,
+          "explain": "A label is an address. Without square brackets you get the address itself, not the bytes stored there."
+        },
+        {
+          "type": "true_false",
+          "id": "memory-4",
+          "statement": "This code copies the value of `b` into `a`.",
+          "code": "section .data\na dq 1\nb dq 2\n\nsection .text\n    mov [a], [b]",
+          "answer": false,
+          "explain": "One instruction cannot read and write memory at the same time, so NASM reports an error. Copy through a register: `mov rax, [b]` and then `mov [a], rax`."
+        },
+        {
+          "type": "gap",
+          "id": "memory-5",
+          "prompt": "Complete the code so it prints Cat.",
+          "code": "section .data\nname db \"Hat\", 10\n\nsection .text\n    mov ___ [name], 'C'\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, name\n    mov rdx, 4\n    syscall",
+          "options": [
+            "byte",
+            "word",
+            "dword",
+            "qword"
+          ],
+          "answer": 0,
+          "explain": "Only one letter changes, so the size is `byte`. A larger size would also overwrite the next letters with zeros."
+        },
+        {
+          "type": "choice",
+          "id": "memory-6",
+          "prompt": "What is in `rax` after this code?",
+          "code": "section .data\nnumbers dq 10, 20, 30\n\nsection .text\n    mov rax, [numbers+8]",
+          "options": [
+            "`20`",
+            "`10`",
+            "`8`",
+            "`30`"
+          ],
+          "answer": 0,
+          "explain": "Each `dq` item has 8 bytes. `[numbers+8]` skips the first item, so `rax` gets the second one."
+        },
+        {
+          "type": "input",
+          "id": "memory-7",
+          "prompt": "What is in `rbx` at the end?",
+          "code": "section .data\ncount dq 5\n\nsection .text\n    add qword [count], 3\n    mov rbx, [count]",
+          "answers": [
+            "8"
+          ],
+          "explain": "`add qword [count], 3` changes the value in memory from `5` to `8`, and `mov` reads it into `rbx`."
+        },
+        {
+          "type": "blocks",
+          "id": "memory-8",
+          "prompt": "Build the line that copies the byte at `text+1` into `al`.",
+          "tokens": [
+            "mov",
+            "al",
+            ",",
+            "[text+1]"
+          ],
+          "distractors": [
+            "text+1",
+            "rax"
+          ],
+          "explain": "The square brackets read the memory at the address. Without them, you would get the address itself."
+        },
+        {
+          "type": "bug",
+          "id": "memory-9",
+          "prompt": "These lines should add the three numbers in `numbers` into `al`. Which line has the bug?",
+          "lines": [
+            "    mov rbx, 0",
+            "    mov al, 0",
+            "next:",
+            "    add al, [numbers]",
+            "    inc rbx",
+            "    cmp rbx, 3",
+            "    jl next"
+          ],
+          "bug": 3,
+          "explain": "`[numbers]` is always the first number. Use the counter as the offset: `add al, [numbers+rbx]`."
+        },
+        {
+          "type": "order",
+          "id": "memory-10",
+          "prompt": "`count` holds 2. Put the lines in order so that `count` holds 7 at the end.",
+          "lines": [
+            "    mov rax, [count]",
+            "    imul rax, 3",
+            "    add rax, 1",
+            "    mov [count], rax"
+          ],
+          "explain": "Read the value into a register, calculate `2 * 3 + 1`, and store the result back into memory."
+        },
+        {
+          "type": "choice",
+          "id": "memory-11",
+          "prompt": "Which line reserves memory for 4 quad words in `section .bss`?",
+          "options": [
+            "`buf resq 4`",
+            "`buf dq 4`",
+            "`buf resb 4`",
+            "`buf resq 32`"
+          ],
+          "answer": 0,
+          "explain": "`resq 4` reserves 4 items of 8 bytes. `dq 4` defines one quad word with the value `4`, and `resb 4` reserves only 4 bytes."
+        },
+        {
+          "type": "input",
+          "id": "memory-12",
+          "prompt": "What is in `rbx` at the end?",
+          "code": "section .data\nmsg db \"Hello\", 10\nlen equ $ - msg\n\nsection .text\n    mov rbx, len",
+          "answers": [
+            "6"
+          ],
+          "explain": "`$ - msg` counts the bytes from `msg` to this place: 5 letters and the newline."
+        }
+      ]
+    },
+    {
+      "id": "stack",
+      "title": "The stack",
+      "chapter": "Functions",
+      "summary": "Save values on the stack with push and pop, and jump to code and back with call and ret.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "The **stack** is an area of memory for temporary values. The register `rsp` (stack pointer) holds the address of the value on top. `push rax` puts the value of `rax` on top: it subtracts 8 from `rsp` and stores the 8 bytes there. `pop rbx` copies the top value into `rbx` and adds 8 to `rsp`."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nchar db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    push 'A'\n    push 'B'\n    pop rbx\n    mov [char], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, char\n    mov rdx, 2\n    syscall\n    pop rbx\n    mov [char], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, char\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "B\nA"
+        },
+        {
+          "type": "text",
+          "md": "The value you push last comes back first. This rule is called **last in, first out**. `'B'` was pushed after `'A'`, so the first `pop` gets `'B'`."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, rsp\n    push rax\n    sub rbx, rsp\n    pop rax\n    add bl, '0'\n    mov [digit], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "8"
+        },
+        {
+          "type": "text",
+          "md": "`rbx` keeps the old value of `rsp`. After `push`, `rsp` is 8 smaller, so the difference is `8`: the stack grows down, toward smaller addresses. `pop` adds the 8 again."
+        },
+        {
+          "type": "heading",
+          "text": "Saving registers"
+        },
+        {
+          "type": "text",
+          "md": "With `push` and `pop` you can keep a value safe while a register is busy. Remember that `syscall` changes `rcx`. This loop still counts with `rcx`: it pushes the counter before the system call and pops it back afterwards."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nmsg db \"Hi\", 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rcx, 3\nagain:\n    push rcx\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 3\n    syscall\n    pop rcx\n    dec rcx\n    jnz again\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "output": "Hi\nHi\nHi"
+        },
+        {
+          "type": "heading",
+          "text": "call and ret"
+        },
+        {
+          "type": "text",
+          "md": "A **function** is a piece of code that you can run from several places. `call print_hi` pushes the **return address** (the address of the instruction after `call`) and jumps to `print_hi`. At the end of the function, `ret` pops this address and jumps back to it."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nmsg db \"Hi\", 10\n\nsection .text\nglobal _start\n\n_start:\n    call print_hi\n    call print_hi\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\nprint_hi:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 3\n    syscall\n    ret",
+          "output": "Hi\nHi"
+        },
+        {
+          "type": "text",
+          "md": "Put your functions after the exit call. Then the CPU reaches them only through `call`, and never by running into them from the code above."
+        },
+        {
+          "type": "warning",
+          "md": "Every `push` in a function needs its `pop` before `ret`. Otherwise `ret` takes the wrong value from the stack as its return address, and the program crashes."
+        },
+        {
+          "type": "tip",
+          "md": "`[rsp]` is the value on top of the stack. `mov rax, [rsp]` reads it without removing it."
+        }
+      ],
+      "card": [
+        "`push rax` puts `rax` on the stack (`rsp` − 8)",
+        "`pop rax` takes the top value back (`rsp` + 8)",
+        "last in, first out",
+        "`call f` pushes the return address and jumps to `f`; `ret` jumps back"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "stack-1",
+          "prompt": "What is in `rbx` at the end?",
+          "code": "    push 1\n    push 2\n    push 3\n    pop rax\n    pop rbx",
+          "answers": [
+            "2"
+          ],
+          "explain": "The first `pop` gets `3`, the last value pushed. The second `pop` gets `2`."
+        },
+        {
+          "type": "choice",
+          "id": "stack-2",
+          "prompt": "How many bytes smaller is `rsp` after this code?",
+          "code": "    push rax\n    push rbx\n    push rcx\n    pop rdx",
+          "options": [
+            "`16`",
+            "`24`",
+            "`8`",
+            "`32`"
+          ],
+          "answer": 0,
+          "explain": "Three `push` instructions subtract `24`, and one `pop` adds `8` back."
+        },
+        {
+          "type": "true_false",
+          "id": "stack-3",
+          "statement": "The stack grows toward higher addresses.",
+          "answer": false,
+          "explain": "`push` subtracts 8 from `rsp`, so the stack grows toward smaller addresses."
+        },
+        {
+          "type": "gap",
+          "id": "stack-4",
+          "prompt": "Complete the code so that `rax` and `rbx` swap their values.",
+          "code": "    push rax\n    push rbx\n    pop rax\n    ___",
+          "options": [
+            "pop rbx",
+            "pop rax",
+            "push rax",
+            "ret"
+          ],
+          "answer": 0,
+          "explain": "The old `rbx` was pushed last, so `pop rax` gets it. The old `rax` is still on the stack, and `pop rbx` gets it."
+        },
+        {
+          "type": "order",
+          "id": "stack-5",
+          "prompt": "Put the lines in order: the function `f` returns 5 in `rax` and gives `rbx` back unchanged.",
+          "lines": [
+            "f:",
+            "    push rbx",
+            "    mov rbx, 5",
+            "    mov rax, rbx",
+            "    pop rbx",
+            "    ret"
+          ],
+          "explain": "The label comes first. Save `rbx`, use it, copy the result into `rax`, restore `rbx` and return."
+        },
+        {
+          "type": "blocks",
+          "id": "stack-6",
+          "prompt": "Build the line that reads the top value of the stack into `rax` without removing it.",
+          "tokens": [
+            "mov",
+            "rax",
+            ",",
+            "[rsp]"
+          ],
+          "distractors": [
+            "rsp",
+            "pop"
+          ],
+          "explain": "`[rsp]` is the memory at the address in `rsp`, which is the top value. `mov rax, rsp` would copy the address itself."
+        },
+        {
+          "type": "bug",
+          "id": "stack-7",
+          "prompt": "The function should add 2 to `rax` and give `rbx` back unchanged. Which line has the bug?",
+          "lines": [
+            "f:",
+            "    push rbx",
+            "    mov rbx, 2",
+            "    add rax, rbx",
+            "    pop rax",
+            "    ret"
+          ],
+          "bug": 4,
+          "explain": "The saved value belongs to `rbx`. `pop rax` overwrites the result. Write `pop rbx`."
+        },
+        {
+          "type": "pairs",
+          "id": "stack-8",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`push rax`",
+              "puts a value on the stack"
+            ],
+            [
+              "`pop rax`",
+              "takes the top value from the stack"
+            ],
+            [
+              "`call f`",
+              "saves the return address and jumps"
+            ],
+            [
+              "`ret`",
+              "jumps back to the return address"
+            ],
+            [
+              "`rsp`",
+              "holds the address of the top value"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "stack-9",
+          "prompt": "What does `call` push on the stack?",
+          "options": [
+            "the address of the instruction after `call`",
+            "the value of `rax`",
+            "the address of the function",
+            "nothing"
+          ],
+          "answer": 0,
+          "explain": "`call` pushes the return address. `ret` later pops it and jumps back there."
+        },
+        {
+          "type": "input",
+          "id": "stack-10",
+          "prompt": "What does this print?",
+          "code": "section .data\nchar db 0, 10\n\nsection .text\n    push 'A'\n    push 'B'\n    push 'C'\n    pop rbx\n    pop rbx\n    mov [char], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, char\n    mov rdx, 2\n    syscall",
+          "answers": [
+            "B"
+          ],
+          "explain": "The first `pop` gets `'C'`, the second gets `'B'`. Only the second value is printed."
+        },
+        {
+          "type": "choice",
+          "id": "stack-11",
+          "prompt": "What does this program print?",
+          "code": "default rel\n\nsection .data\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 0\n    call add_one\n    call add_one\n    call add_one\n    add bl, '0'\n    mov [digit], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\nadd_one:\n    inc rbx\n    ret",
+          "options": [
+            "`3`",
+            "`1`",
+            "`0`",
+            "`4`"
+          ],
+          "answer": 0,
+          "explain": "Each `call` runs `add_one` once, and `ret` comes back to the next line. `rbx` goes from `0` to `3`."
+        },
+        {
+          "type": "true_false",
+          "id": "stack-12",
+          "statement": "This program prints Hi exactly once.",
+          "code": "default rel\n\nsection .data\n    msg db \"Hi\", 10\n\nsection .text\nglobal _start\n\n_start:\n    call print_hi\n\nprint_hi:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 3\n    syscall\n    ret",
+          "answer": false,
+          "explain": "There is no exit call, so after `call` returns, the CPU runs into `print_hi` again and prints a second Hi. Then `ret` finds no return address, and the program crashes."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Pass arguments in rdi and rsi, return results in rax, save registers and write a small print function.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Functions work together because they follow the same rules, the **calling convention**. On Linux, the first arguments go into `rdi`, `rsi`, `rdx`, `rcx`, `r8` and `r9`, in this order. The function puts its result into `rax`."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rdi, 2\n    mov rsi, 5\n    call add_numbers\n    add al, '0'\n    mov [digit], al\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\nadd_numbers:\n    mov rax, rdi\n    add rax, rsi\n    ret",
+          "output": "7"
+        },
+        {
+          "type": "text",
+          "md": "`_start` passes `2` in `rdi` and `5` in `rsi`. `add_numbers` copies the first argument into `rax`, adds the second one and returns. After the `call`, the result is in `rax`."
+        },
+        {
+          "type": "heading",
+          "text": "Registers a function may change"
+        },
+        {
+          "type": "text",
+          "md": "A function may change `rax`, `rcx`, `rdx`, `rsi`, `rdi` and `r8` to `r11`. If you still need their values after a call, save them before. But a function must give back `rbx`, `rbp` and `r12` to `r15` unchanged. If it uses them, it pushes them at the start and pops them, in reverse order, before `ret`."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 1\nnext:\n    mov rdi, rbx\n    call print_digit\n    inc rbx\n    cmp rbx, 4\n    jl next\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\nprint_digit:\n    add rdi, '0'\n    mov rax, rdi\n    mov [digit], al\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    ret",
+          "output": "1\n2\n3"
+        },
+        {
+          "type": "text",
+          "md": "The loop keeps its counter in `rbx`. `print_digit` changes `rax`, `rdi`, `rsi` and `rdx`, and its system call changes `rcx` and `r11`. None of them is `rbx`, so the counter is safe."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 2\n    mov rdi, 3\n    call square\n    mov rdi, rax\n    call print_digit\n    mov rdi, rbx\n    call print_digit\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\nsquare:\n    push rbx\n    mov rbx, rdi\n    imul rbx, rdi\n    mov rax, rbx\n    pop rbx\n    ret\n\nprint_digit:\n    add rdi, '0'\n    mov rax, rdi\n    mov [digit], al\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    ret",
+          "output": "9\n2"
+        },
+        {
+          "type": "text",
+          "md": "`square` needs a register for its work and uses `rbx`. So it pushes `rbx` first and pops it before `ret`. That is why `rbx` is still `2` in `_start` after the call."
+        },
+        {
+          "type": "heading",
+          "text": "A print function"
+        },
+        {
+          "type": "text",
+          "md": "This function `print` gets the address of a text in `rdi` and its length in `rsi`. The write system call needs them in `rsi` and `rdx`. So `print` first copies `rsi` into `rdx` and then `rdi` into `rsi`. The other order would overwrite `rsi` before it is copied."
+        },
+        {
+          "type": "code",
+          "code": "default rel\n\nsection .data\nhello db \"Hello\", 10\nbye db \"Bye\", 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rdi, hello\n    mov rsi, 6\n    call print\n    mov rdi, bye\n    mov rsi, 4\n    call print\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\nprint:\n    mov rdx, rsi\n    mov rsi, rdi\n    mov rax, 1\n    mov rdi, 1\n    syscall\n    ret",
+          "output": "Hello\nBye"
+        },
+        {
+          "type": "warning",
+          "md": "After a `call`, do not expect `rax`, `rcx`, `rdx`, `rsi`, `rdi` or `r8` to `r11` to have their old values. Keep values that you need later in `rbx` or `r12` to `r15`, or push them before the call."
+        },
+        {
+          "type": "tip",
+          "md": "Every function ends with `ret`, and every `push` inside it needs a `pop`. Keep functions short: one function, one job."
+        }
+      ],
+      "card": [
+        "arguments: `rdi`, `rsi`, `rdx`, `rcx`, `r8`, `r9`",
+        "result: `rax`",
+        "a function may change `rax`, `rcx`, `rdx`, `rsi`, `rdi`, `r8`–`r11`",
+        "it must keep `rbx`, `rbp`, `r12`–`r15`: save them with `push` and `pop`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "functions-1",
+          "prompt": "Which register holds the first argument of a function?",
+          "options": [
+            "`rdi`",
+            "`rax`",
+            "`rsi`",
+            "`rbx`"
+          ],
+          "answer": 0,
+          "explain": "The arguments go into `rdi`, `rsi`, `rdx`, `rcx`, `r8` and `r9`. `rsi` holds the second one."
+        },
+        {
+          "type": "choice",
+          "id": "functions-2",
+          "prompt": "Where does a function put its result?",
+          "options": [
+            "`rax`",
+            "`rdi`",
+            "`rbx`",
+            "`rsp`"
+          ],
+          "answer": 0,
+          "explain": "By the calling convention, the result goes into `rax`."
+        },
+        {
+          "type": "input",
+          "id": "functions-3",
+          "prompt": "What is in `rax` when `call triple` returns?",
+          "code": "_start:\n    mov rdi, 4\n    call triple\n\ntriple:\n    mov rax, rdi\n    imul rax, 3\n    ret",
+          "answers": [
+            "12"
+          ],
+          "explain": "`triple` copies the argument `4` from `rdi` into `rax` and multiplies it by `3`."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-4",
+          "statement": "A function may change `rbx` and leave it changed when it returns.",
+          "answer": false,
+          "explain": "`rbx`, `rbp` and `r12` to `r15` must have their old values after the call. A function that uses `rbx` saves it with `push` and restores it with `pop`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-5",
+          "prompt": "Complete the function so it returns the first argument minus the second.",
+          "code": "sub_numbers:\n    mov rax, ___\n    sub rax, rsi\n    ret",
+          "options": [
+            "rdi",
+            "rsi",
+            "rax",
+            "rdx"
+          ],
+          "answer": 0,
+          "explain": "The first argument is in `rdi`. The function copies it into `rax` and subtracts the second argument `rsi`."
+        },
+        {
+          "type": "bug",
+          "id": "functions-6",
+          "prompt": "`print` expects the address in `rdi` and the length in `rsi`. These lines should print Hi. Which line has the bug?",
+          "lines": [
+            "    mov rdi, msg",
+            "    mov rdx, 3",
+            "    call print"
+          ],
+          "bug": 1,
+          "explain": "The second argument goes into `rsi`, not `rdx`. Write `mov rsi, 3`."
+        },
+        {
+          "type": "order",
+          "id": "functions-7",
+          "prompt": "Put the lines in order: `square` returns `rdi * rdi` in `rax` and keeps `rbx`.",
+          "lines": [
+            "square:",
+            "    push rbx",
+            "    mov rbx, rdi",
+            "    imul rbx, rdi",
+            "    mov rax, rbx",
+            "    pop rbx",
+            "    ret"
+          ],
+          "explain": "Save `rbx` first, copy the argument, multiply, put the result into `rax`, restore `rbx` and return."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-8",
+          "prompt": "Build the line that passes 7 as the first argument.",
+          "tokens": [
+            "mov",
+            "rdi",
+            ",",
+            "7"
+          ],
+          "distractors": [
+            "rsi",
+            "rax"
+          ],
+          "explain": "The first argument goes into `rdi`."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-9",
+          "prompt": "Match the register with its role in the calling convention.",
+          "pairs": [
+            [
+              "`rdi`",
+              "first argument"
+            ],
+            [
+              "`rsi`",
+              "second argument"
+            ],
+            [
+              "`rdx`",
+              "third argument"
+            ],
+            [
+              "`rax`",
+              "result"
+            ],
+            [
+              "`rbx`",
+              "must be kept by the function"
+            ]
+          ]
+        },
+        {
+          "type": "input",
+          "id": "functions-10",
+          "prompt": "What does this program print? Write the digits in order.",
+          "code": "default rel\n\nsection .data\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 3\nnext:\n    mov rdi, rbx\n    call print_digit\n    dec rbx\n    jnz next\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\nprint_digit:\n    add rdi, '0'\n    mov rax, rdi\n    mov [digit], al\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    ret",
+          "answers": [
+            "3 2 1",
+            "321"
+          ],
+          "explain": "The loop calls `print_digit` with `3`, `2` and `1`. `rbx` keeps the counter, because `print_digit` does not change it."
+        },
+        {
+          "type": "choice",
+          "id": "functions-11",
+          "prompt": "What is in `r12` when `call double` returns?",
+          "code": "_start:\n    mov r12, 4\n    mov rdi, 3\n    call double\n\ndouble:\n    push r12\n    mov r12, rdi\n    add r12, rdi\n    mov rax, r12\n    pop r12\n    ret",
+          "options": [
+            "`4`",
+            "`6`",
+            "`3`",
+            "`8`"
+          ],
+          "answer": 0,
+          "explain": "`double` uses `r12`, but it pushes it first and pops it before `ret`, so `r12` is `4` again. The result `6` is in `rax`."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-12",
+          "statement": "This program prints 5.",
+          "code": "default rel\n\nsection .data\ndigit db 0, 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rbx, 5\n    call set_two\n    add bl, '0'\n    mov [digit], bl\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\nset_two:\n    mov rbx, 2\n    ret",
+          "answer": false,
+          "explain": "`set_two` changes `rbx` and does not restore it, so the program prints `2`. A correct function would push and pop `rbx`."
+        }
+      ]
+    }
+  ]
+}

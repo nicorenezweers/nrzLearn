@@ -1,0 +1,379 @@
+{
+  "hello-1": {
+    "out": "9"
+  },
+  "hello-2": {
+    "out": "15"
+  },
+  "hello-3": {
+    "extra": [
+      {
+        "src": "(display (+ 5 3))",
+        "out": "8"
+      },
+      {
+        "src": "(display (5 + 3))",
+        "err": true
+      },
+      {
+        "src": "(display +(5 3))",
+        "err": true
+      },
+      {
+        "src": "(display (5 3 +))",
+        "err": true
+      }
+    ]
+  },
+  "hello-4": {
+    "out": "ab\nc"
+  },
+  "hello-5": {
+    "out": "5"
+  },
+  "hello-6": {
+    "extra": [
+      {
+        "src": "(display \"Hi\")\n(display \"!\")",
+        "out": "Hi!"
+      }
+    ]
+  },
+  "hello-7": {
+    "out": "10"
+  },
+  "hello-8": {
+    "out": "Hi\nBo"
+  },
+  "hello-9": {
+    "tpl": "{{CODE}}",
+    "out": "20"
+  },
+  "hello-10": {
+    "out": "Sum: 6"
+  },
+  "hello-12": {
+    "fix": "(display (+ 2 3))",
+    "out": "Total: 5"
+  },
+  "values-1": {
+    "out": "5/2"
+  },
+  "values-2": {
+    "out": "3"
+  },
+  "values-3": {
+    "out": "17"
+  },
+  "values-4": {
+    "out": "\"hi\""
+  },
+  "values-5": {
+    "extra": [
+      {
+        "src": "(display (symbol? 'apple))\n(display (symbol? \"apple\"))\n(display (symbol? #t))\n(display (symbol? 3/4))",
+        "out": "#t#f#f#f"
+      }
+    ]
+  },
+  "values-6": {
+    "out": "1/2"
+  },
+  "values-7": {
+    "out": "0.25"
+  },
+  "values-8": {
+    "out": "Total: 12"
+  },
+  "values-9": {
+    "out": "3"
+  },
+  "values-10": {
+    "tpl": "{{CODE}}\n(display width)",
+    "out": "8"
+  },
+  "values-11": {
+    "out": "12"
+  },
+  "values-12": {
+    "fix": "(display (string-append name \" is \" (number->string age)))",
+    "out": "Bo is 7"
+  },
+  "functions-1": {
+    "out": "15"
+  },
+  "functions-2": {
+    "out": "-7"
+  },
+  "functions-3": {
+    "out": "27"
+  },
+  "functions-4": {
+    "extra": [
+      {
+        "src": "(define (inc x) (+ x 1))\n(display (inc 4))",
+        "out": "5"
+      },
+      {
+        "src": "(define inc x (+ x 1))\n(display (inc 4))",
+        "err": true
+      },
+      {
+        "src": "(define (inc) (+ x 1))\n(display (inc 4))",
+        "err": true
+      },
+      {
+        "src": "(inc (x) (+ x 1))\n(display (inc 4))",
+        "err": true
+      }
+    ]
+  },
+  "functions-5": {
+    "out": "48"
+  },
+  "functions-6": {
+    "out": "6"
+  },
+  "functions-7": {
+    "err": true
+  },
+  "functions-8": {
+    "out": "5"
+  },
+  "functions-9": {
+    "out": "8"
+  },
+  "functions-10": {
+    "tpl": "{{CODE}}\n  (* w h))\n(display (area 3 5))",
+    "out": "15"
+  },
+  "functions-11": {
+    "out": "77"
+  },
+  "functions-12": {
+    "fix": "(greet \"Ana\")",
+    "out": "Hi, Ana"
+  },
+  "conditions-1": {
+    "out": "small"
+  },
+  "conditions-2": {
+    "out": "zero"
+  },
+  "conditions-3": {
+    "out": "#f"
+  },
+  "conditions-4": {
+    "out": "a"
+  },
+  "conditions-5": {
+    "out": "medium"
+  },
+  "conditions-6": {
+    "out": "C"
+  },
+  "conditions-7": {
+    "extra": [
+      {
+        "src": "(display (if 0 \"true\" \"false\"))",
+        "out": "true"
+      }
+    ]
+  },
+  "conditions-8": {
+    "out": "#t"
+  },
+  "conditions-9": {
+    "out": "other"
+  },
+  "conditions-10": {
+    "tpl": "(define n 12)\n{{CODE}}",
+    "out": "yes"
+  },
+  "conditions-11": {
+    "out": "fizzbuzz"
+  },
+  "conditions-12": {
+    "fix": "  (if (<= age 17)",
+    "out": "adult"
+  },
+  "lists-1": {
+    "out": "5"
+  },
+  "lists-2": {
+    "out": "6"
+  },
+  "lists-3": {
+    "out": "()"
+  },
+  "lists-4": {
+    "out": "c"
+  },
+  "lists-5": {
+    "extra": [
+      {
+        "src": "(display (cons 1 '(2 3)))",
+        "out": "(1 2 3)"
+      },
+      {
+        "src": "(display (cons '(1 2) 3))",
+        "out": "((1 2) . 3)"
+      },
+      {
+        "src": "(display (list '(1 2) 3))",
+        "out": "((1 2) 3)"
+      },
+      {
+        "src": "(display (reverse '(1 2 3)))",
+        "out": "(3 2 1)"
+      }
+    ]
+  },
+  "lists-6": {
+    "out": "(2 3)"
+  },
+  "lists-7": {
+    "out": "#t"
+  },
+  "lists-8": {
+    "out": "(0 1 2)"
+  },
+  "lists-9": {
+    "out": "pear"
+  },
+  "lists-10": {
+    "tpl": "(define nums '(1 2 3))\n{{CODE}}",
+    "out": "(3 2 1)"
+  },
+  "lists-12": {
+    "fix": "(display (car (cdr (cdr colors))))",
+    "out": "red\nblue"
+  },
+  "recursion-1": {
+    "out": "go"
+  },
+  "recursion-2": {
+    "out": "32"
+  },
+  "recursion-3": {
+    "out": "4"
+  },
+  "recursion-4": {
+    "out": "10"
+  },
+  "recursion-5": {
+    "extra": [
+      {
+        "src": "(define (sum-list l)\n  (+ (car l) (sum-list (cdr l))))\n(display (sum-list '(1 2)))",
+        "err": true
+      }
+    ]
+  },
+  "recursion-6": {
+    "manual": "tail position is judged by reading; the code shapes match the lesson examples"
+  },
+  "recursion-7": {
+    "out": "0"
+  },
+  "recursion-8": {
+    "out": "6"
+  },
+  "recursion-9": {
+    "out": "321"
+  },
+  "recursion-10": {
+    "out": "(1 2)"
+  },
+  "recursion-11": {
+    "manual": "factorial from the lesson multiplies after the recursive call returns"
+  },
+  "recursion-12": {
+    "fix": "      1",
+    "out": "24"
+  },
+  "higher-1": {
+    "out": "(2 3 4)"
+  },
+  "higher-2": {
+    "out": "24"
+  },
+  "higher-3": {
+    "out": "20"
+  },
+  "higher-4": {
+    "out": "9"
+  },
+  "higher-5": {
+    "out": "(4 10 18)"
+  },
+  "higher-6": {
+    "out": "(1 3 5)"
+  },
+  "higher-7": {
+    "extra": [
+      {
+        "src": "(display (apply + 1 2 3))",
+        "err": true
+      },
+      {
+        "src": "(display (apply + '(1 2 3)))",
+        "out": "6"
+      }
+    ]
+  },
+  "higher-8": {
+    "out": "(1 2 3)"
+  },
+  "higher-9": {
+    "out": "(1 4 9)"
+  },
+  "higher-10": {
+    "out": "8"
+  },
+  "higher-11": {
+    "tpl": "(define prices '(4 6 10))\n(display {{CODE}})",
+    "out": "20"
+  },
+  "data-1": {
+    "out": "gram"
+  },
+  "data-2": {
+    "out": "11"
+  },
+  "data-3": {
+    "out": "#(1 20 3)"
+  },
+  "data-4": {
+    "out": "2"
+  },
+  "data-5": {
+    "out": "#\\t"
+  },
+  "data-6": {
+    "extra": [
+      {
+        "src": "(display (assoc 'z '((x . 1) (y . 2))))",
+        "out": "#f"
+      }
+    ]
+  },
+  "data-7": {
+    "out": "5"
+  },
+  "data-8": {
+    "out": "#f"
+  },
+  "data-9": {
+    "out": "HELLO"
+  },
+  "data-10": {
+    "out": "2"
+  },
+  "data-11": {
+    "out": "#(5 6 7)"
+  },
+  "data-12": {
+    "fix": "(display (vector-ref v 2))",
+    "out": "10\n30"
+  }
+}

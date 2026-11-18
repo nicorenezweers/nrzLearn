@@ -1,0 +1,423 @@
+{
+  "hello-1": {
+    "extra": [
+      {
+        "src": "program main\n  implicit none\n  x = 5\n  print '(I0)', x\nend program main",
+        "err": true
+      },
+      {
+        "src": "program main\n  n = 5\n  print '(I0)', n\nend program main",
+        "out": "5"
+      }
+    ]
+  },
+  "hello-2": {
+    "out": "HelloWorld"
+  },
+  "hello-3": {
+    "out": "40"
+  },
+  "hello-4": {
+    "extra": [
+      {
+        "src": "program main\n  implicit none\n  PRINT '(A)', \"Hi\"\n  Print '(A)', \"Hi\"\nend program main",
+        "out": "Hi\nHi"
+      }
+    ]
+  },
+  "hello-5": {
+    "out": "Hello"
+  },
+  "hello-6": {
+    "out": "Ready"
+  },
+  "hello-7": {
+    "out": "6"
+  },
+  "hello-8": {
+    "out": "One\nTwo"
+  },
+  "hello-10": {
+    "fix": "  print '(A)', \"Hello\"",
+    "out": "Hello"
+  },
+  "hello-11": {
+    "fix": "end program add",
+    "out": "5"
+  },
+  "hello-12": {
+    "out": "4 + 4\n8"
+  },
+  "variables-1": {
+    "extra": [
+      {
+        "src": "program main\n  implicit none\n  real :: x\n  x = 3.75\n  print '(F0.2)', x\nend program main",
+        "out": "3.75"
+      },
+      {
+        "src": "program main\n  implicit none\n  integer :: x\n  x = 3.75\n  print '(I0)', x\nend program main",
+        "out": "3"
+      },
+      {
+        "src": "program main\n  implicit none\n  logical :: x\n  x = 3.75\nend program main",
+        "err": true
+      },
+      {
+        "src": "program main\n  implicit none\n  character(len=1) :: x\n  x = 3.75\nend program main",
+        "err": true
+      }
+    ]
+  },
+  "variables-2": {
+    "out": "15"
+  },
+  "variables-3": {
+    "out": "plan"
+  },
+  "variables-4": {
+    "extra": [
+      {
+        "src": "program main\n  implicit none\n  integer, parameter :: n = 5\n  n = 6\n  print '(I0)', n\nend program main",
+        "err": true
+      }
+    ]
+  },
+  "variables-5": {
+    "out": "T"
+  },
+  "variables-6": {
+    "out": "Hi, Ada"
+  },
+  "variables-7": {
+    "tpl": "program main\n  implicit none\n  {{CODE}}\n  print '(F0.1)', rate\nend program main",
+    "out": "1.5"
+  },
+  "variables-8": {
+    "out": "Total: 7"
+  },
+  "variables-10": {
+    "fixed": "program price\n  implicit none\n  real :: cost\n  integer :: count\n  cost = 4.5\n  count = 2\n  print '(F0.2)', cost * count\nend program price",
+    "out": "9.00"
+  },
+  "variables-11": {
+    "fix": "  ready = .true.",
+    "out": "T"
+  },
+  "variables-12": {
+    "out": "6.28"
+  },
+  "operators-1": {
+    "out": "3"
+  },
+  "operators-2": {
+    "out": "2"
+  },
+  "operators-3": {
+    "out": "11"
+  },
+  "operators-4": {
+    "out": "2.50"
+  },
+  "operators-5": {
+    "out": "8"
+  },
+  "operators-6": {
+    "out": "2.50"
+  },
+  "operators-7": {
+    "out": "Total: 42"
+  },
+  "operators-8": {
+    "out": "256"
+  },
+  "operators-10": {
+    "fix": "  h = real(n) / 2",
+    "out": "3.50"
+  },
+  "operators-11": {
+    "out": "Area: 6.00"
+  },
+  "operators-12": {
+    "extra": [
+      {
+        "src": "program main\n  implicit none\n  write(*, '(I4)') 7\nend program main",
+        "out": "   7"
+      },
+      {
+        "src": "program main\n  implicit none\n  write(*, '(I0)') 7\nend program main",
+        "out": "7"
+      },
+      {
+        "src": "program main\n  implicit none\n  write(*, '(I3)') 7\nend program main",
+        "out": "  7"
+      },
+      {
+        "src": "program main\n  implicit none\n  write(*, '(F4.0)') 7\nend program main",
+        "err": true
+      }
+    ]
+  },
+  "conditions-1": {
+    "out": "big"
+  },
+  "conditions-2": {
+    "out": "high"
+  },
+  "conditions-3": {
+    "extra": [
+      {
+        "src": "program main\n  implicit none\n  integer :: x\n  x = 1\n  if (x /= 2) print '(A)', \"yes\"\nend program main",
+        "out": "yes"
+      },
+      {
+        "src": "program main\n  implicit none\n  integer :: x\n  x = 1\n  if (x != 2) print '(A)', \"yes\"\nend program main",
+        "err": true
+      },
+      {
+        "src": "program main\n  implicit none\n  integer :: x\n  x = 1\n  if (x <> 2) print '(A)', \"yes\"\nend program main",
+        "err": true
+      },
+      {
+        "src": "program main\n  implicit none\n  integer :: x\n  x = 1\n  if (x =/ 2) print '(A)', \"yes\"\nend program main",
+        "err": true
+      }
+    ]
+  },
+  "conditions-4": {
+    "out": "no"
+  },
+  "conditions-5": {
+    "out": "over 10"
+  },
+  "conditions-6": {
+    "out": "Even"
+  },
+  "conditions-7": {
+    "out": "Other"
+  },
+  "conditions-8": {
+    "tpl": "program main\n  implicit none\n  logical :: done\n  done = .false.\n  {{CODE}}\n    print '(A)', \"Working\"\n  end if\nend program main",
+    "out": "Working"
+  },
+  "conditions-9": {
+    "tpl": "program main\n  implicit none\n  integer :: t\n  do t = 5, 25, 10\n    {{CODE}}\n  end do\nend program main",
+    "out": "Cold\nWarm\nWarm"
+  },
+  "conditions-11": {
+    "fix": "  if (age >= 18) then",
+    "out": "Adult"
+  },
+  "conditions-12": {
+    "fix": "  end if",
+    "out": "negative"
+  },
+  "loops-1": {
+    "out": "15"
+  },
+  "loops-2": {
+    "out": "6"
+  },
+  "loops-3": {
+    "out": ""
+  },
+  "loops-4": {
+    "out": "1\n2\n4\n5"
+  },
+  "loops-5": {
+    "extra": [
+      {
+        "src": "program main\n  implicit none\n  integer :: i\n  do i = 1, 5\n    if (i == 2) exit\n    print '(I0)', i\n  end do\nend program main",
+        "out": "1"
+      }
+    ]
+  },
+  "loops-6": {
+    "out": "5\n4\n3\n2\n1"
+  },
+  "loops-7": {
+    "out": "16"
+  },
+  "loops-8": {
+    "tpl": "program main\n  implicit none\n  integer :: i, total\n  total = 0\n  {{CODE}}\n    total = total + i\n  end do\n  print '(I0)', total\nend program main",
+    "out": "55"
+  },
+  "loops-9": {
+    "tpl": "program main\n  implicit none\n  integer :: i, f\n  {{CODE}}\nend program main",
+    "out": "24"
+  },
+  "loops-11": {
+    "fix": "  do i = 1, 4",
+    "out": "10"
+  },
+  "loops-12": {
+    "fix": "  do while (n > 0)",
+    "out": "3\n2\n1"
+  },
+  "arrays-1": {
+    "out": "8"
+  },
+  "arrays-2": {
+    "out": "9"
+  },
+  "arrays-3": {
+    "out": "60"
+  },
+  "arrays-4": {
+    "extra": [
+      {
+        "src": "program main\n  implicit none\n  integer :: a(5)\n  a = [7, 8, 9, 10, 11]\n  print '(I0)', a(1)\nend program main",
+        "out": "7"
+      }
+    ]
+  },
+  "arrays-5": {
+    "out": "3"
+  },
+  "arrays-6": {
+    "out": "9"
+  },
+  "arrays-7": {
+    "tpl": "program main\n  implicit none\n  {{CODE}}\n  days = 1\n  print '(I0)', sum(days)\nend program main",
+    "out": "7"
+  },
+  "arrays-8": {
+    "tpl": "program main\n  implicit none\n  integer :: a(3), i\n  {{CODE}}\nend program main",
+    "out": "4\n8\n12"
+  },
+  "arrays-10": {
+    "fix": "  print '(A, I0)', \"First: \", a(1)",
+    "out": "First: 5"
+  },
+  "arrays-11": {
+    "fix": "  a = [1, 2, 3]",
+    "out": "2 4 6"
+  },
+  "arrays-12": {
+    "out": "4 5"
+  },
+  "procedures-1": {
+    "out": "14"
+  },
+  "procedures-2": {
+    "out": "15"
+  },
+  "procedures-3": {
+    "extra": [
+      {
+        "src": "program p\n  implicit none\n  call report()\ncontains\n  subroutine report()\n    print '(A)', \"ok\"\n  end subroutine report\nend program p",
+        "out": "ok"
+      },
+      {
+        "src": "program p\n  implicit none\n  report()\ncontains\n  subroutine report()\n    print '(A)', \"ok\"\n  end subroutine report\nend program p",
+        "err": true
+      },
+      {
+        "src": "program p\n  implicit none\n  run report()\ncontains\n  subroutine report()\n    print '(A)', \"ok\"\n  end subroutine report\nend program p",
+        "err": true
+      },
+      {
+        "src": "program p\n  implicit none\n  print report()\ncontains\n  subroutine report()\n    print '(A)', \"ok\"\n  end subroutine report\nend program p",
+        "err": true
+      }
+    ]
+  },
+  "procedures-4": {
+    "extra": [
+      {
+        "src": "program p\n  implicit none\n  call square(2)\ncontains\n  function square(x) result(y)\n    integer, intent(in) :: x\n    integer :: y\n    y = x * x\n  end function square\nend program p",
+        "err": true
+      },
+      {
+        "src": "program p\n  implicit none\n  integer :: x\n  x = square(2)\n  print '(I0)', x\ncontains\n  function square(x) result(y)\n    integer, intent(in) :: x\n    integer :: y\n    y = x * x\n  end function square\nend program p",
+        "out": "4"
+      }
+    ]
+  },
+  "procedures-5": {
+    "out": "7"
+  },
+  "procedures-6": {
+    "out": "42"
+  },
+  "procedures-7": {
+    "tpl": "program p\n  implicit none\n  integer :: x, y\n  x = 5\n  y = 2\n  {{CODE}}\ncontains\n  subroutine move(a, b)\n    integer, intent(in) :: a, b\n    print '(I0)', a - b\n  end subroutine move\nend program p",
+    "out": "3"
+  },
+  "procedures-8": {
+    "out": "Hello"
+  },
+  "procedures-10": {
+    "fix": "    s = a + b",
+    "out": "5"
+  },
+  "procedures-11": {
+    "fix": "  call square(n)",
+    "out": "9"
+  },
+  "procedures-12": {
+    "out": "0"
+  },
+  "types-1": {
+    "out": "12"
+  },
+  "types-2": {
+    "out": "12"
+  },
+  "types-3": {
+    "extra": [
+      {
+        "src": "program main\n  implicit none\n  type :: point\n    integer :: x\n  end type point\n  type(point) :: p\n  p = point(3)\n  print '(I0)', p%x\nend program main",
+        "out": "3"
+      },
+      {
+        "src": "program main\n  implicit none\n  type :: point\n    integer :: x\n  end type point\n  type(point) :: p\n  p = point(3)\n  print '(I0)', p.x\nend program main",
+        "err": true
+      },
+      {
+        "src": "program main\n  implicit none\n  type :: point\n    integer :: x\n  end type point\n  type(point) :: p\n  p = point(3)\n  print '(I0)', p->x\nend program main",
+        "err": true
+      },
+      {
+        "src": "program main\n  implicit none\n  type :: point\n    integer :: x\n  end type point\n  type(point) :: p\n  p = point(3)\n  print '(I0)', p:x\nend program main",
+        "err": true
+      }
+    ]
+  },
+  "types-4": {
+    "extra": [
+      {
+        "src": "module m\n  implicit none\n  integer, parameter :: k = 1\nend module m\n\nprogram main\n  implicit none\n  use m\n  print '(I0)', k\nend program main",
+        "err": true
+      },
+      {
+        "src": "module m\n  implicit none\n  integer, parameter :: k = 1\nend module m\n\nprogram main\n  use m\n  implicit none\n  print '(I0)', k\nend program main",
+        "out": "1"
+      }
+    ]
+  },
+  "types-5": {
+    "out": "Hello from a module"
+  },
+  "types-6": {
+    "out": "Ada"
+  },
+  "types-7": {
+    "tpl": "program main\n  implicit none\n  type :: place\n    integer :: id\n  end type place\n  {{CODE}}\n  home%id = 5\n  print '(I0)', home%id\nend program main",
+    "out": "5"
+  },
+  "types-8": {
+    "tpl": "module settings\n  implicit none\n  integer, parameter :: limit = 50\nend module settings\n\n{{CODE}}",
+    "out": "100"
+  },
+  "types-10": {
+    "fix": "  print '(F0.1)', p%y",
+    "out": "2.0"
+  },
+  "types-11": {
+    "fix": "  use tools",
+    "out": "42"
+  },
+  "types-12": {
+    "out": "1 5"
+  }
+}

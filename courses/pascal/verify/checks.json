@@ -1,0 +1,473 @@
+{
+ "hello-1": [
+  {
+   "kind": "options",
+   "src": "program Finish;\nbegin\n  writeln('Hello');\n@OPTION@",
+   "expect": "Hello"
+  }
+ ],
+ "hello-2": [
+  {}
+ ],
+ "hello-3": [
+  {}
+ ],
+ "hello-4": [
+  {
+   "src": "write('A');\nwrite('B');\nwriteln;",
+   "expect": "AB"
+  }
+ ],
+ "hello-5": [
+  {
+   "expect": "Hi"
+  }
+ ],
+ "hello-6": [
+  {
+   "expect": "It's late"
+  }
+ ],
+ "hello-7": [
+  {
+   "expect": "Hello, Pascal!"
+  }
+ ],
+ "hello-8": [
+  {
+   "expect": "Ready\nGo"
+  }
+ ],
+ "hello-10": [
+  {
+   "fix": "  writeln('World');",
+   "expect": "Hello\nWorld"
+  }
+ ],
+ "hello-11": [
+  {
+   "fix": "  writeln('One');",
+   "expect": "One\nTwo"
+  }
+ ],
+ "hello-12": [
+  {}
+ ],
+ "variables-1": [
+  {
+   "kind": "options",
+   "decl": "var\n  x: integer;",
+   "src": "@OPTION@\nwriteln(x);",
+   "expect": "10"
+  }
+ ],
+ "variables-2": [
+  {}
+ ],
+ "variables-3": [
+  {}
+ ],
+ "variables-4": [
+  {
+   "kind": "fail",
+   "src": "program Limit;\nconst\n  Max = 10;\nbegin\n  Max := 20;\n  writeln(Max);\nend."
+  }
+ ],
+ "variables-5": [
+  {
+   "expect": "4.75"
+  }
+ ],
+ "variables-6": [
+  {
+   "expect": "16"
+  }
+ ],
+ "variables-7": [
+  {
+   "decl": "var\n  name: string;",
+   "src": "@ANSWER@\nwriteln(name);",
+   "expect": "Ada"
+  }
+ ],
+ "variables-8": [
+  {
+   "expect": "7"
+  }
+ ],
+ "variables-10": [
+  {
+   "fix": "  points := 10;",
+   "expect": "10"
+  }
+ ],
+ "variables-11": [
+  {}
+ ],
+ "variables-12": [
+  {
+   "fix": "  city := 'Rome';",
+   "expect": "Rome"
+  }
+ ],
+ "operators-1": [
+  {}
+ ],
+ "operators-2": [
+  {}
+ ],
+ "operators-3": [
+  {}
+ ],
+ "operators-4": [
+  {}
+ ],
+ "operators-5": [
+  {
+   "kind": "fail",
+   "decl": "var\n  n: integer;",
+   "src": "n := 10 / 2;\nwriteln(n);"
+  },
+  {
+   "decl": "var\n  n: integer;",
+   "src": "n := 10 div 2;\nwriteln(n);",
+   "expect": "5"
+  }
+ ],
+ "operators-6": [
+  {
+   "decl": "var\n  price: real;",
+   "src": "price := 4.5;\n@CODE@",
+   "expect": "4.50"
+  }
+ ],
+ "operators-7": [
+  {
+   "decl": "var\n  rest: integer;",
+   "expect": "2"
+  }
+ ],
+ "operators-8": [
+  {
+   "decl": "var\n  a, b, r: integer;",
+   "src": "a := 17;\nb := 5;\n@ANSWER@\nwriteln(r);",
+   "expect": "2"
+  }
+ ],
+ "operators-9": [
+  {
+   "expect": "Total: 12.50"
+  }
+ ],
+ "operators-10": [
+  {
+   "fix": "  avg := sum div 2;",
+   "expect": "7"
+  }
+ ],
+ "operators-11": [
+  {}
+ ],
+ "conditions-1": [
+  {}
+ ],
+ "conditions-2": [
+  {
+   "kind": "options",
+   "src": "if 3 @OPTION@ 4 then\n  writeln('yes');",
+   "expect": "yes"
+  }
+ ],
+ "conditions-3": [
+  {}
+ ],
+ "conditions-4": [
+  {
+   "kind": "fail",
+   "decl": "var\n  x: integer;",
+   "src": "x := 1;\nif x > 0 then\n  writeln('yes');\nelse\n  writeln('no');"
+  },
+  {
+   "decl": "var\n  x: integer;",
+   "src": "x := 1;\nif x > 0 then\n  writeln('yes')\nelse\n  writeln('no');",
+   "expect": "yes"
+  }
+ ],
+ "conditions-5": [
+  {
+   "fix": "    writeln('positive')",
+   "expect": "negative"
+  }
+ ],
+ "conditions-6": [
+  {
+   "fix": "  if (n > 0) and (n < 10) then",
+   "expect": "one digit"
+  }
+ ],
+ "conditions-7": [
+  {
+   "decl": "var\n  age, count: integer;",
+   "src": "count := 0;\nfor age := 0 to 30 do\nbegin\n  if (age >= 13) @GAP@ (age <= 19) then\n    count := count + 1;\nend;\nwriteln(count);\nage := 15;\n@CODE@",
+   "expect": "7\nteen"
+  }
+ ],
+ "conditions-8": [
+  {
+   "decl": "var\n  score: integer;",
+   "src": "score := 70;\n@CODE@",
+   "expect": "pass"
+  }
+ ],
+ "conditions-9": [
+  {
+   "decl": "var\n  temp: integer;",
+   "src": "temp := 30;\n@ANSWER@\ntemp := 25;\n@ANSWER@",
+   "expect": "Hot"
+  }
+ ],
+ "conditions-10": [
+  {
+   "decl": "var\n  age: integer;",
+   "src": "age := 20;\n@ANSWER@\nage := 10;\n@ANSWER@",
+   "expect": "Welcome\nEnjoy\nToo young"
+  }
+ ],
+ "conditions-11": [
+  {}
+ ],
+ "loops-1": [
+  {}
+ ],
+ "loops-2": [
+  {}
+ ],
+ "loops-3": [
+  {}
+ ],
+ "loops-4": [
+  {
+   "decl": "var\n  n: integer;",
+   "src": "n := 100;\nrepeat\n  writeln('run');\nuntil n > 10;",
+   "expect": "run"
+  }
+ ],
+ "loops-5": [
+  {
+   "decl": "var\n  i: integer;",
+   "expect": ""
+  }
+ ],
+ "loops-6": [
+  {
+   "decl": "var\n  i: integer;",
+   "expect": "10\n9\n8\n7\n6\n5\n4\n3\n2\n1"
+  }
+ ],
+ "loops-7": [
+  {
+   "decl": "var\n  n: integer;",
+   "expect": "16"
+  }
+ ],
+ "loops-8": [
+  {
+   "decl": "var\n  count: integer;",
+   "src": "count := 7;\n@ANSWER@\n  inc(count);\nwriteln(count);",
+   "expect": "10"
+  }
+ ],
+ "loops-9": [
+  {
+   "decl": "var\n  n: integer;",
+   "expect": "6"
+  }
+ ],
+ "loops-10": [
+  {
+   "fix": "  for i := 1 to 3 do",
+   "expect": "1\n4\n9"
+  }
+ ],
+ "loops-11": [
+  {
+   "fix": "  until n > 3;",
+   "expect": "1\n2\n3"
+  }
+ ],
+ "procedures-1": [
+  {}
+ ],
+ "procedures-2": [
+  {}
+ ],
+ "procedures-3": [
+  {}
+ ],
+ "procedures-4": [
+  {
+   "src": "function Seven: integer;\nbegin\n  Result := 7;\nend;\n\nbegin\n  writeln(Seven);\nend.",
+   "expect": "7"
+  }
+ ],
+ "procedures-5": [
+  {
+   "expect": "12"
+  }
+ ],
+ "procedures-6": [
+  {
+   "expect": "12"
+  }
+ ],
+ "procedures-7": [
+  {
+   "src": "@ANSWER@\nbegin\n  Result := n mod 2 = 0;\nend;\n\nbegin\n  writeln(IsEven(4));\nend.",
+   "expect": "TRUE"
+  }
+ ],
+ "procedures-8": [
+  {
+   "src": "@ANSWER@\n\nbegin\n  Stars(3);\nend.",
+   "expect": "***"
+  }
+ ],
+ "procedures-10": [
+  {
+   "fix": "function Area(w, h: integer): integer;",
+   "expect": "12"
+  }
+ ],
+ "procedures-11": [
+  {
+   "fix": "  AddTwo(a);",
+   "expect": "3"
+  }
+ ],
+ "procedures-12": [
+  {
+   "src": "procedure SayHi;\nbegin\n  writeln('Hi');\nend;\n\nbegin\n  SayHi;\nend.",
+   "expect": "Hi"
+  },
+  {
+   "kind": "fail",
+   "src": "begin\n  SayHi;\nend.\n\nprocedure SayHi;\nbegin\n  writeln('Hi');\nend;"
+  }
+ ],
+ "arrays-1": [
+  {}
+ ],
+ "arrays-2": [
+  {}
+ ],
+ "arrays-3": [
+  {}
+ ],
+ "arrays-4": [
+  {}
+ ],
+ "arrays-5": [
+  {
+   "decl": "var\n  s: string;",
+   "src": "s := 'Hi';\nwriteln(s[1]);",
+   "expect": "H"
+  },
+  {
+   "kind": "fail",
+   "decl": "var\n  s: string;",
+   "src": "s := 'Hi';\nwriteln(s[0]);"
+  }
+ ],
+ "arrays-6": [
+  {
+   "decl": "var\n  nums: array[1..3] of integer = (4, 5, 6);\n  i: integer;",
+   "expect": "4\n5\n6"
+  }
+ ],
+ "arrays-7": [
+  {
+   "expect": "HEY"
+  }
+ ],
+ "arrays-8": [
+  {
+   "decl": "var\n  scores: array[1..4] of integer;",
+   "src": "@ANSWER@\nwriteln(scores[3]);",
+   "expect": "10"
+  }
+ ],
+ "arrays-9": [
+  {
+   "decl": "var\n  nums: array[1..4] of integer = (3, 9, 2, 5);\n  i, best: integer;",
+   "expect": "9"
+  }
+ ],
+ "arrays-10": [
+  {
+   "fix": "  writeln(a[3]);",
+   "expect": "30"
+  }
+ ],
+ "arrays-11": [
+  {
+   "fix": "  writeln(Copy(s, 4, 3));",
+   "expect": "cal"
+  }
+ ],
+ "records-1": [
+  {}
+ ],
+ "records-2": [
+  {}
+ ],
+ "records-3": [
+  {}
+ ],
+ "records-4": [
+  {
+   "decl": "type\n  TPoint = record\n    x, y: integer;\n  end;\nvar\n  a, b: TPoint;",
+   "src": "a.x := 1;\na.y := 1;\nb := a;\nb.x := 5;\nwriteln(a.x);",
+   "expect": "1"
+  }
+ ],
+ "records-5": [
+  {}
+ ],
+ "records-6": [
+  {
+   "src": "@CODE@\nvar\n  b: TBook;\nbegin\n  b.title := 'Notes';\n  b.pages := 80;\n  writeln(b.title, ' ', b.pages);\nend.",
+   "expect": "Notes 80"
+  }
+ ],
+ "records-7": [
+  {
+   "decl": "var\n  ch: char;",
+   "src": "ch := 'k';\n@CODE@\nch := 'K';\n@CODE@",
+   "expect": "lower"
+  }
+ ],
+ "records-8": [
+  {
+   "decl": "type\n  TDay = (Mon, Tue, Wed);\nvar\n  free: set of TDay;",
+   "src": "free := [];\n@ANSWER@\nwriteln(Wed in free);",
+   "expect": "TRUE"
+  }
+ ],
+ "records-9": [
+  {
+   "expect": "0\n1\n2"
+  }
+ ],
+ "records-10": [
+  {
+   "fix": "  b.pages := 120;",
+   "expect": "Notes: 120"
+  }
+ ],
+ "records-11": [
+  {
+   "fix": "  m := Running;",
+   "expect": "Running"
+  }
+ ]
+}

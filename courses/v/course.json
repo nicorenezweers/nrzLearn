@@ -1,0 +1,1956 @@
+{
+  "course": "v",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, V!",
+      "chapter": "Basics",
+      "summary": "Write your first V program and print text and numbers with println and print.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "V is a small and fast programming language. It compiles your code to a program that runs directly on your computer. This course uses V 0.5 (tested with V 0.5.2)."
+        },
+        {
+          "type": "text",
+          "md": "Every V program starts in a function called `main`. Here is a complete program:"
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    println('Hello, V!')\n}",
+          "output": "Hello, V!"
+        },
+        {
+          "type": "text",
+          "md": "Line by line: `fn` starts a function. `main` is its name, and V runs it first. The empty parentheses `()` mean that `main` takes no input. The code of the function goes between the braces `{` and `}`. `println` prints a value and then ends the line."
+        },
+        {
+          "type": "text",
+          "md": "Text in V is called a **string**. You write it in single quotes: `'Hello, V!'`. You save the code in a file such as `hello.v` and run it with the command `v run hello.v`. V first compiles the program and then runs it."
+        },
+        {
+          "type": "heading",
+          "text": "Printing"
+        },
+        {
+          "type": "text",
+          "md": "The lines inside `main` run from top to bottom. `println` always ends the line. `print` prints without ending the line, so the next output continues on the same line. `println('')` prints an empty string and ends the line."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    println('One')\n    print('Two, ')\n    print('three')\n    println('')\n    println('Four')\n}",
+          "output": "One\nTwo, three\nFour"
+        },
+        {
+          "type": "text",
+          "md": "V can calculate. `2 + 3` without quotes is a calculation, but `'2 + 3'` in quotes is only text. Use `*` to multiply and `/` to divide. When you divide two whole numbers, V gives a whole number and drops the rest: `7 / 2` is `3`."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    println(2 + 3)\n    println('2 + 3')\n    println(6 * 7)\n    println(7 / 2)\n}",
+          "output": "5\n2 + 3\n42\n3"
+        },
+        {
+          "type": "tip",
+          "md": "A line that starts with `//` is a **comment**. V ignores it. In this course, comments only show results, for example `println(1 + 1) // 2`."
+        },
+        {
+          "type": "warning",
+          "md": "`println` takes exactly one value: `println('a', 'b')` does not compile. V is also case sensitive: `println` works, but `Println` is an unknown name."
+        }
+      ],
+      "card": [
+        "`fn main() { }` is where the program starts",
+        "`println(x)` prints one value and ends the line",
+        "`print(x)` prints without ending the line",
+        "`'text'` is a string, `2 + 3` is a calculation",
+        "`v run hello.v` compiles and runs a file"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which function does V run when the program starts?",
+          "options": [
+            "`main`",
+            "`start`",
+            "`run`",
+            "`println`"
+          ],
+          "answer": 0,
+          "explain": "Every V program starts in the function `main`."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    println(10 - 4)\n}",
+          "answers": [
+            "6"
+          ],
+          "explain": "`10 - 4` has no quotes, so V calculates the result."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    print('A')\n    print('B')\n    println('C')\n}",
+          "answers": [
+            "ABC"
+          ],
+          "explain": "`print` does not end the line, so `A`, `B` and `C` end up on the same line."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "`println('a', 'b')` prints `a b`.",
+          "answer": false,
+          "explain": "`println` takes exactly one value. With two values the program does not compile."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Complete the program so it prints Hi.",
+          "code": "___ main() {\n    println('Hi')\n}",
+          "options": [
+            "fn",
+            "func",
+            "def",
+            "function"
+          ],
+          "answer": 0,
+          "explain": "In V, a function starts with the keyword `fn`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so it prints Hello.",
+          "code": "fn main() {\n    println(___)\n}",
+          "options": [
+            "'Hello'",
+            "Hello",
+            "'Hello",
+            "<Hello>"
+          ],
+          "answer": 0,
+          "explain": "Text needs quotes on both sides. Without quotes, V looks for a variable called `Hello`."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build the line that prints Hello, V! and ends the line.",
+          "tokens": [
+            "println",
+            "(",
+            "'Hello, V!'",
+            ")"
+          ],
+          "distractors": [
+            "print",
+            "Println"
+          ],
+          "explain": "`println` prints the value and ends the line. The string goes in quotes inside the parentheses."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order so the program prints First and then Second.",
+          "lines": [
+            "fn main() {",
+            "    println('First')",
+            "    println('Second')",
+            "}"
+          ],
+          "explain": "The function starts with `fn main() {` and ends with `}`. The lines inside run from top to bottom."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`fn`",
+              "starts a function"
+            ],
+            [
+              "`main`",
+              "where the program starts"
+            ],
+            [
+              "`println`",
+              "prints and ends the line"
+            ],
+            [
+              "`print`",
+              "prints without a new line"
+            ],
+            [
+              "`'Hi'`",
+              "a string"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fn main() {",
+            "    println('Start')",
+            "    println('Stop)",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "The closing quote is missing. Write `println('Stop')`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fn main() {",
+            "    println('Hello')",
+            "    Println('World')",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "V is case sensitive. The function is `println` with a small p."
+        },
+        {
+          "type": "choice",
+          "id": "hello-12",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    println(9 / 2)\n}",
+          "options": [
+            "`4`",
+            "`4.5`",
+            "`5`",
+            "`9 / 2`"
+          ],
+          "answer": 0,
+          "explain": "Both numbers are whole numbers, so `/` gives a whole number and drops the rest."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Store values in variables with := and mut, and get to know int, f64, string and bool.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a name for a value. You create one with `:=`. V sees the value and picks the type of the variable for you."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    name := 'Ada'\n    age := 36\n    println(name)\n    println(age)\n}",
+          "output": "Ada\n36"
+        },
+        {
+          "type": "text",
+          "md": "Variables in V are **immutable** by default: after you create them, they cannot change. Write `mut` in front of the name to allow changes. Then `=` gives the variable a new value. `+=` adds to the current value. Remember: `:=` creates a variable, `=` changes it."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    mut score := 10\n    println(score)\n    score = 15\n    println(score)\n    score += 5\n    println(score)\n}",
+          "output": "10\n15\n20"
+        },
+        {
+          "type": "warning",
+          "md": "Without `mut`, the line `score = 15` is a compile error: V says that `score` is immutable. Using `:=` twice for the same name is also an error, because the variable already exists."
+        },
+        {
+          "type": "heading",
+          "text": "Basic types"
+        },
+        {
+          "type": "text",
+          "md": "Every value has a **type**. The four basic types are `int` for whole numbers, `f64` for decimal numbers, `string` for text and `bool` for `true` or `false`. `typeof(x).name` gives the type of `x` as text."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    count := 3\n    price := 2.5\n    word := 'apple'\n    ready := true\n    println(typeof(count).name)\n    println(typeof(price).name)\n    println(typeof(word).name)\n    println(typeof(ready).name)\n}",
+          "output": "int\nf64\nstring\nbool"
+        },
+        {
+          "type": "text",
+          "md": "You can calculate with `+`, `-`, `*` and `/`. `%` gives the remainder of a division. Two `int` values give an `int` result. A decimal number such as `17.0` gives a decimal result."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    println(17 / 5)\n    println(17 % 5)\n    println(17.0 / 5)\n}",
+          "output": "3\n2\n3.4"
+        },
+        {
+          "type": "text",
+          "md": "You can convert numbers. `f64(n)` turns `n` into a decimal number, so `f64(a) / b` gives a decimal result even when `a` and `b` are both `int`. `int(x)` turns `x` into a whole number by dropping the decimal part."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    a := 7\n    b := 2\n    println(a / b)\n    println(f64(a) / b)\n    x := 10.9\n    println(int(x))\n}",
+          "output": "3\n3.5\n10"
+        },
+        {
+          "type": "tip",
+          "md": "If you create a variable and never use it, V prints a warning. Keep only the variables you need."
+        }
+      ],
+      "card": [
+        "`x := 5` creates an immutable variable",
+        "`mut x := 5`, then `x = 6` changes it",
+        "`int`, `f64`, `string`, `bool` are the basic types",
+        "`f64(n)` and `int(x)` convert numbers",
+        "`7 / 2` is `3`, `7 % 2` is `1`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "variables-1",
+          "prompt": "Which line creates a variable that you can change later?",
+          "options": [
+            "`mut x := 1`",
+            "`x := 1`",
+            "`var x = 1`",
+            "`let mut x = 1`"
+          ],
+          "answer": 0,
+          "explain": "`mut` makes a variable mutable. Without it, the variable cannot change. `var` and `let` are not V keywords."
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    mut n := 4\n    n = n * 3\n    println(n)\n}",
+          "answers": [
+            "12"
+          ],
+          "explain": "`n` starts at `4`. Then `n * 3` is `12`, and `=` stores it in `n`."
+        },
+        {
+          "type": "input",
+          "id": "variables-3",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    println(23 % 4)\n}",
+          "answers": [
+            "3"
+          ],
+          "explain": "`23` divided by `4` is `5` with a remainder of `3`. `%` gives the remainder."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-4",
+          "statement": "This program prints `20`.",
+          "code": "fn main() {\n    x := 10\n    x = 20\n    println(x)\n}",
+          "answer": false,
+          "explain": "`x` is not `mut`, so `x = 20` is a compile error. Write `mut x := 10` to allow the change."
+        },
+        {
+          "type": "choice",
+          "id": "variables-5",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    price := 2.5\n    println(typeof(price).name)\n}",
+          "options": [
+            "`f64`",
+            "`float`",
+            "`int`",
+            "`double`"
+          ],
+          "answer": 0,
+          "explain": "`2.5` is a decimal number, and the type for decimal numbers in V is `f64`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-6",
+          "prompt": "Complete the code so it compiles and prints 1.",
+          "code": "fn main() {\n    ___ count := 0\n    count += 1\n    println(count)\n}",
+          "options": [
+            "mut",
+            "var",
+            "let",
+            "const"
+          ],
+          "answer": 0,
+          "explain": "`count` changes, so it must be created with `mut`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-7",
+          "prompt": "Complete the code so it prints 3.5.",
+          "code": "fn main() {\n    a := 7\n    b := 2\n    println(___(a) / b)\n}",
+          "options": [
+            "f64",
+            "int",
+            "float",
+            "str"
+          ],
+          "answer": 0,
+          "explain": "`f64(a)` converts `7` to the decimal number `7.0`, so the division gives `3.5`. With two `int` values the result would be `3`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-8",
+          "prompt": "Build the line that creates a variable `total` with the value 0 that you can change later.",
+          "tokens": [
+            "mut",
+            "total",
+            ":=",
+            "0"
+          ],
+          "distractors": [
+            "=",
+            "var"
+          ],
+          "explain": "`mut` comes first, then the name, then `:=` and the value."
+        },
+        {
+          "type": "order",
+          "id": "variables-9",
+          "prompt": "Put the lines in order so the program prints 21.",
+          "lines": [
+            "mut x := 2",
+            "x = x * 10",
+            "x = x + 1",
+            "println(x)"
+          ],
+          "explain": "First create `x`. `2 * 10` is `20`, then `20 + 1` is `21`. Print at the end."
+        },
+        {
+          "type": "bug",
+          "id": "variables-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "mut total = 0",
+            "total += 5",
+            "println(total)"
+          ],
+          "bug": 0,
+          "explain": "A new variable needs `:=`. Write `mut total := 0`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "name := 'Ada'",
+            "ready := True",
+            "println(name)",
+            "println(ready)"
+          ],
+          "bug": 1,
+          "explain": "The `bool` values in V are written in small letters. Write `ready := true`."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-12",
+          "prompt": "Match the type with its values.",
+          "pairs": [
+            [
+              "`int`",
+              "whole numbers"
+            ],
+            [
+              "`f64`",
+              "decimal numbers"
+            ],
+            [
+              "`string`",
+              "text"
+            ],
+            [
+              "`bool`",
+              "true or false"
+            ],
+            [
+              "`mut`",
+              "allows changes"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings",
+      "chapter": "Basics",
+      "summary": "Join strings, put values into text with ${}, and use len, to_upper, contains and slices.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A string is text in single quotes. The `+` operator joins two strings into a new one. Both sides of `+` must be strings."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    first := 'Ada'\n    last := 'Lovelace'\n    full := first + ' ' + last\n    println(full)\n}",
+          "output": "Ada Lovelace"
+        },
+        {
+          "type": "text",
+          "md": "**Interpolation** puts values into a string. Inside the quotes, `${x}` is replaced by the value of `x`. This works for every type, and you can also write a calculation inside the braces."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    name := 'Ada'\n    age := 36\n    println('${name} is ${age} years old.')\n    println('Next year: ${age + 1}')\n}",
+          "output": "Ada is 36 years old.\nNext year: 37"
+        },
+        {
+          "type": "warning",
+          "md": "`'Age: ' + age` does not compile when `age` is an `int`, because `+` needs two strings. Use interpolation instead: `'Age: ${age}'`."
+        },
+        {
+          "type": "text",
+          "md": "`s.len` is the length of `s`. For text with only English letters, this is the number of characters. `len` is a field, so it has no parentheses. `s.to_upper()` and `s.to_lower()` are **methods**: functions that you call on a value with a dot and parentheses."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    word := 'Hello'\n    println(word.len)\n    println(word.to_upper())\n    println(word.to_lower())\n}",
+          "output": "5\nHELLO\nhello"
+        },
+        {
+          "type": "text",
+          "md": "Strings in V cannot change. A method such as `to_upper()` gives you a new string, and the old one stays the same."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    quiet := 'hi'\n    loud := quiet.to_upper()\n    println(quiet)\n    println(loud)\n}",
+          "output": "hi\nHI"
+        },
+        {
+          "type": "heading",
+          "text": "Searching and slicing"
+        },
+        {
+          "type": "text",
+          "md": "`s.contains(x)` gives `true` when `x` is somewhere in `s`. `s.starts_with(x)` and `s.ends_with(x)` check the beginning and the end. Upper and lower case letters are different."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    email := 'ada@example.com'\n    println(email.contains('@'))\n    println(email.starts_with('ada'))\n    println(email.ends_with('.org'))\n}",
+          "output": "true\ntrue\nfalse"
+        },
+        {
+          "type": "text",
+          "md": "Positions in a string start at `0`. `s[0..4]` takes a part from position `0` up to position `4`, without position `4`. `s[4..]` takes everything from position `4` to the end."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    word := 'Rainbow'\n    println(word[0..4])\n    println(word[4..])\n}",
+          "output": "Rain\nbow"
+        }
+      ],
+      "card": [
+        "`a + b` joins two strings",
+        "`'${x}'` puts a value into a string",
+        "`s.len` is the length (no parentheses)",
+        "`s.to_upper()`, `s.contains('x')`, `s.starts_with('a')`",
+        "`s[0..3]` takes positions 0, 1 and 2"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    name := 'V'\n    println('Hello, ${name}!')\n}",
+          "answers": [
+            "Hello, V!"
+          ],
+          "explain": "`${name}` is replaced by the value of `name`."
+        },
+        {
+          "type": "input",
+          "id": "strings-2",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    word := 'kitten'\n    println(word.len)\n}",
+          "answers": [
+            "6"
+          ],
+          "explain": "`kitten` has 6 letters, and `len` counts them."
+        },
+        {
+          "type": "choice",
+          "id": "strings-3",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    s := 'Hello'\n    println(s.contains('hell'))\n}",
+          "options": [
+            "`false`",
+            "`true`",
+            "`hell`",
+            "It does not compile."
+          ],
+          "answer": 0,
+          "explain": "`contains` is case sensitive. `Hello` contains `Hell` with a capital H, but not `hell`."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-4",
+          "statement": "`'Total: ' + 5` compiles in V.",
+          "answer": false,
+          "explain": "`+` only joins two strings, and `5` is an `int`. Write `'Total: ${5}'` or `'Total: ' + 5.str()`."
+        },
+        {
+          "type": "gap",
+          "id": "strings-5",
+          "prompt": "Complete the code so it prints You have 3 items.",
+          "code": "fn main() {\n    n := 3\n    println('You have ___ items.')\n}",
+          "options": [
+            "${n}",
+            "{n}",
+            "%d",
+            "(n)"
+          ],
+          "answer": 0,
+          "explain": "Interpolation uses a dollar sign and braces: `${n}`."
+        },
+        {
+          "type": "gap",
+          "id": "strings-6",
+          "prompt": "Complete the code so it prints SHOUT.",
+          "code": "fn main() {\n    word := 'shout'\n    println(word.___)\n}",
+          "options": [
+            "to_upper()",
+            "upper()",
+            "to_upper",
+            "toUpperCase()"
+          ],
+          "answer": 0,
+          "explain": "The method is `to_upper`, and a method call needs parentheses: `to_upper()`."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-7",
+          "prompt": "Build the line that prints the first name, a space and the last name.",
+          "tokens": [
+            "println(",
+            "first",
+            "+",
+            "' '",
+            "+",
+            "last",
+            ")"
+          ],
+          "distractors": [
+            ",",
+            "."
+          ],
+          "explain": "`+` joins the strings. The space is a string of its own: `' '`."
+        },
+        {
+          "type": "order",
+          "id": "strings-8",
+          "prompt": "Put the lines in order so the program prints RAIN.",
+          "lines": [
+            "word := 'Rainbow'",
+            "part := word[0..4]",
+            "loud := part.to_upper()",
+            "println(loud)"
+          ],
+          "explain": "Each line uses the variable from the line before: `word`, then `part`, then `loud`."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`s.len`",
+              "the length of s"
+            ],
+            [
+              "`s.to_upper()`",
+              "s in capital letters"
+            ],
+            [
+              "`s.contains('a')`",
+              "true if a is in s"
+            ],
+            [
+              "`'${x}'`",
+              "puts x into the text"
+            ],
+            [
+              "`s[1..3]`",
+              "positions 1 and 2 of s"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "strings-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "name := 'Ada'",
+            "age := 36",
+            "next := age + 1",
+            "println(name + ' will be ' + next)"
+          ],
+          "bug": 3,
+          "explain": "`next` is an `int`, and `+` only joins strings. Write `println('${name} will be ${next}')`."
+        },
+        {
+          "type": "bug",
+          "id": "strings-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "word := 'hello'",
+            "big := word.to_upper()",
+            "println(big)",
+            "println(word.len())"
+          ],
+          "bug": 3,
+          "explain": "`len` is a field, not a method. Write `word.len` without parentheses."
+        },
+        {
+          "type": "choice",
+          "id": "strings-12",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    s := 'banana'\n    println(s[1..4])\n}",
+          "options": [
+            "`ana`",
+            "`ban`",
+            "`anan`",
+            "`bana`"
+          ],
+          "answer": 0,
+          "explain": "Positions start at `0`. `[1..4]` takes positions 1, 2 and 3: `a`, `n`, `a`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program choose with if, else and match, and use if as an expression that gives a value.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`if` runs code only when a **condition** is true. The condition needs no parentheses, but the braces are required. You compare values with `==` (equal), `!=` (not equal), `<`, `>`, `<=` and `>=`."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    temp := 25\n    if temp > 20 {\n        println('Warm')\n    }\n    println('Done')\n}",
+          "output": "Warm\nDone"
+        },
+        {
+          "type": "text",
+          "md": "`else` runs when the condition is false. With `else if` you can check more conditions. V checks them from top to bottom and runs only the first branch that matches."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    score := 72\n    if score >= 90 {\n        println('A')\n    } else if score >= 70 {\n        println('B')\n    } else {\n        println('C')\n    }\n}",
+          "output": "B"
+        },
+        {
+          "type": "text",
+          "md": "You can combine conditions. `&&` means **and**: both sides must be true. `||` means **or**: one side is enough. `!` means **not**: it turns `true` into `false` and back."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    age := 20\n    has_ticket := false\n    if age >= 18 && has_ticket {\n        println('Welcome')\n    }\n    if age >= 18 || has_ticket {\n        println('Adult or ticket')\n    }\n    if !has_ticket {\n        println('Buy a ticket')\n    }\n}",
+          "output": "Adult or ticket\nBuy a ticket"
+        },
+        {
+          "type": "text",
+          "md": "In V, `if` can give a value. The last value in the chosen branch is the result. An `if` that gives a value must have an `else` branch, so there is always a result."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    a := 8\n    b := 5\n    bigger := if a > b { a } else { b }\n    println(bigger)\n    kind := if bigger % 2 == 0 { 'even' } else { 'odd' }\n    println(kind)\n}",
+          "output": "8\neven"
+        },
+        {
+          "type": "heading",
+          "text": "match"
+        },
+        {
+          "type": "text",
+          "md": "`match` compares one value with several options and runs the first branch that fits. A comma lists several values for one branch. `else` covers all other values, and V requires it when the options do not cover every possible value. Like `if`, `match` can give a value."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    day := 6\n    name := match day {\n        1 { 'Monday' }\n        6, 7 { 'Weekend' }\n        else { 'Other day' }\n    }\n\n    println(name)\n}",
+          "output": "Weekend"
+        },
+        {
+          "type": "text",
+          "md": "A branch can also check a range. In `match`, `90...100` with three dots means every number from `90` to `100`, both included. The branches can also run statements instead of giving a value."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    score := 72\n    match score {\n        90...100 { println('Excellent') }\n        50...89 { println('Passed') }\n        else { println('Try again') }\n    }\n}",
+          "output": "Passed"
+        },
+        {
+          "type": "warning",
+          "md": "`=` gives a value to a variable, `==` compares two values. `if x = 5 {` does not compile. Write `if x == 5 {`."
+        }
+      ],
+      "card": [
+        "`if x > 0 { } else if x < 0 { } else { }`",
+        "`==`, `!=`, `<`, `>=`, `&&` (and), `||` (or), `!` (not)",
+        "`v := if c { a } else { b }` gives a value",
+        "`match x { 1 { } 2, 3 { } else { } }`",
+        "`1...5` in `match` includes 1 and 5"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    x := 7\n    if x > 5 {\n        println('big')\n    } else {\n        println('small')\n    }\n}",
+          "answers": [
+            "big"
+          ],
+          "explain": "`7 > 5` is true, so the first branch runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    n := 15\n    result := if n % 2 == 0 { 'even' } else { 'odd' }\n    println(result)\n}",
+          "answers": [
+            "odd"
+          ],
+          "explain": "`15 % 2` is `1`, not `0`, so the `else` branch gives `odd`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    score := 85\n    grade := match score {\n        90...100 { 'A' }\n        80...89 { 'B' }\n        else { 'C' }\n    }\n\n    println(grade)\n}",
+          "options": [
+            "`B`",
+            "`A`",
+            "`C`",
+            "It does not compile."
+          ],
+          "answer": 0,
+          "explain": "`85` is in the range `80...89`, so the second branch gives `B`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-4",
+          "statement": "An `if` that gives a value must have an `else` branch.",
+          "answer": true,
+          "explain": "Without `else` there would be no value when the condition is false, so V reports an error."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-5",
+          "prompt": "Complete the code so that both conditions must be true.",
+          "code": "fn main() {\n    age := 70\n    if age >= 18 ___ age < 65 {\n        println('working age')\n    } else {\n        println('other')\n    }\n}",
+          "options": [
+            "&&",
+            "||",
+            "and",
+            "&"
+          ],
+          "answer": 0,
+          "explain": "`&&` means and: both sides must be true. `70 < 65` is false, so the `else` branch runs."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-6",
+          "prompt": "Complete the code so `max` is the bigger number.",
+          "code": "fn main() {\n    a := 3\n    b := 9\n    max := if a > b { a } ___ { b }\n    println(max)\n}",
+          "options": [
+            "else",
+            "elif",
+            "otherwise",
+            ":"
+          ],
+          "answer": 0,
+          "explain": "An `if` expression needs `else` for the second value."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-7",
+          "prompt": "Build the line that sets `sign` to 1 when `n` is positive and to 0 otherwise.",
+          "tokens": [
+            "sign",
+            ":=",
+            "if",
+            "n > 0",
+            "{ 1 }",
+            "else",
+            "{ 0 }"
+          ],
+          "distractors": [
+            "?",
+            "then"
+          ],
+          "explain": "`if` gives a value: the branch for a true condition comes first, the `else` branch second."
+        },
+        {
+          "type": "order",
+          "id": "conditions-8",
+          "prompt": "Put the lines in order: 90 or more prints A, 70 or more prints B, everything else prints C.",
+          "lines": [
+            "if score >= 90 {",
+            "    println('A')",
+            "} else if score >= 70 {",
+            "    println('B')",
+            "} else {",
+            "    println('C')",
+            "}"
+          ],
+          "explain": "The highest limit comes first, because V runs only the first branch that matches. `else` comes last."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-9",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`==`",
+              "equal"
+            ],
+            [
+              "`!=`",
+              "not equal"
+            ],
+            [
+              "`&&`",
+              "and"
+            ],
+            [
+              "`||`",
+              "or"
+            ],
+            [
+              "`!`",
+              "not"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "x := 10",
+            "if x = 10 {",
+            "    println('ten')",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "`=` gives a value, it does not compare. Write `if x == 10 {`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "n := 3",
+            "word := match n {",
+            "    1 { 'one' }",
+            "    2 { 'two' }",
+            "    default { 'many' }",
+            "}",
+            "println(word)"
+          ],
+          "bug": 4,
+          "explain": "The branch for all other values is called `else` in V. Write `else { 'many' }`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-12",
+          "prompt": "Which condition is true when `a` and `b` are different?",
+          "options": [
+            "`a != b`",
+            "`a <> b`",
+            "`a =! b`",
+            "`a ~= b`"
+          ],
+          "answer": 0,
+          "explain": "`!=` means not equal. The other spellings are not V operators."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with for: over ranges, while a condition holds, and over arrays, with break and continue.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "V has only one keyword for loops: `for`. With a **range** such as `1 .. 4`, the loop variable takes the values `1`, `2` and `3`. The end of the range is not included."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    for i in 1 .. 4 {\n        println(i)\n    }\n}",
+          "output": "1\n2\n3"
+        },
+        {
+          "type": "text",
+          "md": "A loop is good for adding up numbers. Before the loop, create a `mut` variable that starts at `0`. In each round, add the next value to it."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    mut total := 0\n    for n in 1 .. 6 {\n        total += n\n    }\n    println(total)\n}",
+          "output": "15"
+        },
+        {
+          "type": "text",
+          "md": "`for` followed by a condition repeats the code as long as the condition is true. Make sure that something in the loop changes the condition, or the loop never ends. `n *= 3` multiplies `n` by `3`."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    mut n := 1\n    for n < 100 {\n        n *= 3\n    }\n    println(n)\n}",
+          "output": "243"
+        },
+        {
+          "type": "text",
+          "md": "An **array** is a list of values in square brackets, for example `['apple', 'pear']`. You learn more about arrays later. `for x in list` runs once for every value. With `for i, x in list` you also get the position `i`, starting at `0`."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    fruits := ['apple', 'pear', 'plum']\n    for fruit in fruits {\n        println(fruit)\n    }\n    for i, fruit in fruits {\n        println('${i}: ${fruit}')\n    }\n}",
+          "output": "apple\npear\nplum\n0: apple\n1: pear\n2: plum"
+        },
+        {
+          "type": "heading",
+          "text": "break and continue"
+        },
+        {
+          "type": "text",
+          "md": "`continue` skips the rest of the current round and goes on with the next one. `break` ends the loop at once."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    for i in 1 .. 10 {\n        if i % 2 == 0 {\n            continue\n        }\n        if i > 7 {\n            break\n        }\n        println(i)\n    }\n}",
+          "output": "1\n3\n5\n7"
+        },
+        {
+          "type": "text",
+          "md": "`for` without anything runs forever, until a `break` stops it. `count++` adds `1` to `count`, and `count--` subtracts `1`."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    mut count := 0\n    for {\n        count++\n        if count == 3 {\n            break\n        }\n    }\n    println(count)\n}",
+          "output": "3"
+        },
+        {
+          "type": "warning",
+          "md": "A range in `for` uses two dots and does not include the end: `0 .. 5` gives `0` to `4`. A range in `match` uses three dots and includes the end."
+        }
+      ],
+      "card": [
+        "`for i in 0 .. 5 { }` gives 0, 1, 2, 3, 4",
+        "`for x < 10 { }` repeats while the condition is true",
+        "`for i, x in list { }` gives position and value",
+        "`break` ends the loop, `continue` skips to the next round",
+        "`for { }` repeats until `break`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    mut total := 0\n    for i in 1 .. 4 {\n        total += i\n    }\n    println(total)\n}",
+          "answers": [
+            "6"
+          ],
+          "explain": "The loop adds `1`, `2` and `3`. The end `4` is not included."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    for i in 0 .. 10 {\n        if i == 4 {\n            break\n        }\n        print(i)\n    }\n    println('')\n}",
+          "answers": [
+            "0123"
+          ],
+          "explain": "When `i` is `4`, `break` ends the loop before `4` is printed."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "How many lines does this print?",
+          "code": "fn main() {\n    for i in 2 .. 6 {\n        println(i)\n    }\n}",
+          "options": [
+            "4",
+            "5",
+            "6",
+            "3"
+          ],
+          "answer": 0,
+          "explain": "`2 .. 6` gives `2`, `3`, `4` and `5`, because the end is not included."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-4",
+          "statement": "`for i in 0 .. 3` runs the loop with `i` equal to 0, 1, 2 and 3.",
+          "answer": false,
+          "explain": "The end of a range is not included, so `i` takes only the values `0`, `1` and `2`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-5",
+          "prompt": "Complete the code so it repeats while n is less than 50.",
+          "code": "fn main() {\n    mut n := 1\n    ___ n < 50 {\n        n *= 2\n    }\n    println(n)\n}",
+          "options": [
+            "for",
+            "while",
+            "loop",
+            "until"
+          ],
+          "answer": 0,
+          "explain": "V has no `while`. `for` with a condition repeats as long as the condition is true."
+        },
+        {
+          "type": "gap",
+          "id": "loops-6",
+          "prompt": "Complete the code so it prints only the odd numbers: 135.",
+          "code": "fn main() {\n    for i in 1 .. 6 {\n        if i % 2 == 0 {\n            ___\n        }\n        print(i)\n    }\n    println('')\n}",
+          "options": [
+            "continue",
+            "break",
+            "skip",
+            "next"
+          ],
+          "answer": 0,
+          "explain": "`continue` skips the even numbers and goes on with the next round. `break` would end the loop at `2`."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-7",
+          "prompt": "Build the first line of a loop that gives the position i and the value name for each item in names.",
+          "tokens": [
+            "for",
+            "i",
+            ",",
+            "name",
+            "in",
+            "names",
+            "{"
+          ],
+          "distractors": [
+            "range",
+            ":="
+          ],
+          "explain": "`for i, name in names {` gives the position first and the value second."
+        },
+        {
+          "type": "order",
+          "id": "loops-8",
+          "prompt": "Put the lines in order so the program prints 12 once.",
+          "lines": [
+            "mut sum := 0",
+            "for n in [2, 4, 6] {",
+            "    sum += n",
+            "}",
+            "println(sum)"
+          ],
+          "explain": "Create `sum` before the loop, add each number inside the loop, and print after the loop."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`0 .. 3`",
+              "0, 1 and 2"
+            ],
+            [
+              "`break`",
+              "ends the loop"
+            ],
+            [
+              "`continue`",
+              "goes to the next round"
+            ],
+            [
+              "`for x < 5 { }`",
+              "repeats while the condition is true"
+            ],
+            [
+              "`n++`",
+              "adds 1 to n"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "loops-10",
+          "prompt": "Which line has the bug? The program should count down 3, 2, 1.",
+          "lines": [
+            "mut n := 3",
+            "for n < 0 {",
+            "    println(n)",
+            "    n--",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "`n < 0` is false at the start, so the loop never runs. Write `for n > 0 {`."
+        },
+        {
+          "type": "bug",
+          "id": "loops-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fruits := ['apple', 'pear']",
+            "for fruit of fruits {",
+            "    println(fruit)",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "A `for` loop over an array uses `in`. Write `for fruit in fruits {`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-12",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    mut n := 1\n    for n < 20 {\n        n *= 2\n    }\n    println(n)\n}",
+          "options": [
+            "`32`",
+            "`16`",
+            "`20`",
+            "`64`"
+          ],
+          "answer": 0,
+          "explain": "`n` doubles: 1, 2, 4, 8, 16, 32. At `32`, `n < 20` is false and the loop stops."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Write your own functions with parameters and return values, return several values, and meet pub.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** is a named block of code that you can run many times. After `fn` and the name come the **parameters** in parentheses: each one has a name and a type. The type after the parentheses is the type of the result. `return` gives the result back."
+        },
+        {
+          "type": "code",
+          "code": "fn add(a int, b int) int {\n    return a + b\n}\n\nfn main() {\n    println(add(2, 3))\n    println(add(10, -4))\n}",
+          "output": "5\n6"
+        },
+        {
+          "type": "text",
+          "md": "When you **call** `add(2, 3)`, `a` becomes `2` and `b` becomes `3`. The order of the functions in the file does not matter: `main` can come first or last."
+        },
+        {
+          "type": "text",
+          "md": "A function without a type after the parentheses returns nothing. It can still do useful work, such as printing."
+        },
+        {
+          "type": "code",
+          "code": "fn greet(name string) {\n    println('Hello, ${name}!')\n}\n\nfn main() {\n    greet('Ada')\n    greet('Linus')\n}",
+          "output": "Hello, Ada!\nHello, Linus!"
+        },
+        {
+          "type": "text",
+          "md": "`return` ends the function at once. This lets you handle special cases early, before the main part of the function."
+        },
+        {
+          "type": "code",
+          "code": "fn describe(n int) string {\n    if n < 0 {\n        return 'negative'\n    }\n    if n == 0 {\n        return 'zero'\n    }\n    return 'positive'\n}\n\nfn main() {\n    println(describe(-5))\n    println(describe(0))\n    println(describe(8))\n}",
+          "output": "negative\nzero\npositive"
+        },
+        {
+          "type": "heading",
+          "text": "Several return values"
+        },
+        {
+          "type": "text",
+          "md": "A V function can return several values. List their types in parentheses, for example `(int, int)`, and return the values separated by a comma. When you call the function, you create one variable for each value. `_` is a placeholder for a value that you do not need."
+        },
+        {
+          "type": "code",
+          "code": "fn divide(a int, b int) (int, int) {\n    return a / b, a % b\n}\n\nfn main() {\n    q, r := divide(17, 5)\n    println('${q} remainder ${r}')\n    _, rest := divide(9, 4)\n    println(rest)\n}",
+          "output": "3 remainder 2\n1"
+        },
+        {
+          "type": "heading",
+          "text": "Public functions"
+        },
+        {
+          "type": "text",
+          "md": "Larger V programs are split into **modules**. A function is private to its module by default. `pub fn` makes it **public**, so other modules can use it. A program in a single file is the module `main`, so there `pub` changes nothing, but you see it often in libraries."
+        },
+        {
+          "type": "code",
+          "code": "pub fn square(n int) int {\n    return n * n\n}\n\nfn main() {\n    println(square(7))\n}",
+          "output": "49"
+        },
+        {
+          "type": "warning",
+          "md": "The values you pass must match the parameters in number and type. `add(2)` and `add(2.5, 1)` do not compile when `add` expects two `int` values. Parameters are also immutable inside the function."
+        }
+      ],
+      "card": [
+        "`fn add(a int, b int) int { return a + b }`",
+        "No result type means the function returns nothing",
+        "`fn f() (int, string)` returns two values",
+        "`x, y := f()`; `_` ignores a value",
+        "`pub fn` can be used by other modules"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "fn double(n int) int {\n    return n * 2\n}\n\nfn main() {\n    println(double(double(3)))\n}",
+          "answers": [
+            "12"
+          ],
+          "explain": "The inner call gives `6`, and the outer call doubles it to `12`."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print?",
+          "code": "fn order(a int, b int) (int, int) {\n    if a < b {\n        return a, b\n    }\n    return b, a\n}\n\nfn main() {\n    low, high := order(9, 4)\n    println('${low}-${high}')\n}",
+          "answers": [
+            "4-9"
+          ],
+          "explain": "`9 < 4` is false, so the function returns `b, a`, which is `4, 9`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-3",
+          "prompt": "The function is `fn area(w int, h int) int`. Which call is correct?",
+          "options": [
+            "`area(3, 4)`",
+            "`area(3)`",
+            "`area(w int, h int)`",
+            "`area(3.5, 4)`"
+          ],
+          "answer": 0,
+          "explain": "The call passes two `int` values. Types are written only where the function is defined."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-4",
+          "statement": "A V function can return two values at once.",
+          "answer": true,
+          "explain": "List the types in parentheses, such as `(int, int)`, and write `return a, b`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-5",
+          "prompt": "Complete the function so it compiles and the program prints 25.",
+          "code": "fn square(n int) ___ {\n    return n * n\n}\n\nfn main() {\n    println(square(5))\n}",
+          "options": [
+            "int",
+            "-> int",
+            ": int",
+            "void"
+          ],
+          "answer": 0,
+          "explain": "The result type comes right after the parentheses, without an arrow or a colon."
+        },
+        {
+          "type": "gap",
+          "id": "functions-6",
+          "prompt": "Complete the code so it ignores the first value and prints 1.",
+          "code": "fn divide(a int, b int) (int, int) {\n    return a / b, a % b\n}\n\nfn main() {\n    ___, r := divide(7, 2)\n    println(r)\n}",
+          "options": [
+            "_",
+            "nil",
+            "none",
+            "?"
+          ],
+          "answer": 0,
+          "explain": "`_` is the placeholder for a value that you do not need."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-7",
+          "prompt": "Build the first line of a function add that takes two int values and returns an int.",
+          "tokens": [
+            "fn",
+            "add",
+            "(a int, b int)",
+            "int",
+            "{"
+          ],
+          "distractors": [
+            "func",
+            "->"
+          ],
+          "explain": "First `fn` and the name, then the parameters with their types, then the result type and the brace."
+        },
+        {
+          "type": "order",
+          "id": "functions-8",
+          "prompt": "Put the lines in order so `average(4, 8)` returns 6.",
+          "lines": [
+            "fn average(a int, b int) int {",
+            "    sum := a + b",
+            "    return sum / 2",
+            "}"
+          ],
+          "explain": "The function first calculates `sum` and then returns half of it."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`fn`",
+              "defines a function"
+            ],
+            [
+              "`return`",
+              "gives back a result"
+            ],
+            [
+              "`(int, int)`",
+              "two return values"
+            ],
+            [
+              "`_`",
+              "ignores a value"
+            ],
+            [
+              "`pub`",
+              "usable from other modules"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "functions-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fn add(a int, b int) int {",
+            "    return a + b",
+            "}",
+            "fn main() {",
+            "    println(add(2))",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "`add` needs two values. Write for example `add(2, 3)`."
+        },
+        {
+          "type": "bug",
+          "id": "functions-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fn half(n int) {",
+            "    return n / 2",
+            "}",
+            "fn main() {",
+            "    println(half(10))",
+            "}"
+          ],
+          "bug": 0,
+          "explain": "The function returns a value, so it needs a result type. Write `fn half(n int) int {`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-12",
+          "prompt": "What does this print?",
+          "code": "fn check(n int) int {\n    if n > 10 {\n        return 1\n    }\n    return 2\n}\n\nfn main() {\n    println(check(10))\n}",
+          "options": [
+            "`2`",
+            "`1`",
+            "`10`",
+            "Nothing"
+          ],
+          "answer": 0,
+          "explain": "`10 > 10` is false, so the first `return` is skipped and the function returns `2`."
+        }
+      ]
+    },
+    {
+      "id": "arrays",
+      "title": "Arrays and maps",
+      "chapter": "Data",
+      "summary": "Keep many values in arrays, add items at the end, and store key-value pairs in maps.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** holds several values of the same type. You write the values in square brackets. `nums[0]` is the first value, because positions start at `0`. `nums.len` is the number of values."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    nums := [10, 20, 30]\n    println(nums)\n    println(nums[0])\n    println(nums[2])\n    println(nums.len)\n}",
+          "output": "[10, 20, 30]\n10\n30\n3"
+        },
+        {
+          "type": "text",
+          "md": "To change an array, create it with `mut`. `<<` adds a value at the end. `names[1] = 'Bea'` replaces the value at position `1`. `[]string{}` creates an empty array of strings."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    mut names := []string{}\n    names << 'Ada'\n    names << 'Bob'\n    names[1] = 'Bea'\n    println(names)\n    println(names.len)\n}",
+          "output": "['Ada', 'Bea']\n2"
+        },
+        {
+          "type": "text",
+          "md": "`x in list` gives `true` when the value `x` is in the array. A `for` loop goes through all values, for example to add them up."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    primes := [2, 3, 5, 7]\n    println(5 in primes)\n    println(4 in primes)\n    mut total := 0\n    for p in primes {\n        total += p\n    }\n    println(total)\n}",
+          "output": "true\nfalse\n17"
+        },
+        {
+          "type": "warning",
+          "md": "Only use positions that exist. With three values, the positions are `0`, `1` and `2`. `nums[3]` stops the program with the error `index out of range`."
+        },
+        {
+          "type": "heading",
+          "text": "Maps"
+        },
+        {
+          "type": "text",
+          "md": "A **map** stores pairs of a **key** and a **value**, such as a name and an age. `ages['Ada']` reads the value for the key `'Ada'`. In a `mut` map, `ages['Cy'] = 41` adds or changes a pair. `'Bob' in ages` checks if a key exists."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    mut ages := {\n        'Ada': 36\n        'Bob': 20\n    }\n    ages['Cy'] = 41\n    println(ages['Ada'])\n    println(ages.len)\n    println('Bob' in ages)\n    println(ages['Zoe'])\n}",
+          "output": "36\n3\ntrue\n0"
+        },
+        {
+          "type": "text",
+          "md": "A key that is not in the map gives the **zero value** of the value type: `0` for numbers and `''` for strings. That is why `ages['Zoe']` printed `0`. Use `in` when you need to know if the key exists."
+        },
+        {
+          "type": "text",
+          "md": "`map[string]int{}` creates an empty map with `string` keys and `int` values. `m.delete(key)` removes a pair. `for key, value in m` goes through all pairs in the order you added them."
+        },
+        {
+          "type": "code",
+          "code": "fn main() {\n    mut stock := map[string]int{}\n    stock['apple'] = 5\n    stock['pear'] = 2\n    stock['plum'] = 0\n    stock.delete('plum')\n    for fruit, count in stock {\n        println('${fruit}: ${count}')\n    }\n}",
+          "output": "apple: 5\npear: 2"
+        }
+      ],
+      "card": [
+        "`a := [1, 2, 3]`, `a[0]`, `a.len`",
+        "`mut a := []int{}`, then `a << 4` adds at the end",
+        "`x in a` checks if x is in the array",
+        "`mut m := map[string]int{}`, `m['a'] = 1`, `m.delete('a')`",
+        "`for k, v in m { }` goes through a map"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arrays-1",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    mut nums := [1, 2]\n    nums << 3\n    nums << 4\n    println(nums.len)\n}",
+          "answers": [
+            "4"
+          ],
+          "explain": "The array starts with two values, and `<<` adds two more."
+        },
+        {
+          "type": "input",
+          "id": "arrays-2",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    words := ['red', 'green', 'blue']\n    println(words[1])\n}",
+          "answers": [
+            "green"
+          ],
+          "explain": "Positions start at `0`, so position `1` is the second value."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-3",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    scores := {\n        'Ada': 90\n        'Bob': 75\n    }\n    println(scores['Eve'])\n}",
+          "options": [
+            "`0`",
+            "`none`",
+            "`90`",
+            "The program stops with an error."
+          ],
+          "answer": 0,
+          "explain": "`Eve` is not a key in the map, so you get the zero value of `int`, which is `0`."
+        },
+        {
+          "type": "true_false",
+          "id": "arrays-4",
+          "statement": "You can add values with `<<` to an array created with `nums := [1, 2]`.",
+          "answer": false,
+          "explain": "Without `mut` the array cannot change. Write `mut nums := [1, 2]`."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-5",
+          "prompt": "Complete the code so it prints [5].",
+          "code": "fn main() {\n    mut list := []int{}\n    list ___ 5\n    println(list)\n}",
+          "options": [
+            "<<",
+            "+=",
+            "+",
+            "=>"
+          ],
+          "answer": 0,
+          "explain": "`<<` adds a value at the end of an array."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-6",
+          "prompt": "Complete the code so it prints 2.5.",
+          "code": "fn main() {\n    mut prices := map[string]___{}\n    prices['tea'] = 2.5\n    println(prices['tea'])\n}",
+          "options": [
+            "f64",
+            "int",
+            "float",
+            "double"
+          ],
+          "answer": 0,
+          "explain": "The values are decimal numbers, so the value type is `f64`."
+        },
+        {
+          "type": "blocks",
+          "id": "arrays-7",
+          "prompt": "Build the line that checks if the key 'Ada' is in the map ages.",
+          "tokens": [
+            "if",
+            "'Ada'",
+            "in",
+            "ages",
+            "{"
+          ],
+          "distractors": [
+            "contains",
+            "has"
+          ],
+          "explain": "`in` checks if a key exists in a map."
+        },
+        {
+          "type": "order",
+          "id": "arrays-8",
+          "prompt": "Put the lines in order so the program prints ['milk', 'bread'].",
+          "lines": [
+            "mut cart := []string{}",
+            "cart << 'milk'",
+            "cart << 'bread'",
+            "println(cart)"
+          ],
+          "explain": "Create the empty array first. `<<` adds at the end, so `milk` must come before `bread`."
+        },
+        {
+          "type": "pairs",
+          "id": "arrays-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`[]int{}`",
+              "an empty array of int"
+            ],
+            [
+              "`a << x`",
+              "adds x at the end"
+            ],
+            [
+              "`a.len`",
+              "the number of values"
+            ],
+            [
+              "`map[string]int{}`",
+              "an empty map"
+            ],
+            [
+              "`m.delete(k)`",
+              "removes the key k"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "arrays-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "nums := [1, 2, 3]",
+            "nums << 4",
+            "println(nums)"
+          ],
+          "bug": 0,
+          "explain": "The array changes, so it must be mutable. Write `mut nums := [1, 2, 3]`."
+        },
+        {
+          "type": "bug",
+          "id": "arrays-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "mut ages := map[string]int{}",
+            "ages['Ada'] = 36",
+            "ages['Bob'] = '20'",
+            "println(ages.len)"
+          ],
+          "bug": 2,
+          "explain": "The values of this map are `int`, but `'20'` is a string. Write `ages['Bob'] = 20`."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-12",
+          "prompt": "What does this print?",
+          "code": "fn main() {\n    nums := [4, 8, 15]\n    println(nums[nums.len - 1])\n}",
+          "options": [
+            "`15`",
+            "`8`",
+            "`3`",
+            "The program stops with an error."
+          ],
+          "answer": 0,
+          "explain": "`nums.len` is `3`, so `nums[nums.len - 1]` is `nums[2]`, the last value."
+        }
+      ]
+    },
+    {
+      "id": "structs",
+      "title": "Structs and options",
+      "chapter": "Types",
+      "summary": "Build your own types with structs and methods, and handle missing values with ?Type, none and or.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **struct** groups related values into one new type. Each value is a **field** with a name and a type. You create a struct value with the type name and braces, and you read a field with a dot."
+        },
+        {
+          "type": "code",
+          "code": "struct Book {\n    title string\n    pages int\n}\n\nfn main() {\n    b := Book{\n        title: 'Dune'\n        pages: 412\n    }\n    println(b.title)\n    println(b.pages)\n}",
+          "output": "Dune\n412"
+        },
+        {
+          "type": "text",
+          "md": "Fields are immutable by default, even when the variable is `mut`. Fields below the line `mut:` can change. A field that you leave out when you create the struct gets its zero value."
+        },
+        {
+          "type": "code",
+          "code": "struct Player {\n    name string\nmut:\n    score int\n}\n\nfn main() {\n    mut p := Player{\n        name: 'Ada'\n    }\n    p.score += 10\n    println('${p.name}: ${p.score}')\n}",
+          "output": "Ada: 10"
+        },
+        {
+          "type": "heading",
+          "text": "Methods"
+        },
+        {
+          "type": "text",
+          "md": "A **method** is a function that belongs to a type. The **receiver** `(r Rect)` stands before the name of the method. Inside the method, `r` is the value that you call it on: `rect.area()`."
+        },
+        {
+          "type": "code",
+          "code": "struct Rect {\n    width  int\n    height int\n}\n\nfn (r Rect) area() int {\n    return r.width * r.height\n}\n\nfn main() {\n    rect := Rect{\n        width:  3\n        height: 4\n    }\n    println(rect.area())\n}",
+          "output": "12"
+        },
+        {
+          "type": "text",
+          "md": "A method that changes the struct needs a `mut` receiver: `(mut c Counter)`. The variable that you call it on must be `mut` too."
+        },
+        {
+          "type": "code",
+          "code": "struct Counter {\nmut:\n    count int\n}\n\nfn (mut c Counter) inc() {\n    c.count++\n}\n\nfn main() {\n    mut c := Counter{}\n    c.inc()\n    c.inc()\n    println(c.count)\n}",
+          "output": "2"
+        },
+        {
+          "type": "heading",
+          "text": "Options"
+        },
+        {
+          "type": "text",
+          "md": "Sometimes a function has no result, for example when a search finds nothing. The result type `?int` is an **option**: it means an `int` or nothing. `return none` returns nothing. The parameter type `[]string` means an array of strings. When you call the function, `or { }` gives a value to use instead of `none`."
+        },
+        {
+          "type": "code",
+          "code": "fn find_index(items []string, target string) ?int {\n    for i, item in items {\n        if item == target {\n            return i\n        }\n    }\n    return none\n}\n\nfn main() {\n    fruits := ['apple', 'pear', 'plum']\n    a := find_index(fruits, 'pear') or { -1 }\n    b := find_index(fruits, 'kiwi') or { -1 }\n    println(a)\n    println(b)\n}",
+          "output": "1\n-1"
+        },
+        {
+          "type": "warning",
+          "md": "You cannot use a `?int` as an `int` directly: `find_index(fruits, 'pear') + 1` does not compile. Unwrap the option first with `or { }`."
+        }
+      ],
+      "card": [
+        "`struct Point { x int y int }` defines a type",
+        "`p := Point{ x: 1, y: 2 }`, then read `p.x`",
+        "Fields below `mut:` can change",
+        "`fn (mut c Counter) inc() { }` changes `c`",
+        "`fn f() ?int` may `return none`; `f() or { 0 }`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "structs-1",
+          "prompt": "What does this print?",
+          "code": "struct Point {\n    x int\n    y int\n}\n\nfn main() {\n    p := Point{\n        x: 3\n        y: 4\n    }\n    println(p.x + p.y)\n}",
+          "answers": [
+            "7"
+          ],
+          "explain": "`p.x` is `3` and `p.y` is `4`."
+        },
+        {
+          "type": "input",
+          "id": "structs-2",
+          "prompt": "What does this print?",
+          "code": "fn safe_div(a int, b int) ?int {\n    if b == 0 {\n        return none\n    }\n    return a / b\n}\n\nfn main() {\n    x := safe_div(9, 0) or { 99 }\n    println(x)\n}",
+          "answers": [
+            "99"
+          ],
+          "explain": "`b` is `0`, so the function returns `none` and `or` gives `99`."
+        },
+        {
+          "type": "choice",
+          "id": "structs-3",
+          "prompt": "What does this print?",
+          "code": "struct Rect {\n    width  int\n    height int\n}\n\nfn (r Rect) perimeter() int {\n    return 2 * (r.width + r.height)\n}\n\nfn main() {\n    r := Rect{\n        width:  2\n        height: 5\n    }\n    println(r.perimeter())\n}",
+          "options": [
+            "`14`",
+            "`10`",
+            "`7`",
+            "`20`"
+          ],
+          "answer": 0,
+          "explain": "The method calculates `2 * (2 + 5)`, which is `14`."
+        },
+        {
+          "type": "true_false",
+          "id": "structs-4",
+          "statement": "A field above the line `mut:` can change after you create the struct.",
+          "answer": false,
+          "explain": "Only the fields below `mut:` can change. Fields above it are immutable."
+        },
+        {
+          "type": "gap",
+          "id": "structs-5",
+          "prompt": "Complete the method so it can change the counter.",
+          "code": "struct Counter {\nmut:\n    count int\n}\n\nfn (___ c Counter) inc() {\n    c.count++\n}\n\nfn main() {\n    mut c := Counter{}\n    c.inc()\n    println(c.count)\n}",
+          "options": [
+            "mut",
+            "var",
+            "&",
+            "ref"
+          ],
+          "answer": 0,
+          "explain": "A method that changes its struct needs a `mut` receiver."
+        },
+        {
+          "type": "gap",
+          "id": "structs-6",
+          "prompt": "Complete the result type so the function can return a number or none.",
+          "code": "fn first_even(nums []int) ___ {\n    for n in nums {\n        if n % 2 == 0 {\n            return n\n        }\n    }\n    return none\n}\n\nfn main() {\n    println(first_even([1, 3, 4]) or { 0 })\n}",
+          "options": [
+            "?int",
+            "int",
+            "int?",
+            "none"
+          ],
+          "answer": 0,
+          "explain": "`?int` means an `int` or `none`. The question mark comes before the type."
+        },
+        {
+          "type": "blocks",
+          "id": "structs-7",
+          "prompt": "Build the line that stores the result of lookup('Bob') in age, or 0 when there is none.",
+          "tokens": [
+            "age",
+            ":=",
+            "lookup('Bob')",
+            "or",
+            "{ 0 }"
+          ],
+          "distractors": [
+            "else",
+            "??"
+          ],
+          "explain": "`or { 0 }` comes right after the call and gives the value to use instead of `none`."
+        },
+        {
+          "type": "order",
+          "id": "structs-8",
+          "prompt": "Put the lines in order so the program prints 5. The struct `Player` has a method `add` that adds to its score.",
+          "lines": [
+            "mut p := Player{",
+            "    name: 'Ada'",
+            "}",
+            "p.add(5)",
+            "println(p.score)"
+          ],
+          "explain": "First create the player with `mut`, then call the method that changes it, and print the score last."
+        },
+        {
+          "type": "pairs",
+          "id": "structs-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`struct`",
+              "defines a new type"
+            ],
+            [
+              "`mut:`",
+              "the fields below can change"
+            ],
+            [
+              "`(r Rect)`",
+              "the receiver of a method"
+            ],
+            [
+              "`?int`",
+              "an int or none"
+            ],
+            [
+              "`or { 0 }`",
+              "the value to use instead of none"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "structs-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "struct Counter {",
+            "mut:",
+            "    count int",
+            "}",
+            "fn (c Counter) inc() {",
+            "    c.count++",
+            "}",
+            "fn main() {",
+            "    mut c := Counter{}",
+            "    c.inc()",
+            "    println(c.count)",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "The method changes `c`, so the receiver must be `mut`. Write `fn (mut c Counter) inc() {`."
+        },
+        {
+          "type": "bug",
+          "id": "structs-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fn half(n int) ?int {",
+            "    if n % 2 != 0 {",
+            "        return nil",
+            "    }",
+            "    return n / 2",
+            "}",
+            "fn main() {",
+            "    println(half(10) or { -1 })",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "V has no `nil` here. A function with an option result returns `none` when there is no value."
+        },
+        {
+          "type": "choice",
+          "id": "structs-12",
+          "prompt": "What does this print?",
+          "code": "struct Box {\nmut:\n    items int\n}\n\nfn (mut b Box) add(n int) {\n    b.items += n\n}\n\nfn main() {\n    mut b := Box{}\n    b.add(2)\n    b.add(3)\n    println(b.items)\n}",
+          "options": [
+            "`5`",
+            "`3`",
+            "`0`",
+            "`2`"
+          ],
+          "answer": 0,
+          "explain": "Each call of `add` changes the box: `0 + 2 + 3` is `5`."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,482 @@
+{
+  "hello-1": {
+    "extra": [
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    writeln(\"Hello\");\n}\n",
+        "out": "Hello"
+      },
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    print(\"Hello\");\n}\n",
+        "err": true
+      },
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    echo \"Hello\";\n}\n",
+        "err": true
+      },
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    System.out.println(\"Hello\");\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "hello-2": {
+    "out": "Sum: 9"
+  },
+  "hello-3": {
+    "out": "ABC"
+  },
+  "hello-4": {
+    "out": "23"
+  },
+  "hello-5": {
+    "extra": [
+      {
+        "src": "import std.stdio;\n\nvoid start() {\n    writeln(1);\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "hello-6": {
+    "out": "Hi\nthere"
+  },
+  "hello-7": {
+    "out": "Ready"
+  },
+  "hello-8": {
+    "out": "Total: 12",
+    "distractors": true
+  },
+  "hello-9": {
+    "out": "Start\n1 2 3",
+    "alt_orders": [
+      [
+        1,
+        2,
+        3,
+        0
+      ],
+      [
+        0,
+        2,
+        1,
+        3
+      ],
+      [
+        0,
+        3,
+        1,
+        2
+      ]
+    ]
+  },
+  "hello-10": {
+    "extra": [
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    Writeln(\"Hi\");\n}\n",
+        "err": true
+      },
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    writeln(\"Hi\")\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "hello-11": {
+    "fix": "    writeln(\"Hello\");",
+    "out": "Hello\nWorld"
+  },
+  "hello-12": {
+    "fix": "    writeln(\"Bye\");",
+    "out": "Hi\nBye"
+  },
+  "variables-1": {
+    "out": "11"
+  },
+  "variables-2": {
+    "out": "3 2"
+  },
+  "variables-3": {
+    "extra": [
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    immutable x = 5;\n    x = 6;\n}\n",
+        "err": true
+      },
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    auto x = 5;\n    x = 6;\n    writeln(x);\n}\n",
+        "out": "6"
+      },
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    int x = 5;\n    x = 6;\n    writeln(x);\n}\n",
+        "out": "6"
+      },
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    var x = 5;\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "variables-4": {
+    "code": "auto x = 2.5;\nwriteln(typeof(x).stringof);",
+    "out": "double"
+  },
+  "variables-5": {
+    "err": true
+  },
+  "variables-6": {
+    "out": "false"
+  },
+  "variables-7": {
+    "out": "3.5"
+  },
+  "variables-8": {
+    "out": "Ben"
+  },
+  "variables-9": {
+    "tpl": "import std.stdio;\n\nvoid main() {\n    {{CODE}}\n    writeln(price);\n}\n",
+    "out": "2.5",
+    "distractors": true
+  },
+  "variables-10": {
+    "out": "12",
+    "alt_orders": [
+      [
+        0,
+        2,
+        1,
+        3
+      ]
+    ]
+  },
+  "variables-11": {
+    "extra": [
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    immutable int days = 7;\n    days = 8;\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "variables-12": {
+    "fix": "double total = apples * price;",
+    "out": "1.5"
+  },
+  "strings-1": {
+    "out": "sunflower"
+  },
+  "strings-2": {
+    "out": "6a"
+  },
+  "strings-3": {
+    "out": "boa"
+  },
+  "strings-4": {
+    "err": true
+  },
+  "strings-5": {
+    "out": "2"
+  },
+  "strings-6": {
+    "out": "t"
+  },
+  "strings-7": {
+    "out": "Hi, Ana"
+  },
+  "strings-8": {
+    "out": "D IS FUN"
+  },
+  "strings-9": {
+    "tpl": "import std.stdio;\n\nvoid main() {\n    double price = 3.14159;\n    {{CODE}}\n}\n",
+    "out": "3.14",
+    "distractors": true
+  },
+  "strings-10": {
+    "out": "Hello, World!",
+    "alt_orders": [
+      [
+        0,
+        2,
+        1,
+        3
+      ]
+    ]
+  },
+  "strings-12": {
+    "fix": "    string text = \"Age: \" ~ to!string(age);",
+    "out": "Age: 30"
+  },
+  "conditions-1": {
+    "out": "silver"
+  },
+  "conditions-2": {
+    "out": "yes"
+  },
+  "conditions-3": {
+    "out": "few"
+  },
+  "conditions-4": {
+    "err": true
+  },
+  "conditions-5": {
+    "err": true
+  },
+  "conditions-6": {
+    "out": "false"
+  },
+  "conditions-7": {
+    "out": "negative"
+  },
+  "conditions-8": {
+    "out": "other"
+  },
+  "conditions-9": {
+    "tpl": "import std.stdio;\n\nvoid main() {\n    int age = 20;\n    bool member = true;\n    {{CODE}}\n        writeln(\"ok\");\n    }\n}\n",
+    "out": "ok",
+    "distractors": true
+  },
+  "conditions-10": {
+    "out": "Warm",
+    "alt_orders": [
+      [
+        0,
+        1,
+        4,
+        3,
+        2,
+        5
+      ]
+    ]
+  },
+  "conditions-12": {
+    "fix": "} else if (score >= 50) {",
+    "out": "pass"
+  },
+  "loops-1": {
+    "out": "10"
+  },
+  "loops-2": {
+    "out": "5"
+  },
+  "loops-3": {
+    "out": "2\n3\n4\n5"
+  },
+  "loops-4": {
+    "out": "012"
+  },
+  "loops-5": {
+    "code": "int count = 0;\nforeach (i; 0 .. 3) {\n    count++;\n}\nwriteln(count);",
+    "out": "3"
+  },
+  "loops-6": {
+    "out": "5"
+  },
+  "loops-7": {
+    "out": "0\n1\n2"
+  },
+  "loops-8": {
+    "out": "5\n4\n3\n2\n1"
+  },
+  "loops-9": {
+    "tpl": "import std.stdio;\n\nvoid main() {\n    int count = 7;\n    {{CODE}}\n        writeln(count);\n        count++;\n    }\n}\n",
+    "out": "7\n8\n9",
+    "distractors": true
+  },
+  "loops-10": {
+    "out": "15",
+    "alt_orders": [
+      [
+        0,
+        1,
+        2,
+        4,
+        3
+      ]
+    ]
+  },
+  "loops-12": {
+    "fix": "for (int i = 1; i <= 4; i++) {",
+    "out": "24"
+  },
+  "functions-1": {
+    "out": "12"
+  },
+  "functions-2": {
+    "out": "10"
+  },
+  "functions-3": {
+    "out": "6"
+  },
+  "functions-4": {
+    "out": "3"
+  },
+  "functions-5": {
+    "extra": [
+      {
+        "src": "import std.stdio;\n\nint add(int a, int b) {\n    return a * 10 + b;\n}\n\nvoid main() {\n    writeln(5.add(2));\n}\n",
+        "out": "52"
+      },
+      {
+        "src": "import std.stdio;\n\nint add(int a, int b) {\n    return a * 10 + b;\n}\n\nvoid main() {\n    writeln(add.5(2));\n}\n",
+        "err": true
+      },
+      {
+        "src": "import std.stdio;\n\nint add(int a, int b) {\n    return a * 10 + b;\n}\n\nvoid main() {\n    writeln(5.add.2);\n}\n",
+        "err": true
+      },
+      {
+        "src": "import std.stdio;\n\nint add(int a, int b) {\n    return a * 10 + b;\n}\n\nvoid main() {\n    writeln(2.add(5));\n}\n",
+        "out": "25"
+      }
+    ]
+  },
+  "functions-6": {
+    "err": true
+  },
+  "functions-7": {
+    "out": "9"
+  },
+  "functions-8": {
+    "out": "6"
+  },
+  "functions-9": {
+    "tpl": "import std.stdio;\n\n{{CODE}}\n    return age >= 18;\n}\n\nvoid main() {\n    writeln(isAdult(20));\n}\n",
+    "out": "true",
+    "distractors": true
+  },
+  "functions-10": {
+    "tpl": "import std.stdio;\n\n{{CODE}}\n\nvoid main() {\n    writeln(larger(3, 8));\n    writeln(larger(9, 2));\n}\n",
+    "out": "8\n9",
+    "alt_orders": [
+      [
+        0,
+        1,
+        4,
+        3,
+        2,
+        5
+      ],
+      [
+        0,
+        1,
+        2,
+        4,
+        3,
+        5
+      ]
+    ]
+  },
+  "functions-12": {
+    "fix": "    int r = multiply(3, 4);",
+    "out": "12"
+  },
+  "arrays-1": {
+    "out": "24"
+  },
+  "arrays-2": {
+    "out": "4"
+  },
+  "arrays-3": {
+    "out": "[7, 8]"
+  },
+  "arrays-4": {
+    "out": "9"
+  },
+  "arrays-5": {
+    "err": true
+  },
+  "arrays-6": {
+    "code": "string[] fruits = [\"fig\"];\nfruits ~= \"kiwi\";\nfruits ~= [\"lime\", \"date\"];\nwriteln(fruits.length);",
+    "out": "4"
+  },
+  "arrays-7": {
+    "out": "[1, 2, 3]"
+  },
+  "arrays-8": {
+    "out": "found"
+  },
+  "arrays-9": {
+    "tpl": "import std.stdio;\n\nvoid main() {\n    {{CODE}}\n    writeln(colors);\n}\n",
+    "out": "[\"red\", \"blue\"]",
+    "distractors": true
+  },
+  "arrays-10": {
+    "out": "[3, 4]",
+    "alt_orders": [
+      [
+        0,
+        2,
+        1,
+        3
+      ]
+    ]
+  },
+  "arrays-11": {
+    "extra": [
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    int[string] ages;\n    ages[\"Ana\"] = 30;\n    writeln(ages.get(\"Zoe\", 0));\n}\n",
+        "out": "0"
+      },
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    int[string] ages;\n    writeln(ages[\"Zoe\"]);\n}\n",
+        "err": true
+      },
+      {
+        "src": "import std.stdio;\n\nvoid main() {\n    int[] nums = [1, 2, 3, 4, 5];\n    writeln(nums[5]);\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "arrays-12": {
+    "fix": "writeln(names[2]);",
+    "out": "0 Ana\n1 Ben\n2 Cleo\nCleo"
+  },
+  "structs-1": {
+    "out": "8"
+  },
+  "structs-2": {
+    "out": "1 7"
+  },
+  "structs-3": {
+    "out": "4"
+  },
+  "structs-4": {
+    "out": "Point(1, 2)"
+  },
+  "structs-5": {
+    "out": "212"
+  },
+  "structs-6": {
+    "err": true
+  },
+  "structs-7": {
+    "out": "Lea"
+  },
+  "structs-8": {
+    "out": "Meow"
+  },
+  "structs-9": {
+    "tpl": "import std.stdio;\n\nclass Account {\n    string owner;\n    int balance;\n\n    this(string owner, int balance) {\n        this.owner = owner;\n        this.balance = balance;\n    }\n}\n\nvoid main() {\n    Account acc;\n    {{CODE}}\n    writeln(acc.owner, \" \", acc.balance);\n}\n",
+    "out": "Ana 100",
+    "distractors": true
+  },
+  "structs-10": {
+    "tpl": "import std.stdio;\n\nstruct Point {\n    int x;\n    int y;\n}\n\nvoid main() {\n    {{CODE}}\n}\n",
+    "out": "1 5",
+    "alt_orders": [
+      [
+        0,
+        2,
+        1,
+        3
+      ],
+      [
+        0,
+        1,
+        3,
+        2
+      ]
+    ]
+  },
+  "structs-12": {
+    "fix": "    Lamp lamp = new Lamp();",
+    "out": "true"
+  }
+}

@@ -1,0 +1,1970 @@
+{
+  "course": "julia",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Julia!",
+      "chapter": "Basics",
+      "summary": "Write your first Julia program, print text and numbers, and use Julia as a calculator.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A Julia program is a text file that ends in `.jl`. Julia runs it from top to bottom, one line after another. The function `println` prints a value and then starts a new line."
+        },
+        {
+          "type": "code",
+          "code": "println(\"Hello, World!\")\nprintln(\"I am learning Julia.\")",
+          "output": "Hello, World!\nI am learning Julia."
+        },
+        {
+          "type": "text",
+          "md": "Text in double quotes, like `\"Hello\"`, is a **string**. The parentheses after `println` hold the value to print. Write no space between `println` and `(`, or Julia reports an error."
+        },
+        {
+          "type": "heading",
+          "text": "print and println"
+        },
+        {
+          "type": "text",
+          "md": "`print` prints a value without starting a new line, so the next output continues on the same line. You can also pass several values, separated by commas. Julia prints them one after another, with no space in between."
+        },
+        {
+          "type": "code",
+          "code": "print(\"Hello, \")\nprint(\"Julia\")\nprintln(\"!\")\nprintln(\"a\", \"b\", \"c\")\nprintln(\"Age: \", 30)",
+          "output": "Hello, Julia!\nabc\nAge: 30"
+        },
+        {
+          "type": "heading",
+          "text": "Numbers and math"
+        },
+        {
+          "type": "text",
+          "md": "Numbers are written without quotes. Julia knows the usual operators: `+` adds, `-` subtracts, `*` multiplies and `/` divides. `^` raises a number to a power, so `2^3` is `2 * 2 * 2`."
+        },
+        {
+          "type": "code",
+          "code": "println(2 + 3)\nprintln(10 - 4)\nprintln(6 * 7)\nprintln(7 / 2)\nprintln(2^3)\nprintln((1 + 2) * 4)",
+          "output": "5\n6\n42\n3.5\n8\n12"
+        },
+        {
+          "type": "tip",
+          "md": "Julia follows the rules of math: `*` and `/` come before `+` and `-`. So `1 + 2 * 4` is `9`. Use parentheses to change the order: `(1 + 2) * 4` is `12`."
+        },
+        {
+          "type": "text",
+          "md": "`/` always gives a number with a decimal point, even when the result is whole: `10 / 2` is `5.0`. `div(7, 2)` divides and drops the rest, which gives `3`. `%` gives the rest (the remainder) of a division: `7 % 2` is `1`."
+        },
+        {
+          "type": "code",
+          "code": "println(10 / 2)\nprintln(div(7, 2))\nprintln(7 % 2)",
+          "output": "5.0\n3\n1"
+        },
+        {
+          "type": "text",
+          "md": "A line that starts with `#` is a **comment**. Julia ignores it. Programmers use comments to leave notes for the people who read the code."
+        },
+        {
+          "type": "code",
+          "code": "# println(\"hidden\")\nprintln(\"visible\")",
+          "output": "visible"
+        }
+      ],
+      "card": [
+        "`println(\"Hi\")` prints and starts a new line",
+        "`print(\"Hi\")` prints without a new line",
+        "`+ - * /` calculate; `2^3` is `8`",
+        "`7 / 2` is `3.5`; `div(7, 2)` is `3`; `7 % 2` is `1`",
+        "`#` starts a comment"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "hello-1",
+          "prompt": "What does this print?",
+          "code": "println(4 + 3 * 2)",
+          "answers": [
+            "10"
+          ],
+          "explain": "`*` comes before `+`: `3 * 2` is `6`, and `4 + 6` is `10`."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "print(\"Ju\")\nprint(\"lia\")\nprintln(\"!\")",
+          "answers": [
+            "Julia!"
+          ],
+          "explain": "`print` does not start a new line, so all three parts end up on one line."
+        },
+        {
+          "type": "choice",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "println(9 / 3)",
+          "options": [
+            "`3.0`",
+            "`3`",
+            "`3.33`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "`/` always gives a number with a decimal point, so `9 / 3` is `3.0`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-4",
+          "prompt": "Which line prints `Hello` and then starts a new line?",
+          "options": [
+            "`println(\"Hello\")`",
+            "`print(\"Hello\")`",
+            "`println(Hello)`",
+            "`println \"Hello\"`"
+          ],
+          "answer": 0,
+          "explain": "`println` starts a new line after the text, and the text needs double quotes and parentheses."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-5",
+          "statement": "This program prints `a b`, with a space between the letters.",
+          "code": "println(\"a\", \"b\")",
+          "answer": false,
+          "explain": "Julia prints the values one after another without a space, so the output is `ab`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so it prints `8`.",
+          "code": "println(2 ___ 3)",
+          "options": [
+            "^",
+            "*",
+            "+",
+            "**"
+          ],
+          "answer": 0,
+          "explain": "`^` raises a number to a power: `2^3` is `2 * 2 * 2`, which is `8`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-7",
+          "prompt": "Complete the code so it prints `1`.",
+          "code": "println(7 ___ 3)",
+          "options": [
+            "%",
+            "/",
+            "-",
+            "*"
+          ],
+          "answer": 0,
+          "explain": "`%` gives the rest of a division: 7 divided by 3 is 2, with 1 left over."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-8",
+          "prompt": "Print the result of 9 minus 3, divided by 2.",
+          "tokens": [
+            "println(",
+            "(9",
+            "-",
+            "3)",
+            "/",
+            "2",
+            ")"
+          ],
+          "distractors": [
+            "^",
+            "%"
+          ],
+          "explain": "The parentheses make Julia subtract first. `6 / 2` gives `3.0`."
+        },
+        {
+          "type": "order",
+          "id": "hello-9",
+          "prompt": "Put the lines in order so the program prints `Hello, Julia!` and then `Done` on the next line.",
+          "lines": [
+            "print(\"Hello, \")",
+            "print(\"Julia\")",
+            "println(\"!\")",
+            "println(\"Done\")"
+          ],
+          "explain": "`print` keeps the output on the same line. `println(\"!\")` ends the first line, so `Done` starts a new one."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`^`",
+              "raises a number to a power"
+            ],
+            [
+              "`%`",
+              "the rest of a division"
+            ],
+            [
+              "`/`",
+              "division with a decimal result"
+            ],
+            [
+              "`div(7, 2)`",
+              "division without the rest"
+            ],
+            [
+              "`#`",
+              "starts a comment"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "println(\"Start\")",
+            "println (\"Middle\")",
+            "println(\"End\")"
+          ],
+          "bug": 1,
+          "explain": "There must be no space between `println` and `(`. Write `println(\"Middle\")`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-12",
+          "prompt": "The program should print `Sum:` and then `2 + 3 = 5`. Which line has the bug?",
+          "lines": [
+            "println(\"Sum:\")",
+            "print(\"2 + 3 = \")",
+            "println(\"2 + 3\")"
+          ],
+          "bug": 2,
+          "explain": "The quotes turn `2 + 3` into text. Write `println(2 + 3)` so Julia calculates it."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Store values in variables, meet Int64, Float64, String and Bool, and put values into text with $.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a name for a value. You create it with `=`: the name on the left, the value on the right. After that, you can use the name instead of the value."
+        },
+        {
+          "type": "code",
+          "code": "name = \"Ana\"\nage = 30\nprintln(name)\nprintln(age + 1)",
+          "output": "Ana\n31"
+        },
+        {
+          "type": "text",
+          "md": "You can give a variable a new value at any time. The new value replaces the old one. A variable can even be used to calculate its own new value: `points = points + 5`. The short form is `points += 5`. The same works with `-=`, `*=` and `/=`."
+        },
+        {
+          "type": "code",
+          "code": "points = 10\npoints = points + 5\nprintln(points)\npoints += 1\nprintln(points)\npoints *= 2\nprintln(points)",
+          "output": "15\n16\n32"
+        },
+        {
+          "type": "heading",
+          "text": "Types"
+        },
+        {
+          "type": "text",
+          "md": "Every value has a **type**. Whole numbers like `42` are `Int64`. Numbers with a decimal point like `2.5` are `Float64`. Text is a `String`, and the values `true` and `false` are `Bool`. The function `typeof` tells you the type of a value."
+        },
+        {
+          "type": "code",
+          "code": "println(typeof(42))\nprintln(typeof(2.5))\nprintln(typeof(\"hi\"))\nprintln(typeof(true))",
+          "output": "Int64\nFloat64\nString\nBool"
+        },
+        {
+          "type": "heading",
+          "text": "String interpolation"
+        },
+        {
+          "type": "text",
+          "md": "Inside a string, `$` followed by a variable name inserts the value of the variable. For a calculation, put it in parentheses after the `$`: `$(age + 1)`. This is called **interpolation**. A name can contain `!`, so `\"$name!\"` looks for a variable `name!`. Write `\"$(name)!\"` instead."
+        },
+        {
+          "type": "code",
+          "code": "name = \"Ben\"\nage = 25\nprintln(\"$name is $age years old.\")\nprintln(\"Next year: $(age + 1)\")",
+          "output": "Ben is 25 years old.\nNext year: 26"
+        },
+        {
+          "type": "heading",
+          "text": "Converting between types"
+        },
+        {
+          "type": "text",
+          "md": "`parse(Int, \"42\")` reads a whole number from a string. `Int` is the usual short name for `Int64`. `Float64(3)` turns a whole number into a `Float64`, and `string(7)` turns a number into a `String`."
+        },
+        {
+          "type": "code",
+          "code": "n = parse(Int, \"42\")\nprintln(n + 1)\nx = Float64(3)\nprintln(x)\nprintln(typeof(string(7)))",
+          "output": "43\n3.0\nString"
+        },
+        {
+          "type": "warning",
+          "md": "A number in quotes is a string. `\"5\" + 1` is an error, because Julia does not add text and numbers. Write `parse(Int, \"5\") + 1` instead."
+        }
+      ],
+      "card": [
+        "`x = 5` creates a variable; `x += 1` adds 1",
+        "Types: `Int64`, `Float64`, `String`, `Bool`",
+        "`typeof(2.5)` is `Float64`",
+        "`\"$name is $(age + 1)\"` puts values into text",
+        "`parse(Int, \"42\")` and `string(42)` convert"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "variables-1",
+          "prompt": "What does this print?",
+          "code": "x = 4\nx = x * 3\nx += 2\nprintln(x)",
+          "answers": [
+            "14"
+          ],
+          "explain": "`x` becomes `4 * 3`, which is `12`, and `x += 2` makes it `14`."
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this print?",
+          "code": "a = 3\nb = 4\nprintln(\"$a + $b = $(a + b)\")",
+          "answers": [
+            "3 + 4 = 7"
+          ],
+          "explain": "`$a` and `$b` insert the values, and `$(a + b)` inserts the result of the calculation."
+        },
+        {
+          "type": "choice",
+          "id": "variables-3",
+          "prompt": "What does this print?",
+          "code": "println(typeof(10 / 2))",
+          "options": [
+            "`Float64`",
+            "`Int64`",
+            "`String`",
+            "`Bool`"
+          ],
+          "answer": 0,
+          "explain": "`/` always gives a `Float64`, even when the result is whole."
+        },
+        {
+          "type": "choice",
+          "id": "variables-4",
+          "prompt": "Which value has the type `Bool`?",
+          "options": [
+            "`false`",
+            "`\"true\"`",
+            "`0`",
+            "`1.0`"
+          ],
+          "answer": 0,
+          "explain": "`true` and `false` are the only `Bool` values. `\"true\"` in quotes is a `String`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-5",
+          "statement": "This program prints `6`.",
+          "code": "x = \"5\"\nprintln(x + 1)",
+          "answer": false,
+          "explain": "`x` holds the string `\"5\"`, and Julia cannot add a string and a number, so the program stops with an error."
+        },
+        {
+          "type": "gap",
+          "id": "variables-6",
+          "prompt": "Complete the code so it prints `Hello, Ana.`",
+          "code": "name = \"Ana\"\nprintln(\"Hello, ___.\")",
+          "options": [
+            "$name",
+            "name",
+            "{name}",
+            "%name"
+          ],
+          "answer": 0,
+          "explain": "`$name` inserts the value of the variable. Without `$`, the word stays plain text."
+        },
+        {
+          "type": "gap",
+          "id": "variables-7",
+          "prompt": "Complete the code so it prints `Int64`.",
+          "code": "println(___(7))",
+          "options": [
+            "typeof",
+            "type",
+            "class",
+            "string"
+          ],
+          "answer": 0,
+          "explain": "`typeof` gives the type of a value. `7` is a whole number, so its type is `Int64`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-8",
+          "prompt": "Read the whole number from the string `\"12\"` and store it in `n`.",
+          "tokens": [
+            "n",
+            "=",
+            "parse(Int,",
+            "\"12\")"
+          ],
+          "distractors": [
+            "string(",
+            "=="
+          ],
+          "explain": "`parse(Int, \"12\")` reads the text and gives the number `12`."
+        },
+        {
+          "type": "order",
+          "id": "variables-9",
+          "prompt": "Put the lines in order so the program prints `Total: 15`.",
+          "lines": [
+            "total = 5",
+            "total = total * 2",
+            "total += 5",
+            "println(\"Total: $total\")"
+          ],
+          "explain": "`total` starts at `5`, doubles to `10`, and then grows by `5` to `15`."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-10",
+          "prompt": "Match each type with its values.",
+          "pairs": [
+            [
+              "`Int64`",
+              "whole numbers"
+            ],
+            [
+              "`Float64`",
+              "numbers with a decimal point"
+            ],
+            [
+              "`String`",
+              "text"
+            ],
+            [
+              "`Bool`",
+              "true or false"
+            ],
+            [
+              "`typeof`",
+              "tells you the type of a value"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "variables-11",
+          "prompt": "The program should print `Ana is 30`. Which line has the bug?",
+          "lines": [
+            "name = \"Ana\"",
+            "age = 30",
+            "println(\"name is $age\")"
+          ],
+          "bug": 2,
+          "explain": "Without `$`, `name` is plain text. Write `println(\"$name is $age\")`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-12",
+          "prompt": "The program should print `Score: 15`. Which line has the bug?",
+          "lines": [
+            "score = 10",
+            "bonus = 5",
+            "println(\"Score: \" + score + bonus)"
+          ],
+          "bug": 2,
+          "explain": "Julia cannot add text and numbers with `+`. Write `println(\"Score: $(score + bonus)\")`."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings",
+      "chapter": "Basics",
+      "summary": "Join, repeat, measure and search text, and read single characters from a string.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "You already know strings and interpolation with `$`. Julia has many more tools for text. The operator `*` joins two strings into one. This is called **concatenation**."
+        },
+        {
+          "type": "code",
+          "code": "first_name = \"Ada\"\nlast_name = \"Lovelace\"\nfull = first_name * \" \" * last_name\nprintln(full)",
+          "output": "Ada Lovelace"
+        },
+        {
+          "type": "text",
+          "md": "`^` repeats a string: `\"ab\"^3` is `\"ababab\"`. The function `length` counts the characters of a string."
+        },
+        {
+          "type": "code",
+          "code": "println(\"ha\"^3)\nprintln(\"-\"^10)\nprintln(length(\"Julia\"))",
+          "output": "hahaha\n----------\n5"
+        },
+        {
+          "type": "warning",
+          "md": "Use `*` to join strings, not `+`. `\"a\" + \"b\"` is an error in Julia."
+        },
+        {
+          "type": "heading",
+          "text": "Changing and searching"
+        },
+        {
+          "type": "text",
+          "md": "`uppercase` and `lowercase` give a new string in capital or small letters. `occursin(part, text)` checks if `part` appears in `text` and gives `true` or `false`. `startswith` and `endswith` check the beginning and the end of a string."
+        },
+        {
+          "type": "code",
+          "code": "word = \"Julia\"\nprintln(uppercase(word))\nprintln(lowercase(word))\nprintln(occursin(\"li\", word))\nprintln(occursin(\"x\", word))\nprintln(startswith(word, \"Ju\"))",
+          "output": "JULIA\njulia\ntrue\nfalse\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "`replace` swaps one part of a string for another. You write the old and the new part with `=>` between them. The original string does not change: `replace` gives you a new one."
+        },
+        {
+          "type": "code",
+          "code": "s = \"I like cats\"\nprintln(replace(s, \"cats\" => \"dogs\"))\nprintln(s)",
+          "output": "I like dogs\nI like cats"
+        },
+        {
+          "type": "heading",
+          "text": "Single characters"
+        },
+        {
+          "type": "text",
+          "md": "`s[1]` gives the first character of `s`. In Julia, counting starts at **1**, not at 0. `s[end]` is the last character, and `s[2:4]` gives the characters 2 to 4 as a new string. A single character has the type `Char` and is written in single quotes, like `'J'`."
+        },
+        {
+          "type": "code",
+          "code": "s = \"Julia\"\nprintln(s[1])\nprintln(s[end])\nprintln(s[2:4])\nprintln(typeof(s[1]))",
+          "output": "J\na\nuli\nChar"
+        },
+        {
+          "type": "tip",
+          "md": "Strings use double quotes and characters use single quotes. `'Hi'` is an error, because a `Char` holds exactly one character."
+        }
+      ],
+      "card": [
+        "`\"a\" * \"b\"` is `\"ab\"`; `\"ab\"^2` is `\"abab\"`",
+        "`length(s)`, `uppercase(s)`, `lowercase(s)`",
+        "`occursin(\"li\", s)` gives `true` or `false`",
+        "`replace(s, \"old\" => \"new\")`",
+        "`s[1]`, `s[end]`, `s[1:3]`; `'J'` is a `Char`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this print?",
+          "code": "println(\"ab\" * \"c\"^2)",
+          "answers": [
+            "abcc"
+          ],
+          "explain": "`^` comes before `*`, like in math. `\"c\"^2` is `\"cc\"`, and then `\"ab\"` is joined in front."
+        },
+        {
+          "type": "input",
+          "id": "strings-2",
+          "prompt": "What does this print?",
+          "code": "s = \"Hello\"\nprintln(s[2:4])",
+          "answers": [
+            "ell"
+          ],
+          "explain": "Counting starts at 1, so characters 2 to 4 of `Hello` are `e`, `l` and `l`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-3",
+          "prompt": "What does this print?",
+          "code": "println(occursin(\"Ju\", \"julia\"))",
+          "options": [
+            "`false`",
+            "`true`",
+            "`Ju`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "`occursin` respects capital letters. `\"julia\"` contains `ju`, but not `Ju`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-4",
+          "prompt": "Which line prints `abcabc`?",
+          "options": [
+            "`println(\"abc\"^2)`",
+            "`println(\"abc\" * 2)`",
+            "`println(\"abc\" + \"abc\")`",
+            "`println(2 * \"abc\")`"
+          ],
+          "answer": 0,
+          "explain": "`^` repeats a string. `*` only joins strings with strings, and `+` does not work with strings at all."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-5",
+          "statement": "This program prints `HELLO`.",
+          "code": "s = \"hello\"\nuppercase(s)\nprintln(s)",
+          "answer": false,
+          "explain": "`uppercase` gives a new string but does not change `s`. You would need `s = uppercase(s)`."
+        },
+        {
+          "type": "gap",
+          "id": "strings-6",
+          "prompt": "Complete the code so it prints `Hi, Ana`.",
+          "code": "greeting = \"Hi\"\nname = \"Ana\"\nprintln(greeting * \", \" ___ name)",
+          "options": [
+            "*",
+            "+",
+            "&",
+            "^"
+          ],
+          "answer": 0,
+          "explain": "`*` joins strings. You can use it several times in a row."
+        },
+        {
+          "type": "gap",
+          "id": "strings-7",
+          "prompt": "Complete the code so it prints `n`, the last letter.",
+          "code": "s = \"Python\"\nprintln(s[___])",
+          "options": [
+            "end",
+            "0",
+            "-1",
+            "last"
+          ],
+          "answer": 0,
+          "explain": "Inside square brackets, `end` means the last position. Julia has no index `0` or `-1`."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-8",
+          "prompt": "Print `true` if the string `s` contains `cat`.",
+          "tokens": [
+            "println(",
+            "occursin(",
+            "\"cat\",",
+            "s",
+            "))"
+          ],
+          "distractors": [
+            "s,",
+            "\"cat\""
+          ],
+          "explain": "`occursin` takes the part to search for first and the text second."
+        },
+        {
+          "type": "order",
+          "id": "strings-9",
+          "prompt": "Put the lines in order so the program prints `HI!HI!`.",
+          "lines": [
+            "word = \"hi\"",
+            "word = word * \"!\"",
+            "word = word^2",
+            "println(uppercase(word))"
+          ],
+          "explain": "First add `!`, then repeat the result twice, and finally print it in capital letters."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`*`",
+              "joins two strings"
+            ],
+            [
+              "`^`",
+              "repeats a string"
+            ],
+            [
+              "`length(s)`",
+              "counts the characters"
+            ],
+            [
+              "`occursin(a, s)`",
+              "checks if a part appears in the text"
+            ],
+            [
+              "`s[end]`",
+              "the last character"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "strings-11",
+          "prompt": "The program should print `Ada Lovelace`. Which line has the bug?",
+          "lines": [
+            "first_name = \"Ada\"",
+            "last_name = \"Lovelace\"",
+            "println(first_name + \" \" + last_name)"
+          ],
+          "bug": 2,
+          "explain": "Julia joins strings with `*`, not `+`. Write `println(first_name * \" \" * last_name)`."
+        },
+        {
+          "type": "bug",
+          "id": "strings-12",
+          "prompt": "The program should print `J`. Which line has the bug?",
+          "lines": [
+            "s = \"Julia\"",
+            "c = s[0]",
+            "println(c)"
+          ],
+          "bug": 1,
+          "explain": "Julia starts counting at 1, so the first character is `s[1]`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program choose with if, elseif and else, compare values, and combine conditions with && and ||.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An `if` block runs code only when a condition is `true`. The block ends with the keyword `end`. The code inside is usually indented by four spaces. Julia does not need the spaces, but they make the code easier to read."
+        },
+        {
+          "type": "code",
+          "code": "temperature = 30\nif temperature > 25\n    println(\"It is hot.\")\nend\nprintln(\"Done.\")",
+          "output": "It is hot.\nDone."
+        },
+        {
+          "type": "text",
+          "md": "Comparisons give a `Bool`. `==` checks if two values are equal, and `!=` checks if they are different. `<`, `>`, `<=` and `>=` compare sizes. Do not confuse `==` with `=`, which stores a value. You can also chain comparisons: `1 < x < 10` checks both sides at once."
+        },
+        {
+          "type": "code",
+          "code": "x = 7\nprintln(x == 7)\nprintln(x != 7)\nprintln(x >= 10)\nprintln(1 < x < 10)",
+          "output": "true\nfalse\nfalse\ntrue"
+        },
+        {
+          "type": "heading",
+          "text": "else and elseif"
+        },
+        {
+          "type": "text",
+          "md": "`else` runs when the condition is `false`. `elseif` checks another condition. Julia tests the conditions from top to bottom and runs only the first block whose condition is `true`."
+        },
+        {
+          "type": "code",
+          "code": "score = 72\nif score >= 90\n    println(\"Excellent\")\nelseif score >= 60\n    println(\"Passed\")\nelse\n    println(\"Try again\")\nend",
+          "output": "Passed"
+        },
+        {
+          "type": "heading",
+          "text": "Combining conditions"
+        },
+        {
+          "type": "text",
+          "md": "`&&` means **and**: both sides must be `true`. `||` means **or**: at least one side must be `true`. `!` turns `true` into `false` and `false` into `true`."
+        },
+        {
+          "type": "code",
+          "code": "age = 20\nhas_ticket = true\nif age >= 18 && has_ticket\n    println(\"Welcome\")\nend\nprintln(age < 12 || age > 65)\nprintln(!has_ticket)",
+          "output": "Welcome\nfalse\nfalse"
+        },
+        {
+          "type": "heading",
+          "text": "Short choices"
+        },
+        {
+          "type": "text",
+          "md": "For a short choice between two values, write `condition ? a : b`. This is called the **ternary operator**. If the condition is `true`, the result is `a`, otherwise `b`. Julia needs the spaces around `?` and `:`."
+        },
+        {
+          "type": "code",
+          "code": "n = 5\nkind = n % 2 == 0 ? \"even\" : \"odd\"\nprintln(\"$n is $kind\")",
+          "output": "5 is odd"
+        },
+        {
+          "type": "warning",
+          "md": "A condition must be a `Bool`. In Julia, `if 1` is an error, unlike in some other languages."
+        }
+      ],
+      "card": [
+        "`if x > 0 ... elseif x == 0 ... else ... end`",
+        "`==` `!=` `<` `>` `<=` `>=` compare values",
+        "`&&` and, `||` or, `!` not",
+        "`x > 0 ? \"yes\" : \"no\"` chooses between two values"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "x = 15\nif x > 20\n    println(\"big\")\nelseif x > 10\n    println(\"medium\")\nelse\n    println(\"small\")\nend",
+          "answers": [
+            "medium"
+          ],
+          "explain": "`15 > 20` is `false`, but `15 > 10` is `true`, so the `elseif` block runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "a = 4\nb = 9\nprintln(a > b ? a : b)",
+          "answers": [
+            "9"
+          ],
+          "explain": "`4 > 9` is `false`, so the ternary operator gives the second value, `b`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "What does this print?",
+          "code": "x = 5\nprintln(x > 3 && x < 5)",
+          "options": [
+            "`false`",
+            "`true`",
+            "`5`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "`x > 3` is `true`, but `x < 5` is `false`. With `&&`, both sides must be `true`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-4",
+          "prompt": "Which line checks if `x` is equal to `10`?",
+          "options": [
+            "`if x == 10`",
+            "`if x = 10`",
+            "`if x => 10`",
+            "`if x != 10`"
+          ],
+          "answer": 0,
+          "explain": "`==` compares two values. A single `=` stores a value, and `!=` means not equal."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-5",
+          "statement": "This program prints `yes`.",
+          "code": "x = 0\nif x\n    println(\"yes\")\nend",
+          "answer": false,
+          "explain": "The condition must be a `Bool`. `x` is the number `0`, so Julia stops with an error."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-6",
+          "prompt": "Complete the code so it prints `not both`.",
+          "code": "a = 5\nb = -2\nif a > 0 ___ b > 0\n    println(\"both\")\nelse\n    println(\"not both\")\nend",
+          "options": [
+            "&&",
+            "||",
+            "and"
+          ],
+          "answer": 0,
+          "explain": "With `&&`, both conditions must be `true`. `b > 0` is `false`, so the `else` block runs."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Complete the code so it prints `even`.",
+          "code": "n = 8\nprintln(n % 2 == 0 ___ \"even\" : \"odd\")",
+          "options": [
+            "?",
+            "if",
+            "then",
+            "&&"
+          ],
+          "answer": 0,
+          "explain": "The ternary operator has the form `condition ? a : b`."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-8",
+          "prompt": "Store `\"adult\"` in `group` if `age` is 18 or more, otherwise `\"child\"`.",
+          "tokens": [
+            "group",
+            "=",
+            "age",
+            ">=",
+            "18",
+            "?",
+            "\"adult\"",
+            ":",
+            "\"child\""
+          ],
+          "distractors": [
+            "if",
+            "=="
+          ],
+          "explain": "The condition comes first, then `?` with the value for `true`, then `:` with the value for `false`."
+        },
+        {
+          "type": "order",
+          "id": "conditions-9",
+          "prompt": "Put the lines in order so the program prints `mild`.",
+          "lines": [
+            "t = 15",
+            "if t > 20",
+            "    println(\"warm\")",
+            "elseif t > 10",
+            "    println(\"mild\")",
+            "else",
+            "    println(\"cold\")",
+            "end"
+          ],
+          "explain": "`t > 20` is `false` and `t > 10` is `true`, so only the `elseif` block runs."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-10",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`==`",
+              "is equal to"
+            ],
+            [
+              "`!=`",
+              "is not equal to"
+            ],
+            [
+              "`&&`",
+              "both must be true"
+            ],
+            [
+              "`||`",
+              "at least one must be true"
+            ],
+            [
+              "`!`",
+              "turns true into false"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "The program should print `positive`. Which line has the bug?",
+          "lines": [
+            "n = 3",
+            "if n > 0",
+            "    println(\"positive\")",
+            "else if n == 0",
+            "    println(\"zero\")",
+            "else",
+            "    println(\"negative\")",
+            "end"
+          ],
+          "bug": 3,
+          "explain": "Julia writes `elseif` as one word. `else if` starts a second `if` block that never ends."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "The program should print `ten`. Which line has the bug?",
+          "lines": [
+            "x = 10",
+            "if x = 10",
+            "    println(\"ten\")",
+            "end"
+          ],
+          "bug": 1,
+          "explain": "A single `=` stores a value. To compare, write `if x == 10`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with for and while, count with ranges like 1:5 and 10:-2:0, and control loops with break and continue.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A `for` loop repeats code for every value in a sequence. `1:5` is a **range**: the numbers from 1 to 5, both included. In each round, the loop variable `i` takes the next value `in` the range. Like `if`, the loop ends with `end`."
+        },
+        {
+          "type": "code",
+          "code": "for i in 1:3\n    println(i)\nend",
+          "output": "1\n2\n3"
+        },
+        {
+          "type": "text",
+          "md": "A range can have a step in the middle: `start:step:stop`. `1:2:7` counts in steps of 2, and with a negative step like `9:-3:1` the range counts down."
+        },
+        {
+          "type": "code",
+          "code": "for i in 1:2:7\n    println(i)\nend\nfor i in 9:-3:1\n    println(i)\nend",
+          "output": "1\n3\n5\n7\n9\n6\n3"
+        },
+        {
+          "type": "text",
+          "md": "A `for` loop works with other sequences, too. With a string, the loop visits every character."
+        },
+        {
+          "type": "code",
+          "code": "for c in \"abc\"\n    println(uppercase(c))\nend",
+          "output": "A\nB\nC"
+        },
+        {
+          "type": "text",
+          "md": "To add up numbers, create a variable before the loop and change it inside the loop. At the top level of a script file, you must write `global` in front of such a change. Inside a function, which you meet in the next unit, you do not need `global`."
+        },
+        {
+          "type": "code",
+          "code": "total = 0\nfor i in 1:4\n    global total += i\nend\nprintln(total)",
+          "output": "10"
+        },
+        {
+          "type": "warning",
+          "md": "Without `global`, Julia prints a warning and then stops with an error. Inside the loop, `total` counts as a new variable that has no value yet."
+        },
+        {
+          "type": "heading",
+          "text": "while, break and continue"
+        },
+        {
+          "type": "text",
+          "md": "A `while` loop repeats as long as its condition is `true`. Make sure that something inside the loop changes the condition, or the loop never ends."
+        },
+        {
+          "type": "code",
+          "code": "n = 3\nwhile n > 0\n    println(n)\n    global n -= 1\nend\nprintln(\"Go!\")",
+          "output": "3\n2\n1\nGo!"
+        },
+        {
+          "type": "text",
+          "md": "`break` leaves a loop at once. `continue` skips the rest of the current round and goes on with the next one. Here, `continue` skips the even numbers, and `break` stops the loop after 7."
+        },
+        {
+          "type": "code",
+          "code": "for i in 1:10\n    if i % 2 == 0\n        continue\n    end\n    if i > 7\n        break\n    end\n    println(i)\nend",
+          "output": "1\n3\n5\n7"
+        }
+      ],
+      "card": [
+        "`for i in 1:5 ... end` counts from 1 to 5",
+        "`1:2:9` counts in steps of 2; `10:-1:1` counts down",
+        "`while x > 0 ... end` repeats while the condition is true",
+        "`break` leaves the loop; `continue` goes to the next round",
+        "At the top level of a script: `global total += i`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "for i in 2:2:8\n    print(i)\nend",
+          "answers": [
+            "2468"
+          ],
+          "explain": "The range starts at 2 and goes up in steps of 2 until 8. `print` keeps everything on one line."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "found = 0\nfor c in \"banana\"\n    if c == 'a'\n        global found += 1\n    end\nend\nprintln(found)",
+          "answers": [
+            "3"
+          ],
+          "explain": "The loop visits every character, and `banana` contains the character `'a'` three times."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "How many times does this print `Hi`?",
+          "code": "for i in 0:3\n    println(\"Hi\")\nend",
+          "options": [
+            "4",
+            "3",
+            "5",
+            "0"
+          ],
+          "answer": 0,
+          "explain": "The range `0:3` contains 0, 1, 2 and 3. Both ends are included, so that is four rounds."
+        },
+        {
+          "type": "choice",
+          "id": "loops-4",
+          "prompt": "What does this print?",
+          "code": "for i in 1:10\n    if i == 4\n        break\n    end\n    print(i)\nend",
+          "options": [
+            "`123`",
+            "`1234`",
+            "`12356789`",
+            "`4`"
+          ],
+          "answer": 0,
+          "explain": "When `i` is 4, `break` leaves the loop before `print` runs, so only 1, 2 and 3 are printed."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-5",
+          "statement": "This loop prints the numbers 5, 4, 3, 2 and 1.",
+          "code": "for i in 5:1\n    println(i)\nend",
+          "answer": false,
+          "explain": "`5:1` is an empty range because the step is 1 by default, so nothing is printed. Write `5:-1:1` to count down."
+        },
+        {
+          "type": "gap",
+          "id": "loops-6",
+          "prompt": "Complete the code so it prints 10, 7, 4 and 1.",
+          "code": "for i in ___\n    println(i)\nend",
+          "options": [
+            "10:-3:1",
+            "10:3:1",
+            "1:3:10",
+            "10:1:-3"
+          ],
+          "answer": 0,
+          "explain": "The form is `start:step:stop`. To count down, the step must be negative."
+        },
+        {
+          "type": "gap",
+          "id": "loops-7",
+          "prompt": "Complete the code so it skips the number 3.",
+          "code": "for i in 1:5\n    if i == 3\n        ___\n    end\n    println(i)\nend",
+          "options": [
+            "continue",
+            "break",
+            "skip",
+            "next"
+          ],
+          "answer": 0,
+          "explain": "`continue` jumps to the next round. `break` would stop the whole loop."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-8",
+          "prompt": "Write the first line of a loop that counts from 1 to 10 in steps of 3.",
+          "tokens": [
+            "for",
+            "i",
+            "in",
+            "1:3:10"
+          ],
+          "distractors": [
+            "1:10:3",
+            "while"
+          ],
+          "explain": "The step goes in the middle: `start:step:stop`. The loop visits 1, 4, 7 and 10."
+        },
+        {
+          "type": "order",
+          "id": "loops-9",
+          "prompt": "Put the lines in order so the program prints 1, 2 and 3.",
+          "lines": [
+            "i = 1",
+            "while i <= 3",
+            "    println(i)",
+            "    global i += 1",
+            "end"
+          ],
+          "explain": "The loop prints `i` first and then makes it bigger. When `i` is 4, the condition is `false`."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`1:5`",
+              "the numbers from 1 to 5"
+            ],
+            [
+              "`1:2:9`",
+              "from 1 to 9 in steps of 2"
+            ],
+            [
+              "`10:-1:1`",
+              "counts down from 10 to 1"
+            ],
+            [
+              "`break`",
+              "leaves the loop"
+            ],
+            [
+              "`continue`",
+              "goes on with the next round"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "loops-11",
+          "prompt": "The program should print the sum `6`. Which line has the bug?",
+          "lines": [
+            "total = 0",
+            "for i in 1:3",
+            "    total += i",
+            "end",
+            "println(total)"
+          ],
+          "bug": 2,
+          "explain": "At the top level of a script, a loop must write `global total += i` to change `total`."
+        },
+        {
+          "type": "bug",
+          "id": "loops-12",
+          "prompt": "The program should print 3, 2 and 1. Which line has the bug?",
+          "lines": [
+            "n = 3",
+            "while n >= 0",
+            "    println(n)",
+            "    global n -= 1",
+            "end"
+          ],
+          "bug": 1,
+          "explain": "With `n >= 0`, the loop also prints `0`. Write `while n > 0`."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Write your own functions, use the short form f(x) = ..., give parameters default values and meet multiple dispatch.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** gives a piece of code a name, so you can use it again and again. You write it between `function` and `end`. The names in parentheses are the **parameters**: they receive the values that you pass in when you call the function."
+        },
+        {
+          "type": "code",
+          "code": "function greet(name)\n    println(\"Hello, $(name)!\")\nend\n\ngreet(\"Ana\")\ngreet(\"Ben\")",
+          "output": "Hello, Ana!\nHello, Ben!"
+        },
+        {
+          "type": "text",
+          "md": "`return` sends a value back to the caller. Without `return`, a Julia function gives back the value of its last line."
+        },
+        {
+          "type": "code",
+          "code": "function add(a, b)\n    return a + b\nend\n\nfunction multiply(a, b)\n    a * b\nend\n\nprintln(add(2, 3))\nprintln(multiply(add(1, 1), 5))",
+          "output": "5\n10"
+        },
+        {
+          "type": "text",
+          "md": "A function that fits on one line can use the short form: `name(parameters) = expression`. It works exactly like the long form."
+        },
+        {
+          "type": "code",
+          "code": "square(x) = x^2\nis_even(n) = n % 2 == 0\nprintln(square(6))\nprintln(is_even(7))",
+          "output": "36\nfalse"
+        },
+        {
+          "type": "text",
+          "md": "A parameter can have a **default value**, written with `=`. When the caller leaves out that argument, Julia uses the default."
+        },
+        {
+          "type": "code",
+          "code": "function greet(name, greeting = \"Hello\")\n    println(\"$greeting, $(name)!\")\nend\n\ngreet(\"Ana\")\ngreet(\"Ben\", \"Welcome\")",
+          "output": "Hello, Ana!\nWelcome, Ben!"
+        },
+        {
+          "type": "text",
+          "md": "Variables that you create inside a function belong to that function. Other code cannot see them. A loop inside a function can change them without `global`."
+        },
+        {
+          "type": "code",
+          "code": "function total(n)\n    s = 0\n    for i in 1:n\n        s += i\n    end\n    return s\nend\n\nprintln(total(4))",
+          "output": "10"
+        },
+        {
+          "type": "heading",
+          "text": "Multiple dispatch"
+        },
+        {
+          "type": "text",
+          "md": "With `::` you tell Julia which type a parameter needs, for example `x::Int`. You can then define the same function name several times for different types. Each version is a **method**. Julia picks the method that fits the types of the arguments. This is called **multiple dispatch**."
+        },
+        {
+          "type": "code",
+          "code": "describe(x::Int) = \"a whole number\"\ndescribe(x::String) = \"some text\"\ndescribe(x::Bool) = \"true or false\"\n\nprintln(describe(42))\nprintln(describe(\"hi\"))\nprintln(describe(false))",
+          "output": "a whole number\nsome text\ntrue or false"
+        },
+        {
+          "type": "warning",
+          "md": "If no method fits, Julia stops with a `MethodError`. Here, `describe(2.5)` fails, because there is no method for `Float64`."
+        }
+      ],
+      "card": [
+        "`function add(a, b) ... end`; the last value is returned",
+        "`square(x) = x^2` is the short form",
+        "`greet(name, greeting = \"Hi\")` has a default value",
+        "`f(x::Int)` and `f(x::String)` are two methods",
+        "No `global` needed inside a function"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "double(x) = x * 2\nprintln(double(double(3)))",
+          "answers": [
+            "12"
+          ],
+          "explain": "`double(3)` is `6`, and `double(6)` is `12`."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print?",
+          "code": "function f(a, b = 10)\n    a + b\nend\n\nprintln(f(5))",
+          "answers": [
+            "15"
+          ],
+          "explain": "The call leaves out `b`, so `b` gets its default value `10`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-3",
+          "prompt": "What does this print?",
+          "code": "kind(x::Int) = \"Int\"\nkind(x::Float64) = \"Float\"\nprintln(kind(3.0))",
+          "options": [
+            "`Float`",
+            "`Int`",
+            "An error",
+            "`3.0`"
+          ],
+          "answer": 0,
+          "explain": "`3.0` has a decimal point, so it is a `Float64`, and Julia picks the `Float64` method."
+        },
+        {
+          "type": "choice",
+          "id": "functions-4",
+          "prompt": "Which line defines a function `half` that returns half of `x`?",
+          "options": [
+            "`half(x) = x / 2`",
+            "`half = x / 2`",
+            "`function half(x) = x / 2`",
+            "`half(x) -> x / 2`"
+          ],
+          "answer": 0,
+          "explain": "The short form is the name with its parameters, then `=` and the expression."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-5",
+          "statement": "This program prints `5`.",
+          "code": "function f(x)\n    x + 1\n    x + 2\nend\n\nprintln(f(3))",
+          "answer": true,
+          "explain": "A function without `return` gives back the value of its last line, and `3 + 2` is `5`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-6",
+          "prompt": "Complete the code so `greet()` prints `Hello, World!`.",
+          "code": "function greet(name ___)\n    println(\"Hello, $(name)!\")\nend\n\ngreet()",
+          "options": [
+            "= \"World\"",
+            "== \"World\"",
+            ": \"World\"",
+            "::\"World\""
+          ],
+          "answer": 0,
+          "explain": "A default value is written with a single `=` after the parameter name."
+        },
+        {
+          "type": "gap",
+          "id": "functions-7",
+          "prompt": "Complete the code so it prints `some text`.",
+          "code": "describe(x::Int) = \"a number\"\ndescribe(x::___) = \"some text\"\n\nprintln(describe(\"hi\"))",
+          "options": [
+            "String",
+            "Text",
+            "Char",
+            "Int"
+          ],
+          "answer": 0,
+          "explain": "`\"hi\"` is a `String`, so Julia needs a method for `String`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-8",
+          "prompt": "Write the short form of a function `cube` that returns `x` to the power of 3.",
+          "tokens": [
+            "cube(x)",
+            "=",
+            "x",
+            "^",
+            "3"
+          ],
+          "distractors": [
+            "function",
+            "return"
+          ],
+          "explain": "The short form is the name and the parameters, then `=` and the expression."
+        },
+        {
+          "type": "order",
+          "id": "functions-9",
+          "prompt": "Put the lines in order so the program prints `6`.",
+          "lines": [
+            "function total(n)",
+            "    s = 0",
+            "    for i in 1:n",
+            "        s += i",
+            "    end",
+            "    return s",
+            "end",
+            "println(total(3))"
+          ],
+          "explain": "`s` starts at 0, the loop adds 1, 2 and 3, and `return s` comes after the loop."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`function`",
+              "starts a function definition"
+            ],
+            [
+              "`return`",
+              "sends a value back"
+            ],
+            [
+              "`f(x) = x + 1`",
+              "the short form of a function"
+            ],
+            [
+              "`x::Int`",
+              "the parameter must be an Int"
+            ],
+            [
+              "`MethodError`",
+              "no method fits the arguments"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "functions-11",
+          "prompt": "The program should print `25`. Which line has the bug?",
+          "lines": [
+            "square(x) = x * x",
+            "result = square(\"5\")",
+            "println(result)"
+          ],
+          "bug": 1,
+          "explain": "`\"5\"` is a string, and `*` joins strings, so the program prints `55`. Write `square(5)`."
+        },
+        {
+          "type": "bug",
+          "id": "functions-12",
+          "prompt": "The program should print `Hi, Ana!`. Which line has the bug?",
+          "lines": [
+            "function greet(name)",
+            "    println(\"Hi, $(name)!\")",
+            "end",
+            "greet()"
+          ],
+          "bug": 3,
+          "explain": "`greet` needs a name, so calling it without an argument gives a `MethodError`. Write `greet(\"Ana\")`."
+        }
+      ]
+    },
+    {
+      "id": "arrays",
+      "title": "Arrays",
+      "chapter": "Data",
+      "summary": "Keep many values in an array, add and read items, and build new arrays with comprehensions and broadcasting.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** holds many values in a fixed order. You write it with square brackets and commas: `[10, 20, 30]`. Like strings, arrays start at index **1**: `nums[1]` is the first item and `nums[end]` the last. `length` counts the items."
+        },
+        {
+          "type": "code",
+          "code": "nums = [10, 20, 30]\nprintln(nums)\nprintln(nums[1])\nprintln(nums[end])\nprintln(length(nums))",
+          "output": "[10, 20, 30]\n10\n30\n3"
+        },
+        {
+          "type": "text",
+          "md": "You can change an item by assigning to its index: `fruits[2] = \"plum\"`. `push!` adds a new item at the end of the array."
+        },
+        {
+          "type": "code",
+          "code": "fruits = [\"apple\", \"pear\"]\nfruits[2] = \"plum\"\npush!(fruits, \"kiwi\")\nprintln(fruits)\nprintln(length(fruits))",
+          "output": "[\"apple\", \"plum\", \"kiwi\"]\n3"
+        },
+        {
+          "type": "tip",
+          "md": "A function name that ends in `!` tells you that the function changes its argument. `push!` changes the array itself and does not create a new one."
+        },
+        {
+          "type": "text",
+          "md": "`sum`, `maximum` and `minimum` work on a whole array. `sort` gives a sorted copy. `x in nums` checks if the value `x` is in the array."
+        },
+        {
+          "type": "code",
+          "code": "scores = [7, 3, 9, 5]\nprintln(sum(scores))\nprintln(maximum(scores))\nprintln(sort(scores))\nprintln(9 in scores)",
+          "output": "24\n9\n[3, 5, 7, 9]\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "An empty array for whole numbers is written `Int[]`. You can fill it with `push!` in a loop. `push!` changes the array but does not give the name `squares` a new value, so you do not need `global` here."
+        },
+        {
+          "type": "code",
+          "code": "squares = Int[]\nfor i in 1:4\n    push!(squares, i^2)\nend\nprintln(squares)",
+          "output": "[1, 4, 9, 16]"
+        },
+        {
+          "type": "heading",
+          "text": "Comprehensions and broadcasting"
+        },
+        {
+          "type": "text",
+          "md": "A **comprehension** builds a new array in one line: `[expression for x in sequence]`. You can add a condition with `if` at the end. Then only the values that pass the condition go into the new array."
+        },
+        {
+          "type": "code",
+          "code": "squares = [i^2 for i in 1:4]\nprintln(squares)\nevens = [n for n in 1:10 if n % 2 == 0]\nprintln(evens)",
+          "output": "[1, 4, 9, 16]\n[2, 4, 6, 8, 10]"
+        },
+        {
+          "type": "text",
+          "md": "A dot in front of an operator applies it to every item. This is called **broadcasting**. `nums .+ 1` adds 1 to each item, and `nums .* 2` doubles each one. A dot after a function name does the same for functions: `uppercase.(words)`."
+        },
+        {
+          "type": "code",
+          "code": "nums = [1, 2, 3]\nprintln(nums .+ 1)\nprintln(nums .* 2)\nwords = [\"a\", \"b\"]\nprintln(uppercase.(words))",
+          "output": "[2, 3, 4]\n[2, 4, 6]\n[\"A\", \"B\"]"
+        }
+      ],
+      "card": [
+        "`nums = [10, 20, 30]`; `nums[1]` is the first item, `nums[end]` the last",
+        "`push!(nums, 40)`, `length(nums)`, `sum(nums)`",
+        "`[x^2 for x in 1:5 if x > 2]` builds a new array",
+        "`nums .+ 1` and `f.(nums)` work on every item"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arrays-1",
+          "prompt": "What does this print?",
+          "code": "a = [4, 8, 15]\nprintln(a[2] + a[end])",
+          "answers": [
+            "23"
+          ],
+          "explain": "`a[2]` is the second item, `8`, and `a[end]` is the last item, `15`."
+        },
+        {
+          "type": "input",
+          "id": "arrays-2",
+          "prompt": "What does this print?",
+          "code": "println([x * 10 for x in 1:3])",
+          "answers": [
+            "[10, 20, 30]"
+          ],
+          "explain": "The comprehension multiplies each number from 1 to 3 by 10 and collects the results in an array."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-3",
+          "prompt": "What does this print?",
+          "code": "nums = [1, 2, 3]\npush!(nums, 4)\nprintln(length(nums))",
+          "options": [
+            "`4`",
+            "`3`",
+            "`1`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "`push!` adds `4` at the end, so the array now has four items."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-4",
+          "prompt": "What does this print?",
+          "code": "println([1, 2, 3] .* 2)",
+          "options": [
+            "`[2, 4, 6]`",
+            "`[1, 2, 3, 1, 2, 3]`",
+            "`12`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "`.*` multiplies every item by 2."
+        },
+        {
+          "type": "true_false",
+          "id": "arrays-5",
+          "statement": "`nums[0]` is the first item of the array `nums`.",
+          "answer": false,
+          "explain": "Julia arrays start at index 1, so the first item is `nums[1]`. `nums[0]` is an error."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-6",
+          "prompt": "Complete the code so it prints `[1, 2, 3, 4]`.",
+          "code": "nums = [1, 2, 3]\n___(nums, 4)\nprintln(nums)",
+          "options": [
+            "push!",
+            "push",
+            "append",
+            "add!"
+          ],
+          "answer": 0,
+          "explain": "`push!` adds an item at the end. The `!` is part of the name."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-7",
+          "prompt": "Complete the code so it prints `[11, 21, 31]`.",
+          "code": "nums = [10, 20, 30]\nprintln(nums ___ 1)",
+          "options": [
+            ".+",
+            "+",
+            "++",
+            "+="
+          ],
+          "answer": 0,
+          "explain": "`.+` adds 1 to every item. A plain `+` cannot add a number to an array."
+        },
+        {
+          "type": "blocks",
+          "id": "arrays-8",
+          "prompt": "Build an array `squares` with the squares of the numbers 1 to 5.",
+          "tokens": [
+            "squares",
+            "=",
+            "[x^2",
+            "for",
+            "x",
+            "in",
+            "1:5]"
+          ],
+          "distractors": [
+            "while",
+            "(x^2"
+          ],
+          "explain": "A comprehension has the form `[expression for x in sequence]`."
+        },
+        {
+          "type": "order",
+          "id": "arrays-9",
+          "prompt": "Put the lines in order so the program prints `[3, 6, 9]`.",
+          "lines": [
+            "result = Int[]",
+            "for i in 1:3",
+            "    push!(result, i * 3)",
+            "end",
+            "println(result)"
+          ],
+          "explain": "Create the empty array first, fill it in the loop, and print it after the loop."
+        },
+        {
+          "type": "pairs",
+          "id": "arrays-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`nums[1]`",
+              "the first item"
+            ],
+            [
+              "`nums[end]`",
+              "the last item"
+            ],
+            [
+              "`push!(nums, 5)`",
+              "adds 5 at the end"
+            ],
+            [
+              "`length(nums)`",
+              "the number of items"
+            ],
+            [
+              "`nums .* 2`",
+              "doubles every item"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "arrays-11",
+          "prompt": "The program should print `[2, 3, 4]`. Which line has the bug?",
+          "lines": [
+            "nums = [1, 2, 3]",
+            "more = nums + 1",
+            "println(more)"
+          ],
+          "bug": 1,
+          "explain": "`+` cannot add a number to an array. Write `nums .+ 1` to add 1 to every item."
+        },
+        {
+          "type": "bug",
+          "id": "arrays-12",
+          "prompt": "The program should print `[2, 4, 6]`. Which line has the bug?",
+          "lines": [
+            "nums = [1, 2, 3, 4, 5, 6]",
+            "evens = [n for n in nums where n % 2 == 0]",
+            "println(evens)"
+          ],
+          "bug": 1,
+          "explain": "A comprehension uses `if` for its condition: `[n for n in nums if n % 2 == 0]`."
+        }
+      ]
+    },
+    {
+      "id": "dicts",
+      "title": "Dictionaries and structs",
+      "chapter": "Data",
+      "summary": "Look up values by key in a Dict and group related data in your own types with struct.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **dictionary**, or `Dict`, stores pairs of a **key** and a **value**. You write each pair as `key => value`. To get a value, put its key in square brackets."
+        },
+        {
+          "type": "code",
+          "code": "ages = Dict(\"Ana\" => 30, \"Ben\" => 25)\nprintln(ages[\"Ana\"])\nages[\"Cleo\"] = 41\nages[\"Ben\"] = 26\nprintln(ages[\"Ben\"])\nprintln(length(ages))",
+          "output": "30\n26\n3"
+        },
+        {
+          "type": "text",
+          "md": "Assigning to a key adds a new pair, or replaces the value if the key already exists. `haskey` checks if a key exists. `get(d, key, default)` gives the default value when the key is missing."
+        },
+        {
+          "type": "code",
+          "code": "stock = Dict(\"apple\" => 5, \"pear\" => 0)\nprintln(haskey(stock, \"kiwi\"))\nprintln(get(stock, \"kiwi\", 0))\nprintln(get(stock, \"apple\", 0))",
+          "output": "false\n0\n5"
+        },
+        {
+          "type": "warning",
+          "md": "Reading a missing key with square brackets, like `stock[\"kiwi\"]`, stops the program with a `KeyError`."
+        },
+        {
+          "type": "text",
+          "md": "`keys(d)` gives all keys and `values(d)` gives all values. A dictionary keeps no fixed order. When the order matters, turn the keys into an array with `collect` and sort it with `sort`."
+        },
+        {
+          "type": "code",
+          "code": "prices = Dict(\"tea\" => 3, \"cake\" => 4, \"juice\" => 2)\nfor name in sort(collect(keys(prices)))\n    println(\"$name: $(prices[name])\")\nend\nprintln(sum(values(prices)))",
+          "output": "cake: 4\njuice: 2\ntea: 3\n9"
+        },
+        {
+          "type": "heading",
+          "text": "Structs"
+        },
+        {
+          "type": "text",
+          "md": "A **struct** is your own type. It groups several values, called **fields**. You list the fields between `struct` and `end`, each with its type after `::`. You create a value by calling the struct name like a function, and you read a field with a dot: `p.name`."
+        },
+        {
+          "type": "code",
+          "code": "struct Person\n    name::String\n    age::Int\nend\n\np = Person(\"Ana\", 30)\nprintln(p.name)\nprintln(p.age + 1)\nprintln(p)",
+          "output": "Ana\n31\nPerson(\"Ana\", 30)"
+        },
+        {
+          "type": "text",
+          "md": "You cannot change the fields of a `struct` after you create it. If you need to change them, write `mutable struct` instead."
+        },
+        {
+          "type": "code",
+          "code": "mutable struct Counter\n    count::Int\nend\n\nc = Counter(0)\nc.count += 1\nc.count += 1\nprintln(c.count)",
+          "output": "2"
+        },
+        {
+          "type": "text",
+          "md": "Your own types work with multiple dispatch. A function can have one method for each struct, and Julia picks the right one."
+        },
+        {
+          "type": "code",
+          "code": "struct Rect\n    w::Int\n    h::Int\nend\n\nstruct Square\n    side::Int\nend\n\narea(r::Rect) = r.w * r.h\narea(s::Square) = s.side^2\n\nprintln(area(Rect(2, 3)))\nprintln(area(Square(4)))",
+          "output": "6\n16"
+        }
+      ],
+      "card": [
+        "`d = Dict(\"a\" => 1)`; `d[\"a\"]` is `1`; `d[\"b\"] = 2` adds a pair",
+        "`haskey(d, k)`, `get(d, k, 0)`, `keys(d)`, `values(d)`",
+        "`struct Point ... end` defines a type with fields",
+        "`p = Point(1, 2)`; `p.x` reads a field",
+        "`mutable struct` lets you change fields"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "dicts-1",
+          "prompt": "What does this print?",
+          "code": "d = Dict(\"a\" => 1, \"b\" => 2)\nd[\"a\"] = 10\nprintln(d[\"a\"] + d[\"b\"])",
+          "answers": [
+            "12"
+          ],
+          "explain": "`d[\"a\"] = 10` replaces the old value, so the sum is `10 + 2`."
+        },
+        {
+          "type": "input",
+          "id": "dicts-2",
+          "prompt": "What does this print?",
+          "code": "struct Point\n    x::Int\n    y::Int\nend\n\np = Point(3, 4)\nprintln(p.x + p.y)",
+          "answers": [
+            "7"
+          ],
+          "explain": "`p.x` is `3` and `p.y` is `4`."
+        },
+        {
+          "type": "choice",
+          "id": "dicts-3",
+          "prompt": "What does this print?",
+          "code": "colors = Dict(\"sky\" => \"blue\")\nprintln(get(colors, \"grass\", \"unknown\"))",
+          "options": [
+            "`unknown`",
+            "`blue`",
+            "`grass`",
+            "Nothing, it stops with a `KeyError`"
+          ],
+          "answer": 0,
+          "explain": "The key `\"grass\"` is missing, so `get` gives the default value."
+        },
+        {
+          "type": "choice",
+          "id": "dicts-4",
+          "prompt": "What happens when this code runs?",
+          "code": "struct Point\n    x::Int\nend\n\np = Point(1)\np.x = 5",
+          "options": [
+            "It stops with an error, because a `struct` cannot change.",
+            "`p.x` becomes `5`.",
+            "Julia creates a second point.",
+            "It prints `5`."
+          ],
+          "answer": 0,
+          "explain": "The fields of a `struct` are fixed. Use `mutable struct` if you need to change them."
+        },
+        {
+          "type": "true_false",
+          "id": "dicts-5",
+          "statement": "This program prints `3`.",
+          "code": "d = Dict(\"x\" => 1, \"y\" => 2)\nd[\"x\"] = 3\nprintln(length(d))",
+          "answer": false,
+          "explain": "`d[\"x\"] = 3` replaces the value of an existing key. The dictionary still has two pairs, so it prints `2`."
+        },
+        {
+          "type": "gap",
+          "id": "dicts-6",
+          "prompt": "Complete the code so it prints `30`.",
+          "code": "ages = Dict(\"Ana\" => 30)\nprintln(ages___)",
+          "options": [
+            "[\"Ana\"]",
+            ".Ana",
+            "(\"Ana\")",
+            "[Ana]"
+          ],
+          "answer": 0,
+          "explain": "You read a value with its key in square brackets. The key is a string, so it needs quotes."
+        },
+        {
+          "type": "gap",
+          "id": "dicts-7",
+          "prompt": "Complete the code so it prints `Ana`.",
+          "code": "struct Person\n    name::String\nend\n\np = Person(\"Ana\")\nprintln(___)",
+          "options": [
+            "p.name",
+            "p[\"name\"]",
+            "Person.name",
+            "name"
+          ],
+          "answer": 0,
+          "explain": "You read a field of a value with a dot: `p.name`."
+        },
+        {
+          "type": "blocks",
+          "id": "dicts-8",
+          "prompt": "Create a dictionary `prices` in which `\"tea\"` costs `3`.",
+          "tokens": [
+            "prices",
+            "=",
+            "Dict(\"tea\"",
+            "=>",
+            "3)"
+          ],
+          "distractors": [
+            ":",
+            "=="
+          ],
+          "explain": "Each pair in a `Dict` is written as `key => value`."
+        },
+        {
+          "type": "order",
+          "id": "dicts-9",
+          "prompt": "Put the lines in order so the program prints `Bo is 4`.",
+          "lines": [
+            "struct Pet",
+            "    name::String",
+            "    age::Int",
+            "end",
+            "pet = Pet(\"Bo\", 4)",
+            "println(\"$(pet.name) is $(pet.age)\")"
+          ],
+          "explain": "Define the struct first. The values passed to `Pet` follow the order of the fields."
+        },
+        {
+          "type": "pairs",
+          "id": "dicts-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`Dict(\"a\" => 1)`",
+              "a dictionary with one pair"
+            ],
+            [
+              "`d[\"a\"]`",
+              "the value for a key"
+            ],
+            [
+              "`haskey(d, \"a\")`",
+              "checks if a key exists"
+            ],
+            [
+              "`struct`",
+              "defines your own type"
+            ],
+            [
+              "`p.x`",
+              "reads a field"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "dicts-11",
+          "prompt": "The program should print `0`. Which line has the bug?",
+          "lines": [
+            "stock = Dict(\"apple\" => 5)",
+            "n = stock[\"pear\"]",
+            "println(n)"
+          ],
+          "bug": 1,
+          "explain": "The key `\"pear\"` is missing, which gives a `KeyError`. Write `get(stock, \"pear\", 0)`."
+        },
+        {
+          "type": "bug",
+          "id": "dicts-12",
+          "prompt": "The program should print `2`. Which line has the bug?",
+          "lines": [
+            "struct Counter",
+            "    count::Int",
+            "end",
+            "c = Counter(0)",
+            "c.count += 1",
+            "c.count += 1",
+            "println(c.count)"
+          ],
+          "bug": 0,
+          "explain": "A plain `struct` cannot change. Write `mutable struct Counter`."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+services:
+  nrzlearn:
+    image: ghcr.io/nicorenezweers/nrzlearn:latest
+    # build: .
+    ports:
+      - "8080:8080"
+      # Admin area (web analytics, SEO entries, statistics). Keep it private.
+      - "127.0.0.1:8081:8081"
+    environment:
+      # Without a password there is no admin area.
+      - NRZLEARN_ADMIN_PASSWORD=change-me
+    volumes:
+      # Only admin settings and the anonymous statistics; the progress lives in each learner's browser.
+      - nrzlearn-data:/data
+    read_only: true
+    restart: unless-stopped
+
+volumes:
+  nrzlearn-data:

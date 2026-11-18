@@ -1,0 +1,406 @@
+{
+  "_claims": {
+    "hello": [
+      {
+        "src": "(format t \"A~%\") ; (format t \"B~%\")",
+        "out": "A"
+      },
+      {
+        "src": "(print \"Hi\")\n(print 7)",
+        "out": "\n\"Hi\" \n7 ",
+        "exact": true
+      }
+    ],
+    "values": [
+      {
+        "src": "(defparameter *price* 12)\n(format t \"~a~%\" *Price*)",
+        "out": "12"
+      },
+      {
+        "src": "(format t \"~a~%\" (/ 10 4))",
+        "out": "5/2"
+      }
+    ],
+    "functions": [
+      {
+        "src": "(defun square (x)\n  (* x x))\n(square 2 3)",
+        "err": true
+      }
+    ],
+    "conditions": [
+      {
+        "src": "(format t \"~a~%\" (= \"a\" \"a\"))",
+        "err": true
+      },
+      {
+        "src": "(format t \"~a~%\" (equal \"yes\" \"yes\"))",
+        "out": "T"
+      },
+      {
+        "src": "(format t \"~a~%\" (when nil 1))",
+        "out": "NIL"
+      }
+    ],
+    "lists": [
+      {
+        "src": "(format t \"~a~%\" (1 2 3))",
+        "err": true
+      },
+      {
+        "src": "(defparameter *a* (list 1 2))\n(cons 0 *a*)\n(append *a* '(3))\n(reverse *a*)\n(format t \"~a~%\" *a*)",
+        "out": "(1 2)"
+      }
+    ],
+    "mapping": [
+      {
+        "src": "(defun square (x) (* x x))\n(format t \"~a~%\" (mapcar square '(1 2)))",
+        "err": true
+      },
+      {
+        "src": "(format t \"~a~%\" (equal (function 1+) #'1+))",
+        "out": "T"
+      }
+    ],
+    "loops": [
+      {
+        "src": "(defun forever (n)\n  (+ 1 (forever n)))\n(forever 1)",
+        "err": true
+      }
+    ],
+    "data": [
+      {
+        "src": "(let ((x 1))\n  (format t \"~a~%\" x))\n(format t \"~a~%\" x)",
+        "err": true
+      }
+    ]
+  },
+  "hello-1": {},
+  "hello-2": {},
+  "hello-3": {
+    "extra": [
+      {
+        "src": "(format t \"~a~%\" (+ 2 3))",
+        "out": "5"
+      },
+      {
+        "src": "(format t \"~a~%\" (2 + 3))",
+        "err": true
+      },
+      {
+        "src": "(format t \"~a~%\" +(2 3))",
+        "err": true
+      },
+      {
+        "src": "(format t \"~a~%\" (2 3 +))",
+        "err": true
+      }
+    ]
+  },
+  "hello-4": {
+    "out": "Hithere"
+  },
+  "hello-5": {
+    "extra": [
+      {
+        "src": "(format t \"A~%B~%\")",
+        "out": "A\nB"
+      }
+    ]
+  },
+  "hello-6": {
+    "out": "Sum: 7"
+  },
+  "hello-7": {
+    "out": "6"
+  },
+  "hello-8": {
+    "out": "Hello, Lisp!\n2"
+  },
+  "hello-9": {
+    "fix": "(format t \"~a~%\" (* 3 4))",
+    "out": "Start\n3\n12\nEnd"
+  },
+  "hello-11": {
+    "extra": [
+      {
+        "src": "(print \"Hi\")",
+        "out": "\n\"Hi\" ",
+        "exact": true
+      }
+    ]
+  },
+  "hello-12": {},
+  "values-1": {},
+  "values-2": {},
+  "values-3": {
+    "out": "HELLO"
+  },
+  "values-4": {
+    "extra": [
+      {
+        "src": "(format t \"~a ~a ~a ~a~%\" (if nil 1 2) (if 0 1 2) (if \"\" 1 2) (if t 1 2))",
+        "out": "2 1 1 1"
+      }
+    ]
+  },
+  "values-5": {
+    "extra": [
+      {
+        "src": "(format t \"~a~%\" (/ 10 4))",
+        "out": "5/2"
+      }
+    ]
+  },
+  "values-6": {
+    "out": "2.5"
+  },
+  "values-7": {
+    "tpl": "{{CODE}}\n(format t \"~a~%\" *speed*)",
+    "out": "50"
+  },
+  "values-8": {
+    "fix": "(format t \"Area: ~a~%\" (* *width* *height*))",
+    "out": "Area: 20\nDone"
+  },
+  "values-10": {
+    "out": "10 and 15"
+  },
+  "values-11": {
+    "out": "NIL"
+  },
+  "values-12": {},
+  "functions-1": {},
+  "functions-2": {},
+  "functions-3": {
+    "out": "6"
+  },
+  "functions-4": {
+    "extra": [
+      {
+        "src": "(defun add-one (n)\n  (+ n 1))\n(format t \"~a~%\" (add-one 1))",
+        "out": "2"
+      }
+    ]
+  },
+  "functions-5": {
+    "out": "10"
+  },
+  "functions-6": {
+    "tpl": "{{CODE}}\n  (/ (+ a b) 2))\n(format t \"~a~%\" (average 4 6))",
+    "out": "5"
+  },
+  "functions-7": {
+    "out": "8\n27"
+  },
+  "functions-8": {
+    "fix": "  (/ n 2))",
+    "out": "5"
+  },
+  "functions-10": {
+    "out": "105"
+  },
+  "functions-11": {},
+  "functions-12": {
+    "out": "Hi\nHi"
+  },
+  "conditions-1": {},
+  "conditions-2": {},
+  "conditions-3": {
+    "out": "3"
+  },
+  "conditions-4": {
+    "out": "B"
+  },
+  "conditions-5": {
+    "extra": [
+      {
+        "src": "(format t \"~a~%\" (if 0 \"yes\" \"no\"))",
+        "out": "yes"
+      }
+    ]
+  },
+  "conditions-6": {
+    "out": "adult"
+  },
+  "conditions-7": {
+    "tpl": "(defun test (n)\n  {{CODE}})\n(format t \"~a ~a ~a~%\" (test 12) (test 8) (test 13))",
+    "out": "T NIL NIL"
+  },
+  "conditions-8": {
+    "out": "negative zero"
+  },
+  "conditions-9": {
+    "fix": "  (if (equal lang \"es\")",
+    "out": "Hello"
+  },
+  "conditions-11": {
+    "out": "big"
+  },
+  "conditions-12": {},
+  "lists-1": {},
+  "lists-2": {},
+  "lists-3": {
+    "out": "(A B C)"
+  },
+  "lists-4": {
+    "out": "NIL"
+  },
+  "lists-5": {
+    "extra": [
+      {
+        "src": "(format t \"~a~%\" (equal (car '(4 5)) (first '(4 5))))",
+        "out": "T"
+      }
+    ]
+  },
+  "lists-6": {
+    "out": "(8 15)"
+  },
+  "lists-7": {
+    "tpl": "(format t \"~a~%\" {{CODE}})",
+    "out": "(0 1 2)"
+  },
+  "lists-8": {
+    "out": "(BLUE RED GREEN)\n3"
+  },
+  "lists-9": {
+    "fix": "(defparameter *scores* '(3 5 9))",
+    "out": "3\n3"
+  },
+  "lists-11": {
+    "extra": [
+      {
+        "src": "(format t \"~a~%\" (list 1 2 3))",
+        "out": "(1 2 3)"
+      },
+      {
+        "src": "(format t \"~a~%\" (1 2 3))",
+        "err": true
+      },
+      {
+        "src": "(format t \"~a~%\" (cons 1 2 3))",
+        "err": true
+      },
+      {
+        "src": "(format t \"~a~%\" (append 1 2 3))",
+        "err": true
+      }
+    ]
+  },
+  "lists-12": {},
+  "mapping-1": {},
+  "mapping-2": {},
+  "mapping-3": {
+    "out": "(1 3 5)"
+  },
+  "mapping-4": {
+    "out": "(NIL T NIL)"
+  },
+  "mapping-5": {
+    "extra": [
+      {
+        "src": "(defparameter *x* (list 1 2))\n(mapcar #'1+ *x*)\n(format t \"~a~%\" *x*)",
+        "out": "(1 2)"
+      }
+    ]
+  },
+  "mapping-6": {
+    "out": "30"
+  },
+  "mapping-7": {
+    "tpl": "(defparameter *nums* '(5 12 8 20))\n(format t \"~a~%\" {{CODE}})",
+    "out": "(12 20)"
+  },
+  "mapping-8": {
+    "out": "56"
+  },
+  "mapping-9": {
+    "fix": "(format t \"~a~%\" (mapcar #'add-ten '(10 20)))",
+    "out": "(20 30)"
+  },
+  "mapping-11": {
+    "out": "7"
+  },
+  "mapping-12": {},
+  "loops-1": {},
+  "loops-2": {},
+  "loops-3": {
+    "out": "(0 1 2 3)"
+  },
+  "loops-4": {
+    "out": "1\n3"
+  },
+  "loops-5": {
+    "out": "0\n1\n2\n3\n4"
+  },
+  "loops-6": {
+    "out": "24"
+  },
+  "loops-7": {
+    "tpl": "(defparameter *prices* '(3 4 5))\n(format t \"~a~%\" {{CODE}})",
+    "out": "12"
+  },
+  "loops-8": {
+    "out": "3"
+  },
+  "loops-9": {
+    "fix": "      (+ n (sum-to (- n 1)))))",
+    "out": "10"
+  },
+  "loops-11": {
+    "out": "(3 2 1)"
+  },
+  "loops-12": {},
+  "data-1": {},
+  "data-2": {},
+  "data-3": {
+    "out": "8"
+  },
+  "data-4": {
+    "err": true,
+    "extra": [
+      {
+        "src": "(let* ((a 1)\n       (b (+ a 1)))\n  (format t \"~a~%\" b))",
+        "out": "2"
+      }
+    ]
+  },
+  "data-5": {
+    "out": "12"
+  },
+  "data-6": {
+    "tpl": "(defparameter *stock* (make-hash-table :test #'equal))\n{{CODE}}\n(format t \"~a~%\" (gethash \"pens\" *stock*))",
+    "out": "5"
+  },
+  "data-7": {
+    "out": "Dune: 500"
+  },
+  "data-8": {
+    "fix": "(format t \"~a~%\" (dog-age *rex*))",
+    "out": "Rex\n3"
+  },
+  "data-10": {
+    "out": "NIL"
+  },
+  "data-11": {
+    "extra": [
+      {
+        "src": "(defstruct point x y)\n(format t \"~a~%\" (point-p (make-point :x 1 :y 2)))",
+        "out": "T"
+      },
+      {
+        "src": "(defstruct point x y)\n(new-point :x 1 :y 2)",
+        "err": true
+      },
+      {
+        "src": "(defstruct point x y)\n(point :x 1 :y 2)",
+        "err": true
+      },
+      {
+        "src": "(defstruct point x y)\n(create-point :x 1 :y 2)",
+        "err": true
+      }
+    ]
+  },
+  "data-12": {}
+}

@@ -1,0 +1,1969 @@
+{
+  "course": "objective-c",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Objective-C!",
+      "chapter": "Basics",
+      "summary": "Write your first Objective-C program, print text and numbers with printf and send your first message to an object.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Objective-C is the C language plus **objects** and **messages**. For many years it was the main language for apps on Apple platforms, and a lot of code still uses it. A source file ends in `.m`, and every program starts in a function called `main`."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        printf(\"Hello, Objective-C!\\n\");\n    }\n    return 0;\n}",
+          "output": "Hello, Objective-C!"
+        },
+        {
+          "type": "text",
+          "md": "Line by line: `#import <Foundation/Foundation.h>` loads **Foundation**, Apple's basic library with strings, numbers and lists. `int main(void)` defines the function `main`, where the program starts. `int` means that it gives back a whole number, and `void` means that it takes no input."
+        },
+        {
+          "type": "text",
+          "md": "`@autoreleasepool { }` marks the area where the program creates objects; Foundation cleans them up at its end. Put your code inside it. `return 0;` tells the system that the program ended without an error. Code blocks go between the braces `{` and `}`, and every statement ends with a semicolon `;`."
+        },
+        {
+          "type": "heading",
+          "text": "Printing with printf"
+        },
+        {
+          "type": "text",
+          "md": "`printf` comes from C. It prints the text between the double quotes. It does not start a new line by itself: `\\n` inside the text is the **new line** character."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        printf(\"Line one\\n\");\n        printf(\"Same \");\n        printf(\"line\\n\");\n    }\n    return 0;\n}",
+          "output": "Line one\nSame line"
+        },
+        {
+          "type": "text",
+          "md": "`printf` can also fill in values. Each placeholder in the text takes the next value after the comma: `%d` for a whole number and `%f` for a decimal number. `%.2f` shows exactly two digits after the decimal point. Without quotes, `2 + 3` is a calculation; `*` multiplies and `/` divides."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        printf(\"%d\\n\", 2 + 3);\n        printf(\"%d + %d = %d\\n\", 4, 5, 4 + 5);\n        printf(\"%.2f\\n\", 7.5 / 2);\n    }\n    return 0;\n}",
+          "output": "5\n4 + 5 = 9\n3.75"
+        },
+        {
+          "type": "heading",
+          "text": "Your first message"
+        },
+        {
+          "type": "text",
+          "md": "Text with an `@` in front, like `@\"Hi\"`, is an Objective-C string object of the class `NSString`. You talk to an object by sending it a **message** in square brackets: `[object message]`. `printf` cannot print an `NSString` directly. The message `UTF8String` gives back the text in the C form that the placeholder `%s` expects."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        printf(\"%s\\n\", [@\"Hello from an object\" UTF8String]);\n    }\n    return 0;\n}",
+          "output": "Hello from an object"
+        },
+        {
+          "type": "tip",
+          "md": "In other Objective-C code you will often see `NSLog(@\"Hi\")`. `NSLog` writes to the error output and adds the date, the time and the program name to every line. That is why this course prints with `printf`."
+        },
+        {
+          "type": "warning",
+          "md": "Objective-C is case sensitive: `printf` works, `Printf` does not. A missing `;` is an error. A line that starts with `//` is a comment, and the compiler ignores it."
+        }
+      ],
+      "card": [
+        "`#import <Foundation/Foundation.h>` loads Foundation",
+        "`int main(void) { @autoreleasepool { … } return 0; }`",
+        "`printf(\"%d %.2f\\n\", 7, 2.5);` prints values",
+        "`[@\"Hi\" UTF8String]` sends a message; print it with `%s`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Where does an Objective-C program start?",
+          "options": [
+            "In the function `main`",
+            "In `@autoreleasepool`",
+            "In the `#import` line",
+            "In the first `printf`"
+          ],
+          "answer": 0,
+          "explain": "The program always starts in the function `main`. `@autoreleasepool` is a block inside `main`."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "printf(\"%d\\n\", 6 * 7);",
+          "answers": [
+            "42"
+          ],
+          "explain": "`6 * 7` has no quotes, so it is calculated. `%d` is replaced by the result `42`."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "printf(\"Hi, \");\nprintf(\"Bob\\n\");",
+          "answers": [
+            "Hi, Bob"
+          ],
+          "explain": "The first `printf` has no `\\n`, so the second one continues on the same line."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "`printf(\"Done\");` ends the line automatically.",
+          "answer": false,
+          "explain": "`printf` prints exactly the text you give it. Add `\\n` at the end to start a new line."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Complete the first line so the program can use Foundation.",
+          "code": "#import ___\n\nint main(void) {\n    @autoreleasepool {\n        printf(\"%s\\n\", [@\"Ready\" UTF8String]);\n    }\n    return 0;\n}",
+          "options": [
+            "<Foundation/Foundation.h>",
+            "\"Foundation\"",
+            "Foundation.h",
+            "<Foundation>"
+          ],
+          "answer": 0,
+          "explain": "The library header goes in angle brackets with the folder and the file name: `<Foundation/Foundation.h>`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so it prints `3.50`.",
+          "code": "printf(\"___\\n\", 3.5);",
+          "options": [
+            "%.2f",
+            "%d",
+            "%.1f",
+            "%s"
+          ],
+          "answer": 0,
+          "explain": "`%.2f` prints a decimal number with two digits after the point. `%.1f` would print `3.5`, and `%d` is only for whole numbers."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build the line that prints Hi and ends the line.",
+          "tokens": [
+            "printf",
+            "(",
+            "\"Hi\\n\"",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            "Printf",
+            "@\"Hi\\n\""
+          ],
+          "explain": "The C function is `printf` in lower case. It takes plain C text in double quotes, without `@`."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order to make a complete program that prints Ready.",
+          "lines": [
+            "#import <Foundation/Foundation.h>",
+            "int main(void) {",
+            "    @autoreleasepool {",
+            "        printf(\"Ready\\n\");",
+            "    }",
+            "    return 0;",
+            "}"
+          ],
+          "explain": "First the import, then `main`. The code goes inside `@autoreleasepool`, and `return 0;` comes after it, at the end of `main`."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`#import`",
+              "loads a library"
+            ],
+            [
+              "`main`",
+              "where the program starts"
+            ],
+            [
+              "`\\n`",
+              "starts a new line"
+            ],
+            [
+              "`%d`",
+              "placeholder for a whole number"
+            ],
+            [
+              "`@\"Hi\"`",
+              "a string object"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "#import <Foundation/Foundation.h>",
+            "int main(void) {",
+            "    @autoreleasepool {",
+            "        printf(\"Start\\n\");",
+            "        printf(\"Stop\\n\")",
+            "    }",
+            "    return 0;",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "The semicolon is missing. Write `printf(\"Stop\\n\");`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "#import <Foundation/Foundation.h>",
+            "int main(void) {",
+            "    @autoreleasepool {",
+            "        printf(\"Hello\\n\");",
+            "        Printf(\"World\\n\");",
+            "    }",
+            "    return 0;",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "Objective-C is case sensitive. The function is `printf` in lower case."
+        },
+        {
+          "type": "choice",
+          "id": "hello-12",
+          "prompt": "Which code sends the message `UTF8String` to the string `@\"Hi\"`?",
+          "options": [
+            "`[@\"Hi\" UTF8String]`",
+            "`UTF8String(@\"Hi\")`",
+            "`[UTF8String @\"Hi\"]`",
+            "`@\"Hi\"->UTF8String()`"
+          ],
+          "answer": 0,
+          "explain": "A message goes in square brackets: first the object, then the message."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Store values in variables and meet int, double, BOOL, NSString and NSNumber.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** stores a value under a name. In Objective-C you write the type first, then the name: `int age = 30;`. `int` holds whole numbers and `double` holds decimal numbers. The `=` puts a value into the variable, and you can change it later."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        int age = 30;\n        double price = 4.5;\n        printf(\"%d\\n\", age);\n        printf(\"%.1f\\n\", price);\n        age = age + 1;\n        printf(\"%d\\n\", age);\n    }\n    return 0;\n}",
+          "output": "30\n4.5\n31"
+        },
+        {
+          "type": "text",
+          "md": "You can calculate with `+`, `-`, `*` and `/`. When you divide two `int` values, the result is an `int` too, and the part after the point is dropped. `%` gives the **remainder** of a division. If one of the numbers is a `double`, like `7.0`, the result is a `double`."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        int a = 7;\n        int b = 2;\n        printf(\"%d\\n\", a / b);\n        printf(\"%d\\n\", a % b);\n        printf(\"%.1f\\n\", 7.0 / 2);\n    }\n    return 0;\n}",
+          "output": "3\n1\n3.5"
+        },
+        {
+          "type": "heading",
+          "text": "Yes or no: BOOL"
+        },
+        {
+          "type": "text",
+          "md": "The type `BOOL` stores a truth value: `YES` or `NO`. With `%d`, `printf` prints `1` for `YES` and `0` for `NO`. A comparison like `10 > 3` also gives a truth value."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        BOOL ready = YES;\n        BOOL done = NO;\n        printf(\"%d %d\\n\", ready, done);\n        BOOL big = 10 > 3;\n        printf(\"%d\\n\", big);\n    }\n    return 0;\n}",
+          "output": "1 0\n1"
+        },
+        {
+          "type": "heading",
+          "text": "Objects: NSString and NSNumber"
+        },
+        {
+          "type": "text",
+          "md": "`int`, `double` and `BOOL` are plain values from C. Objects work differently: an object lives somewhere in memory, and the variable stores a **pointer**, the address of the object. That is what the `*` in `NSString *name` means. You write it for every object variable."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSString *name = @\"Ada\";\n        NSString *city = @\"Paris\";\n        printf(\"%s lives in %s\\n\", [name UTF8String], [city UTF8String]);\n    }\n    return 0;\n}",
+          "output": "Ada lives in Paris"
+        },
+        {
+          "type": "text",
+          "md": "`NSNumber` puts a number into an object. `@42`, `@0.25` and `@YES` create `NSNumber` objects. You get the plain value back with the messages `intValue`, `doubleValue` and `boolValue`. You will need `NSNumber` for lists, because they can only store objects."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSNumber *count = @42;\n        NSNumber *ratio = @0.25;\n        int c = [count intValue];\n        printf(\"%d\\n\", c + 1);\n        printf(\"%.2f\\n\", [ratio doubleValue]);\n    }\n    return 0;\n}",
+          "output": "43\n0.25"
+        },
+        {
+          "type": "tip",
+          "md": "Put `const` before the type for a value that never changes: `const int limit = 10;`. If you try to change `limit` later, the program does not compile."
+        },
+        {
+          "type": "warning",
+          "md": "Do not forget the `@` before an Objective-C string: `NSString *name = \"Ada\";` is an error, because `\"Ada\"` without `@` is a plain C text. Without the `*`, `NSString name` is an error too."
+        }
+      ],
+      "card": [
+        "`int n = 5;` `double d = 2.5;` `BOOL ok = YES;`",
+        "`7 / 2` is `3`, `7 % 2` is `1`, `7.0 / 2` is `3.5`",
+        "`NSString *s = @\"Hi\";` stores a pointer to an object",
+        "`NSNumber *n = @42;` and `[n intValue]`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "variables-1",
+          "prompt": "What does this print?",
+          "code": "int a = 17;\nint b = 5;\nprintf(\"%d\\n\", a / b);",
+          "answers": [
+            "3"
+          ],
+          "explain": "Both values are `int`, so the division drops the rest: 17 / 5 is `3`."
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this print?",
+          "code": "int a = 17;\nprintf(\"%d\\n\", a % 5);",
+          "answers": [
+            "2"
+          ],
+          "explain": "`%` gives the remainder: 17 = 3 × 5 + 2, so the result is `2`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-3",
+          "prompt": "Which type stores the value `4.75`?",
+          "options": [
+            "`double`",
+            "`int`",
+            "`BOOL`",
+            "`NSString *`"
+          ],
+          "answer": 0,
+          "explain": "`double` stores decimal numbers. An `int` would drop the `.75`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-4",
+          "statement": "This code prints `1`.",
+          "code": "BOOL ok = 5 < 2;\nprintf(\"%d\\n\", ok);",
+          "answer": false,
+          "explain": "`5 < 2` is false, so `ok` is `NO`, and `printf` prints `0`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-5",
+          "prompt": "Complete the code so it compiles and prints Ada.",
+          "code": "___ name = @\"Ada\";\nprintf(\"%s\\n\", [name UTF8String]);",
+          "options": [
+            "NSString *",
+            "NSString",
+            "int",
+            "char"
+          ],
+          "answer": 0,
+          "explain": "An object variable needs the class name and a `*`: `NSString *name`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-6",
+          "prompt": "Complete the code so it prints `2.5`.",
+          "code": "double half = ___ / 2;\nprintf(\"%.1f\\n\", half);",
+          "options": [
+            "5.0",
+            "5",
+            "\"5\"",
+            "@5"
+          ],
+          "answer": 0,
+          "explain": "With `5.0` the division uses decimal numbers. `5 / 2` divides two `int` values and gives `2`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-7",
+          "prompt": "Build the line that stores the number 42 as an object in n.",
+          "tokens": [
+            "NSNumber",
+            "*n",
+            "=",
+            "@42",
+            ";"
+          ],
+          "distractors": [
+            "42",
+            "int"
+          ],
+          "explain": "`@42` creates an `NSNumber` object. The variable is a pointer, so it needs the `*`."
+        },
+        {
+          "type": "order",
+          "id": "variables-8",
+          "prompt": "Put the lines in order so the program prints `11 8`.",
+          "lines": [
+            "int a = 4;",
+            "int b = a * 2;",
+            "a = b + 3;",
+            "printf(\"%d %d\\n\", a, b);"
+          ],
+          "explain": "`a` must exist before `b` uses it, and `b` must exist before the new value of `a` is calculated. Print at the end."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-9",
+          "prompt": "Match the type with what it stores.",
+          "pairs": [
+            [
+              "`int`",
+              "a whole number"
+            ],
+            [
+              "`double`",
+              "a decimal number"
+            ],
+            [
+              "`BOOL`",
+              "YES or NO"
+            ],
+            [
+              "`NSString *`",
+              "a pointer to a string object"
+            ],
+            [
+              "`NSNumber *`",
+              "a pointer to a number object"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "variables-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "int apples = 3;",
+            "int pears = 4;",
+            "NSString *fruit = \"pieces\";",
+            "printf(\"%d %s\\n\", apples + pears, [fruit UTF8String]);"
+          ],
+          "bug": 2,
+          "explain": "An `NSString` needs the `@`: write `NSString *fruit = @\"pieces\";`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "NSNumber *count = @5;",
+            "int extra = 1;",
+            "int c = count;",
+            "printf(\"%d\\n\", c * 2 + extra);"
+          ],
+          "bug": 2,
+          "explain": "`count` is an object, not an `int`. Get the number with `int c = [count intValue];`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-12",
+          "prompt": "What does this print?",
+          "code": "double x = 9 / 2;\nprintf(\"%.1f\\n\", x);",
+          "options": [
+            "`4.0`",
+            "`4.5`",
+            "`4`",
+            "`5.0`"
+          ],
+          "answer": 0,
+          "explain": "`9 / 2` divides two `int` values first and gives `4`. Then `4` is stored in the `double`, and `%.1f` prints `4.0`."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings",
+      "chapter": "Basics",
+      "summary": "Work with NSString: length, upper case, joining, stringWithFormat: and comparing text.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An `NSString` never changes after you create it. Its methods give you **new** strings instead. The message `length` gives the number of characters, and `uppercaseString` and `lowercaseString` give copies in capital or small letters."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSString *word = @\"Hello\";\n        printf(\"%lu\\n\", [word length]);\n        NSString *loud = [word uppercaseString];\n        printf(\"%s\\n\", [loud UTF8String]);\n        printf(\"%s\\n\", [[word lowercaseString] UTF8String]);\n    }\n    return 0;\n}",
+          "output": "5\nHELLO\nhello"
+        },
+        {
+          "type": "text",
+          "md": "`length` gives back an `NSUInteger`, a whole number that is never negative. Print it with `%lu`. In `[[word lowercaseString] UTF8String]` the inner message runs first, and the outer message is sent to its result."
+        },
+        {
+          "type": "heading",
+          "text": "Joining strings"
+        },
+        {
+          "type": "text",
+          "md": "Some messages need a value. The value comes after a colon: `[first stringByAppendingString:@\" morning\"]`. The colon is part of the message name `stringByAppendingString:`. The result is a new string, and `first` stays the same."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSString *first = @\"Good\";\n        NSString *full = [first stringByAppendingString:@\" morning\"];\n        printf(\"%s\\n\", [full UTF8String]);\n        printf(\"%s\\n\", [first UTF8String]);\n    }\n    return 0;\n}",
+          "output": "Good morning\nGood"
+        },
+        {
+          "type": "heading",
+          "text": "Building strings with stringWithFormat:"
+        },
+        {
+          "type": "text",
+          "md": "`[NSString stringWithFormat:...]` builds a new string from a format, like `printf`. Here the message goes to the class `NSString` itself, not to a string. The placeholders are the same as in `printf`, plus `%@` for any object, for example an `NSString` or an `NSNumber`."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSString *name = @\"Ada\";\n        int age = 36;\n        NSString *s = [NSString stringWithFormat:@\"%@ is %d\", name, age];\n        printf(\"%s\\n\", [s UTF8String]);\n        NSNumber *n = @7;\n        NSString *t = [NSString stringWithFormat:@\"n = %@\", n];\n        printf(\"%s\\n\", [t UTF8String]);\n    }\n    return 0;\n}",
+          "output": "Ada is 36\nn = 7"
+        },
+        {
+          "type": "heading",
+          "text": "Comparing strings"
+        },
+        {
+          "type": "text",
+          "md": "`[a isEqualToString:b]` compares the text of two strings and gives back a `BOOL`. `hasPrefix:` checks the start of a string, and `containsString:` looks for a text anywhere inside it."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSString *a = @\"cat\";\n        NSString *b = [@\"CAT\" lowercaseString];\n        printf(\"%d\\n\", [a isEqualToString:b]);\n        printf(\"%d\\n\", [a hasPrefix:@\"ca\"]);\n        printf(\"%d\\n\", [a containsString:@\"dog\"]);\n    }\n    return 0;\n}",
+          "output": "1\n1\n0"
+        },
+        {
+          "type": "warning",
+          "md": "Do not compare strings with `==`. It only checks whether both pointers point to the same object, not whether the texts are the same. Use `isEqualToString:`."
+        },
+        {
+          "type": "tip",
+          "md": "`%@` only works in `stringWithFormat:` (and `NSLog`). `printf` does not know objects, so print strings there with `%s` and `UTF8String`."
+        }
+      ],
+      "card": [
+        "`[s length]` counts characters; print it with `%lu`",
+        "`[s uppercaseString]`, `[s stringByAppendingString:@\"!\"]`",
+        "`[NSString stringWithFormat:@\"%@ %d\", s, n]`",
+        "`[a isEqualToString:b]` compares text, not `==`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this print?",
+          "code": "NSString *s = @\"Objective\";\nprintf(\"%lu\\n\", [s length]);",
+          "answers": [
+            "9"
+          ],
+          "explain": "`Objective` has 9 characters, and `length` counts them."
+        },
+        {
+          "type": "input",
+          "id": "strings-2",
+          "prompt": "What does this print?",
+          "code": "NSString *s = [@\"abc\" uppercaseString];\nprintf(\"%s\\n\", [s UTF8String]);",
+          "answers": [
+            "ABC"
+          ],
+          "explain": "`uppercaseString` gives a copy in capital letters."
+        },
+        {
+          "type": "choice",
+          "id": "strings-3",
+          "prompt": "What does this print?",
+          "code": "NSString *s = [NSString stringWithFormat:@\"%@-%d\", @\"room\", 12];\nprintf(\"%s\\n\", [s UTF8String]);",
+          "options": [
+            "`room-12`",
+            "`%@-%d`",
+            "`room - 12`",
+            "`@room-12`"
+          ],
+          "answer": 0,
+          "explain": "`%@` is replaced by the string `room` and `%d` by `12`. The `-` stays as it is."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-4",
+          "statement": "`stringByAppendingString:` changes the string that receives the message.",
+          "answer": false,
+          "explain": "An `NSString` never changes. `stringByAppendingString:` gives back a new string, and the old one stays the same."
+        },
+        {
+          "type": "gap",
+          "id": "strings-5",
+          "prompt": "Complete the code so it prints `Hi Bob`.",
+          "code": "NSString *s = [@\"Hi \" ___:@\"Bob\"];\nprintf(\"%s\\n\", [s UTF8String]);",
+          "options": [
+            "stringByAppendingString",
+            "appendString",
+            "stringWithFormat",
+            "addString"
+          ],
+          "answer": 0,
+          "explain": "`stringByAppendingString:` gives a new string with the text added at the end."
+        },
+        {
+          "type": "gap",
+          "id": "strings-6",
+          "prompt": "Complete the format so the code prints `Total: 5`.",
+          "code": "NSString *s = [NSString stringWithFormat:@\"Total: ___\", @5];\nprintf(\"%s\\n\", [s UTF8String]);",
+          "options": [
+            "%@",
+            "%d",
+            "%s",
+            "@"
+          ],
+          "answer": 0,
+          "explain": "`@5` is an `NSNumber` object, and objects need the placeholder `%@`."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-7",
+          "prompt": "Build the line that checks whether a and b contain the same text.",
+          "tokens": [
+            "BOOL",
+            "same",
+            "=",
+            "[a",
+            "isEqualToString:",
+            "b]",
+            ";"
+          ],
+          "distractors": [
+            "==",
+            "isEqual"
+          ],
+          "explain": "`isEqualToString:` compares the text. The value comes after the colon, inside the brackets."
+        },
+        {
+          "type": "order",
+          "id": "strings-8",
+          "prompt": "Put the lines in order so the program prints `HELLO, ADA`.",
+          "lines": [
+            "NSString *name = @\"Ada\";",
+            "NSString *greeting = [@\"Hello, \" stringByAppendingString:name];",
+            "NSString *loud = [greeting uppercaseString];",
+            "printf(\"%s\\n\", [loud UTF8String]);"
+          ],
+          "explain": "Each line uses the variable from the line before: first `name`, then `greeting`, then `loud`."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-9",
+          "prompt": "Match the message with what it does.",
+          "pairs": [
+            [
+              "`length`",
+              "number of characters"
+            ],
+            [
+              "`uppercaseString`",
+              "copy in capital letters"
+            ],
+            [
+              "`stringByAppendingString:`",
+              "new string with text added"
+            ],
+            [
+              "`isEqualToString:`",
+              "compares the text"
+            ],
+            [
+              "`hasPrefix:`",
+              "checks the start"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "strings-10",
+          "prompt": "The program should print `5` and then `trees`. Which line has the bug?",
+          "lines": [
+            "NSString *word = @\"tree\";",
+            "NSString *plural = [word stringByAppendingString:@\"s\"];",
+            "printf(\"%lu\\n\", [plural length]);",
+            "printf(\"%s\\n\", plural);"
+          ],
+          "bug": 3,
+          "explain": "`printf` cannot print an object. Write `printf(\"%s\\n\", [plural UTF8String]);`."
+        },
+        {
+          "type": "bug",
+          "id": "strings-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "NSString *city = @\"Rome\";",
+            "int year = 2024;",
+            "NSString *s = [NSString stringWithFormat:@\"%@ %@\", city, year];",
+            "printf(\"%s\\n\", [s UTF8String]);"
+          ],
+          "bug": 2,
+          "explain": "`year` is an `int`, not an object, so it needs `%d`: `@\"%@ %d\"`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-12",
+          "prompt": "Which code checks whether the strings `a` and `b` contain the same text?",
+          "options": [
+            "`[a isEqualToString:b]`",
+            "`a == b`",
+            "`[a length] == [b length]`",
+            "`a = b`"
+          ],
+          "answer": 0,
+          "explain": "`isEqualToString:` compares the characters. `==` only compares the pointers, and the same length does not mean the same text."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program decide with if, else, switch, logical operators and BOOL values.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`if (condition) { ... }` runs the code in the braces only when the condition is true. Conditions often compare values: `==` (equal), `!=` (not equal), `<`, `>`, `<=` and `>=`."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        int temp = 25;\n        if (temp > 20) {\n            printf(\"Warm\\n\");\n        }\n        printf(\"Done\\n\");\n    }\n    return 0;\n}",
+          "output": "Warm\nDone"
+        },
+        {
+          "type": "text",
+          "md": "`else` runs when the condition is false. With `else if` you can check more conditions one after the other. Only the first block whose condition is true runs."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        int score = 72;\n        if (score >= 90) {\n            printf(\"A\\n\");\n        } else if (score >= 70) {\n            printf(\"B\\n\");\n        } else {\n            printf(\"C\\n\");\n        }\n    }\n    return 0;\n}",
+          "output": "B"
+        },
+        {
+          "type": "heading",
+          "text": "Combining conditions"
+        },
+        {
+          "type": "text",
+          "md": "`&&` means **and**: both sides must be true. `||` means **or**: at least one side must be true. `!` means **not** and turns true into false. A `BOOL` can be the whole condition, like `if (member)`. As in C, `0` counts as false and every other number counts as true."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        BOOL member = YES;\n        int age = 15;\n        if (member && age >= 18) {\n            printf(\"Adult member\\n\");\n        } else if (member || age > 60) {\n            printf(\"Member\\n\");\n        }\n        if (!member) {\n            printf(\"Guest\\n\");\n        }\n    }\n    return 0;\n}",
+          "output": "Member"
+        },
+        {
+          "type": "heading",
+          "text": "switch"
+        },
+        {
+          "type": "text",
+          "md": "`switch` compares a whole number with several `case` values. `break` leaves the `switch`. Without `break`, the program continues with the next `case`. `default` runs when no `case` matches."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        int day = 3;\n        switch (day) {\n            case 1:\n                printf(\"Monday\\n\");\n                break;\n            case 2:\n                printf(\"Tuesday\\n\");\n                break;\n            case 3:\n                printf(\"Wednesday\\n\");\n                break;\n            default:\n                printf(\"Another day\\n\");\n                break;\n        }\n    }\n    return 0;\n}",
+          "output": "Wednesday"
+        },
+        {
+          "type": "text",
+          "md": "The **conditional operator** `condition ? a : b` gives `a` when the condition is true and `b` otherwise. It is a short form of a small `if`/`else`."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        int n = 7;\n        NSString *kind = (n % 2 == 0) ? @\"even\" : @\"odd\";\n        printf(\"%s\\n\", [kind UTF8String]);\n    }\n    return 0;\n}",
+          "output": "odd"
+        },
+        {
+          "type": "warning",
+          "md": "`=` stores a value, `==` compares. `if (x = 5)` stores `5` in `x`, and the condition is always true. The compiler warns you about this."
+        },
+        {
+          "type": "tip",
+          "md": "`switch` only works with whole numbers. To compare strings, use `if` with `isEqualToString:`."
+        }
+      ],
+      "card": [
+        "`if (x > 0) { … } else if (x < 0) { … } else { … }`",
+        "`==` `!=` `<` `>` `<=` `>=`, `&&` and, `||` or, `!` not",
+        "`switch (n) { case 1: … break; default: … }`",
+        "`cond ? a : b` picks one of two values"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "int x = 8;\nif (x > 10) {\n    printf(\"big\\n\");\n} else if (x > 5) {\n    printf(\"medium\\n\");\n} else {\n    printf(\"small\\n\");\n}",
+          "answers": [
+            "medium"
+          ],
+          "explain": "`8 > 10` is false, `8 > 5` is true, so the second block runs and the rest is skipped."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "int n = 2;\nswitch (n) {\n    case 1:\n        printf(\"one\\n\");\n    case 2:\n        printf(\"two\\n\");\n    case 3:\n        printf(\"three\\n\");\n        break;\n    default:\n        printf(\"other\\n\");\n}",
+          "options": [
+            "`two` and then `three`",
+            "only `two`",
+            "`two`, `three` and `other`",
+            "`one`, `two` and `three`"
+          ],
+          "answer": 0,
+          "explain": "The `switch` jumps to `case 2`. There is no `break`, so it continues into `case 3` and stops at its `break`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-3",
+          "statement": "`if (3) { ... }` runs its block, because every number other than `0` counts as true.",
+          "answer": true,
+          "explain": "In C and Objective-C, `0` is false and all other numbers are true."
+        },
+        {
+          "type": "input",
+          "id": "conditions-4",
+          "prompt": "What does this print?",
+          "code": "BOOL a = YES;\nBOOL b = NO;\nprintf(\"%d\\n\", a && !b);",
+          "answers": [
+            "1"
+          ],
+          "explain": "`!b` is true, and `a` is true, so `a && !b` is true. `printf` prints true as `1`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-5",
+          "prompt": "Complete the code so it prints `even`.",
+          "code": "int n = 10;\nif (n ___ 2 == 0) {\n    printf(\"even\\n\");\n} else {\n    printf(\"odd\\n\");\n}",
+          "options": [
+            "%",
+            "/",
+            "*",
+            "-"
+          ],
+          "answer": 0,
+          "explain": "`n % 2` is the remainder after dividing by 2. It is `0` for every even number."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-6",
+          "prompt": "Complete the code so it prints only `easy`.",
+          "code": "int level = 1;\nswitch (level) {\n    case 1:\n        printf(\"easy\\n\");\n        ___;\n    case 2:\n        printf(\"hard\\n\");\n        break;\n}",
+          "options": [
+            "break",
+            "continue",
+            "exit",
+            "stop"
+          ],
+          "answer": 0,
+          "explain": "`break` leaves the `switch`. Without it, the program continues with `case 2`."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-7",
+          "prompt": "Build the line that continues the `if` with a second check: x is less than 0.",
+          "tokens": [
+            "}",
+            "else",
+            "if",
+            "(",
+            "x",
+            "<",
+            "0",
+            ")",
+            "{"
+          ],
+          "distractors": [
+            "elif",
+            "=<"
+          ],
+          "explain": "Close the first block, then write `else if` with the condition in parentheses and open a new block."
+        },
+        {
+          "type": "order",
+          "id": "conditions-8",
+          "prompt": "Put the lines in order so the program prints whether n is even or odd.",
+          "lines": [
+            "int n = 7;",
+            "if (n % 2 == 0) {",
+            "    printf(\"even\\n\");",
+            "} else {",
+            "    printf(\"odd\\n\");",
+            "}"
+          ],
+          "explain": "The `if` block prints `even`, and the `else` block prints `odd`. For `n = 7` the program prints `odd`."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-9",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`==`",
+              "is equal to"
+            ],
+            [
+              "`!=`",
+              "is not equal to"
+            ],
+            [
+              "`&&`",
+              "both are true"
+            ],
+            [
+              "`||`",
+              "at least one is true"
+            ],
+            [
+              "`!`",
+              "turns true into false"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-10",
+          "prompt": "The program should print `sold out`. Which line has the bug?",
+          "lines": [
+            "int stock = 0;",
+            "if (stock = 0) {",
+            "    printf(\"sold out\\n\");",
+            "} else {",
+            "    printf(\"available\\n\");",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "`=` stores `0` in `stock`, and `0` is false. Compare with `==`: `if (stock == 0) {`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "The program should only print `checked`. Which line has the bug?",
+          "lines": [
+            "int age = 12;",
+            "if (age >= 18); {",
+            "    printf(\"adult\\n\");",
+            "}",
+            "printf(\"checked\\n\");"
+          ],
+          "bug": 1,
+          "explain": "The `;` after the condition ends the `if`, so the block always runs. Write `if (age >= 18) {`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-12",
+          "prompt": "What does this print?",
+          "code": "int a = 4;\nint b = 9;\nint m = (a > b) ? a : b;\nprintf(\"%d\\n\", m);",
+          "options": [
+            "`9`",
+            "`4`",
+            "`1`",
+            "`13`"
+          ],
+          "answer": 0,
+          "explain": "`a > b` is false, so the conditional operator gives `b`, which is `9`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with for and while, control loops with break and continue, and walk through lists with for-in.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A `for` loop repeats code. Its header has three parts, separated by `;`: the start (`int i = 1`), the condition (`i <= 3`) and the step (`i++`). The loop runs as long as the condition is true. `i++` adds 1 to `i`."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        for (int i = 1; i <= 3; i++) {\n            printf(\"%d\\n\", i);\n        }\n    }\n    return 0;\n}",
+          "output": "1\n2\n3"
+        },
+        {
+          "type": "text",
+          "md": "The step can be anything. `i -= 3` makes `i` smaller by 3, `i--` subtracts 1. In the same way, `+=` adds to a variable: `total += 5` is the same as `total = total + 5`."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        for (int i = 10; i > 0; i -= 3) {\n            printf(\"%d\\n\", i);\n        }\n    }\n    return 0;\n}",
+          "output": "10\n7\n4\n1"
+        },
+        {
+          "type": "heading",
+          "text": "while"
+        },
+        {
+          "type": "text",
+          "md": "A `while` loop repeats as long as its condition is true. It checks the condition before every round. Make sure that something in the loop changes the condition, or the loop never ends."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        int n = 1;\n        while (n < 50) {\n            n = n * 3;\n        }\n        printf(\"%d\\n\", n);\n    }\n    return 0;\n}",
+          "output": "81"
+        },
+        {
+          "type": "text",
+          "md": "`continue` skips the rest of the current round and starts the next one. `break` leaves the loop at once."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        for (int i = 1; i <= 10; i++) {\n            if (i % 2 == 0) {\n                continue;\n            }\n            if (i > 7) {\n                break;\n            }\n            printf(\"%d\\n\", i);\n        }\n    }\n    return 0;\n}",
+          "output": "1\n3\n5\n7"
+        },
+        {
+          "type": "heading",
+          "text": "Fast enumeration with for-in"
+        },
+        {
+          "type": "text",
+          "md": "`for (NSString *w in words)` goes through every object in a collection, from the first to the last. This is called **fast enumeration**. `@[...]` creates an array, a list of objects; the next unit explains arrays in detail."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSArray *words = @[@\"red\", @\"green\", @\"blue\"];\n        for (NSString *w in words) {\n            printf(\"%s\\n\", [w UTF8String]);\n        }\n    }\n    return 0;\n}",
+          "output": "red\ngreen\nblue"
+        },
+        {
+          "type": "text",
+          "md": "A common pattern: start with a total of `0` and add every item in the loop. The numbers in an array are `NSNumber` objects, so you need `intValue`."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        int total = 0;\n        for (NSNumber *n in @[@4, @5, @6]) {\n            total += [n intValue];\n        }\n        printf(\"%d\\n\", total);\n    }\n    return 0;\n}",
+          "output": "15"
+        }
+      ],
+      "card": [
+        "`for (int i = 0; i < n; i++) { … }`",
+        "`while (cond) { … }` checks before every round",
+        "`break` leaves the loop, `continue` starts the next round",
+        "`for (NSString *s in list) { … }` visits every object"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "int sum = 0;\nfor (int i = 1; i <= 4; i++) {\n    sum += i;\n}\nprintf(\"%d\\n\", sum);",
+          "answers": [
+            "10"
+          ],
+          "explain": "The loop adds 1, 2, 3 and 4, so `sum` is `10`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-2",
+          "prompt": "How many times does this print `x`?",
+          "code": "for (int i = 0; i < 5; i++) {\n    printf(\"x\\n\");\n}",
+          "options": [
+            "5",
+            "4",
+            "6",
+            "0"
+          ],
+          "answer": 0,
+          "explain": "`i` takes the values 0, 1, 2, 3 and 4. At `5` the condition `i < 5` is false."
+        },
+        {
+          "type": "input",
+          "id": "loops-3",
+          "prompt": "What does this print?",
+          "code": "int n = 100;\nint steps = 0;\nwhile (n > 1) {\n    n = n / 2;\n    steps++;\n}\nprintf(\"%d\\n\", steps);",
+          "answers": [
+            "6"
+          ],
+          "explain": "`n` becomes 50, 25, 12, 6, 3 and 1. That is 6 rounds."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-4",
+          "statement": "The body of this loop runs once.",
+          "code": "int i = 10;\nwhile (i < 5) {\n    printf(\"%d\\n\", i);\n    i++;\n}",
+          "answer": false,
+          "explain": "`10 < 5` is false right at the start. `while` checks the condition first, so the body never runs."
+        },
+        {
+          "type": "gap",
+          "id": "loops-5",
+          "prompt": "Complete the loop so it prints 0, 1 and 2.",
+          "code": "for (int i = 0; i < 3; ___) {\n    printf(\"%d\\n\", i);\n}",
+          "options": [
+            "i++",
+            "i += 2",
+            "i++;",
+            "i + 1"
+          ],
+          "answer": 0,
+          "explain": "`i++` adds 1 after every round. `i + 1` calculates a value but does not change `i`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-6",
+          "prompt": "Complete the loop so it prints every name.",
+          "code": "NSArray *names = @[@\"Ann\", @\"Ben\"];\nfor (NSString *name ___ names) {\n    printf(\"%s\\n\", [name UTF8String]);\n}",
+          "options": [
+            "in",
+            "of",
+            "at",
+            "from"
+          ],
+          "answer": 0,
+          "explain": "Fast enumeration uses the keyword `in`: `for (NSString *name in names)`."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-7",
+          "prompt": "Build the loop header that counts down from 5 to 1.",
+          "tokens": [
+            "for",
+            "(",
+            "int",
+            "i = 5;",
+            "i > 0;",
+            "i--",
+            ")",
+            "{"
+          ],
+          "distractors": [
+            "i++",
+            "foreach"
+          ],
+          "explain": "Start at `5`, run while `i > 0`, and subtract 1 with `i--` after every round."
+        },
+        {
+          "type": "order",
+          "id": "loops-8",
+          "prompt": "Put the lines in order so the program prints the numbers 1 to 3.",
+          "lines": [
+            "int i = 1;",
+            "while (i <= 3) {",
+            "    printf(\"%d\\n\", i);",
+            "    i++;",
+            "}"
+          ],
+          "explain": "Start with `i = 1`. Inside the loop, print first and then add 1, so the output is 1, 2 and 3."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`for`",
+              "loop with start, condition and step"
+            ],
+            [
+              "`while`",
+              "repeats while a condition is true"
+            ],
+            [
+              "`break`",
+              "leaves the loop"
+            ],
+            [
+              "`continue`",
+              "starts the next round"
+            ],
+            [
+              "`in`",
+              "visits every object of a collection"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "loops-10",
+          "prompt": "The program should add the numbers 1 to 5 and print `15`. Which line has the bug?",
+          "lines": [
+            "int total = 0;",
+            "for (int i = 1; i < 5; i++) {",
+            "    total += i;",
+            "}",
+            "printf(\"%d\\n\", total);"
+          ],
+          "bug": 1,
+          "explain": "`i < 5` stops before `5`. Write `for (int i = 1; i <= 5; i++) {`."
+        },
+        {
+          "type": "bug",
+          "id": "loops-11",
+          "prompt": "The program should print 3, 2 and 1. Which line has the bug?",
+          "lines": [
+            "int n = 3;",
+            "while (n > 0) {",
+            "    printf(\"%d\\n\", n);",
+            "    n++;",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "`n++` makes `n` bigger, so `n > 0` stays true forever. Count down with `n--;`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-12",
+          "prompt": "What does this print?",
+          "code": "int count = 0;\nfor (int i = 1; i <= 10; i++) {\n    if (i % 3 != 0) {\n        continue;\n    }\n    count++;\n}\nprintf(\"%d\\n\", count);",
+          "options": [
+            "`3`",
+            "`7`",
+            "`10`",
+            "`0`"
+          ],
+          "answer": 0,
+          "explain": "`continue` skips every number that is not a multiple of 3. Only 3, 6 and 9 reach `count++`."
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "Arrays and dictionaries",
+      "chapter": "Data",
+      "summary": "Store objects in NSArray and NSDictionary, change them with the mutable versions and read them with subscripts.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An `NSArray` is an ordered list of objects. `@[...]` creates one. `count` gives the number of items, and `fruits[0]` reads an item by its **index**. The first index is `0`."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSArray *fruits = @[@\"apple\", @\"banana\", @\"cherry\"];\n        printf(\"%lu\\n\", [fruits count]);\n        NSString *first = fruits[0];\n        printf(\"%s\\n\", [first UTF8String]);\n        printf(\"%s\\n\", [fruits[2] UTF8String]);\n    }\n    return 0;\n}",
+          "output": "3\napple\ncherry"
+        },
+        {
+          "type": "text",
+          "md": "Arrays only store objects, so numbers go in as `NSNumber`, like `@10`. `containsObject:` checks whether an item is in the array. An index that does not exist, like `fruits[3]`, stops the program with an error."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSArray *nums = @[@10, @20, @30];\n        int sum = 0;\n        for (NSNumber *n in nums) {\n            sum += [n intValue];\n        }\n        printf(\"%d\\n\", sum);\n        printf(\"%d\\n\", [nums[1] intValue]);\n        printf(\"%d\\n\", [nums containsObject:@20]);\n    }\n    return 0;\n}",
+          "output": "60\n20\n1"
+        },
+        {
+          "type": "heading",
+          "text": "Arrays that change"
+        },
+        {
+          "type": "text",
+          "md": "An `NSArray` never changes. An `NSMutableArray` can: `addObject:` adds an item at the end, `removeObjectAtIndex:` removes one, and `list[0] = ...` replaces one. `[NSMutableArray array]` creates an empty mutable array."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSMutableArray *list = [NSMutableArray array];\n        [list addObject:@\"milk\"];\n        [list addObject:@\"bread\"];\n        [list addObject:@\"eggs\"];\n        [list removeObjectAtIndex:0];\n        list[0] = @\"butter\";\n        for (NSString *item in list) {\n            printf(\"%s\\n\", [item UTF8String]);\n        }\n        printf(\"%lu\\n\", [list count]);\n    }\n    return 0;\n}",
+          "output": "butter\neggs\n2"
+        },
+        {
+          "type": "heading",
+          "text": "Dictionaries"
+        },
+        {
+          "type": "text",
+          "md": "An `NSDictionary` stores pairs of a **key** and a **value**. `@{key: value, ...}` creates one, and `ages[@\"Ada\"]` reads the value for a key. For a key that is not there, you get `nil`, which means \"no object\"."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSDictionary *ages = @{@\"Ada\": @36, @\"Alan\": @41};\n        NSNumber *a = ages[@\"Ada\"];\n        printf(\"%d\\n\", [a intValue]);\n        printf(\"%lu\\n\", [ages count]);\n        if (ages[@\"Bob\"] == nil) {\n            printf(\"no Bob\\n\");\n        }\n    }\n    return 0;\n}",
+          "output": "36\n2\nno Bob"
+        },
+        {
+          "type": "text",
+          "md": "An `NSMutableDictionary` can change: `stock[@\"apple\"] = @5` adds a pair, or replaces the value if the key is already there. A dictionary has no fixed order, so do not rely on the order of its keys."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSMutableDictionary *stock = [NSMutableDictionary dictionary];\n        stock[@\"apple\"] = @5;\n        stock[@\"pear\"] = @2;\n        stock[@\"apple\"] = @7;\n        printf(\"%lu\\n\", [stock count]);\n        printf(\"%d\\n\", [stock[@\"apple\"] intValue]);\n    }\n    return 0;\n}",
+          "output": "2\n7"
+        },
+        {
+          "type": "tip",
+          "md": "A message to `nil` does nothing and gives back `0` or `nil`. So `[ages[@\"Bob\"] intValue]` is `0` and does not stop the program."
+        },
+        {
+          "type": "warning",
+          "md": "You cannot add to an array created with `@[...]`: `addObject:` only exists for `NSMutableArray`. Collections also cannot store `nil` or plain numbers like `5`; use `@5`."
+        }
+      ],
+      "card": [
+        "`NSArray *a = @[@\"x\", @2];` `a[0]` `[a count]`",
+        "`NSMutableArray`: `addObject:`, `removeObjectAtIndex:`",
+        "`NSDictionary *d = @{@\"k\": @1};` `d[@\"k\"]`",
+        "missing key gives `nil`; a message to `nil` gives `0`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "collections-1",
+          "prompt": "What does this print?",
+          "code": "NSArray *a = @[@\"x\", @\"y\", @\"z\"];\nprintf(\"%s\\n\", [a[1] UTF8String]);",
+          "answers": [
+            "y"
+          ],
+          "explain": "The index starts at `0`, so `a[1]` is the second item, `y`."
+        },
+        {
+          "type": "input",
+          "id": "collections-2",
+          "prompt": "What does this print?",
+          "code": "NSMutableArray *m = [NSMutableArray array];\n[m addObject:@1];\n[m addObject:@2];\n[m addObject:@3];\n[m removeObjectAtIndex:1];\nprintf(\"%lu\\n\", [m count]);",
+          "answers": [
+            "2"
+          ],
+          "explain": "Three items are added and one is removed, so `count` is `2`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-3",
+          "prompt": "What does this print?",
+          "code": "NSDictionary *d = @{@\"a\": @1, @\"b\": @2};\nprintf(\"%d\\n\", [d[@\"b\"] intValue]);",
+          "options": [
+            "`2`",
+            "`1`",
+            "`b`",
+            "`0`"
+          ],
+          "answer": 0,
+          "explain": "`d[@\"b\"]` is the value for the key `b`, the number `2`."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-4",
+          "statement": "You can send `addObject:` to an array created with `@[...]`.",
+          "answer": false,
+          "explain": "`@[...]` creates an `NSArray`, which never changes. Only an `NSMutableArray` has `addObject:`."
+        },
+        {
+          "type": "gap",
+          "id": "collections-5",
+          "prompt": "Complete the code so it prints `3`.",
+          "code": "NSArray *nums = ___;\nprintf(\"%lu\\n\", [nums count]);",
+          "options": [
+            "@[@1, @2, @3]",
+            "[1, 2, 3]",
+            "@[1, 2, 3]",
+            "@{1, 2, 3}"
+          ],
+          "answer": 0,
+          "explain": "An array literal is `@[...]`, and every item must be an object, like `@1`."
+        },
+        {
+          "type": "gap",
+          "id": "collections-6",
+          "prompt": "Complete the code so it prints `4`.",
+          "code": "NSMutableDictionary *stock = [NSMutableDictionary ___];\nstock[@\"pen\"] = @4;\nprintf(\"%d\\n\", [stock[@\"pen\"] intValue]);",
+          "options": [
+            "dictionary",
+            "array",
+            "dict",
+            "copy"
+          ],
+          "answer": 0,
+          "explain": "`[NSMutableDictionary dictionary]` creates an empty mutable dictionary."
+        },
+        {
+          "type": "blocks",
+          "id": "collections-7",
+          "prompt": "Build the line that adds tea to the mutable array list.",
+          "tokens": [
+            "[list",
+            "addObject:",
+            "@\"tea\"",
+            "];"
+          ],
+          "distractors": [
+            "add:",
+            "\"tea\""
+          ],
+          "explain": "The message is `addObject:`, and the item must be an object, so the text needs the `@`."
+        },
+        {
+          "type": "order",
+          "id": "collections-8",
+          "prompt": "Put the lines in order so the program prints `10`.",
+          "lines": [
+            "NSDictionary *prices = @{@\"tea\": @3, @\"cake\": @5};",
+            "NSNumber *p = prices[@\"cake\"];",
+            "int total = [p intValue] * 2;",
+            "printf(\"%d\\n\", total);"
+          ],
+          "explain": "Create the dictionary, read the value for `cake`, turn it into an `int` and calculate, then print."
+        },
+        {
+          "type": "pairs",
+          "id": "collections-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`@[a, b]`",
+              "creates an array"
+            ],
+            [
+              "`@{k: v}`",
+              "creates a dictionary"
+            ],
+            [
+              "`[list count]`",
+              "number of items"
+            ],
+            [
+              "`list[0]`",
+              "the first item"
+            ],
+            [
+              "`nil`",
+              "no object"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "collections-10",
+          "prompt": "The program should print `3` and then `blue`. Which line has the bug?",
+          "lines": [
+            "NSArray *colors = @[@\"red\", @\"green\", @\"blue\"];",
+            "printf(\"%lu\\n\", [colors count]);",
+            "printf(\"%s\\n\", [colors[3] UTF8String]);"
+          ],
+          "bug": 2,
+          "explain": "The index starts at `0`, so the third item is `colors[2]`. Index `3` does not exist."
+        },
+        {
+          "type": "bug",
+          "id": "collections-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "NSMutableDictionary *ages = [NSMutableDictionary dictionary];",
+            "ages[@\"Ann\"] = 30;",
+            "printf(\"%d\\n\", [ages[@\"Ann\"] intValue]);"
+          ],
+          "bug": 1,
+          "explain": "A dictionary only stores objects. Write `ages[@\"Ann\"] = @30;`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-12",
+          "prompt": "What happens when this code runs?",
+          "code": "NSDictionary *d = @{@\"x\": @1};\nNSNumber *v = d[@\"y\"];\nprintf(\"%d\\n\", [v intValue]);",
+          "options": [
+            "It prints `0`.",
+            "It prints `1`.",
+            "The program stops with an error.",
+            "It does not compile."
+          ],
+          "answer": 0,
+          "explain": "The key `y` is missing, so `v` is `nil`. A message to `nil` gives back `0`."
+        }
+      ]
+    },
+    {
+      "id": "classes",
+      "title": "Classes",
+      "chapter": "Objects",
+      "summary": "Define your own classes with @interface and @implementation, write methods and create objects with alloc and init.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **class** is a plan for objects. It has two parts. The `@interface` lists what objects of the class can do. The `@implementation` contains the code of the **methods**. Both parts end with `@end`. `Dog : NSObject` means that `Dog` is based on `NSObject`, the base class of almost all classes."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\n@interface Dog : NSObject\n- (void)bark;\n@end\n\n@implementation Dog\n- (void)bark {\n    printf(\"Woof!\\n\");\n}\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Dog *dog = [[Dog alloc] init];\n        [dog bark];\n        [dog bark];\n    }\n    return 0;\n}",
+          "output": "Woof!\nWoof!"
+        },
+        {
+          "type": "text",
+          "md": "`[[Dog alloc] init]` creates an object: `alloc` reserves memory, and `init` prepares the new object. The `-` before a method makes it an **instance method**, a method you send to an object. `(void)` means that the method gives back nothing. **ARC** (Automatic Reference Counting) frees the memory of an object automatically when nobody uses it anymore."
+        },
+        {
+          "type": "heading",
+          "text": "Parameters and return values"
+        },
+        {
+          "type": "text",
+          "md": "The type in parentheses after `-` is what the method gives back, and `return` gives it back. Each parameter comes after a colon: `- (int)add:(int)a to:(int)b` has the name `add:to:` and takes two `int` values. A method with `+` is a **class method**: you send it to the class itself, like `[Calculator square:7]` or `[NSString stringWithFormat:...]`."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\n@interface Calculator : NSObject\n- (int)add:(int)a to:(int)b;\n+ (int)square:(int)n;\n@end\n\n@implementation Calculator\n- (int)add:(int)a to:(int)b {\n    return a + b;\n}\n+ (int)square:(int)n {\n    return n * n;\n}\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Calculator *calc = [[Calculator alloc] init];\n        printf(\"%d\\n\", [calc add:2 to:3]);\n        printf(\"%d\\n\", [Calculator square:7]);\n    }\n    return 0;\n}",
+          "output": "5\n49"
+        },
+        {
+          "type": "heading",
+          "text": "Data inside objects"
+        },
+        {
+          "type": "text",
+          "md": "An object can store its own data in **instance variables**. You declare them in braces after `@implementation`. Their names usually start with `_`. Every object has its own copy, and it starts at `0` (or `nil` for objects)."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\n@interface Counter : NSObject\n- (void)increment;\n- (int)value;\n@end\n\n@implementation Counter {\n    int _count;\n}\n- (void)increment {\n    _count++;\n}\n- (int)value {\n    return _count;\n}\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Counter *a = [[Counter alloc] init];\n        [a increment];\n        [a increment];\n        [a increment];\n        Counter *b = [[Counter alloc] init];\n        printf(\"%d %d\\n\", [a value], [b value]);\n    }\n    return 0;\n}",
+          "output": "3 0"
+        },
+        {
+          "type": "text",
+          "md": "To give an object values when you create it, write your own `init` method. `self` is the object itself, and `[super init]` runs the `init` of `NSObject` first. If that worked, `self` is not `nil`, and you store the values. `instancetype` means \"an object of this class\"."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\n@interface Greeter : NSObject\n- (instancetype)initWithName:(NSString *)name;\n- (void)greet;\n@end\n\n@implementation Greeter {\n    NSString *_name;\n}\n- (instancetype)initWithName:(NSString *)name {\n    self = [super init];\n    if (self) {\n        _name = name;\n    }\n    return self;\n}\n- (void)greet {\n    printf(\"Hello, %s!\\n\", [_name UTF8String]);\n}\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Greeter *g = [[Greeter alloc] initWithName:@\"Ada\"];\n        [g greet];\n    }\n    return 0;\n}",
+          "output": "Hello, Ada!"
+        },
+        {
+          "type": "warning",
+          "md": "A method in the `@interface` ends with `;`, the same method in the `@implementation` has its code in braces. An instance method needs an object: `[Dog bark]` does not work when `bark` is a `-` method."
+        }
+      ],
+      "card": [
+        "`@interface Dog : NSObject … @end` lists the methods",
+        "`@implementation Dog … @end` contains the code",
+        "`- (int)add:(int)a to:(int)b;` instance, `+` class method",
+        "`Dog *d = [[Dog alloc] init];` creates an object"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "classes-1",
+          "prompt": "Which part of a class contains the code of its methods?",
+          "options": [
+            "`@implementation`",
+            "`@interface`",
+            "`@end`",
+            "`#import`"
+          ],
+          "answer": 0,
+          "explain": "The `@interface` only lists the methods. Their code goes into the `@implementation`."
+        },
+        {
+          "type": "input",
+          "id": "classes-2",
+          "prompt": "What is the result of `[[[Box alloc] init] volume:3]`?",
+          "code": "@interface Box : NSObject\n- (int)volume:(int)side;\n@end\n\n@implementation Box\n- (int)volume:(int)side {\n    return side * side * side;\n}\n@end",
+          "answers": [
+            "27"
+          ],
+          "explain": "The method returns `side * side * side`, and 3 × 3 × 3 is `27`."
+        },
+        {
+          "type": "true_false",
+          "id": "classes-3",
+          "statement": "A method declared with `+` is sent to the class itself, not to an object.",
+          "answer": true,
+          "explain": "`+` makes a class method, like `[Tool twice:4]`. Methods with `-` are sent to objects."
+        },
+        {
+          "type": "choice",
+          "id": "classes-4",
+          "prompt": "Which line creates a new `Dog` object?",
+          "options": [
+            "`Dog *d = [[Dog alloc] init];`",
+            "`Dog d = [[Dog alloc] init];`",
+            "`Dog *d = new Dog();`",
+            "`Dog *d = [Dog alloc init];`"
+          ],
+          "answer": 0,
+          "explain": "First `alloc`, then `init`, each in its own brackets. The variable is a pointer, so it needs `*`."
+        },
+        {
+          "type": "gap",
+          "id": "classes-5",
+          "prompt": "Complete the first line so `Cat` is based on `NSObject`.",
+          "code": "@interface Cat ___ NSObject\n- (void)meow;\n@end\n\n@implementation Cat\n- (void)meow {\n    printf(\"Meow\\n\");\n}\n@end",
+          "options": [
+            ":",
+            "extends",
+            "<",
+            "::"
+          ],
+          "answer": 0,
+          "explain": "The base class comes after a colon: `@interface Cat : NSObject`."
+        },
+        {
+          "type": "gap",
+          "id": "classes-6",
+          "prompt": "The class `Shop` has the method `- (int)priceFor:(int)count`. Complete the call so it prints `15`.",
+          "code": "Shop *shop = [[Shop alloc] init];\nint p = [shop ___5];\nprintf(\"%d\\n\", p);",
+          "options": [
+            "priceFor:",
+            "priceFor(",
+            "priceFor",
+            "priceFor="
+          ],
+          "answer": 0,
+          "explain": "The value comes after the colon of the method name: `[shop priceFor:5]`."
+        },
+        {
+          "type": "blocks",
+          "id": "classes-7",
+          "prompt": "Build the line that creates a `Counter` and stores it in c.",
+          "tokens": [
+            "Counter",
+            "*c",
+            "=",
+            "[[Counter alloc]",
+            "init]",
+            ";"
+          ],
+          "distractors": [
+            "new",
+            "Counter()"
+          ],
+          "explain": "`alloc` reserves memory, `init` prepares the object, and `c` is a pointer to it."
+        },
+        {
+          "type": "order",
+          "id": "classes-8",
+          "prompt": "Put the lines in order to write the method `sumTo:`, which adds the numbers from 1 to n.",
+          "lines": [
+            "- (int)sumTo:(int)n {",
+            "    int total = 0;",
+            "    for (int i = 1; i <= n; i++) {",
+            "        total += i;",
+            "    }",
+            "    return total;",
+            "}"
+          ],
+          "explain": "The method header comes first. Inside, set `total` to `0`, add in the loop, and return the result after the loop."
+        },
+        {
+          "type": "pairs",
+          "id": "classes-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`@interface`",
+              "lists the methods of a class"
+            ],
+            [
+              "`@implementation`",
+              "contains the code of the methods"
+            ],
+            [
+              "`-`",
+              "instance method"
+            ],
+            [
+              "`+`",
+              "class method"
+            ],
+            [
+              "`alloc`",
+              "reserves memory for an object"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "classes-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "@interface Bird : NSObject",
+            "- (void)sing",
+            "@end",
+            "@implementation Bird",
+            "- (void)sing {",
+            "    printf(\"Tweet\\n\");",
+            "}",
+            "@end"
+          ],
+          "bug": 1,
+          "explain": "A method in the `@interface` ends with a semicolon: `- (void)sing;`."
+        },
+        {
+          "type": "bug",
+          "id": "classes-11",
+          "prompt": "The class `Dog` has the instance methods `sit` and `bark`. Which line has the bug?",
+          "lines": [
+            "Dog *rex = [[Dog alloc] init];",
+            "[rex sit];",
+            "[Dog bark];"
+          ],
+          "bug": 2,
+          "explain": "`bark` is an instance method, so you send it to the object: `[rex bark];`."
+        },
+        {
+          "type": "choice",
+          "id": "classes-12",
+          "prompt": "`Counter` is the class from the lesson. What does this print?",
+          "code": "Counter *a = [[Counter alloc] init];\nCounter *b = [[Counter alloc] init];\n[a increment];\n[a increment];\n[b increment];\nprintf(\"%d %d\\n\", [a value], [b value]);",
+          "options": [
+            "`2 1`",
+            "`3 3`",
+            "`1 2`",
+            "`2 2`"
+          ],
+          "answer": 0,
+          "explain": "Every object has its own `_count`. `a` was increased twice, `b` once."
+        }
+      ]
+    },
+    {
+      "id": "properties",
+      "title": "Properties and blocks",
+      "chapter": "Objects",
+      "summary": "Declare properties, use dot syntax, understand messages and store code in blocks.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Writing an instance variable plus methods to read and change it takes many lines. `@property` does it for you: `@property int age;` creates the storage, a **getter** `age` to read it and a **setter** `setAge:` to change it."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\n@interface Person : NSObject\n@property NSString *name;\n@property int age;\n@end\n\n@implementation Person\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Person *p = [[Person alloc] init];\n        p.name = @\"Ada\";\n        p.age = 36;\n        printf(\"%s is %d\\n\", [p.name UTF8String], p.age);\n        [p setAge:40];\n        printf(\"%d\\n\", [p age]);\n    }\n    return 0;\n}",
+          "output": "Ada is 36\n40"
+        },
+        {
+          "type": "text",
+          "md": "The **dot syntax** is a short form for these messages: `p.age` is the same as `[p age]`, and `p.age = 40` is the same as `[p setAge:40]`. The setter name is `set` plus the property name with a capital first letter."
+        },
+        {
+          "type": "text",
+          "md": "Properties can have **attributes** in parentheses. `nonatomic` is the usual choice in apps. `copy` keeps its own copy of a string. `readonly` creates only a getter. Inside the class, you reach a property with `self`, for example `self.width`. You can also write the getter yourself, like `area` here."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\n@interface Rectangle : NSObject\n@property (nonatomic) double width;\n@property (nonatomic) double height;\n@property (nonatomic, readonly) double area;\n@end\n\n@implementation Rectangle\n- (double)area {\n    return self.width * self.height;\n}\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Rectangle *r = [[Rectangle alloc] init];\n        r.width = 3;\n        r.height = 2.5;\n        printf(\"%.1f\\n\", r.area);\n    }\n    return 0;\n}",
+          "output": "7.5"
+        },
+        {
+          "type": "heading",
+          "text": "Messages"
+        },
+        {
+          "type": "text",
+          "md": "Every `[object message]` is a message. The object decides while the program runs which method answers it. `@selector(name)` stands for a message name, and `respondsToSelector:` asks an object whether it understands that message. A message to `nil` does nothing and gives back `0`."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\n@interface Person : NSObject\n@property NSString *name;\n@property int age;\n@end\n\n@implementation Person\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Person *p = [[Person alloc] init];\n        printf(\"%d\\n\", [p respondsToSelector:@selector(age)]);\n        printf(\"%d\\n\", [p respondsToSelector:@selector(fly)]);\n        Person *nobody = nil;\n        printf(\"%d\\n\", nobody.age);\n    }\n    return 0;\n}",
+          "output": "1\n0\n0"
+        },
+        {
+          "type": "heading",
+          "text": "Blocks"
+        },
+        {
+          "type": "text",
+          "md": "A **block** is a piece of code that you can store in a variable and run later, like a small function without a name. `^` starts a block. In `int (^square)(int)`, the variable `square` holds a block that takes an `int` and gives back an `int`. You run it with parentheses: `square(6)`."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        int (^square)(int) = ^(int x) {\n            return x * x;\n        };\n        printf(\"%d\\n\", square(6));\n        void (^hello)(void) = ^{\n            printf(\"Hi from a block\\n\");\n        };\n        hello();\n    }\n    return 0;\n}",
+          "output": "36\nHi from a block"
+        },
+        {
+          "type": "text",
+          "md": "A block can use variables from outside. It keeps the value they had when the block was created. Many Foundation methods take a block, for example `enumerateObjectsUsingBlock:`, which runs the block for every item of an array together with its index."
+        },
+        {
+          "type": "code",
+          "code": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        int bonus = 10;\n        int (^addBonus)(int) = ^(int x) {\n            return x + bonus;\n        };\n        printf(\"%d\\n\", addBonus(5));\n        NSArray *names = @[@\"Ann\", @\"Ben\"];\n        [names enumerateObjectsUsingBlock:^(NSString *name, NSUInteger i, BOOL *stop) {\n            printf(\"%lu: %s\\n\", i, [name UTF8String]);\n        }];\n    }\n    return 0;\n}",
+          "output": "15\n0: Ann\n1: Ben"
+        },
+        {
+          "type": "tip",
+          "md": "The `stop` parameter lets you end the enumeration early: set `*stop = YES;` inside the block. To change an outside variable inside a block, declare it with `__block`, like `__block int total = 0;`."
+        }
+      ],
+      "card": [
+        "`@property (nonatomic, copy) NSString *name;`",
+        "`p.age` = `[p age]`, `p.age = 5` = `[p setAge:5]`",
+        "`[obj respondsToSelector:@selector(age)]`; messages to `nil` give `0`",
+        "`int (^f)(int) = ^(int x) { return x * 2; };` then `f(3)`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "properties-1",
+          "prompt": "`Item` has the property `@property int count;`. What does this print?",
+          "code": "Item *it = [[Item alloc] init];\nit.count = 4;\nit.count = it.count * 3;\nprintf(\"%d\\n\", it.count);",
+          "answers": [
+            "12"
+          ],
+          "explain": "The property is set to `4`, then to `4 * 3`, which is `12`."
+        },
+        {
+          "type": "choice",
+          "id": "properties-2",
+          "prompt": "Which line does the same as `p.age = 30;`?",
+          "options": [
+            "`[p setAge:30];`",
+            "`[p age:30];`",
+            "`[p setage:30];`",
+            "`p.setAge = 30;`"
+          ],
+          "answer": 0,
+          "explain": "Assigning with the dot syntax sends the setter. Its name is `set` plus the property name with a capital letter: `setAge:`."
+        },
+        {
+          "type": "true_false",
+          "id": "properties-3",
+          "statement": "For a `readonly` property `area`, the line `r.area = 5;` does not compile.",
+          "answer": true,
+          "explain": "`readonly` creates only a getter, so there is no setter for the assignment."
+        },
+        {
+          "type": "input",
+          "id": "properties-4",
+          "prompt": "What does this print?",
+          "code": "int (^twice)(int) = ^(int x) {\n    return x * 2;\n};\nprintf(\"%d\\n\", twice(twice(3)));",
+          "answers": [
+            "12"
+          ],
+          "explain": "The inner call gives `6`, and the outer call doubles it again to `12`."
+        },
+        {
+          "type": "gap",
+          "id": "properties-5",
+          "prompt": "Complete the code so it prints `8`.",
+          "code": "int (^cube)(int) = ___(int x) {\n    return x * x * x;\n};\nprintf(\"%d\\n\", cube(2));",
+          "options": [
+            "^",
+            "*",
+            "&",
+            "@"
+          ],
+          "answer": 0,
+          "explain": "A block starts with `^`."
+        },
+        {
+          "type": "gap",
+          "id": "properties-6",
+          "prompt": "`Book` has the property `title`. Complete the code so it prints `Dune`.",
+          "code": "Book *book = [[Book alloc] init];\n[book ___@\"Dune\"];\nprintf(\"%s\\n\", [book.title UTF8String]);",
+          "options": [
+            "setTitle:",
+            "title:",
+            "setTitle",
+            "settitle:"
+          ],
+          "answer": 0,
+          "explain": "The setter of `title` is `setTitle:` with a capital `T` and a colon before the value."
+        },
+        {
+          "type": "blocks",
+          "id": "properties-7",
+          "prompt": "Build the property declaration for a string property called name.",
+          "tokens": [
+            "@property",
+            "(nonatomic, copy)",
+            "NSString",
+            "*name",
+            ";"
+          ],
+          "distractors": [
+            "@var",
+            "(void)"
+          ],
+          "explain": "`@property`, then the attributes in parentheses, then the type and the name. Object properties need the `*`."
+        },
+        {
+          "type": "order",
+          "id": "properties-8",
+          "prompt": "Put the lines in order so the program prints `8`.",
+          "lines": [
+            "int base = 5;",
+            "int (^add)(int) = ^(int x) {",
+            "    return x + base;",
+            "};",
+            "printf(\"%d\\n\", add(3));"
+          ],
+          "explain": "`base` must exist before the block uses it. The block ends with `};`, and then you can call it."
+        },
+        {
+          "type": "pairs",
+          "id": "properties-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`@property`",
+              "declares a value with getter and setter"
+            ],
+            [
+              "`p.age`",
+              "reads a property"
+            ],
+            [
+              "`[p setAge:5]`",
+              "changes a property"
+            ],
+            [
+              "`^`",
+              "starts a block"
+            ],
+            [
+              "`readonly`",
+              "only a getter, no setter"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "properties-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "@interface Square : NSObject",
+            "@property (nonatomic) double side;",
+            "- (double)area;",
+            "@end",
+            "@implementation Square",
+            "- (double)area {",
+            "    return side * side;",
+            "}",
+            "@end"
+          ],
+          "bug": 6,
+          "explain": "Inside the class, reach the property with `self`: `return self.side * self.side;`."
+        },
+        {
+          "type": "bug",
+          "id": "properties-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "int (^half)(int) = ^(int x) {",
+            "    return x / 2;",
+            "};",
+            "printf(\"%d\\n\", half[10]);"
+          ],
+          "bug": 3,
+          "explain": "You run a block with parentheses, like a function: `half(10)`."
+        },
+        {
+          "type": "choice",
+          "id": "properties-12",
+          "prompt": "What does this print?",
+          "code": "int n = 1;\nint (^getN)(void) = ^{\n    return n;\n};\nn = 5;\nprintf(\"%d\\n\", getN());",
+          "options": [
+            "`1`",
+            "`5`",
+            "`0`",
+            "It does not compile."
+          ],
+          "answer": 0,
+          "explain": "The block keeps the value that `n` had when the block was created, which is `1`."
+        }
+      ]
+    }
+  ]
+}

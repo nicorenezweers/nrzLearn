@@ -1,0 +1,369 @@
+{
+  "hello-1": {
+    "programs": [
+      {
+        "code": "fun main() {\n    println(\"Hello\")\n}",
+        "expect": "Hello"
+      },
+      {
+        "code": "fun main() {\n    print \"Hello\"\n}",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "fun main() {\n    echo(\"Hello\")\n}",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "fun main() {\n    printLine(\"Hello\")\n}",
+        "expect": "@compile_error"
+      }
+    ]
+  },
+  "hello-2": {},
+  "hello-3": {},
+  "hello-4": {
+    "expect": "AB\nC"
+  },
+  "hello-5": {
+    "programs": [
+      {
+        "code": "fun main() {\n    print(\"Hi\")\n    print(\"Bye\")\n}",
+        "expect": "HiBye"
+      }
+    ]
+  },
+  "hello-6": {
+    "expect": "Hi"
+  },
+  "hello-7": {
+    "expect": "3.5"
+  },
+  "hello-8": {
+    "template": "fun main() {\n    @@\n}",
+    "expect": "42"
+  },
+  "hello-9": {
+    "expect": "Kotlin\nDone"
+  },
+  "hello-11": {
+    "fix": "    println(\"Middle\")",
+    "expect": "Start\nMiddle\nEnd"
+  },
+  "hello-12": {
+    "fix": "    println(\"Bye\")",
+    "expect": "Hi\nBye"
+  },
+  "variables-1": {
+    "programs": [
+      {
+        "code": "fun main() {\n    var a = 1\n    a = 2\n    println(a)\n}",
+        "expect": "2"
+      },
+      {
+        "code": "fun main() {\n    val a = 1\n    a = 2\n    println(a)\n}",
+        "expect": "@compile_error"
+      }
+    ]
+  },
+  "variables-2": {},
+  "variables-3": {},
+  "variables-4": {
+    "programs": [
+      {
+        "code": "fun main() {\n    val city = \"Rome\"\n    val check: String = city\n    println(check)\n}",
+        "expect": "Rome"
+      }
+    ]
+  },
+  "variables-5": {
+    "expect": "11"
+  },
+  "variables-6": {
+    "expect": "1.75"
+  },
+  "variables-7": {
+    "template": "fun main() {\n    @@\n    println(age)\n}",
+    "expect": "30"
+  },
+  "variables-8": {
+    "expect": "8"
+  },
+  "variables-10": {
+    "fix": "    val age: Int = 25",
+    "expect": "Kim\n25"
+  },
+  "variables-11": {
+    "fix": "    val back: Int = double.toInt()",
+    "expect": "7"
+  },
+  "variables-12": {},
+  "strings-1": {},
+  "strings-2": {},
+  "strings-3": {},
+  "strings-4": {},
+  "strings-5": {
+    "expect": "hello"
+  },
+  "strings-6": {
+    "expect": "Hi, Lea!"
+  },
+  "strings-7": {
+    "expect": "7"
+  },
+  "strings-8": {
+    "template": "fun main() {\n    val name = \"Ana\"\n    @@\n}",
+    "expect": "Name: ANA"
+  },
+  "strings-9": {
+    "expect": "KOTLIN has 6 letters"
+  },
+  "strings-11": {
+    "fix": "    println(\"Letters: ${first.length}\")",
+    "expect": "Name: Ana Silva\nLetters: 3"
+  },
+  "strings-12": {
+    "fix": "    println(word.length)",
+    "expect": "Apple\n5"
+  },
+  "conditions-1": {},
+  "conditions-2": {},
+  "conditions-3": {},
+  "conditions-4": {
+    "programs": [
+      {
+        "code": "fun main() {\n    println(5 != 5)\n}",
+        "expect": "false"
+      }
+    ]
+  },
+  "conditions-5": {
+    "expect": "false"
+  },
+  "conditions-6": {
+    "expect": "Sorry"
+  },
+  "conditions-7": {
+    "expect": "large"
+  },
+  "conditions-8": {
+    "template": "fun main() {\n    val a = 3\n    val b = 8\n    @@\n    println(min)\n}",
+    "expect": "3"
+  },
+  "conditions-9": {
+    "expect": "Grade B"
+  },
+  "conditions-11": {
+    "fix": "    if (age == 18) {",
+    "expect": "Not 18"
+  },
+  "conditions-12": {
+    "fix": "    val bonus = if (points > 10) 5 else 0",
+    "expect": "5"
+  },
+  "loops-1": {},
+  "loops-2": {},
+  "loops-3": {},
+  "loops-4": {},
+  "loops-5": {
+    "programs": [
+      {
+        "code": "fun main() {\n    for (i in 0..3) {\n        print(i)\n    }\n}",
+        "expect": "0123"
+      },
+      {
+        "code": "fun main() {\n    for (i in 0 until 3) {\n        print(i)\n    }\n}",
+        "expect": "012"
+      },
+      {
+        "code": "fun main() {\n    for (i in 0..4) {\n        print(i)\n    }\n}",
+        "expect": "01234"
+      },
+      {
+        "code": "fun main() {\n    for (i in 3 downTo 1) {\n        print(i)\n    }\n}",
+        "expect": "321"
+      }
+    ]
+  },
+  "loops-6": {
+    "programs": [
+      {
+        "code": "fun main() {\n    var n = 5\n    while (n < 3) {\n        println(\"inside\")\n    }\n    println(\"done\")\n}",
+        "expect": "done"
+      }
+    ]
+  },
+  "loops-7": {
+    "expect": "3\n2\n1"
+  },
+  "loops-8": {
+    "expect": "0\n2\n4\n6\n8"
+  },
+  "loops-9": {
+    "template": "fun main() {\n    @@\n        print(i)\n    }\n}",
+    "expect": "12345678910"
+  },
+  "loops-10": {
+    "expect": "2\n4\n6"
+  },
+  "loops-11": {
+    "programs": [
+      {
+        "code": "fun main() {\n    println((1..4).toList())\n}",
+        "expect": "[1, 2, 3, 4]"
+      },
+      {
+        "code": "fun main() {\n    println((1 until 4).toList())\n}",
+        "expect": "[1, 2, 3]"
+      },
+      {
+        "code": "fun main() {\n    println((4 downTo 1).toList())\n}",
+        "expect": "[4, 3, 2, 1]"
+      },
+      {
+        "code": "fun main() {\n    println((1..7 step 3).toList())\n}",
+        "expect": "[1, 4, 7]"
+      }
+    ]
+  },
+  "loops-12": {
+    "fix": "    for (n in 1..10) {",
+    "expect": "55"
+  },
+  "functions-1": {},
+  "functions-2": {},
+  "functions-3": {},
+  "functions-4": {
+    "programs": [
+      {
+        "code": "fun double(x: Int): Int = x * 2\n\nfun main() {\n    println(double(4))\n}",
+        "expect": "8"
+      },
+      {
+        "code": "fun double(x: Int) -> Int = x * 2\n\nfun main() {\n    println(double(4))\n}",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "fun double(x): Int = x * 2\n\nfun main() {\n    println(double(4))\n}",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "fun double(x: Int): Int { x * 2 }\n\nfun main() {\n    println(double(4))\n}",
+        "expect": "@compile_error"
+      }
+    ]
+  },
+  "functions-5": {
+    "programs": [
+      {
+        "code": "fun info(name: String, age: Int) = \"$name $age\"\n\nfun main() {\n    println(info(age = 7, name = \"Tim\"))\n}",
+        "expect": "Tim 7"
+      }
+    ]
+  },
+  "functions-6": {
+    "expect": "5"
+  },
+  "functions-7": {
+    "expect": "Hi, Max!"
+  },
+  "functions-8": {
+    "template": "@@\n\nfun main() {\n    println(half(5.0))\n}",
+    "expect": "2.5"
+  },
+  "functions-9": {
+    "expect": "8\n9",
+    "append": "\n\nfun main() {\n    println(max(3, 8))\n    println(max(9, 2))\n}"
+  },
+  "functions-11": {
+    "fix": "    println(average(5, 6))",
+    "expect": "Average: 3.5\n5.5"
+  },
+  "functions-12": {
+    "fix": "    val ok: Boolean = isAdult(20)",
+    "expect": "true"
+  },
+  "collections-1": {},
+  "collections-2": {},
+  "collections-3": {},
+  "collections-4": {},
+  "collections-5": {
+    "programs": [
+      {
+        "code": "fun main() {\n    val a = mutableListOf(1, 2)\n    a.add(3)\n    println(a)\n}",
+        "expect": "[1, 2, 3]"
+      },
+      {
+        "code": "fun main() {\n    val a = listOf(1, 2)\n    a.add(3)\n    println(a)\n}",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "fun main() {\n    val a = setOf(1, 2)\n    a.add(3)\n    println(a)\n}",
+        "expect": "@compile_error"
+      }
+    ]
+  },
+  "collections-6": {
+    "expect": "2"
+  },
+  "collections-7": {
+    "expect": "[1, 4, 9]"
+  },
+  "collections-8": {
+    "expect": "3"
+  },
+  "collections-9": {
+    "template": "fun main() {\n    val nums = listOf(1, 2, 3, 4)\n    @@\n    println(even)\n}",
+    "expect": "[2, 4]"
+  },
+  "collections-10": {
+    "expect": "[10, 20, 30]"
+  },
+  "collections-12": {
+    "fix": "    val last = names[names.size - 1]",
+    "expect": "Cy"
+  },
+  "classes-1": {},
+  "classes-2": {},
+  "classes-3": {},
+  "classes-4": {},
+  "classes-5": {
+    "programs": [
+      {
+        "code": "fun main() {\n    val a: String? = null\n    println(a)\n}",
+        "expect": "null"
+      },
+      {
+        "code": "fun main() {\n    val a: String = null\n    println(a)\n}",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "fun main() {\n    val a: Int = null\n    println(a)\n}",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "fun main() {\n    val a = String?\n    println(a)\n}",
+        "expect": "@compile_error"
+      }
+    ]
+  },
+  "classes-6": {
+    "expect": "false"
+  },
+  "classes-7": {
+    "expect": "0"
+  },
+  "classes-8": {
+    "expect": "Ida"
+  },
+  "classes-9": {
+    "template": "data class Point(val x: Int, val y: Int)\n\nfun main() {\n    val p = Point(3, 4)\n    @@\n    println(q)\n}",
+    "expect": "Point(x=3, y=0)"
+  },
+  "classes-10": {
+    "expect": "none\nZOE"
+  },
+  "classes-12": {
+    "fix": "    val size: Int = city?.length ?: 0",
+    "expect": "null 0"
+  }
+}

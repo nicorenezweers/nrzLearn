@@ -1,0 +1,1859 @@
+{
+  "course": "prolog",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Prolog",
+      "chapter": "Basics",
+      "summary": "Write your first Prolog program and print text with writeln, write and format.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Prolog is a **logic programming** language. Instead of telling the computer step by step what to do, you describe facts and rules, and then you ask questions. First, you learn how a Prolog program prints text."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    writeln('Hello, Prolog!').",
+          "output": "Hello, Prolog!"
+        },
+        {
+          "type": "text",
+          "md": "The first line is a **directive**: a line that starts with `:-` runs while Prolog loads the file. `initialization(main, main)` means: when the file is loaded, run `main` and then stop. Every program in this course starts with this line."
+        },
+        {
+          "type": "text",
+          "md": "`main :- writeln('Hello, Prolog!').` defines `main`. Read `:-` as \"is true if\": `main` is true if Prolog can print the text. Every **clause** ends with a full stop `.`, like a sentence. `writeln` prints a value and then a new line."
+        },
+        {
+          "type": "heading",
+          "text": "Atoms and strings"
+        },
+        {
+          "type": "text",
+          "md": "Text in single quotes, like `'Hello, Prolog!'`, is an **atom**: a constant name. A word that starts with a lowercase letter, like `hello`, is an atom too, even without quotes. Text in double quotes, like `\"A string\"`, is a **string**. For printing, both work the same."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    writeln(hello),\n    writeln('Hello, world'),\n    writeln(\"A string\"),\n    write('No new line. '),\n    write(next),\n    nl.",
+          "output": "hello\nHello, world\nA string\nNo new line. next"
+        },
+        {
+          "type": "text",
+          "md": "A comma `,` between goals means **and then**: Prolog runs the goals from top to bottom. `write` prints a value without a new line, and `nl` prints only a new line."
+        },
+        {
+          "type": "heading",
+          "text": "Formatting with format"
+        },
+        {
+          "type": "text",
+          "md": "`format` prints a format text. Inside it, `~w` is replaced by the next value from the list in square brackets `[ ]`, and `~n` starts a new line. When there is no `~w`, you can leave out the list."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    format(\"Hello, ~w!~n\", [world]),\n    format(\"~w + ~w = ~w~n\", [2, 3, 5]),\n    format(\"Done~n\").",
+          "output": "Hello, world!\n2 + 3 = 5\nDone"
+        },
+        {
+          "type": "warning",
+          "md": "Inside a rule, separate the goals with commas. Only the last goal ends with a full stop. A full stop too early ends the clause, and the next line becomes a new, broken clause. Also, `format` never adds a new line by itself: end the text with `~n`."
+        },
+        {
+          "type": "tip",
+          "md": "In the exercises, the directive `:- initialization(main, main).` is often left out to keep the code short. Imagine it at the top of the file."
+        }
+      ],
+      "card": [
+        "`:- initialization(main, main).` runs `main`, then stops",
+        "`main :- Goal1, Goal2.` the comma means and then",
+        "`writeln(X)` prints with a new line, `write(X)` without, `nl` = new line",
+        "`format(\"~w and ~w~n\", [a, b])` prints `a and b`",
+        "Every clause ends with a full stop `.`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "What does this print?",
+          "code": "main :-\n    write(a),\n    write(b),\n    nl.",
+          "options": [
+            "`ab`",
+            "`a b`",
+            "`a` and `b` on two lines",
+            "`write(a)write(b)`"
+          ],
+          "answer": 0,
+          "explain": "`write` prints without a new line, so `a` and `b` appear next to each other. `nl` ends the line."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "main :-\n    format(\"~w-~w~n\", [1, 2]).",
+          "answers": [
+            "1-2"
+          ],
+          "explain": "Each `~w` is replaced by the next value from the list: first `1`, then `2`."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-3",
+          "statement": "Every clause in Prolog ends with a full stop `.`.",
+          "answer": true,
+          "explain": "A clause is like a sentence: it ends with a full stop. Without it, Prolog reports a syntax error."
+        },
+        {
+          "type": "gap",
+          "id": "hello-4",
+          "prompt": "Complete the program so it runs `main` and prints `Ready`.",
+          "code": ":- ___(main, main).\n\nmain :-\n    writeln('Ready').",
+          "options": [
+            "initialization",
+            "main",
+            "start",
+            "run"
+          ],
+          "answer": 0,
+          "explain": "The directive `:- initialization(main, main).` runs `main` when the file is loaded and then stops."
+        },
+        {
+          "type": "input",
+          "id": "hello-5",
+          "prompt": "What does this print?",
+          "code": "main :-\n    format(\"~w~w~n\", [ab, cd]).",
+          "answers": [
+            "abcd"
+          ],
+          "explain": "The two `~w` are replaced by `ab` and `cd` with nothing between them, so the result is `abcd`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-6",
+          "prompt": "The program should print `one` and `two`. Which line has the bug?",
+          "lines": [
+            ":- initialization(main, main).",
+            "main :-",
+            "    writeln(one).",
+            "    writeln(two)."
+          ],
+          "bug": 2,
+          "explain": "The full stop after `writeln(one)` ends the clause too early. Use a comma: `writeln(one),`."
+        },
+        {
+          "type": "order",
+          "id": "hello-7",
+          "prompt": "Put the lines in order so the program prints `Hello, world`.",
+          "lines": [
+            "main :-",
+            "    write('Hello, '),",
+            "    write(world),",
+            "    nl."
+          ],
+          "explain": "The head `main :-` comes first. The goals run from top to bottom, and the last goal ends with a full stop."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-8",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`writeln(X)`",
+              "prints X and a new line"
+            ],
+            [
+              "`write(X)`",
+              "prints X without a new line"
+            ],
+            [
+              "`nl`",
+              "prints a new line"
+            ],
+            [
+              "`~w`",
+              "the next value in a format text"
+            ],
+            [
+              "`~n`",
+              "a new line in a format text"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "hello-9",
+          "prompt": "Build the goal that prints `Hi bo`.",
+          "tokens": [
+            "format(",
+            "\"Hi ~w~n\",",
+            "[bo]",
+            ")"
+          ],
+          "distractors": [
+            "\"Hi ~n~w\",",
+            "(bo)"
+          ],
+          "explain": "`format` takes the format text and then the list of values. `~w` becomes `bo`, and `~n` ends the line."
+        },
+        {
+          "type": "choice",
+          "id": "hello-10",
+          "prompt": "In `main :- write(a), write(b).`, what does the comma mean?",
+          "options": [
+            "and then: run the next goal",
+            "or: run one of the goals",
+            "the end of the clause",
+            "a new line in the output"
+          ],
+          "answer": 0,
+          "explain": "A comma between goals means and then. Prolog runs `write(a)` first and then `write(b)`."
+        },
+        {
+          "type": "input",
+          "id": "hello-11",
+          "prompt": "What does this print?",
+          "code": "main :-\n    writeln('Big Cat').",
+          "answers": [
+            "Big Cat"
+          ],
+          "explain": "The single quotes make one atom, `'Big Cat'`. `writeln` prints it without the quotes."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-12",
+          "statement": "`format` adds a new line at the end of the output by itself.",
+          "answer": false,
+          "explain": "`format` prints exactly what you write. Add `~n` at the end of the format text for a new line."
+        }
+      ]
+    },
+    {
+      "id": "facts",
+      "title": "Facts and queries",
+      "chapter": "Basics",
+      "summary": "Describe a small world with facts and ask Prolog questions about it, with and without variables.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **fact** says that something is true. The fact `likes(ann, pizza).` says: Ann likes pizza. `likes` is the name of a **predicate**, and `ann` and `pizza` are its **arguments**, separated by commas. Names start with a lowercase letter, and every fact ends with a full stop."
+        },
+        {
+          "type": "code",
+          "code": "likes(ann, pizza).\nlikes(ann, salad).\nlikes(bob, pizza).\nlikes(cara, soup)."
+        },
+        {
+          "type": "text",
+          "md": "These four facts are a small **database**. Loading them prints nothing: facts only describe the world. To learn something, you ask a **query**. In the interactive Prolog shell, you type a query after the prompt `?-`. `?- likes(ann, pizza).` answers `true`, and `?- likes(bob, soup).` answers `false`, because no fact says so."
+        },
+        {
+          "type": "text",
+          "md": "In a program, you write a query as a goal. When the goal succeeds, the next goal runs. When it fails, the rest of `main` does not run."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nlikes(ann, pizza).\nlikes(bob, pizza).\n\nmain :-\n    likes(ann, pizza),\n    writeln('Ann likes pizza').",
+          "output": "Ann likes pizza"
+        },
+        {
+          "type": "heading",
+          "text": "Variables in queries"
+        },
+        {
+          "type": "text",
+          "md": "A **variable** starts with an uppercase letter or `_`, for example `X` or `Food`. In a query, a variable asks: which value makes this true? `?- likes(ann, X).` answers `X = pizza`. Prolog looks through the facts from top to bottom and stops at the first one that matches. In the shell, you type `;` to get the next answer: `X = salad`."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nlikes(ann, pizza).\nlikes(ann, salad).\nlikes(bob, pizza).\n\nmain :-\n    likes(ann, Food),\n    format(\"Ann likes ~w~n\", [Food]).",
+          "output": "Ann likes pizza"
+        },
+        {
+          "type": "text",
+          "md": "To get **all** answers in a program, use `forall(Query, Action)`: it runs `Action` once for every answer of `Query`. You learn more about it in the last unit."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nlikes(ann, pizza).\nlikes(ann, salad).\nlikes(bob, pizza).\nlikes(cara, soup).\n\nmain :-\n    forall(likes(Who, pizza), writeln(Who)).",
+          "output": "ann\nbob"
+        },
+        {
+          "type": "text",
+          "md": "The **anonymous variable** `_` means: any value, I do not care which. `likes(Who, _)` asks who likes anything. Ann appears twice because two facts match."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nlikes(ann, pizza).\nlikes(ann, salad).\nlikes(bob, pizza).\n\nmain :-\n    forall(likes(Who, _), writeln(Who)).",
+          "output": "ann\nann\nbob"
+        },
+        {
+          "type": "tip",
+          "md": "Prolog names a predicate by its name and its number of arguments: `likes/2` means `likes` with two arguments. `likes/2` and `likes/3` are different predicates."
+        }
+      ],
+      "card": [
+        "Fact: `likes(ann, pizza).`",
+        "Query: `?- likes(ann, X).` gives `X = pizza`",
+        "Variables start uppercase: `X`, `Food`; `_` = any value",
+        "`forall(likes(W, pizza), writeln(W))` prints every answer",
+        "`likes/2` = name `likes`, two arguments"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "facts-1",
+          "prompt": "Which answer does `?- color(grass, C).` give?",
+          "code": "color(sky, blue).\ncolor(grass, green).\ncolor(sun, yellow).",
+          "options": [
+            "`C = green`",
+            "`C = blue`",
+            "`C = grass`",
+            "`false`"
+          ],
+          "answer": 0,
+          "explain": "Only the fact `color(grass, green).` matches, so `C` becomes `green`."
+        },
+        {
+          "type": "true_false",
+          "id": "facts-2",
+          "statement": "With these facts, the query `?- animal(cow).` answers `true`.",
+          "code": "animal(cat).\nanimal(dog).",
+          "answer": false,
+          "explain": "Prolog only knows what the facts say. No fact says `animal(cow)`, so the answer is `false`."
+        },
+        {
+          "type": "input",
+          "id": "facts-3",
+          "prompt": "What does this print?",
+          "code": "likes(ann, pizza).\nlikes(ann, salad).\nlikes(bob, pizza).\n\nmain :-\n    likes(X, salad),\n    writeln(X).",
+          "answers": [
+            "ann"
+          ],
+          "explain": "The only fact with `salad` is `likes(ann, salad).`, so `X` becomes `ann`."
+        },
+        {
+          "type": "choice",
+          "id": "facts-4",
+          "prompt": "Which of these is a variable?",
+          "options": [
+            "`Food`",
+            "`food`",
+            "`'Food'`",
+            "`\"Food\"`"
+          ],
+          "answer": 0,
+          "explain": "Variables start with an uppercase letter or `_`. `food` and `'Food'` are atoms, and `\"Food\"` is a string."
+        },
+        {
+          "type": "gap",
+          "id": "facts-5",
+          "prompt": "Complete the code so it prints every animal.",
+          "code": "main :-\n    forall(animal(___), writeln(A)).",
+          "options": [
+            "A",
+            "a",
+            "_",
+            "X"
+          ],
+          "answer": 0,
+          "explain": "The query and the action must use the same variable `A`. Then `writeln(A)` prints the value of each answer."
+        },
+        {
+          "type": "bug",
+          "id": "facts-6",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "parent(tom, bob).",
+            "parent(tom, liz).",
+            "Parent(bob, ann).",
+            "parent(bob, pat)."
+          ],
+          "bug": 2,
+          "explain": "A predicate name must start with a lowercase letter. Write `parent(bob, ann).`."
+        },
+        {
+          "type": "input",
+          "id": "facts-7",
+          "prompt": "How many answers does `?- parent(tom, X).` give?",
+          "code": "parent(tom, bob).\nparent(tom, liz).\nparent(bob, ann).",
+          "answers": [
+            "2",
+            "two"
+          ],
+          "explain": "Two facts start with `parent(tom, ...)`: `X = bob` and `X = liz`."
+        },
+        {
+          "type": "pairs",
+          "id": "facts-8",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`likes(ann, pizza).`",
+              "a fact"
+            ],
+            [
+              "`?- likes(ann, X).`",
+              "a query"
+            ],
+            [
+              "`X`",
+              "a variable"
+            ],
+            [
+              "`ann`",
+              "an atom"
+            ],
+            [
+              "`likes/2`",
+              "a predicate with two arguments"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "facts-9",
+          "prompt": "The `likes` facts are loaded. Put the lines in order so the program prints `Ann likes pizza`.",
+          "lines": [
+            "main :-",
+            "    likes(ann, Food),",
+            "    format(\"Ann likes ~w~n\", [Food])."
+          ],
+          "explain": "The query must run first, so that `Food` has a value when `format` prints it."
+        },
+        {
+          "type": "blocks",
+          "id": "facts-10",
+          "prompt": "Build the fact that says: Bob likes soup.",
+          "tokens": [
+            "likes(",
+            "bob,",
+            "soup",
+            ")."
+          ],
+          "distractors": [
+            "Bob,",
+            "?-"
+          ],
+          "explain": "A fact is the predicate name, the arguments in parentheses and a full stop. `bob` must be lowercase, or it would be a variable."
+        },
+        {
+          "type": "true_false",
+          "id": "facts-11",
+          "statement": "With the facts `likes(ann, pizza).` and then `likes(ann, salad).`, the first answer to `?- likes(ann, X).` is `X = pizza`.",
+          "answer": true,
+          "explain": "Prolog tries the facts from top to bottom, so the first matching fact gives the first answer."
+        },
+        {
+          "type": "choice",
+          "id": "facts-12",
+          "prompt": "What does this print?",
+          "code": "likes(ann, pizza).\nlikes(bob, pizza).\nlikes(cara, soup).\n\nmain :-\n    forall(likes(_, pizza), write(x)),\n    nl.",
+          "options": [
+            "`xx`",
+            "`x`",
+            "`xxx`",
+            "`annbob`"
+          ],
+          "answer": 0,
+          "explain": "Two facts match `likes(_, pizza)`, so `write(x)` runs twice."
+        }
+      ]
+    },
+    {
+      "id": "rules",
+      "title": "Rules",
+      "chapter": "Logic",
+      "summary": "Write rules that derive new knowledge from facts, combine goals with and, or and not, and choose with if-then-else.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **rule** says that something is true if other things are true. It has a **head** and a **body**: `Head :- Body.` Read `:-` as \"if\". The goals in the body are joined with commas, which mean **and**."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nparent(tom, bob).\nparent(bob, ann).\n\ngrandparent(X, Z) :-\n    parent(X, Y),\n    parent(Y, Z).\n\nmain :-\n    grandparent(tom, Who),\n    format(\"Tom is a grandparent of ~w~n\", [Who]).",
+          "output": "Tom is a grandparent of ann"
+        },
+        {
+          "type": "text",
+          "md": "Read the rule like this: `X` is a grandparent of `Z` if `X` is a parent of some `Y` and `Y` is a parent of `Z`. Inside one clause, the same variable name always means the same value. In another clause, `X` is a new, unrelated variable."
+        },
+        {
+          "type": "heading",
+          "text": "Several clauses"
+        },
+        {
+          "type": "text",
+          "md": "A predicate can have several clauses. Prolog tries them from top to bottom, and each one can make the predicate true. So several clauses mean **or**: here, something is a pet if it is a cat or if it is a dog."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\ncat(tom).\ndog(rex).\n\npet(X) :- cat(X).\npet(X) :- dog(X).\n\nmain :-\n    forall(pet(P), writeln(P)).",
+          "output": "tom\nrex"
+        },
+        {
+          "type": "text",
+          "md": "Inside a body, `;` also means **or**, but separate clauses are usually easier to read. `\\+` means **not**: `\\+ Goal` succeeds when `Goal` fails."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nbird(tweety).\nbird(pingu).\npenguin(pingu).\n\nflies(X) :-\n    bird(X),\n    \\+ penguin(X).\n\nmain :-\n    forall(flies(B), writeln(B)).",
+          "output": "tweety"
+        },
+        {
+          "type": "heading",
+          "text": "If-then-else"
+        },
+        {
+          "type": "text",
+          "md": "`( Condition -> Then ; Else )` runs `Then` when `Condition` succeeds, and `Else` when it fails. The arrow `->` means **then**. Put the whole construction in parentheses."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nparent(tom, bob).\n\ncheck(X) :-\n    (   parent(tom, X)\n    ->  format(\"~w: yes~n\", [X])\n    ;   format(\"~w: no~n\", [X])\n    ).\n\nmain :-\n    check(bob),\n    check(ann).",
+          "output": "bob: yes\nann: no"
+        },
+        {
+          "type": "warning",
+          "md": "A variable that appears only once in a clause is called a **singleton**. It is often a typo, so SWI-Prolog prints a warning. When you really do not need the value, write `_` or start the name with `_`."
+        },
+        {
+          "type": "tip",
+          "md": "Keep all clauses of one predicate together in the file. When other clauses come between them, SWI-Prolog prints a warning."
+        }
+      ],
+      "card": [
+        "`Head :- Body.` read `:-` as if",
+        "`,` = and, `;` = or, `\\+ G` = not",
+        "Several clauses = several ways to be true",
+        "`( Cond -> Then ; Else )`",
+        "Same name in one clause = same value"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "rules-1",
+          "prompt": "How do you read `:-` in `happy(X) :- sunny, rested(X).`?",
+          "options": [
+            "if",
+            "and",
+            "or",
+            "not"
+          ],
+          "answer": 0,
+          "explain": "`happy(X)` is true if the body is true. `:-` means if, and the comma in the body means and."
+        },
+        {
+          "type": "input",
+          "id": "rules-2",
+          "prompt": "What does this print?",
+          "code": "parent(tom, bob).\nparent(bob, ann).\n\ngrandparent(X, Z) :-\n    parent(X, Y),\n    parent(Y, Z).\n\nmain :-\n    grandparent(G, ann),\n    writeln(G).",
+          "answers": [
+            "tom"
+          ],
+          "explain": "Tom is a parent of Bob, and Bob is a parent of Ann, so Tom is a grandparent of Ann."
+        },
+        {
+          "type": "true_false",
+          "id": "rules-3",
+          "statement": "With these two clauses, `pet(rex)` is true if `rex` is a cat or if `rex` is a dog.",
+          "code": "pet(X) :- cat(X).\npet(X) :- dog(X).",
+          "answer": true,
+          "explain": "Prolog tries both clauses. If one of them succeeds, `pet(rex)` is true. Several clauses mean or."
+        },
+        {
+          "type": "gap",
+          "id": "rules-4",
+          "prompt": "Complete the rule: a bird flies if it is not a penguin.",
+          "code": "flies(X) :-\n    bird(X),\n    ___ penguin(X).",
+          "options": [
+            "\\+",
+            "not",
+            "-",
+            "!"
+          ],
+          "answer": 0,
+          "explain": "`\\+ Goal` succeeds when `Goal` fails. So `\\+ penguin(X)` means: `X` is not a penguin."
+        },
+        {
+          "type": "bug",
+          "id": "rules-5",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "mother(M, C) :-",
+            "    parent(M, C),",
+            "    female(M).",
+            "father(F, C) :-",
+            "    parent(F, C)",
+            "    male(F)."
+          ],
+          "bug": 4,
+          "explain": "The goals in a body must be separated by commas. Write `parent(F, C),`."
+        },
+        {
+          "type": "choice",
+          "id": "rules-6",
+          "prompt": "Which answer does `?- pet(X).` give first?",
+          "code": "cat(tom).\ndog(rex).\ndog(fido).\n\npet(X) :- dog(X).\npet(X) :- cat(X).",
+          "options": [
+            "`X = rex`",
+            "`X = tom`",
+            "`X = fido`",
+            "`false`"
+          ],
+          "answer": 0,
+          "explain": "Prolog tries the clauses from top to bottom. The first clause asks `dog(X)`, and the first dog fact is `dog(rex).`."
+        },
+        {
+          "type": "order",
+          "id": "rules-7",
+          "prompt": "Put the lines in order so `check(tweety)` prints `yes` and `check(rex)` prints `no`.",
+          "lines": [
+            "check(X) :-",
+            "    (   bird(X)",
+            "    ->  writeln(yes)",
+            "    ;   writeln(no)",
+            "    )."
+          ],
+          "explain": "The condition comes first, then `->` with the then part, then `;` with the else part, and the closing parenthesis ends the clause."
+        },
+        {
+          "type": "pairs",
+          "id": "rules-8",
+          "prompt": "Match the symbol with its meaning.",
+          "pairs": [
+            [
+              "`:-`",
+              "if"
+            ],
+            [
+              "`,`",
+              "and"
+            ],
+            [
+              "`;`",
+              "or"
+            ],
+            [
+              "`\\+`",
+              "not"
+            ],
+            [
+              "`->`",
+              "then"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "rules-9",
+          "prompt": "Build the rule: `X` is a pet if `X` is a cat.",
+          "tokens": [
+            "pet(X)",
+            ":-",
+            "cat(X)."
+          ],
+          "distractors": [
+            "?-",
+            "->",
+            "pet(x)"
+          ],
+          "explain": "The head `pet(X)` comes first, then `:-` (if), then the body `cat(X)` and a full stop."
+        },
+        {
+          "type": "input",
+          "id": "rules-10",
+          "prompt": "What does this print?",
+          "code": "bird(tweety).\nbird(pingu).\npenguin(pingu).\n\nflies(X) :-\n    bird(X),\n    \\+ penguin(X).\n\nmain :-\n    (   flies(pingu)\n    ->  writeln(yes)\n    ;   writeln(no)\n    ).",
+          "answers": [
+            "no"
+          ],
+          "explain": "Pingu is a bird, but `penguin(pingu)` is true, so `\\+ penguin(pingu)` fails. `flies(pingu)` fails, and the else part prints `no`."
+        },
+        {
+          "type": "true_false",
+          "id": "rules-11",
+          "statement": "Inside one clause, every `X` stands for the same value.",
+          "answer": true,
+          "explain": "A variable name refers to one value in the whole clause. In another clause, the same name is a new variable."
+        },
+        {
+          "type": "choice",
+          "id": "rules-12",
+          "prompt": "Why does SWI-Prolog print a warning for `pet(X) :- cat(Y).`?",
+          "options": [
+            "`X` and `Y` each appear only once in the clause",
+            "A rule needs at least two goals",
+            "`pet` must first be defined as a fact",
+            "Variables must be lowercase"
+          ],
+          "answer": 0,
+          "explain": "A variable that appears only once is a singleton and is often a typo. Here it should be `pet(X) :- cat(X).`."
+        }
+      ]
+    },
+    {
+      "id": "unification",
+      "title": "Unification",
+      "chapter": "Logic",
+      "summary": "Understand how = matches values and structures, gives variables their values, and when matching fails.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "In Prolog, `=` does not assign a value. It **unifies**: it tries to make both sides equal by giving variables values. `X = hello` succeeds and `X` gets the value `hello`. `5 = 5` succeeds, and `5 = 6` fails."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    X = hello,\n    writeln(X),\n    Y = X,\n    writeln(Y).",
+          "output": "hello\nhello"
+        },
+        {
+          "type": "text",
+          "md": "Once a variable has a value, it keeps it for the rest of the clause. `X = 1, X = 2` fails, because `1` cannot be made equal to `2`. Unification works in both directions: `5 = X` is the same as `X = 5`."
+        },
+        {
+          "type": "heading",
+          "text": "Structures"
+        },
+        {
+          "type": "text",
+          "md": "A **compound term** is a name with arguments, like `point(3, 4)` or `date(2024, 5, 17)`. It looks like a fact, but here it is data. Two structures unify when they have the same name, the same number of arguments, and each pair of arguments unifies."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    point(X, Y) = point(3, 4),\n    format(\"X = ~w, Y = ~w~n\", [X, Y]),\n    date(Year, _, _) = date(2024, 5, 17),\n    writeln(Year).",
+          "output": "X = 3, Y = 4\n2024"
+        },
+        {
+          "type": "text",
+          "md": "Unification fails when the names differ or when the number of arguments differs. `point(1, 2) = pair(1, 2)` fails, and so does `point(1, 2) = point(1, 2, 3)`. Variables may appear on both sides: `point(X, 2) = point(1, Y)` gives `X = 1` and `Y = 2`."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\ntest(A, B) :-\n    (   A = B\n    ->  format(\"~w = ~w: yes~n\", [A, B])\n    ;   format(\"~w = ~w: no~n\", [A, B])\n    ).\n\nmain :-\n    test(point(1, 2), point(1, 2)),\n    test(point(1, 2), pair(1, 2)),\n    test(point(1, 2), point(1, 2, 3)).",
+          "output": "point(1,2) = point(1,2): yes\npoint(1,2) = pair(1,2): no\npoint(1,2) = point(1,2,3): no"
+        },
+        {
+          "type": "text",
+          "md": "Queries use unification too. When Prolog looks for a matching fact, it unifies the query with each fact. So you can put structures into facts and pick out parts of them."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nbook(title('Dune'), year(1965)).\nbook(title('Emma'), year(1815)).\n\nmain :-\n    book(title(T), year(1965)),\n    writeln(T).",
+          "output": "Dune"
+        },
+        {
+          "type": "text",
+          "md": "`==` checks whether two terms are already **identical**, without giving any variable a value. `\\=` succeeds when two terms cannot be unified, and `\\==` when they are not identical."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    (   X == 5\n    ->  writeln(same)\n    ;   writeln(different)\n    ),\n    X = 5,\n    (   X == 5\n    ->  writeln(same)\n    ;   writeln(different)\n    ).",
+          "output": "different\nsame"
+        },
+        {
+          "type": "warning",
+          "md": "`X = 1 + 2` does not calculate. It unifies `X` with the structure `1 + 2`, so `writeln(X)` prints `1+2`. You learn how to calculate in the next unit."
+        }
+      ],
+      "card": [
+        "`X = hello` unifies: `X` gets the value `hello`",
+        "`point(X, Y) = point(3, 4)` gives `X = 3`, `Y = 4`",
+        "Different name or number of arguments: fails",
+        "`==` identical, `\\=` cannot unify, `\\==` not identical",
+        "`X = 1 + 2` gives the structure `1+2`, not `3`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "unification-1",
+          "prompt": "What does this print?",
+          "code": "main :-\n    point(A, B) = point(7, 8),\n    format(\"~w ~w~n\", [B, A]).",
+          "answers": [
+            "8 7"
+          ],
+          "explain": "The structures have the same name and two arguments each, so `A = 7` and `B = 8`. The code prints `B` first."
+        },
+        {
+          "type": "true_false",
+          "id": "unification-2",
+          "statement": "`X = 2 + 3` gives `X` the value `5`.",
+          "answer": false,
+          "explain": "`=` only unifies. `X` becomes the structure `2 + 3`, which prints as `2+3`."
+        },
+        {
+          "type": "choice",
+          "id": "unification-3",
+          "prompt": "Which unification fails?",
+          "options": [
+            "`point(1, 2) = point(1, 2, 3)`",
+            "`point(1, 2) = point(X, Y)`",
+            "`f(a) = f(a)`",
+            "`X = point(1, 2)`"
+          ],
+          "answer": 0,
+          "explain": "`point(1, 2)` has two arguments and `point(1, 2, 3)` has three, so they cannot be unified."
+        },
+        {
+          "type": "gap",
+          "id": "unification-4",
+          "prompt": "Complete the code so it prints `1`.",
+          "code": "main :-\n    pair(X, Y) ___ pair(1, 2),\n    writeln(X).",
+          "options": [
+            "=",
+            "==",
+            "\\=",
+            "is"
+          ],
+          "answer": 0,
+          "explain": "`=` unifies the two structures, so `X` becomes `1`. `==` and `\\=` do not give variables values, and `is` calculates."
+        },
+        {
+          "type": "input",
+          "id": "unification-5",
+          "prompt": "What does this print?",
+          "code": "main :-\n    X = Y,\n    Y = cat,\n    writeln(X).",
+          "answers": [
+            "cat"
+          ],
+          "explain": "`X = Y` links the two variables. When `Y` becomes `cat`, `X` is `cat` too."
+        },
+        {
+          "type": "bug",
+          "id": "unification-6",
+          "prompt": "The program should print `3 4` and then `3`. Which line has the bug?",
+          "lines": [
+            "main :-",
+            "    Point = point(3, 4),",
+            "    point(X, Y) = Point,",
+            "    format(\"~w ~w~n\", [X, Y]),",
+            "    point(Z) = Point,",
+            "    writeln(Z)."
+          ],
+          "bug": 4,
+          "explain": "`point(Z)` has one argument, but `point(3, 4)` has two, so the unification fails. Write `point(Z, _) = Point`."
+        },
+        {
+          "type": "choice",
+          "id": "unification-7",
+          "prompt": "What are `X` and `Y` after `f(X, b) = f(a, Y)`?",
+          "options": [
+            "`X = a` and `Y = b`",
+            "`X = b` and `Y = a`",
+            "The unification fails",
+            "`X = f` and `Y = f`"
+          ],
+          "answer": 0,
+          "explain": "The arguments are unified pair by pair: `X` with `a`, and `b` with `Y`."
+        },
+        {
+          "type": "pairs",
+          "id": "unification-8",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`=`",
+              "unify"
+            ],
+            [
+              "`\\=`",
+              "cannot be unified"
+            ],
+            [
+              "`==`",
+              "already identical"
+            ],
+            [
+              "`\\==`",
+              "not identical"
+            ],
+            [
+              "`_`",
+              "any value"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "unification-9",
+          "prompt": "Put the lines in order so the program prints `1` and then `2`.",
+          "lines": [
+            "main :-",
+            "    point(X, Y) = point(1, 2),",
+            "    format(\"~w~n\", [X]),",
+            "    format(\"~w~n\", [Y])."
+          ],
+          "explain": "The unification must come first, so that `X` and `Y` have values when they are printed."
+        },
+        {
+          "type": "blocks",
+          "id": "unification-10",
+          "prompt": "Build the query that finds the title `T` of the book from 1965.",
+          "tokens": [
+            "book(",
+            "title(T),",
+            "year(1965)",
+            ")"
+          ],
+          "distractors": [
+            "title(1965),",
+            "year(T)"
+          ],
+          "explain": "The query has the same shape as the facts: `book(title(T), year(1965))`. Unification fills in `T`."
+        },
+        {
+          "type": "true_false",
+          "id": "unification-11",
+          "statement": "`point(1, 2) = point(1, 2)` succeeds, but `point(1, 2) = pair(1, 2)` fails.",
+          "answer": true,
+          "explain": "Structures unify only when the names are the same. `point` and `pair` are different names."
+        },
+        {
+          "type": "choice",
+          "id": "unification-12",
+          "prompt": "What does this print?",
+          "code": "main :-\n    ( X == 5 -> writeln(same) ; writeln(different) ),\n    X = 5,\n    ( X == 5 -> writeln(same) ; writeln(different) ).",
+          "options": [
+            "`different`, then `same`",
+            "`same`, then `same`",
+            "`different`, then `different`",
+            "`same`, then `different`"
+          ],
+          "answer": 0,
+          "explain": "`==` does not give `X` a value. At first `X` has no value, so it is not identical to `5`. After `X = 5`, it is."
+        }
+      ]
+    },
+    {
+      "id": "arithmetic",
+      "title": "Arithmetic",
+      "chapter": "Numbers",
+      "summary": "Calculate with is, compare numbers, and use arithmetic inside rules to find prices and totals.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "To calculate, use `is`. `X is 2 + 3` first calculates the right side and then unifies `X` with the result, `5`. You can use `+`, `-`, `*` and `/`, and parentheses. `//` divides whole numbers without the rest, and `mod` gives the rest."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    X is 2 + 3 * 4,\n    writeln(X),\n    Y is (2 + 3) * 4,\n    writeln(Y),\n    A is 7 / 2,\n    B is 7 // 2,\n    C is 7 mod 2,\n    format(\"~w ~w ~w~n\", [A, B, C]).",
+          "output": "14\n20\n3.5 3 1"
+        },
+        {
+          "type": "text",
+          "md": "`*` comes before `+`, as in mathematics. `7 / 2` gives the decimal number `3.5`. The right side of `is` must be fully known: `X is Y + 1` gives an error when `Y` has no value yet."
+        },
+        {
+          "type": "text",
+          "md": "A variable cannot change its value, so `X is X + 1` never works. Use a new variable for each new value, for example `Total` and then `NewTotal`."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    Price = 12,\n    Total is Price * 3,\n    NewTotal is Total + 5,\n    format(\"Total: ~w, with shipping: ~w~n\", [Total, NewTotal]).",
+          "output": "Total: 36, with shipping: 41"
+        },
+        {
+          "type": "heading",
+          "text": "Comparing numbers"
+        },
+        {
+          "type": "text",
+          "md": "To compare numbers, use `=:=` (equal), `=\\=` (not equal), `<`, `>`, `>=` and `=<` (less or equal; careful, not `<=`). These operators calculate both sides first. So `1 + 2 =:= 3` succeeds, but `1 + 2 = 3` fails, because the structure `1+2` is not the number `3`. The helper `check` below uses `call(Goal)`, which runs a term as a goal."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\ncheck(Goal) :-\n    (   call(Goal)\n    ->  format(\"~w: true~n\", [Goal])\n    ;   format(\"~w: false~n\", [Goal])\n    ).\n\nmain :-\n    check(1 + 2 =:= 3),\n    check(1 + 2 = 3),\n    check(5 > 3),\n    check(4 =< 4),\n    check(10 =\\= 10).",
+          "output": "1+2=:=3: true\n1+2=3: false\n5>3: true\n4=<4: true\n10=\\=10: false"
+        },
+        {
+          "type": "heading",
+          "text": "Arithmetic in rules"
+        },
+        {
+          "type": "text",
+          "md": "Rules can calculate and compare. The result of a calculation is an extra argument of the predicate: `cost(Item, Count, Cost)` finds the price and calculates `Cost`."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nprice(apple, 2).\nprice(melon, 5).\n\ncost(Item, Count, Cost) :-\n    price(Item, Price),\n    Cost is Price * Count.\n\nexpensive(Item) :-\n    price(Item, Price),\n    Price > 3.\n\nmain :-\n    cost(apple, 4, C),\n    format(\"4 apples cost ~w~n\", [C]),\n    forall(expensive(I), writeln(I)).",
+          "output": "4 apples cost 8\nmelon"
+        },
+        {
+          "type": "text",
+          "md": "There are also functions: `max(3, 7)`, `min(3, 7)`, `abs(-4)` and `sqrt(16)`. `sqrt` always gives a decimal number, and a calculation with a decimal number gives a decimal number."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    A is max(3, 7),\n    B is abs(-4),\n    C is sqrt(16),\n    D is 2.5 * 2,\n    format(\"~w ~w ~w ~w~n\", [A, B, C, D]).",
+          "output": "7 4 4.0 5.0"
+        },
+        {
+          "type": "warning",
+          "md": "`=` never calculates. `is` calculates only its right side and unifies the result with the left side. To compare two calculations, use `=:=`."
+        }
+      ],
+      "card": [
+        "`X is 2 + 3 * 4` gives `14`",
+        "`7 / 2` = `3.5`, `7 // 2` = `3`, `7 mod 2` = `1`",
+        "`=:=` `=\\=` `<` `>` `=<` `>=` compare numbers",
+        "No reassignment: `New is Old + 1`",
+        "`max`, `min`, `abs`, `sqrt` inside `is`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arithmetic-1",
+          "prompt": "What does this print?",
+          "code": "main :-\n    X is 10 - 2 * 3,\n    writeln(X).",
+          "answers": [
+            "4"
+          ],
+          "explain": "`*` comes first: `2 * 3` is `6`, and `10 - 6` is `4`."
+        },
+        {
+          "type": "input",
+          "id": "arithmetic-2",
+          "prompt": "What does this print?",
+          "code": "main :-\n    X is 17 mod 5,\n    writeln(X).",
+          "answers": [
+            "2"
+          ],
+          "explain": "`mod` gives the rest of the division: 17 = 3 * 5 + 2."
+        },
+        {
+          "type": "choice",
+          "id": "arithmetic-3",
+          "prompt": "What does this print?",
+          "code": "main :-\n    X is 9 / 2,\n    writeln(X).",
+          "options": [
+            "`4.5`",
+            "`4`",
+            "`5`",
+            "`9/2`"
+          ],
+          "answer": 0,
+          "explain": "`/` gives a decimal number when the division is not exact. Use `//` for a whole-number result."
+        },
+        {
+          "type": "true_false",
+          "id": "arithmetic-4",
+          "statement": "The goal `2 + 2 = 4` succeeds.",
+          "answer": false,
+          "explain": "`=` does not calculate: the structure `2+2` is not the number `4`. `2 + 2 =:= 4` succeeds."
+        },
+        {
+          "type": "gap",
+          "id": "arithmetic-5",
+          "prompt": "Complete the code so it prints `yes`.",
+          "code": "main :-\n    ( 3 ___ 3 -> writeln(yes) ; writeln(no) ).",
+          "options": [
+            "=<",
+            "<=",
+            "<",
+            "=\\="
+          ],
+          "answer": 0,
+          "explain": "`=<` means less than or equal, so `3 =< 3` succeeds. Prolog has no `<=` operator."
+        },
+        {
+          "type": "bug",
+          "id": "arithmetic-6",
+          "prompt": "The program should print `Next: 6`. Which line has the bug?",
+          "lines": [
+            "main :-",
+            "    Count = 5,",
+            "    Next = Count + 1,",
+            "    format(\"Next: ~w~n\", [Next])."
+          ],
+          "bug": 2,
+          "explain": "`=` does not calculate, so `Next` would be `5+1`. Write `Next is Count + 1,`."
+        },
+        {
+          "type": "choice",
+          "id": "arithmetic-7",
+          "prompt": "Which goal sets `X` to the result of 3 times 4?",
+          "options": [
+            "`X is 3 * 4`",
+            "`X = 3 * 4`",
+            "`3 * 4 is X`",
+            "`X =:= 3 * 4`"
+          ],
+          "answer": 0,
+          "explain": "`is` calculates the right side and puts the result into the variable on the left."
+        },
+        {
+          "type": "pairs",
+          "id": "arithmetic-8",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`=:=`",
+              "equal numbers"
+            ],
+            [
+              "`=\\=`",
+              "different numbers"
+            ],
+            [
+              "`=<`",
+              "less than or equal"
+            ],
+            [
+              "`//`",
+              "whole-number division"
+            ],
+            [
+              "`mod`",
+              "rest of a division"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "arithmetic-9",
+          "prompt": "Put the lines in order so the program prints `9`.",
+          "lines": [
+            "main :-",
+            "    W = 3,",
+            "    A is W * W,",
+            "    writeln(A)."
+          ],
+          "explain": "`W` needs a value before `is` can calculate `W * W`, and `A` needs a value before it is printed."
+        },
+        {
+          "type": "blocks",
+          "id": "arithmetic-10",
+          "prompt": "Build the goal that sets `Rest` to 10 minus 4.",
+          "tokens": [
+            "Rest",
+            "is",
+            "10",
+            "-",
+            "4"
+          ],
+          "distractors": [
+            "=",
+            "=:="
+          ],
+          "explain": "`is` calculates `10 - 4` and unifies `Rest` with `6`."
+        },
+        {
+          "type": "input",
+          "id": "arithmetic-11",
+          "prompt": "What does this print?",
+          "code": "price(apple, 2).\nprice(melon, 5).\n\ncost(Item, Count, Cost) :-\n    price(Item, Price),\n    Cost is Price * Count.\n\nmain :-\n    cost(melon, 3, C),\n    writeln(C).",
+          "answers": [
+            "15"
+          ],
+          "explain": "A melon costs `5`, so `Cost is 5 * 3` gives `15`."
+        },
+        {
+          "type": "true_false",
+          "id": "arithmetic-12",
+          "statement": "`X is Y + 1` works even when `Y` has no value yet.",
+          "answer": false,
+          "explain": "`is` needs every value on the right side. Without a value for `Y`, Prolog reports an error."
+        }
+      ]
+    },
+    {
+      "id": "recursion",
+      "title": "Recursion",
+      "chapter": "Recursion",
+      "summary": "Repeat work with recursive rules: count down, calculate factorials and sums, and find ancestors.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Prolog has no loops. To repeat something, a rule calls itself: this is **recursion**. A recursive predicate needs a **base case**, which stops the recursion, and a **recursive case**, which solves a smaller problem."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\ncountdown(0) :-\n    writeln(go).\ncountdown(N) :-\n    N > 0,\n    writeln(N),\n    N1 is N - 1,\n    countdown(N1).\n\nmain :-\n    countdown(3).",
+          "output": "3\n2\n1\ngo"
+        },
+        {
+          "type": "text",
+          "md": "`countdown(0)` is the base case: it prints `go`. For any other number, the second clause prints `N`, calculates `N1`, one less, and calls `countdown(N1)`. The **guard** `N > 0` makes sure that the second clause does not apply to `0` or to negative numbers."
+        },
+        {
+          "type": "heading",
+          "text": "Factorial"
+        },
+        {
+          "type": "text",
+          "md": "The factorial of a number is the product of all numbers from 1 to it: `5!` is `5 * 4 * 3 * 2 * 1`. The rule is: `0!` is `1`, and `N!` is `N` times `(N-1)!`. Because predicates do not return values, the result is an extra argument `F`."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nfactorial(0, 1).\nfactorial(N, F) :-\n    N > 0,\n    N1 is N - 1,\n    factorial(N1, F1),\n    F is N * F1.\n\nmain :-\n    factorial(5, F),\n    format(\"5! = ~w~n\", [F]).",
+          "output": "5! = 120"
+        },
+        {
+          "type": "text",
+          "md": "For `factorial(3, F)`, Prolog needs `factorial(2, F1)`, which needs `factorial(1, ...)`, which needs `factorial(0, ...)`. The base case gives `1`, and then each waiting clause multiplies: `1 * 1`, `2 * 1`, `3 * 2` = `6`. The same pattern adds up all numbers from 1 to `N`:"
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nsum_to(0, 0).\nsum_to(N, S) :-\n    N > 0,\n    N1 is N - 1,\n    sum_to(N1, S1),\n    S is S1 + N.\n\nmain :-\n    sum_to(4, S),\n    writeln(S).",
+          "output": "10"
+        },
+        {
+          "type": "heading",
+          "text": "Ancestors"
+        },
+        {
+          "type": "text",
+          "md": "Recursion also works on facts. An ancestor is a parent, or a parent of an ancestor. The first clause is the base case, and the second clause takes one step up the family tree and then calls `ancestor` again."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nparent(ann, bob).\nparent(bob, cara).\nparent(cara, dan).\n\nancestor(X, Y) :-\n    parent(X, Y).\nancestor(X, Y) :-\n    parent(X, Z),\n    ancestor(Z, Y).\n\nmain :-\n    forall(ancestor(ann, D), writeln(D)).",
+          "output": "bob\ncara\ndan"
+        },
+        {
+          "type": "warning",
+          "md": "Every recursive call must make progress towards the base case. A rule like `ancestor(X, Y) :- ancestor(Z, Y), parent(X, Z).` calls itself before anything else and never stops. Put a goal that makes progress, like `parent(X, Z)` or `N1 is N - 1`, before the recursive call."
+        },
+        {
+          "type": "tip",
+          "md": "Prolog integers have no size limit, so `factorial(30, F)` gives the exact result."
+        }
+      ],
+      "card": [
+        "Base case first: `factorial(0, 1).`",
+        "Recursive case: smaller problem, then call itself",
+        "Guard `N > 0` stops negative numbers",
+        "Result in an extra argument: `factorial(N, F)`",
+        "Progress before the recursive call"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "recursion-1",
+          "prompt": "What does this print?",
+          "code": "power(_, 0, 1).\npower(B, E, R) :-\n    E > 0,\n    E1 is E - 1,\n    power(B, E1, R1),\n    R is B * R1.\n\nmain :-\n    power(2, 3, R),\n    writeln(R).",
+          "answers": [
+            "8"
+          ],
+          "explain": "`power` multiplies `B` with itself `E` times: 2 * 2 * 2 is `8`."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-2",
+          "prompt": "Which part of the factorial program is the base case?",
+          "code": "factorial(0, 1).\nfactorial(N, F) :-\n    N > 0,\n    N1 is N - 1,\n    factorial(N1, F1),\n    F is N * F1.",
+          "options": [
+            "`factorial(0, 1).`",
+            "`N > 0`",
+            "`factorial(N1, F1)`",
+            "`F is N * F1`"
+          ],
+          "answer": 0,
+          "explain": "The base case is the clause that does not call `factorial` again: the factorial of `0` is `1`."
+        },
+        {
+          "type": "true_false",
+          "id": "recursion-3",
+          "statement": "`count(1)` stops after a few steps.",
+          "code": "count(N) :-\n    N1 is N + 1,\n    count(N1).",
+          "answer": false,
+          "explain": "There is no base case, and `count` always calls itself again. The recursion never stops."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-4",
+          "prompt": "Complete the factorial rule.",
+          "code": "factorial(0, 1).\nfactorial(N, F) :-\n    N > 0,\n    N1 is N - 1,\n    factorial(N1, F1),\n    F ___ N * F1.",
+          "options": [
+            "is",
+            "=",
+            "=:=",
+            "=="
+          ],
+          "answer": 0,
+          "explain": "`is` calculates `N * F1` and gives `F` the result. `=` would build the structure `5*(4*...)` instead of a number."
+        },
+        {
+          "type": "bug",
+          "id": "recursion-5",
+          "prompt": "`sum_to(N, S)` should add up the numbers from 1 to `N`. Which line has the bug?",
+          "lines": [
+            "sum_to(0, 1).",
+            "sum_to(N, S) :-",
+            "    N > 0,",
+            "    N1 is N - 1,",
+            "    sum_to(N1, S1),",
+            "    S is S1 + N."
+          ],
+          "bug": 0,
+          "explain": "The sum of no numbers is `0`, not `1`. Write `sum_to(0, 0).`, otherwise every result is one too big."
+        },
+        {
+          "type": "input",
+          "id": "recursion-6",
+          "prompt": "How many answers does `?- ancestor(b, X).` give?",
+          "code": "parent(a, b).\nparent(b, c).\nparent(c, d).\n\nancestor(X, Y) :-\n    parent(X, Y).\nancestor(X, Y) :-\n    parent(X, Z),\n    ancestor(Z, Y).",
+          "answers": [
+            "2",
+            "two"
+          ],
+          "explain": "`b` is a parent of `c`, and `c` is a parent of `d`. So the answers are `X = c` and `X = d`."
+        },
+        {
+          "type": "order",
+          "id": "recursion-7",
+          "prompt": "The factorial predicate is loaded. Put the lines in order so the program prints `120`.",
+          "lines": [
+            "main :-",
+            "    N is 2 + 3,",
+            "    factorial(N, F),",
+            "    writeln(F)."
+          ],
+          "explain": "`N` needs its value `5` before `factorial` can use it, and `F` needs its value before it is printed."
+        },
+        {
+          "type": "pairs",
+          "id": "recursion-8",
+          "prompt": "Match the part of the factorial program with its role.",
+          "pairs": [
+            [
+              "`factorial(0, 1).`",
+              "the base case"
+            ],
+            [
+              "`factorial(N1, F1)`",
+              "the recursive call"
+            ],
+            [
+              "`N > 0`",
+              "the guard"
+            ],
+            [
+              "`N1 is N - 1`",
+              "makes the problem smaller"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "recursion-9",
+          "prompt": "Build the goal that sets `N1` to one less than `N`.",
+          "tokens": [
+            "N1",
+            "is",
+            "N",
+            "-",
+            "1"
+          ],
+          "distractors": [
+            "=",
+            "+"
+          ],
+          "explain": "`N1 is N - 1` calculates the smaller number for the next recursive call."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-10",
+          "prompt": "Why does this rule never stop?",
+          "code": "ancestor(X, Y) :-\n    ancestor(Z, Y),\n    parent(X, Z).",
+          "options": [
+            "It calls itself first, before a goal that makes progress",
+            "It uses three different variables",
+            "`parent` must be defined before `ancestor`",
+            "A rule cannot call itself"
+          ],
+          "answer": 0,
+          "explain": "`ancestor(Z, Y)` calls the same rule again with nothing changed, again and again. Put `parent(X, Z)` first and add a base case."
+        },
+        {
+          "type": "input",
+          "id": "recursion-11",
+          "prompt": "What does this print?",
+          "code": "sum_to(0, 0).\nsum_to(N, S) :-\n    N > 0,\n    N1 is N - 1,\n    sum_to(N1, S1),\n    S is S1 + N.\n\nmain :-\n    sum_to(5, S),\n    writeln(S).",
+          "answers": [
+            "15"
+          ],
+          "explain": "`sum_to(5, S)` adds 1 + 2 + 3 + 4 + 5, which is `15`."
+        },
+        {
+          "type": "true_false",
+          "id": "recursion-12",
+          "statement": "`factorial(30, F)` gives the exact result, a number with 33 digits.",
+          "answer": true,
+          "explain": "Prolog integers have no size limit, so the result `265252859812191058636308480000000` is exact."
+        }
+      ]
+    },
+    {
+      "id": "lists",
+      "title": "Lists",
+      "chapter": "Data",
+      "summary": "Store values in lists, split them into head and tail, use member, append and length, and write list recursion.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **list** holds values in square brackets, separated by commas: `[apple, banana, cherry]`. `[]` is the empty list. The pattern `[H|T]` splits a list into its first element, the **head** `H`, and the list of the remaining elements, the **tail** `T`."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    L = [apple, banana, cherry],\n    writeln(L),\n    L = [H|T],\n    writeln(H),\n    writeln(T).",
+          "output": "[apple,banana,cherry]\napple\n[banana,cherry]"
+        },
+        {
+          "type": "text",
+          "md": "`writeln` prints lists without spaces. The tail is always a list: for `[cherry]`, the head is `cherry` and the tail is `[]`. The empty list `[]` has no head, so it never matches `[H|T]`. `[X, Y|Rest]` takes the first two elements at once."
+        },
+        {
+          "type": "heading",
+          "text": "Built-in list predicates"
+        },
+        {
+          "type": "text",
+          "md": "SWI-Prolog has many list predicates. `length(L, N)` counts the elements, `member(X, L)` succeeds when `X` is an element of `L`, `append(A, B, C)` joins `A` and `B` into `C`, and `reverse(L, R)` reverses a list."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    L = [3, 1, 2],\n    length(L, N),\n    writeln(N),\n    (   member(2, L)\n    ->  writeln(found)\n    ;   writeln(missing)\n    ),\n    append(L, [4, 5], L2),\n    writeln(L2),\n    reverse(L, R),\n    writeln(R).",
+          "output": "3\nfound\n[3,1,2,4,5]\n[2,1,3]"
+        },
+        {
+          "type": "text",
+          "md": "These predicates also work with variables. `member(X, L)` gives every element of `L` as an answer. `append(A, B, [1, 2])` finds every way to split `[1, 2]` into two parts."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    forall(member(X, [red, green, blue]), writeln(X)),\n    forall(append(A, B, [1, 2]), format(\"~w ~w~n\", [A, B])).",
+          "output": "red\ngreen\nblue\n[] [1,2]\n[1] [2]\n[1,2] []"
+        },
+        {
+          "type": "heading",
+          "text": "Recursion on lists"
+        },
+        {
+          "type": "text",
+          "md": "Most list predicates follow one pattern: a base case for the empty list `[]` and a recursive case for `[H|T]` that handles the head and calls itself on the tail. `count` counts the elements, and `total` adds them up."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\ncount([], 0).\ncount([_|T], N) :-\n    count(T, N0),\n    N is N0 + 1.\n\ntotal([], 0).\ntotal([H|T], S) :-\n    total(T, S0),\n    S is S0 + H.\n\nmain :-\n    count([a, b, c], N),\n    total([4, 5, 6], S),\n    format(\"~w ~w~n\", [N, S]).",
+          "output": "3 15"
+        },
+        {
+          "type": "text",
+          "md": "A predicate can also build a new list. `double` takes `[H|T]` and builds `[D|DT]`, where `D` is the doubled head and `DT` is the doubled tail."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\ndouble([], []).\ndouble([H|T], [D|DT]) :-\n    D is H * 2,\n    double(T, DT).\n\nmain :-\n    double([1, 2, 3], L),\n    writeln(L).",
+          "output": "[2,4,6]"
+        },
+        {
+          "type": "warning",
+          "md": "You cannot define your own predicate with the name of a built-in one like `length/2`: SWI-Prolog reports a permission error. Choose another name, like `count`."
+        }
+      ],
+      "card": [
+        "`[H|T] = [a, b, c]` gives `H = a`, `T = [b,c]`",
+        "`[]` is the empty list and never matches `[H|T]`",
+        "`length(L, N)`, `member(X, L)`, `append(A, B, C)`, `reverse(L, R)`",
+        "Pattern: base case `[]`, recursive case `[H|T]`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "lists-1",
+          "prompt": "What does this print?",
+          "code": "main :-\n    [_|T] = [a, b, c],\n    writeln(T).",
+          "answers": [
+            "[b,c]",
+            "[b, c]"
+          ],
+          "explain": "The head is `a` (here ignored with `_`), and the tail `T` is the list of the remaining elements, `[b,c]`."
+        },
+        {
+          "type": "input",
+          "id": "lists-2",
+          "prompt": "What does this print?",
+          "code": "main :-\n    length([x, y, z, w], N),\n    writeln(N).",
+          "answers": [
+            "4"
+          ],
+          "explain": "The list has four elements."
+        },
+        {
+          "type": "choice",
+          "id": "lists-3",
+          "prompt": "What does this print?",
+          "code": "main :-\n    append([1, 2], [3], L),\n    writeln(L).",
+          "options": [
+            "`[1,2,3]`",
+            "`[[1,2],[3]]`",
+            "`[1,2,[3]]`",
+            "`[3,1,2]`"
+          ],
+          "answer": 0,
+          "explain": "`append` joins the elements of both lists into one flat list."
+        },
+        {
+          "type": "true_false",
+          "id": "lists-4",
+          "statement": "The empty list `[]` matches the pattern `[H|T]`.",
+          "answer": false,
+          "explain": "`[H|T]` needs at least one element for `H`. The empty list has none."
+        },
+        {
+          "type": "gap",
+          "id": "lists-5",
+          "prompt": "Complete the base case so `total([4, 5, 6], S)` gives `S = 15`.",
+          "code": "total(___, 0).\ntotal([H|T], S) :-\n    total(T, S0),\n    S is S0 + H.",
+          "options": [
+            "[]",
+            "[_]",
+            "[H|T]",
+            "0"
+          ],
+          "answer": 0,
+          "explain": "The recursion ends with the empty list, and the sum of no numbers is `0`."
+        },
+        {
+          "type": "bug",
+          "id": "lists-6",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "double([], []).",
+            "double([H|T], [D|DT]) :-",
+            "    D is H * 2,",
+            "    double(H, DT)."
+          ],
+          "bug": 3,
+          "explain": "The recursive call must work on the tail `T`, not on the head `H`. Write `double(T, DT).`."
+        },
+        {
+          "type": "choice",
+          "id": "lists-7",
+          "prompt": "Which goal succeeds?",
+          "options": [
+            "`member(b, [a, b, c])`",
+            "`member(d, [a, b, c])`",
+            "`member([a], [a, b])`",
+            "`member(a, [])`"
+          ],
+          "answer": 0,
+          "explain": "`b` is an element of `[a, b, c]`. `[a]` is a list, not the element `a`, and the empty list has no elements."
+        },
+        {
+          "type": "pairs",
+          "id": "lists-8",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`[H|T]`",
+              "head and tail"
+            ],
+            [
+              "`[]`",
+              "the empty list"
+            ],
+            [
+              "`length(L, N)`",
+              "N is the number of elements"
+            ],
+            [
+              "`append(A, B, C)`",
+              "C is A followed by B"
+            ],
+            [
+              "`member(X, L)`",
+              "X is an element of L"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "lists-9",
+          "prompt": "The base case `show([]) :- nl.` is given. Put the lines in order so `show([a, b, c])` prints `<a><b><c>`.",
+          "lines": [
+            "show([H|T]) :-",
+            "    write('<'),",
+            "    write(H),",
+            "    write('>'),",
+            "    show(T)."
+          ],
+          "explain": "For each element, the clause prints `<`, the head and `>`, and then handles the tail with the recursive call."
+        },
+        {
+          "type": "blocks",
+          "id": "lists-10",
+          "prompt": "Build the pattern that splits a list into its head `H` and its tail `T`.",
+          "tokens": [
+            "[",
+            "H",
+            "|",
+            "T",
+            "]"
+          ],
+          "distractors": [
+            ",",
+            "("
+          ],
+          "explain": "`[H|T]` puts the first element into `H` and the remaining list into `T`."
+        },
+        {
+          "type": "choice",
+          "id": "lists-11",
+          "prompt": "How many lines does this print?",
+          "code": "main :-\n    forall(append(A, _, [x, y]), writeln(A)).",
+          "options": [
+            "3",
+            "2",
+            "1",
+            "4"
+          ],
+          "answer": 0,
+          "explain": "`[x, y]` can be split in three ways, so `A` is `[]`, `[x]` and `[x,y]`."
+        },
+        {
+          "type": "input",
+          "id": "lists-12",
+          "prompt": "What does this print?",
+          "code": "double([], []).\ndouble([H|T], [D|DT]) :-\n    D is H * 2,\n    double(T, DT).\n\nmain :-\n    double([5, 10], L),\n    writeln(L).",
+          "answers": [
+            "[10,20]",
+            "[10, 20]"
+          ],
+          "explain": "`double` doubles every element: `5` becomes `10` and `10` becomes `20`."
+        }
+      ]
+    },
+    {
+      "id": "collecting",
+      "title": "Collecting solutions",
+      "chapter": "Data",
+      "summary": "Use backtracking to get every answer, and collect answers with findall, forall and between.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "When a goal fails, Prolog goes back to the last place where it had a choice and tries the next possibility. This is called **backtracking**. The goal `fail` always fails, so it forces Prolog to try every answer."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    (   member(X, [1, 2, 3]),\n        writeln(X),\n        fail\n    ;   true\n    ),\n    writeln(done).",
+          "output": "1\n2\n3\ndone"
+        },
+        {
+          "type": "text",
+          "md": "`member` gives `1`, `writeln` prints it, and `fail` sends Prolog back to `member` for the next element. When there are no more elements, the left side of `;` fails, and the right side `true`, which always succeeds, lets the program continue."
+        },
+        {
+          "type": "text",
+          "md": "`between(Low, High, X)` gives every integer from `Low` to `High`, one after another. With `forall`, the action can be several goals in parentheses."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nmain :-\n    forall(between(1, 3, X),\n           (   Y is X * X,\n               format(\"~w squared is ~w~n\", [X, Y])\n           )).",
+          "output": "1 squared is 1\n2 squared is 4\n3 squared is 9"
+        },
+        {
+          "type": "heading",
+          "text": "findall"
+        },
+        {
+          "type": "text",
+          "md": "`findall(Template, Goal, List)` finds every answer of `Goal` and collects `Template` for each answer in `List`. When there is no answer, `List` is `[]`. The template can be a structure, like the pair `N-A`, and several goals go in parentheses."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nage(ann, 31).\nage(bob, 17).\nage(cara, 45).\n\nmain :-\n    findall(Name, age(Name, _), Names),\n    writeln(Names),\n    findall(N-A, (age(N, A), A >= 18), Adults),\n    writeln(Adults),\n    findall(X, age(X, 99), None),\n    writeln(None).",
+          "output": "[ann,bob,cara]\n[ann-31,cara-45]\n[]"
+        },
+        {
+          "type": "text",
+          "md": "With the list predicates from the previous unit, you can calculate with all answers: count them with `length` or add them up with `sum_list`."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nage(ann, 31).\nage(bob, 17).\nage(cara, 45).\n\nmain :-\n    findall(A, age(_, A), Ages),\n    sum_list(Ages, Total),\n    length(Ages, Count),\n    format(\"~w people, ~w years in total~n\", [Count, Total]).",
+          "output": "3 people, 93 years in total"
+        },
+        {
+          "type": "heading",
+          "text": "forall as a check"
+        },
+        {
+          "type": "text",
+          "md": "`forall(Condition, Action)` succeeds when `Action` succeeds for every answer of `Condition`. So it can also check a property of all answers, for example that everyone is older than 10."
+        },
+        {
+          "type": "code",
+          "code": ":- initialization(main, main).\n\nage(ann, 31).\nage(bob, 17).\nage(cara, 45).\n\nmain :-\n    (   forall(age(_, A), A > 10)\n    ->  writeln('Everyone is older than 10')\n    ;   writeln('Someone is 10 or younger')\n    ),\n    findall(X, (between(1, 10, X), X mod 3 =:= 0), L),\n    writeln(L).",
+          "output": "Everyone is older than 10\n[3,6,9]"
+        },
+        {
+          "type": "tip",
+          "md": "The variables inside `findall` and `forall` get no values outside of them. Only the result list of `findall` keeps the collected values."
+        }
+      ],
+      "card": [
+        "`findall(X, Goal, L)` collects every answer in `L`",
+        "`forall(Cond, Action)` runs or checks for every answer",
+        "`between(1, 5, X)` gives `1`, `2`, `3`, `4`, `5`",
+        "`fail` forces backtracking, `true` always succeeds",
+        "No answers: `findall` gives `[]`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "collecting-1",
+          "prompt": "What does this print?",
+          "code": "main :-\n    findall(Y, (member(X, [1, 2, 3]), Y is X * 10), L),\n    writeln(L).",
+          "answers": [
+            "[10,20,30]",
+            "[10, 20, 30]"
+          ],
+          "explain": "For every `X` in the list, `findall` collects `Y`, which is `X * 10`."
+        },
+        {
+          "type": "input",
+          "id": "collecting-2",
+          "prompt": "What does this print?",
+          "code": "main :-\n    findall(X, between(2, 5, X), L),\n    length(L, N),\n    writeln(N).",
+          "answers": [
+            "4"
+          ],
+          "explain": "`between(2, 5, X)` gives `2`, `3`, `4` and `5`, so the list has four elements."
+        },
+        {
+          "type": "choice",
+          "id": "collecting-3",
+          "prompt": "What does this print?",
+          "code": "main :-\n    findall(X, member(X, []), L),\n    writeln(L).",
+          "options": [
+            "`[]`",
+            "Nothing, because `findall` fails",
+            "An error",
+            "`[[]]`"
+          ],
+          "answer": 0,
+          "explain": "`findall` always succeeds. When the goal has no answers, the list is empty."
+        },
+        {
+          "type": "true_false",
+          "id": "collecting-4",
+          "statement": "`between(1, 3, X)` gives the answers `X = 1`, `X = 2` and `X = 3`.",
+          "answer": true,
+          "explain": "`between` gives every integer from the low to the high value, both included."
+        },
+        {
+          "type": "gap",
+          "id": "collecting-5",
+          "prompt": "Complete the code so it prints `[2,4,6]`.",
+          "code": "main :-\n    findall(X, (between(1, 6, X), X mod 2 ___ 0), L),\n    writeln(L).",
+          "options": [
+            "=:=",
+            "=",
+            "is",
+            "=\\="
+          ],
+          "answer": 0,
+          "explain": "`=:=` calculates `X mod 2` and compares it with `0`, so only the even numbers stay."
+        },
+        {
+          "type": "bug",
+          "id": "collecting-6",
+          "prompt": "The `age` facts for three people are loaded. The program should print `3`. Which line has the bug?",
+          "lines": [
+            "main :-",
+            "    findall(Name, age(Name, _)),",
+            "    length(Names, Count),",
+            "    writeln(Count)."
+          ],
+          "bug": 1,
+          "explain": "`findall` needs a third argument for the result list. Write `findall(Name, age(Name, _), Names),`."
+        },
+        {
+          "type": "choice",
+          "id": "collecting-7",
+          "prompt": "Which goal collects all names from the `age` facts into `Names`?",
+          "options": [
+            "`findall(N, age(N, _), Names)`",
+            "`findall(Names, age(N, _), N)`",
+            "`forall(age(N, _), Names)`",
+            "`member(N, age(Names, _))`"
+          ],
+          "answer": 0,
+          "explain": "The first argument of `findall` is what you collect, the second is the goal, and the third is the result list."
+        },
+        {
+          "type": "pairs",
+          "id": "collecting-8",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`findall(X, G, L)`",
+              "all answers in a list"
+            ],
+            [
+              "`forall(C, A)`",
+              "A for every answer of C"
+            ],
+            [
+              "`between(1, 5, X)`",
+              "integers from 1 to 5"
+            ],
+            [
+              "`fail`",
+              "always fails"
+            ],
+            [
+              "`true`",
+              "always succeeds"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "collecting-9",
+          "prompt": "Put the lines in order so the program prints `start`, then `1`, `2`, `3`, then `done`.",
+          "lines": [
+            "main :-",
+            "    writeln(start),",
+            "    forall(between(1, 3, X), writeln(X)),",
+            "    writeln(done)."
+          ],
+          "explain": "The goals run from top to bottom: first `start`, then the numbers from `forall`, then `done`."
+        },
+        {
+          "type": "blocks",
+          "id": "collecting-10",
+          "prompt": "Build the goal that collects the numbers from 1 to 5 in `L`.",
+          "tokens": [
+            "findall(X,",
+            "between(1, 5, X),",
+            "L)"
+          ],
+          "distractors": [
+            "forall(X,",
+            "[X])"
+          ],
+          "explain": "`findall` collects `X` for every answer of `between(1, 5, X)` into `L`."
+        },
+        {
+          "type": "input",
+          "id": "collecting-11",
+          "prompt": "What does this print?",
+          "code": "main :-\n    (   member(X, [a, b, c]),\n        write(X),\n        fail\n    ;   true\n    ),\n    nl.",
+          "answers": [
+            "abc"
+          ],
+          "explain": "`fail` makes Prolog backtrack into `member` for every element, so `write` prints `a`, `b` and `c` on one line."
+        },
+        {
+          "type": "true_false",
+          "id": "collecting-12",
+          "statement": "`forall(member(X, [2, 4, 6]), X mod 2 =:= 0)` succeeds.",
+          "answer": true,
+          "explain": "Every element of `[2, 4, 6]` is even, so the check succeeds for every answer of `member`."
+        }
+      ]
+    }
+  ]
+}

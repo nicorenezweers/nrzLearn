@@ -1,0 +1,388 @@
+{
+  "hello-1": {
+    "extra": [
+      {
+        "src": "main(_) ->\n    io:format(\"~p~n\", [erlang:fun_info(fun main/1, arity)]).",
+        "out": "{arity,1}"
+      }
+    ]
+  },
+  "hello-2": {
+    "out": "42"
+  },
+  "hello-3": {
+    "out": "Sum: 15"
+  },
+  "hello-4": {
+    "out": "ab"
+  },
+  "hello-5": {
+    "out": "Hello"
+  },
+  "hello-6": {
+    "out": "Ready"
+  },
+  "hello-7": {
+    "out": "7"
+  },
+  "hello-8": {
+    "out": "Hi"
+  },
+  "hello-9": {
+    "fix": "    io:format(\"Start~n\"),",
+    "out": "Start\nStop"
+  },
+  "hello-11": {
+    "out": "7"
+  },
+  "hello-12": {
+    "fix": "    io:format(\"Total: ~p~n\", [5]).",
+    "out": "Total: 5"
+  },
+  "values-1": {
+    "out": "3"
+  },
+  "values-2": {
+    "out": "2"
+  },
+  "values-3": {
+    "out": "4.0"
+  },
+  "values-4": {
+    "extra": [
+      {
+        "src": "io:format(\"~p ~p~n\", [1 =:= 1.0, 1 == 1.0])",
+        "out": "false true"
+      }
+    ]
+  },
+  "values-5": {
+    "extra": [
+      {
+        "src": "io:format(\"~p ~p ~p ~p~n\", [is_atom(ok), is_atom(\"ok\"), is_atom(<<\"ok\">>), is_list(\"ok\")])",
+        "out": "true false false true"
+      },
+      {
+        "src": "io:format(\"~p~n\", [Ok])",
+        "err": true
+      }
+    ]
+  },
+  "values-6": {
+    "out": "true"
+  },
+  "values-7": {
+    "out": "4"
+  },
+  "values-9": {
+    "fix": "io:format(\"~p~n\", [10 / 2.5]),",
+    "out": "3\n1\n4.0\n2.5"
+  },
+  "values-10": {
+    "tpl": "io:format(\"~p~n\", [{{CODE}}])",
+    "out": "1"
+  },
+  "values-11": {
+    "out": "\"Hi\""
+  },
+  "values-12": {
+    "extra": [
+      {
+        "src": "io:format(\"~s~n\", [\"ab\" ++ \"cd\"])",
+        "out": "abcd"
+      },
+      {
+        "src": "io:format(\"~s~n\", [\"ab\" + \"cd\"])",
+        "err": true
+      }
+    ]
+  },
+  "matching-1": {
+    "out": "12"
+  },
+  "matching-2": {
+    "extra": [
+      {
+        "src": "Total = 1,\nio:format(\"~p~n\", [Total])",
+        "out": "1"
+      },
+      {
+        "src": "total = 1",
+        "err": true
+      },
+      {
+        "src": "2total = 1",
+        "err": true
+      }
+    ]
+  },
+  "matching-3": {
+    "err": true
+  },
+  "matching-4": {
+    "out": "Bo"
+  },
+  "matching-5": {
+    "out": "7"
+  },
+  "matching-6": {
+    "err": true
+  },
+  "matching-7": {
+    "tpl": "{{CODE}},\nio:format(\"~p ~p~n\", [X, Y])",
+    "out": "3 4"
+  },
+  "matching-8": {
+    "out": "8"
+  },
+  "matching-9": {
+    "fix": "Average = Total / Count,",
+    "out": "25.0"
+  },
+  "matching-11": {
+    "out": "a c"
+  },
+  "matching-12": {
+    "out": ""
+  },
+  "functions-1": {
+    "out": "10"
+  },
+  "functions-2": {
+    "call": "area(3, 4)",
+    "out": "12",
+    "extra": [
+      {
+        "src": "main(_) ->\n    io:format(\"~p~n\", [area(3)]).\n\narea(Width, Height) -> Width * Height.",
+        "err": true
+      }
+    ]
+  },
+  "functions-3": {
+    "call": "size_of(25)",
+    "out": "big"
+  },
+  "functions-4": {
+    "extra": [
+      {
+        "src": "main(_) ->\n    io:format(\"~p ~p~n\", [f(1), f(1, 2)]).\n\nf(A) -> A.\n\nf(A, B) -> A + B.",
+        "out": "1 3"
+      }
+    ]
+  },
+  "functions-5": {
+    "call": "max_of(7, 3)",
+    "out": "7"
+  },
+  "functions-6": {
+    "out": "16"
+  },
+  "functions-7": {
+    "out": "3"
+  },
+  "functions-8": {
+    "call": "{grade(95), grade(70), grade(10)}",
+    "out": "{top,pass,fail}"
+  },
+  "functions-9": {
+    "fix": "abs_value(N) when N < 0 -> -N;",
+    "out": "4"
+  },
+  "functions-10": {
+    "tpl": "F = {{CODE}},\nio:format(\"~p~n\", [F(1)])",
+    "out": "2"
+  },
+  "functions-12": {
+    "call": "check(10)",
+    "out": "medium"
+  },
+  "lists-1": {
+    "out": "[6,7]"
+  },
+  "lists-2": {
+    "out": "12"
+  },
+  "lists-3": {
+    "out": "[5,8]"
+  },
+  "lists-4": {
+    "extra": [
+      {
+        "src": "io:format(\"~p~n\", [lists:reverse([1, 2, 3])])",
+        "out": "[3,2,1]"
+      }
+    ]
+  },
+  "lists-5": {
+    "out": "[1,4,9]"
+  },
+  "lists-6": {
+    "out": "[2,4,6]"
+  },
+  "lists-7": {
+    "tpl": "io:format(\"~p~n\", [{{CODE}}])",
+    "out": "[2,3,4]"
+  },
+  "lists-9": {
+    "fix": "Max = lists:max(Big),",
+    "out": "23 15"
+  },
+  "lists-10": {
+    "out": "18"
+  },
+  "lists-11": {
+    "tpl": "{{CODE}},\nio:format(\"~p~n\", [H])",
+    "out": "[1,2]"
+  },
+  "lists-12": {
+    "err": true
+  },
+  "recursion-1": {
+    "call": "count([a, b, c])",
+    "out": "3"
+  },
+  "recursion-2": {
+    "call": "f(4)",
+    "out": "10"
+  },
+  "recursion-3": {
+    "call": "len([a, b, c])",
+    "out": "3"
+  },
+  "recursion-5": {
+    "call": "len([a, b])",
+    "out": "2"
+  },
+  "recursion-6": {
+    "tpl": "main(_) ->\n    countdown(2).\n\n{{CODE}}",
+    "out": "2\n1\nGo!"
+  },
+  "recursion-7": {
+    "fix": "sum([H | T]) -> H + sum(T).",
+    "out": "6"
+  },
+  "recursion-8": {
+    "fix": "rev([H | T], Acc) -> rev(T, [H | Acc]).",
+    "out": "[3,2,1]"
+  },
+  "recursion-9": {
+    "tpl": "main(_) ->\n    io:format(\"~p~n\", [len([a, b, c])]).\n\nlen([]) -> 0;\n{{CODE}}",
+    "out": "3"
+  },
+  "recursion-11": {
+    "out": "[3,2,1]"
+  },
+  "recursion-12": {
+    "extra": [
+      {
+        "src": "main(_) ->\n    io:format(\"~p~n\", [sum([1, 2, 3, 4])]).\n\nsum(List) -> sum(List, 0).\n\nsum([], Acc) -> Acc;\nsum([H | T], Acc) -> sum(T, Acc + H).",
+        "out": "10"
+      }
+    ]
+  },
+  "maps-1": {
+    "out": "20"
+  },
+  "maps-2": {
+    "out": "1"
+  },
+  "maps-3": {
+    "out": "small"
+  },
+  "maps-4": {
+    "extra": [
+      {
+        "src": "M = #{a => 1},\nM2 = maps:put(b, 2, M),\nio:format(\"~p ~p~n\", [map_size(M), map_size(M2)])",
+        "out": "1 2"
+      }
+    ]
+  },
+  "maps-5": {
+    "out": "3"
+  },
+  "maps-6": {
+    "out": "2"
+  },
+  "maps-7": {
+    "tpl": "M = {{CODE}},\nio:format(\"~s~n\", [maps:get(name, M)])",
+    "out": "Ada"
+  },
+  "maps-9": {
+    "fix": "Cara = maps:get(cara, Scores, 0),",
+    "out": "9 0"
+  },
+  "maps-10": {
+    "out": "7"
+  },
+  "maps-11": {
+    "call": "area({rect, 2, 5})",
+    "out": "10"
+  },
+  "maps-12": {
+    "fix": "{book, Title, _} = Book,",
+    "out": "Dune 1965"
+  },
+  "processes-1": {
+    "out": "50"
+  },
+  "processes-2": {
+    "extra": [
+      {
+        "src": "io:format(\"~p~n\", [is_pid(self())])",
+        "out": "true"
+      },
+      {
+        "src": "io:format(\"~p~n\", [pid()])",
+        "err": true
+      },
+      {
+        "src": "io:format(\"~p~n\", [this()])",
+        "err": true
+      },
+      {
+        "src": "io:format(\"~p~n\", [me()])",
+        "err": true
+      }
+    ]
+  },
+  "processes-3": {
+    "extra": [
+      {
+        "src": "P = spawn(fun() -> receive never -> ok end end),\nP ! hi,\nio:format(\"sent~n\")",
+        "out": "sent"
+      }
+    ]
+  },
+  "processes-4": {
+    "out": "a"
+  },
+  "processes-5": {
+    "out": "5"
+  },
+  "processes-6": {
+    "out": "timeout"
+  },
+  "processes-7": {
+    "tpl": "Pid = self(),\n{{CODE}},\nreceive\n    {ping, P} -> io:format(\"~p~n\", [P == self()])\nend",
+    "out": "true"
+  },
+  "processes-8": {
+    "out": "pong"
+  },
+  "processes-9": {
+    "fix": "    Pid ! {self(), 6},",
+    "out": "36",
+    "timeout": 3
+  },
+  "processes-11": {
+    "out": "23"
+  },
+  "processes-12": {
+    "extra": [
+      {
+        "src": "self() ! hi,\nreceive hi -> io:format(\"ok~n\") end",
+        "out": "ok"
+      }
+    ]
+  }
+}

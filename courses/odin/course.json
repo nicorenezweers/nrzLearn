@@ -1,0 +1,1947 @@
+{
+  "course": "odin",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Odin!",
+      "chapter": "Basics",
+      "summary": "Write your first Odin program and print text and numbers with fmt.println and fmt.printf.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Odin is a simple and fast programming language. This course uses Odin `dev-2026-11`, the release from November 2026. Every Odin program is made of **packages**. A program that you can run uses `package main` and has a procedure called `main`. Odin starts the program there."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    fmt.println(\"Hello, Odin!\")\n}",
+          "output": "Hello, Odin!"
+        },
+        {
+          "type": "text",
+          "md": "Line by line: `package main` says that this file belongs to the main package. `import \"core:fmt\"` loads the `fmt` package, which can print text. The prefix `core:` means that the package comes with Odin. `main :: proc()` defines the procedure `main`: `::` means \"is defined as\" and `proc` means procedure. Its code goes between the braces `{` and `}`."
+        },
+        {
+          "type": "heading",
+          "text": "Printing with println"
+        },
+        {
+          "type": "text",
+          "md": "`fmt.println` prints its values, puts a space between them and ends the line. Text goes in double quotes and is called a **string**. Numbers have no quotes. `fmt.println()` without values prints an empty line."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    fmt.println(\"Odin\", \"is\", \"fun\")\n    fmt.println(1, 2, 3)\n    fmt.println()\n    fmt.println(\"Done\")\n}",
+          "output": "Odin is fun\n1 2 3\n\nDone"
+        },
+        {
+          "type": "text",
+          "md": "Odin can calculate for you. `2 + 3` without quotes is a calculation, but `\"2 + 3\"` in quotes is only text. Use `*` to multiply and `/` to divide."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    fmt.println(2 + 3)\n    fmt.println(\"2 + 3\")\n    fmt.println(7 * 6)\n}",
+          "output": "5\n2 + 3\n42"
+        },
+        {
+          "type": "heading",
+          "text": "Formatted output"
+        },
+        {
+          "type": "text",
+          "md": "`fmt.printf` prints a **format string** and fills in values. Each placeholder starts with `%`: `%s` for a string, `%d` for a whole number and `%v` for any value. `printf` does not end the line, so you add `\\n` (a new line) yourself. `fmt.printfln` works the same way but ends the line for you."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    fmt.printf(\"%s is %d years old.\\n\", \"Ada\", 36)\n    fmt.printfln(\"%v, %v and %v\", \"text\", 42, true)\n    fmt.printf(\"One line. \")\n    fmt.printf(\"Same line.\\n\")\n}",
+          "output": "Ada is 36 years old.\ntext, 42 and true\nOne line. Same line."
+        },
+        {
+          "type": "tip",
+          "md": "A line that starts with `//` is a comment, and Odin ignores it. You do not need a semicolon `;` at the end of a line."
+        },
+        {
+          "type": "warning",
+          "md": "Odin is case sensitive: `fmt.println` works, `fmt.Println` does not exist. Text needs double quotes: `\"Hi\"` is a string, `'Hi'` is an error."
+        }
+      ],
+      "card": [
+        "`package main` + `main :: proc()` make a runnable program",
+        "`import \"core:fmt\"` loads the printing package",
+        "`fmt.println(a, b)` prints with spaces and a new line",
+        "`fmt.printf(\"%s %d %v\\n\", s, n, x)` fills in values"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which procedure does Odin run when the program starts?",
+          "options": [
+            "`main`",
+            "`start`",
+            "`run`",
+            "`println`"
+          ],
+          "answer": 0,
+          "explain": "A runnable program starts in the procedure `main` of the package `main`."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "fmt.println(\"Odin\", \"is\", \"fun\")",
+          "answers": [
+            "Odin is fun"
+          ],
+          "explain": "`println` puts a space between its values."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "fmt.println(10 - 4, \"apples\")",
+          "answers": [
+            "6 apples"
+          ],
+          "explain": "`10 - 4` has no quotes, so Odin calculates `6`. Then `println` adds a space and the text."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "`fmt.printf` ends the line automatically, like `fmt.println`.",
+          "answer": false,
+          "explain": "`printf` prints exactly the format string. You need `\\n` at the end to start a new line, or you use `printfln`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Complete the program so it prints Hi.",
+          "code": "package main\n\nimport ___\n\nmain :: proc() {\n    fmt.println(\"Hi\")\n}",
+          "options": [
+            "\"core:fmt\"",
+            "\"fmt\"",
+            "core:fmt",
+            "<fmt>"
+          ],
+          "answer": 0,
+          "explain": "The package name goes in double quotes, with the prefix `core:` for packages that come with Odin: `import \"core:fmt\"`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so it prints `Name: Ada`.",
+          "code": "fmt.printf(\"Name: ___\\n\", \"Ada\")",
+          "options": [
+            "%s",
+            "%d",
+            "$s",
+            "%t"
+          ],
+          "answer": 0,
+          "explain": "`%s` is the placeholder for a string. `%d` only works for whole numbers."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build the line that prints Hello, Odin! on its own line.",
+          "tokens": [
+            "fmt.println",
+            "(",
+            "\"Hello, Odin!\"",
+            ")"
+          ],
+          "distractors": [
+            "fmt.Println",
+            "'Hello, Odin!'"
+          ],
+          "explain": "The procedure is `fmt.println` in lower case. The text goes in double quotes inside the parentheses."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order to make a complete program.",
+          "lines": [
+            "package main",
+            "import \"core:fmt\"",
+            "main :: proc() {",
+            "    fmt.println(\"Ready\")",
+            "}"
+          ],
+          "explain": "First the package, then the imports, then the procedure `main` with its code between the braces."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`package main`",
+              "names the runnable package"
+            ],
+            [
+              "`import \"core:fmt\"`",
+              "loads the printing package"
+            ],
+            [
+              "`main :: proc()`",
+              "where the program starts"
+            ],
+            [
+              "`%d`",
+              "placeholder for a whole number"
+            ],
+            [
+              "`\\n`",
+              "starts a new line"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "package main",
+            "import \"core:fmt\"",
+            "main :: proc() {",
+            "    fmt.println(\"Start\")",
+            "    fmt.println(\"Stop)",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "The closing quote is missing. Write `fmt.println(\"Stop\")`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "package main",
+            "import \"core:fmt\"",
+            "main :: proc() {",
+            "    fmt.println(\"Line 1\")",
+            "    fmt.Println(\"Line 2\")",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "Odin is case sensitive. The procedure is `fmt.println` in lower case."
+        },
+        {
+          "type": "choice",
+          "id": "hello-12",
+          "prompt": "What does this print?",
+          "code": "fmt.printf(\"%d + %d = %d\\n\", 2, 3, 2 + 3)",
+          "options": [
+            "`2 + 3 = 5`",
+            "`%d + %d = %d`",
+            "`2 3 5`",
+            "`2 + 3 = 2 + 3`"
+          ],
+          "answer": 0,
+          "explain": "Each `%d` is replaced by the next value. `2 + 3` is calculated first, so the last value is `5`."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Store values in variables, get to know int, f64, string and bool, and fix values with constants.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** stores a value under a name. `name := value` creates a new variable: `:=` declares it and gives it its first value. Later, `=` changes the value of a variable that already exists."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    name := \"Ada\"\n    age := 36\n    fmt.println(name, \"is\", age)\n    age = 37\n    fmt.println(age)\n}",
+          "output": "Ada is 36\n37"
+        },
+        {
+          "type": "heading",
+          "text": "Types"
+        },
+        {
+          "type": "text",
+          "md": "Every variable has a **type**, and it never changes. `int` holds whole numbers, `f64` decimal numbers, `string` text and `bool` the values `true` or `false`. With `:=` Odin picks the type from the value. You can also write it yourself: `name: type = value`. A variable without a value starts with its **zero value**: `0` for numbers and `false` for `bool`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    count: int = 3\n    price: f64 = 2.5\n    title: string = \"Odin\"\n    done: bool = true\n    empty: int\n    fmt.println(count, price, title, done, empty)\n}",
+          "output": "3 2.5 Odin true 0"
+        },
+        {
+          "type": "heading",
+          "text": "Calculating"
+        },
+        {
+          "type": "text",
+          "md": "Odin knows `+`, `-`, `*` and `/`, and `%` gives the remainder of a division. When you divide two `int` values, Odin drops the remainder: `7 / 2` is `3`. With decimal numbers, `7.0 / 2` is `3.5`. `x += 5` is short for `x = x + 5`; `-=`, `*=` and `/=` work the same way."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    fmt.println(7 / 2, 7 % 2)\n    fmt.println(7.0 / 2)\n    x := 10\n    x += 5\n    fmt.println(x)\n}",
+          "output": "3 1\n3.5\n15"
+        },
+        {
+          "type": "text",
+          "md": "Odin never mixes types on its own: an `int` plus an `f64` is an error. You convert a value with the name of the type, like a procedure call: `f64(n)` makes a decimal number, `int(x)` makes a whole number and drops the decimals."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    n := 7\n    half := f64(n) / 2\n    price := 9.99\n    fmt.println(half, int(price))\n}",
+          "output": "3.5 9"
+        },
+        {
+          "type": "heading",
+          "text": "Constants"
+        },
+        {
+          "type": "text",
+          "md": "`::` declares a **constant**: a value that is fixed when the program is compiled. You cannot change a constant later. You already know `::` from `main :: proc()`: the procedure `main` is a constant too."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    MAX :: 100\n    GREETING :: \"Hi\"\n    fmt.println(GREETING, MAX * 2)\n}",
+          "output": "Hi 200"
+        },
+        {
+          "type": "warning",
+          "md": "`:=` creates a new variable, `=` changes an existing one. Using `:=` twice for the same name in the same block is an error. Odin has no `x++`: write `x += 1`."
+        }
+      ],
+      "card": [
+        "`x := 5` creates a variable, `x = 6` changes it",
+        "`price: f64 = 2.5` with an explicit type",
+        "`int`, `f64`, `string`, `bool`",
+        "`f64(n)` and `int(x)` convert",
+        "`MAX :: 100` is a constant"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "variables-1",
+          "prompt": "What does this print?",
+          "code": "x := 4\nx += 3\nfmt.println(x * 2)",
+          "answers": [
+            "14"
+          ],
+          "explain": "`x` becomes `4 + 3 = 7`, and `7 * 2` is `14`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-2",
+          "prompt": "Which type stores the value `2.5`?",
+          "options": [
+            "`f64`",
+            "`int`",
+            "`bool`",
+            "`string`"
+          ],
+          "answer": 0,
+          "explain": "`f64` holds decimal numbers. An `int` holds only whole numbers."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-3",
+          "statement": "This code is correct.",
+          "code": "x := 5\nx := 6\nfmt.println(x)",
+          "answer": false,
+          "explain": "The second line uses `:=` again, so it declares `x` a second time. To change the value, write `x = 6`."
+        },
+        {
+          "type": "input",
+          "id": "variables-4",
+          "prompt": "What does this print?",
+          "code": "fmt.println(17 / 5, 17 % 5)",
+          "answers": [
+            "3 2"
+          ],
+          "explain": "Both numbers are `int`, so `17 / 5` drops the remainder and gives `3`. The remainder `%` is `2`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-5",
+          "prompt": "What does this print?",
+          "code": "a: int\nb: bool\nfmt.println(a, b)",
+          "options": [
+            "`0 false`",
+            "`nil nil`",
+            "`0 true`",
+            "Nothing, it is an error."
+          ],
+          "answer": 0,
+          "explain": "Variables without a value get their zero value: `0` for `int` and `false` for `bool`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-6",
+          "prompt": "Complete the code so it prints 15.",
+          "code": "total := 10\ntotal ___ 5\nfmt.println(total)",
+          "options": [
+            "+=",
+            ":=",
+            "=+",
+            "++"
+          ],
+          "answer": 0,
+          "explain": "`total += 5` adds 5 to `total`. `=+ 5` would set it to `+5`, and `:=` would declare it again."
+        },
+        {
+          "type": "gap",
+          "id": "variables-7",
+          "prompt": "Complete the code so it prints 3.5.",
+          "code": "n := 7\nhalf := ___(n) / 2\nfmt.println(half)",
+          "options": [
+            "f64",
+            "int",
+            "float",
+            "string"
+          ],
+          "answer": 0,
+          "explain": "`f64(n)` converts `n` to a decimal number, so the division keeps the `.5`. With `int` the result would be `3`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-8",
+          "prompt": "Build the line that declares the variable `price` with the type `f64` and the value `2.5`.",
+          "tokens": [
+            "price",
+            ":",
+            "f64",
+            "=",
+            "2.5"
+          ],
+          "distractors": [
+            ":=",
+            "float"
+          ],
+          "explain": "First the name, then `:` and the type, then `=` and the value."
+        },
+        {
+          "type": "order",
+          "id": "variables-9",
+          "prompt": "Put the lines in order so the program prints 50.",
+          "lines": [
+            "count := 3",
+            "count += 2",
+            "count *= 10",
+            "fmt.println(count)"
+          ],
+          "explain": "`count` starts at 3, becomes 5 and then 50. Only then is it printed."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`:=`",
+              "creates a new variable"
+            ],
+            [
+              "`=`",
+              "changes an existing variable"
+            ],
+            [
+              "`::`",
+              "declares a constant"
+            ],
+            [
+              "`f64`",
+              "type for decimal numbers"
+            ],
+            [
+              "`%`",
+              "remainder of a division"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "variables-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "price := 4.5",
+            "count := 2",
+            "total := price * count",
+            "fmt.println(total)"
+          ],
+          "bug": 2,
+          "explain": "`price` is an `f64` and `count` is an `int`. Convert first: `total := price * f64(count)`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "score := 0",
+            "score += 10",
+            "score++",
+            "fmt.println(score)"
+          ],
+          "bug": 2,
+          "explain": "Odin has no `++` operator. Write `score += 1`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program decide with if, else and switch, and combine conditions with &&, || and !.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`if` runs code only when a condition is `true`. The condition needs no parentheses, but the code always goes between braces `{` and `}`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    temp := 25\n    if temp > 20 {\n        fmt.println(\"Warm\")\n    }\n    fmt.println(\"Done\")\n}",
+          "output": "Warm\nDone"
+        },
+        {
+          "type": "text",
+          "md": "A comparison gives a `bool`. `==` means equal, `!=` not equal, and there are `<`, `>`, `<=` and `>=`. Note the difference: `=` changes a variable, `==` compares two values."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    fmt.println(5 > 3, 5 == 3)\n    fmt.println(5 != 3, \"a\" == \"a\")\n}",
+          "output": "true false\ntrue true"
+        },
+        {
+          "type": "text",
+          "md": "`else` runs when the condition is `false`. With `else if` you test more conditions one after the other. Odin runs the first block whose condition is `true` and skips the rest."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    score := 72\n    if score >= 90 {\n        fmt.println(\"A\")\n    } else if score >= 70 {\n        fmt.println(\"B\")\n    } else {\n        fmt.println(\"C\")\n    }\n}",
+          "output": "B"
+        },
+        {
+          "type": "text",
+          "md": "You can combine conditions: `&&` means and (both must be `true`), `||` means or (at least one must be `true`), and `!` turns `true` into `false` and the other way round."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    age := 20\n    has_ticket := true\n    if age >= 18 && has_ticket {\n        fmt.println(\"Enter\")\n    }\n    if !has_ticket || age < 18 {\n        fmt.println(\"Stop\")\n    }\n}",
+          "output": "Enter"
+        },
+        {
+          "type": "heading",
+          "text": "switch"
+        },
+        {
+          "type": "text",
+          "md": "`switch` compares one value with several cases. A `case` can list several values, separated by commas. `case:` without a value is the default: it runs when no other case matches. Odin runs only the matching case and never continues into the next one, so you need no `break`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    day := 6\n    switch day {\n    case 1, 2, 3, 4, 5:\n        fmt.println(\"Workday\")\n    case 6, 7:\n        fmt.println(\"Weekend\")\n    case:\n        fmt.println(\"Unknown\")\n    }\n}",
+          "output": "Weekend"
+        },
+        {
+          "type": "text",
+          "md": "A `switch` without a value works like a chain of `if` and `else if`: every case is a condition, and the first `true` one runs."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    temp := 8\n    switch {\n    case temp < 0:\n        fmt.println(\"Freezing\")\n    case temp < 15:\n        fmt.println(\"Cold\")\n    case:\n        fmt.println(\"Warm\")\n    }\n}",
+          "output": "Cold"
+        },
+        {
+          "type": "warning",
+          "md": "The condition must be a `bool`. `if 1 { }` is an error, and so is `if x = 5 { }`: write `if x == 5 { }`."
+        }
+      ],
+      "card": [
+        "`if x > 0 { } else if x == 0 { } else { }`",
+        "`==` `!=` `<` `>` `<=` `>=` compare",
+        "`&&` and, `||` or, `!` not",
+        "`switch x { case 1, 2: ... case: ... }`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "x := 7\nif x > 5 {\n    fmt.println(\"big\")\n} else {\n    fmt.println(\"small\")\n}",
+          "answers": [
+            "big"
+          ],
+          "explain": "`7 > 5` is `true`, so the first block runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "score := 85\nif score >= 90 {\n    fmt.println(\"A\")\n} else if score >= 80 {\n    fmt.println(\"B\")\n} else {\n    fmt.println(\"C\")\n}",
+          "answers": [
+            "B"
+          ],
+          "explain": "`85 >= 90` is `false`, but `85 >= 80` is `true`, so Odin prints `B` and skips the rest."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "Which operator checks if two values are equal?",
+          "options": [
+            "`==`",
+            "`=`",
+            "`:=`",
+            "`!=`"
+          ],
+          "answer": 0,
+          "explain": "`==` compares two values. `=` changes a variable, `:=` creates one and `!=` means not equal."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-4",
+          "statement": "In a `switch`, Odin continues with the next case after the matching one unless you write `break`.",
+          "answer": false,
+          "explain": "Odin runs only the matching case. There is no fall through, so you need no `break`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-5",
+          "prompt": "What does this print?",
+          "code": "a := 4\nb := 9\nif a > 5 || b > 5 {\n    fmt.println(\"yes\")\n} else {\n    fmt.println(\"no\")\n}",
+          "options": [
+            "`yes`",
+            "`no`",
+            "Nothing, it is an error.",
+            "`yes` and `no`"
+          ],
+          "answer": 0,
+          "explain": "`||` needs only one `true` side. `b > 5` is `true`, so the whole condition is `true`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-6",
+          "prompt": "Complete the code so it prints adult.",
+          "code": "age := 18\nif age ___ 18 {\n    fmt.println(\"adult\")\n}",
+          "options": [
+            ">=",
+            ">",
+            "=>",
+            "="
+          ],
+          "answer": 0,
+          "explain": "`>=` means greater than or equal, so `18 >= 18` is `true`. `18 > 18` is `false`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Complete the code so it prints both only when `a` and `b` are both positive.",
+          "code": "a := 3\nb := -1\nif a > 0 ___ b > 0 {\n    fmt.println(\"both\")\n} else {\n    fmt.println(\"not both\")\n}",
+          "options": [
+            "&&",
+            "||",
+            "and",
+            "&"
+          ],
+          "answer": 0,
+          "explain": "`&&` is `true` only when both sides are `true`. Here `b > 0` is `false`, so the program prints `not both`."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-8",
+          "prompt": "Build the first line of an `if` that checks whether `x` is greater than 10.",
+          "tokens": [
+            "if",
+            "x",
+            ">",
+            "10",
+            "{"
+          ],
+          "distractors": [
+            "then",
+            "=>"
+          ],
+          "explain": "`if`, then the condition, then the opening brace. Odin needs no `then`."
+        },
+        {
+          "type": "order",
+          "id": "conditions-9",
+          "prompt": "Put the lines in order: the code prints hot when `temp` is above 25 and not hot otherwise.",
+          "lines": [
+            "if temp > 25 {",
+            "    fmt.println(\"hot\")",
+            "} else {",
+            "    fmt.println(\"not hot\")",
+            "}"
+          ],
+          "explain": "The `if` block handles the `true` case, the `else` block all other cases."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-10",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`==`",
+              "equal"
+            ],
+            [
+              "`!=`",
+              "not equal"
+            ],
+            [
+              "`&&`",
+              "both are true"
+            ],
+            [
+              "`||`",
+              "at least one is true"
+            ],
+            [
+              "`!`",
+              "turns true into false"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "n := 9",
+            "switch n {",
+            "case 1:",
+            "    fmt.println(\"one\")",
+            "default:",
+            "    fmt.println(\"other\")",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "Odin has no `default` keyword. The default case is written `case:`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "x := 5",
+            "if x = 5 {",
+            "    fmt.println(\"five\")",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "`=` changes a variable. To compare, write `if x == 5 {`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with the for loop: counting, ranges, loops with a condition, break and continue.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Odin has only one loop keyword: `for`. The classic form has three parts, separated by semicolons: a start, a condition and a step."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    for i := 0; i < 3; i += 1 {\n        fmt.println(\"Round\", i)\n    }\n}",
+          "output": "Round 0\nRound 1\nRound 2"
+        },
+        {
+          "type": "text",
+          "md": "`i := 0` runs once at the start. Odin checks `i < 3` before every round and stops when it is `false`. `i += 1` runs after every round. Each run of the loop body is called an **iteration**."
+        },
+        {
+          "type": "heading",
+          "text": "Ranges"
+        },
+        {
+          "type": "text",
+          "md": "A **range** is shorter: `for i in 0..<3` counts `0`, `1`, `2`. The `..<` stops before the end. With `..=` the end is included, so `1..=3` counts `1`, `2`, `3`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    for i in 1..=3 {\n        fmt.println(i)\n    }\n    for i in 0..<2 {\n        fmt.println(\"index\", i)\n    }\n}",
+          "output": "1\n2\n3\nindex 0\nindex 1"
+        },
+        {
+          "type": "text",
+          "md": "A `for` with only a condition repeats as long as the condition is `true`. Other languages call this a while loop."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    n := 1\n    for n < 50 {\n        n *= 2\n    }\n    fmt.println(n)\n}",
+          "output": "64"
+        },
+        {
+          "type": "text",
+          "md": "A `for` without anything repeats forever. `break` leaves the loop at once. `continue` skips the rest of the current iteration and starts the next one."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    i := 0\n    for {\n        i += 1\n        if i % 2 == 0 {\n            continue\n        }\n        if i > 7 {\n            break\n        }\n        fmt.println(i)\n    }\n}",
+          "output": "1\n3\n5\n7"
+        },
+        {
+          "type": "text",
+          "md": "A common pattern: a variable outside the loop collects a result, and every iteration adds to it."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    total := 0\n    for i in 1..=5 {\n        total += i\n    }\n    fmt.println(\"Sum:\", total)\n}",
+          "output": "Sum: 15"
+        },
+        {
+          "type": "warning",
+          "md": "Odin has no `i++`, so the classic loop needs `i += 1`. The three parts have no parentheses around them."
+        }
+      ],
+      "card": [
+        "`for i := 0; i < n; i += 1 { }`",
+        "`for i in 0..<5 { }` counts 0 to 4",
+        "`for i in 1..=5 { }` counts 1 to 5",
+        "`for x < 10 { }` and `for { }`",
+        "`break` leaves, `continue` skips"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "total := 0\nfor i in 2..=4 {\n    total += i\n}\nfmt.println(total)",
+          "answers": [
+            "9"
+          ],
+          "explain": "`..=` includes the end, so the loop adds `2 + 3 + 4 = 9`."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "n := 1\nfor n < 20 {\n    n *= 3\n}\nfmt.println(n)",
+          "answers": [
+            "27"
+          ],
+          "explain": "`n` becomes 3, 9 and 27. Then `27 < 20` is `false` and the loop stops."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "How many times does this print Hi?",
+          "code": "for i in 0..=3 {\n    fmt.println(\"Hi\")\n}",
+          "options": [
+            "4",
+            "3",
+            "2",
+            "5"
+          ],
+          "answer": 0,
+          "explain": "`0..=3` includes the end: `0`, `1`, `2` and `3` are four numbers."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-4",
+          "statement": "`for i in 0..<5` also runs with `i` equal to `5`.",
+          "answer": false,
+          "explain": "`..<` stops before the end. The loop runs with `0` to `4`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-5",
+          "prompt": "Complete the loop so it prints 0, 1 and 2.",
+          "code": "for i := 0; i < 3; ___ {\n    fmt.println(i)\n}",
+          "options": [
+            "i += 1",
+            "i++",
+            "i + 1",
+            "i += 2"
+          ],
+          "answer": 0,
+          "explain": "The step `i += 1` adds one after every iteration. Odin has no `i++`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-6",
+          "prompt": "Complete the loop so it prints the numbers 1 to 5.",
+          "code": "for i in 1___5 {\n    fmt.println(i)\n}",
+          "options": [
+            "..=",
+            "..<",
+            "..",
+            ":"
+          ],
+          "answer": 0,
+          "explain": "`..=` includes the end. With `..<` the loop would stop at 4."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-7",
+          "prompt": "Build the first line of a loop that counts from 0 to 2.",
+          "tokens": [
+            "for",
+            "i",
+            "in",
+            "0..<3",
+            "{"
+          ],
+          "distractors": [
+            "range",
+            ":="
+          ],
+          "explain": "`for`, the loop variable, `in` and the range. `0..<3` stops before 3."
+        },
+        {
+          "type": "order",
+          "id": "loops-8",
+          "prompt": "Put the lines in order so the program prints 10.",
+          "lines": [
+            "total := 0",
+            "for i := 1; i <= 4; i += 1 {",
+            "    total += i",
+            "}",
+            "fmt.println(total)"
+          ],
+          "explain": "Create `total` first, add every `i` inside the loop and print the result after the loop."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`0..<5`",
+              "0 to 4"
+            ],
+            [
+              "`0..=5`",
+              "0 to 5"
+            ],
+            [
+              "`break`",
+              "leaves the loop"
+            ],
+            [
+              "`continue`",
+              "starts the next iteration"
+            ],
+            [
+              "`for {`",
+              "repeats forever"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "loops-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fmt.println(\"Start\")",
+            "for i := 0; i < 3; i++ {",
+            "    fmt.println(i)",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "Odin has no `++`. Write `for i := 0; i < 3; i += 1 {`."
+        },
+        {
+          "type": "bug",
+          "id": "loops-11",
+          "prompt": "This loop should print 1, 2, 4 and 5. Which line has the bug?",
+          "lines": [
+            "for i in 1..=5 {",
+            "    if i == 3 {",
+            "        break",
+            "    }",
+            "    fmt.println(i)",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "`break` ends the whole loop, so only 1 and 2 are printed. Use `continue` to skip only 3."
+        },
+        {
+          "type": "choice",
+          "id": "loops-12",
+          "prompt": "What does this print?",
+          "code": "i := 10\nfor i > 0 {\n    i -= 3\n}\nfmt.println(i)",
+          "options": [
+            "`-2`",
+            "`1`",
+            "`0`",
+            "`-1`"
+          ],
+          "answer": 0,
+          "explain": "`i` becomes 7, 4, 1 and then -2. Only then is `i > 0` `false`."
+        }
+      ]
+    },
+    {
+      "id": "procedures",
+      "title": "Procedures",
+      "chapter": "Building blocks",
+      "summary": "Write your own procedures with parameters and return values, including procedures that return several values.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **procedure** is a named block of code that you can run (call) as often as you like. You declare it like `main`: a name, `::` and `proc`. To call it, write its name and parentheses."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\ngreet :: proc() {\n    fmt.println(\"Hello!\")\n}\n\nmain :: proc() {\n    greet()\n    greet()\n}",
+          "output": "Hello!\nHello!"
+        },
+        {
+          "type": "text",
+          "md": "**Parameters** are the inputs of a procedure. Each one has a name and a type, like `name: string`. Several parameters with the same type can share it: `a, b: int`. The values you pass when you call the procedure are called **arguments**."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nsay_hi :: proc(name: string) {\n    fmt.println(\"Hi,\", name)\n}\n\nshow_sum :: proc(a, b: int) {\n    fmt.println(a + b)\n}\n\nmain :: proc() {\n    say_hi(\"Ada\")\n    show_sum(2, 3)\n}",
+          "output": "Hi, Ada\n5"
+        },
+        {
+          "type": "heading",
+          "text": "Return values"
+        },
+        {
+          "type": "text",
+          "md": "`-> int` after the parameters says that the procedure gives back an `int`. `return` ends the procedure and gives the value back to the caller. You can store the result in a variable or use it directly."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nsquare :: proc(n: int) -> int {\n    return n * n\n}\n\nmain :: proc() {\n    x := square(4)\n    fmt.println(x, square(3) + 1)\n}",
+          "output": "16 10"
+        },
+        {
+          "type": "text",
+          "md": "A procedure can return several values. Put the types in parentheses, `-> (int, int)`, and separate the values with commas after `return`. The caller receives them with several names: `q, r := divide(17, 5)`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\ndivide :: proc(a, b: int) -> (int, int) {\n    return a / b, a % b\n}\n\nmain :: proc() {\n    q, r := divide(17, 5)\n    fmt.printfln(\"%d rest %d\", q, r)\n}",
+          "output": "3 rest 2"
+        },
+        {
+          "type": "text",
+          "md": "Odin code often returns a `bool` as the last value to say if everything worked. The caller can then check `ok`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nsafe_divide :: proc(a, b: int) -> (int, bool) {\n    if b == 0 {\n        return 0, false\n    }\n    return a / b, true\n}\n\nmain :: proc() {\n    result, ok := safe_divide(10, 2)\n    fmt.println(result, ok)\n    result, ok = safe_divide(1, 0)\n    fmt.println(result, ok)\n}",
+          "output": "5 true\n0 false"
+        },
+        {
+          "type": "tip",
+          "md": "The order of procedures in the file does not matter. `main` can call a procedure that is declared below it."
+        },
+        {
+          "type": "warning",
+          "md": "Parameters cannot be changed inside the procedure: `n = 5` is an error when `n` is a parameter. If you need a changeable copy, write `n := n` at the start of the procedure."
+        }
+      ],
+      "card": [
+        "`greet :: proc() { }` and `greet()`",
+        "`add :: proc(a, b: int) -> int { return a + b }`",
+        "`-> (int, bool)` returns two values",
+        "`q, r := divide(7, 2)` receives both"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "procedures-1",
+          "prompt": "What does this print?",
+          "code": "double :: proc(n: int) -> int {\n    return n * 2\n}\n\nmain :: proc() {\n    fmt.println(double(double(3)))\n}",
+          "answers": [
+            "12"
+          ],
+          "explain": "The inner call gives `6`, the outer call doubles it again to `12`."
+        },
+        {
+          "type": "input",
+          "id": "procedures-2",
+          "prompt": "What does this print?",
+          "code": "swap :: proc(a, b: int) -> (int, int) {\n    return b, a\n}\n\nmain :: proc() {\n    x, y := swap(1, 2)\n    fmt.println(x, y)\n}",
+          "answers": [
+            "2 1"
+          ],
+          "explain": "`swap` returns the two values in the other order, so `x` is `2` and `y` is `1`."
+        },
+        {
+          "type": "choice",
+          "id": "procedures-3",
+          "prompt": "Which line correctly starts a procedure that takes an `int` and returns an `int`?",
+          "options": [
+            "`twice :: proc(n: int) -> int {`",
+            "`twice :: proc(n int) int {`",
+            "`twice := func(n: int): int {`",
+            "`proc twice(n: int) -> int {`"
+          ],
+          "answer": 0,
+          "explain": "Name, `::`, `proc`, the parameters with `name: type` and the return type after `->`."
+        },
+        {
+          "type": "true_false",
+          "id": "procedures-4",
+          "statement": "A procedure in Odin can return more than one value.",
+          "answer": true,
+          "explain": "Write the types in parentheses, like `-> (int, int)`, and return the values separated by commas."
+        },
+        {
+          "type": "gap",
+          "id": "procedures-5",
+          "prompt": "Complete the code so it prints 7.",
+          "code": "add :: proc(a, b: int) ___ int {\n    return a + b\n}\n\nmain :: proc() {\n    fmt.println(add(3, 4))\n}",
+          "options": [
+            "->",
+            ":",
+            "=>",
+            "returns"
+          ],
+          "answer": 0,
+          "explain": "The return type comes after `->`."
+        },
+        {
+          "type": "gap",
+          "id": "procedures-6",
+          "prompt": "Complete the code so it prints Hi, Ada.",
+          "code": "greet :: proc(name___ string) {\n    fmt.println(\"Hi,\", name)\n}\n\nmain :: proc() {\n    greet(\"Ada\")\n}",
+          "options": [
+            ":",
+            "::",
+            ":=",
+            "="
+          ],
+          "answer": 0,
+          "explain": "A parameter is written `name: type`, with a single colon."
+        },
+        {
+          "type": "blocks",
+          "id": "procedures-7",
+          "prompt": "Build the first line of a procedure `square` that takes an `int` `n` and returns an `int`.",
+          "tokens": [
+            "square",
+            "::",
+            "proc(n: int)",
+            "->",
+            "int",
+            "{"
+          ],
+          "distractors": [
+            "func",
+            ":="
+          ],
+          "explain": "Name, `::`, `proc` with the parameters, then `->` and the return type."
+        },
+        {
+          "type": "order",
+          "id": "procedures-8",
+          "prompt": "Put the lines in order so the program prints 5.",
+          "lines": [
+            "x := 2",
+            "x = square(x)",
+            "x = add(x, 1)",
+            "fmt.println(x)"
+          ],
+          "explain": "First 2 is squared to 4, then 1 is added. In the other order the result would be 9."
+        },
+        {
+          "type": "pairs",
+          "id": "procedures-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`proc`",
+              "starts a procedure"
+            ],
+            [
+              "`-> int`",
+              "the procedure returns an int"
+            ],
+            [
+              "`return`",
+              "gives a value back"
+            ],
+            [
+              "`-> (int, bool)`",
+              "returns two values"
+            ],
+            [
+              "`a, b: int`",
+              "two parameters of the same type"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "procedures-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "half :: proc(n: f64) {",
+            "    return n / 2",
+            "}",
+            "main :: proc() {",
+            "    fmt.println(half(9))",
+            "}"
+          ],
+          "bug": 0,
+          "explain": "The procedure returns a value, so it needs a return type: `half :: proc(n: f64) -> f64 {`."
+        },
+        {
+          "type": "bug",
+          "id": "procedures-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "divide :: proc(a, b: int) -> (int, int) {",
+            "    return a / b, a % b",
+            "}",
+            "main :: proc() {",
+            "    q := divide(7, 2)",
+            "    fmt.println(q)",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "`divide` returns two values, so you need two names: `q, r := divide(7, 2)`."
+        },
+        {
+          "type": "choice",
+          "id": "procedures-12",
+          "prompt": "What does this print?",
+          "code": "inc :: proc(n: int) -> int {\n    return n + 1\n}\n\nmain :: proc() {\n    x := 5\n    y := inc(x)\n    fmt.println(x, y)\n}",
+          "options": [
+            "`5 6`",
+            "`6 6`",
+            "`6 5`",
+            "`5 5`"
+          ],
+          "answer": 0,
+          "explain": "`inc` gets a copy of `x` and returns `x + 1`. The variable `x` itself stays `5`."
+        }
+      ]
+    },
+    {
+      "id": "arrays",
+      "title": "Arrays and slices",
+      "chapter": "Data",
+      "summary": "Store many values in fixed arrays, look at parts of them with slices, and grow lists with dynamic arrays.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **fixed array** holds a fixed number of values of one type. `[3]int` is an array of three `int` values. You reach an element with its **index** in square brackets. The first index is `0`. `len(a)` gives the number of elements."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    scores := [3]int{90, 75, 60}\n    fmt.println(scores[0], scores[2])\n    scores[1] = 80\n    fmt.println(scores, len(scores))\n}",
+          "output": "90 60\n[90, 80, 60] 3"
+        },
+        {
+          "type": "text",
+          "md": "`for value in arr` goes through all elements. With `for value, i in arr` you also get the index. Note the order: the value comes first, then the index."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    names := [3]string{\"Ada\", \"Linus\", \"Grace\"}\n    for name, i in names {\n        fmt.println(i, name)\n    }\n}",
+          "output": "0 Ada\n1 Linus\n2 Grace"
+        },
+        {
+          "type": "heading",
+          "text": "Slices"
+        },
+        {
+          "type": "text",
+          "md": "A **slice** is a view of a part of an array. Its type is written without a size, like `[]int`. `a[1:4]` starts at index `1` and stops before index `4`. `a[:2]` starts at the beginning, `a[3:]` goes to the end. A slice does not copy the values: when you change the slice, you change the array."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    nums := [5]int{10, 20, 30, 40, 50}\n    part := nums[1:4]\n    fmt.println(part, len(part))\n    fmt.println(nums[:2], nums[3:])\n    part[0] = 99\n    fmt.println(nums)\n}",
+          "output": "[20, 30, 40] 3\n[10, 20] [40, 50]\n[10, 99, 30, 40, 50]"
+        },
+        {
+          "type": "heading",
+          "text": "Dynamic arrays"
+        },
+        {
+          "type": "text",
+          "md": "A **dynamic array**, like `[dynamic]int`, can grow. `append(&list, value)` adds values at the end. The `&` gives `append` the address of the variable, so it can change it. A dynamic array uses memory that you give back with `delete(list)`. `defer` runs a line at the end of the procedure, so you can write `defer delete(list)` right after you create the list."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    list: [dynamic]int\n    defer delete(list)\n    append(&list, 5)\n    append(&list, 7, 9)\n    fmt.println(list, len(list))\n}",
+          "output": "[5, 7, 9] 3"
+        },
+        {
+          "type": "text",
+          "md": "A procedure that takes a slice works with every kind of array. Write `arr[:]` to pass a whole array or dynamic array as a slice."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nsum :: proc(nums: []int) -> int {\n    total := 0\n    for n in nums {\n        total += n\n    }\n    return total\n}\n\nmain :: proc() {\n    fixed := [3]int{1, 2, 3}\n    list: [dynamic]int\n    defer delete(list)\n    append(&list, 10, 20)\n    fmt.println(sum(fixed[:]), sum(list[:]))\n}",
+          "output": "6 30"
+        },
+        {
+          "type": "warning",
+          "md": "An index must be smaller than the length. In `[3]int` the last index is `2`, and `a[3]` is an error. A fixed array cannot grow: only dynamic arrays work with `append`."
+        }
+      ],
+      "card": [
+        "`a := [3]int{1, 2, 3}`, first index `a[0]`",
+        "`len(a)` counts the elements",
+        "`a[1:3]` is a slice from index 1 to 2",
+        "`list: [dynamic]int` + `append(&list, x)`",
+        "`for v, i in a { }` value and index"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arrays-1",
+          "prompt": "What does this print?",
+          "code": "a := [4]int{3, 6, 9, 12}\nfmt.println(a[1] + a[3])",
+          "answers": [
+            "18"
+          ],
+          "explain": "Indexes start at 0, so `a[1]` is `6` and `a[3]` is `12`."
+        },
+        {
+          "type": "input",
+          "id": "arrays-2",
+          "prompt": "What does this print?",
+          "code": "nums := [5]int{1, 2, 3, 4, 5}\ns := nums[1:3]\nfmt.println(len(s))",
+          "answers": [
+            "2"
+          ],
+          "explain": "`nums[1:3]` contains the indexes 1 and 2. The end index 3 is not included."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-3",
+          "prompt": "What does this print?",
+          "code": "list: [dynamic]int\ndefer delete(list)\nappend(&list, 1)\nappend(&list, 2, 3)\nfmt.println(len(list))",
+          "options": [
+            "`3`",
+            "`2`",
+            "`1`",
+            "`6`"
+          ],
+          "answer": 0,
+          "explain": "The first `append` adds one value, the second adds two. The list has three elements."
+        },
+        {
+          "type": "true_false",
+          "id": "arrays-4",
+          "statement": "The first element of an array has the index `1`.",
+          "answer": false,
+          "explain": "Indexes start at `0`. In `[3]string{\"x\", \"y\", \"z\"}` the element `\"x\"` has the index `0`."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-5",
+          "prompt": "Complete the code so it prints [4].",
+          "code": "list: [dynamic]int\ndefer delete(list)\nappend(___, 4)\nfmt.println(list)",
+          "options": [
+            "&list",
+            "list",
+            "*list",
+            "@list"
+          ],
+          "answer": 0,
+          "explain": "`append` changes the list, so it needs its address: `&list`."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-6",
+          "prompt": "Complete the loop so it prints the index and then the name.",
+          "code": "names := [2]string{\"Ada\", \"Bob\"}\nfor ___ in names {\n    fmt.println(i, name)\n}",
+          "options": [
+            "name, i",
+            "i, name",
+            "name",
+            "i"
+          ],
+          "answer": 0,
+          "explain": "In Odin the value comes first and the index second: `for name, i in names`."
+        },
+        {
+          "type": "blocks",
+          "id": "arrays-7",
+          "prompt": "Build the line that adds 7 to the dynamic array `list`.",
+          "tokens": [
+            "append",
+            "(",
+            "&list",
+            ",",
+            "7",
+            ")"
+          ],
+          "distractors": [
+            "list",
+            "push"
+          ],
+          "explain": "`append` takes the address of the list (`&list`) and the new value."
+        },
+        {
+          "type": "order",
+          "id": "arrays-8",
+          "prompt": "Put the lines in order so the program prints [1, 7, 3, 4, 5].",
+          "lines": [
+            "nums := [5]int{1, 2, 3, 4, 5}",
+            "part := nums[1:4]",
+            "part[0] = 7",
+            "fmt.println(nums)"
+          ],
+          "explain": "`part` starts at index 1 of `nums`. Changing `part[0]` changes `nums[1]`, and then you print `nums`."
+        },
+        {
+          "type": "pairs",
+          "id": "arrays-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`[3]int`",
+              "fixed array of three ints"
+            ],
+            [
+              "`[]int`",
+              "slice of ints"
+            ],
+            [
+              "`[dynamic]int`",
+              "array that can grow"
+            ],
+            [
+              "`len(a)`",
+              "number of elements"
+            ],
+            [
+              "`a[1:3]`",
+              "elements at index 1 and 2"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "arrays-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "days := [3]string{\"Mon\", \"Tue\", \"Wed\"}",
+            "fmt.println(days[0])",
+            "fmt.println(days[3])"
+          ],
+          "bug": 2,
+          "explain": "The array has three elements, so the last index is `2`. Write `fmt.println(days[2])`."
+        },
+        {
+          "type": "bug",
+          "id": "arrays-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "nums: [3]int",
+            "append(&nums, 4)",
+            "fmt.println(len(nums))"
+          ],
+          "bug": 0,
+          "explain": "A fixed array cannot grow. Declare a dynamic array: `nums: [dynamic]int`."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-12",
+          "prompt": "What does this print?",
+          "code": "a := [3]int{5, 6, 7}\nfor v, i in a {\n    if i == 1 {\n        fmt.println(v)\n    }\n}",
+          "options": [
+            "`6`",
+            "`5`",
+            "`1`",
+            "`7`"
+          ],
+          "answer": 0,
+          "explain": "The value comes first and the index second. When `i` is `1`, `v` is `6`."
+        }
+      ]
+    },
+    {
+      "id": "structs",
+      "title": "Structs and enums",
+      "chapter": "Data",
+      "summary": "Group values in structs, change them through pointers, and use enums with switch.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **struct** groups several values under one name. You declare it with `::` and `struct`. Each **field** has a name and a type, and a comma follows each field. You reach a field with a dot: `p.x`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nPoint :: struct {\n    x: int,\n    y: int,\n}\n\nmain :: proc() {\n    p := Point{3, 4}\n    fmt.println(p.x, p.y)\n    p.x = 10\n    fmt.println(p)\n}",
+          "output": "3 4\nPoint{x = 10, y = 4}"
+        },
+        {
+          "type": "text",
+          "md": "You can name the fields when you create a struct: `Player{name = \"Ada\", level = 2}`. Fields that you leave out get their zero value."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nPlayer :: struct {\n    name:  string,\n    score: int,\n    level: int,\n}\n\nmain :: proc() {\n    p := Player{name = \"Ada\", level = 2}\n    fmt.println(p.name, p.score, p.level)\n}",
+          "output": "Ada 0 2"
+        },
+        {
+          "type": "text",
+          "md": "A procedure gets a copy of a struct. To change the original, pass a **pointer**: the type `^Player` means \"pointer to a `Player`\", and `&hero` gives the address of `hero`. Through the pointer, `p.level` reaches the field of the original."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nPlayer :: struct {\n    name:  string,\n    level: int,\n}\n\nlevel_up :: proc(p: ^Player) {\n    p.level += 1\n}\n\nmain :: proc() {\n    hero := Player{name = \"Ada\", level = 1}\n    level_up(&hero)\n    level_up(&hero)\n    fmt.println(hero.name, hero.level)\n}",
+          "output": "Ada 3"
+        },
+        {
+          "type": "heading",
+          "text": "Enums"
+        },
+        {
+          "type": "text",
+          "md": "An **enum** is a type with a fixed list of named values. You write a value as `Direction.East`. When Odin already knows the type, `.West` is enough. `println` prints the name of the value."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nDirection :: enum {\n    North,\n    East,\n    South,\n    West,\n}\n\nmain :: proc() {\n    d := Direction.East\n    fmt.println(d)\n    d = .West\n    fmt.println(d, d == .West)\n}",
+          "output": "East\nWest true"
+        },
+        {
+          "type": "text",
+          "md": "A `switch` over an enum has one case for each value. Odin checks that you did not forget a value: a missing case is an error."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nLight :: enum {\n    Red,\n    Yellow,\n    Green,\n}\n\nshow :: proc(l: Light) {\n    switch l {\n    case .Red:\n        fmt.println(\"Stop\")\n    case .Yellow:\n        fmt.println(\"Wait\")\n    case .Green:\n        fmt.println(\"Go\")\n    }\n}\n\nmain :: proc() {\n    show(.Red)\n    show(.Green)\n}",
+          "output": "Stop\nGo"
+        },
+        {
+          "type": "tip",
+          "md": "If you really want to handle only some values, write `#partial switch` instead of `switch`."
+        },
+        {
+          "type": "warning",
+          "md": "Assigning a struct copies it: after `q := p`, changing `q.x` does not change `p.x`. Use a pointer when you want to change the original."
+        }
+      ],
+      "card": [
+        "`Point :: struct { x: int, y: int }`",
+        "`p := Point{x = 1, y = 2}` and `p.x`",
+        "`proc(p: ^Point)` + `move(&p)` changes the original",
+        "`Color :: enum { Red, Green }` and `.Red`",
+        "`switch c { case .Red: ... }` needs every value"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "structs-1",
+          "prompt": "What does this print?",
+          "code": "Rect :: struct {\n    w: int,\n    h: int,\n}\n\nmain :: proc() {\n    r := Rect{w = 3, h = 4}\n    fmt.println(r.w * r.h)\n}",
+          "answers": [
+            "12"
+          ],
+          "explain": "`r.w` is `3` and `r.h` is `4`, so the product is `12`."
+        },
+        {
+          "type": "input",
+          "id": "structs-2",
+          "prompt": "What does this print?",
+          "code": "Size :: enum {\n    Small,\n    Medium,\n    Large,\n}\n\nmain :: proc() {\n    s := Size.Medium\n    fmt.println(s)\n}",
+          "answers": [
+            "Medium"
+          ],
+          "explain": "`println` prints the name of an enum value."
+        },
+        {
+          "type": "choice",
+          "id": "structs-3",
+          "prompt": "`Point` is a struct with the fields `x` and `y`. Which code creates a `Point` with `x` equal to 1 and `y` equal to 2?",
+          "options": [
+            "`Point{x = 1, y = 2}`",
+            "`Point(x: 1, y: 2)`",
+            "`Point{x: 1, y: 2}`",
+            "`new Point(1, 2)`"
+          ],
+          "answer": 0,
+          "explain": "A struct literal uses braces, and named fields use `=`."
+        },
+        {
+          "type": "true_false",
+          "id": "structs-4",
+          "statement": "Fields that you leave out in a struct literal get their zero value.",
+          "answer": true,
+          "explain": "`Point{x = 5}` sets `x` to `5`, and `y` gets the zero value `0`."
+        },
+        {
+          "type": "gap",
+          "id": "structs-5",
+          "prompt": "Complete the code so it prints 2.",
+          "code": "Box :: struct {\n    size: int,\n}\n\ngrow :: proc(b: ___) {\n    b.size += 1\n}\n\nmain :: proc() {\n    box := Box{size = 1}\n    grow(&box)\n    fmt.println(box.size)\n}",
+          "options": [
+            "^Box",
+            "Box",
+            "&Box",
+            "*Box"
+          ],
+          "answer": 0,
+          "explain": "`grow` changes the original, so it takes a pointer: `^Box`."
+        },
+        {
+          "type": "gap",
+          "id": "structs-6",
+          "prompt": "Complete the code so it prints On.",
+          "code": "State :: enum {\n    Off,\n    On,\n}\n\nmain :: proc() {\n    s := State.Off\n    s = ___\n    fmt.println(s)\n}",
+          "options": [
+            ".On",
+            "On",
+            "\"On\"",
+            "State[On]"
+          ],
+          "answer": 0,
+          "explain": "Odin knows that `s` is a `State`, so `.On` is enough. A string like `\"On\"` is not an enum value."
+        },
+        {
+          "type": "blocks",
+          "id": "structs-7",
+          "prompt": "Build the first line of the struct `Point`.",
+          "tokens": [
+            "Point",
+            "::",
+            "struct",
+            "{"
+          ],
+          "distractors": [
+            ":=",
+            "class"
+          ],
+          "explain": "A struct is declared like a constant: name, `::`, `struct` and the opening brace."
+        },
+        {
+          "type": "order",
+          "id": "structs-8",
+          "prompt": "Put the lines in order so the program prints 20.",
+          "lines": [
+            "hero := Player{name = \"Ada\", level = 1}",
+            "level_up(&hero)",
+            "hero.level *= 10",
+            "fmt.println(hero.level)"
+          ],
+          "explain": "`level_up` raises the level from 1 to 2, then it is multiplied by 10. In the other order you would get 11."
+        },
+        {
+          "type": "pairs",
+          "id": "structs-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`struct`",
+              "groups fields"
+            ],
+            [
+              "`enum`",
+              "fixed list of named values"
+            ],
+            [
+              "`p.x`",
+              "the field x of p"
+            ],
+            [
+              "`^Player`",
+              "pointer to a Player"
+            ],
+            [
+              "`&hero`",
+              "address of hero"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "structs-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "Item :: struct {",
+            "    name: string",
+            "    price: int,",
+            "}",
+            "main :: proc() {",
+            "    it := Item{\"Pen\", 2}",
+            "    fmt.println(it.name, it.price)",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "Fields are separated by commas. Write `name: string,`."
+        },
+        {
+          "type": "bug",
+          "id": "structs-11",
+          "prompt": "`Light` is an enum with the values `Red` and `Green`. Which line has the bug?",
+          "lines": [
+            "l := Light.Green",
+            "switch l {",
+            "case .Red:",
+            "    fmt.println(\"Stop\")",
+            "case .Blue:",
+            "    fmt.println(\"Go\")",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "`Light` has no value `Blue`. Write `case .Green:`."
+        },
+        {
+          "type": "choice",
+          "id": "structs-12",
+          "prompt": "What does this print?",
+          "code": "Point :: struct {\n    x: int,\n    y: int,\n}\n\nmain :: proc() {\n    p := Point{1, 2}\n    q := p\n    q.x = 9\n    fmt.println(p.x)\n}",
+          "options": [
+            "`1`",
+            "`9`",
+            "`2`",
+            "Nothing, it is an error."
+          ],
+          "answer": 0,
+          "explain": "`q := p` copies the struct. Changing `q.x` does not change `p`."
+        }
+      ]
+    },
+    {
+      "id": "maps",
+      "title": "Maps and strings",
+      "chapter": "Data",
+      "summary": "Look up values by key with maps, and work with text using len, slices and the strings package.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **map** stores values under **keys**. `map[string]int` has `string` keys and `int` values. You create a map with `make`, and you give its memory back with `delete`. `m[key] = value` adds or changes an entry, and `m[key]` reads it."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    ages := make(map[string]int)\n    defer delete(ages)\n    ages[\"Ada\"] = 36\n    ages[\"Linus\"] = 28\n    fmt.println(ages[\"Ada\"], len(ages))\n}",
+          "output": "36 2"
+        },
+        {
+          "type": "text",
+          "md": "A key that is not in the map gives the zero value. To find out if a key exists, write `value, ok := m[key]`: `ok` is `true` only when the key exists. `key in m` gives the same answer. `delete_key(&m, key)` removes an entry."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    stock := make(map[string]int)\n    defer delete(stock)\n    stock[\"apple\"] = 5\n    n, ok := stock[\"pear\"]\n    fmt.println(n, ok)\n    fmt.println(\"apple\" in stock)\n    delete_key(&stock, \"apple\")\n    fmt.println(len(stock))\n}",
+          "output": "0 false\ntrue\n0"
+        },
+        {
+          "type": "text",
+          "md": "`for key, value in m` goes through all entries. The order of the entries is not fixed, so do not rely on it. The name `_` throws away a value that you do not need."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    prices := make(map[string]int)\n    defer delete(prices)\n    prices[\"tea\"] = 3\n    prices[\"cake\"] = 4\n    total := 0\n    for _, price in prices {\n        total += price\n    }\n    fmt.println(\"Total:\", total)\n}",
+          "output": "Total: 7"
+        },
+        {
+          "type": "heading",
+          "text": "Strings"
+        },
+        {
+          "type": "text",
+          "md": "For a `string`, `len(s)` gives its length in bytes. For English letters, that is the number of characters. `s[1:3]` is a part of the string, like a slice of an array. `for c in s` goes through the characters one by one."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\n\nmain :: proc() {\n    word := \"Odin\"\n    fmt.println(len(word), word[1:3])\n    for c in word {\n        fmt.println(c)\n    }\n}",
+          "output": "4 di\nO\nd\ni\nn"
+        },
+        {
+          "type": "text",
+          "md": "The package `core:strings` has helpers for text. `strings.contains` and `strings.has_prefix` answer with a `bool`, and `strings.index` gives the position of a text, or `-1` if it is not there. `strings.to_upper` creates a new string, so give its memory back with `delete`."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nmain :: proc() {\n    text := \"Hello, Odin\"\n    fmt.println(strings.contains(text, \"Odin\"))\n    fmt.println(strings.index(text, \"o\"))\n    fmt.println(strings.has_prefix(text, \"Hell\"))\n    upper := strings.to_upper(text)\n    defer delete(upper)\n    fmt.println(upper)\n}",
+          "output": "true\n4\ntrue\nHELLO, ODIN"
+        },
+        {
+          "type": "text",
+          "md": "`strings.split` cuts a string into a slice of strings. `strings.join` puts strings together with a separator between them. Both create new memory."
+        },
+        {
+          "type": "code",
+          "code": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nmain :: proc() {\n    parts := strings.split(\"red,green,blue\", \",\")\n    defer delete(parts)\n    fmt.println(len(parts), parts[1])\n    joined := strings.join(parts, \" + \")\n    defer delete(joined)\n    fmt.println(joined)\n}",
+          "output": "3 green\nred + green + blue"
+        },
+        {
+          "type": "warning",
+          "md": "`+` joins only fixed texts like `\"ab\" + \"cd\"`. For variables, use `strings.concatenate({a, b})`."
+        }
+      ],
+      "card": [
+        "`m := make(map[string]int)` + `defer delete(m)`",
+        "`v, ok := m[k]` and `k in m`",
+        "`delete_key(&m, k)` removes an entry",
+        "`len(s)`, `s[1:3]`, `for c in s { }`",
+        "`strings.contains`, `strings.index`, `strings.split`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "maps-1",
+          "prompt": "What does this print?",
+          "code": "m := make(map[string]int)\ndefer delete(m)\nm[\"a\"] = 2\nm[\"b\"] = 5\nm[\"a\"] = 7\nfmt.println(m[\"a\"] + m[\"b\"])",
+          "answers": [
+            "12"
+          ],
+          "explain": "The third assignment replaces the value of `\"a\"` with `7`, and `7 + 5` is `12`."
+        },
+        {
+          "type": "input",
+          "id": "maps-2",
+          "prompt": "What does this print?",
+          "code": "s := \"programming\"\nfmt.println(len(s), s[0:3])",
+          "answers": [
+            "11 pro"
+          ],
+          "explain": "The word has 11 letters. `s[0:3]` contains the indexes 0, 1 and 2."
+        },
+        {
+          "type": "choice",
+          "id": "maps-3",
+          "prompt": "What does this print?",
+          "code": "m := make(map[string]int)\ndefer delete(m)\nv, ok := m[\"x\"]\nfmt.println(v, ok)",
+          "options": [
+            "`0 false`",
+            "`0 true`",
+            "`nil false`",
+            "Nothing, it is an error."
+          ],
+          "answer": 0,
+          "explain": "The key `\"x\"` does not exist, so you get the zero value `0` and `ok` is `false`."
+        },
+        {
+          "type": "true_false",
+          "id": "maps-4",
+          "statement": "A `for` loop over a map always visits the keys in the order in which you added them.",
+          "answer": false,
+          "explain": "The order of the entries in a map is not fixed. If you need an order, keep the keys in an array."
+        },
+        {
+          "type": "gap",
+          "id": "maps-5",
+          "prompt": "Complete the code so it prints 0.",
+          "code": "stock := make(map[string]int)\ndefer delete(stock)\nstock[\"apple\"] = 5\n___(&stock, \"apple\")\nfmt.println(len(stock))",
+          "options": [
+            "delete_key",
+            "delete",
+            "remove",
+            "pop"
+          ],
+          "answer": 0,
+          "explain": "`delete_key` removes one entry. `delete` gives back the memory of the whole map."
+        },
+        {
+          "type": "gap",
+          "id": "maps-6",
+          "prompt": "Complete the code so it prints yes.",
+          "code": "menu := make(map[string]int)\ndefer delete(menu)\nmenu[\"tea\"] = 3\nif \"tea\" ___ menu {\n    fmt.println(\"yes\")\n}",
+          "options": [
+            "in",
+            "of",
+            "has",
+            "=="
+          ],
+          "answer": 0,
+          "explain": "`key in m` is `true` when the map has the key."
+        },
+        {
+          "type": "blocks",
+          "id": "maps-7",
+          "prompt": "Build the line that creates a map from `string` to `int` called `ages`.",
+          "tokens": [
+            "ages",
+            ":=",
+            "make",
+            "(",
+            "map[string]int",
+            ")"
+          ],
+          "distractors": [
+            "new",
+            "dict"
+          ],
+          "explain": "`make` creates the map. The type `map[string]int` goes inside the parentheses."
+        },
+        {
+          "type": "order",
+          "id": "maps-8",
+          "prompt": "Put the lines in order so the program prints 12.",
+          "lines": [
+            "m := make(map[string]int)",
+            "m[\"x\"] = 4",
+            "m[\"x\"] *= 3",
+            "fmt.println(m[\"x\"])"
+          ],
+          "explain": "Create the map, store `4`, multiply it by `3` and print the result."
+        },
+        {
+          "type": "pairs",
+          "id": "maps-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`map[string]int`",
+              "string keys with int values"
+            ],
+            [
+              "`delete_key(&m, k)`",
+              "removes one entry"
+            ],
+            [
+              "`k in m`",
+              "checks if the key exists"
+            ],
+            [
+              "`strings.to_upper(s)`",
+              "text in capital letters"
+            ],
+            [
+              "`len(s)`",
+              "length of the string"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "maps-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "first := \"Ada\"",
+            "last := \"Lovelace\"",
+            "full := first + \" \" + last",
+            "fmt.println(full)"
+          ],
+          "bug": 2,
+          "explain": "`+` works only with fixed texts. Write `full := strings.concatenate({first, \" \", last})`."
+        },
+        {
+          "type": "bug",
+          "id": "maps-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "ages := make(map[string]int)",
+            "ages[\"Ada\"] = 36",
+            "age, found = ages[\"Bob\"]",
+            "fmt.println(age, found)"
+          ],
+          "bug": 2,
+          "explain": "`age` and `found` do not exist yet, so you need `:=`: `age, found := ages[\"Bob\"]`."
+        },
+        {
+          "type": "choice",
+          "id": "maps-12",
+          "prompt": "What does this print?",
+          "code": "fmt.println(strings.index(\"banana\", \"n\"))",
+          "options": [
+            "`2`",
+            "`3`",
+            "`1`",
+            "`-1`"
+          ],
+          "answer": 0,
+          "explain": "Positions start at `0`: `b` is 0, `a` is 1 and the first `n` is at position 2."
+        }
+      ]
+    }
+  ]
+}

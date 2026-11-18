@@ -1,0 +1,433 @@
+{
+ "hello-1": [
+  {
+   "kind": "options",
+   "src": "@OPTION@",
+   "expect": "Hello"
+  }
+ ],
+ "hello-2": [
+  {}
+ ],
+ "hello-3": [
+  {}
+ ],
+ "hello-4": [
+  {
+   "kind": "manual",
+   "note": "std::endl inserts '\\n' and calls flush() (standard library definition)"
+  }
+ ],
+ "hello-5": [
+  {
+   "expect": "Hi"
+  }
+ ],
+ "hello-6": [
+  {
+   "expect": "Line 1\nLine 2"
+  }
+ ],
+ "hello-7": [
+  {
+   "src": "@ANSWER@",
+   "expect": "Hi!"
+  }
+ ],
+ "hello-8": [
+  {
+   "expect": "Ready\nGo"
+  }
+ ],
+ "hello-10": [
+  {
+   "fix": "    std::cout << \"Hello\\n\";",
+   "expect": "Hello\nWorld"
+  }
+ ],
+ "hello-11": [
+  {}
+ ],
+ "hello-12": [
+  {
+   "kind": "fail",
+   "src": "Std::cout << \"Hi\";"
+  }
+ ],
+ "variables-2": [
+  {}
+ ],
+ "variables-3": [
+  {}
+ ],
+ "variables-4": [
+  {
+   "kind": "options",
+   "src": "@OPTION@\nstd::cout << c << \"\\n\";",
+   "expect": "x"
+  }
+ ],
+ "variables-5": [
+  {
+   "kind": "fail",
+   "src": "const double pi = 3.14;\npi = 3.0;\nstd::cout << pi;"
+  }
+ ],
+ "variables-6": [
+  {
+   "expect": "Paris"
+  }
+ ],
+ "variables-7": [
+  {
+   "expect": "24"
+  }
+ ],
+ "variables-8": [
+  {
+   "src": "@ANSWER@\nstd::cout << price << \"\\n\";",
+   "expect": "9.99"
+  }
+ ],
+ "variables-9": [
+  {
+   "expect": "16"
+  }
+ ],
+ "variables-10": [
+  {
+   "fix": "    std::string name = \"Bob\";",
+   "expect": "Bob"
+  }
+ ],
+ "variables-11": [
+  {}
+ ],
+ "variables-12": [
+  {
+   "kind": "fail",
+   "src": "int n{2.5};\nstd::cout << n;"
+  }
+ ],
+ "decisions-1": [
+  {}
+ ],
+ "decisions-2": [
+  {}
+ ],
+ "decisions-3": [
+  {}
+ ],
+ "decisions-4": [
+  {
+   "src": "int x = 2;\nif ((x = 5)) {\n    std::cout << x << \"\\n\";\n}",
+   "expect": "5"
+  }
+ ],
+ "decisions-5": [
+  {
+   "expect": "even"
+  }
+ ],
+ "decisions-6": [
+  {
+   "expect": "Done",
+   "src": "for (int i = 0; i < 4; i++) {\n    bool saved = i / 2 == 1;\n    bool closed = i % 2 == 1;\n    @CODE@\n}"
+  }
+ ],
+ "decisions-7": [
+  {
+   "src": "int age = 18;\n@ANSWER@\n    std::cout << \"adult\\n\";\n}\nage = 17;\n@ANSWER@\n    std::cout << \"child\\n\";\n}",
+   "expect": "adult"
+  }
+ ],
+ "decisions-8": [
+  {
+   "expect": "Big"
+  }
+ ],
+ "decisions-10": [
+  {
+   "fix": "    if (score == 100) {",
+   "expect": ""
+  }
+ ],
+ "decisions-11": [
+  {}
+ ],
+ "decisions-12": [
+  {
+   "expect": "One\nTwo"
+  }
+ ],
+ "loops-1": [
+  {}
+ ],
+ "loops-2": [
+  {}
+ ],
+ "loops-3": [
+  {}
+ ],
+ "loops-4": [
+  {}
+ ],
+ "loops-5": [
+  {
+   "kind": "options",
+   "src": "int count = 0;\n@OPTION@ {\n    count++;\n}\nstd::cout << count << \"\\n\";",
+   "expect": "5"
+  }
+ ],
+ "loops-6": [
+  {
+   "src": "std::string word = \"abc\";\nfor (char c : word) {\n    std::cout << c;\n}",
+   "expect": "abc"
+  }
+ ],
+ "loops-7": [
+  {
+   "expect": "M\na\nx"
+  }
+ ],
+ "loops-8": [
+  {
+   "expect": "1\n2\n3"
+  }
+ ],
+ "loops-9": [
+  {
+   "src": "int count = 0;\nint sum = 0;\n@ANSWER@ {\n    count++;\n    sum += i;\n}\nstd::cout << count << \" \" << sum << \"\\n\";",
+   "expect": "10 55"
+  }
+ ],
+ "loops-10": [
+  {
+   "expect": "3\n2\n1\nGo!"
+  }
+ ],
+ "loops-12": [
+  {
+   "fix": "    while (i < 3) {",
+   "expect": "0\n1\n2"
+  }
+ ],
+ "functions-1": [
+  {}
+ ],
+ "functions-2": [
+  {}
+ ],
+ "functions-3": [
+  {}
+ ],
+ "functions-4": [
+  {}
+ ],
+ "functions-5": [
+  {
+   "kind": "fail",
+   "src": "#include <iostream>\nint main() {\n    std::cout << triple(3) << \"\\n\";\n}\nint triple(int x) {\n    return x * 3;\n}"
+  },
+  {
+   "src": "#include <iostream>\nint triple(int x);\nint main() {\n    std::cout << triple(3) << \"\\n\";\n}\nint triple(int x) {\n    return x * 3;\n}",
+   "expect": "9"
+  }
+ ],
+ "functions-6": [
+  {
+   "kind": "fail",
+   "src": "#include <iostream>\nvoid five() {\n    return 5;\n}\nint main() {\n    five();\n}"
+  }
+ ],
+ "functions-7": [
+  {
+   "expect": "2"
+  }
+ ],
+ "functions-8": [
+  {
+   "expect": "7"
+  }
+ ],
+ "functions-9": [
+  {
+   "src": "#include <iostream>\n@ANSWER@\n    return a + b;\n}\nint main() {\n    std::cout << add(2, 3) << \"\\n\";\n}",
+   "expect": "5"
+  }
+ ],
+ "functions-10": [
+  {
+   "expect": "8"
+  }
+ ],
+ "functions-12": [
+  {
+   "fix": "int add(int a, int b) {",
+   "expect": "5"
+  }
+ ],
+ "containers-1": [
+  {}
+ ],
+ "containers-2": [
+  {}
+ ],
+ "containers-3": [
+  {}
+ ],
+ "containers-4": [
+  {}
+ ],
+ "containers-5": [
+  {
+   "kind": "options",
+   "src": "std::vector<int> v = {1};\n@OPTION@\nstd::cout << v.size() << \" \" << v.back() << \"\\n\";",
+   "expect": "2 7"
+  }
+ ],
+ "containers-6": [
+  {
+   "src": "std::vector<int> v = {5, 6};\nstd::cout << v[0] << \"\\n\";",
+   "expect": "5"
+  }
+ ],
+ "containers-7": [
+  {
+   "expect": "3"
+  }
+ ],
+ "containers-8": [
+  {
+   "expect": "6"
+  }
+ ],
+ "containers-9": [
+  {
+   "src": "@ANSWER@\nstd::cout << v.size() << v.back() << \"\\n\";",
+   "expect": "33"
+  }
+ ],
+ "containers-10": [
+  {
+   "expect": "Hi, Ann\nHi, Ben"
+  }
+ ],
+ "containers-12": [
+  {
+   "fix": "    std::cout << v.at(2) << \"\\n\";",
+   "expect": "9"
+  }
+ ],
+ "classes-1": [
+  {}
+ ],
+ "classes-2": [
+  {}
+ ],
+ "classes-3": [
+  {}
+ ],
+ "classes-4": [
+  {
+   "kind": "fail",
+   "src": "@CODE@"
+  },
+  {
+   "src": "#include <iostream>\nclass Safe {\npublic:\n    int code = 1234;\n};\nint main() {\n    Safe s;\n    std::cout << s.code << \"\\n\";\n}",
+   "expect": "1234"
+  }
+ ],
+ "classes-5": [
+  {
+   "kind": "manual",
+   "note": "definition from the lesson; the constructor example runs in classes.lesson"
+  }
+ ],
+ "classes-6": [
+  {
+   "src": "#include <iostream>\nstruct S {\n    int a;\n};\nint main() {\n    S s{5};\n    std::cout << s.a << \"\\n\";\n}",
+   "expect": "5"
+  }
+ ],
+ "classes-7": [
+  {
+   "expect": "9"
+  }
+ ],
+ "classes-8": [
+  {
+   "expect": "30"
+  }
+ ],
+ "classes-9": [
+  {
+   "src": "#include <iostream>\nstruct Rect {\n    int w;\n    int h;\n    int area() const {\n        return w * h;\n    }\n};\nint main() {\n    Rect r = {3, 5};\n    @ANSWER@\n}",
+   "expect": "15"
+  }
+ ],
+ "classes-10": [
+  {
+   "expect": "Rex",
+   "src": "#include <iostream>\n#include <string>\n@ANSWER@"
+  }
+ ],
+ "classes-12": [
+  {
+   "fix": "};",
+   "expect": "3"
+  }
+ ],
+ "pointers-1": [
+  {}
+ ],
+ "pointers-2": [
+  {}
+ ],
+ "pointers-3": [
+  {}
+ ],
+ "pointers-4": [
+  {}
+ ],
+ "pointers-5": [
+  {
+   "kind": "options",
+   "src": "int x = 4;\n@OPTION@\nstd::cout << *p << \"\\n\";",
+   "expect": "4"
+  }
+ ],
+ "pointers-6": [
+  {
+   "src": "#include <iostream>\n#include <memory>\nstruct T {\n    ~T() {\n        std::cout << \"deleted\\n\";\n    }\n};\nint main() {\n    {\n        auto p = std::make_unique<T>();\n    }\n    std::cout << \"after\\n\";\n}",
+   "expect": "deleted\nafter"
+  }
+ ],
+ "pointers-7": [
+  {
+   "expect": "5"
+  }
+ ],
+ "pointers-8": [
+  {
+   "expect": "empty"
+  }
+ ],
+ "pointers-9": [
+  {
+   "src": "@ANSWER@\nstd::cout << *p << \"\\n\";",
+   "expect": "10"
+  }
+ ],
+ "pointers-10": [
+  {
+   "expect": "11"
+  }
+ ],
+ "pointers-12": [
+  {
+   "fix": "    int* p = &x;",
+   "expect": "3"
+  }
+ ]
+}

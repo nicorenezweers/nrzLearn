@@ -1,0 +1,2007 @@
+{
+ "course": "delphi",
+ "lang": "en",
+ "units": [
+  {
+   "id": "hello",
+   "title": "Hello, Delphi!",
+   "chapter": "Basics",
+   "summary": "Write your first Delphi console program and print text and numbers with Write and Writeln.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "Delphi is a tool for writing programs in the language **Object Pascal**. A Delphi program starts with the word `program` and a name. Its main part is a block between `begin` and `end.`, and the computer runs the lines in this block from top to bottom."
+    },
+    {
+     "type": "code",
+     "code": "program Hello;\n\n{$APPTYPE CONSOLE}\n\nbegin\n  Writeln('Hello, Delphi!');\nend.",
+     "output": "Hello, Delphi!"
+    },
+    {
+     "type": "text",
+     "md": "Line by line: `program Hello;` gives the program a name. `{$APPTYPE CONSOLE}` is a **compiler directive**: it tells Delphi to build a console program, which writes text into a terminal window. `Writeln` writes the text inside the parentheses `( )` and then ends the line. The program ends with `end` and a period `.`."
+    },
+    {
+     "type": "heading",
+     "text": "Statements and semicolons"
+    },
+    {
+     "type": "text",
+     "md": "Each instruction is a **statement**. A semicolon `;` separates two statements. Text goes in single quotes, like `'Hi'`. Delphi does not care about upper or lower case in names: `Writeln`, `WriteLn` and `WRITELN` are the same."
+    },
+    {
+     "type": "code",
+     "code": "program Lines;\n\n{$APPTYPE CONSOLE}\n\nbegin\n  Writeln('Delphi');\n  WriteLn('is');\n  WRITELN('fun');\nend.",
+     "output": "Delphi\nis\nfun"
+    },
+    {
+     "type": "heading",
+     "text": "Write, Writeln and numbers"
+    },
+    {
+     "type": "text",
+     "md": "`Write` writes without ending the line. If you give `Writeln` several values, separated by commas, it writes them one after the other with no space between them. `Writeln` without values writes an empty line. Numbers have no quotes, so Delphi can calculate with them: `+` adds and `*` multiplies."
+    },
+    {
+     "type": "code",
+     "code": "program Numbers;\n\n{$APPTYPE CONSOLE}\n\nbegin\n  Write('One, ');\n  Writeln('two');\n  Writeln('Sum: ', 2 + 3);\n  Writeln;\n  Writeln('7 * 6 = ', 7 * 6);\nend.",
+     "output": "One, two\nSum: 5\n\n7 * 6 = 42"
+    },
+    {
+     "type": "text",
+     "md": "To put a single quote inside a text, write it twice. `'It''s'` is the text `It's`. Inside quotes, `2 + 3` is only text, so Delphi does not calculate it."
+    },
+    {
+     "type": "code",
+     "code": "program Quotes;\n\n{$APPTYPE CONSOLE}\n\nbegin\n  Writeln('It''s Delphi.');\n  Writeln('2 + 3');\nend.",
+     "output": "It's Delphi.\n2 + 3"
+    },
+    {
+     "type": "tip",
+     "md": "Text between `{` and `}` or after `//` is a **comment**, and Delphi ignores it. `{$` is special: `{$APPTYPE CONSOLE}` is not a comment but an instruction for the compiler."
+    },
+    {
+     "type": "warning",
+     "md": "The last `end` of the program needs a period, not a semicolon. Text uses single quotes `'`, never double quotes `\"`."
+    }
+   ],
+   "card": [
+    "`program Name;` + `{$APPTYPE CONSOLE}` start a console program",
+    "The code runs between `begin` and `end.`",
+    "`Writeln('Hi')` writes a line, `Write` stays on the line",
+    "`Writeln('Sum: ', 2 + 3)` writes values without spaces"
+   ],
+   "exercises": [
+    {
+     "type": "choice",
+     "id": "hello-1",
+     "prompt": "Which statement writes Hello and then ends the line?",
+     "options": [
+      "`Writeln('Hello');`",
+      "`Write('Hello');`",
+      "`Writeln(\"Hello\");`",
+      "`Print('Hello');`"
+     ],
+     "answer": 0,
+     "explain": "`Writeln` ends the line, `Write` does not. Text goes in single quotes."
+    },
+    {
+     "type": "input",
+     "id": "hello-2",
+     "prompt": "What does this print?",
+     "code": "Writeln('Sum: ', 4 + 5);",
+     "answers": [
+      "Sum: 9"
+     ],
+     "explain": "`4 + 5` has no quotes, so Delphi calculates `9` and writes it right after the text."
+    },
+    {
+     "type": "input",
+     "id": "hello-3",
+     "prompt": "What does this print?",
+     "code": "Write('Del');\nWriteln('phi');",
+     "answers": [
+      "Delphi"
+     ],
+     "explain": "`Write` does not end the line, so `phi` follows directly after `Del`."
+    },
+    {
+     "type": "true_false",
+     "id": "hello-4",
+     "statement": "Delphi treats `Writeln` and `writeln` as the same name.",
+     "answer": true,
+     "explain": "Delphi does not care about upper or lower case in names."
+    },
+    {
+     "type": "gap",
+     "id": "hello-5",
+     "prompt": "Complete the code so that it compiles.",
+     "code": "begin\n  Writeln('Hello')___\n  Writeln('World');\nend.",
+     "options": [
+      ";",
+      ".",
+      ",",
+      ":"
+     ],
+     "answer": 0,
+     "explain": "A semicolon `;` separates two statements."
+    },
+    {
+     "type": "gap",
+     "id": "hello-6",
+     "prompt": "Complete the program.",
+     "code": "program Done;\n\n{$APPTYPE CONSOLE}\n\nbegin\n  Writeln('Done');\n___",
+     "options": [
+      "end.",
+      "end;",
+      "end",
+      "stop."
+     ],
+     "answer": 0,
+     "explain": "The main block of a program ends with `end` and a period."
+    },
+    {
+     "type": "blocks",
+     "id": "hello-7",
+     "prompt": "Build the statement that writes Total: 10.",
+     "tokens": [
+      "Writeln(",
+      "'Total: ',",
+      "10",
+      ");"
+     ],
+     "distractors": [
+      "\"Total: \",",
+      "Print("
+     ],
+     "explain": "`Writeln` takes the text in single quotes and the number, separated by a comma."
+    },
+    {
+     "type": "order",
+     "id": "hello-8",
+     "prompt": "Put the lines in order so the program writes Good morning on one line.",
+     "lines": [
+      "begin",
+      "  Write('Good ');",
+      "  Writeln('morning');",
+      "end."
+     ],
+     "explain": "The statements go between `begin` and `end.`. `Write` comes first because it stays on the line."
+    },
+    {
+     "type": "pairs",
+     "id": "hello-9",
+     "prompt": "Match the code with its meaning.",
+     "pairs": [
+      [
+       "`Writeln`",
+       "writes and ends the line"
+      ],
+      [
+       "`Write`",
+       "writes and stays on the line"
+      ],
+      [
+       "`begin`",
+       "starts a block of statements"
+      ],
+      [
+       "`end.`",
+       "ends the program"
+      ],
+      [
+       "`{$APPTYPE CONSOLE}`",
+       "builds a console program"
+      ]
+     ]
+    },
+    {
+     "type": "bug",
+     "id": "hello-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "program Hello;",
+      "{$APPTYPE CONSOLE}",
+      "begin",
+      "  Writeln('Hello');",
+      "  Writeln(\"World\");",
+      "end."
+     ],
+     "bug": 4,
+     "explain": "Text needs single quotes. Write `Writeln('World');`."
+    },
+    {
+     "type": "bug",
+     "id": "hello-11",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "program Count;",
+      "{$APPTYPE CONSOLE}",
+      "begin",
+      "  Writeln('One');",
+      "  Writeln('Two');",
+      "end;"
+     ],
+     "bug": 5,
+     "explain": "The program must end with `end.`, with a period instead of a semicolon."
+    },
+    {
+     "type": "choice",
+     "id": "hello-12",
+     "prompt": "What does this print?",
+     "code": "Writeln('2 + 3 = ', 2 + 3);",
+     "options": [
+      "`2 + 3 = 5`",
+      "`2 + 3 = 2 + 3`",
+      "`5 = 5`",
+      "`2 + 3 = `"
+     ],
+     "answer": 0,
+     "explain": "The text in quotes is written as it is. The calculation `2 + 3` without quotes becomes `5`."
+    }
+   ]
+  },
+  {
+   "id": "variables",
+   "title": "Variables and types",
+   "chapter": "Basics",
+   "summary": "Store values in variables with var and const, and meet Integer, Double, string, Boolean and Char.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A **variable** is a named place for a value. In Delphi you declare every variable before `begin`, in a `var` section. You write the name, a colon `:` and the **type**. The type says what kind of value the variable can hold."
+    },
+    {
+     "type": "code",
+     "code": "program Variables;\n\n{$APPTYPE CONSOLE}\n\nvar\n  Age: Integer;\n  Name: string;\nbegin\n  Name := 'Ada';\n  Age := 36;\n  Writeln(Name, ' is ', Age, ' years old.');\n  Age := Age + 1;\n  Writeln('Next year: ', Age);\nend.",
+     "output": "Ada is 36 years old.\nNext year: 37"
+    },
+    {
+     "type": "text",
+     "md": "`:=` is the **assignment** operator: it stores the value on the right in the variable on the left. `Age := Age + 1` reads the old value, adds 1 and stores the result. A single `=` compares two values; it does not assign."
+    },
+    {
+     "type": "heading",
+     "text": "Basic types"
+    },
+    {
+     "type": "text",
+     "md": "`Integer` holds whole numbers and `Double` holds numbers with a decimal point. `string` holds text, `Boolean` holds `True` or `False`, and `Char` holds exactly one character, written in single quotes like `'A'`. You can declare several variables of the same type in one line: `A, B: Integer`."
+    },
+    {
+     "type": "code",
+     "code": "program Types;\n\n{$APPTYPE CONSOLE}\n\nvar\n  Count: Integer;\n  Price: Double;\n  City: string;\n  Ready: Boolean;\n  Grade: Char;\nbegin\n  Count := 3;\n  Price := 2.5;\n  City := 'Oslo';\n  Ready := True;\n  Grade := 'A';\n  Writeln(Count, ' ', City, ' ', Ready, ' ', Grade);\n  Writeln(Price:0:2);\n  Writeln(Count * Price:0:1);\nend.",
+     "output": "3 Oslo TRUE A\n2.50\n7.5"
+    },
+    {
+     "type": "text",
+     "md": "`Writeln(Price:0:2)` writes a `Double` with exactly 2 digits after the decimal point. The first number is the minimum width, and `0` means as wide as needed. Without this format, Delphi writes a `Double` in a long scientific notation with an `E`."
+    },
+    {
+     "type": "heading",
+     "text": "Division"
+    },
+    {
+     "type": "text",
+     "md": "`/` always gives a `Double`, even for two whole numbers. For whole-number division, use `div`. `mod` gives the remainder of that division."
+    },
+    {
+     "type": "code",
+     "code": "program Division;\n\n{$APPTYPE CONSOLE}\n\nvar\n  A, B: Integer;\nbegin\n  A := 17;\n  B := 5;\n  Writeln(A div B);\n  Writeln(A mod B);\n  Writeln(A / B:0:1);\nend.",
+     "output": "3\n2\n3.4"
+    },
+    {
+     "type": "heading",
+     "text": "Constants"
+    },
+    {
+     "type": "text",
+     "md": "A **constant** never changes. Declare it in a `const` section with `=` instead of `:=`. Delphi takes the type from the value. If you try to assign a new value to a constant, the program does not compile."
+    },
+    {
+     "type": "code",
+     "code": "program Constants;\n\n{$APPTYPE CONSOLE}\n\nconst\n  Shop = 'Corner Shop';\n  TaxRate = 0.2;\nvar\n  Price: Double;\nbegin\n  Price := 50;\n  Writeln(Shop);\n  Writeln(Price * TaxRate:0:2);\nend.",
+     "output": "Corner Shop\n10.00"
+    },
+    {
+     "type": "warning",
+     "md": "Delphi is **strongly typed**: every variable keeps its type. You cannot store a text in an `Integer` variable, and `Count := 2.5` does not compile when `Count` is an `Integer`. Names are not case sensitive: `age` and `Age` are the same variable."
+    }
+   ],
+   "card": [
+    "`var Age: Integer;` declares a variable before `begin`",
+    "`Age := 36;` assigns, `=` compares",
+    "`Integer`, `Double`, `string`, `Boolean`, `Char`",
+    "`const Max = 10;` declares a constant",
+    "`div` and `mod` for whole numbers, `/` gives a `Double`"
+   ],
+   "exercises": [
+    {
+     "type": "choice",
+     "id": "variables-1",
+     "prompt": "Which line in a `var` section declares a variable for whole numbers?",
+     "options": [
+      "`Count: Integer;`",
+      "`Count := Integer;`",
+      "`int Count;`",
+      "`Count = Integer;`"
+     ],
+     "answer": 0,
+     "explain": "A declaration is the name, a colon and the type."
+    },
+    {
+     "type": "input",
+     "id": "variables-2",
+     "prompt": "What does this print?",
+     "code": "var\n  X: Integer;\nbegin\n  X := 4;\n  X := X * 3;\n  Writeln(X);\nend.",
+     "answers": [
+      "12"
+     ],
+     "explain": "`X` starts as `4`. Then `X * 3` is `12`, and the result is stored in `X` again."
+    },
+    {
+     "type": "input",
+     "id": "variables-3",
+     "prompt": "What does this print?",
+     "code": "Writeln(23 div 4, ' ', 23 mod 4);",
+     "answers": [
+      "5 3"
+     ],
+     "explain": "`23 div 4` is `5`, because 4 fits 5 times into 23. The remainder is `3`."
+    },
+    {
+     "type": "true_false",
+     "id": "variables-4",
+     "statement": "In Delphi, `/` with two `Integer` values gives an `Integer` result.",
+     "answer": false,
+     "explain": "`/` always gives a `Double`. Use `div` for whole-number division."
+    },
+    {
+     "type": "gap",
+     "id": "variables-5",
+     "prompt": "Complete the code so that it stores Ada in Name.",
+     "code": "var\n  Name: string;\nbegin\n  Name ___ 'Ada';\n  Writeln(Name);\nend.",
+     "options": [
+      ":=",
+      "=",
+      "==",
+      ":"
+     ],
+     "answer": 0,
+     "explain": "`:=` assigns a value. A single `=` only compares."
+    },
+    {
+     "type": "gap",
+     "id": "variables-6",
+     "prompt": "Complete the code so that it prints 3.50.",
+     "code": "var\n  Price: Double;\nbegin\n  Price := 3.5;\n  Writeln(Price___);\nend.",
+     "options": [
+      ":0:2",
+      ":2:0",
+      ":2",
+      ".2"
+     ],
+     "answer": 0,
+     "explain": "`:0:2` means as wide as needed, with 2 digits after the decimal point."
+    },
+    {
+     "type": "blocks",
+     "id": "variables-7",
+     "prompt": "Build the declaration of a constant Max with the value 100.",
+     "tokens": [
+      "const",
+      "Max",
+      "=",
+      "100;"
+     ],
+     "distractors": [
+      ":=",
+      "var"
+     ],
+     "explain": "Constants are declared in a `const` section with `=`."
+    },
+    {
+     "type": "order",
+     "id": "variables-8",
+     "prompt": "Put the lines in order so the program prints 15.",
+     "lines": [
+      "var",
+      "  A, B: Integer;",
+      "begin",
+      "  A := 10;",
+      "  B := A + 5;",
+      "  Writeln(B);",
+      "end."
+     ],
+     "explain": "Declare the variables first. `A` needs its value before `B := A + 5` uses it."
+    },
+    {
+     "type": "pairs",
+     "id": "variables-9",
+     "prompt": "Match each type with what it holds.",
+     "pairs": [
+      [
+       "`Integer`",
+       "a whole number"
+      ],
+      [
+       "`Double`",
+       "a number with a decimal point"
+      ],
+      [
+       "`string`",
+       "text"
+      ],
+      [
+       "`Boolean`",
+       "True or False"
+      ],
+      [
+       "`Char`",
+       "exactly one character"
+      ]
+     ]
+    },
+    {
+     "type": "bug",
+     "id": "variables-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "var",
+      "  Count: Integer;",
+      "begin",
+      "  Count := 2.5;",
+      "  Writeln(Count);",
+      "end."
+     ],
+     "bug": 3,
+     "explain": "An `Integer` cannot hold `2.5`. Store a whole number, or declare `Count` as `Double`."
+    },
+    {
+     "type": "bug",
+     "id": "variables-11",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "const",
+      "  Max := 10;",
+      "var",
+      "  Count: Integer;",
+      "begin",
+      "  Count := Max * 2;",
+      "  Writeln(Count);",
+      "end."
+     ],
+     "bug": 1,
+     "explain": "Constants use `=`. Write `Max = 10;`."
+    },
+    {
+     "type": "choice",
+     "id": "variables-12",
+     "prompt": "What does this print?",
+     "code": "var\n  A: Integer;\n  B: Double;\nbegin\n  A := 7;\n  B := A / 2;\n  Writeln(B:0:1);\nend.",
+     "options": [
+      "`3.5`",
+      "`3`",
+      "`3.0`",
+      "`4`"
+     ],
+     "answer": 0,
+     "explain": "`/` gives a `Double`, so `7 / 2` is `3.5`, and `:0:1` shows one decimal digit."
+    }
+   ]
+  },
+  {
+   "id": "strings",
+   "title": "Strings",
+   "chapter": "Basics",
+   "summary": "Join text with +, measure it with Length, and search, cut and change it with Pos, Copy, UpperCase and Format.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A `string` holds a text of any length. The `+` operator joins two strings into a new one. This is called **concatenation**."
+    },
+    {
+     "type": "code",
+     "code": "program Join;\n\n{$APPTYPE CONSOLE}\n\nvar\n  First, Last, Full: string;\nbegin\n  First := 'Ada';\n  Last := 'Lovelace';\n  Full := First + ' ' + Last;\n  Writeln(Full);\n  Writeln('Hello, ' + First + '!');\nend.",
+     "output": "Ada Lovelace\nHello, Ada!"
+    },
+    {
+     "type": "text",
+     "md": "`Length(S)` returns the number of characters in `S`. Square brackets read one character: `S[1]` is the first character, because Delphi strings start counting at 1. One character has the type `Char`."
+    },
+    {
+     "type": "code",
+     "code": "program Letters;\n\n{$APPTYPE CONSOLE}\n\nvar\n  Lang: string;\nbegin\n  Lang := 'Delphi';\n  Writeln(Length(Lang));\n  Writeln(Lang[1]);\n  Writeln(Lang[Length(Lang)]);\nend.",
+     "output": "6\nD\ni"
+    },
+    {
+     "type": "heading",
+     "text": "Useful string functions"
+    },
+    {
+     "type": "text",
+     "md": "The unit `SysUtils` contains many helpers. To use it, add `uses SysUtils;` after `{$APPTYPE CONSOLE}`. `UpperCase` and `LowerCase` change the case of the letters, and `Trim` removes spaces at both ends. `IntToStr` turns a number into a string, so you can join it with `+`."
+    },
+    {
+     "type": "code",
+     "code": "program TextTools;\n\n{$APPTYPE CONSOLE}\n\nuses\n  SysUtils;\n\nvar\n  Name: string;\n  Age: Integer;\nbegin\n  Name := '  ada  ';\n  Name := Trim(Name);\n  Writeln(UpperCase(Name));\n  Writeln('[' + Name + ']');\n  Age := 36;\n  Writeln(Name + ' is ' + IntToStr(Age));\nend.",
+     "output": "ADA\n[ada]\nada is 36"
+    },
+    {
+     "type": "heading",
+     "text": "Searching and cutting"
+    },
+    {
+     "type": "text",
+     "md": "`Pos(Sub, S)` returns the position where `Sub` first appears in `S`, or `0` if it is not there. `Copy(S, Start, Count)` returns `Count` characters of `S`, starting at position `Start`. If `Count` goes past the end, `Copy` stops at the last character."
+    },
+    {
+     "type": "code",
+     "code": "program Search;\n\n{$APPTYPE CONSOLE}\n\nvar\n  Email: string;\n  AtPos: Integer;\nbegin\n  Email := 'ada@example.com';\n  AtPos := Pos('@', Email);\n  Writeln(AtPos);\n  Writeln(Copy(Email, 1, AtPos - 1));\n  Writeln(Copy(Email, AtPos + 1, Length(Email)));\n  Writeln(Pos('x', 'Delphi'));\nend.",
+     "output": "4\nada\nexample.com\n0"
+    },
+    {
+     "type": "heading",
+     "text": "Format"
+    },
+    {
+     "type": "text",
+     "md": "`Format` from `SysUtils` builds a string from a pattern and a list of values in square brackets. Each placeholder is replaced by the next value: `%s` for a string and `%d` for an integer."
+    },
+    {
+     "type": "code",
+     "code": "program Formatting;\n\n{$APPTYPE CONSOLE}\n\nuses\n  SysUtils;\n\nvar\n  Item: string;\n  Count: Integer;\nbegin\n  Item := 'apple';\n  Count := 3;\n  Writeln(Format('%d x %s', [Count, Item]));\n  Writeln(Format('%s has %d letters.', [Item, Length(Item)]));\nend.",
+     "output": "3 x apple\napple has 5 letters."
+    },
+    {
+     "type": "warning",
+     "md": "`+` only joins strings. `'Age: ' + 36` does not compile; write `'Age: ' + IntToStr(36)` instead. Inside `Writeln` you can also use commas: `Writeln('Age: ', 36)`."
+    }
+   ],
+   "card": [
+    "`'Ada' + ' ' + 'Lovelace'` joins strings",
+    "`Length(S)`; `S[1]` is the first character",
+    "`Pos('@', S)` searches, `Copy(S, Start, Count)` cuts",
+    "`uses SysUtils;` for `UpperCase`, `Trim`, `IntToStr`, `Format`",
+    "`Format('%d x %s', [3, 'apple'])`"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "strings-1",
+     "prompt": "What does this print?",
+     "code": "Writeln(Length('Hello World'));",
+     "answers": [
+      "11"
+     ],
+     "explain": "`Length` counts every character, and the space counts too: 5 + 1 + 5 = 11."
+    },
+    {
+     "type": "input",
+     "id": "strings-2",
+     "prompt": "What does this print?",
+     "code": "Writeln(Copy('Keyboard', 4, 5));",
+     "answers": [
+      "board"
+     ],
+     "explain": "Position 4 is the `b`. From there, `Copy` takes 5 characters: `board`."
+    },
+    {
+     "type": "choice",
+     "id": "strings-3",
+     "prompt": "What does this print?",
+     "code": "Writeln(Pos('a', 'banana'));",
+     "options": [
+      "`2`",
+      "`1`",
+      "`3`",
+      "`6`"
+     ],
+     "answer": 0,
+     "explain": "`Pos` returns the first position. In `banana`, the first `a` is the second character."
+    },
+    {
+     "type": "true_false",
+     "id": "strings-4",
+     "statement": "In Delphi, `S[0]` is the first character of the string `S`.",
+     "answer": false,
+     "explain": "Delphi strings start counting at 1, so the first character is `S[1]`."
+    },
+    {
+     "type": "gap",
+     "id": "strings-5",
+     "prompt": "Complete the code so that it prints Age: 30.",
+     "code": "uses\n  SysUtils;\nvar\n  Age: Integer;\nbegin\n  Age := 30;\n  Writeln('Age: ' + ___(Age));\nend.",
+     "options": [
+      "IntToStr",
+      "StrToInt",
+      "Length",
+      "UpperCase"
+     ],
+     "answer": 0,
+     "explain": "`IntToStr` turns the number into a string, so `+` can join it."
+    },
+    {
+     "type": "gap",
+     "id": "strings-6",
+     "prompt": "Complete the code so that it prints 3 x apple.",
+     "code": "uses\n  SysUtils;\nbegin\n  Writeln(Format('%d x %s', [___]));\nend.",
+     "options": [
+      "3, 'apple'",
+      "'apple', 3",
+      "3 'apple'",
+      "(3, 'apple')"
+     ],
+     "answer": 0,
+     "explain": "The values go in the same order as the placeholders: first the number for `%d`, then the text for `%s`."
+    },
+    {
+     "type": "blocks",
+     "id": "strings-7",
+     "prompt": "Build the statement that stores the first 3 characters of Name in Short.",
+     "tokens": [
+      "Short",
+      ":=",
+      "Copy(Name,",
+      "1,",
+      "3);"
+     ],
+     "distractors": [
+      "Name[1..3]",
+      "Pos(Name,"
+     ],
+     "explain": "`Copy(Name, 1, 3)` starts at position 1 and takes 3 characters."
+    },
+    {
+     "type": "order",
+     "id": "strings-8",
+     "prompt": "Put the lines in order so the program prints DELPHI!",
+     "lines": [
+      "uses SysUtils;",
+      "var",
+      "  S: string;",
+      "begin",
+      "  S := UpperCase('delphi');",
+      "  Writeln(S + '!');",
+      "end."
+     ],
+     "explain": "`uses` comes first, then the `var` section, then the main block. `S` needs its value before it is printed."
+    },
+    {
+     "type": "pairs",
+     "id": "strings-9",
+     "prompt": "Match the code with its meaning.",
+     "pairs": [
+      [
+       "`Length(S)`",
+       "number of characters"
+      ],
+      [
+       "`Pos(Sub, S)`",
+       "position of Sub in S"
+      ],
+      [
+       "`Copy(S, 2, 3)`",
+       "3 characters from position 2"
+      ],
+      [
+       "`UpperCase(S)`",
+       "S in capital letters"
+      ],
+      [
+       "`Trim(S)`",
+       "S without spaces at both ends"
+      ]
+     ]
+    },
+    {
+     "type": "bug",
+     "id": "strings-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "var",
+      "  Name: string;",
+      "  Age: Integer;",
+      "begin",
+      "  Name := 'Ada';",
+      "  Age := 36;",
+      "  Writeln(Name + ' is ' + Age);",
+      "end."
+     ],
+     "bug": 6,
+     "explain": "`+` cannot join a string and an `Integer`. Write `Writeln(Name + ' is ', Age);` or use `IntToStr(Age)`."
+    },
+    {
+     "type": "bug",
+     "id": "strings-11",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "var",
+      "  Code: string;",
+      "begin",
+      "  Code := 'AB-123';",
+      "  Writeln(Copy(Code, 1, 2));",
+      "  Writeln(Copy(4, 3, Code));",
+      "end."
+     ],
+     "bug": 5,
+     "explain": "The string comes first: `Copy(Code, 4, 3)`."
+    },
+    {
+     "type": "choice",
+     "id": "strings-12",
+     "prompt": "What does this print?",
+     "code": "uses\n  SysUtils;\nvar\n  S: string;\nbegin\n  S := 'Hi';\n  S := S + S;\n  Writeln(UpperCase(S) + IntToStr(Length(S)));\nend.",
+     "options": [
+      "`HIHI4`",
+      "`HiHi4`",
+      "`HIHI2`",
+      "`HI HI 4`"
+     ],
+     "answer": 0,
+     "explain": "`S + S` is `HiHi`, which has 4 characters. `UpperCase` gives `HIHI`, and `IntToStr` adds `4`."
+    }
+   ]
+  },
+  {
+   "id": "conditions",
+   "title": "Decisions",
+   "chapter": "Control flow",
+   "summary": "Let your program choose with if, then and else, combine conditions with and, or and not, and pick a branch with case.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A program can make decisions. `if Condition then Statement` runs the statement only when the condition is `True`. A condition is a `Boolean` expression, for example a comparison."
+    },
+    {
+     "type": "code",
+     "code": "program Weather;\n\n{$APPTYPE CONSOLE}\n\nvar\n  Temp: Integer;\nbegin\n  Temp := 25;\n  if Temp > 20 then\n    Writeln('It is warm.');\n  if Temp > 30 then\n    Writeln('It is hot.');\n  Writeln('Done');\nend.",
+     "output": "It is warm.\nDone"
+    },
+    {
+     "type": "text",
+     "md": "The comparison operators are `=` (equal), `<>` (not equal), `<`, `>`, `<=` and `>=`. Remember: Delphi uses a single `=` to compare and `:=` to assign."
+    },
+    {
+     "type": "heading",
+     "text": "else and begin ... end"
+    },
+    {
+     "type": "text",
+     "md": "`else` gives a second path for the case that the condition is `False`. If a path needs more than one statement, put the statements in a `begin ... end` block."
+    },
+    {
+     "type": "code",
+     "code": "program Age;\n\n{$APPTYPE CONSOLE}\n\nvar\n  Age: Integer;\nbegin\n  Age := 15;\n  if Age >= 18 then\n    Writeln('Adult')\n  else\n  begin\n    Writeln('Minor');\n    Writeln(18 - Age, ' years to go');\n  end;\nend.",
+     "output": "Minor\n3 years to go"
+    },
+    {
+     "type": "tip",
+     "md": "To test several conditions one after the other, write `else if`: `if Score >= 90 then ... else if Score >= 70 then ... else ...`. Delphi checks them from top to bottom and runs only the first branch whose condition is `True`."
+    },
+    {
+     "type": "warning",
+     "md": "Never put a semicolon before `else`. The semicolon ends the whole `if` statement, so the `else` that follows has no `if`, and the program does not compile."
+    },
+    {
+     "type": "heading",
+     "text": "and, or, not"
+    },
+    {
+     "type": "text",
+     "md": "`and` is `True` when both sides are `True`. `or` is `True` when at least one side is `True`, and `not` turns `True` into `False` and back. Put each comparison in parentheses, like `(Age >= 13) and (Age <= 19)`. Without them, Delphi reads `and` first and the code does not compile."
+    },
+    {
+     "type": "code",
+     "code": "program Tickets;\n\n{$APPTYPE CONSOLE}\n\nvar\n  Age: Integer;\n  HasTicket: Boolean;\nbegin\n  Age := 16;\n  HasTicket := True;\n  if (Age >= 13) and (Age <= 19) then\n    Writeln('Teenager');\n  if (Age < 12) or (Age > 65) then\n    Writeln('Discount')\n  else\n    Writeln('Full price');\n  if not HasTicket then\n    Writeln('Buy a ticket')\n  else\n    Writeln('Welcome');\nend.",
+     "output": "Teenager\nFull price\nWelcome"
+    },
+    {
+     "type": "heading",
+     "text": "case"
+    },
+    {
+     "type": "text",
+     "md": "`case` picks one branch by the value of an **ordinal** expression, which is a type with countable values, such as `Integer` or `Char`. Each branch has one or more values or a range like `1..5`, then a colon. `else` catches all other values. `case` does not work with strings."
+    },
+    {
+     "type": "code",
+     "code": "program Days;\n\n{$APPTYPE CONSOLE}\n\nvar\n  Day: Integer;\n  Grade: Char;\nbegin\n  Day := 6;\n  case Day of\n    1..5: Writeln('Workday');\n    6, 7: Writeln('Weekend');\n  else\n    Writeln('Unknown day');\n  end;\n  Grade := 'B';\n  case Grade of\n    'A': Writeln('Excellent');\n    'B', 'C': Writeln('Good');\n  else\n    Writeln('Keep trying');\n  end;\nend.",
+     "output": "Weekend\nGood"
+    }
+   ],
+   "card": [
+    "`if X > 0 then ... else ...` (no `;` before `else`)",
+    "`=` `<>` `<` `>` `<=` `>=` compare",
+    "`(A > 0) and (B > 0)`, `or`, `not`",
+    "`case N of 1..5: ...; 6, 7: ...; else ... end;`"
+   ],
+   "exercises": [
+    {
+     "type": "choice",
+     "id": "conditions-1",
+     "prompt": "What does this print?",
+     "code": "var\n  N: Integer;\nbegin\n  N := 7;\n  if N mod 2 = 0 then\n    Writeln('even')\n  else\n    Writeln('odd');\nend.",
+     "options": [
+      "`odd`",
+      "`even`",
+      "Nothing",
+      "`7`"
+     ],
+     "answer": 0,
+     "explain": "`7 mod 2` is `1`, so the condition is `False` and the `else` branch runs."
+    },
+    {
+     "type": "input",
+     "id": "conditions-2",
+     "prompt": "What does this print?",
+     "code": "var\n  X: Integer;\nbegin\n  X := 10;\n  if X > 5 then\n    X := X * 2;\n  if X > 15 then\n    X := X - 1;\n  Writeln(X);\nend.",
+     "answers": [
+      "19"
+     ],
+     "explain": "`10 > 5`, so `X` becomes `20`. Then `20 > 15`, so `X` becomes `19`."
+    },
+    {
+     "type": "input",
+     "id": "conditions-3",
+     "prompt": "What does this print?",
+     "code": "var\n  N: Integer;\nbegin\n  N := 4;\n  case N of\n    1, 2: Writeln('small');\n    3..5: Writeln('medium');\n  else\n    Writeln('large');\n  end;\nend.",
+     "answers": [
+      "medium"
+     ],
+     "explain": "`4` is in the range `3..5`, so the second branch runs."
+    },
+    {
+     "type": "true_false",
+     "id": "conditions-4",
+     "statement": "`if A > 0 and B > 0 then` is valid Delphi code.",
+     "answer": false,
+     "explain": "Delphi reads `0 and B` first. Write `if (A > 0) and (B > 0) then`."
+    },
+    {
+     "type": "gap",
+     "id": "conditions-5",
+     "prompt": "Complete the code so that it prints Correct when Answer is 42.",
+     "code": "if Answer ___ 42 then\n  Writeln('Correct');",
+     "options": [
+      "=",
+      "==",
+      ":=",
+      "==="
+     ],
+     "answer": 0,
+     "explain": "Delphi compares with a single `=`."
+    },
+    {
+     "type": "gap",
+     "id": "conditions-6",
+     "prompt": "Complete the code so that it prints Teen only when Age is from 13 to 19.",
+     "code": "if (Age > 12) ___ (Age < 20) then\n  Writeln('Teen');",
+     "options": [
+      "and",
+      "or",
+      "&&",
+      ","
+     ],
+     "answer": 0,
+     "explain": "Both conditions must be `True`, so you need `and`."
+    },
+    {
+     "type": "blocks",
+     "id": "conditions-7",
+     "prompt": "Build the statement that writes Not zero when X is not 0.",
+     "tokens": [
+      "if",
+      "X",
+      "<>",
+      "0",
+      "then",
+      "Writeln('Not zero');"
+     ],
+     "distractors": [
+      "!=",
+      "=="
+     ],
+     "explain": "`<>` means not equal in Delphi."
+    },
+    {
+     "type": "order",
+     "id": "conditions-8",
+     "prompt": "Put the lines in order: a score of 90 or more writes A, 70 or more writes B, anything else writes C.",
+     "lines": [
+      "if Score >= 90 then",
+      "  Writeln('A')",
+      "else if Score >= 70 then",
+      "  Writeln('B')",
+      "else",
+      "  Writeln('C');"
+     ],
+     "explain": "The highest limit comes first. There is no semicolon before an `else`, only after the last statement."
+    },
+    {
+     "type": "pairs",
+     "id": "conditions-9",
+     "prompt": "Match the operator with its meaning.",
+     "pairs": [
+      [
+       "`=`",
+       "equal"
+      ],
+      [
+       "`<>`",
+       "not equal"
+      ],
+      [
+       "`<=`",
+       "less than or equal"
+      ],
+      [
+       "`and`",
+       "both are True"
+      ],
+      [
+       "`or`",
+       "at least one is True"
+      ]
+     ]
+    },
+    {
+     "type": "bug",
+     "id": "conditions-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "var",
+      "  N: Integer;",
+      "begin",
+      "  N := 3;",
+      "  if N > 0 then",
+      "    Writeln('positive');",
+      "  else",
+      "    Writeln('not positive');",
+      "end."
+     ],
+     "bug": 5,
+     "explain": "There must be no semicolon before `else`. Write `Writeln('positive')` without `;`."
+    },
+    {
+     "type": "bug",
+     "id": "conditions-11",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "var",
+      "  Day: Integer;",
+      "begin",
+      "  Day := 2;",
+      "  case Day of",
+      "    1: Writeln('Mon');",
+      "    2: Writeln('Tue')",
+      "    3: Writeln('Wed');",
+      "  end;",
+      "end."
+     ],
+     "bug": 6,
+     "explain": "Each branch of `case` ends with a semicolon. Write `2: Writeln('Tue');`."
+    },
+    {
+     "type": "choice",
+     "id": "conditions-12",
+     "prompt": "What does this print?",
+     "code": "var\n  A, B: Boolean;\nbegin\n  A := True;\n  B := False;\n  if (A and B) or not B then\n    Writeln('yes')\n  else\n    Writeln('no');\nend.",
+     "options": [
+      "`yes`",
+      "`no`",
+      "Nothing, the code does not compile."
+     ],
+     "answer": 0,
+     "explain": "`A and B` is `False`, but `not B` is `True`. `False or True` is `True`."
+    }
+   ]
+  },
+  {
+   "id": "loops",
+   "title": "Loops",
+   "chapter": "Control flow",
+   "summary": "Repeat code with for to and downto, while and repeat until, and visit every element of an array with for in.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A **loop** repeats code. The `for` loop counts: `for I := 1 to 3 do` runs its statement with `I` set to 1, 2 and 3. The counter is a variable that you declare yourself, usually an `Integer`. With `downto`, the loop counts backwards."
+    },
+    {
+     "type": "code",
+     "code": "program Counting;\n\n{$APPTYPE CONSOLE}\n\nvar\n  I: Integer;\nbegin\n  for I := 1 to 3 do\n    Writeln('Line ', I);\n  for I := 3 downto 1 do\n    Write(I, '... ');\n  Writeln('Go!');\nend.",
+     "output": "Line 1\nLine 2\nLine 3\n3... 2... 1... Go!"
+    },
+    {
+     "type": "text",
+     "md": "If the start value is already past the end value, the body does not run at all. When the body has more than one statement, put them in a `begin ... end` block."
+    },
+    {
+     "type": "code",
+     "code": "program Sum;\n\n{$APPTYPE CONSOLE}\n\nvar\n  I, Total: Integer;\nbegin\n  Total := 0;\n  for I := 1 to 4 do\n  begin\n    Total := Total + I;\n    Writeln('After ', I, ': ', Total);\n  end;\n  Writeln('Sum: ', Total);\nend.",
+     "output": "After 1: 1\nAfter 2: 3\nAfter 3: 6\nAfter 4: 10\nSum: 10"
+    },
+    {
+     "type": "heading",
+     "text": "while and repeat"
+    },
+    {
+     "type": "text",
+     "md": "`while Condition do` checks the condition **before** each round and repeats while it is `True`. Make sure that the body changes something in the condition, or the loop never ends."
+    },
+    {
+     "type": "code",
+     "code": "program Halving;\n\n{$APPTYPE CONSOLE}\n\nvar\n  N, Steps: Integer;\nbegin\n  N := 100;\n  Steps := 0;\n  while N > 1 do\n  begin\n    N := N div 2;\n    Steps := Steps + 1;\n  end;\n  Writeln(Steps, ' steps, N = ', N);\nend.",
+     "output": "6 steps, N = 1"
+    },
+    {
+     "type": "text",
+     "md": "`repeat ... until Condition` checks the condition **after** each round, so the body always runs at least once. The loop stops as soon as the condition is `True`. It needs no `begin ... end`, even for several statements."
+    },
+    {
+     "type": "code",
+     "code": "program Triple;\n\n{$APPTYPE CONSOLE}\n\nvar\n  N: Integer;\nbegin\n  N := 1;\n  repeat\n    N := N * 3;\n    Writeln(N);\n  until N > 50;\n  repeat\n    Writeln('Runs once');\n  until True;\nend.",
+     "output": "3\n9\n27\n81\nRuns once"
+    },
+    {
+     "type": "heading",
+     "text": "for ... in"
+    },
+    {
+     "type": "text",
+     "md": "An **array** is a list of values of the same type. `Names: array of string` declares one, and `Names := ['Ada', 'Bob', 'Cy']` fills it. `for Name in Names do` visits every element, one after another, without a counter. The unit about arrays shows more."
+    },
+    {
+     "type": "code",
+     "code": "program Greetings;\n\n{$APPTYPE CONSOLE}\n\nvar\n  Names: array of string;\n  Name: string;\nbegin\n  Names := ['Ada', 'Bob', 'Cy'];\n  for Name in Names do\n    Writeln('Hello, ', Name);\nend.",
+     "output": "Hello, Ada\nHello, Bob\nHello, Cy"
+    },
+    {
+     "type": "tip",
+     "md": "`Break` leaves a loop at once, and `Continue` jumps to the next round."
+    },
+    {
+     "type": "warning",
+     "md": "Do not change the counter of a `for` loop inside the loop; Delphi does not allow it. After the loop, the value of the counter is undefined, so do not use it there."
+    }
+   ],
+   "card": [
+    "`for I := 1 to 5 do` / `for I := 5 downto 1 do`",
+    "`while N > 0 do begin ... end;` checks first",
+    "`repeat ... until N > 50;` runs at least once",
+    "`for Name in Names do` visits every element"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "loops-1",
+     "prompt": "What does this print?",
+     "code": "var\n  I, Total: Integer;\nbegin\n  Total := 1;\n  for I := 1 to 5 do\n    Total := Total * I;\n  Writeln(Total);\nend.",
+     "answers": [
+      "120"
+     ],
+     "explain": "The loop multiplies 1 * 1 * 2 * 3 * 4 * 5, which is `120`."
+    },
+    {
+     "type": "input",
+     "id": "loops-2",
+     "prompt": "What does this print?",
+     "code": "var\n  I, Count: Integer;\nbegin\n  Count := 0;\n  for I := 10 downto 3 do\n    Count := Count + 1;\n  Writeln(Count);\nend.",
+     "answers": [
+      "8"
+     ],
+     "explain": "The loop runs for 10, 9, 8, 7, 6, 5, 4 and 3, which is 8 rounds."
+    },
+    {
+     "type": "choice",
+     "id": "loops-3",
+     "prompt": "What does this print?",
+     "code": "var\n  N: Integer;\nbegin\n  N := 1;\n  while N < 20 do\n    N := N * 2;\n  Writeln(N);\nend.",
+     "options": [
+      "`32`",
+      "`16`",
+      "`20`",
+      "`64`"
+     ],
+     "answer": 0,
+     "explain": "`N` becomes 2, 4, 8, 16 and 32. At `32` the condition `N < 20` is `False` and the loop stops."
+    },
+    {
+     "type": "true_false",
+     "id": "loops-4",
+     "statement": "The body of a `repeat ... until` loop always runs at least once.",
+     "answer": true,
+     "explain": "`repeat` checks its condition only after the body has run."
+    },
+    {
+     "type": "choice",
+     "id": "loops-5",
+     "prompt": "What does this print?",
+     "code": "var\n  I: Integer;\nbegin\n  for I := 5 to 1 do\n    Writeln(I);\n  Writeln('end');\nend.",
+     "options": [
+      "Only `end`",
+      "`5`, `4`, `3`, `2`, `1` and then `end`",
+      "`1`, `2`, `3`, `4`, `5` and then `end`",
+      "Nothing, the code does not compile."
+     ],
+     "answer": 0,
+     "explain": "The loop counts up from 5 to 1, so it never starts. Only the last statement runs."
+    },
+    {
+     "type": "gap",
+     "id": "loops-6",
+     "prompt": "Complete the code so that it prints 54321.",
+     "code": "for I := 5 ___ 1 do\n  Write(I);",
+     "options": [
+      "downto",
+      "to",
+      "down to",
+      "until"
+     ],
+     "answer": 0,
+     "explain": "`downto` counts backwards. With `to`, the loop would not run at all."
+    },
+    {
+     "type": "gap",
+     "id": "loops-7",
+     "prompt": "Complete the loop so that it stops when N reaches 20.",
+     "code": "N := 0;\nrepeat\n  N := N + 5;\n___ N >= 20;\nWriteln(N);",
+     "options": [
+      "until",
+      "while",
+      "end",
+      "do"
+     ],
+     "answer": 0,
+     "explain": "A `repeat` loop ends with `until` and a condition."
+    },
+    {
+     "type": "blocks",
+     "id": "loops-8",
+     "prompt": "Build the loop header that counts I from 1 to 10.",
+     "tokens": [
+      "for",
+      "I",
+      ":=",
+      "1",
+      "to",
+      "10",
+      "do"
+     ],
+     "distractors": [
+      "=",
+      "downto"
+     ],
+     "explain": "A `for` loop assigns the start value with `:=` and counts up with `to`."
+    },
+    {
+     "type": "order",
+     "id": "loops-9",
+     "prompt": "Put the lines in order so the code prints 3, 2 and 1 on separate lines.",
+     "lines": [
+      "N := 3;",
+      "while N > 0 do",
+      "begin",
+      "  Writeln(N);",
+      "  N := N - 1;",
+      "end;"
+     ],
+     "explain": "Set `N` first. Inside the loop, print `N` before you make it smaller."
+    },
+    {
+     "type": "pairs",
+     "id": "loops-10",
+     "prompt": "Match the loop with what it does.",
+     "pairs": [
+      [
+       "`for ... to`",
+       "counts up"
+      ],
+      [
+       "`for ... downto`",
+       "counts down"
+      ],
+      [
+       "`while`",
+       "checks before each round"
+      ],
+      [
+       "`repeat ... until`",
+       "checks after each round"
+      ],
+      [
+       "`for ... in`",
+       "visits every element"
+      ]
+     ]
+    },
+    {
+     "type": "bug",
+     "id": "loops-11",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "var",
+      "  I: Integer;",
+      "begin",
+      "  for I := 1 to 3 do",
+      "  begin",
+      "    Writeln(I);",
+      "    I := I + 1;",
+      "  end;",
+      "end."
+     ],
+     "bug": 6,
+     "explain": "You must not change the counter of a `for` loop. Remove this line; the loop counts by itself."
+    },
+    {
+     "type": "bug",
+     "id": "loops-12",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "var",
+      "  Names: array of string;",
+      "  Name: string;",
+      "begin",
+      "  Names := ['Ada', 'Bob'];",
+      "  for Name of Names do",
+      "    Writeln(Name);",
+      "end."
+     ],
+     "bug": 5,
+     "explain": "The keyword is `in`: `for Name in Names do`."
+    }
+   ]
+  },
+  {
+   "id": "routines",
+   "title": "Procedures and functions",
+   "chapter": "Structure",
+   "summary": "Group code into procedures and functions, return values with Result, and pass parameters by value, var, const and out.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A **procedure** is a named block of code that you can run as often as you like. You declare it above the main `begin` of the program. To run it, write its name. This is a **call**."
+    },
+    {
+     "type": "code",
+     "code": "program Calls;\n\n{$APPTYPE CONSOLE}\n\nprocedure SayHello;\nbegin\n  Writeln('Hello!');\nend;\n\nbegin\n  SayHello;\n  SayHello;\nend.",
+     "output": "Hello!\nHello!"
+    },
+    {
+     "type": "text",
+     "md": "**Parameters** pass values into a routine. You list them in parentheses, each with its type. A **function** also returns a value: its type comes after the colon, and you set the value by assigning it to `Result`."
+    },
+    {
+     "type": "code",
+     "code": "program Params;\n\n{$APPTYPE CONSOLE}\n\nprocedure Greet(const Name: string; Times: Integer);\nvar\n  I: Integer;\nbegin\n  for I := 1 to Times do\n    Writeln('Hi, ', Name);\nend;\n\nfunction Square(X: Integer): Integer;\nbegin\n  Result := X * X;\nend;\n\nbegin\n  Greet('Ada', 2);\n  Writeln(Square(7));\n  Writeln(Square(2) + Square(3));\nend.",
+     "output": "Hi, Ada\nHi, Ada\n49\n13"
+    },
+    {
+     "type": "text",
+     "md": "A routine can have its own `var` section, like `I` in `Greet`. These **local variables** exist only while the routine runs, and only the routine can see them."
+    },
+    {
+     "type": "heading",
+     "text": "Kinds of parameters"
+    },
+    {
+     "type": "text",
+     "md": "A normal parameter is a copy: changes inside the routine do not change the variable of the caller. A `var` parameter is the caller's variable itself, so the routine can change it. A `const` parameter cannot be changed inside the routine; use it for strings, because it avoids a copy."
+    },
+    {
+     "type": "code",
+     "code": "program VarParams;\n\n{$APPTYPE CONSOLE}\n\nprocedure AddOne(N: Integer);\nbegin\n  N := N + 1;\nend;\n\nprocedure AddOneVar(var N: Integer);\nbegin\n  N := N + 1;\nend;\n\nvar\n  X: Integer;\nbegin\n  X := 10;\n  AddOne(X);\n  Writeln(X);\n  AddOneVar(X);\n  Writeln(X);\nend.",
+     "output": "10\n11"
+    },
+    {
+     "type": "text",
+     "md": "An `out` parameter is like `var`, but it only passes a value **out** of the routine, so the routine must set it. Use `out` when a routine gives back more than one value."
+    },
+    {
+     "type": "code",
+     "code": "program OutParams;\n\n{$APPTYPE CONSOLE}\n\nprocedure Divide(A, B: Integer; out Quotient, Remainder: Integer);\nbegin\n  Quotient := A div B;\n  Remainder := A mod B;\nend;\n\nvar\n  Q, R: Integer;\nbegin\n  Divide(17, 5, Q, R);\n  Writeln(Q, ' remainder ', R);\nend.",
+     "output": "3 remainder 2"
+    },
+    {
+     "type": "heading",
+     "text": "Overloading"
+    },
+    {
+     "type": "text",
+     "md": "Two routines can have the same name if their parameters differ. Mark each of them with the directive `overload`. Delphi then picks the one that fits the arguments of the call."
+    },
+    {
+     "type": "code",
+     "code": "program Overloads;\n\n{$APPTYPE CONSOLE}\n\nfunction Bigger(A, B: Integer): Integer; overload;\nbegin\n  if A > B then\n    Result := A\n  else\n    Result := B;\nend;\n\nfunction Bigger(A, B, C: Integer): Integer; overload;\nbegin\n  Result := Bigger(Bigger(A, B), C);\nend;\n\nbegin\n  Writeln(Bigger(3, 8));\n  Writeln(Bigger(4, 9, 2));\nend.",
+     "output": "8\n9"
+    },
+    {
+     "type": "warning",
+     "md": "A routine must be declared before you call it. Put procedures and functions above the main `begin` of the program, and above other routines that call them."
+    }
+   ],
+   "card": [
+    "`procedure Greet(const Name: string);`",
+    "`function Square(X: Integer): Integer;` sets `Result`",
+    "`var` changes the caller's variable, `out` only returns a value",
+    "`const` parameters cannot change",
+    "`overload` lets routines share a name"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "routines-1",
+     "prompt": "What does this print?",
+     "code": "function Triple(X: Integer): Integer;\nbegin\n  Result := X * 3;\nend;\n\nbegin\n  Writeln(Triple(4) + 1);\nend.",
+     "answers": [
+      "13"
+     ],
+     "explain": "`Triple(4)` returns `12`, and `12 + 1` is `13`."
+    },
+    {
+     "type": "input",
+     "id": "routines-2",
+     "prompt": "What does this print?",
+     "code": "procedure Swap(var A, B: Integer);\nvar\n  T: Integer;\nbegin\n  T := A;\n  A := B;\n  B := T;\nend;\n\nvar\n  X, Y: Integer;\nbegin\n  X := 1;\n  Y := 2;\n  Swap(X, Y);\n  Writeln(X, Y);\nend.",
+     "answers": [
+      "21"
+     ],
+     "explain": "`A` and `B` are `var` parameters, so `Swap` changes `X` and `Y` themselves."
+    },
+    {
+     "type": "choice",
+     "id": "routines-3",
+     "prompt": "What does this print?",
+     "code": "procedure Clear(N: Integer);\nbegin\n  N := 0;\nend;\n\nvar\n  X: Integer;\nbegin\n  X := 5;\n  Clear(X);\n  Writeln(X);\nend.",
+     "options": [
+      "`5`",
+      "`0`",
+      "Nothing, the code does not compile."
+     ],
+     "answer": 0,
+     "explain": "`N` is a normal parameter, so it is a copy. Changing it does not change `X`."
+    },
+    {
+     "type": "true_false",
+     "id": "routines-4",
+     "statement": "Inside a function, you set the return value by assigning it to `Result`.",
+     "answer": true,
+     "explain": "`Result` holds the value that the function returns."
+    },
+    {
+     "type": "choice",
+     "id": "routines-5",
+     "prompt": "Which kind of parameter only passes a value out of the routine?",
+     "options": [
+      "`out`",
+      "`const`",
+      "`var`",
+      "A normal parameter"
+     ],
+     "answer": 0,
+     "explain": "An `out` parameter does not bring a value in; the routine sets it for the caller."
+    },
+    {
+     "type": "gap",
+     "id": "routines-6",
+     "prompt": "Complete the function header.",
+     "code": "function Add(A, B: Integer)___ Integer;\nbegin\n  Result := A + B;\nend;",
+     "options": [
+      ":",
+      ";",
+      "->",
+      "="
+     ],
+     "answer": 0,
+     "explain": "The return type of a function follows a colon."
+    },
+    {
+     "type": "gap",
+     "id": "routines-7",
+     "prompt": "Complete the code so that it prints 8.",
+     "code": "procedure DoubleIt(___ N: Integer);\nbegin\n  N := N * 2;\nend;\n\nvar\n  X: Integer;\nbegin\n  X := 4;\n  DoubleIt(X);\n  Writeln(X);\nend.",
+     "options": [
+      "var",
+      "const",
+      "Result",
+      "ref"
+     ],
+     "answer": 0,
+     "explain": "Only a `var` parameter lets the procedure change the variable `X` of the caller."
+    },
+    {
+     "type": "blocks",
+     "id": "routines-8",
+     "prompt": "Build the header of a function IsEven that takes an Integer and returns a Boolean.",
+     "tokens": [
+      "function",
+      "IsEven(N:",
+      "Integer):",
+      "Boolean;"
+     ],
+     "distractors": [
+      "procedure",
+      "Result"
+     ],
+     "explain": "A function has the keyword `function`, the parameters in parentheses, a colon and the return type."
+    },
+    {
+     "type": "order",
+     "id": "routines-9",
+     "prompt": "Put the lines in order so the function returns the larger of two numbers.",
+     "lines": [
+      "function Larger(A, B: Integer): Integer;",
+      "begin",
+      "  if A > B then",
+      "    Result := A",
+      "  else",
+      "    Result := B;",
+      "end;"
+     ],
+     "explain": "The header comes first, then the body between `begin` and `end;`. There is no semicolon before `else`."
+    },
+    {
+     "type": "pairs",
+     "id": "routines-10",
+     "prompt": "Match the code with its meaning.",
+     "pairs": [
+      [
+       "`procedure`",
+       "a routine without a result"
+      ],
+      [
+       "`function`",
+       "a routine that returns a value"
+      ],
+      [
+       "`var`",
+       "the routine can change the caller's variable"
+      ],
+      [
+       "`out`",
+       "the parameter only returns a value"
+      ],
+      [
+       "`overload`",
+       "routines share one name"
+      ]
+     ]
+    },
+    {
+     "type": "bug",
+     "id": "routines-11",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "procedure Square(X: Integer);",
+      "begin",
+      "  Result := X * X;",
+      "end;",
+      "begin",
+      "  Writeln(Square(5));",
+      "end."
+     ],
+     "bug": 0,
+     "explain": "A routine that returns a value must be a function: `function Square(X: Integer): Integer;`."
+    },
+    {
+     "type": "bug",
+     "id": "routines-12",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "procedure Increment(var N: Integer);",
+      "begin",
+      "  N := N + 1;",
+      "end;",
+      "var",
+      "  Count: Integer;",
+      "begin",
+      "  Count := 0;",
+      "  Increment(Count);",
+      "  Increment(5);",
+      "  Writeln(Count);",
+      "end."
+     ],
+     "bug": 9,
+     "explain": "A `var` parameter needs a variable, not a value like `5`. Write `Increment(Count);`."
+    }
+   ]
+  },
+  {
+   "id": "arrays",
+   "title": "Arrays",
+   "chapter": "Data",
+   "summary": "Store many values in static and dynamic arrays, size them with SetLength, and loop over them with Length, Low and High.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "An **array** holds many values of the same type under one name. A **static array** has a fixed size that is part of its type: `array[1..3] of Integer` has three elements with the indexes 1, 2 and 3. You read and write an element with its index in square brackets."
+    },
+    {
+     "type": "code",
+     "code": "program Scores;\n\n{$APPTYPE CONSOLE}\n\nvar\n  Scores: array[1..3] of Integer;\nbegin\n  Scores[1] := 90;\n  Scores[2] := 75;\n  Scores[3] := 82;\n  Writeln(Scores[2]);\n  Scores[2] := Scores[2] + 10;\n  Writeln(Scores[2]);\n  Writeln(Scores[1] + Scores[3]);\nend.",
+     "output": "75\n85\n172"
+    },
+    {
+     "type": "text",
+     "md": "`Low(A)` returns the first index of the array `A`, `High(A)` returns the last index, and `Length(A)` returns the number of elements. Use `Low` and `High` in `for` loops, so that the loop still works when the size changes."
+    },
+    {
+     "type": "code",
+     "code": "program Temperatures;\n\n{$APPTYPE CONSOLE}\n\nvar\n  Temps: array[1..4] of Integer;\n  I, Sum: Integer;\nbegin\n  Temps[1] := 12;\n  Temps[2] := 15;\n  Temps[3] := 9;\n  Temps[4] := 14;\n  Sum := 0;\n  for I := Low(Temps) to High(Temps) do\n    Sum := Sum + Temps[I];\n  Writeln('Count: ', Length(Temps));\n  Writeln('Sum: ', Sum);\n  Writeln('Average: ', Sum / Length(Temps):0:1);\nend.",
+     "output": "Count: 4\nSum: 50\nAverage: 12.5"
+    },
+    {
+     "type": "text",
+     "md": "The indexes of a static array can start at any number, for example at 0. A constant array lists its values in parentheses: `const Days: array[0..2] of string = ('Mon', 'Tue', 'Wed');`."
+    },
+    {
+     "type": "code",
+     "code": "program Days;\n\n{$APPTYPE CONSOLE}\n\nconst\n  Days: array[0..2] of string = ('Mon', 'Tue', 'Wed');\nvar\n  I: Integer;\nbegin\n  for I := Low(Days) to High(Days) do\n    Writeln(I, ': ', Days[I]);\nend.",
+     "output": "0: Mon\n1: Tue\n2: Wed"
+    },
+    {
+     "type": "heading",
+     "text": "Dynamic arrays"
+    },
+    {
+     "type": "text",
+     "md": "A **dynamic array** has no size in its type: `array of Integer`. `SetLength(A, 3)` gives it 3 elements, and a later `SetLength` can make it bigger or smaller while it keeps the existing values. A dynamic array always starts at index 0, so the last index is `Length(A) - 1`, which is the same as `High(A)`."
+    },
+    {
+     "type": "code",
+     "code": "program Dynamic;\n\n{$APPTYPE CONSOLE}\n\nvar\n  Nums: array of Integer;\n  I: Integer;\nbegin\n  SetLength(Nums, 3);\n  for I := 0 to High(Nums) do\n    Nums[I] := (I + 1) * 10;\n  Writeln(Length(Nums), ' ', Low(Nums), ' ', High(Nums));\n  SetLength(Nums, 5);\n  Nums[4] := 99;\n  Writeln(Length(Nums), ' ', Nums[0], ' ', Nums[4]);\nend.",
+     "output": "3 0 2\n5 10 99"
+    },
+    {
+     "type": "text",
+     "md": "You can also fill a dynamic array in one step with square brackets: `Names := ['Ada', 'Bob']`. To add one element, make the array one element longer and store the value at the new last index."
+    },
+    {
+     "type": "code",
+     "code": "program Append;\n\n{$APPTYPE CONSOLE}\n\nvar\n  Names: array of string;\n  Name: string;\nbegin\n  Names := ['Ada', 'Bob'];\n  SetLength(Names, Length(Names) + 1);\n  Names[High(Names)] := 'Cy';\n  for Name in Names do\n    Writeln(Name);\n  Writeln(Length(Names));\nend.",
+     "output": "Ada\nBob\nCy\n3"
+    },
+    {
+     "type": "text",
+     "md": "A parameter like `const Values: array of Integer` is an **open array**. It accepts a static array, a dynamic array or a list in square brackets. Inside the routine, it always starts at index 0."
+    },
+    {
+     "type": "code",
+     "code": "program OpenArray;\n\n{$APPTYPE CONSOLE}\n\nfunction Sum(const Values: array of Integer): Integer;\nvar\n  I: Integer;\nbegin\n  Result := 0;\n  for I := Low(Values) to High(Values) do\n    Result := Result + Values[I];\nend;\n\nbegin\n  Writeln(Sum([1, 2, 3]));\n  Writeln(Sum([10, 20]));\nend.",
+     "output": "6\n30"
+    },
+    {
+     "type": "warning",
+     "md": "Never use an index outside the array. A dynamic array with 3 elements has the indexes 0, 1 and 2, so `A[3]` does not exist. Reading or writing there is a serious bug: the program may crash or use wrong data."
+    }
+   ],
+   "card": [
+    "`array[1..5] of Integer` is static, with a fixed size",
+    "`array of Integer` + `SetLength(A, 3)` is dynamic, from index 0",
+    "`Low(A)`, `High(A)`, `Length(A)`",
+    "`for I := Low(A) to High(A) do`",
+    "`A := [1, 2, 3];` fills a dynamic array"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "arrays-1",
+     "prompt": "What does this print?",
+     "code": "var\n  A: array[1..3] of Integer;\nbegin\n  A[1] := 5;\n  A[2] := A[1] * 2;\n  A[3] := A[1] + A[2];\n  Writeln(A[3]);\nend.",
+     "answers": [
+      "15"
+     ],
+     "explain": "`A[2]` is `10`, so `A[3]` is `5 + 10`, which is `15`."
+    },
+    {
+     "type": "input",
+     "id": "arrays-2",
+     "prompt": "What does this print?",
+     "code": "var\n  Letters: array[2..6] of Char;\nbegin\n  Writeln(Length(Letters));\nend.",
+     "answers": [
+      "5"
+     ],
+     "explain": "The indexes are 2, 3, 4, 5 and 6, which makes 5 elements."
+    },
+    {
+     "type": "choice",
+     "id": "arrays-3",
+     "prompt": "What does this print?",
+     "code": "var\n  Nums: array of Integer;\nbegin\n  SetLength(Nums, 4);\n  Writeln(High(Nums));\nend.",
+     "options": [
+      "`3`",
+      "`4`",
+      "`0`",
+      "`5`"
+     ],
+     "answer": 0,
+     "explain": "A dynamic array with 4 elements has the indexes 0 to 3, so `High` returns `3`."
+    },
+    {
+     "type": "true_false",
+     "id": "arrays-4",
+     "statement": "A dynamic array always starts at index 0.",
+     "answer": true,
+     "explain": "`Low` of a dynamic array is always `0`, and `High` is `Length - 1`."
+    },
+    {
+     "type": "gap",
+     "id": "arrays-5",
+     "prompt": "Complete the code so that the array gets two elements.",
+     "code": "var\n  Names: array of string;\nbegin\n  ___(Names, 2);\n  Names[0] := 'Ada';\n  Names[1] := 'Bob';\n  Writeln(Names[1]);\nend.",
+     "options": [
+      "SetLength",
+      "Length",
+      "High",
+      "Resize"
+     ],
+     "answer": 0,
+     "explain": "`SetLength` changes the number of elements. `Length` only reads it."
+    },
+    {
+     "type": "gap",
+     "id": "arrays-6",
+     "prompt": "Complete the loop so that it adds up every price.",
+     "code": "for I := Low(Prices) to ___(Prices) do\n  Total := Total + Prices[I];",
+     "options": [
+      "High",
+      "Length",
+      "Count",
+      "Last"
+     ],
+     "answer": 0,
+     "explain": "`High` is the last index. `Length` is one more than the last index of a dynamic array."
+    },
+    {
+     "type": "blocks",
+     "id": "arrays-7",
+     "prompt": "Build the declaration of a static array Values with 10 integers, indexes 1 to 10.",
+     "tokens": [
+      "Values:",
+      "array[1..10]",
+      "of",
+      "Integer;"
+     ],
+     "distractors": [
+      "array[10]",
+      "list"
+     ],
+     "explain": "A static array names its index range in square brackets, then `of` and the element type."
+    },
+    {
+     "type": "order",
+     "id": "arrays-8",
+     "prompt": "Put the lines in order so the program prints 8.",
+     "lines": [
+      "var",
+      "  Nums: array of Integer;",
+      "begin",
+      "  SetLength(Nums, 2);",
+      "  Nums[0] := 7;",
+      "  Nums[1] := Nums[0] + 1;",
+      "  Writeln(Nums[1]);",
+      "end."
+     ],
+     "explain": "The array needs its length before you store values. `Nums[0]` must be set before `Nums[1]` uses it."
+    },
+    {
+     "type": "pairs",
+     "id": "arrays-9",
+     "prompt": "Match the code with its meaning.",
+     "pairs": [
+      [
+       "`Low(A)`",
+       "the first index"
+      ],
+      [
+       "`High(A)`",
+       "the last index"
+      ],
+      [
+       "`Length(A)`",
+       "the number of elements"
+      ],
+      [
+       "`SetLength(A, 5)`",
+       "gives A five elements"
+      ],
+      [
+       "`array[1..3] of Char`",
+       "a static array of three characters"
+      ]
+     ]
+    },
+    {
+     "type": "bug",
+     "id": "arrays-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "var",
+      "  Nums: array of Integer;",
+      "  I: Integer;",
+      "begin",
+      "  Nums := [4, 5, 6];",
+      "  for I := 0 to Length(Nums) do",
+      "    Writeln(Nums[I]);",
+      "end."
+     ],
+     "bug": 5,
+     "explain": "The last index is `Length(Nums) - 1`. Write `for I := 0 to High(Nums) do`."
+    },
+    {
+     "type": "bug",
+     "id": "arrays-11",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "var",
+      "  Days: array[1..7] of string;",
+      "begin",
+      "  Days[1] := 'Mon';",
+      "  Days[0] := 'Sun';",
+      "  Writeln(Days[1]);",
+      "end."
+     ],
+     "bug": 4,
+     "explain": "This array starts at index 1, so `Days[0]` does not exist. Use an index from 1 to 7, for example `Days[7]`."
+    },
+    {
+     "type": "choice",
+     "id": "arrays-12",
+     "prompt": "What does this print?",
+     "code": "function CountBig(const A: array of Integer): Integer;\nvar\n  I: Integer;\nbegin\n  Result := 0;\n  for I := Low(A) to High(A) do\n    if A[I] > 10 then\n      Result := Result + 1;\nend;\n\nbegin\n  Writeln(CountBig([5, 12, 30, 10]));\nend.",
+     "options": [
+      "`2`",
+      "`3`",
+      "`1`",
+      "`4`"
+     ],
+     "answer": 0,
+     "explain": "Only `12` and `30` are greater than 10. `10` is not greater than 10."
+    }
+   ]
+  },
+  {
+   "id": "classes",
+   "title": "Classes",
+   "chapter": "Objects",
+   "summary": "Define your own types with classes: fields, a constructor, methods and properties, and free objects when you are done.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A **class** is a blueprint for objects. It bundles data, the **fields**, with the routines that work on this data, the **methods**. A method can be a procedure or a function. You declare a class in a `type` section, and by convention class names start with `T`."
+    },
+    {
+     "type": "code",
+     "code": "program People;\n\n{$APPTYPE CONSOLE}\n\ntype\n  TPerson = class\n    Name: string;\n    Age: Integer;\n    procedure Greet;\n  end;\n\nprocedure TPerson.Greet;\nbegin\n  Writeln('Hi, I am ', Name, '.');\nend;\n\nvar\n  P: TPerson;\nbegin\n  P := TPerson.Create;\n  P.Name := 'Ada';\n  P.Age := 36;\n  P.Greet;\n  Writeln(P.Age);\n  P.Free;\nend.",
+     "output": "Hi, I am Ada.\n36"
+    },
+    {
+     "type": "text",
+     "md": "`TPerson.Create` creates a new object, an **instance** of the class, and the variable `P` refers to it. A dot gives you access to its fields and methods: `P.Name`, `P.Greet`. You write the body of a method below the class, with the class name in front: `procedure TPerson.Greet;`. Inside the method, the fields can be used directly by name."
+    },
+    {
+     "type": "text",
+     "md": "Delphi does not clean up objects for you. When you no longer need an object, call its method `Free`. Use `try ... finally`: the code after `finally` runs even when an error happens in the `try` part, so the object is always freed."
+    },
+    {
+     "type": "heading",
+     "text": "Constructors"
+    },
+    {
+     "type": "text",
+     "md": "A **constructor** sets up a new object. Declare it with `constructor Create(...)` and give it parameters for the starting values. Its first statement `inherited Create;` runs the basic setup that every object needs."
+    },
+    {
+     "type": "code",
+     "code": "program Counter;\n\n{$APPTYPE CONSOLE}\n\ntype\n  TCounter = class\n    Count: Integer;\n    Step: Integer;\n    constructor Create(AStep: Integer);\n    procedure Tick;\n  end;\n\nconstructor TCounter.Create(AStep: Integer);\nbegin\n  inherited Create;\n  Count := 0;\n  Step := AStep;\nend;\n\nprocedure TCounter.Tick;\nbegin\n  Count := Count + Step;\nend;\n\nvar\n  C: TCounter;\nbegin\n  C := TCounter.Create(5);\n  try\n    C.Tick;\n    C.Tick;\n    C.Tick;\n    Writeln(C.Count);\n  finally\n    C.Free;\n  end;\nend.",
+     "output": "15"
+    },
+    {
+     "type": "heading",
+     "text": "Private fields and properties"
+    },
+    {
+     "type": "text",
+     "md": "Fields in a `private` section are meant only for the class itself; code in other units cannot see them. By convention, their names start with `F`. A **property** gives controlled access: `read` names where the value comes from, and `write` names where a new value goes. A property without `write` is read-only."
+    },
+    {
+     "type": "code",
+     "code": "program Accounts;\n\n{$APPTYPE CONSOLE}\n\ntype\n  TAccount = class\n  private\n    FOwner: string;\n    FBalance: Integer;\n  public\n    constructor Create(const AOwner: string);\n    procedure Deposit(Amount: Integer);\n    property Owner: string read FOwner write FOwner;\n    property Balance: Integer read FBalance;\n  end;\n\nconstructor TAccount.Create(const AOwner: string);\nbegin\n  inherited Create;\n  FOwner := AOwner;\n  FBalance := 0;\nend;\n\nprocedure TAccount.Deposit(Amount: Integer);\nbegin\n  if Amount > 0 then\n    FBalance := FBalance + Amount;\nend;\n\nvar\n  Acc: TAccount;\nbegin\n  Acc := TAccount.Create('Ada');\n  try\n    Acc.Deposit(50);\n    Acc.Deposit(-20);\n    Acc.Deposit(30);\n    Writeln(Acc.Owner, ': ', Acc.Balance);\n    Acc.Owner := 'Ada L.';\n    Writeln(Acc.Owner);\n  finally\n    Acc.Free;\n  end;\nend.",
+     "output": "Ada: 80\nAda L."
+    },
+    {
+     "type": "text",
+     "md": "`Balance` has only `read`, so `Acc.Balance := 100` does not compile. The only way to change the balance is `Deposit`, which ignores amounts that are not positive. This keeps the object in a valid state."
+    },
+    {
+     "type": "warning",
+     "md": "A variable of a class type only refers to an object. Before `Create`, it refers to no object, and using it crashes the program. After `Free`, do not use the object again."
+    }
+   ],
+   "card": [
+    "`type TPerson = class ... end;` declares a class",
+    "`P := TPerson.Create('Ada');` creates an object",
+    "`procedure TPerson.Greet;` implements a method",
+    "`property Age: Integer read FAge write FAge;`",
+    "`try ... finally P.Free; end;` frees the object"
+   ],
+   "exercises": [
+    {
+     "type": "choice",
+     "id": "classes-1",
+     "prompt": "How do you create an object of the class TDog?",
+     "options": [
+      "`D := TDog.Create;`",
+      "`D := new TDog;`",
+      "`D := TDog();`",
+      "`D := Create(TDog);`"
+     ],
+     "answer": 0,
+     "explain": "You call the constructor `Create` on the class: `TDog.Create`."
+    },
+    {
+     "type": "input",
+     "id": "classes-2",
+     "prompt": "What does this print?",
+     "code": "type\n  TBox = class\n    Width, Height: Integer;\n    function Area: Integer;\n  end;\n\nfunction TBox.Area: Integer;\nbegin\n  Result := Width * Height;\nend;\n\nvar\n  B: TBox;\nbegin\n  B := TBox.Create;\n  B.Width := 3;\n  B.Height := 4;\n  Writeln(B.Area);\n  B.Free;\nend.",
+     "answers": [
+      "12"
+     ],
+     "explain": "The method `Area` uses the fields of the object: `3 * 4` is `12`."
+    },
+    {
+     "type": "input",
+     "id": "classes-3",
+     "prompt": "What does this print?",
+     "code": "type\n  TCounter = class\n    Count: Integer;\n    constructor Create(Start: Integer);\n    procedure Add(N: Integer);\n  end;\n\nconstructor TCounter.Create(Start: Integer);\nbegin\n  inherited Create;\n  Count := Start;\nend;\n\nprocedure TCounter.Add(N: Integer);\nbegin\n  Count := Count + N;\nend;\n\nvar\n  C: TCounter;\nbegin\n  C := TCounter.Create(10);\n  C.Add(5);\n  C.Add(C.Count);\n  Writeln(C.Count);\n  C.Free;\nend.",
+     "answers": [
+      "30"
+     ],
+     "explain": "`Count` starts at `10` and becomes `15`. Then `Add(15)` makes it `30`."
+    },
+    {
+     "type": "true_false",
+     "id": "classes-4",
+     "statement": "Delphi frees objects automatically, so you never need to call `Free`.",
+     "answer": false,
+     "explain": "You create objects with `Create` and must free them yourself with `Free`, best in a `try ... finally` block."
+    },
+    {
+     "type": "gap",
+     "id": "classes-5",
+     "prompt": "Complete the class so that Name can be read and changed.",
+     "code": "type\n  TCat = class\n  private\n    FName: string;\n  public\n    property Name: string read FName ___ FName;\n  end;",
+     "options": [
+      "write",
+      "read",
+      "set",
+      ":="
+     ],
+     "answer": 0,
+     "explain": "`write` names the field that receives a new value. Without it, the property is read-only."
+    },
+    {
+     "type": "gap",
+     "id": "classes-6",
+     "prompt": "Complete the header of the method Bark of the class TDog.",
+     "code": "procedure ___.Bark;\nbegin\n  Writeln('Woof');\nend;",
+     "options": [
+      "TDog",
+      "Dog",
+      "Self",
+      "class"
+     ],
+     "answer": 0,
+     "explain": "The body of a method starts with the class name, a dot and the method name."
+    },
+    {
+     "type": "blocks",
+     "id": "classes-7",
+     "prompt": "Build the statement that creates a TPerson object with the name Ada.",
+     "tokens": [
+      "P",
+      ":=",
+      "TPerson.Create(",
+      "'Ada'",
+      ");"
+     ],
+     "distractors": [
+      "new",
+      "TPerson("
+     ],
+     "explain": "The constructor `Create` is called on the class, with the starting values in parentheses."
+    },
+    {
+     "type": "order",
+     "id": "classes-8",
+     "prompt": "Put the lines in order so the object is used and then always freed.",
+     "lines": [
+      "P := TPerson.Create('Ada');",
+      "try",
+      "  P.Greet;",
+      "finally",
+      "  P.Free;",
+      "end;"
+     ],
+     "explain": "Create the object before `try`. Use it in the `try` part and free it after `finally`."
+    },
+    {
+     "type": "pairs",
+     "id": "classes-9",
+     "prompt": "Match the code with its meaning.",
+     "pairs": [
+      [
+       "`class`",
+       "a blueprint for objects"
+      ],
+      [
+       "`constructor`",
+       "sets up a new object"
+      ],
+      [
+       "`Free`",
+       "releases an object"
+      ],
+      [
+       "`property`",
+       "controlled access to a value"
+      ],
+      [
+       "`private`",
+       "hidden from other units"
+      ]
+     ]
+    },
+    {
+     "type": "bug",
+     "id": "classes-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "var",
+      "  P: TPerson;",
+      "begin",
+      "  P := TPerson;",
+      "  P.Name := 'Ada';",
+      "  Writeln(P.Name);",
+      "  P.Free;",
+      "end."
+     ],
+     "bug": 3,
+     "explain": "An object must be created with the constructor: `P := TPerson.Create;`."
+    },
+    {
+     "type": "bug",
+     "id": "classes-11",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "type",
+      "  TLamp = class",
+      "    IsOn: Boolean;",
+      "    procedure Switch;",
+      "  end;",
+      "procedure Switch;",
+      "begin",
+      "  IsOn := not IsOn;",
+      "end;"
+     ],
+     "bug": 5,
+     "explain": "The body of a method needs the class name in front: `procedure TLamp.Switch;`."
+    },
+    {
+     "type": "choice",
+     "id": "classes-12",
+     "prompt": "`TAccount` is the class from the lesson, with the read-only property `Balance`. What happens?",
+     "code": "Acc := TAccount.Create('Ada');\nAcc.Balance := 100;",
+     "options": [
+      "The program does not compile.",
+      "`Balance` becomes `100`.",
+      "`Balance` stays `0` without an error.",
+      "The program crashes when it runs."
+     ],
+     "answer": 0,
+     "explain": "`Balance` has no `write` part, so Delphi does not allow an assignment to it."
+    }
+   ]
+  }
+ ]
+}

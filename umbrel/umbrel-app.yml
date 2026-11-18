@@ -1,0 +1,97 @@
+manifestVersion: 1
+id: nrz-rust-learn
+category: Developer
+name: nrzLearn
+version: "1.0.0"
+tagline: Programmieren lernen wie mit Duolingo - 48 Kurse, 40 Sprachen, ohne Konto
+icon: http://100.78.107.162:8390/nicorenezweers/nrzStore/raw/branch/main/nrz-rust-learn/icon.png?v=3
+port: 29090
+path: ""
+description: >-
+  nrzLearn ist eine Lern-App fuers Programmieren, selbst in Rust geschrieben
+  (Dioxus, WebAssembly, rust-ui). Du waehlst eine Programmiersprache und gehst
+  Level fuer Level einen Weltenpfad entlang - wie bei Duolingo. Alles laeuft
+  im Browser: kein Konto, keine Anmeldung, der Fortschritt bleibt im Browser
+  (localStorage). Der Server liefert vorkomprimierte Dateien aus und zaehlt
+  nur anonym, wie viele Level abgeschlossen werden.
+
+
+  ## Was die App kann
+
+
+  - **48 Programmiersprachen** - von Python, JavaScript, Java, C#, Rust und
+  Go ueber Kotlin, Swift, PHP, Ruby, Haskell, Elixir, Scala und Clojure bis
+  zu C, Zig, Fortran, COBOL, Assembler und Maschinencode. Jeder Kurs startet
+  bei null: Lektionen mit Beispielen (Ausgaben echt ausgefuehrt und
+  geprueft), Uebungsrunden, Welt-Pruefungen mit 3 Leben und
+  Meisterpruefungen.
+
+
+  - **40 Sprachen** - die App gibt es in allen EU-Sprachen, dazu Norwegisch,
+  Islaendisch, Ukrainisch, Russisch, Tuerkisch, Katalanisch, Serbisch,
+  Albanisch, Mazedonisch, Japanisch, Koreanisch, Chinesisch, Hindi, Arabisch,
+  Indonesisch und Vietnamesisch. Die 38 neuen Kurse sind vorerst auf
+  Englisch, ihre Uebersetzungen folgen mit den naechsten Updates.
+
+
+  - **Logos und Kurswahl** - jede Programmiersprache mit ihrem Logo, nach
+  Bereichen geordnet und mit Suche.
+
+
+  - **Link-Vorschau** - wer einen Link teilt (Discord, WhatsApp, Telegram,
+  Slack ...), sieht Titel, Text und ein passendes Vorschaubild, fuer jeden
+  Kurs ein eigenes.
+
+
+  - **Suchmaschinenfreundlich** - statische Start- und Kursseiten fuer jede
+  Sprache mit hreflang, strukturierten Daten, Sitemap und Vorschaubild.
+
+
+  - **Admin-Bereich** auf Port 29091 (Benutzer admin, das Passwort zeigt
+  umbrelOS) - Statistik mit abgeschlossenen Lektionen, beliebtesten Kursen
+  und Sprachen und dem Verlauf pro Tag; dazu das Tracking-Skript fuer die
+  Web-Analyse (z.B. nrzAnalytics) und Bestaetigungscodes fuer Google, Bing,
+  Yandex, Naver und Baidu eintragen oder aendern.
+
+
+  - **Viele Aufgabenarten** - Auswahl, Eingabe, Wahr/Falsch, Lueckentext,
+  Code-Bausteine, Reihenfolge, Paare und Fehler finden. Der Rust-Kurs erzeugt
+  seine Aufgaben jede Runde neu.
+
+
+  - **Ohne Konto** - Fortschritt und Einstellungen liegen nur im Browser; im
+  Profil sicherst du sie als Datei und importierst sie woanders wieder.
+
+
+  - **Belohnungen und Spickzettel** - XP, Sterne, Tagesserie, Tagesziel und
+  ein Spickzettel pro Kurs.
+
+
+  Zum Ausfuehren von Code im Rust-Kurs braucht der Browser Internet
+  (play.rust-lang.org). Auf dem Geraet speichert die App nur die
+  Einstellungen des Admin-Bereichs und die anonymen Zaehler - keine Konten,
+  keine IP-Adressen und keine Cookies fuer Lernende.
+releaseNotes: >-
+  nrzLearn 6.0: 38 neue Kurse - jetzt 48 Programmiersprachen, darunter Java,
+  C, PHP, Ruby, Haskell, Elixir, Zig, Bash, Fortran, COBOL, Assembler und
+  Maschinencode. Die neuen Kurse sind vorerst auf Englisch, die
+  Uebersetzungen in alle 40 Sprachen folgen als Updates. Neu sind ausserdem
+  die Logos der Programmiersprachen, eine nach Bereichen geordnete Kurswahl
+  mit Suche, Link-Vorschauen mit eigenem Bild fuer jeden Kurs (Discord,
+  WhatsApp ...), bessere Daten fuer Suchmaschinen und ein Admin-Bereich auf
+  Port 29091 mit anonymer Statistik (abgeschlossene Lektionen, beliebteste
+  Kurse und Sprachen), Tracking-Skript fuer die Web-Analyse und
+  Bestaetigungscodes fuer Suchmaschinen. Der Fortschritt bleibt erhalten.
+developer: nrz
+website: https://zweers.ch
+submitter: nrz
+submission: http://100.78.107.162:8390/nicorenezweers/nrzStore
+repo: http://100.78.107.162:8390/nicorenezweers/nrzLearn
+support: http://100.78.107.162:8390/nicorenezweers/nrzLearn/issues
+dependencies:
+  - nrz-git
+defaultUsername: "admin"
+defaultPassword: "$APP_PASSWORD"
+# umbrelOS zeigt das echte APP_PASSWORD an (Anmeldung im Admin-Bereich auf Port 29091).
+deterministicPassword: true
+gallery: []

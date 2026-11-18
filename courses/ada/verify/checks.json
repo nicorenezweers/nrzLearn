@@ -1,0 +1,286 @@
+{
+  "hello-2": {
+    "out": "-5"
+  },
+  "hello-3": {
+    "out": "10 - 4"
+  },
+  "hello-4": {
+    "code": "put_line (\"Hi\");",
+    "out": "Hi"
+  },
+  "hello-5": {
+    "out": "Ready"
+  },
+  "hello-6": {
+    "out": "Hello, Ada"
+  },
+  "hello-7": {
+    "out": "Hello!"
+  },
+  "hello-8": {
+    "out": "Ready"
+  },
+  "hello-10": {
+    "fix": "   Put_Line (\"Start\");",
+    "out": "Start\nStop"
+  },
+  "hello-11": {
+    "fix": "   Put_Line (Integer'Image (42));",
+    "out": "Answer:\n 42"
+  },
+  "hello-12": {
+    "out": "Total: 12"
+  },
+  "variables-2": {
+    "out": " 13"
+  },
+  "variables-3": {
+    "out": " 5 3"
+  },
+  "variables-4": {
+    "err": "runtime"
+  },
+  "variables-5": {
+    "out": " 3.14159E+00"
+  },
+  "variables-6": {
+    "out": " 3.50000E+00"
+  },
+  "variables-7": {
+    "tpl": "procedure Main is\n   {{CODE}}\nbegin\n   Put_Line (Boolean'Image (Done));\nend Main;",
+    "out": "FALSE"
+  },
+  "variables-8": {
+    "out": " 10"
+  },
+  "variables-10": {
+    "fix": "   Total := Total + Price;",
+    "out": " 5"
+  },
+  "variables-11": {
+    "fix": "   Total := Float (Count) * Price;",
+    "out": " 1.00000E+01"
+  },
+  "variables-12": {
+    "out": " 3 3"
+  },
+  "conditions-2": {
+    "out": "B"
+  },
+  "conditions-3": {
+    "out": "Middle"
+  },
+  "conditions-4": {
+    "err": "compile"
+  },
+  "conditions-5": {
+    "out": "Silver"
+  },
+  "conditions-6": {
+    "out": "Nothing to check"
+  },
+  "conditions-7": {
+    "tpl": "procedure Main is\n   X : Integer := 12;\nbegin\n   {{CODE}}\n      Put_Line (\"Big\");\n   end if;\nend Main;",
+    "out": "Big"
+  },
+  "conditions-8": {
+    "tpl": "procedure Main is\n   Day : Integer := 7;\nbegin\n{{CODE}}\nend Main;",
+    "out": "Weekend",
+    "extra": [
+      {
+        "tpl": "procedure Main is\n   Day : Integer := 3;\nbegin\n{{CODE}}\nend Main;",
+        "code": "case Day is\n   when 6 | 7 =>\n      Put_Line (\"Weekend\");\n   when others =>\n      Put_Line (\"Work day\");\nend case;",
+        "out": "Work day"
+      }
+    ]
+  },
+  "conditions-10": {
+    "fix": "   end if;",
+    "out": "Young"
+  },
+  "conditions-11": {
+    "fix": "   if Level = 3 then",
+    "out": "Top"
+  },
+  "conditions-12": {
+    "out": "One"
+  },
+  "loops-1": {
+    "code": "C : Integer := 0;\nbegin\nfor I in 3 .. 7 loop\n   C := C + 1;\nend loop;\nPut_Line (Integer'Image (C));",
+    "out": " 5"
+  },
+  "loops-2": {
+    "out": " 20"
+  },
+  "loops-3": {
+    "out": " 4 3 2"
+  },
+  "loops-4": {
+    "code": "for I in 5 .. 1 loop\n   Put_Line (\"x\");\nend loop;\nPut_Line (\"end\");",
+    "out": "end"
+  },
+  "loops-5": {
+    "out": " 3 2 1"
+  },
+  "loops-6": {
+    "out": " 5"
+  },
+  "loops-7": {
+    "tpl": "procedure Main is\nbegin\n   {{CODE}}\n      Put (Integer'Image (I));\n   end loop;\nend Main;",
+    "out": " 1 2 3 4 5 6 7 8 9 10"
+  },
+  "loops-8": {
+    "out": " 1 2 4 8"
+  },
+  "loops-10": {
+    "fix": "   end loop;",
+    "out": " 6"
+  },
+  "loops-11": {
+    "fix": "   for I in 1 .. 5 loop",
+    "out": " 1 2 3 4 5"
+  },
+  "loops-12": {
+    "err": "compile"
+  },
+  "subprograms-2": {
+    "out": " 18"
+  },
+  "subprograms-3": {
+    "out": " 7"
+  },
+  "subprograms-4": {
+    "code": "procedure Main is\n   procedure Reset (X : in Integer) is\n   begin\n      X := 0;\n   end Reset;\n   N : Integer := 5;\nbegin\n   Reset (N);\nend Main;",
+    "err": "compile"
+  },
+  "subprograms-5": {
+    "out": " 4"
+  },
+  "subprograms-6": {
+    "out": " 42"
+  },
+  "subprograms-7": {
+    "tpl": "procedure Main is\n   function Diff (A, B : Integer) return Integer is\n   begin\n      {{CODE}}\n   end Diff;\nbegin\n   Put_Line (Integer'Image (Diff (9, 4)));\nend Main;",
+    "out": " 5"
+  },
+  "subprograms-8": {
+    "tpl": "procedure Main is\n{{CODE}}\nbegin\n   Put_Line (Integer'Image (Double (7)));\nend Main;",
+    "out": " 14"
+  },
+  "subprograms-10": {
+    "fix": "   function Square (X : Integer) return Integer is",
+    "out": " 25"
+  },
+  "subprograms-11": {
+    "fix": "   Get_Answer (X);",
+    "out": " 42"
+  },
+  "subprograms-12": {
+    "out": "ababab"
+  },
+  "arrays-2": {
+    "out": " 7"
+  },
+  "arrays-3": {
+    "out": " 6"
+  },
+  "arrays-4": {
+    "code": "procedure Main is\n   type List is array (1 .. 5) of Integer;\n   A : List := (others => 1);\n   I : Integer := 6;\nbegin\n   Put_Line (Integer'Image (A (I)));\nend Main;",
+    "err": "runtime"
+  },
+  "arrays-5": {
+    "out": " 15"
+  },
+  "arrays-6": {
+    "out": " 1 1 1"
+  },
+  "arrays-7": {
+    "tpl": "procedure Main is\n   {{CODE}}\n   D : Data := (others => 0.5);\nbegin\n   Put_Line (Integer'Image (D'Length));\nend Main;",
+    "out": " 10"
+  },
+  "arrays-8": {
+    "tpl": "procedure Main is\n{{CODE}}\nend Main;",
+    "out": " 4"
+  },
+  "arrays-10": {
+    "fix": "   for I in L'Range loop",
+    "out": " 7 8 9"
+  },
+  "arrays-11": {
+    "fix": "   T : Trio := (1, 2, 3);",
+    "out": " 3"
+  },
+  "arrays-12": {
+    "out": "o 5"
+  },
+  "types-2": {
+    "out": "BANANA"
+  },
+  "types-3": {
+    "out": " 2"
+  },
+  "types-4": {
+    "err": "compile"
+  },
+  "types-5": {
+    "out": " 9"
+  },
+  "types-6": {
+    "out": "RED\nGREEN\nBLUE"
+  },
+  "types-7": {
+    "tpl": "procedure Main is\n   {{CODE}}\n   S : Speed := 120;\nbegin\n   Put_Line (Speed'Image (S));\nend Main;",
+    "out": " 120"
+  },
+  "types-8": {
+    "tpl": "procedure Main is\n{{CODE}}\nend Main;",
+    "out": "MIDDLE"
+  },
+  "types-10": {
+    "fix": "   P := P + 10;",
+    "out": " 100"
+  },
+  "types-11": {
+    "fix": "   Count : Natural := 0;",
+    "out": " 6"
+  },
+  "types-12": {
+    "out": "SAT 5"
+  },
+  "records-2": {
+    "out": " 25"
+  },
+  "records-3": {
+    "out": " 1"
+  },
+  "records-4": {
+    "code": "procedure Main is\n   type Point is record\n      X, Y : Integer;\n   end record;\n   A : Point := (1, 2);\n   B : Point := (X => 1, Y => 2);\n   C : Point := (1, 3);\nbegin\n   Put_Line (Boolean'Image (A = B) & \" \" & Boolean'Image (A = C));\nend Main;",
+    "out": "TRUE FALSE"
+  },
+  "records-5": {
+    "out": " 6"
+  },
+  "records-6": {
+    "out": "TRUE"
+  },
+  "records-7": {
+    "tpl": "procedure Main is\n   type Point is record\n      X, Y : Integer;\n   end record;\n   {{CODE}}\nbegin\n   Put_Line (Integer'Image (Start.X) & Integer'Image (Start.Y));\nend Main;",
+    "out": " 0 5"
+  },
+  "records-8": {
+    "tpl": "procedure Main is\n{{CODE}}\nend Main;",
+    "out": "Rex 4"
+  },
+  "records-10": {
+    "fix": "   P : Person := (\"Ada\", 36);",
+    "out": "Ada 36"
+  },
+  "records-11": {
+    "fix": "   P.X := 5;",
+    "out": " 5"
+  },
+  "records-12": {
+    "out": " 9"
+  }
+}

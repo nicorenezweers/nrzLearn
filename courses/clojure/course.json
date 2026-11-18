@@ -1,0 +1,1921 @@
+{
+  "course": "clojure",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Clojure!",
+      "chapter": "Basics",
+      "summary": "Write your first Clojure program, print text with println, calculate in prefix notation and join text with str.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A Clojure program is a list of expressions. An expression in parentheses is a **function call**: the first item is the function, the other items are its arguments. The function `println` prints its arguments and then ends the line. Text in double quotes, like `\"Hello, Clojure!\"`, is a **string**."
+        },
+        {
+          "type": "code",
+          "code": "(println \"Hello, Clojure!\")",
+          "output": "Hello, Clojure!"
+        },
+        {
+          "type": "text",
+          "md": "`println` accepts several arguments and puts a space between them. Numbers are written without quotes. Every `println` starts a new line."
+        },
+        {
+          "type": "code",
+          "code": "(println \"I am\" 30 \"years old\")\n(println \"Bye\")",
+          "output": "I am 30 years old\nBye"
+        },
+        {
+          "type": "heading",
+          "text": "Prefix notation"
+        },
+        {
+          "type": "text",
+          "md": "In mathematics you write `1 + 2`. In Clojure the operator comes first, like every other function: `(+ 1 2)`. This is called **prefix notation**. The functions `+` (add), `-` (subtract) and `*` (multiply) accept any number of arguments, so `(+ 1 2 3)` is `6`."
+        },
+        {
+          "type": "code",
+          "code": "(println (+ 1 2 3))\n(println (* 2 3 4))\n(println (- 10 4))",
+          "output": "6\n24\n6"
+        },
+        {
+          "type": "text",
+          "md": "You can put expressions inside other expressions. Clojure first calculates the inner ones. There are no precedence rules to remember: the parentheses show the order."
+        },
+        {
+          "type": "code",
+          "code": "(println (* 2 (+ 3 4)))\n(println (+ (* 2 3) 4))",
+          "output": "14\n10"
+        },
+        {
+          "type": "heading",
+          "text": "Joining text with str"
+        },
+        {
+          "type": "text",
+          "md": "The function `str` joins all its arguments into one string. Unlike `println`, it adds no spaces, so you write them yourself. Numbers become text, too."
+        },
+        {
+          "type": "code",
+          "code": "(println (str \"Hello\" \", \" \"Ada\" \"!\"))\n(println (str \"Score: \" (+ 40 2)))",
+          "output": "Hello, Ada!\nScore: 42"
+        },
+        {
+          "type": "warning",
+          "md": "Every opening parenthesis `(` needs a closing one `)`. A missing `)` is the most common error for beginners, so count them when your program does not run."
+        }
+      ],
+      "card": [
+        "`(println \"Hi\" 5)` prints `Hi 5` and a line break",
+        "`(f a b)`: the function comes first, then the arguments",
+        "`(+ 1 2 3)` is `6`, `(* 2 (+ 3 4))` is `14`",
+        "`(str \"a\" 1 \"b\")` is `\"a1b\"` (no spaces added)"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "hello-1",
+          "prompt": "What does this print?",
+          "code": "(println (+ 2 3 4))",
+          "answers": [
+            "9"
+          ],
+          "explain": "`+` adds all its arguments: 2 + 3 + 4 is 9."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "(println (* 3 (- 7 2)))",
+          "answers": [
+            "15"
+          ],
+          "explain": "The inner expression comes first: `(- 7 2)` is 5. Then `(* 3 5)` is 15."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "(println (str \"abc\" 1 2))",
+          "answers": [
+            "abc12"
+          ],
+          "explain": "`str` joins all arguments into one string without spaces."
+        },
+        {
+          "type": "choice",
+          "id": "hello-4",
+          "prompt": "How do you write 5 + 3 in Clojure?",
+          "options": [
+            "`(+ 5 3)`",
+            "`(5 + 3)`",
+            "`+(5 3)`",
+            "`(5 3 +)`"
+          ],
+          "answer": 0,
+          "explain": "The function always comes first inside the parentheses, and `+` is a function."
+        },
+        {
+          "type": "choice",
+          "id": "hello-5",
+          "prompt": "What does this print?",
+          "code": "(println \"a\" \"b\")\n(println \"c\")",
+          "options": [
+            "`a b` and `c` on two lines",
+            "`abc` on one line",
+            "`a`, `b` and `c` on three lines",
+            "`ab` and `c` on two lines"
+          ],
+          "answer": 0,
+          "explain": "`println` puts a space between its arguments and ends the line. The second `println` starts a new line."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-6",
+          "statement": "This code prints `Hello Ada`.",
+          "code": "(println (str \"Hello\" \"Ada\"))",
+          "answer": false,
+          "explain": "`str` adds no spaces. The code prints `HelloAda`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-7",
+          "prompt": "Complete the code so it prints 10.",
+          "code": "(println (___ 2 5))",
+          "options": [
+            "*",
+            "+",
+            "-",
+            "str"
+          ],
+          "answer": 0,
+          "explain": "`(* 2 5)` multiplies and gives 10. `+` would give 7 and `str` would give `25`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-8",
+          "prompt": "Complete the code so it prints `Hi, Bo`.",
+          "code": "(println (___ \"Hi, \" \"Bo\"))",
+          "options": [
+            "str",
+            "+",
+            "println"
+          ],
+          "answer": 0,
+          "explain": "`str` joins the two strings. `+` only works with numbers."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-9",
+          "prompt": "Build a line that prints the result of 4 times 5.",
+          "tokens": [
+            "(println",
+            "(*",
+            "4",
+            "5))"
+          ],
+          "distractors": [
+            "(x",
+            "(times"
+          ],
+          "explain": "`(* 4 5)` multiplies, and `println` prints the result. The function always comes first."
+        },
+        {
+          "type": "order",
+          "id": "hello-10",
+          "prompt": "Put the lines in order so the program prints `Start`, `6` and `End`.",
+          "lines": [
+            "(println \"Start\")",
+            "(println",
+            "  (* 2 (+ 1 2)))",
+            "(println \"End\")"
+          ],
+          "explain": "Every `println` prints one line. The calculation `(* 2 (+ 1 2))` is the argument of the second `println`."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`(+ 1 2)`",
+              "adds numbers"
+            ],
+            [
+              "`(- 5 1)`",
+              "subtracts numbers"
+            ],
+            [
+              "`(* 2 3)`",
+              "multiplies numbers"
+            ],
+            [
+              "`(str \"a\" \"b\")`",
+              "joins values into one string"
+            ],
+            [
+              "`(println x)`",
+              "prints x and a line break"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(println \"Start\")",
+            "(println (+ 2 3)",
+            "(println \"End\")"
+          ],
+          "bug": 1,
+          "explain": "A closing parenthesis is missing. The line must be `(println (+ 2 3))`."
+        }
+      ]
+    },
+    {
+      "id": "values",
+      "title": "Values",
+      "chapter": "Basics",
+      "summary": "Get to know numbers, ratios, strings, keywords, booleans and nil, and give values a name with def.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Whole numbers like `42` are **integers**. Numbers with a decimal point, like `3.5`, are **decimal numbers**. When a decimal number takes part in a calculation, the result is a decimal number, too."
+        },
+        {
+          "type": "code",
+          "code": "(println (+ 2 3.5))\n(println (* 1.5 2))",
+          "output": "5.5\n3.0"
+        },
+        {
+          "type": "text",
+          "md": "When you divide two integers with `/` and the result is not whole, Clojure gives a **ratio**: an exact fraction like `7/2`. Nothing is rounded. If you want a decimal result, use a decimal number. `quot` gives the whole part of a division and `mod` gives the rest."
+        },
+        {
+          "type": "code",
+          "code": "(println (/ 7 2))\n(println (/ 8 2))\n(println (/ 7.0 2))\n(println (quot 7 2))\n(println (mod 7 2))",
+          "output": "7/2\n4\n3.5\n3\n1"
+        },
+        {
+          "type": "heading",
+          "text": "Names with def"
+        },
+        {
+          "type": "text",
+          "md": "`def` gives a value a name. After `(def age 30)`, the name `age` stands for `30`. Names can contain a dash, like `first-name`, and Clojure programmers write them this way."
+        },
+        {
+          "type": "code",
+          "code": "(def price 4)\n(def amount 3)\n(def total (* price amount))\n(println \"Total:\" total)",
+          "output": "Total: 12"
+        },
+        {
+          "type": "heading",
+          "text": "Keywords, booleans and nil"
+        },
+        {
+          "type": "text",
+          "md": "A **keyword** is a name that starts with a colon, like `:red`. It stands for itself, and you use it as a label, for example for the keys of a map (you meet maps in a later unit). The **booleans** `true` and `false` are the answers to yes-or-no questions. `nil` means **no value**."
+        },
+        {
+          "type": "code",
+          "code": "(def color :red)\n(println color)\n(println true false nil)",
+          "output": ":red\ntrue false nil"
+        },
+        {
+          "type": "text",
+          "md": "`println` shows a string without quotes. `prn` shows every value the way you write it in code, so strings keep their quotes. This helps you see what a value really is. The function `count` gives the number of characters in a string."
+        },
+        {
+          "type": "code",
+          "code": "(println \"apple\" :apple)\n(prn \"apple\" :apple)\n(println (count \"apple\"))",
+          "output": "apple :apple\n\"apple\" :apple\n5"
+        },
+        {
+          "type": "tip",
+          "md": "Functions whose names end with `?` answer a yes-or-no question with `true` or `false`. For example, `(string? \"hi\")` and `(nil? nil)` are both `true`, and `(number? \"5\")` is `false`."
+        }
+      ],
+      "card": [
+        "`42` integer, `3.5` decimal, `7/2` ratio",
+        "`(/ 7 2)` is `7/2`, `(quot 7 2)` is `3`, `(mod 7 2)` is `1`",
+        "`(def total 12)` gives a value a name",
+        "`:red` keyword, `true`/`false` booleans, `nil` no value",
+        "`(prn \"a\")` prints `\"a\"` with quotes"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "values-1",
+          "prompt": "What does this print?",
+          "code": "(println (/ 9 3))",
+          "answers": [
+            "3"
+          ],
+          "explain": "9 divided by 3 is exactly 3, so the result is a whole number."
+        },
+        {
+          "type": "input",
+          "id": "values-2",
+          "prompt": "What does this print?",
+          "code": "(println (/ 6 4))",
+          "answers": [
+            "3/2"
+          ],
+          "explain": "6 divided by 4 is not whole, so Clojure gives the ratio `6/4`, shortened to `3/2`."
+        },
+        {
+          "type": "input",
+          "id": "values-3",
+          "prompt": "What does this print?",
+          "code": "(println (mod 17 5))",
+          "answers": [
+            "2"
+          ],
+          "explain": "17 divided by 5 is 3 with a rest of 2. `mod` gives the rest."
+        },
+        {
+          "type": "choice",
+          "id": "values-4",
+          "prompt": "What does this print?",
+          "code": "(def a 5)\n(def b (* a 2))\n(println (+ a b))",
+          "options": [
+            "`15`",
+            "`10`",
+            "`25`",
+            "`7`"
+          ],
+          "answer": 0,
+          "explain": "`b` is 5 times 2, so 10. Then `(+ a b)` is 5 + 10, which is 15."
+        },
+        {
+          "type": "choice",
+          "id": "values-5",
+          "prompt": "Which of these is a keyword?",
+          "options": [
+            "`:size`",
+            "`\"size\"`",
+            "`size`",
+            "`size:`"
+          ],
+          "answer": 0,
+          "explain": "A keyword starts with a colon. `\"size\"` is a string and `size` is a name."
+        },
+        {
+          "type": "true_false",
+          "id": "values-6",
+          "statement": "This code prints `\"pear\"` with the quotes.",
+          "code": "(prn \"pear\")",
+          "answer": true,
+          "explain": "`prn` shows strings the way you write them in code, with quotes. `println` would print `pear`."
+        },
+        {
+          "type": "gap",
+          "id": "values-7",
+          "prompt": "Complete the code so it prints `2.5`.",
+          "code": "(println (/ ___ 2))",
+          "options": [
+            "5.0",
+            "5",
+            "10",
+            "2.5"
+          ],
+          "answer": 0,
+          "explain": "With a decimal number the result is a decimal number: `2.5`. `(/ 5 2)` would give the ratio `5/2`."
+        },
+        {
+          "type": "gap",
+          "id": "values-8",
+          "prompt": "Complete the code so it prints `Total: 5`.",
+          "code": "(def total (+ 2 3))\n(println \"Total:\" ___)",
+          "options": [
+            "total",
+            "\"total\"",
+            ":total",
+            "(total)"
+          ],
+          "answer": 0,
+          "explain": "The name `total` stands for 5. `\"total\"` is a string and `:total` is a keyword. `(total)` tries to call 5 as a function."
+        },
+        {
+          "type": "blocks",
+          "id": "values-9",
+          "prompt": "Build a line that gives the name `city` the value `\"Rome\"`.",
+          "tokens": [
+            "(def",
+            "city",
+            "\"Rome\")"
+          ],
+          "distractors": [
+            "=",
+            "(set"
+          ],
+          "explain": "`def` is followed by the name and then the value. Clojure needs no `=`."
+        },
+        {
+          "type": "order",
+          "id": "values-10",
+          "prompt": "Put the lines in order so the program prints `Area: 12`.",
+          "lines": [
+            "(def width 4)",
+            "(def height (- width 1))",
+            "(def area (* width height))",
+            "(println \"Area:\" area)"
+          ],
+          "explain": "A name must exist before you use it: `height` needs `width`, and `area` needs both."
+        },
+        {
+          "type": "pairs",
+          "id": "values-11",
+          "prompt": "Match the value with its kind.",
+          "pairs": [
+            [
+              "`42`",
+              "an integer"
+            ],
+            [
+              "`3.5`",
+              "a decimal number"
+            ],
+            [
+              "`1/3`",
+              "a ratio"
+            ],
+            [
+              "`:id`",
+              "a keyword"
+            ],
+            [
+              "`nil`",
+              "no value"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "values-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(def city \"Oslo\")",
+            "(def people = 700000)",
+            "(println city people)"
+          ],
+          "bug": 1,
+          "explain": "`def` takes a name and a value, without `=`. The line must be `(def people 700000)`."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Write your own functions with defn and fn, use the short form #(...), and accept different numbers of arguments.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`defn` defines a function. After `defn` come the name, the **parameters** in square brackets and the body. A function returns the value of its last expression. Clojure has no `return` keyword."
+        },
+        {
+          "type": "code",
+          "code": "(defn square [x]\n  (* x x))\n\n(println (square 5))\n(println (square 12))",
+          "output": "25\n144"
+        },
+        {
+          "type": "text",
+          "md": "A function can have several parameters. You call your own functions the same way as the built-in ones."
+        },
+        {
+          "type": "code",
+          "code": "(defn greet [first-name city]\n  (str \"Hi \" first-name \" from \" city \"!\"))\n\n(println (greet \"Ada\" \"London\"))",
+          "output": "Hi Ada from London!"
+        },
+        {
+          "type": "text",
+          "md": "The body can contain several expressions. All of them run in order, but only the value of the last one is returned."
+        },
+        {
+          "type": "code",
+          "code": "(defn report [x]\n  (println \"Checking\" x)\n  (* x 10))\n\n(println (report 4))",
+          "output": "Checking 4\n40"
+        },
+        {
+          "type": "heading",
+          "text": "Functions without a name"
+        },
+        {
+          "type": "text",
+          "md": "`fn` creates a function without a name, an **anonymous function**. You can give it a name with `def` or call it directly. The short form `#(...)` is even shorter: inside it, `%` is the argument. With several arguments you write `%1`, `%2` and so on."
+        },
+        {
+          "type": "code",
+          "code": "(def twice (fn [x] (* 2 x)))\n(def add #(+ %1 %2))\n\n(println (twice 21))\n(println (add 3 4))\n(println ((fn [x] (+ x 1)) 9))",
+          "output": "42\n7\n10"
+        },
+        {
+          "type": "heading",
+          "text": "Several arities"
+        },
+        {
+          "type": "text",
+          "md": "The number of arguments a function takes is its **arity**. One function can have several arities. Each version gets its own parentheses with its parameters and body. One version can call another one, for example to fill in a default value."
+        },
+        {
+          "type": "code",
+          "code": "(defn hello\n  ([] (hello \"World\"))\n  ([who] (str \"Hello, \" who \"!\")))\n\n(println (hello))\n(println (hello \"Clojure\"))",
+          "output": "Hello, World!\nHello, Clojure!"
+        },
+        {
+          "type": "warning",
+          "md": "If you call a function with a number of arguments it does not accept, the program stops with an error that says `Wrong number of args`."
+        },
+        {
+          "type": "tip",
+          "md": "Function names use lowercase words joined with dashes, like `total-price`. Choose names that say what the function returns or does."
+        }
+      ],
+      "card": [
+        "`(defn square [x] (* x x))` defines a function",
+        "The last expression is the return value",
+        "`(fn [x] (* 2 x))` is a function without a name",
+        "`#(* 2 %)` is the short form, `%1 %2` for more arguments",
+        "`(defn f ([] ...) ([x] ...))` has two arities"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "(defn triple [n]\n  (* 3 n))\n\n(println (triple 7))",
+          "answers": [
+            "21"
+          ],
+          "explain": "`triple` multiplies its argument by 3, and 3 times 7 is 21."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print?",
+          "code": "(defn diff [a b]\n  (- a b))\n\n(println (diff 3 10))",
+          "answers": [
+            "-7"
+          ],
+          "explain": "The arguments go to the parameters in order: `a` is 3 and `b` is 10, so 3 - 10 is -7."
+        },
+        {
+          "type": "input",
+          "id": "functions-3",
+          "prompt": "What does this print?",
+          "code": "(def half #(/ % 2))\n\n(println (half 9))",
+          "answers": [
+            "9/2"
+          ],
+          "explain": "`%` is 9, and 9 divided by 2 is the ratio `9/2`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-4",
+          "prompt": "What does this print?",
+          "code": "(defn info [x]\n  (println \"x is\" x)\n  (+ x 1))\n\n(println (info 2))",
+          "options": [
+            "`x is 2` and then `3`",
+            "only `3`",
+            "only `x is 2`",
+            "`3` and then `x is 2`"
+          ],
+          "answer": 0,
+          "explain": "Calling `info` first prints `x is 2`. Then it returns 3, the value of its last expression, and the outer `println` prints it."
+        },
+        {
+          "type": "choice",
+          "id": "functions-5",
+          "prompt": "Which function does the same as `#(+ % 10)`?",
+          "options": [
+            "`(fn [x] (+ x 10))`",
+            "`(fn x (+ x 10))`",
+            "`(defn [x] (+ x 10))`",
+            "`(fn [x] + x 10)`"
+          ],
+          "answer": 0,
+          "explain": "`fn` needs its parameters in square brackets, and the call `(+ x 10)` needs its own parentheses. `defn` needs a name."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-6",
+          "statement": "This code prints `Hello, Ada!`.",
+          "code": "(defn greet\n  ([] \"Hello!\")\n  ([who] (str \"Hello, \" who \"!\")))\n\n(println (greet))",
+          "answer": false,
+          "explain": "`greet` is called without arguments, so the version with `[]` runs and returns `Hello!`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-7",
+          "prompt": "Complete the code so it prints 27.",
+          "code": "(___ cube [x]\n  (* x x x))\n\n(println (cube 3))",
+          "options": [
+            "defn",
+            "def",
+            "fn",
+            "function"
+          ],
+          "answer": 0,
+          "explain": "`defn` defines a named function. `def` only names a value, and `fn` creates a function without giving it a name you can use later."
+        },
+        {
+          "type": "gap",
+          "id": "functions-8",
+          "prompt": "Complete the code so it prints 15.",
+          "code": "(def add-five #(+ ___ 5))\n\n(println (add-five 10))",
+          "options": [
+            "%",
+            "x",
+            "$"
+          ],
+          "answer": 0,
+          "explain": "In the short form `#(...)`, the argument is called `%`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-9",
+          "prompt": "Build a function `add-two` that adds 2 to its argument.",
+          "tokens": [
+            "(defn",
+            "add-two",
+            "[n]",
+            "(+",
+            "n",
+            "2))"
+          ],
+          "distractors": [
+            "(n)",
+            "return"
+          ],
+          "explain": "`defn`, then the name, then the parameters in square brackets, then the body. The body's value is returned without `return`."
+        },
+        {
+          "type": "order",
+          "id": "functions-10",
+          "prompt": "Put the lines in order so the program prints `9 10`.",
+          "lines": [
+            "(defn area",
+            "  ([side] (area side side))",
+            "  ([width height] (* width height)))",
+            "(println (area 3) (area 2 5))"
+          ],
+          "explain": "The function needs both arities: with one argument it calls itself with two. The line with `)))` closes the whole `defn`, so it comes last in the function."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`defn`",
+              "defines a named function"
+            ],
+            [
+              "`fn`",
+              "creates a function without a name"
+            ],
+            [
+              "`[x y]`",
+              "the parameters"
+            ],
+            [
+              "`%`",
+              "the argument in `#(...)`"
+            ],
+            [
+              "`%2`",
+              "the second argument in `#(...)`"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "functions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(defn square (x)",
+            "  (* x x))",
+            "(println (square 4))",
+            "(println (square 5))"
+          ],
+          "bug": 0,
+          "explain": "Parameters go into square brackets: `(defn square [x]`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Compare values, choose between results with if, when and cond, and combine conditions with and, or and not.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Comparisons are functions, too. `=` checks if values are equal, `not=` checks if they are different, and `<`, `>`, `<=` and `>=` compare numbers. They return `true` or `false`. `(< 1 2 3)` checks if the numbers go up from left to right."
+        },
+        {
+          "type": "code",
+          "code": "(println (= 3 3))\n(println (< 5 2))\n(println (not= \"a\" \"b\"))\n(println (< 1 2 3))",
+          "output": "true\nfalse\ntrue\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "`if` takes three parts: a condition, the value when the condition is true, and the value when it is false. `if` is an expression, so it returns a value that you can print or use."
+        },
+        {
+          "type": "code",
+          "code": "(def temp 25)\n(println (if (> temp 20) \"warm\" \"cold\"))",
+          "output": "warm"
+        },
+        {
+          "type": "text",
+          "md": "Only `false` and `nil` count as false. Every other value counts as true, even `0` and the empty string `\"\"`."
+        },
+        {
+          "type": "code",
+          "code": "(println (if 0 \"yes\" \"no\"))\n(println (if nil \"yes\" \"no\"))",
+          "output": "yes\nno"
+        },
+        {
+          "type": "heading",
+          "text": "when and cond"
+        },
+        {
+          "type": "text",
+          "md": "`when` has only one branch, and it can contain several expressions. They all run when the condition is true. When the condition is false, nothing runs and `when` returns `nil`."
+        },
+        {
+          "type": "code",
+          "code": "(def stock 3)\n(when (< stock 5)\n  (println \"Low stock\")\n  (println \"Order more\"))",
+          "output": "Low stock\nOrder more"
+        },
+        {
+          "type": "text",
+          "md": "`cond` takes pairs of a test and a result. It returns the result of the first test that is true and ignores the rest. The keyword `:else` as the last test always counts as true, so it catches all other cases."
+        },
+        {
+          "type": "code",
+          "code": "(defn grade [score]\n  (cond\n    (>= score 90) \"A\"\n    (>= score 70) \"B\"\n    :else \"C\"))\n\n(println (grade 95) (grade 72) (grade 40))",
+          "output": "A B C"
+        },
+        {
+          "type": "text",
+          "md": "`and` is true when all its conditions are true. `or` is true when at least one is true. `not` turns `true` into `false` and `false` into `true`."
+        },
+        {
+          "type": "code",
+          "code": "(def age 20)\n(def member true)\n(println (and (>= age 18) member))\n(println (or (< age 12) (> age 65)))\n(println (not member))",
+          "output": "true\nfalse\nfalse"
+        },
+        {
+          "type": "tip",
+          "md": "In Clojure, `=` only compares. It never changes a value. You give names to values with `def`."
+        }
+      ],
+      "card": [
+        "`(= a b)`, `(not= a b)`, `(< a b)`, `(>= a b)`",
+        "`(if test \"yes\" \"no\")` returns one of two values",
+        "`(when test ...)` runs several expressions or returns `nil`",
+        "`(cond test1 r1 test2 r2 :else r3)`",
+        "Only `false` and `nil` count as false"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "(def x 7)\n(println (if (> x 10) \"big\" \"small\"))",
+          "answers": [
+            "small"
+          ],
+          "explain": "7 is not greater than 10, so `if` returns the third part, `small`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "(defn sign [n]\n  (cond\n    (< n 0) \"negative\"\n    (= n 0) \"zero\"\n    :else \"positive\"))\n\n(println (sign 0))",
+          "answers": [
+            "zero"
+          ],
+          "explain": "The first test `(< 0 0)` is false. The second test `(= 0 0)` is true, so `cond` returns `zero`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-3",
+          "prompt": "What does this print?",
+          "code": "(println (and (< 1 2) (> 1 2)))",
+          "answers": [
+            "false"
+          ],
+          "explain": "`(< 1 2)` is true but `(> 1 2)` is false. `and` needs all conditions to be true."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-4",
+          "prompt": "What does this print?",
+          "code": "(println (if \"\" \"yes\" \"no\"))",
+          "options": [
+            "`yes`",
+            "`no`",
+            "`nil`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "Only `false` and `nil` count as false. The empty string counts as true."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-5",
+          "prompt": "What does this print?",
+          "code": "(def n 15)\n(println (cond\n           (> n 20) \"high\"\n           (> n 10) \"medium\"\n           (> n 5) \"low\"\n           :else \"none\"))",
+          "options": [
+            "`medium`",
+            "`low`",
+            "`medium low`",
+            "`high`"
+          ],
+          "answer": 0,
+          "explain": "`cond` returns the result of the first true test. `(> 15 10)` is true, so the later tests are not checked."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-6",
+          "statement": "This code prints `true`.",
+          "code": "(println (= 2 2 2))",
+          "answer": true,
+          "explain": "`=` accepts more than two arguments and is true when all of them are equal."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Complete the code so it prints `adult adult child`.",
+          "code": "(defn check [age]\n  (if (___ age 18) \"adult\" \"child\"))\n\n(println (check 18) (check 30) (check 12))",
+          "options": [
+            ">=",
+            ">",
+            "=",
+            "<"
+          ],
+          "answer": 0,
+          "explain": "18 must count as adult, too, so you need \"greater than or equal\": `>=`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-8",
+          "prompt": "Complete the code so it prints `true`.",
+          "code": "(println (___ (> 3 1) (< 3 1)))",
+          "options": [
+            "or",
+            "and",
+            "not",
+            "="
+          ],
+          "answer": 0,
+          "explain": "`(> 3 1)` is true and `(< 3 1)` is false. `or` needs only one true condition."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-9",
+          "prompt": "Build an expression that gives `\"yes\"` when `n` is less than 0 and `\"no\"` otherwise.",
+          "tokens": [
+            "(if",
+            "(<",
+            "n",
+            "0)",
+            "\"yes\"",
+            "\"no\")"
+          ],
+          "distractors": [
+            "else",
+            "then"
+          ],
+          "explain": "`if` takes the condition, then the value for true, then the value for false. Clojure needs no `then` or `else`."
+        },
+        {
+          "type": "order",
+          "id": "conditions-10",
+          "prompt": "Put the lines in order so the program prints `Fizz FizzBuzz 7`.",
+          "lines": [
+            "(defn fizz [n]",
+            "  (cond",
+            "    (= 0 (mod n 15)) \"FizzBuzz\"",
+            "    (= 0 (mod n 3)) \"Fizz\"",
+            "    :else n))",
+            "(println (fizz 9) (fizz 30) (fizz 7))"
+          ],
+          "explain": "`cond` uses the first true test, so the test for 15 must come before the test for 3. `:else` comes last."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`(= a b)`",
+              "a is equal to b"
+            ],
+            [
+              "`(not= a b)`",
+              "a is not equal to b"
+            ],
+            [
+              "`(<= a b)`",
+              "a is less than or equal to b"
+            ],
+            [
+              "`(not x)`",
+              "turns true into false and false into true"
+            ],
+            [
+              "`:else`",
+              "the last test in `cond`, always true"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(def score 80)",
+            "(if (> score 50)",
+            "  (println \"pass\")",
+            "  (println \"well done\"))"
+          ],
+          "bug": 1,
+          "explain": "`if` takes exactly one expression for true and one for false. To run several expressions, use `(when (> score 50)`."
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "Collections",
+      "chapter": "Data",
+      "summary": "Keep many values in vectors, lists, maps and sets, and read and add elements with get, count and conj.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **vector** keeps values in order, written in square brackets: `[1 2 3]`. `count` gives the number of elements and `first` the first one. `get` gives the element at an index. The index starts at `0`, and an index that does not exist gives `nil`."
+        },
+        {
+          "type": "code",
+          "code": "(def fruits [\"apple\" \"pear\" \"plum\"])\n(println (count fruits))\n(println (first fruits))\n(println (get fruits 1))\n(println (get fruits 5))",
+          "output": "3\napple\npear\nnil"
+        },
+        {
+          "type": "text",
+          "md": "`conj` adds an element. For a vector it adds it at the end. Clojure collections never change: `conj` returns a new vector, and the old one stays the same. This is called **immutability**."
+        },
+        {
+          "type": "code",
+          "code": "(def nums [1 2 3])\n(def more (conj nums 4))\n(println more)\n(println nums)",
+          "output": "[1 2 3 4]\n[1 2 3]"
+        },
+        {
+          "type": "text",
+          "md": "A **list** is written in parentheses. But in code, parentheses mean a function call, so you put a quote `'` in front of a list of data: `'(1 2 3)`. `conj` adds to the front of a list."
+        },
+        {
+          "type": "code",
+          "code": "(def items '(2 3))\n(println (conj items 1))\n(println (first items))",
+          "output": "(1 2 3)\n2"
+        },
+        {
+          "type": "heading",
+          "text": "Maps"
+        },
+        {
+          "type": "text",
+          "md": "A **map** stores pairs of a key and a value in curly braces. The keys are often keywords. `get` looks up the value for a key, and a keyword can also look itself up: `(:age person)`. A missing key gives `nil`, or the default value you pass to `get` as third argument. Commas count as spaces, and Clojure prints them between the pairs."
+        },
+        {
+          "type": "code",
+          "code": "(def person {:name \"Ada\" :age 36})\n(println (get person :name))\n(println (:age person))\n(println (get person :city \"unknown\"))\n(prn person)",
+          "output": "Ada\n36\nunknown\n{:name \"Ada\", :age 36}"
+        },
+        {
+          "type": "heading",
+          "text": "Sets"
+        },
+        {
+          "type": "text",
+          "md": "A **set** contains every value at most once and is written `#{...}`. `contains?` checks if a value is in the set. Adding a value that is already there changes nothing."
+        },
+        {
+          "type": "code",
+          "code": "(def colors #{:red :green})\n(println (contains? colors :red))\n(println (contains? colors :blue))\n(println (count (conj colors :red)))\n(println (count (conj colors :blue)))",
+          "output": "true\nfalse\n2\n3"
+        },
+        {
+          "type": "warning",
+          "md": "Sets and large maps have no fixed order. Do not rely on the order in which their elements are printed."
+        }
+      ],
+      "card": [
+        "`[1 2 3]` vector, `'(1 2 3)` list",
+        "`{:name \"Ada\" :age 36}` map, `#{:a :b}` set",
+        "`(get v 0)`, `(get m :k)`, `(:k m)`, `(first v)`",
+        "`(count v)`, `(contains? s x)`",
+        "`(conj v 4)` returns a new collection"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "collections-1",
+          "prompt": "What does this print?",
+          "code": "(def v [10 20 30])\n(println (get v 2))",
+          "answers": [
+            "30"
+          ],
+          "explain": "The index starts at 0, so index 2 is the third element, 30."
+        },
+        {
+          "type": "input",
+          "id": "collections-2",
+          "prompt": "What does this print?",
+          "code": "(def scores {:ana 8 :ben 5})\n(println (:ben scores))",
+          "answers": [
+            "5"
+          ],
+          "explain": "The keyword `:ben` looks up its value in the map, which is 5."
+        },
+        {
+          "type": "choice",
+          "id": "collections-3",
+          "prompt": "What does this print?",
+          "code": "(println (conj '(1 2) 0))",
+          "options": [
+            "`(0 1 2)`",
+            "`(1 2 0)`",
+            "`[0 1 2]`",
+            "`(0)`"
+          ],
+          "answer": 0,
+          "explain": "`conj` adds to the front of a list. For a vector it would add at the end."
+        },
+        {
+          "type": "choice",
+          "id": "collections-4",
+          "prompt": "What does this print?",
+          "code": "(def s #{1 2 3})\n(println (count (conj s 2)))",
+          "options": [
+            "`3`",
+            "`4`",
+            "`2`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "A set contains every value at most once. 2 is already in it, so the set still has 3 elements."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-5",
+          "statement": "This code prints `[1 2 3 4]`.",
+          "code": "(def nums [1 2 3])\n(conj nums 4)\n(println nums)",
+          "answer": false,
+          "explain": "`conj` returns a new vector and does not change `nums`. The code prints `[1 2 3]`."
+        },
+        {
+          "type": "gap",
+          "id": "collections-6",
+          "prompt": "Complete the code so it prints `Bo`.",
+          "code": "(def user {:name \"Bo\" :age 7})\n(println (___ user :name))",
+          "options": [
+            "get",
+            "first",
+            "count",
+            "contains?"
+          ],
+          "answer": 0,
+          "explain": "`(get user :name)` looks up the value for the key `:name`. `contains?` would only print `true`."
+        },
+        {
+          "type": "gap",
+          "id": "collections-7",
+          "prompt": "Complete the code so it prints `[a b c]`.",
+          "code": "(def letters ___)\n(println (conj letters \"c\"))",
+          "options": [
+            "[\"a\" \"b\"]",
+            "'(\"a\" \"b\")",
+            "#{\"a\" \"b\"}"
+          ],
+          "answer": 0,
+          "explain": "Only a vector prints with square brackets, and `conj` adds to its end. A list would get `\"c\"` at the front."
+        },
+        {
+          "type": "blocks",
+          "id": "collections-8",
+          "prompt": "Build an expression that looks up `:price` in `item` and gives `0` when the key is missing.",
+          "tokens": [
+            "(get",
+            "item",
+            ":price",
+            "0)"
+          ],
+          "distractors": [
+            "(:price",
+            "nil)"
+          ],
+          "explain": "`get` takes the map, the key and, as third argument, a default value."
+        },
+        {
+          "type": "order",
+          "id": "collections-9",
+          "prompt": "Put the lines in order so the program prints `1 2`.",
+          "lines": [
+            "(def basket [\"milk\"])",
+            "(def bigger (conj basket \"bread\"))",
+            "(println (count basket) (count bigger))"
+          ],
+          "explain": "`basket` must exist before `conj` can use it. `conj` returns a new vector, so `basket` still has 1 element."
+        },
+        {
+          "type": "pairs",
+          "id": "collections-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`[1 2]`",
+              "a vector"
+            ],
+            [
+              "`'(1 2)`",
+              "a list"
+            ],
+            [
+              "`{:a 1}`",
+              "a map"
+            ],
+            [
+              "`#{1 2}`",
+              "a set"
+            ],
+            [
+              "`(count x)`",
+              "the number of elements"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "collections-11",
+          "prompt": "The program should print `3` and `pear`. Which line has the bug?",
+          "lines": [
+            "(def prices {:apple 2 :pear 3})",
+            "(def fruits [\"apple\" \"pear\"])",
+            "(println (get prices :pear))",
+            "(println (get fruits 2))"
+          ],
+          "bug": 3,
+          "explain": "The index starts at 0, so `\"pear\"` has index 1: `(println (get fruits 1))`. Index 2 does not exist and gives `nil`."
+        },
+        {
+          "type": "bug",
+          "id": "collections-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(def point {:x 3 :y})",
+            "(println (:x point))",
+            "(println (count point))"
+          ],
+          "bug": 0,
+          "explain": "Every key in a map needs a value, for example `(def point {:x 3 :y 4})`."
+        }
+      ]
+    },
+    {
+      "id": "sequences",
+      "title": "Sequences",
+      "chapter": "Data",
+      "summary": "Process collections step by step with map, filter and reduce, create numbers with range, and chain steps with ->>.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`range` creates numbers. `(range 5)` gives the numbers from `0` to `4`, and `(range 1 6)` the numbers from `1` to `5`: the end is not included. A third argument sets the step. The result is a **sequence**, which prints in parentheses like a list."
+        },
+        {
+          "type": "code",
+          "code": "(println (range 5))\n(println (range 1 6))\n(println (range 0 10 3))",
+          "output": "(0 1 2 3 4)\n(1 2 3 4 5)\n(0 3 6 9)"
+        },
+        {
+          "type": "text",
+          "md": "`map` calls a function on every element and returns a new sequence with the results. The function `inc` adds 1 to a number. You can pass any function to `map`: a built-in one, your own or a `#(...)`."
+        },
+        {
+          "type": "code",
+          "code": "(println (map inc [1 2 3]))\n(println (map #(* % %) [1 2 3 4]))\n(println (map count [\"a\" \"bb\" \"ccc\"]))",
+          "output": "(2 3 4)\n(1 4 9 16)\n(1 2 3)"
+        },
+        {
+          "type": "text",
+          "md": "`filter` keeps the elements for which the function returns true. The functions `even?` and `odd?` check if a number is even or odd."
+        },
+        {
+          "type": "code",
+          "code": "(println (filter even? (range 10)))\n(println (filter #(> % 3) [5 1 8 2]))",
+          "output": "(0 2 4 6 8)\n(5 8)"
+        },
+        {
+          "type": "text",
+          "md": "`reduce` combines all elements into one value with a function of two arguments. `(reduce + [1 2 3 4])` calculates `1 + 2`, then adds `3`, then `4`. You can also pass a start value before the collection."
+        },
+        {
+          "type": "code",
+          "code": "(println (reduce + [1 2 3 4]))\n(println (reduce * (range 1 6)))\n(println (reduce + 100 [1 2]))",
+          "output": "10\n120\n103"
+        },
+        {
+          "type": "text",
+          "md": "`take` gives the first elements of a sequence. `(range)` without arguments never ends, but that is no problem: Clojure sequences are **lazy**, which means an element is only calculated when it is needed."
+        },
+        {
+          "type": "code",
+          "code": "(println (take 3 [9 8 7 6]))\n(println (take 5 (range)))",
+          "output": "(9 8 7)\n(0 1 2 3 4)"
+        },
+        {
+          "type": "heading",
+          "text": "Chaining steps with ->>"
+        },
+        {
+          "type": "text",
+          "md": "Nested calls are read from the inside out. The macro `->>` lets you write the steps from top to bottom instead: it puts the result of each step as the **last** argument into the next step."
+        },
+        {
+          "type": "code",
+          "code": "(println\n  (->> (range 1 11)\n       (filter odd?)\n       (map #(* % %))\n       (reduce +)))",
+          "output": "165"
+        },
+        {
+          "type": "tip",
+          "md": "The example above does the same as `(reduce + (map #(* % %) (filter odd? (range 1 11))))`. With `->>` you can read the steps in the order they happen."
+        }
+      ],
+      "card": [
+        "`(range 1 4)` is `(1 2 3)`, `(take 2 xs)` the first 2",
+        "`(map inc [1 2])` is `(2 3)`",
+        "`(filter even? xs)` keeps the even numbers",
+        "`(reduce + [1 2 3])` is `6`",
+        "`(->> xs (filter odd?) (map inc))` chains steps"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "sequences-1",
+          "prompt": "What does this print?",
+          "code": "(println (map #(* 10 %) [1 2 3]))",
+          "answers": [
+            "(10 20 30)"
+          ],
+          "explain": "`map` multiplies every element by 10 and returns a sequence, printed in parentheses."
+        },
+        {
+          "type": "input",
+          "id": "sequences-2",
+          "prompt": "What does this print?",
+          "code": "(println (reduce + (range 5)))",
+          "answers": [
+            "10"
+          ],
+          "explain": "`(range 5)` is 0, 1, 2, 3 and 4. Their sum is 10."
+        },
+        {
+          "type": "choice",
+          "id": "sequences-3",
+          "prompt": "What does this print?",
+          "code": "(println (filter odd? [1 2 3 4 5]))",
+          "options": [
+            "`(1 3 5)`",
+            "`(2 4)`",
+            "`(true false true false true)`",
+            "`3`"
+          ],
+          "answer": 0,
+          "explain": "`filter` keeps the elements for which `odd?` is true. `map` would give the list of booleans."
+        },
+        {
+          "type": "choice",
+          "id": "sequences-4",
+          "prompt": "What does this print?",
+          "code": "(println (range 2 6))",
+          "options": [
+            "`(2 3 4 5)`",
+            "`(2 3 4 5 6)`",
+            "`(3 4 5 6)`",
+            "`(0 1 2 3 4 5)`"
+          ],
+          "answer": 0,
+          "explain": "`range` starts at the first number and stops before the second one."
+        },
+        {
+          "type": "true_false",
+          "id": "sequences-5",
+          "statement": "This code never ends, because `(range)` never ends.",
+          "code": "(println (take 3 (range)))",
+          "answer": false,
+          "explain": "Sequences are lazy. `take` asks only for 3 elements, so the code prints `(0 1 2)`."
+        },
+        {
+          "type": "gap",
+          "id": "sequences-6",
+          "prompt": "Complete the code so it prints `(3 5)`.",
+          "code": "(println (->> [1 2 3 4]\n              (___ even?)\n              (map inc)))",
+          "options": [
+            "filter",
+            "map",
+            "reduce",
+            "take"
+          ],
+          "answer": 0,
+          "explain": "`filter` keeps 2 and 4, and `map inc` turns them into 3 and 5."
+        },
+        {
+          "type": "gap",
+          "id": "sequences-7",
+          "prompt": "Complete the code so it prints 24.",
+          "code": "(println (reduce ___ [2 3 4]))",
+          "options": [
+            "*",
+            "+",
+            "-",
+            "inc"
+          ],
+          "answer": 0,
+          "explain": "2 times 3 times 4 is 24. With `+` the result would be 9."
+        },
+        {
+          "type": "blocks",
+          "id": "sequences-8",
+          "prompt": "Build an expression that gives the first 3 even numbers.",
+          "tokens": [
+            "(take",
+            "3",
+            "(filter",
+            "even?",
+            "(range)))"
+          ],
+          "distractors": [
+            "(map",
+            "odd?"
+          ],
+          "explain": "`filter` keeps the even numbers of the endless `(range)`, and `take` stops after 3 of them."
+        },
+        {
+          "type": "order",
+          "id": "sequences-9",
+          "prompt": "Put the lines in order so the program prints 24.",
+          "lines": [
+            "(println",
+            "  (->> (range 1 6)",
+            "       (map #(* 2 %))",
+            "       (filter #(> % 4))",
+            "       (reduce +)))"
+          ],
+          "explain": "First the numbers 1 to 5 are doubled to 2, 4, 6, 8 and 10. Then `filter` keeps 6, 8 and 10, and their sum is 24."
+        },
+        {
+          "type": "pairs",
+          "id": "sequences-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`(map f xs)`",
+              "calls f on every element"
+            ],
+            [
+              "`(filter f xs)`",
+              "keeps elements where f is true"
+            ],
+            [
+              "`(reduce f xs)`",
+              "combines all elements into one value"
+            ],
+            [
+              "`(take n xs)`",
+              "the first n elements"
+            ],
+            [
+              "`(range 3)`",
+              "the numbers 0, 1 and 2"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "sequences-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(defn square [x] (* x x))",
+            "(println (map square [1 2 3]))",
+            "(println (filter even [1 2 3 4]))",
+            "(println (reduce + [1 2 3]))"
+          ],
+          "bug": 2,
+          "explain": "The function is called `even?`, with a question mark: `(println (filter even? [1 2 3 4]))`."
+        },
+        {
+          "type": "bug",
+          "id": "sequences-12",
+          "prompt": "The program should print the sum of 1, 2, 3, 4 and 5. Which line has the bug?",
+          "lines": [
+            "(def nums (range 1 5))",
+            "(def total (reduce + nums))",
+            "(println total)"
+          ],
+          "bug": 0,
+          "explain": "The end of `range` is not included. To get 1 to 5 you need `(def nums (range 1 6))`."
+        }
+      ]
+    },
+    {
+      "id": "recursion",
+      "title": "Local names and recursion",
+      "chapter": "Functions",
+      "summary": "Give values local names with let, write functions that call themselves, and repeat steps with loop and recur.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`let` gives values names that exist only inside the `let`. First comes a vector with pairs of names and values, then the body. A later name can use the earlier ones. The `let` returns the value of its last expression."
+        },
+        {
+          "type": "code",
+          "code": "(defn price-with-tax [price]\n  (let [tax (* price 0.25)\n        total (+ price tax)]\n    (str \"Tax: \" tax \", total: \" total)))\n\n(println (price-with-tax 80))",
+          "output": "Tax: 20.0, total: 100.0"
+        },
+        {
+          "type": "text",
+          "md": "A name from `let` is not visible outside. Inside the `let`, it hides a name from `def` with the same name, but the `def` value does not change."
+        },
+        {
+          "type": "code",
+          "code": "(def x 1)\n(let [x 10\n      y (* x 2)]\n  (println x y))\n(println x)",
+          "output": "10 20\n1"
+        },
+        {
+          "type": "heading",
+          "text": "Recursion"
+        },
+        {
+          "type": "text",
+          "md": "A function can call itself. This is called **recursion**. It needs a **base case**, where it stops calling itself. The function `dec` subtracts 1 from a number. The **factorial** of 5 is 5 × 4 × 3 × 2 × 1."
+        },
+        {
+          "type": "code",
+          "code": "(defn factorial [n]\n  (if (<= n 1)\n    1\n    (* n (factorial (dec n)))))\n\n(println (factorial 5))",
+          "output": "120"
+        },
+        {
+          "type": "text",
+          "md": "Each call waits for the result of the next call. Every waiting call needs memory, so with many thousands of calls the program stops with a `StackOverflowError`."
+        },
+        {
+          "type": "heading",
+          "text": "loop and recur"
+        },
+        {
+          "type": "text",
+          "md": "`loop` sets starting values, like `let`. `recur` jumps back to the start of the `loop` with new values. It needs no extra memory, so it can repeat millions of times. `recur` must be the last step of the loop: nothing may run after it."
+        },
+        {
+          "type": "code",
+          "code": "(loop [i 1]\n  (when (<= i 3)\n    (println \"Round\" i)\n    (recur (inc i))))",
+          "output": "Round 1\nRound 2\nRound 3"
+        },
+        {
+          "type": "text",
+          "md": "A loop often carries a result along, like `total` here. When the loop stops calling `recur`, it returns the value of its last expression."
+        },
+        {
+          "type": "code",
+          "code": "(defn sum-to [n]\n  (loop [i 1\n         total 0]\n    (if (> i n)\n      total\n      (recur (inc i) (+ total i)))))\n\n(println (sum-to 100))",
+          "output": "5050"
+        },
+        {
+          "type": "tip",
+          "md": "`recur` also works without `loop`: then it jumps back to the start of the function. In everyday code you often use `map`, `filter` and `reduce` instead of writing loops yourself."
+        }
+      ],
+      "card": [
+        "`(let [a 1 b (+ a 1)] (* a b))` local names",
+        "Recursion: a function calls itself and needs a base case",
+        "`(loop [i 0] ... (recur (inc i)))` repeats",
+        "`recur` must be the last step",
+        "`(inc n)` adds 1, `(dec n)` subtracts 1"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "recursion-1",
+          "prompt": "What does this print?",
+          "code": "(let [a 3\n      b (+ a 4)]\n  (println (* a b)))",
+          "answers": [
+            "21"
+          ],
+          "explain": "`a` is 3 and `b` is 3 + 4, so 7. Then 3 times 7 is 21."
+        },
+        {
+          "type": "input",
+          "id": "recursion-2",
+          "prompt": "What does this print?",
+          "code": "(defn sum-down [n]\n  (if (= n 0)\n    0\n    (+ n (sum-down (dec n)))))\n\n(println (sum-down 4))",
+          "answers": [
+            "10"
+          ],
+          "explain": "The calls add 4 + 3 + 2 + 1 + 0. The base case `(= n 0)` returns 0, and the sum is 10."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-3",
+          "prompt": "What does this print?",
+          "code": "(def x 5)\n(let [x 2]\n  (println (+ x 1)))\n(println x)",
+          "options": [
+            "`3` and then `5`",
+            "`6` and then `5`",
+            "`3` and then `2`",
+            "`6` and then `6`"
+          ],
+          "answer": 0,
+          "explain": "Inside the `let`, `x` is 2, so the first line is 3. Outside, `x` is still 5."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-4",
+          "prompt": "What does this print?",
+          "code": "(loop [i 0\n       acc []]\n  (if (= i 3)\n    (println acc)\n    (recur (inc i) (conj acc (* i i)))))",
+          "options": [
+            "`[0 1 4]`",
+            "`[1 4 9]`",
+            "`[0 1 4 9]`",
+            "`[]`"
+          ],
+          "answer": 0,
+          "explain": "The loop adds the squares of 0, 1 and 2. When `i` is 3, it prints the vector and stops."
+        },
+        {
+          "type": "true_false",
+          "id": "recursion-5",
+          "statement": "This code prints 10.",
+          "code": "(let [total 10])\n(println total)",
+          "answer": false,
+          "explain": "`total` exists only inside the `let`. The last line cannot use it, so the program stops with an error."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-6",
+          "prompt": "Complete the code so it prints 24.",
+          "code": "(defn factorial [n]\n  (if (<= n 1)\n    1\n    (* n (___ (dec n)))))\n\n(println (factorial 4))",
+          "options": [
+            "factorial",
+            "recur",
+            "n",
+            "loop"
+          ],
+          "answer": 0,
+          "explain": "The function calls itself. `recur` does not work here, because the multiplication still runs after the call."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-7",
+          "prompt": "Complete the code so it prints 5, 3 and 1.",
+          "code": "(loop [i 5]\n  (when (> i 0)\n    (println i)\n    (recur (___ i 2))))",
+          "options": [
+            "-",
+            "quot",
+            "inc",
+            "dec"
+          ],
+          "answer": 0,
+          "explain": "`(- i 2)` makes `i` smaller by 2 in each round: 5, 3, 1. Then `i` is -1 and the loop stops."
+        },
+        {
+          "type": "blocks",
+          "id": "recursion-8",
+          "prompt": "Build a `let` that names `a` 4 and `b` 5 and multiplies them.",
+          "tokens": [
+            "(let",
+            "[a 4",
+            "b 5]",
+            "(* a b))"
+          ],
+          "distractors": [
+            "(def",
+            "[a = 4"
+          ],
+          "explain": "The names and values go into one vector, without `=`. The body comes after the vector."
+        },
+        {
+          "type": "order",
+          "id": "recursion-9",
+          "prompt": "Put the lines in order so the program prints 32.",
+          "lines": [
+            "(defn power [base n]",
+            "  (loop [i 0",
+            "         result 1]",
+            "    (if (= i n)",
+            "      result",
+            "      (recur (inc i) (* result base)))))",
+            "(println (power 2 5))"
+          ],
+          "explain": "The loop starts with `i` 0 and `result` 1. Until `i` reaches `n`, `recur` multiplies the result by `base`. 2 to the power of 5 is 32."
+        },
+        {
+          "type": "pairs",
+          "id": "recursion-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`(let [x 1] ...)`",
+              "a local name x"
+            ],
+            [
+              "`(loop [i 0] ...)`",
+              "starting values for a loop"
+            ],
+            [
+              "`(recur ...)`",
+              "jumps back with new values"
+            ],
+            [
+              "`(inc n)`",
+              "n plus 1"
+            ],
+            [
+              "`(dec n)`",
+              "n minus 1"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "recursion-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(defn describe [n]",
+            "  (let (half (/ n 2))",
+            "    (str n \" / 2 = \" half)))",
+            "(println (describe 9))"
+          ],
+          "bug": 1,
+          "explain": "The names of a `let` go into a vector: `(let [half (/ n 2)]`."
+        },
+        {
+          "type": "bug",
+          "id": "recursion-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(defn factorial [n]",
+            "  (if (= n 1)",
+            "    1",
+            "    (* n (factorial n))))",
+            "(println (factorial 5))"
+          ],
+          "bug": 3,
+          "explain": "`n` never gets smaller, so the base case is never reached and the program stops with a `StackOverflowError`. Fix: `(factorial (dec n))`."
+        }
+      ]
+    },
+    {
+      "id": "maps",
+      "title": "Working with maps",
+      "chapter": "Data",
+      "summary": "Change maps with assoc, dissoc and update, read keys and values, chain steps with -> and take values out with destructuring.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`assoc` returns a new map with a key added or changed. `dissoc` returns a new map without a key. Like all Clojure collections, the original map never changes."
+        },
+        {
+          "type": "code",
+          "code": "(def book {:title \"Dune\" :year 1965})\n(prn (assoc book :pages 412))\n(prn (assoc book :year 1966))\n(prn (dissoc book :year))\n(prn book)",
+          "output": "{:title \"Dune\", :year 1965, :pages 412}\n{:title \"Dune\", :year 1966}\n{:title \"Dune\"}\n{:title \"Dune\", :year 1965}"
+        },
+        {
+          "type": "text",
+          "md": "`update` changes a value with a function. `(update m :k f)` calls `f` with the old value and stores the result. Extra arguments go to the function after the old value."
+        },
+        {
+          "type": "code",
+          "code": "(def player {:name \"Kim\" :score 10})\n(prn (update player :score inc))\n(prn (update player :score + 5))",
+          "output": "{:name \"Kim\", :score 11}\n{:name \"Kim\", :score 15}"
+        },
+        {
+          "type": "text",
+          "md": "`keys` gives all keys of a map and `vals` all values. Small maps keep the order in which you wrote them, but in general a map has no fixed order."
+        },
+        {
+          "type": "code",
+          "code": "(def stock {:apples 4 :pears 7 :plums 2})\n(println (keys stock))\n(println (vals stock))\n(println (reduce + (vals stock)))",
+          "output": "(:apples :pears :plums)\n(4 7 2)\n13"
+        },
+        {
+          "type": "heading",
+          "text": "Chaining steps with ->"
+        },
+        {
+          "type": "text",
+          "md": "The macro `->` works like `->>`, but it puts each result as the **first** argument into the next step. This fits maps well, because `assoc`, `dissoc` and `update` take the map as their first argument."
+        },
+        {
+          "type": "code",
+          "code": "(prn\n  (-> {:name \"Kim\"}\n      (assoc :score 0)\n      (update :score + 3)\n      (assoc :level 2)))",
+          "output": "{:name \"Kim\", :score 3, :level 2}"
+        },
+        {
+          "type": "heading",
+          "text": "Destructuring"
+        },
+        {
+          "type": "text",
+          "md": "**Destructuring** takes values out of a collection right where you name them, in a `let` or in the parameters of a function. A vector like `[x y]` takes elements by position. A map like `{:keys [city zip]}` takes the values of the keys `:city` and `:zip`."
+        },
+        {
+          "type": "code",
+          "code": "(let [[x y] [3 4]]\n  (println (+ x y)))\n\n(defn greet [{:keys [first-name city]}]\n  (str first-name \" lives in \" city))\n\n(println (greet {:first-name \"Ada\" :city \"London\"}))",
+          "output": "7\nAda lives in London"
+        },
+        {
+          "type": "tip",
+          "md": "A key that is missing from the map gives `nil` in destructuring. As a rule of thumb, use `->` for maps and `->>` for sequences."
+        }
+      ],
+      "card": [
+        "`(assoc m :k v)` adds or changes, `(dissoc m :k)` removes",
+        "`(update m :score inc)` changes a value with a function",
+        "`(keys m)` and `(vals m)`",
+        "`(-> m (assoc :a 1) (dissoc :b))` chains map steps",
+        "`(let [{:keys [a b]} m] ...)` and `[[x y] v]` destructure"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "maps-1",
+          "prompt": "What does this print?",
+          "code": "(def m {:a 1 :b 2})\n(println (:b (assoc m :b 5)))",
+          "answers": [
+            "5"
+          ],
+          "explain": "`assoc` returns a new map in which `:b` is 5."
+        },
+        {
+          "type": "input",
+          "id": "maps-2",
+          "prompt": "What does this print?",
+          "code": "(let [{:keys [w h]} {:w 4 :h 5}]\n  (println (* w h)))",
+          "answers": [
+            "20"
+          ],
+          "explain": "Destructuring takes 4 from `:w` and 5 from `:h`, and 4 times 5 is 20."
+        },
+        {
+          "type": "choice",
+          "id": "maps-3",
+          "prompt": "What does this print?",
+          "code": "(def user {:name \"Li\"})\n(assoc user :age 30)\n(prn user)",
+          "options": [
+            "`{:name \"Li\"}`",
+            "`{:name \"Li\", :age 30}`",
+            "`{:age 30}`",
+            "`nil`"
+          ],
+          "answer": 0,
+          "explain": "`assoc` returns a new map, but nobody uses it. `user` itself never changes."
+        },
+        {
+          "type": "choice",
+          "id": "maps-4",
+          "prompt": "What does this print?",
+          "code": "(prn (-> {:n 1}\n        (update :n inc)\n        (update :n * 10)))",
+          "options": [
+            "`{:n 20}`",
+            "`{:n 11}`",
+            "`{:n 2}`",
+            "`{:n 10}`"
+          ],
+          "answer": 0,
+          "explain": "The steps run from top to bottom: first `inc` makes 2, then `* 10` makes 20."
+        },
+        {
+          "type": "true_false",
+          "id": "maps-5",
+          "statement": "This code stops with an error, because the map has no key `:c`.",
+          "code": "(prn (dissoc {:a 1 :b 2} :c))",
+          "answer": false,
+          "explain": "Removing a key that does not exist is no error. `dissoc` returns the map unchanged: `{:a 1, :b 2}`."
+        },
+        {
+          "type": "gap",
+          "id": "maps-6",
+          "prompt": "Complete the code so it prints `{:owner \"Sam\", :balance 150}`.",
+          "code": "(def account {:owner \"Sam\" :balance 100})\n(prn (___ account :balance + 50))",
+          "options": [
+            "update",
+            "assoc",
+            "dissoc",
+            "get"
+          ],
+          "answer": 0,
+          "explain": "`update` calls `+` with the old balance and 50. `assoc` would need a key and a value, not a function."
+        },
+        {
+          "type": "gap",
+          "id": "maps-7",
+          "prompt": "Complete the code so it prints `Item: Lamp`.",
+          "code": "(defn label [{:keys [___]}]\n  (str \"Item: \" title))\n\n(println (label {:title \"Lamp\"}))",
+          "options": [
+            "title",
+            "\"title\"",
+            "[title]"
+          ],
+          "answer": 0,
+          "explain": "Inside `{:keys [...]}` you list the names you want. `title` gets the value of the key `:title`."
+        },
+        {
+          "type": "blocks",
+          "id": "maps-8",
+          "prompt": "Build an expression that adds the key `:color` with the value `\"red\"` to the map `m`.",
+          "tokens": [
+            "(assoc",
+            "m",
+            ":color",
+            "\"red\")"
+          ],
+          "distractors": [
+            "(dissoc",
+            "="
+          ],
+          "explain": "`assoc` takes the map first, then the key, then the value."
+        },
+        {
+          "type": "order",
+          "id": "maps-9",
+          "prompt": "Put the lines in order so the program prints `{:price 20}`.",
+          "lines": [
+            "(prn",
+            "  (-> {:name \"Box\"}",
+            "      (assoc :price 10)",
+            "      (update :price * 2)",
+            "      (dissoc :name)))"
+          ],
+          "explain": "`:price` must exist before `update` can double it. The line with `)))` closes everything, so it comes last."
+        },
+        {
+          "type": "pairs",
+          "id": "maps-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`(assoc m :k v)`",
+              "adds or changes a key"
+            ],
+            [
+              "`(dissoc m :k)`",
+              "removes a key"
+            ],
+            [
+              "`(update m :k f)`",
+              "changes a value with a function"
+            ],
+            [
+              "`(keys m)`",
+              "all keys"
+            ],
+            [
+              "`(vals m)`",
+              "all values"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "maps-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(def item {:name \"Pen\" :price 2})",
+            "(def updated (->> item (assoc :price 3)))",
+            "(println (:price updated))"
+          ],
+          "bug": 1,
+          "explain": "`->>` puts `item` last, but `assoc` needs the map first. Use `->`: `(def updated (-> item (assoc :price 3)))`."
+        },
+        {
+          "type": "bug",
+          "id": "maps-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(def point {:x 2 :y 7})",
+            "(let [{:keys x y} point]",
+            "  (println (+ x y)))"
+          ],
+          "bug": 1,
+          "explain": "The names after `:keys` go into a vector: `(let [{:keys [x y]} point]`."
+        }
+      ]
+    }
+  ]
+}

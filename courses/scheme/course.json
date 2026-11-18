@@ -1,0 +1,1771 @@
+{
+  "course": "scheme",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Scheme!",
+      "chapter": "Basics",
+      "summary": "Write your first Scheme program, print with display and newline, and calculate in prefix notation.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A Scheme program is a list of expressions. An expression in parentheses is a **procedure call**: the first item is the procedure, the other items are its arguments. The procedure `display` shows a value, and `newline` ends the line. Text in double quotes, like `\"Hello, Scheme!\"`, is a **string**."
+        },
+        {
+          "type": "code",
+          "code": "(display \"Hello, Scheme!\")\n(newline)",
+          "output": "Hello, Scheme!"
+        },
+        {
+          "type": "text",
+          "md": "`display` takes one value and does not start a new line. Several calls of `display` print on the same line. `(newline)` is a call without arguments, but it still needs its parentheses. Numbers are written without quotes."
+        },
+        {
+          "type": "code",
+          "code": "(display \"I am \")\n(display 30)\n(display \" years old\")\n(newline)\n(display \"Bye\")\n(newline)",
+          "output": "I am 30 years old\nBye"
+        },
+        {
+          "type": "heading",
+          "text": "Prefix notation"
+        },
+        {
+          "type": "text",
+          "md": "In mathematics you write `1 + 2`. In Scheme the operator comes first, like every other procedure: `(+ 1 2)`. This is called **prefix notation**. The procedures `+` (add), `-` (subtract) and `*` (multiply) accept several arguments: `(+ 1 2 3)` is `6`, and `(- 10 2 3)` is 10 − 2 − 3, so `5`."
+        },
+        {
+          "type": "code",
+          "code": "(display (+ 1 2 3))\n(newline)\n(display (* 2 3 4))\n(newline)\n(display (- 10 2 3))\n(newline)",
+          "output": "6\n24\n5"
+        },
+        {
+          "type": "text",
+          "md": "You can put expressions inside other expressions. Scheme first calculates the inner ones. There are no precedence rules to remember: the parentheses show the order."
+        },
+        {
+          "type": "code",
+          "code": "(display (* 2 (+ 3 4)))\n(newline)\n(display (+ (* 2 3) 4))\n(newline)",
+          "output": "14\n10"
+        },
+        {
+          "type": "warning",
+          "md": "Every opening parenthesis `(` needs a closing one `)`. Do not add extra parentheses either: `((+ 1 2))` is an error, because Scheme tries to call the result `3` as a procedure."
+        },
+        {
+          "type": "tip",
+          "md": "In a strict R7RS program, the first line imports the standard libraries, for example `(import (scheme base) (scheme write))`. Many Scheme systems load them for you, so the examples in this course leave this line out. If your Scheme says that `display` is unknown, add the line at the top."
+        }
+      ],
+      "card": [
+        "`(display \"Hi\")` prints `Hi` without a line break",
+        "`(newline)` ends the line",
+        "`(procedure argument ...)`: the procedure comes first",
+        "`(+ 1 2 3)` is `6`, `(* 2 (+ 3 4))` is `14`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "hello-1",
+          "prompt": "What does this print?",
+          "code": "(display (+ 2 3 4))\n(newline)",
+          "answers": [
+            "9"
+          ],
+          "explain": "`+` adds all its arguments: 2 + 3 + 4 is 9."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "(display (* 3 (- 7 2)))",
+          "answers": [
+            "15"
+          ],
+          "explain": "The inner expression comes first: `(- 7 2)` is 5. Then `(* 3 5)` is 15."
+        },
+        {
+          "type": "choice",
+          "id": "hello-3",
+          "prompt": "How do you write 5 + 3 in Scheme?",
+          "options": [
+            "`(+ 5 3)`",
+            "`(5 + 3)`",
+            "`+(5 3)`",
+            "`(5 3 +)`"
+          ],
+          "answer": 0,
+          "explain": "The procedure always comes first inside the parentheses, and `+` is a procedure."
+        },
+        {
+          "type": "choice",
+          "id": "hello-4",
+          "prompt": "What does this print?",
+          "code": "(display \"a\")\n(display \"b\")\n(newline)\n(display \"c\")\n(newline)",
+          "options": [
+            "`ab` and `c` on two lines",
+            "`a b` and `c` on two lines",
+            "`a`, `b` and `c` on three lines",
+            "`abc` on one line"
+          ],
+          "answer": 0,
+          "explain": "`display` adds no space and no line break. Only `(newline)` ends a line."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-5",
+          "statement": "This code prints `5`.",
+          "code": "(display (- 10 2 3))",
+          "answer": true,
+          "explain": "`-` subtracts every later argument from the first one: 10 − 2 − 3 is 5."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-6",
+          "statement": "`(display \"Hi\")` starts a new line after the text.",
+          "answer": false,
+          "explain": "`display` never ends the line. You need `(newline)` for that."
+        },
+        {
+          "type": "gap",
+          "id": "hello-7",
+          "prompt": "Complete the code so it prints 10.",
+          "code": "(display (___ 2 5))",
+          "options": [
+            "*",
+            "+",
+            "-",
+            "newline"
+          ],
+          "answer": 0,
+          "explain": "`(* 2 5)` multiplies and gives 10. `+` would give 7 and `-` would give -3."
+        },
+        {
+          "type": "gap",
+          "id": "hello-8",
+          "prompt": "Complete the code so it prints `Hi` and `Bo` on two lines.",
+          "code": "(display \"Hi\")\n(___)\n(display \"Bo\")\n(newline)",
+          "options": [
+            "newline",
+            "display",
+            "line"
+          ],
+          "answer": 0,
+          "explain": "`(newline)` ends the first line. `display` needs a value, and `line` does not exist."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-9",
+          "prompt": "Build a line that prints the result of 4 times 5.",
+          "tokens": [
+            "(display",
+            "(*",
+            "4",
+            "5))"
+          ],
+          "distractors": [
+            "(x",
+            "(times"
+          ],
+          "explain": "`(* 4 5)` multiplies, and `display` prints the result. The procedure always comes first."
+        },
+        {
+          "type": "order",
+          "id": "hello-10",
+          "prompt": "Put the lines in order so the program prints `Sum: 6`.",
+          "lines": [
+            "(display \"Sum: \")",
+            "(display",
+            "  (+ 1 2 3))",
+            "(newline)"
+          ],
+          "explain": "First the text, then the result of `(+ 1 2 3)`, then the end of the line. The calculation is the argument of the second `display`."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`(+ 1 2)`",
+              "adds numbers"
+            ],
+            [
+              "`(- 5 1)`",
+              "subtracts numbers"
+            ],
+            [
+              "`(* 2 3)`",
+              "multiplies numbers"
+            ],
+            [
+              "`(display x)`",
+              "shows x"
+            ],
+            [
+              "`(newline)`",
+              "ends the line"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(display \"Total: \")",
+            "(display (+ 2 3)",
+            "(newline)"
+          ],
+          "bug": 1,
+          "explain": "A closing parenthesis is missing. The line must be `(display (+ 2 3))`."
+        }
+      ]
+    },
+    {
+      "id": "values",
+      "title": "Values",
+      "chapter": "Basics",
+      "summary": "Work with exact and inexact numbers, strings, symbols and booleans, and give values a name with define.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Scheme keeps numbers **exact** when it can. Whole numbers and fractions are exact: `(/ 6 4)` gives the fraction `3/2`, not `1.5`. You can also write a fraction like `3/4` directly. A number with a decimal point, like `2.5`, is **inexact**, and a calculation with an inexact number gives an inexact result."
+        },
+        {
+          "type": "code",
+          "code": "(display (/ 6 4))\n(newline)\n(display (/ 6 3))\n(newline)\n(display 2.5)\n(newline)\n(display (/ 7 2.0))\n(newline)",
+          "output": "3/2\n2\n2.5\n3.5"
+        },
+        {
+          "type": "text",
+          "md": "`inexact` turns an exact number into a decimal number, and `exact` turns it back. For whole-number division, `quotient` gives the whole part and `remainder` gives what is left over."
+        },
+        {
+          "type": "code",
+          "code": "(display (inexact 3/4))\n(newline)\n(display (quotient 17 5))\n(newline)\n(display (remainder 17 5))\n(newline)",
+          "output": "0.75\n3\n2"
+        },
+        {
+          "type": "heading",
+          "text": "Strings, symbols and booleans"
+        },
+        {
+          "type": "text",
+          "md": "`display` shows a string without its quotes. `write` shows a value the way you write it in code, so a string keeps its quotes. A **symbol** is a name used as a value. You write it with a quote mark in front: `'apple`. The quote tells Scheme to use the name itself instead of looking up its value."
+        },
+        {
+          "type": "text",
+          "md": "The two **booleans** are `#t` (true) and `#f` (false). Comparisons give a boolean: `(< 2 3)` asks whether 2 is less than 3."
+        },
+        {
+          "type": "code",
+          "code": "(display \"pear\")\n(newline)\n(write \"pear\")\n(newline)\n(display 'apple)\n(newline)\n(display (< 2 3))\n(newline)",
+          "output": "pear\n\"pear\"\napple\n#t"
+        },
+        {
+          "type": "heading",
+          "text": "Naming values with define"
+        },
+        {
+          "type": "text",
+          "md": "`(define name value)` gives a value a name. After that, you use the name instead of the value. Names may contain letters, digits and signs like `-` and `?`, for example `item-price`."
+        },
+        {
+          "type": "code",
+          "code": "(define price 4)\n(define amount 3)\n(display (* price amount))\n(newline)",
+          "output": "12"
+        },
+        {
+          "type": "text",
+          "md": "`string-append` joins several strings into one. It only accepts strings, so `number->string` first turns a number into a string. The arrow `->` in the name means \"to\"."
+        },
+        {
+          "type": "code",
+          "code": "(define name \"Ada\")\n(define age 36)\n(display (string-append name \" is \" (number->string age)))\n(newline)",
+          "output": "Ada is 36"
+        },
+        {
+          "type": "warning",
+          "md": "Strings and numbers do not mix: `(+ \"1\" 2)` and `(string-append \"Age: \" 36)` are errors. Convert the number first with `number->string`."
+        }
+      ],
+      "card": [
+        "`(/ 6 4)` is the exact fraction `3/2`, `(/ 7 2.0)` is `3.5`",
+        "`(quotient 17 5)` is `3`, `(remainder 17 5)` is `2`",
+        "`\"text\"` string, `'apple` symbol, `#t` and `#f` booleans",
+        "`(define price 4)` gives the value `4` the name `price`",
+        "`(string-append \"a\" (number->string 1))` is `\"a1\"`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "values-1",
+          "prompt": "What does this print?",
+          "code": "(display (/ 10 4))",
+          "answers": [
+            "5/2"
+          ],
+          "explain": "Dividing two exact numbers gives an exact fraction: 10/4 is reduced to `5/2`."
+        },
+        {
+          "type": "input",
+          "id": "values-2",
+          "prompt": "What does this print?",
+          "code": "(display (remainder 23 4))",
+          "answers": [
+            "3"
+          ],
+          "explain": "23 is 5 times 4 plus 3, so the remainder is 3."
+        },
+        {
+          "type": "input",
+          "id": "values-3",
+          "prompt": "What does this print?",
+          "code": "(define a 5)\n(define b 7)\n(display (+ a b a))",
+          "answers": [
+            "17"
+          ],
+          "explain": "The names stand for their values: 5 + 7 + 5 is 17."
+        },
+        {
+          "type": "choice",
+          "id": "values-4",
+          "prompt": "What does this print?",
+          "code": "(write \"hi\")",
+          "options": [
+            "`\"hi\"`",
+            "`hi`",
+            "`'hi`",
+            "`(hi)`"
+          ],
+          "answer": 0,
+          "explain": "`write` shows a string the way you write it in code, with its double quotes."
+        },
+        {
+          "type": "choice",
+          "id": "values-5",
+          "prompt": "Which value is a symbol?",
+          "options": [
+            "`'apple`",
+            "`\"apple\"`",
+            "`#t`",
+            "`3/4`"
+          ],
+          "answer": 0,
+          "explain": "A quote mark in front of a name makes a symbol. `\"apple\"` is a string, `#t` a boolean and `3/4` a number."
+        },
+        {
+          "type": "true_false",
+          "id": "values-6",
+          "statement": "This code prints `0.5`.",
+          "code": "(display (/ 1 2))",
+          "answer": false,
+          "explain": "Both numbers are exact, so the result is the exact fraction `1/2`."
+        },
+        {
+          "type": "true_false",
+          "id": "values-7",
+          "statement": "This code prints `0.25`.",
+          "code": "(display (inexact 1/4))",
+          "answer": true,
+          "explain": "`inexact` turns the exact fraction `1/4` into the decimal number `0.25`."
+        },
+        {
+          "type": "gap",
+          "id": "values-8",
+          "prompt": "Complete the code so it prints `Total: 12`.",
+          "code": "(define total 12)\n(display (string-append \"Total: \" (___ total)))",
+          "options": [
+            "number->string",
+            "string->number",
+            "display",
+            "symbol->string"
+          ],
+          "answer": 0,
+          "explain": "`string-append` needs strings, and `number->string` turns the number 12 into the string `\"12\"`."
+        },
+        {
+          "type": "gap",
+          "id": "values-9",
+          "prompt": "Complete the code so it prints 3.",
+          "code": "(display (___ 17 5))",
+          "options": [
+            "quotient",
+            "remainder",
+            "/",
+            "*"
+          ],
+          "answer": 0,
+          "explain": "`quotient` gives the whole part of 17 divided by 5, which is 3. `remainder` would give 2 and `/` the fraction `17/5`."
+        },
+        {
+          "type": "blocks",
+          "id": "values-10",
+          "prompt": "Build a line that gives the value 8 the name `width`.",
+          "tokens": [
+            "(define",
+            "width",
+            "8)"
+          ],
+          "distractors": [
+            "=",
+            "(set"
+          ],
+          "explain": "`(define width 8)`: first `define`, then the name, then the value."
+        },
+        {
+          "type": "order",
+          "id": "values-11",
+          "prompt": "Put the lines in order so the program prints 12.",
+          "lines": [
+            "(define width 4)",
+            "(define height (- width 1))",
+            "(define area (* width height))",
+            "(display area)"
+          ],
+          "explain": "A name must be defined before it is used: `height` needs `width`, and `area` needs both."
+        },
+        {
+          "type": "bug",
+          "id": "values-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(define name \"Bo\")",
+            "(define age 7)",
+            "(display (string-append name \" is \" age))",
+            "(newline)"
+          ],
+          "bug": 2,
+          "explain": "`string-append` only accepts strings. Use `(number->string age)` instead of `age`."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Procedures",
+      "chapter": "Basics",
+      "summary": "Write your own procedures with define and lambda, and create local names with let and let*.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **procedure** is a piece of code with a name that you can call again and again. `(define (double x) (* 2 x))` defines the procedure `double` with one **parameter** `x`. The value of the last expression in the body is the result. Scheme has no `return` keyword."
+        },
+        {
+          "type": "code",
+          "code": "(define (double x)\n  (* 2 x))\n(display (double 21))\n(newline)\n(display (double (double 5)))\n(newline)",
+          "output": "42\n20"
+        },
+        {
+          "type": "text",
+          "md": "A procedure can have several parameters. Its body can also contain several expressions, for example `display` and `newline`. They run one after the other."
+        },
+        {
+          "type": "code",
+          "code": "(define (area width height)\n  (* width height))\n(define (greet name)\n  (display (string-append \"Hello, \" name \"!\"))\n  (newline))\n(display (area 3 4))\n(newline)\n(greet \"Ada\")",
+          "output": "12\nHello, Ada!"
+        },
+        {
+          "type": "heading",
+          "text": "Procedures without a name"
+        },
+        {
+          "type": "text",
+          "md": "`lambda` creates a procedure without a name: `(lambda (x) (* 3 x))` takes `x` and gives three times `x`. In fact, `(define (triple x) ...)` is a short way to write `(define triple (lambda (x) ...))`. You can also call a `lambda` directly."
+        },
+        {
+          "type": "code",
+          "code": "(define triple\n  (lambda (x) (* 3 x)))\n(display (triple 4))\n(newline)\n(display ((lambda (a b) (+ a b)) 2 3))\n(newline)",
+          "output": "12\n5"
+        },
+        {
+          "type": "heading",
+          "text": "Local names with let"
+        },
+        {
+          "type": "text",
+          "md": "`let` creates names that exist only inside its body: `(let ((name value) ...) body)`. Each `(name value)` pair is called a **binding**. Note the double parentheses around the list of bindings."
+        },
+        {
+          "type": "code",
+          "code": "(define (add-tax price)\n  (let ((tax (quotient price 10)))\n    (+ price tax)))\n(display (add-tax 50))\n(newline)\n(let ((a 3)\n      (b 4))\n  (display (+ (* a a) (* b b)))\n  (newline))",
+          "output": "55\n25"
+        },
+        {
+          "type": "text",
+          "md": "In a `let`, the bindings cannot see each other. `let*` creates them one after the other, so a later binding can use an earlier one."
+        },
+        {
+          "type": "code",
+          "code": "(let* ((x 5)\n       (y (* x 2)))\n  (display y)\n  (newline))",
+          "output": "10"
+        },
+        {
+          "type": "warning",
+          "md": "Parentheses around a name always mean a call. `double` is the procedure itself, `(double 4)` calls it. `(double)` is an error, because `double` needs one argument."
+        }
+      ],
+      "card": [
+        "`(define (double x) (* 2 x))` defines a procedure",
+        "The value of the last expression in the body is the result",
+        "`(lambda (x) (* 3 x))` is a procedure without a name",
+        "`(let ((a 1) (b 2)) (+ a b))` is `3`",
+        "`let*` lets later bindings use earlier ones"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "(define (add-ten x)\n  (+ x 10))\n(display (add-ten 5))",
+          "answers": [
+            "15"
+          ],
+          "explain": "`x` is 5 in this call, so the body gives 5 + 10."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print?",
+          "code": "(define (f a b)\n  (- a b))\n(display (f 3 10))",
+          "answers": [
+            "-7"
+          ],
+          "explain": "The arguments go to the parameters in order: `a` is 3 and `b` is 10, so 3 − 10 is -7."
+        },
+        {
+          "type": "input",
+          "id": "functions-3",
+          "prompt": "What does this print?",
+          "code": "(display ((lambda (x) (* x x x)) 3))",
+          "answers": [
+            "27"
+          ],
+          "explain": "The `lambda` is called directly with 3: 3 × 3 × 3 is 27."
+        },
+        {
+          "type": "choice",
+          "id": "functions-4",
+          "prompt": "Which line defines a procedure `inc` that adds 1 to its argument?",
+          "options": [
+            "`(define (inc x) (+ x 1))`",
+            "`(define inc x (+ x 1))`",
+            "`(define (inc) (+ x 1))`",
+            "`(inc (x) (+ x 1))`"
+          ],
+          "answer": 0,
+          "explain": "The name and the parameters go together in parentheses after `define`, then comes the body."
+        },
+        {
+          "type": "choice",
+          "id": "functions-5",
+          "prompt": "What does this print?",
+          "code": "(define (show x)\n  (display x)\n  (* x 2))\n(display (show 4))",
+          "options": [
+            "`48`",
+            "`4`",
+            "`8`",
+            "`4 8`"
+          ],
+          "answer": 0,
+          "explain": "Inside `show`, `(display x)` prints 4. The result of `show` is 8, which the outer `display` prints right after it."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-6",
+          "statement": "This code prints `6`.",
+          "code": "(let* ((a 2)\n       (b (* a 3)))\n  (display b))",
+          "answer": true,
+          "explain": "`let*` creates `a` first, so `b` can use it: 2 × 3 is 6."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-7",
+          "statement": "This code prints `6`.",
+          "code": "(let ((a 2)\n      (b (* a 3)))\n  (display b))",
+          "answer": false,
+          "explain": "In a `let`, the binding of `b` cannot see `a`, so this is an error. Use `let*` instead."
+        },
+        {
+          "type": "gap",
+          "id": "functions-8",
+          "prompt": "Complete the code so it prints 5.",
+          "code": "(define (half x)\n  (___ x 2))\n(display (half 10))",
+          "options": [
+            "/",
+            "*",
+            "+",
+            "-"
+          ],
+          "answer": 0,
+          "explain": "Half of a number is the number divided by 2: `(/ 10 2)` is 5."
+        },
+        {
+          "type": "gap",
+          "id": "functions-9",
+          "prompt": "Complete the code so it prints 8.",
+          "code": "(define cube\n  (___ (x) (* x x x)))\n(display (cube 2))",
+          "options": [
+            "lambda",
+            "define",
+            "let",
+            "procedure"
+          ],
+          "answer": 0,
+          "explain": "`lambda` creates the procedure, and `define` gives it the name `cube`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-10",
+          "prompt": "Build the first line of a procedure `area` with the parameters `w` and `h`.",
+          "tokens": [
+            "(define",
+            "(area",
+            "w",
+            "h)"
+          ],
+          "distractors": [
+            "area(w",
+            "(lambda"
+          ],
+          "explain": "The name and the parameters go together in parentheses: `(define (area w h)`."
+        },
+        {
+          "type": "order",
+          "id": "functions-11",
+          "prompt": "Put the lines in order so the program prints 77.",
+          "lines": [
+            "(define (add-tax price)",
+            "  (let ((tax (quotient price 10)))",
+            "    (+ price tax)))",
+            "(display (add-tax 70))"
+          ],
+          "explain": "The `let` creates `tax` before its body `(+ price tax)` uses it, and the procedure must be defined before it is called."
+        },
+        {
+          "type": "bug",
+          "id": "functions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(define (greet name)",
+            "  (display (string-append \"Hi, \" name))",
+            "  (newline))",
+            "(greet)"
+          ],
+          "bug": 3,
+          "explain": "`greet` has one parameter, so the call needs one argument, for example `(greet \"Ana\")`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Compare values, use predicates like zero?, and choose with if, cond and case, and, or and not.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Comparisons give a boolean: `=` (equal numbers), `<`, `>`, `<=` and `>=`. A **predicate** is a procedure that answers a yes-or-no question. Its name usually ends with `?`, for example `zero?`, `even?`, `odd?`, `positive?` and `negative?`."
+        },
+        {
+          "type": "code",
+          "code": "(display (= 3 3))\n(newline)\n(display (> 2 5))\n(newline)\n(display (even? 10))\n(newline)\n(display (zero? 4))\n(newline)",
+          "output": "#t\n#f\n#t\n#f"
+        },
+        {
+          "type": "heading",
+          "text": "Choosing with if"
+        },
+        {
+          "type": "text",
+          "md": "`(if test then else)` checks the test. If it is true, the result is the `then` part, otherwise the `else` part. In Scheme only `#f` is false. Every other value counts as true, even `0` and the empty string `\"\"`."
+        },
+        {
+          "type": "code",
+          "code": "(define (describe n)\n  (if (even? n)\n      \"even\"\n      \"odd\"))\n(display (describe 7))\n(newline)\n(display (if 0 \"yes\" \"no\"))\n(newline)",
+          "output": "odd\nyes"
+        },
+        {
+          "type": "heading",
+          "text": "Many cases with cond"
+        },
+        {
+          "type": "text",
+          "md": "`cond` handles several cases. Each clause is `(test result)`. Scheme checks the tests from top to bottom, and the first true test wins. The last clause can start with `else`: it catches everything else."
+        },
+        {
+          "type": "code",
+          "code": "(define (grade points)\n  (cond ((>= points 90) \"A\")\n        ((>= points 70) \"B\")\n        ((>= points 50) \"C\")\n        (else \"F\")))\n(display (grade 75))\n(newline)\n(display (grade 30))\n(newline)",
+          "output": "B\nF"
+        },
+        {
+          "type": "text",
+          "md": "`case` compares one value with lists of constants, such as numbers or symbols. The first list that contains the value wins."
+        },
+        {
+          "type": "code",
+          "code": "(define (day-type day)\n  (case day\n    ((sat sun) 'weekend)\n    ((mon tue wed thu fri) 'workday)\n    (else 'unknown)))\n(display (day-type 'sun))\n(newline)\n(display (day-type 'tue))\n(newline)",
+          "output": "weekend\nworkday"
+        },
+        {
+          "type": "heading",
+          "text": "and, or and not"
+        },
+        {
+          "type": "text",
+          "md": "`(and a b)` is true when all its arguments are true. `(or a b)` is true when at least one is true. `(not a)` turns `#t` into `#f` and the other way round. `and` and `or` stop as soon as the answer is known."
+        },
+        {
+          "type": "code",
+          "code": "(define (teen? age)\n  (and (>= age 13) (<= age 19)))\n(display (teen? 15))\n(newline)\n(display (or (zero? 1) (odd? 1)))\n(newline)\n(display (not (teen? 25)))\n(newline)",
+          "output": "#t\n#t\n#t"
+        },
+        {
+          "type": "tip",
+          "md": "`=` only compares numbers. To compare strings or other values, use `equal?`: `(equal? \"cat\" \"cat\")` is `#t`."
+        }
+      ],
+      "card": [
+        "`(if test then else)`; only `#f` counts as false",
+        "`(cond (test1 r1) (test2 r2) (else r3))`: the first true test wins",
+        "`(case x ((1 2) 'small) (else 'big))` compares with constants",
+        "`(and a b)`, `(or a b)`, `(not a)`",
+        "Predicates end with `?`: `zero?`, `even?`, `equal?`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "(display (if (> 3 5) \"big\" \"small\"))",
+          "answers": [
+            "small"
+          ],
+          "explain": "3 is not greater than 5, so the test is `#f` and `if` gives the `else` part."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "(define x 0)\n(display (cond ((> x 0) \"positive\")\n               ((< x 0) \"negative\")\n               (else \"zero\")))",
+          "answers": [
+            "zero"
+          ],
+          "explain": "Both tests are false for 0, so the `else` clause gives `\"zero\"`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-3",
+          "prompt": "What does this print?",
+          "code": "(display (and (odd? 3) (> 3 5)))",
+          "answers": [
+            "#f",
+            "#false"
+          ],
+          "explain": "`(odd? 3)` is true, but `(> 3 5)` is false. `and` needs all arguments to be true."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-4",
+          "prompt": "What does this print?",
+          "code": "(display (if \"\" 'a 'b))",
+          "options": [
+            "`a`",
+            "`b`",
+            "`#f`",
+            "an error"
+          ],
+          "answer": 0,
+          "explain": "Only `#f` is false in Scheme. The empty string counts as true, so `if` gives `'a`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-5",
+          "prompt": "What does this print?",
+          "code": "(define (size n)\n  (case n\n    ((1 2 3) 'small)\n    ((4 5 6) 'medium)\n    (else 'large)))\n(display (size 5))",
+          "options": [
+            "`medium`",
+            "`small`",
+            "`large`",
+            "`5`"
+          ],
+          "answer": 0,
+          "explain": "5 is in the list `(4 5 6)`, so `case` gives the symbol `medium`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-6",
+          "statement": "This code prints `A`.",
+          "code": "(define p 95)\n(display (cond ((>= p 50) \"C\")\n               ((>= p 70) \"B\")\n               ((>= p 90) \"A\")\n               (else \"F\")))",
+          "answer": false,
+          "explain": "The first true test wins. `(>= p 50)` is already true, so the code prints `C`. Put the largest limit first."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-7",
+          "statement": "In Scheme, `0` counts as false in an `if`.",
+          "answer": false,
+          "explain": "Only `#f` is false. `0` is a normal value and counts as true."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-8",
+          "prompt": "Complete the code so it prints `#t`.",
+          "code": "(display (___ (even? 7)))",
+          "options": [
+            "not",
+            "and",
+            "or",
+            "if"
+          ],
+          "answer": 0,
+          "explain": "`(even? 7)` is `#f`, and `not` turns it into `#t`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-9",
+          "prompt": "Complete the code so it prints `other`.",
+          "code": "(define (name n)\n  (cond ((= n 1) \"one\")\n        ((= n 2) \"two\")\n        (___ \"other\")))\n(display (name 7))",
+          "options": [
+            "else",
+            "#f",
+            "default",
+            "otherwise"
+          ],
+          "answer": 0,
+          "explain": "A clause that starts with `else` catches every case that no earlier test matched."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-10",
+          "prompt": "Build a line that prints `yes` when `n` is greater than 10 and `no` otherwise.",
+          "tokens": [
+            "(display",
+            "(if",
+            "(> n 10)",
+            "\"yes\"",
+            "\"no\"))"
+          ],
+          "distractors": [
+            "(< n 10)",
+            "(when"
+          ],
+          "explain": "`if` takes the test first, then the result for true, then the result for false."
+        },
+        {
+          "type": "order",
+          "id": "conditions-11",
+          "prompt": "Put the lines in order so the program prints `fizzbuzz`.",
+          "lines": [
+            "(define (fizz n)",
+            "  (cond ((= (remainder n 15) 0) 'fizzbuzz)",
+            "        ((= (remainder n 3) 0) 'fizz)",
+            "        (else n)))",
+            "(display (fizz 30))"
+          ],
+          "explain": "30 can be divided by 15 and by 3. The test for 15 must come first, because the first true test wins, and `else` is always last."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(define (check age)",
+            "  (if (=< age 17)",
+            "      \"child\"",
+            "      \"adult\"))",
+            "(display (check 20))"
+          ],
+          "bug": 1,
+          "explain": "Scheme has no `=<` procedure. \"Less than or equal\" is written `<=`: `(if (<= age 17)`."
+        }
+      ]
+    },
+    {
+      "id": "lists",
+      "title": "Lists",
+      "chapter": "Data",
+      "summary": "Build lists with list, cons and quote, take them apart with car and cdr, and use null?, length and append.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **list** holds values in order. `(list 1 2 3)` creates a list, and `display` shows it as `(1 2 3)`. You can also write a list with a quote mark: `'(1 2 3)`. Like with symbols, the quote tells Scheme to take the list as data instead of calling it. `length` counts the elements."
+        },
+        {
+          "type": "code",
+          "code": "(define nums (list 1 2 3))\n(display nums)\n(newline)\n(display '(a b c))\n(newline)\n(display (length nums))\n(newline)",
+          "output": "(1 2 3)\n(a b c)\n3"
+        },
+        {
+          "type": "heading",
+          "text": "car, cdr and cons"
+        },
+        {
+          "type": "text",
+          "md": "`car` gives the first element of a list. `cdr` gives the rest: the list without its first element. The names are historical. `cadr` is short for the `car` of the `cdr`, so it gives the second element."
+        },
+        {
+          "type": "code",
+          "code": "(define fruits '(apple pear plum))\n(display (car fruits))\n(newline)\n(display (cdr fruits))\n(newline)\n(display (cadr fruits))\n(newline)",
+          "output": "apple\n(pear plum)\npear"
+        },
+        {
+          "type": "text",
+          "md": "`cons` puts a new element in front of a list: `(cons 0 '(1 2))` is `(0 1 2)`. Every list ends with the **empty list** `'()`. The predicate `null?` checks whether a list is empty."
+        },
+        {
+          "type": "code",
+          "code": "(display (cons 0 '(1 2)))\n(newline)\n(display (cons 1 '()))\n(newline)\n(display (null? '()))\n(newline)\n(display (null? '(5)))\n(newline)",
+          "output": "(0 1 2)\n(1)\n#t\n#f"
+        },
+        {
+          "type": "heading",
+          "text": "More list procedures"
+        },
+        {
+          "type": "text",
+          "md": "`append` joins lists into one list. `reverse` gives the elements in the opposite order. `list-ref` gets the element at a position. Positions start at 0."
+        },
+        {
+          "type": "code",
+          "code": "(define a '(1 2))\n(define b '(3 4))\n(display (append a b))\n(newline)\n(display (reverse (append a b)))\n(newline)\n(display (list-ref '(10 20 30) 1))\n(newline)",
+          "output": "(1 2 3 4)\n(4 3 2 1)\n20"
+        },
+        {
+          "type": "warning",
+          "md": "`car` and `cdr` of the empty list are errors. Check with `null?` first when a list can be empty."
+        },
+        {
+          "type": "text",
+          "md": "When the second argument of `cons` is not a list, the result is a **pair**, not a list. Scheme shows a pair with a dot between its two parts. A list is a chain of pairs that ends with `'()`."
+        },
+        {
+          "type": "code",
+          "code": "(display (cons 1 2))\n(newline)",
+          "output": "(1 . 2)"
+        }
+      ],
+      "card": [
+        "`(list 1 2 3)` or `'(1 2 3)` creates a list",
+        "`(car l)` first element, `(cdr l)` the rest, `(cadr l)` the second",
+        "`(cons 0 '(1 2))` is `(0 1 2)`; `'()` is the empty list",
+        "`(null? l)`, `(length l)`, `(append a b)`, `(reverse l)`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "lists-1",
+          "prompt": "What does this print?",
+          "code": "(display (car (cdr '(4 5 6))))",
+          "answers": [
+            "5"
+          ],
+          "explain": "`(cdr '(4 5 6))` is `(5 6)`, and its `car` is 5."
+        },
+        {
+          "type": "input",
+          "id": "lists-2",
+          "prompt": "What does this print?",
+          "code": "(display (length (append '(1 2) '(3 4 5 6))))",
+          "answers": [
+            "6"
+          ],
+          "explain": "`append` joins the lists into `(1 2 3 4 5 6)`, which has 6 elements."
+        },
+        {
+          "type": "input",
+          "id": "lists-3",
+          "prompt": "What does this print?",
+          "code": "(display (cdr '(7)))",
+          "answers": [
+            "()"
+          ],
+          "explain": "The list has only one element. Without it, the empty list `()` is left."
+        },
+        {
+          "type": "choice",
+          "id": "lists-4",
+          "prompt": "What does this print?",
+          "code": "(display (list-ref '(a b c d) 2))",
+          "options": [
+            "`c`",
+            "`b`",
+            "`d`",
+            "`(c d)`"
+          ],
+          "answer": 0,
+          "explain": "Positions start at 0: `a` is 0, `b` is 1 and `c` is 2."
+        },
+        {
+          "type": "choice",
+          "id": "lists-5",
+          "prompt": "Which expression gives the list `(1 2 3)`?",
+          "options": [
+            "`(cons 1 '(2 3))`",
+            "`(cons '(1 2) 3)`",
+            "`(list '(1 2) 3)`",
+            "`(reverse '(1 2 3))`"
+          ],
+          "answer": 0,
+          "explain": "`cons` puts 1 in front of `(2 3)`. The other expressions give `((1 2) . 3)`, `((1 2) 3)` and `(3 2 1)`."
+        },
+        {
+          "type": "true_false",
+          "id": "lists-6",
+          "statement": "This code prints `2`.",
+          "code": "(display (cdr '(1 2 3)))",
+          "answer": false,
+          "explain": "`cdr` gives the rest of the list, which is the list `(2 3)`. The second element alone is `(cadr '(1 2 3))`."
+        },
+        {
+          "type": "true_false",
+          "id": "lists-7",
+          "statement": "This code prints `#t`.",
+          "code": "(display (null? (cdr '(9))))",
+          "answer": true,
+          "explain": "`(cdr '(9))` is the empty list, so `null?` gives `#t`."
+        },
+        {
+          "type": "gap",
+          "id": "lists-8",
+          "prompt": "Complete the code so it prints `(0 1 2)`.",
+          "code": "(display (___ 0 '(1 2)))",
+          "options": [
+            "cons",
+            "list",
+            "append",
+            "car"
+          ],
+          "answer": 0,
+          "explain": "`cons` puts 0 in front of the list. `list` would give `(0 (1 2))`."
+        },
+        {
+          "type": "gap",
+          "id": "lists-9",
+          "prompt": "Complete the code so it prints `pear`.",
+          "code": "(display (___ '(apple pear plum)))",
+          "options": [
+            "cadr",
+            "car",
+            "cdr",
+            "cddr"
+          ],
+          "answer": 0,
+          "explain": "`pear` is the second element, and `cadr` gives the second element."
+        },
+        {
+          "type": "blocks",
+          "id": "lists-10",
+          "prompt": "Build a line that prints the list `nums` in reverse order.",
+          "tokens": [
+            "(display",
+            "(reverse",
+            "nums))"
+          ],
+          "distractors": [
+            "(cdr",
+            "reverse(nums)"
+          ],
+          "explain": "`(reverse nums)` gives the reversed list, and `display` prints it."
+        },
+        {
+          "type": "pairs",
+          "id": "lists-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`(car l)`",
+              "the first element"
+            ],
+            [
+              "`(cdr l)`",
+              "the list without its first element"
+            ],
+            [
+              "`(cons x l)`",
+              "puts x in front of the list"
+            ],
+            [
+              "`(null? l)`",
+              "checks whether the list is empty"
+            ],
+            [
+              "`(length l)`",
+              "the number of elements"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "lists-12",
+          "prompt": "The program should print `red` and `blue`. Which line has the bug?",
+          "lines": [
+            "(define colors '(red green blue))",
+            "(display (car colors))",
+            "(newline)",
+            "(display (car (cdr (cdr (cdr colors)))))"
+          ],
+          "bug": 3,
+          "explain": "Three `cdr` calls leave the empty list, and `car` of the empty list is an error. Two are enough: `(car (cdr (cdr colors)))`."
+        }
+      ]
+    },
+    {
+      "id": "recursion",
+      "title": "Recursion",
+      "chapter": "Control flow",
+      "summary": "Repeat work with procedures that call themselves, walk through lists, and loop with tail calls and named let.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "In Scheme you usually repeat work with **recursion**: a procedure calls itself. Every recursive procedure needs a **base case** that stops the recursion, and a step that brings the problem closer to the base case."
+        },
+        {
+          "type": "code",
+          "code": "(define (factorial n)\n  (if (= n 0)\n      1\n      (* n (factorial (- n 1)))))\n(display (factorial 5))\n(newline)",
+          "output": "120"
+        },
+        {
+          "type": "text",
+          "md": "`(factorial 3)` is 3 × `(factorial 2)`, which is 3 × 2 × `(factorial 1)`, which is 3 × 2 × 1 × `(factorial 0)`. The base case `(factorial 0)` gives 1, so the result is 6."
+        },
+        {
+          "type": "heading",
+          "text": "Recursion over lists"
+        },
+        {
+          "type": "text",
+          "md": "Lists and recursion fit well together. The empty list is the base case. Otherwise you handle the `car` and let the recursion handle the `cdr`."
+        },
+        {
+          "type": "code",
+          "code": "(define (sum-list nums)\n  (if (null? nums)\n      0\n      (+ (car nums) (sum-list (cdr nums)))))\n(display (sum-list '(4 5 6)))\n(newline)",
+          "output": "15"
+        },
+        {
+          "type": "text",
+          "md": "To build a new list, `cons` the result for the first element onto the result for the rest. The base case gives the empty list."
+        },
+        {
+          "type": "code",
+          "code": "(define (double-all nums)\n  (if (null? nums)\n      '()\n      (cons (* 2 (car nums))\n            (double-all (cdr nums)))))\n(display (double-all '(1 2 3)))\n(newline)",
+          "output": "(2 4 6)"
+        },
+        {
+          "type": "heading",
+          "text": "Tail calls"
+        },
+        {
+          "type": "text",
+          "md": "In `factorial`, a multiplication is still waiting after the recursive call, so Scheme must remember every step. When a call is the very last thing a procedure does, it is a **tail call**. Scheme guarantees that tail calls need no extra memory, so they work like a loop. An extra parameter, often called an **accumulator**, collects the result on the way."
+        },
+        {
+          "type": "code",
+          "code": "(define (sum-to n total)\n  (if (= n 0)\n      total\n      (sum-to (- n 1) (+ total n))))\n(display (sum-to 100 0))\n(newline)",
+          "output": "5050"
+        },
+        {
+          "type": "text",
+          "md": "A **named let** gives a loop a name: `(let loop ((i 1)) ...)` creates a local procedure `loop` with the parameter `i`, which starts at 1. Calling `(loop (+ i 1))` runs the next round. `when` runs its body only if the test is true. Unlike `if`, it has no `else` part and can contain several expressions."
+        },
+        {
+          "type": "code",
+          "code": "(let loop ((i 1))\n  (when (<= i 3)\n    (display i)\n    (newline)\n    (loop (+ i 1))))",
+          "output": "1\n2\n3"
+        },
+        {
+          "type": "warning",
+          "md": "Without a base case, or with a step that does not bring the problem closer to it, the recursion never stops."
+        }
+      ],
+      "card": [
+        "A recursive procedure calls itself and needs a base case",
+        "Lists: `(if (null? l) base (... (car l) ... (cdr l)))`",
+        "A tail call is the last thing a procedure does and needs no extra memory",
+        "`(let loop ((i 0)) ... (loop (+ i 1)))` is a named let",
+        "`(when test expr ...)` runs the expressions only if the test is true"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "recursion-1",
+          "prompt": "What does this print?",
+          "code": "(define (count-down n)\n  (if (= n 0)\n      'go\n      (count-down (- n 1))))\n(display (count-down 3))",
+          "answers": [
+            "go"
+          ],
+          "explain": "The calls go 3, 2, 1, 0. At 0 the base case gives the symbol `go`."
+        },
+        {
+          "type": "input",
+          "id": "recursion-2",
+          "prompt": "What does this print?",
+          "code": "(define (power b e)\n  (if (= e 0)\n      1\n      (* b (power b (- e 1)))))\n(display (power 2 5))",
+          "answers": [
+            "32"
+          ],
+          "explain": "`power` multiplies 2 five times: 2 × 2 × 2 × 2 × 2 × 1 is 32."
+        },
+        {
+          "type": "input",
+          "id": "recursion-3",
+          "prompt": "What does this print?",
+          "code": "(define (count-items l)\n  (if (null? l)\n      0\n      (+ 1 (count-items (cdr l)))))\n(display (count-items '(a b c d)))",
+          "answers": [
+            "4"
+          ],
+          "explain": "Every element adds 1, and the empty list gives 0: 1 + 1 + 1 + 1 + 0 is 4."
+        },
+        {
+          "type": "input",
+          "id": "recursion-4",
+          "prompt": "What does this print?",
+          "code": "(let loop ((i 0) (total 0))\n  (if (> i 4)\n      (display total)\n      (loop (+ i 1) (+ total i))))",
+          "answers": [
+            "10"
+          ],
+          "explain": "The loop adds `i` for 0, 1, 2, 3 and 4, which gives 10. Then `i` is 5 and the total is printed."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-5",
+          "prompt": "What is missing in this procedure?",
+          "code": "(define (sum-list l)\n  (+ (car l) (sum-list (cdr l))))",
+          "options": [
+            "a base case for the empty list",
+            "a call of `display`",
+            "a `lambda`",
+            "a second parameter"
+          ],
+          "answer": 0,
+          "explain": "Without a base case, the recursion reaches the empty list and calls `car` on it, which is an error. Add `(if (null? l) 0 ...)`."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-6",
+          "prompt": "In which expression is the recursive call a tail call?",
+          "options": [
+            "`(sum-to (- n 1) (+ total n))`",
+            "`(* n (factorial (- n 1)))`",
+            "`(+ 1 (count-items (cdr l)))`",
+            "`(cons (car l) (copy-list (cdr l)))`"
+          ],
+          "answer": 0,
+          "explain": "In the other expressions, `*`, `+` or `cons` still has work to do after the recursive call returns."
+        },
+        {
+          "type": "true_false",
+          "id": "recursion-7",
+          "statement": "This code prints `0`.",
+          "code": "(define (f n)\n  (if (= n 0)\n      0\n      (f (- n 1))))\n(display (f 10))",
+          "answer": true,
+          "explain": "`f` counts down from 10 to 0, and the base case gives 0."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-8",
+          "prompt": "Complete the base case so the code prints 6.",
+          "code": "(define (sum-list l)\n  (if (null? l)\n      ___\n      (+ (car l) (sum-list (cdr l)))))\n(display (sum-list '(1 2 3)))",
+          "options": [
+            "0",
+            "1",
+            "'()",
+            "l"
+          ],
+          "answer": 0,
+          "explain": "The sum of an empty list is 0. With 1 the result would be 7, and `'()` cannot be added to a number."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-9",
+          "prompt": "Complete the code so it prints `321`.",
+          "code": "(let ___ ((i 3))\n  (when (> i 0)\n    (display i)\n    (loop (- i 1))))",
+          "options": [
+            "loop",
+            "again",
+            "lambda",
+            "define"
+          ],
+          "answer": 0,
+          "explain": "The name after `let` is the name of the loop procedure. The body calls `(loop (- i 1))`, so the name must be `loop`."
+        },
+        {
+          "type": "order",
+          "id": "recursion-10",
+          "prompt": "Put the lines in order so the program prints `(1 2)`.",
+          "lines": [
+            "(define (copy-list l)",
+            "  (if (null? l)",
+            "      '()",
+            "      (cons (car l) (copy-list (cdr l)))))",
+            "(display (copy-list '(1 2)))"
+          ],
+          "explain": "The base case gives the empty list. Otherwise the first element is put in front of the copy of the rest."
+        },
+        {
+          "type": "true_false",
+          "id": "recursion-11",
+          "statement": "The procedure `factorial` from the lesson uses a tail call.",
+          "answer": false,
+          "explain": "After `(factorial (- n 1))` returns, the result must still be multiplied by `n`, so the call is not the last thing that happens."
+        },
+        {
+          "type": "bug",
+          "id": "recursion-12",
+          "prompt": "The program should print 24. Which line has the bug?",
+          "lines": [
+            "(define (factorial n)",
+            "  (if (= n 0)",
+            "      0",
+            "      (* n (factorial (- n 1)))))",
+            "(display (factorial 4))"
+          ],
+          "bug": 2,
+          "explain": "The base case must give 1. With 0, every product becomes 0."
+        }
+      ]
+    },
+    {
+      "id": "higher",
+      "title": "Higher-order procedures",
+      "chapter": "Functional programming",
+      "summary": "Pass procedures as values, use map, for-each and apply, and write your own filter procedure.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Procedures are values, like numbers and strings. You can give them names, pass them as arguments and return them from other procedures. A procedure that takes or returns a procedure is called **higher-order**."
+        },
+        {
+          "type": "code",
+          "code": "(define (twice f x)\n  (f (f x)))\n(define (add-three n)\n  (+ n 3))\n(display (twice add-three 10))\n(newline)\n(display (twice (lambda (n) (* n n)) 3))\n(newline)",
+          "output": "16\n81"
+        },
+        {
+          "type": "heading",
+          "text": "map and for-each"
+        },
+        {
+          "type": "text",
+          "md": "`map` calls a procedure for every element of a list and gives a new list with the results. With two lists, `map` takes one element from each list for every call."
+        },
+        {
+          "type": "code",
+          "code": "(display (map (lambda (x) (* x 10)) '(1 2 3)))\n(newline)\n(display (map + '(1 2 3) '(10 20 30)))\n(newline)",
+          "output": "(10 20 30)\n(11 22 33)"
+        },
+        {
+          "type": "text",
+          "md": "`for-each` also calls a procedure for every element, but it gives no useful result. You use it for actions such as printing."
+        },
+        {
+          "type": "code",
+          "code": "(for-each (lambda (name)\n            (display (string-append \"Hi \" name))\n            (newline))\n          '(\"Ada\" \"Bo\"))",
+          "output": "Hi Ada\nHi Bo"
+        },
+        {
+          "type": "text",
+          "md": "`apply` calls a procedure with the elements of a list as its arguments: `(apply + '(1 2 3))` is the same as `(+ 1 2 3)`. `max` gives the largest of its arguments, and `min` the smallest."
+        },
+        {
+          "type": "code",
+          "code": "(display (apply + '(1 2 3 4)))\n(newline)\n(display (apply max '(3 9 2)))\n(newline)",
+          "output": "10\n9"
+        },
+        {
+          "type": "heading",
+          "text": "Writing your own filter"
+        },
+        {
+          "type": "text",
+          "md": "A **filter** keeps only the elements for which a predicate is true. Many Scheme systems have a `filter` procedure, but it is not part of R7RS small. You can write your own with recursion. Here it is called `keep`."
+        },
+        {
+          "type": "code",
+          "code": "(define (keep pred items)\n  (cond ((null? items) '())\n        ((pred (car items))\n         (cons (car items) (keep pred (cdr items))))\n        (else (keep pred (cdr items)))))\n(display (keep even? '(1 2 3 4 5 6)))\n(newline)\n(display (keep (lambda (x) (> x 2)) '(1 5 2 8)))\n(newline)",
+          "output": "(2 4 6)\n(5 8)"
+        },
+        {
+          "type": "text",
+          "md": "A procedure can also return a new procedure. `adder` below returns a `lambda` that remembers the value of `n`."
+        },
+        {
+          "type": "code",
+          "code": "(define (adder n)\n  (lambda (x) (+ x n)))\n(define add-five (adder 5))\n(display (add-five 10))\n(newline)\n(display ((adder 1) 10))\n(newline)",
+          "output": "15\n11"
+        }
+      ],
+      "card": [
+        "Procedures are values: `(define (twice f x) (f (f x)))`",
+        "`(map f '(1 2 3))` gives the list of results",
+        "`(for-each f l)` calls `f` for every element, for actions like printing",
+        "`(apply + '(1 2 3))` is the same as `(+ 1 2 3)`",
+        "R7RS small has no `filter`: write your own with recursion"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "higher-1",
+          "prompt": "What does this print?",
+          "code": "(display (map (lambda (x) (+ x 1)) '(1 2 3)))",
+          "answers": [
+            "(2 3 4)"
+          ],
+          "explain": "`map` adds 1 to every element and gives a new list."
+        },
+        {
+          "type": "input",
+          "id": "higher-2",
+          "prompt": "What does this print?",
+          "code": "(display (apply * '(2 3 4)))",
+          "answers": [
+            "24"
+          ],
+          "explain": "`apply` calls `(* 2 3 4)`, which is 24."
+        },
+        {
+          "type": "input",
+          "id": "higher-3",
+          "prompt": "What does this print?",
+          "code": "(define (twice f x)\n  (f (f x)))\n(display (twice (lambda (n) (* n 2)) 5))",
+          "answers": [
+            "20"
+          ],
+          "explain": "The `lambda` doubles, and `twice` calls it two times: 5, 10, 20."
+        },
+        {
+          "type": "input",
+          "id": "higher-4",
+          "prompt": "What does this print?",
+          "code": "(define (adder n)\n  (lambda (x) (+ x n)))\n(define add-two (adder 2))\n(display (add-two 7))",
+          "answers": [
+            "9"
+          ],
+          "explain": "`(adder 2)` returns a procedure that adds 2, so `(add-two 7)` is 9."
+        },
+        {
+          "type": "choice",
+          "id": "higher-5",
+          "prompt": "What does this print?",
+          "code": "(display (map * '(1 2 3) '(4 5 6)))",
+          "options": [
+            "`(4 10 18)`",
+            "`(5 7 9)`",
+            "`32`",
+            "`(1 2 3 4 5 6)`"
+          ],
+          "answer": 0,
+          "explain": "`map` multiplies the elements pair by pair: 1 × 4, 2 × 5 and 3 × 6."
+        },
+        {
+          "type": "choice",
+          "id": "higher-6",
+          "prompt": "What does this print?",
+          "code": "(define (keep pred items)\n  (cond ((null? items) '())\n        ((pred (car items))\n         (cons (car items) (keep pred (cdr items))))\n        (else (keep pred (cdr items)))))\n(display (keep odd? '(1 2 3 4 5)))",
+          "options": [
+            "`(1 3 5)`",
+            "`(2 4)`",
+            "`(1 2 3 4 5)`",
+            "`9`"
+          ],
+          "answer": 0,
+          "explain": "`keep` keeps the elements for which `odd?` is true: 1, 3 and 5."
+        },
+        {
+          "type": "true_false",
+          "id": "higher-7",
+          "statement": "`(apply + 1 2 3)` is the same as `(+ 1 2 3)`.",
+          "answer": false,
+          "explain": "The last argument of `apply` must be a list. Write `(apply + '(1 2 3))`."
+        },
+        {
+          "type": "true_false",
+          "id": "higher-8",
+          "statement": "This code prints `(2 4 6)`.",
+          "code": "(define nums '(1 2 3))\n(define doubled (map (lambda (x) (* 2 x)) nums))\n(display nums)",
+          "answer": false,
+          "explain": "`map` gives a new list and does not change `nums`. The code prints `(1 2 3)`."
+        },
+        {
+          "type": "gap",
+          "id": "higher-9",
+          "prompt": "Complete the code so it prints `(1 4 9)`.",
+          "code": "(display (___ (lambda (x) (* x x)) '(1 2 3)))",
+          "options": [
+            "map",
+            "apply",
+            "for-each",
+            "list"
+          ],
+          "answer": 0,
+          "explain": "`map` gives a list with the result for every element. `for-each` gives no useful result."
+        },
+        {
+          "type": "gap",
+          "id": "higher-10",
+          "prompt": "Complete the code so it prints 8.",
+          "code": "(display (apply ___ '(5 3 8)))",
+          "options": [
+            "max",
+            "min",
+            "+",
+            "list"
+          ],
+          "answer": 0,
+          "explain": "`(apply max '(5 3 8))` is `(max 5 3 8)`, which gives the largest number, 8."
+        },
+        {
+          "type": "blocks",
+          "id": "higher-11",
+          "prompt": "Build an expression that adds up the numbers in the list `prices`.",
+          "tokens": [
+            "(apply",
+            "+",
+            "prices)"
+          ],
+          "distractors": [
+            "(map",
+            "sum"
+          ],
+          "explain": "`apply` passes the elements of `prices` to `+` as arguments."
+        },
+        {
+          "type": "pairs",
+          "id": "higher-12",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`map`",
+              "gives a list with the result for every element"
+            ],
+            [
+              "`for-each`",
+              "calls a procedure for every element, for actions"
+            ],
+            [
+              "`apply`",
+              "calls a procedure with the elements of a list as arguments"
+            ],
+            [
+              "`lambda`",
+              "creates a procedure without a name"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "title": "Strings, vectors and association lists",
+      "chapter": "Data",
+      "summary": "Work with string procedures and characters, store values in vectors, and look up values in association lists.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Scheme has many procedures for strings. `string-length` counts the characters. `(substring s start end)` gives a part of the string, from position `start` up to, but not including, `end`. Positions start at 0. `string-upcase` gives the string in capital letters, and `string=?` compares two strings."
+        },
+        {
+          "type": "code",
+          "code": "(define word \"Scheme\")\n(display (string-length word))\n(newline)\n(display (substring word 0 3))\n(newline)\n(display (string-upcase word))\n(newline)\n(display (string=? word \"Scheme\"))\n(newline)",
+          "output": "6\nSch\nSCHEME\n#t"
+        },
+        {
+          "type": "text",
+          "md": "A string is made of **characters**. You write a single character as `#\\a`. `string-ref` gives the character at a position. `string->list` turns a string into a list of characters, and `list->string` turns it back. `string->number` turns a string into a number."
+        },
+        {
+          "type": "code",
+          "code": "(display (string-ref \"hello\" 1))\n(newline)\n(write (string-ref \"hello\" 1))\n(newline)\n(display (list->string (reverse (string->list \"abc\"))))\n(newline)\n(display (+ 1 (string->number \"41\")))\n(newline)",
+          "output": "e\n#\\e\ncba\n42"
+        },
+        {
+          "type": "heading",
+          "text": "Vectors"
+        },
+        {
+          "type": "text",
+          "md": "A **vector** holds values in order, like a list, but you can reach every element directly by its position. `(vector 5 10 15)` creates a vector, and `display` shows it as `#(5 10 15)`. `vector-ref` gets an element, and `vector-length` counts the elements."
+        },
+        {
+          "type": "code",
+          "code": "(define v (vector 5 10 15))\n(display v)\n(newline)\n(display (vector-ref v 2))\n(newline)\n(display (vector-length v))\n(newline)",
+          "output": "#(5 10 15)\n15\n3"
+        },
+        {
+          "type": "text",
+          "md": "`(make-vector 3 0)` creates a vector with 3 elements that are all 0. `vector-set!` changes an element. The `!` at the end of a name means that the procedure changes something. `vector->list` turns a vector into a list."
+        },
+        {
+          "type": "code",
+          "code": "(define scores (make-vector 3 0))\n(vector-set! scores 0 7)\n(vector-set! scores 2 9)\n(display scores)\n(newline)\n(display (vector->list scores))\n(newline)",
+          "output": "#(7 0 9)\n(7 0 9)"
+        },
+        {
+          "type": "warning",
+          "md": "Do not change values that you wrote with a quote or as literals, like `'(1 2 3)`, `#(1 2 3)` or `\"text\"`. When you want to change a vector, create it with `vector` or `make-vector`."
+        },
+        {
+          "type": "heading",
+          "text": "Association lists"
+        },
+        {
+          "type": "text",
+          "md": "An **association list** is a list of pairs: each pair has a key and a value, like `(bo . 7)`. `(assoc key alist)` gives the first pair whose key is `equal?` to `key`, or `#f` if there is none. The `cdr` of the pair is the value. Keys are often symbols, but strings and numbers work too."
+        },
+        {
+          "type": "code",
+          "code": "(define ages '((ada . 36) (bo . 7)))\n(display (assoc 'bo ages))\n(newline)\n(display (cdr (assoc 'ada ages)))\n(newline)\n(display (assoc 'cy ages))\n(newline)",
+          "output": "(bo . 7)\n36\n#f"
+        },
+        {
+          "type": "tip",
+          "md": "Because `assoc` gives `#f` for a missing key, check the result before you take its `cdr`: `(let ((p (assoc key ages))) (if p (cdr p) 0))` gives 0 for unknown names."
+        }
+      ],
+      "card": [
+        "`(string-length s)`, `(substring s 0 3)`, `(string-upcase s)`",
+        "`#\\a` is a character; `(string-ref \"hi\" 0)` is `#\\h`",
+        "`(vector-ref v 0)`, `(vector-set! v 0 x)`, `(make-vector 3 0)`",
+        "`(assoc 'bo '((ada . 36) (bo . 7)))` is `(bo . 7)`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "data-1",
+          "prompt": "What does this print?",
+          "code": "(display (substring \"programming\" 3 7))",
+          "answers": [
+            "gram"
+          ],
+          "explain": "Positions 3, 4, 5 and 6 hold `g`, `r`, `a` and `m`. Position 7 is not included."
+        },
+        {
+          "type": "input",
+          "id": "data-2",
+          "prompt": "What does this print?",
+          "code": "(display (string-length \"hello world\"))",
+          "answers": [
+            "11"
+          ],
+          "explain": "The space counts as a character too: 5 + 1 + 5 is 11."
+        },
+        {
+          "type": "input",
+          "id": "data-3",
+          "prompt": "What does this print?",
+          "code": "(define v (vector 1 2 3))\n(vector-set! v 1 20)\n(display v)",
+          "answers": [
+            "#(1 20 3)"
+          ],
+          "explain": "`vector-set!` replaces the element at position 1, which is the second one."
+        },
+        {
+          "type": "input",
+          "id": "data-4",
+          "prompt": "What does this print?",
+          "code": "(define colors '((red . 1) (green . 2) (blue . 3)))\n(display (cdr (assoc 'green colors)))",
+          "answers": [
+            "2"
+          ],
+          "explain": "`assoc` finds the pair `(green . 2)`, and its `cdr` is 2."
+        },
+        {
+          "type": "choice",
+          "id": "data-5",
+          "prompt": "What does this print?",
+          "code": "(write (string-ref \"cat\" 2))",
+          "options": [
+            "`#\\t`",
+            "`t`",
+            "`\"t\"`",
+            "`#\\a`"
+          ],
+          "answer": 0,
+          "explain": "Position 2 holds the character `t`. `write` shows a character the way you write it in code: `#\\t`."
+        },
+        {
+          "type": "choice",
+          "id": "data-6",
+          "prompt": "What does `(assoc 'z '((x . 1) (y . 2)))` give?",
+          "options": [
+            "`#f`",
+            "`()`",
+            "`0`",
+            "an error"
+          ],
+          "answer": 0,
+          "explain": "No pair has the key `z`, so `assoc` gives `#f`."
+        },
+        {
+          "type": "true_false",
+          "id": "data-7",
+          "statement": "This code prints `4`.",
+          "code": "(display (vector-ref (vector 4 5 6) 1))",
+          "answer": false,
+          "explain": "Positions start at 0, so position 1 holds 5."
+        },
+        {
+          "type": "true_false",
+          "id": "data-8",
+          "statement": "This code prints `#f`.",
+          "code": "(display (string=? \"abc\" \"ABC\"))",
+          "answer": true,
+          "explain": "`string=?` compares exactly, and small and capital letters are different characters."
+        },
+        {
+          "type": "gap",
+          "id": "data-9",
+          "prompt": "Complete the code so it prints `HELLO`.",
+          "code": "(display (___ \"hello\"))",
+          "options": [
+            "string-upcase",
+            "string-length",
+            "string->list",
+            "string-ref"
+          ],
+          "answer": 0,
+          "explain": "`string-upcase` gives the string in capital letters."
+        },
+        {
+          "type": "gap",
+          "id": "data-10",
+          "prompt": "Complete the code so it prints 2.",
+          "code": "(define stock '((apples . 5) (pears . 2)))\n(display (___ (assoc 'pears stock)))",
+          "options": [
+            "cdr",
+            "car",
+            "cadr",
+            "assoc"
+          ],
+          "answer": 0,
+          "explain": "`assoc` gives the pair `(pears . 2)`. Its `car` is the key and its `cdr` is the value 2."
+        },
+        {
+          "type": "order",
+          "id": "data-11",
+          "prompt": "Put the lines in order so the program prints `#(5 6 7)`.",
+          "lines": [
+            "(define v (make-vector 3 0))",
+            "(vector-set! v 0 5)",
+            "(vector-set! v 1 (+ (vector-ref v 0) 1))",
+            "(vector-set! v 2 (+ (vector-ref v 1) 1))",
+            "(display v)"
+          ],
+          "explain": "Each element is one more than the element before it, so position 0 must be set first, then 1, then 2."
+        },
+        {
+          "type": "bug",
+          "id": "data-12",
+          "prompt": "The program should print `10` and `30`. Which line has the bug?",
+          "lines": [
+            "(define v (vector 10 20 30))",
+            "(display (vector-ref v 0))",
+            "(newline)",
+            "(display (vector-ref v 3))"
+          ],
+          "bug": 3,
+          "explain": "The vector has 3 elements at the positions 0, 1 and 2. The last one is `(vector-ref v 2)`."
+        }
+      ]
+    }
+  ]
+}

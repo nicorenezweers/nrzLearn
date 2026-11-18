@@ -1,0 +1,1927 @@
+{
+  "course": "typescript",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, TypeScript",
+      "chapter": "Basics",
+      "summary": "Print your first lines, store values with let and const, and add your first type annotations.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "TypeScript is JavaScript with **types**. Before your program runs, a tool called the **type checker** reads your code and warns you about mistakes. Then the types are removed and the code runs as normal JavaScript."
+        },
+        {
+          "type": "code",
+          "code": "console.log(\"Hello, TypeScript!\");",
+          "output": "Hello, TypeScript!"
+        },
+        {
+          "type": "text",
+          "md": "`console.log` prints a value and then starts a new line. You can print several values at once: separate them with commas, and they appear with a space between them. Text goes in quotes, numbers do not, so `2 + 3` is calculated."
+        },
+        {
+          "type": "code",
+          "code": "console.log(\"Sum:\", 2 + 3);\nconsole.log(10 / 4);",
+          "output": "Sum: 5\n2.5"
+        },
+        {
+          "type": "text",
+          "md": "A **variable** stores a value under a name. `const` creates a variable that you cannot reassign. `let` creates a variable that you can change later. Use `const` by default and `let` only when the value must change."
+        },
+        {
+          "type": "code",
+          "code": "const name = \"Ada\";\nlet score = 10;\nscore = score + 5;\nconsole.log(name, score);",
+          "output": "Ada 15"
+        },
+        {
+          "type": "text",
+          "md": "Strings written between backticks are **template strings**. Inside them, `${...}` inserts the value of a variable or expression into the text."
+        },
+        {
+          "type": "code",
+          "code": "const item = \"apple\";\nconst count = 3;\nconsole.log(`I have ${count} ${item}s.`);",
+          "output": "I have 3 apples."
+        },
+        {
+          "type": "heading",
+          "text": "Type annotations"
+        },
+        {
+          "type": "text",
+          "md": "After a variable name you can write a colon and a type, for example `let age: number = 36;`. This is a **type annotation**. The three basic types are `number` for numbers, `string` for text and `boolean` for `true` or `false`."
+        },
+        {
+          "type": "code",
+          "code": "let age: number = 36;\nconst city: string = \"Lima\";\nlet online: boolean = true;\nage = 37;\nconsole.log(city, age, online);",
+          "output": "Lima 37 true"
+        },
+        {
+          "type": "text",
+          "md": "The type checker uses annotations to find mistakes. Here `count` is a `number`, so putting the string `\"five\"` into it is an error. The type checker reports it before the program ever runs."
+        },
+        {
+          "type": "code",
+          "code": "let count: number = 5;\ncount = \"five\";"
+        },
+        {
+          "type": "warning",
+          "md": "Type annotations exist only for the type checker. When the code runs, they are removed. They never change what your program prints."
+        }
+      ],
+      "card": [
+        "`console.log(x)` prints a value",
+        "`const` cannot be reassigned, `let` can",
+        "`let age: number = 36;` is a type annotation",
+        "Basic types: `number`, `string`, `boolean`",
+        "Template string: `${name}` inserts a value"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "hello-1",
+          "prompt": "What does this print?",
+          "code": "console.log(\"Total:\", 4 * 3);",
+          "answers": [
+            "Total: 12"
+          ],
+          "explain": "`4 * 3` is calculated first, then `console.log` prints both values with a space between them."
+        },
+        {
+          "type": "choice",
+          "id": "hello-2",
+          "prompt": "Which keyword creates a variable that you cannot reassign?",
+          "options": [
+            "`let`",
+            "`const`",
+            "`type`",
+            "`number`"
+          ],
+          "answer": 1,
+          "explain": "`const` creates a variable that keeps its value. Use `let` when the value must change."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-3",
+          "statement": "Type annotations change what the program prints.",
+          "answer": false,
+          "explain": "Annotations are only read by the type checker. They are removed before the code runs."
+        },
+        {
+          "type": "gap",
+          "id": "hello-4",
+          "prompt": "Complete the annotation so that `price` holds a number.",
+          "code": "let price: ___ = 9.5;\nconsole.log(price);",
+          "options": [
+            "number",
+            "string",
+            "boolean"
+          ],
+          "answer": 0,
+          "explain": "`9.5` is a number, so the type is `number`. The other types do not accept a number."
+        },
+        {
+          "type": "bug",
+          "id": "hello-5",
+          "prompt": "Which line does the type checker reject?",
+          "lines": [
+            "let total: number = 0;",
+            "total = total + 5;",
+            "const label: string = \"Total\";",
+            "total = \"10\";",
+            "console.log(label, total);"
+          ],
+          "bug": 3,
+          "explain": "`total` is a `number`, but `\"10\"` is a string. Write `total = 10;` without quotes."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-6",
+          "prompt": "Build a line that creates a constant `city` of type `string` with the value `\"Oslo\"`.",
+          "tokens": [
+            "const",
+            "city",
+            ":",
+            "string",
+            "=",
+            "\"Oslo\"",
+            ";"
+          ],
+          "distractors": [
+            "let",
+            "number"
+          ],
+          "explain": "`const` makes a constant, `: string` is the annotation and `=` gives the value."
+        },
+        {
+          "type": "order",
+          "id": "hello-7",
+          "prompt": "Put the lines in order so that the program prints `Score: 30`.",
+          "lines": [
+            "let score: number = 10;",
+            "score = score + 5;",
+            "score = score * 2;",
+            "console.log(\"Score:\", score);"
+          ],
+          "explain": "First create `score`, then add 5 to get 15, then double it to get 30, and print it at the end."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-8",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`number`",
+              "numbers like `3` or `2.5`"
+            ],
+            [
+              "`string`",
+              "text"
+            ],
+            [
+              "`boolean`",
+              "`true` or `false`"
+            ],
+            [
+              "`const`",
+              "a variable you cannot reassign"
+            ],
+            [
+              "`let`",
+              "a variable you can change"
+            ]
+          ]
+        },
+        {
+          "type": "input",
+          "id": "hello-9",
+          "prompt": "What does this print?",
+          "code": "const n = 4;\nconsole.log(`${n} + ${n} = ${n + n}`);",
+          "answers": [
+            "4 + 4 = 8"
+          ],
+          "explain": "Each `${...}` inserts a value. `${n + n}` calculates `8` before it is inserted."
+        },
+        {
+          "type": "choice",
+          "id": "hello-10",
+          "prompt": "What happens with this code?",
+          "code": "const max = 10;\nmax = 20;\nconsole.log(max);",
+          "options": [
+            "It prints `20`",
+            "It prints `10`",
+            "The type checker reports an error"
+          ],
+          "answer": 2,
+          "explain": "`max` is a `const`, so it cannot get a new value. Use `let` if the value must change."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-11",
+          "statement": "This code prints `2 + 3`.",
+          "code": "console.log(2 + 3);",
+          "answer": false,
+          "explain": "Without quotes, `2 + 3` is a calculation, so it prints `5`. To print the text, write `\"2 + 3\"`."
+        },
+        {
+          "type": "input",
+          "id": "hello-12",
+          "prompt": "What does this print?",
+          "code": "let a: number = 7;\na = a - 2;\na = a * 3;\nconsole.log(a);",
+          "answers": [
+            "15"
+          ],
+          "explain": "`a` starts at `7`, becomes `5` and then `15`."
+        }
+      ]
+    },
+    {
+      "id": "types",
+      "title": "Basic types",
+      "chapter": "Basics",
+      "summary": "Use number, string and boolean, typed arrays and tuples, let TypeScript infer types, and compare any with unknown.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Every value has a type. The `typeof` operator tells you the type of a value while the program runs. It gives the name of the type as a string."
+        },
+        {
+          "type": "code",
+          "code": "console.log(typeof 42);\nconsole.log(typeof \"hi\");\nconsole.log(typeof true);",
+          "output": "number\nstring\nboolean"
+        },
+        {
+          "type": "text",
+          "md": "Comparisons give a `boolean`. Use `>`, `<`, `>=` and `<=` to compare numbers, `===` to test if two values are equal and `!==` to test if they are different. The `+` operator also joins strings."
+        },
+        {
+          "type": "code",
+          "code": "let a = 5;\nconsole.log(a > 3);\nconsole.log(a === 3);\nconsole.log(a >= 5, a !== 5);\nconsole.log(\"Hello, \" + \"Ada\");",
+          "output": "true\nfalse\ntrue false\nHello, Ada"
+        },
+        {
+          "type": "text",
+          "md": "If you give a variable a value right away, TypeScript works out its type for you. This is called **type inference**. Here `count` gets the type `number` without an annotation, so `count = \"six\"` would be an error."
+        },
+        {
+          "type": "code",
+          "code": "let count = 5;\ncount = count + 1;\nconsole.log(count);",
+          "output": "6"
+        },
+        {
+          "type": "heading",
+          "text": "Arrays and tuples"
+        },
+        {
+          "type": "text",
+          "md": "An **array** is a list of values. Its type is the type of the elements followed by `[]`, for example `number[]` or `string[]`. Positions start at `0`, `length` is the number of elements and `push` adds an element at the end."
+        },
+        {
+          "type": "code",
+          "code": "const scores: number[] = [7, 9, 4];\nscores.push(10);\nconsole.log(scores);\nconsole.log(scores.length, scores[0]);",
+          "output": "[ 7, 9, 4, 10 ]\n4 7"
+        },
+        {
+          "type": "text",
+          "md": "A **tuple** is an array with a fixed length where every position has its own type. `[string, number]` is a pair of a string and a number, in exactly this order."
+        },
+        {
+          "type": "code",
+          "code": "const user: [string, number] = [\"Ada\", 36];\nconsole.log(user[0]);\nconsole.log(user[1] + 1);\nconsole.log(user);",
+          "output": "Ada\n37\n[ 'Ada', 36 ]"
+        },
+        {
+          "type": "heading",
+          "text": "any and unknown"
+        },
+        {
+          "type": "text",
+          "md": "The type `any` turns type checking off: you can do anything with the value, even mistakes. The type `unknown` also accepts every value, but you cannot use it until you check what it is. Prefer `unknown` when you do not know a type."
+        },
+        {
+          "type": "code",
+          "code": "const a: any = \"hello\";\nconsole.log(a.toUpperCase());\nconst b: unknown = \"hello\";\nconsole.log(typeof b);",
+          "output": "HELLO\nstring"
+        }
+      ],
+      "card": [
+        "`let n = 5;` infers the type `number`",
+        "`number[]` is an array of numbers",
+        "`[string, number]` is a tuple: fixed length, one type per position",
+        "`any` turns checking off, `unknown` needs a check first",
+        "`typeof x` gives the type name, e.g. `\"string\"`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "types-1",
+          "prompt": "What does this print?",
+          "code": "console.log(typeof 3.5);",
+          "answers": [
+            "number"
+          ],
+          "explain": "TypeScript has one type for all numbers: `number`. It covers whole numbers and decimals."
+        },
+        {
+          "type": "choice",
+          "id": "types-2",
+          "prompt": "Which type fits the value `[\"pen\", 2]` as a tuple?",
+          "options": [
+            "`[string, number]`",
+            "`string[]`",
+            "`number[]`",
+            "`[number, string]`"
+          ],
+          "answer": 0,
+          "explain": "The first element is a string and the second a number, so the tuple type is `[string, number]`."
+        },
+        {
+          "type": "true_false",
+          "id": "types-3",
+          "statement": "The type of `title` is `string`, even without an annotation.",
+          "code": "let title = \"Intro\";",
+          "answer": true,
+          "explain": "TypeScript infers the type from the first value. `\"Intro\"` is a string, so `title` is a `string`."
+        },
+        {
+          "type": "gap",
+          "id": "types-4",
+          "prompt": "Complete the annotation for a list of prices.",
+          "code": "const prices: ___ = [2.5, 4, 1];\nconsole.log(prices.length);",
+          "options": [
+            "number[]",
+            "string[]",
+            "[number]",
+            "number"
+          ],
+          "answer": 0,
+          "explain": "A list of numbers has the type `number[]`. `[number]` is a tuple with exactly one number."
+        },
+        {
+          "type": "bug",
+          "id": "types-5",
+          "prompt": "Which line does the type checker reject?",
+          "lines": [
+            "const names: string[] = [\"Ana\", \"Ben\"];",
+            "names.push(\"Cleo\");",
+            "const point: [number, number] = [3, 4];",
+            "names.push(5);",
+            "console.log(names, point);"
+          ],
+          "bug": 3,
+          "explain": "`names` is a `string[]`, so you can only add strings. Write `names.push(\"Dan\");` instead."
+        },
+        {
+          "type": "input",
+          "id": "types-6",
+          "prompt": "What does this print?",
+          "code": "const nums: number[] = [4, 8, 15];\nnums.push(16);\nconsole.log(nums.length);",
+          "answers": [
+            "4"
+          ],
+          "explain": "The array starts with 3 elements and `push` adds one more, so `length` is `4`."
+        },
+        {
+          "type": "blocks",
+          "id": "types-7",
+          "prompt": "Build a line that creates a tuple `pair` with a string and a number.",
+          "tokens": [
+            "const",
+            "pair",
+            ":",
+            "[string, number]",
+            "=",
+            "[\"x\", 1]",
+            ";"
+          ],
+          "distractors": [
+            "[number, string]",
+            "string[]"
+          ],
+          "explain": "The tuple type `[string, number]` comes after the colon, the value after `=`."
+        },
+        {
+          "type": "choice",
+          "id": "types-8",
+          "prompt": "What does the type checker say about this code?",
+          "code": "const value: unknown = \"hi\";\nconsole.log(value.length);",
+          "options": [
+            "Nothing, it prints `2`",
+            "Error: `value` is of type `unknown`",
+            "It prints `undefined`"
+          ],
+          "answer": 1,
+          "explain": "You cannot use a value of type `unknown` before you check its type. With `any`, the code would be accepted."
+        },
+        {
+          "type": "pairs",
+          "id": "types-9",
+          "prompt": "Match the type with its meaning.",
+          "pairs": [
+            [
+              "`number[]`",
+              "a list of numbers"
+            ],
+            [
+              "`[string, number]`",
+              "a string followed by a number"
+            ],
+            [
+              "`any`",
+              "type checking is turned off"
+            ],
+            [
+              "`unknown`",
+              "any value, checked before use"
+            ],
+            [
+              "`boolean`",
+              "`true` or `false`"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "types-10",
+          "prompt": "Put the lines in order so that the program prints `[ 1, 2, 3 ]`.",
+          "lines": [
+            "const list: number[] = [];",
+            "list.push(1);",
+            "list.push(2);",
+            "list.push(3);",
+            "console.log(list);"
+          ],
+          "explain": "Create the empty array first, then `push` adds the numbers in order, and the last line prints the result."
+        },
+        {
+          "type": "input",
+          "id": "types-11",
+          "prompt": "What does this print?",
+          "code": "console.log(10 === 10, \"a\" + \"b\");",
+          "answers": [
+            "true ab"
+          ],
+          "explain": "`10 === 10` is `true` and `+` joins the two strings to `\"ab\"`."
+        },
+        {
+          "type": "true_false",
+          "id": "types-12",
+          "statement": "With `any`, the type checker still finds typos like `x.lenght`.",
+          "answer": false,
+          "explain": "`any` turns checking off, so the typo is accepted and the value is `undefined` at runtime."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Write functions with typed parameters and return types, optional and default parameters, arrow functions and void.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** is a named block of code that you can run again and again. Each parameter gets a type, and after the parentheses you write the type of the value that the function returns. `return` gives this value back."
+        },
+        {
+          "type": "code",
+          "code": "function add(a: number, b: number): number {\n  return a + b;\n}\nconsole.log(add(2, 3));\nconsole.log(add(10, -4));",
+          "output": "5\n6"
+        },
+        {
+          "type": "text",
+          "md": "The type checker checks every call. An argument of the wrong type, like `add(\"2\", 3)`, is an error. A missing argument, like `add(1)`, is an error too."
+        },
+        {
+          "type": "text",
+          "md": "A function that returns nothing has the return type `void`."
+        },
+        {
+          "type": "code",
+          "code": "function log(message: string): void {\n  console.log(\"> \" + message);\n}\nlog(\"Start\");\nlog(\"Done\");",
+          "output": "> Start\n> Done"
+        },
+        {
+          "type": "heading",
+          "text": "Optional and default parameters"
+        },
+        {
+          "type": "text",
+          "md": "A `?` after a parameter name makes the parameter **optional**. If you leave it out, its value is `undefined`."
+        },
+        {
+          "type": "code",
+          "code": "function show(name: string, age?: number): void {\n  console.log(name, age);\n}\nshow(\"Ada\", 36);\nshow(\"Ben\");",
+          "output": "Ada 36\nBen undefined"
+        },
+        {
+          "type": "text",
+          "md": "A parameter with `=` has a **default value**. It is used when you leave the argument out."
+        },
+        {
+          "type": "code",
+          "code": "function total(price: number, count: number = 1): number {\n  return price * count;\n}\nconsole.log(total(5));\nconsole.log(total(5, 3));",
+          "output": "5\n15"
+        },
+        {
+          "type": "heading",
+          "text": "Arrow functions"
+        },
+        {
+          "type": "text",
+          "md": "An **arrow function** is a short way to write a function: `(n: number) => n * 2`. You usually store it in a `const`. With one expression after `=>`, its value is returned. With curly braces, the body can have several lines and needs `return`."
+        },
+        {
+          "type": "code",
+          "code": "const double = (n: number): number => n * 2;\nconst sum3 = (a: number, b: number, c: number): number => {\n  const ab = a + b;\n  return ab + c;\n};\nconsole.log(double(21));\nconsole.log(sum3(1, 2, 3));",
+          "output": "42\n6"
+        },
+        {
+          "type": "tip",
+          "md": "TypeScript can infer the return type, but writing it helps: the type checker then also checks the code inside the function."
+        }
+      ],
+      "card": [
+        "`function f(a: number): number { ... }`",
+        "`b?: string` is optional, `b: number = 1` has a default",
+        "`(n: number) => n * 2` is an arrow function",
+        "`void` means the function returns nothing"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "function area(w: number, h: number): number {\n  return w * h;\n}\nconsole.log(area(3, 4));",
+          "answers": [
+            "12"
+          ],
+          "explain": "`area(3, 4)` returns `3 * 4`, which is `12`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-2",
+          "prompt": "Choose the right return type.",
+          "code": "function isAdult(age: number): ___ {\n  return age >= 18;\n}\nconsole.log(isAdult(20));",
+          "options": [
+            "boolean",
+            "number",
+            "string",
+            "void"
+          ],
+          "answer": 0,
+          "explain": "A comparison like `age >= 18` gives `true` or `false`, so the return type is `boolean`."
+        },
+        {
+          "type": "bug",
+          "id": "functions-3",
+          "prompt": "Which line does the type checker reject?",
+          "lines": [
+            "function half(n: number): number {",
+            "  return n / 2;",
+            "}",
+            "const result: string = half(10);",
+            "console.log(result);"
+          ],
+          "bug": 3,
+          "explain": "`half` returns a `number`, not a `string`. Write `const result: number = half(10);`."
+        },
+        {
+          "type": "input",
+          "id": "functions-4",
+          "prompt": "What does this print?",
+          "code": "function total(price: number, count: number = 2): number {\n  return price * count;\n}\nconsole.log(total(4) + total(4, 3));",
+          "answers": [
+            "20"
+          ],
+          "explain": "`total(4)` uses the default `2` and returns `8`. `total(4, 3)` returns `12`. Together they are `20`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-5",
+          "prompt": "Which call does the type checker reject?",
+          "code": "function move(x: number, y?: number): void {}",
+          "options": [
+            "`move(1)`",
+            "`move(1, 2)`",
+            "`move()`",
+            "`move(5, 0)`"
+          ],
+          "answer": 2,
+          "explain": "`y` is optional, but `x` is not. Every call needs at least one number."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-6",
+          "statement": "A function with the return type `void` can return a number.",
+          "answer": false,
+          "explain": "`void` means the function returns nothing. Returning a number from it is an error."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-7",
+          "prompt": "Build an arrow function `square` that returns its parameter times itself.",
+          "tokens": [
+            "const",
+            "square",
+            "=",
+            "(n: number)",
+            "=>",
+            "n * n",
+            ";"
+          ],
+          "distractors": [
+            "function",
+            "return"
+          ],
+          "explain": "An arrow function is stored in a `const`. After `=>` comes the value it returns."
+        },
+        {
+          "type": "order",
+          "id": "functions-8",
+          "prompt": "Put the lines in order so that the program prints `30`.",
+          "lines": [
+            "const calc = (n: number): number => {",
+            "  let result = n + 1;",
+            "  result = result * 10;",
+            "  return result;",
+            "};",
+            "console.log(calc(2));"
+          ],
+          "explain": "Inside the function, `2 + 1` gives `3` and `3 * 10` gives `30`. You can call `calc` only after it is defined."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`a?: number`",
+              "optional parameter"
+            ],
+            [
+              "`a: number = 1`",
+              "parameter with a default value"
+            ],
+            [
+              "`: void`",
+              "returns nothing"
+            ],
+            [
+              "`=>`",
+              "starts the body of an arrow function"
+            ],
+            [
+              "`return`",
+              "gives a value back to the caller"
+            ]
+          ]
+        },
+        {
+          "type": "input",
+          "id": "functions-10",
+          "prompt": "What does this print?",
+          "code": "function tag(name: string, id?: number): string {\n  return name + \"-\" + id;\n}\nconsole.log(tag(\"box\"));",
+          "answers": [
+            "box-undefined"
+          ],
+          "explain": "The optional parameter `id` was left out, so its value is `undefined`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-11",
+          "prompt": "What is the type of `result`?",
+          "code": "const triple = (n: number) => n * 3;\nconst result = triple(4);",
+          "options": [
+            "`number`",
+            "`string`",
+            "`void`",
+            "`any`"
+          ],
+          "answer": 0,
+          "explain": "`n * 3` is a number, so TypeScript infers the return type `number` for `triple`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-12",
+          "prompt": "Complete the code so that the program prints `Hello, Ben!`.",
+          "code": "function hello(name: string, mark: string ___ \"!\"): string {\n  return \"Hello, \" + name + mark;\n}\nconsole.log(hello(\"Ben\"));",
+          "options": [
+            "=",
+            "?",
+            ":",
+            "=>"
+          ],
+          "answer": 0,
+          "explain": "`= \"!\"` gives `mark` a default value, which is used when the argument is left out."
+        }
+      ]
+    },
+    {
+      "id": "objects",
+      "title": "Objects and interfaces",
+      "chapter": "Custom types",
+      "summary": "Describe the shape of objects with object types, interfaces and type aliases, including optional and readonly properties.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **object** groups values under names. These named values are called **properties**. You write an object in curly braces and read a property with a dot."
+        },
+        {
+          "type": "code",
+          "code": "const user = { name: \"Ada\", age: 36 };\nconsole.log(user.name);\nconsole.log(user);",
+          "output": "Ada\n{ name: 'Ada', age: 36 }"
+        },
+        {
+          "type": "text",
+          "md": "TypeScript infers the type `{ name: string; age: number }` for this object. You can also write an object type yourself as an annotation. Then you can change the properties, but only with values of the right type."
+        },
+        {
+          "type": "code",
+          "code": "const point: { x: number; y: number } = { x: 3, y: 4 };\npoint.x = 10;\nconsole.log(point);",
+          "output": "{ x: 10, y: 4 }"
+        },
+        {
+          "type": "heading",
+          "text": "Interfaces"
+        },
+        {
+          "type": "text",
+          "md": "An `interface` gives an object type a name, so you can use it again and again. An object of this type must have all its properties. A missing property or a misspelled one is an error."
+        },
+        {
+          "type": "code",
+          "code": "interface User {\n  name: string;\n  age: number;\n}\nconst ada: User = { name: \"Ada\", age: 36 };\nfunction describe(u: User): string {\n  return u.name + \" is \" + u.age;\n}\nconsole.log(describe(ada));",
+          "output": "Ada is 36"
+        },
+        {
+          "type": "text",
+          "md": "A **type alias** gives a name to any type with the keyword `type`. It works for object types and also for simple types like `string`. For objects, `interface` and `type` work almost the same."
+        },
+        {
+          "type": "code",
+          "code": "type Point = { x: number; y: number };\ntype Name = string;\nconst p: Point = { x: 1, y: 2 };\nconst n: Name = \"origin\";\nconsole.log(n, p);",
+          "output": "origin { x: 1, y: 2 }"
+        },
+        {
+          "type": "heading",
+          "text": "Optional and readonly properties"
+        },
+        {
+          "type": "text",
+          "md": "A `?` after a property name makes the property optional: the object may leave it out. A property marked `readonly` gets its value when the object is created and cannot be changed later."
+        },
+        {
+          "type": "code",
+          "code": "interface Product {\n  readonly id: number;\n  name: string;\n  price?: number;\n}\nconst pen: Product = { id: 1, name: \"Pen\" };\npen.name = \"Blue pen\";\npen.price = 2;\nconsole.log(pen);",
+          "output": "{ id: 1, name: 'Blue pen', price: 2 }"
+        },
+        {
+          "type": "code",
+          "code": "interface Product {\n  readonly id: number;\n  name: string;\n}\nconst pen: Product = { id: 1, name: \"Pen\" };\npen.id = 2;"
+        },
+        {
+          "type": "warning",
+          "md": "The last line is an error because `id` is `readonly`. Like all types, `readonly` is checked only by the type checker, not while the program runs."
+        }
+      ],
+      "card": [
+        "`interface User { name: string; age: number }`",
+        "`type Point = { x: number; y: number }`",
+        "`price?: number` is an optional property",
+        "`readonly id: number` cannot be changed later"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "objects-1",
+          "prompt": "What does this print?",
+          "code": "const truck = { name: \"Truck\", wheels: 6 };\ntruck.wheels = truck.wheels + 2;\nconsole.log(truck.wheels);",
+          "answers": [
+            "8"
+          ],
+          "explain": "`truck.wheels` starts at `6` and the second line adds `2`."
+        },
+        {
+          "type": "bug",
+          "id": "objects-2",
+          "prompt": "Which line does the type checker reject?",
+          "lines": [
+            "interface Pet {",
+            "  name: string;",
+            "  legs: number;",
+            "}",
+            "const cat: Pet = { name: \"Tom\", legs: 4 };",
+            "const bird: Pet = { name: \"Kiwi\" };",
+            "console.log(cat, bird);"
+          ],
+          "bug": 5,
+          "explain": "Every `Pet` needs both properties, but `bird` has no `legs`. Write `{ name: \"Kiwi\", legs: 2 }`."
+        },
+        {
+          "type": "true_false",
+          "id": "objects-3",
+          "statement": "In an object type, `email?: string` means that the property `email` may be missing.",
+          "answer": true,
+          "explain": "The `?` makes the property optional. If it is missing, reading it gives `undefined`."
+        },
+        {
+          "type": "gap",
+          "id": "objects-4",
+          "prompt": "Complete the code so that `isbn` cannot be changed after the object is created.",
+          "code": "interface Book {\n  title: string;\n  ___ isbn: string;\n}\nconst b: Book = { title: \"Notes\", isbn: \"123\" };\nb.title = \"New notes\";\nconsole.log(b);",
+          "options": [
+            "readonly",
+            "const",
+            "final",
+            "static"
+          ],
+          "answer": 0,
+          "explain": "In an interface, `readonly` marks a property that cannot be changed. `const` is only for variables."
+        },
+        {
+          "type": "choice",
+          "id": "objects-5",
+          "prompt": "What does this print?",
+          "code": "type Size = { width: number; height: number };\nconst s: Size = { width: 2, height: 5 };\nconsole.log(s.width * s.height);",
+          "options": [
+            "`10`",
+            "`7`",
+            "`25`",
+            "`{ width: 2, height: 5 }`"
+          ],
+          "answer": 0,
+          "explain": "`s.width` is `2` and `s.height` is `5`, so the product is `10`."
+        },
+        {
+          "type": "blocks",
+          "id": "objects-6",
+          "prompt": "Build a type alias `Id` for the type `string`.",
+          "tokens": [
+            "type",
+            "Id",
+            "=",
+            "string",
+            ";"
+          ],
+          "distractors": [
+            "interface",
+            ":"
+          ],
+          "explain": "A type alias starts with `type`, then the name, then `=` and the type."
+        },
+        {
+          "type": "order",
+          "id": "objects-7",
+          "prompt": "Put the lines in order so that the program prints `{ apples: 0, pears: 5 }`.",
+          "lines": [
+            "const stock: { apples: number; pears: number } = { apples: 3, pears: 0 };",
+            "stock.pears = stock.apples + 2;",
+            "stock.apples = 0;",
+            "console.log(stock);"
+          ],
+          "explain": "`pears` must be calculated while `apples` is still `3`. Only after that is `apples` set to `0`."
+        },
+        {
+          "type": "pairs",
+          "id": "objects-8",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`interface`",
+              "gives an object type a name"
+            ],
+            [
+              "`type`",
+              "gives any type a name"
+            ],
+            [
+              "`price?: number`",
+              "optional property"
+            ],
+            [
+              "`readonly`",
+              "property that cannot be changed"
+            ],
+            [
+              "`user.name`",
+              "reads a property"
+            ]
+          ]
+        },
+        {
+          "type": "input",
+          "id": "objects-9",
+          "prompt": "What does this print?",
+          "code": "interface Item {\n  name: string;\n  count?: number;\n}\nconst item: Item = { name: \"Cup\" };\nconsole.log(item.count);",
+          "answers": [
+            "undefined"
+          ],
+          "explain": "`count` is optional and was left out, so reading it gives `undefined`."
+        },
+        {
+          "type": "choice",
+          "id": "objects-10",
+          "prompt": "What does the type checker say about this code?",
+          "code": "interface Config {\n  readonly port: number;\n  host: string;\n}\nconst c: Config = { port: 80, host: \"local\" };\nc.host = \"remote\";\nc.port = 8080;",
+          "options": [
+            "No errors",
+            "Error: `port` is read-only",
+            "Error: `host` is read-only",
+            "Error: `port` is missing"
+          ],
+          "answer": 1,
+          "explain": "`port` is `readonly`, so `c.port = 8080` is rejected. `host` can be changed."
+        },
+        {
+          "type": "true_false",
+          "id": "objects-11",
+          "statement": "The type checker accepts this code.",
+          "code": "interface User {\n  name: string;\n}\nconst u: User = { nme: \"Ada\" };",
+          "answer": false,
+          "explain": "`nme` is not a property of `User`, and `name` is missing. The type checker finds such typos."
+        },
+        {
+          "type": "input",
+          "id": "objects-12",
+          "prompt": "What does this print?",
+          "code": "interface Rect {\n  w: number;\n  h: number;\n}\nfunction perimeter(r: Rect): number {\n  return 2 * (r.w + r.h);\n}\nconsole.log(perimeter({ w: 3, h: 2 }));",
+          "answers": [
+            "10"
+          ],
+          "explain": "`r.w + r.h` is `5`, and `2 * 5` is `10`."
+        }
+      ]
+    },
+    {
+      "id": "unions",
+      "title": "Union and literal types",
+      "chapter": "Custom types",
+      "summary": "Allow several types with |, narrow them with typeof and ===, and limit a value to a few exact choices with literal types.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **union type** allows more than one type. `number | string` means: a number or a string. The `|` separates the choices."
+        },
+        {
+          "type": "code",
+          "code": "let id: number | string = 42;\nconsole.log(id);\nid = \"A-42\";\nconsole.log(id);",
+          "output": "42\nA-42"
+        },
+        {
+          "type": "text",
+          "md": "With a union, you can only use what all its types have in common. `id.toUpperCase()` is an error, because `id` could be a number. You first have to check which type the value has."
+        },
+        {
+          "type": "heading",
+          "text": "if and else"
+        },
+        {
+          "type": "text",
+          "md": "An `if` statement runs a block of code only when its condition is `true`. The block after `else` runs when the condition is `false`."
+        },
+        {
+          "type": "code",
+          "code": "const temp = 25;\nif (temp > 20) {\n  console.log(\"warm\");\n} else {\n  console.log(\"cold\");\n}",
+          "output": "warm"
+        },
+        {
+          "type": "heading",
+          "text": "Narrowing"
+        },
+        {
+          "type": "text",
+          "md": "Inside `if (typeof value === \"string\")`, TypeScript knows that `value` is a string. This is called **narrowing**. In the `else` block, it knows that `value` is a number, so you can use number methods like `toFixed(2)`, which rounds to 2 decimals."
+        },
+        {
+          "type": "code",
+          "code": "function format(value: number | string): string {\n  if (typeof value === \"string\") {\n    return value.toUpperCase();\n  } else {\n    return value.toFixed(2);\n  }\n}\nconsole.log(format(\"ok\"));\nconsole.log(format(3.14159));",
+          "output": "OK\n3.14"
+        },
+        {
+          "type": "heading",
+          "text": "Literal types"
+        },
+        {
+          "type": "text",
+          "md": "A **literal type** is one exact value, like `\"left\"`. A union of literal types lists all allowed values. Calling `turn(\"up\")` below would be an error, because `\"up\"` is not a `Direction`."
+        },
+        {
+          "type": "code",
+          "code": "type Direction = \"left\" | \"right\";\nfunction turn(dir: Direction): string {\n  return \"Turning \" + dir;\n}\nconsole.log(turn(\"left\"));",
+          "output": "Turning left"
+        },
+        {
+          "type": "text",
+          "md": "Comparing with `===` narrows too. After `if (s === \"on\")`, TypeScript knows that `s` is `\"on\"` inside the block, and `\"off\"` after it, because the function returns inside the block."
+        },
+        {
+          "type": "code",
+          "code": "type Status = \"on\" | \"off\";\nfunction toggle(s: Status): Status {\n  if (s === \"on\") {\n    return \"off\";\n  }\n  return \"on\";\n}\nconsole.log(toggle(\"on\"), toggle(\"off\"));",
+          "output": "off on"
+        }
+      ],
+      "card": [
+        "`number | string`: a number or a string",
+        "`if (typeof x === \"string\") { ... }` narrows `x`",
+        "`type Dir = \"left\" | \"right\"`: only these values",
+        "`if (...) { ... } else { ... }` chooses a block"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "unions-1",
+          "prompt": "What does this print?",
+          "code": "function size(x: number | string): number {\n  if (typeof x === \"string\") {\n    return x.length;\n  }\n  return x;\n}\nconsole.log(size(\"hello\") + size(10));",
+          "answers": [
+            "15"
+          ],
+          "explain": "`size(\"hello\")` returns the length `5`, and `size(10)` returns `10`. Together they are `15`."
+        },
+        {
+          "type": "bug",
+          "id": "unions-2",
+          "prompt": "Which line does the type checker reject?",
+          "lines": [
+            "type Color = \"red\" | \"green\" | \"blue\";",
+            "let a: Color = \"red\";",
+            "let b: Color = \"green\";",
+            "let c: Color = \"yellow\";",
+            "console.log(a, b, c);"
+          ],
+          "bug": 3,
+          "explain": "`\"yellow\"` is not one of the allowed values of `Color`. Use `\"blue\"`, for example."
+        },
+        {
+          "type": "gap",
+          "id": "unions-3",
+          "prompt": "Complete the check so that the program prints `8`.",
+          "code": "function double(v: number | string): number {\n  if (typeof v === ___) {\n    return v * 2;\n  }\n  return v.length * 2;\n}\nconsole.log(double(4));",
+          "options": [
+            "\"number\"",
+            "\"string\"",
+            "number",
+            "\"integer\""
+          ],
+          "answer": 0,
+          "explain": "`typeof` gives the name of the type as a string, so you compare with `\"number\"` in quotes."
+        },
+        {
+          "type": "true_false",
+          "id": "unions-4",
+          "statement": "The type checker accepts this code.",
+          "code": "let x: number | string = 5;\nx = \"five\";",
+          "answer": true,
+          "explain": "`x` has the type `number | string`, so it can hold a number and later a string."
+        },
+        {
+          "type": "choice",
+          "id": "unions-5",
+          "prompt": "Which call does the type checker reject?",
+          "code": "type Size = \"S\" | \"M\" | \"L\";\nfunction pick(s: Size): void {}",
+          "options": [
+            "`pick(\"S\")`",
+            "`pick(\"L\")`",
+            "`pick(\"XL\")`",
+            "`pick(\"M\")`"
+          ],
+          "answer": 2,
+          "explain": "`Size` allows only `\"S\"`, `\"M\"` and `\"L\"`. `\"XL\"` is not in the list."
+        },
+        {
+          "type": "input",
+          "id": "unions-6",
+          "prompt": "What does this print?",
+          "code": "const n = 7;\nif (n > 10) {\n  console.log(\"big\");\n} else {\n  console.log(\"small\");\n}",
+          "answers": [
+            "small"
+          ],
+          "explain": "`7 > 10` is `false`, so the `else` block runs."
+        },
+        {
+          "type": "blocks",
+          "id": "unions-7",
+          "prompt": "Build a type `Answer` that allows only `\"yes\"` or `\"no\"`.",
+          "tokens": [
+            "type",
+            "Answer",
+            "=",
+            "\"yes\"",
+            "|",
+            "\"no\"",
+            ";"
+          ],
+          "distractors": [
+            "&",
+            "||"
+          ],
+          "explain": "A union of literal types lists the allowed values, separated by `|`."
+        },
+        {
+          "type": "order",
+          "id": "unions-8",
+          "prompt": "Put the lines in order so that the program prints `3`.",
+          "lines": [
+            "const len = (x: string | number): number => {",
+            "  if (typeof x === \"string\") {",
+            "    return x.length;",
+            "  }",
+            "  return 0;",
+            "};",
+            "console.log(len(\"abc\"));"
+          ],
+          "explain": "Inside the `if` block, `x` is a string and has a `length`. Numbers reach `return 0;` after the block."
+        },
+        {
+          "type": "pairs",
+          "id": "unions-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`string | number`",
+              "a string or a number"
+            ],
+            [
+              "`\"on\" | \"off\"`",
+              "only these two values"
+            ],
+            [
+              "`typeof x === \"string\"`",
+              "checks that `x` is a string"
+            ],
+            [
+              "`else`",
+              "runs when the condition is false"
+            ],
+            [
+              "`===`",
+              "checks that two values are equal"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "unions-10",
+          "prompt": "What does this print?",
+          "code": "type Mode = \"dark\" | \"light\";\nfunction label(m: Mode): string {\n  if (m === \"dark\") {\n    return \"Night\";\n  }\n  return \"Day\";\n}\nconsole.log(label(\"light\"));",
+          "options": [
+            "`Day`",
+            "`Night`",
+            "`light`",
+            "`dark`"
+          ],
+          "answer": 0,
+          "explain": "`\"light\" === \"dark\"` is `false`, so the function skips the block and returns `\"Day\"`."
+        },
+        {
+          "type": "input",
+          "id": "unions-11",
+          "prompt": "What does this print?",
+          "code": "function check(v: string | number): string {\n  if (typeof v === \"number\") {\n    return \"number \" + (v + 1);\n  }\n  return \"text \" + v;\n}\nconsole.log(check(9));",
+          "answers": [
+            "number 10"
+          ],
+          "explain": "`9` is a number, so the `if` block runs and returns `\"number \"` joined with `9 + 1`."
+        },
+        {
+          "type": "true_false",
+          "id": "unions-12",
+          "statement": "For a value of type `string | number`, you can call `toUpperCase()` without any check.",
+          "answer": false,
+          "explain": "The value could be a number, and numbers have no `toUpperCase()`. Check with `typeof` first."
+        }
+      ]
+    },
+    {
+      "id": "arrays",
+      "title": "Working with arrays",
+      "chapter": "Collections",
+      "summary": "Transform arrays with map, filter, reduce and find, type their callbacks, and copy or combine arrays with spread.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Arrays have methods that take a function as an argument. This function is called a **callback**: the method calls it for every element. TypeScript knows the element type, so the parameters of the callback get their types automatically."
+        },
+        {
+          "type": "text",
+          "md": "`map` creates a **new** array. Each element of the new array is the value that the callback returns. The original array does not change."
+        },
+        {
+          "type": "code",
+          "code": "const prices: number[] = [10, 20, 30];\nconst doubled = prices.map((p) => p * 2);\nconsole.log(doubled);\nconsole.log(prices);",
+          "output": "[ 20, 40, 60 ]\n[ 10, 20, 30 ]"
+        },
+        {
+          "type": "text",
+          "md": "`filter` creates a new array with only the elements for which the callback returns `true`."
+        },
+        {
+          "type": "code",
+          "code": "const nums = [3, 8, 1, 12, 5];\nconst big = nums.filter((n) => n > 4);\nconsole.log(big);",
+          "output": "[ 8, 12, 5 ]"
+        },
+        {
+          "type": "text",
+          "md": "`find` returns the first element for which the callback returns `true`. If there is none, it returns `undefined`, so the type of the result is `string | undefined` here. The string method `startsWith` checks how a string begins."
+        },
+        {
+          "type": "code",
+          "code": "const names = [\"Ana\", \"Ben\", \"Bo\"];\nconst b = names.find((n) => n.startsWith(\"B\"));\nconst z = names.find((n) => n.startsWith(\"Z\"));\nconsole.log(b, z);",
+          "output": "Ben undefined"
+        },
+        {
+          "type": "text",
+          "md": "`reduce` combines all elements into one value. The callback gets the result so far and the next element. The second argument of `reduce` is the start value."
+        },
+        {
+          "type": "code",
+          "code": "const scores = [4, 7, 9];\nconst sum = scores.reduce((total, s) => total + s, 0);\nconsole.log(sum);",
+          "output": "20"
+        },
+        {
+          "type": "text",
+          "md": "You can also write the types of callback parameters and return values yourself. This is common with arrays of objects."
+        },
+        {
+          "type": "code",
+          "code": "interface Item {\n  name: string;\n  price: number;\n}\nconst cart: Item[] = [\n  { name: \"Tea\", price: 3 },\n  { name: \"Cake\", price: 5 },\n];\nconst total = cart.reduce((sum: number, item: Item) => sum + item.price, 0);\nconst names = cart.map((item: Item): string => item.name);\nconsole.log(names, total);",
+          "output": "[ 'Tea', 'Cake' ] 8"
+        },
+        {
+          "type": "text",
+          "md": "The **spread** syntax `...` copies all elements of an array into a new array. You can use it to copy or combine arrays."
+        },
+        {
+          "type": "code",
+          "code": "const a = [1, 2];\nconst b = [3, 4];\nconst all = [...a, ...b, 5];\nconsole.log(all);",
+          "output": "[ 1, 2, 3, 4, 5 ]"
+        },
+        {
+          "type": "tip",
+          "md": "Methods that return arrays can be chained: `nums.filter((n) => n > 4).map((n) => n * 10)` first filters, then transforms."
+        }
+      ],
+      "card": [
+        "`arr.map((x) => x * 2)` transforms every element",
+        "`arr.filter((x) => x > 0)` keeps matching elements",
+        "`arr.find(...)` gives the first match or `undefined`",
+        "`arr.reduce((acc, x) => acc + x, 0)` combines into one value",
+        "`[...a, ...b]` copies and combines arrays"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arrays-1",
+          "prompt": "What does this print?",
+          "code": "const nums = [1, 2, 3, 4];\nconsole.log(nums.map((n) => n * n));",
+          "answers": [
+            "[ 1, 4, 9, 16 ]"
+          ],
+          "explain": "`map` calls the callback for every element and collects the squares in a new array."
+        },
+        {
+          "type": "input",
+          "id": "arrays-2",
+          "prompt": "What does this print?",
+          "code": "const words = [\"sun\", \"moon\", \"sky\", \"planet\"];\nconsole.log(words.filter((w) => w.length > 3));",
+          "answers": [
+            "[ 'moon', 'planet' ]"
+          ],
+          "explain": "`filter` keeps only the words with more than 3 letters: `\"moon\"` and `\"planet\"`."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-3",
+          "prompt": "Complete the code so that the program prints `30`.",
+          "code": "const nums = [5, 10, 15];\nconst total = nums.___((sum, n) => sum + n, 0);\nconsole.log(total);",
+          "options": [
+            "reduce",
+            "map",
+            "filter",
+            "find"
+          ],
+          "answer": 0,
+          "explain": "`reduce` combines all elements into one value, starting with `0`."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-4",
+          "prompt": "What is the value of `first`?",
+          "code": "const ages = [12, 30, 17, 45];\nconst first = ages.find((a) => a > 18);",
+          "options": [
+            "`30`",
+            "`[ 30, 45 ]`",
+            "`45`",
+            "`true`"
+          ],
+          "answer": 0,
+          "explain": "`find` returns only the **first** element that matches. `filter` would return `[ 30, 45 ]`."
+        },
+        {
+          "type": "true_false",
+          "id": "arrays-5",
+          "statement": "`map` changes the original array.",
+          "answer": false,
+          "explain": "`map` returns a new array. The original array stays the same."
+        },
+        {
+          "type": "bug",
+          "id": "arrays-6",
+          "prompt": "Which line does the type checker reject?",
+          "lines": [
+            "const names: string[] = [\"ana\", \"ben\"];",
+            "const upper = names.map((n) => n.toUpperCase());",
+            "const lengths: number[] = names.map((n) => n.length);",
+            "const total: number = lengths.reduce((a, b) => a + b, 0);",
+            "const first: string = names.find((n) => n.startsWith(\"a\"));",
+            "console.log(upper, total, first);"
+          ],
+          "bug": 4,
+          "explain": "`find` can return `undefined`, so its result is `string | undefined`. Write `const first: string | undefined = ...`."
+        },
+        {
+          "type": "blocks",
+          "id": "arrays-7",
+          "prompt": "Build a line that keeps only the numbers of `nums` that are greater than 10.",
+          "tokens": [
+            "const",
+            "big",
+            "=",
+            "nums",
+            ".filter",
+            "(",
+            "(n) => n > 10",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            ".map",
+            ".find"
+          ],
+          "explain": "`filter` keeps the elements for which the callback returns `true`."
+        },
+        {
+          "type": "order",
+          "id": "arrays-8",
+          "prompt": "Put the lines in order so that the program prints `[ 2, 4, 6 ]`.",
+          "lines": [
+            "const a = [1, 2];",
+            "const b = [...a, 3];",
+            "const doubled = b.map((n) => n * 2);",
+            "console.log(doubled);"
+          ],
+          "explain": "`b` copies `a` and adds `3`. Then `map` doubles every element, and the last line prints the result."
+        },
+        {
+          "type": "pairs",
+          "id": "arrays-9",
+          "prompt": "Match the method with what it does.",
+          "pairs": [
+            [
+              "`map`",
+              "transforms every element into a new array"
+            ],
+            [
+              "`filter`",
+              "keeps the elements that pass a test"
+            ],
+            [
+              "`find`",
+              "returns the first matching element"
+            ],
+            [
+              "`reduce`",
+              "combines all elements into one value"
+            ],
+            [
+              "`...`",
+              "copies elements into a new array"
+            ]
+          ]
+        },
+        {
+          "type": "input",
+          "id": "arrays-10",
+          "prompt": "What does this print?",
+          "code": "const xs = [2, 3, 4];\nconsole.log(xs.reduce((acc, x) => acc * x, 1));",
+          "answers": [
+            "24"
+          ],
+          "explain": "Starting with `1`, the callback multiplies: `1 * 2 * 3 * 4` is `24`."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-11",
+          "prompt": "What is the type of `found`?",
+          "code": "const words = [\"a\", \"bb\"];\nconst found = words.find((w) => w.length === 2);",
+          "options": [
+            "`string`",
+            "`string | undefined`",
+            "`string[]`",
+            "`boolean`"
+          ],
+          "answer": 1,
+          "explain": "`find` returns an element or `undefined` when nothing matches."
+        },
+        {
+          "type": "input",
+          "id": "arrays-12",
+          "prompt": "What does this print?",
+          "code": "const a = [1, 2];\nconst b = [0, ...a, ...a];\nconsole.log(b.length);",
+          "answers": [
+            "5"
+          ],
+          "explain": "`b` is `[ 0, 1, 2, 1, 2 ]`: the `0` plus two copies of `a`."
+        }
+      ]
+    },
+    {
+      "id": "classes",
+      "title": "Classes",
+      "chapter": "Classes and generics",
+      "summary": "Build classes with fields, a constructor and methods, control access with public, private and readonly, and implement interfaces.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **class** is a plan for creating objects. It lists **fields** with their types and **methods**, which are functions that belong to the object. The `constructor` runs when you create an object with `new`. Inside the class, `this` means the current object."
+        },
+        {
+          "type": "code",
+          "code": "class Counter {\n  count: number;\n  constructor(start: number) {\n    this.count = start;\n  }\n  increment(): void {\n    this.count = this.count + 1;\n  }\n}\nconst c = new Counter(5);\nc.increment();\nc.increment();\nconsole.log(c.count);\nconsole.log(c);",
+          "output": "7\nCounter { count: 7 }"
+        },
+        {
+          "type": "text",
+          "md": "Every field must get a value: either directly where you declare it, like `score: number = 0;`, or in the constructor. A field without a value is an error."
+        },
+        {
+          "type": "code",
+          "code": "class Player {\n  name: string;\n  score: number = 0;\n  constructor(name: string) {\n    this.name = name;\n  }\n  addPoints(points: number): void {\n    this.score = this.score + points;\n  }\n  describe(): string {\n    return this.name + \": \" + this.score;\n  }\n}\nconst p = new Player(\"Ana\");\np.addPoints(10);\nconsole.log(p.describe());",
+          "output": "Ana: 10"
+        },
+        {
+          "type": "heading",
+          "text": "public, private and readonly"
+        },
+        {
+          "type": "text",
+          "md": "Fields and methods are `public` by default: you can use them everywhere. A `private` member can only be used inside its class. A `readonly` field can only be set where it is declared or in the constructor."
+        },
+        {
+          "type": "code",
+          "code": "class Account {\n  readonly owner: string;\n  private balance: number = 0;\n  constructor(owner: string) {\n    this.owner = owner;\n  }\n  public deposit(amount: number): void {\n    this.balance = this.balance + amount;\n  }\n  public getBalance(): number {\n    return this.balance;\n  }\n}\nconst acc = new Account(\"Ben\");\nacc.deposit(50);\nconsole.log(acc.owner, acc.getBalance());\nconsole.log(acc);",
+          "output": "Ben 50\nAccount { owner: 'Ben', balance: 50 }"
+        },
+        {
+          "type": "warning",
+          "md": "Outside the class, `acc.balance` and `acc.owner = \"Eve\"` are errors. But `private` and `readonly` are checked only by the type checker: when the program runs, they are normal properties, and `console.log` shows them."
+        },
+        {
+          "type": "heading",
+          "text": "Implementing interfaces"
+        },
+        {
+          "type": "text",
+          "md": "An interface can also list methods, like `area(): number;`. With `implements`, a class promises to have everything the interface requires. If a field or method is missing, the type checker reports an error."
+        },
+        {
+          "type": "code",
+          "code": "interface Shape {\n  name: string;\n  area(): number;\n}\nclass Square implements Shape {\n  name: string = \"square\";\n  side: number;\n  constructor(side: number) {\n    this.side = side;\n  }\n  area(): number {\n    return this.side * this.side;\n  }\n}\nfunction report(s: Shape): string {\n  return s.name + \" \" + s.area();\n}\nconsole.log(report(new Square(3)));",
+          "output": "square 9"
+        },
+        {
+          "type": "tip",
+          "md": "A class is also a type. You can write `const p: Player = new Player(\"Ana\");` or use `Player` as a parameter type."
+        }
+      ],
+      "card": [
+        "`constructor(x: number) { this.x = x; }` sets fields",
+        "`new Player(\"Ana\")` creates an object",
+        "`private`: only inside the class, `readonly`: set once",
+        "`class Square implements Shape` has all members of `Shape`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "classes-1",
+          "prompt": "What does this print?",
+          "code": "class Box {\n  items: number = 0;\n  add(n: number): void {\n    this.items = this.items + n;\n  }\n}\nconst b = new Box();\nb.add(3);\nb.add(4);\nconsole.log(b.items);",
+          "answers": [
+            "7"
+          ],
+          "explain": "`items` starts at `0`. The two calls add `3` and `4`."
+        },
+        {
+          "type": "bug",
+          "id": "classes-2",
+          "prompt": "Which line does the type checker reject?",
+          "lines": [
+            "class Safe {",
+            "  private code: number;",
+            "  constructor(code: number) {",
+            "    this.code = code;",
+            "  }",
+            "  check(guess: number): boolean {",
+            "    return guess === this.code;",
+            "  }",
+            "}",
+            "const s = new Safe(1234);",
+            "console.log(s.check(1111));",
+            "console.log(s.code);"
+          ],
+          "bug": 11,
+          "explain": "`code` is `private`, so you cannot read it outside the class. Use the public method, for example `s.check(1234)`."
+        },
+        {
+          "type": "gap",
+          "id": "classes-3",
+          "prompt": "Complete the constructor so that the program prints `Rex`.",
+          "code": "class Dog {\n  name: string;\n  constructor(name: string) {\n    ___.name = name;\n  }\n}\nconsole.log(new Dog(\"Rex\").name);",
+          "options": [
+            "this",
+            "self",
+            "Dog",
+            "name"
+          ],
+          "answer": 0,
+          "explain": "Inside a class, `this` is the current object. `this.name = name` stores the parameter in the field."
+        },
+        {
+          "type": "choice",
+          "id": "classes-4",
+          "prompt": "Which keyword makes a field usable only inside its class?",
+          "options": [
+            "`private`",
+            "`readonly`",
+            "`public`",
+            "`implements`"
+          ],
+          "answer": 0,
+          "explain": "`private` members can only be used inside the class. `readonly` fields can be read everywhere but not changed."
+        },
+        {
+          "type": "true_false",
+          "id": "classes-5",
+          "statement": "The constructor may set the `readonly` field `x`.",
+          "code": "class Point {\n  readonly x: number;\n  constructor(x: number) {\n    this.x = x;\n  }\n}",
+          "answer": true,
+          "explain": "A `readonly` field can be set where it is declared or in the constructor, but not later."
+        },
+        {
+          "type": "order",
+          "id": "classes-6",
+          "prompt": "Put the lines in order so that the program prints `Light { on: true }`.",
+          "lines": [
+            "class Light {",
+            "  on: boolean = false;",
+            "}",
+            "const lamp = new Light();",
+            "lamp.on = true;",
+            "console.log(lamp);"
+          ],
+          "explain": "Define the class first, then create the object with `new`, change the field and print the object."
+        },
+        {
+          "type": "blocks",
+          "id": "classes-7",
+          "prompt": "Build a line that creates a new `Player` object with the name `\"Ana\"`.",
+          "tokens": [
+            "const",
+            "p",
+            "=",
+            "new",
+            "Player",
+            "(",
+            "\"Ana\"",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            "this",
+            "Player.create"
+          ],
+          "explain": "You create an object with `new`, the class name and the arguments for the constructor."
+        },
+        {
+          "type": "pairs",
+          "id": "classes-8",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`constructor`",
+              "runs when you create an object with `new`"
+            ],
+            [
+              "`this`",
+              "the current object"
+            ],
+            [
+              "`private`",
+              "only usable inside the class"
+            ],
+            [
+              "`readonly`",
+              "can only be set once"
+            ],
+            [
+              "`implements`",
+              "the class matches an interface"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "classes-9",
+          "prompt": "What does the type checker say about this code?",
+          "code": "interface Named {\n  name: string;\n  greet(): string;\n}\nclass Robot implements Named {\n  name: string = \"Robo\";\n}",
+          "options": [
+            "No errors",
+            "Error: `Robot` is missing the method `greet`",
+            "Error: `name` must be `private`"
+          ],
+          "answer": 1,
+          "explain": "`implements Named` promises a `name` and a `greet` method. The class has no `greet`, so this is an error."
+        },
+        {
+          "type": "input",
+          "id": "classes-10",
+          "prompt": "What does this print?",
+          "code": "class Counter {\n  private n: number = 0;\n  next(): number {\n    this.n = this.n + 1;\n    return this.n;\n  }\n}\nconst c = new Counter();\nc.next();\nc.next();\nconsole.log(c.next());",
+          "answers": [
+            "3"
+          ],
+          "explain": "Every call of `next` adds `1` to `n` and returns it. The third call returns `3`."
+        },
+        {
+          "type": "bug",
+          "id": "classes-11",
+          "prompt": "Which line does the type checker reject?",
+          "lines": [
+            "class Ticket {",
+            "  readonly id: number;",
+            "  seat: string;",
+            "  constructor(id: number, seat: string) {",
+            "    this.id = id;",
+            "    this.seat = seat;",
+            "  }",
+            "  renumber(newId: number): void {",
+            "    this.id = newId;",
+            "  }",
+            "}",
+            "const t = new Ticket(1, \"A3\");"
+          ],
+          "bug": 8,
+          "explain": "`id` is `readonly`, so only the constructor may set it. Remove `readonly` from line 2 if the id must change."
+        },
+        {
+          "type": "input",
+          "id": "classes-12",
+          "prompt": "What does this print?",
+          "code": "class Greeter {\n  greeting: string;\n  constructor(greeting: string) {\n    this.greeting = greeting;\n  }\n  greet(name: string): string {\n    return this.greeting + \", \" + name + \"!\";\n  }\n}\nconst g = new Greeter(\"Hi\");\nconsole.log(g.greet(\"Bo\"));",
+          "answers": [
+            "Hi, Bo!"
+          ],
+          "explain": "The constructor stores `\"Hi\"` in `greeting`, and `greet` joins it with the name."
+        }
+      ]
+    },
+    {
+      "id": "generics",
+      "title": "Generics",
+      "chapter": "Classes and generics",
+      "summary": "Write reusable code with generic functions and interfaces, and use built-in generic types like Partial, Readonly and Record.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Sometimes a function should work with many types and still remember which one it got. `any` would lose this information. **Generics** solve this: a **type parameter** like `<T>` is a placeholder for a type that is filled in at each call."
+        },
+        {
+          "type": "code",
+          "code": "function first<T>(items: T[]): T {\n  return items[0];\n}\nconst n = first([10, 20, 30]);\nconst s = first([\"a\", \"b\"]);\nconsole.log(n + 1, s.toUpperCase());",
+          "output": "11 A"
+        },
+        {
+          "type": "text",
+          "md": "TypeScript usually infers the type parameters from the arguments. Above, `T` is `number` in the first call and `string` in the second. You can also write them yourself after the function name. A function can have more than one type parameter."
+        },
+        {
+          "type": "code",
+          "code": "function pair<A, B>(a: A, b: B): [A, B] {\n  return [a, b];\n}\nconst p = pair<string, number>(\"age\", 36);\nconsole.log(p);",
+          "output": "[ 'age', 36 ]"
+        },
+        {
+          "type": "heading",
+          "text": "Generic interfaces"
+        },
+        {
+          "type": "text",
+          "md": "Interfaces and type aliases can have type parameters too. `Box<number>` is a box with a number inside, and `Box<string>` is a box with a string."
+        },
+        {
+          "type": "code",
+          "code": "interface Box<T> {\n  value: T;\n  label: string;\n}\nconst numBox: Box<number> = { value: 42, label: \"answer\" };\nconst strBox: Box<string> = { value: \"hi\", label: \"greeting\" };\nconsole.log(numBox.value * 2, strBox.value.length);",
+          "output": "84 2"
+        },
+        {
+          "type": "text",
+          "md": "You already know a generic type: arrays. `Array<number>` is another way to write `number[]`. Both mean exactly the same type."
+        },
+        {
+          "type": "code",
+          "code": "const a: Array<number> = [1, 2, 3];\nconst b: number[] = a;\nconsole.log(b);",
+          "output": "[ 1, 2, 3 ]"
+        },
+        {
+          "type": "heading",
+          "text": "Built-in generic types"
+        },
+        {
+          "type": "text",
+          "md": "TypeScript has useful generic types built in. `Partial<T>` makes all properties of `T` optional. `Readonly<T>` makes all of them `readonly`. `Record<K, V>` is an object with keys of type `K` and values of type `V`."
+        },
+        {
+          "type": "code",
+          "code": "interface User {\n  name: string;\n  age: number;\n}\nconst update: Partial<User> = { age: 37 };\nconst fixed: Readonly<User> = { name: \"Ada\", age: 36 };\nconst scores: Record<string, number> = { ana: 10, ben: 7 };\nscores.cleo = 9;\nconsole.log(update, fixed.name);\nconsole.log(scores);",
+          "output": "{ age: 37 } Ada\n{ ana: 10, ben: 7, cleo: 9 }"
+        },
+        {
+          "type": "warning",
+          "md": "`fixed.age = 40;` would be an error here, because `fixed` has the type `Readonly<User>`."
+        },
+        {
+          "type": "tip",
+          "md": "Use generics when the type of the output depends on the type of the input. Type parameters often have short names like `T`, `K` and `V`."
+        }
+      ],
+      "card": [
+        "`function first<T>(items: T[]): T` is a generic function",
+        "`interface Box<T> { value: T }` is a generic interface",
+        "`Array<number>` is the same as `number[]`",
+        "`Partial<T>`, `Readonly<T>`, `Record<K, V>` are built in"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "generics-1",
+          "prompt": "What does this print?",
+          "code": "function last<T>(items: T[]): T {\n  return items[items.length - 1];\n}\nconsole.log(last([\"x\", \"y\", \"z\"]));",
+          "answers": [
+            "z"
+          ],
+          "explain": "The last position is `length - 1`, which is `2` here, so `last` returns `\"z\"`."
+        },
+        {
+          "type": "gap",
+          "id": "generics-2",
+          "prompt": "Complete the code to make `wrap` a generic function.",
+          "code": "function wrap___(value: T): T[] {\n  return [value];\n}\nconsole.log(wrap(5));",
+          "options": [
+            "<T>",
+            "(T)",
+            "[T]",
+            "<>"
+          ],
+          "answer": 0,
+          "explain": "Type parameters go in angle brackets right after the function name: `wrap<T>`."
+        },
+        {
+          "type": "choice",
+          "id": "generics-3",
+          "prompt": "What type does TypeScript infer for `result`?",
+          "code": "function identity<T>(value: T): T {\n  return value;\n}\nconst word: string = \"hello\";\nconst result = identity(word);",
+          "options": [
+            "`string`",
+            "`T`",
+            "`any`",
+            "`unknown`"
+          ],
+          "answer": 0,
+          "explain": "`T` is filled in from the argument. `word` is a `string`, so `identity` returns a `string`."
+        },
+        {
+          "type": "true_false",
+          "id": "generics-4",
+          "statement": "`Array<string>` and `string[]` describe the same type.",
+          "answer": true,
+          "explain": "`Array<string>` is the generic way to write `string[]`. You can use either one."
+        },
+        {
+          "type": "bug",
+          "id": "generics-5",
+          "prompt": "Which line does the type checker reject?",
+          "lines": [
+            "interface Box<T> {",
+            "  value: T;",
+            "}",
+            "const a: Box<number> = { value: 1 };",
+            "const b: Box<string> = { value: \"two\" };",
+            "const c: Box<boolean> = { value: \"yes\" };",
+            "console.log(a, b, c);"
+          ],
+          "bug": 5,
+          "explain": "In `Box<boolean>`, `value` must be `true` or `false`, not a string. Write `{ value: true }`."
+        },
+        {
+          "type": "pairs",
+          "id": "generics-6",
+          "prompt": "Match the type with its meaning.",
+          "pairs": [
+            [
+              "`Partial<T>`",
+              "all properties are optional"
+            ],
+            [
+              "`Readonly<T>`",
+              "all properties are read-only"
+            ],
+            [
+              "`Record<string, number>`",
+              "an object with string keys and number values"
+            ],
+            [
+              "`<T>`",
+              "a type parameter"
+            ],
+            [
+              "`Array<T>`",
+              "the same as `T[]`"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "generics-7",
+          "prompt": "Build the first line of a generic function `echo` that returns its argument with the same type.",
+          "tokens": [
+            "function",
+            "echo",
+            "<T>",
+            "(value: T)",
+            ":",
+            "T",
+            "{"
+          ],
+          "distractors": [
+            "any",
+            "<>"
+          ],
+          "explain": "The type parameter `<T>` comes after the name. The parameter and the return value both use `T`."
+        },
+        {
+          "type": "order",
+          "id": "generics-8",
+          "prompt": "Put the lines in order so that the program prints `{ apples: 4, pears: 8 }`.",
+          "lines": [
+            "const stock: Record<string, number> = {};",
+            "stock.apples = 4;",
+            "stock.pears = stock.apples * 2;",
+            "console.log(stock);"
+          ],
+          "explain": "Create the empty record first. `pears` needs the value of `apples`, so `apples` comes before it."
+        },
+        {
+          "type": "input",
+          "id": "generics-9",
+          "prompt": "What does this print?",
+          "code": "const ages: Record<string, number> = { ana: 30, ben: 25 };\nages.ben = ages.ben + 1;\nconsole.log(ages.ana + ages.ben);",
+          "answers": [
+            "56"
+          ],
+          "explain": "`ages.ben` becomes `26`, and `30 + 26` is `56`."
+        },
+        {
+          "type": "choice",
+          "id": "generics-10",
+          "prompt": "What does this print?",
+          "code": "interface Settings {\n  theme: string;\n  size: number;\n}\nconst s: Partial<Settings> = { size: 12 };\nconsole.log(s);",
+          "options": [
+            "`{ size: 12 }`",
+            "`{ theme: undefined, size: 12 }`",
+            "`{ theme: '', size: 12 }`",
+            "`{ theme: 12 }`"
+          ],
+          "answer": 0,
+          "explain": "`Partial<Settings>` makes `theme` optional, so the object can leave it out. Types never add properties."
+        },
+        {
+          "type": "input",
+          "id": "generics-11",
+          "prompt": "What does this print?",
+          "code": "interface Result<T> {\n  ok: boolean;\n  data: T;\n}\nconst r: Result<number[]> = { ok: true, data: [1, 2, 3] };\nconsole.log(r.data.length);",
+          "answers": [
+            "3"
+          ],
+          "explain": "In `Result<number[]>`, `data` is an array of numbers. It has 3 elements."
+        },
+        {
+          "type": "true_false",
+          "id": "generics-12",
+          "statement": "The type checker accepts this code.",
+          "code": "const config: Readonly<{ port: number }> = { port: 80 };\nconfig.port = 8080;",
+          "answer": false,
+          "explain": "`Readonly` makes `port` read-only, so the second line is an error."
+        }
+      ]
+    }
+  ]
+}

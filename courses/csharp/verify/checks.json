@@ -1,0 +1,223 @@
+{
+  "hello-1": {
+    "each": "___",
+    "out": "Hello"
+  },
+  "hello-3": {
+    "src": "Console.WriteLine(\"Hi\")",
+    "error": true
+  },
+  "hello-4": {
+    "out": "Hello\nWorld"
+  },
+  "hello-6": {
+    "fix": "Console.WriteLine(\"C#\");",
+    "out": "Hello\nfrom\nC#"
+  },
+  "hello-7": {
+    "out": "Hi, Ana!\nBye"
+  },
+  "hello-8": {
+    "template": "{x}",
+    "out": "42"
+  },
+  "hello-10": {
+    "answer_out": true
+  },
+  "hello-12": {
+    "src": "Console.Write(\"A\");\nConsole.Write(\"B\");",
+    "out": "AB"
+  },
+  "variables-3": {
+    "each": "___\nConsole.WriteLine(c);",
+    "out": "x"
+  },
+  "variables-4": {
+    "error": true
+  },
+  "variables-5": {
+    "out": "5"
+  },
+  "variables-7": {
+    "fix": "",
+    "out": "21"
+  },
+  "variables-8": {
+    "answer_out": true
+  },
+  "variables-9": {
+    "template": "{x}\nConsole.WriteLine(city);",
+    "out": "Oslo"
+  },
+  "variables-10": {
+    "out": "32"
+  },
+  "variables-12": {
+    "src": "Console.WriteLine(true);",
+    "out": "True"
+  },
+  "strings-3": {
+    "answer_out": true
+  },
+  "strings-4": {
+    "out": "Hi, Lea!"
+  },
+  "strings-5": {
+    "template": "string text = \"Bicycle\";\n{x}",
+    "out": "Bic"
+  },
+  "strings-6": {
+    "out": "cat"
+  },
+  "strings-7": {
+    "fix": "string text = $\"{city} in {year}\";",
+    "out": "Rome in 2025"
+  },
+  "strings-10": {
+    "src": "Console.WriteLine(10 / 4);",
+    "answer_out": true
+  },
+  "strings-11": {
+    "out": "HELLO WORLD"
+  },
+  "strings-12": {
+    "answer_out": true
+  },
+  "conditions-2": {
+    "answer_out": true
+  },
+  "conditions-3": {
+    "out": "False"
+  },
+  "conditions-4": {
+    "out": "Equal"
+  },
+  "conditions-5": {
+    "fix": "else",
+    "out": "Minor"
+  },
+  "conditions-8": {
+    "out": "Even"
+  },
+  "conditions-9": {
+    "template": "int age = 20;\nbool member = true;\n{x}\n{\n    Console.WriteLine(\"OK\");\n}",
+    "out": "OK"
+  },
+  "conditions-10": {
+    "src": "Console.WriteLine(true || false);\nConsole.WriteLine(true && false);",
+    "out": "True\nFalse"
+  },
+  "conditions-11": {
+    "src": "int n = 42;\nstring s = n switch\n{\n    1 => \"one\",\n    _ => \"other\"\n};\nConsole.WriteLine(s);",
+    "out": "other"
+  },
+  "loops-3": {
+    "out": "Hi\nHi\nHi\nHi"
+  },
+  "loops-4": {
+    "out": "5\n4\n3\n2\n1"
+  },
+  "loops-5": {
+    "src": "int n = 10;\nwhile (n < 5)\n{\n    Console.WriteLine(\"inside\");\n}\nConsole.WriteLine(\"after\");",
+    "out": "after"
+  },
+  "loops-6": {
+    "fix": "while (i <= 3)",
+    "out": "1\n2\n3"
+  },
+  "loops-7": {
+    "out": "14"
+  },
+  "loops-8": {
+    "template": "string word = \"hey\";\n{x}\n{\n    Console.Write(c);\n}",
+    "out": "hey"
+  },
+  "loops-10": {
+    "answer_out": true
+  },
+  "loops-12": {
+    "out": "24"
+  },
+  "methods-2": {
+    "src": "void Show(string text)\n{\n    Console.WriteLine(text);\n}\n\nShow(\"ok\");",
+    "out": "ok"
+  },
+  "methods-3": {
+    "out": "10"
+  },
+  "methods-4": {
+    "fix": "Console.WriteLine(Shout(\"hey\"));",
+    "out": "HEY!"
+  },
+  "methods-5": {
+    "src": "int Get()\n{\n    Console.WriteLine(\"x\");\n}\n\nGet();",
+    "error": true
+  },
+  "methods-7": {
+    "template": "{x}\n\nConsole.WriteLine(Total(4, 3));",
+    "out": "14"
+  },
+  "methods-8": {
+    "template": "{x}\n\nConsole.WriteLine(Next(41));",
+    "out": "42"
+  },
+  "methods-10": {
+    "answer_out": true
+  },
+  "methods-12": {
+    "out": "5"
+  },
+  "collections-3": {
+    "src": "string[] a = [\"first\", \"second\"];\nConsole.WriteLine(a[0]);",
+    "out": "first"
+  },
+  "collections-4": {
+    "out": "3"
+  },
+  "collections-5": {
+    "fix": "Console.WriteLine(colors[2]);",
+    "out": "red\ngreen\nblue"
+  },
+  "collections-6": {
+    "src": "int[] a = [1];\na.Add(2);",
+    "error": true
+  },
+  "collections-7": {
+    "out": "7"
+  },
+  "collections-8": {
+    "template": "{x}\nConsole.WriteLine(string.Join(\" \", drinks));",
+    "out": "tea milk"
+  },
+  "collections-10": {
+    "answer_out": true
+  },
+  "classes-2": {
+    "each": "var c = ___;\nConsole.WriteLine(c.GetType().Name);\n\nclass Car\n{\n}",
+    "out": "Car"
+  },
+  "classes-3": {
+    "out": "Kai"
+  },
+  "classes-4": {
+    "src": "var t = new Tree();\n\nclass Tree\n{\n    public Tree()\n    {\n        Console.WriteLine(\"new tree\");\n    }\n}",
+    "out": "new tree"
+  },
+  "classes-5": {
+    "fix": "    public int Area()",
+    "out": "16"
+  },
+  "classes-6": {
+    "out": "Hi, Ana"
+  },
+  "classes-8": {
+    "answer_out": true
+  },
+  "classes-9": {
+    "template": "var p = new Person(\"Ida\", 40);\nConsole.WriteLine(p);\n\n{x}",
+    "out": "Person { Name = Ida, Age = 40 }"
+  },
+  "classes-11": {
+    "out": "False"
+  }
+}

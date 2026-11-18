@@ -1,0 +1,424 @@
+{
+  "hello-1": {
+    "out": "ab",
+    "opt": true
+  },
+  "hello-2": {
+    "out": "1-2"
+  },
+  "hello-3": {
+    "extra": [
+      {
+        "src": "main :-\n    writeln(hi)",
+        "err": true
+      },
+      {
+        "src": "main :-\n    writeln(hi).",
+        "out": "hi"
+      }
+    ]
+  },
+  "hello-4": {
+    "raw": true,
+    "out": "Ready"
+  },
+  "hello-5": {
+    "out": "abcd"
+  },
+  "hello-6": {
+    "tpl": "{{CODE}}",
+    "fix": "    writeln(one),",
+    "out": "one\ntwo"
+  },
+  "hello-7": {
+    "out": "Hello, world"
+  },
+  "hello-9": {
+    "tpl": "main :-\n    {{CODE}}.",
+    "out": "Hi bo"
+  },
+  "hello-10": {
+    "extra": [
+      {
+        "src": "main :-\n    write(a),\n    write(b),\n    nl.",
+        "out": "ab"
+      }
+    ]
+  },
+  "hello-11": {
+    "out": "Big Cat"
+  },
+  "hello-12": {
+    "extra": [
+      {
+        "src": "main :-\n    format(\"a\"),\n    format(\"b\"),\n    nl.",
+        "out": "ab"
+      }
+    ]
+  },
+  "facts-1": {
+    "tpl": "{{CODE}}\nmain :-\n    color(grass, C),\n    format(\"C = ~w~n\", [C]).",
+    "out": "C = green",
+    "opt": true
+  },
+  "facts-2": {
+    "tpl": "{{CODE}}\nmain :-\n    ( animal(cow) -> writeln(true) ; writeln(false) ).",
+    "out": "false"
+  },
+  "facts-3": {
+    "out": "ann"
+  },
+  "facts-4": {
+    "extra": [
+      {
+        "src": "main :-\n    ( var(Food) -> writeln(var) ; writeln(no) ),\n    ( atom(food), atom('Food') -> writeln(atoms) ; writeln(no) ),\n    ( string(\"Food\") -> writeln(string) ; writeln(no) ).",
+        "out": "var\natoms\nstring"
+      }
+    ]
+  },
+  "facts-5": {
+    "tpl": "animal(cat).\nanimal(dog).\n{{CODE}}",
+    "out": "cat\ndog"
+  },
+  "facts-6": {
+    "tpl": "{{CODE}}\nmain :-\n    forall(parent(X, Y), format(\"~w ~w~n\", [X, Y])).",
+    "fix": "parent(bob, ann).",
+    "out": "tom bob\ntom liz\nbob ann\nbob pat"
+  },
+  "facts-7": {
+    "tpl": "{{CODE}}\nmain :-\n    findall(X, parent(tom, X), L),\n    length(L, N),\n    writeln(N).",
+    "out": "2"
+  },
+  "facts-9": {
+    "tpl": "likes(ann, pizza).\nlikes(ann, salad).\nlikes(bob, pizza).\n{{CODE}}",
+    "out": "Ann likes pizza"
+  },
+  "facts-10": {
+    "tpl": "{{CODE}}\nmain :-\n    ( likes(bob, soup) -> writeln(yes) ; writeln(no) ).",
+    "out": "yes"
+  },
+  "facts-11": {
+    "tpl": "likes(ann, pizza).\nlikes(ann, salad).\nlikes(bob, pizza).\nmain :-\n    likes(ann, X),\n    writeln(X).",
+    "out": "pizza"
+  },
+  "facts-12": {
+    "out": "xx",
+    "opt": true
+  },
+  "rules-2": {
+    "out": "tom"
+  },
+  "rules-3": {
+    "tpl": "dog(rex).\ncat(tom).\n{{CODE}}\nmain :-\n    ( pet(rex) -> writeln(yes) ; writeln(no) ),\n    ( pet(tom) -> writeln(yes) ; writeln(no) ).",
+    "out": "yes\nyes"
+  },
+  "rules-4": {
+    "tpl": "bird(tweety).\nbird(pingu).\npenguin(pingu).\n{{CODE}}\nmain :-\n    forall(flies(B), writeln(B)).",
+    "out": "tweety"
+  },
+  "rules-5": {
+    "tpl": "parent(tom, bob).\nmale(tom).\nfemale(ann).\nparent(ann, bob).\n{{CODE}}\nmain :-\n    father(F, bob),\n    mother(M, bob),\n    format(\"~w ~w~n\", [F, M]).",
+    "fix": "    parent(F, C),",
+    "out": "tom ann"
+  },
+  "rules-6": {
+    "tpl": "{{CODE}}\nmain :-\n    pet(X),\n    writeln(X).",
+    "out": "rex"
+  },
+  "rules-7": {
+    "tpl": "bird(tweety).\n{{CODE}}\nmain :-\n    check(tweety),\n    check(rex).",
+    "out": "yes\nno"
+  },
+  "rules-9": {
+    "tpl": "cat(tom).\n{{CODE}}\nmain :-\n    forall(pet(P), writeln(P)).",
+    "out": "tom"
+  },
+  "rules-10": {
+    "out": "no"
+  },
+  "rules-11": {
+    "extra": [
+      {
+        "src": "p(1, 2).\np(1, 1).\nsame(X) :- p(X, X).\nmain :-\n    forall(same(V), writeln(V)).",
+        "out": "1"
+      }
+    ]
+  },
+  "rules-12": {
+    "extra": [
+      {
+        "src": "cat(tom).\npet(X) :- cat(Y).\nmain :- true.",
+        "stderr": "Singleton"
+      }
+    ]
+  },
+  "unification-1": {
+    "out": "8 7"
+  },
+  "unification-2": {
+    "extra": [
+      {
+        "src": "main :-\n    X = 2 + 3,\n    writeln(X).",
+        "out": "2+3"
+      }
+    ]
+  },
+  "unification-3": {
+    "extra": [
+      {
+        "src": "t(G) :- ( call(G) -> writeln(yes) ; writeln(no) ).\nmain :-\n    t(point(1, 2) = point(_, _)),\n    t(f(a) = f(a)),\n    t(point(1, 2) = point(1, 2, 3)),\n    t(_ = point(1, 2)).",
+        "out": "yes\nyes\nno\nyes"
+      }
+    ]
+  },
+  "unification-4": {
+    "out": "1"
+  },
+  "unification-5": {
+    "out": "cat"
+  },
+  "unification-6": {
+    "fix": "    point(Z, _) = Point,",
+    "out": "3 4\n3"
+  },
+  "unification-7": {
+    "extra": [
+      {
+        "src": "main :-\n    f(X, b) = f(a, Y),\n    format(\"~w ~w~n\", [X, Y]).",
+        "out": "a b"
+      }
+    ]
+  },
+  "unification-9": {
+    "out": "1\n2"
+  },
+  "unification-10": {
+    "tpl": "book(title('Dune'), year(1965)).\nbook(title('Emma'), year(1815)).\nmain :-\n    {{CODE}},\n    writeln(T).",
+    "out": "Dune"
+  },
+  "unification-11": {
+    "extra": [
+      {
+        "src": "main :-\n    ( point(1, 2) = point(1, 2) -> writeln(yes) ; writeln(no) ),\n    ( point(1, 2) = pair(1, 2) -> writeln(yes) ; writeln(no) ).",
+        "out": "yes\nno"
+      }
+    ]
+  },
+  "unification-12": {
+    "out": "different\nsame"
+  },
+  "arithmetic-1": {
+    "out": "4"
+  },
+  "arithmetic-2": {
+    "out": "2"
+  },
+  "arithmetic-3": {
+    "out": "4.5",
+    "opt": true
+  },
+  "arithmetic-4": {
+    "extra": [
+      {
+        "src": "main :-\n    ( 2 + 2 = 4 -> writeln(yes) ; writeln(no) ).",
+        "out": "no"
+      }
+    ]
+  },
+  "arithmetic-5": {
+    "out": "yes"
+  },
+  "arithmetic-6": {
+    "fix": "    Next is Count + 1,",
+    "out": "Next: 6"
+  },
+  "arithmetic-7": {
+    "extra": [
+      {
+        "src": "main :-\n    X is 3 * 4,\n    writeln(X).",
+        "out": "12"
+      },
+      {
+        "src": "main :-\n    X = 3 * 4,\n    writeln(X).",
+        "out": "3*4"
+      },
+      {
+        "src": "main :-\n    3 * 4 is X,\n    writeln(X).",
+        "err": true
+      },
+      {
+        "src": "main :-\n    X =:= 3 * 4,\n    writeln(X).",
+        "err": true
+      }
+    ]
+  },
+  "arithmetic-9": {
+    "out": "9"
+  },
+  "arithmetic-10": {
+    "tpl": "main :-\n    {{CODE}},\n    writeln(Rest).",
+    "out": "6"
+  },
+  "arithmetic-11": {
+    "out": "15"
+  },
+  "arithmetic-12": {
+    "extra": [
+      {
+        "src": "main :-\n    X is Y + 1,\n    writeln(X-Y).",
+        "err": true
+      }
+    ]
+  },
+  "recursion-1": {
+    "out": "8"
+  },
+  "recursion-3": {
+    "tpl": "{{CODE}}\nmain :-\n    count(1).",
+    "hang": true
+  },
+  "recursion-4": {
+    "tpl": "{{CODE}}\nmain :-\n    factorial(5, F),\n    writeln(F).",
+    "out": "120"
+  },
+  "recursion-5": {
+    "tpl": "{{CODE}}\nmain :-\n    sum_to(4, S),\n    writeln(S).",
+    "fix": "sum_to(0, 0).",
+    "out": "10"
+  },
+  "recursion-6": {
+    "tpl": "{{CODE}}\nmain :-\n    findall(X, ancestor(b, X), L),\n    length(L, N),\n    writeln(N).",
+    "out": "2"
+  },
+  "recursion-7": {
+    "tpl": "factorial(0, 1).\nfactorial(N, F) :-\n    N > 0,\n    N1 is N - 1,\n    factorial(N1, F1),\n    F is N * F1.\n{{CODE}}",
+    "out": "120"
+  },
+  "recursion-9": {
+    "tpl": "main :-\n    N = 5,\n    {{CODE}},\n    writeln(N1).",
+    "out": "4"
+  },
+  "recursion-10": {
+    "extra": [
+      {
+        "src": "parent(ann, bob).\nancestor(X, Y) :-\n    ancestor(Z, Y),\n    parent(X, Z).\nmain :-\n    forall(ancestor(ann, D), writeln(D)).",
+        "hang": true
+      }
+    ]
+  },
+  "recursion-11": {
+    "out": "15"
+  },
+  "recursion-12": {
+    "tpl": "factorial(0, 1).\nfactorial(N, F) :-\n    N > 0,\n    N1 is N - 1,\n    factorial(N1, F1),\n    F is N * F1.\nmain :-\n    factorial(30, F),\n    writeln(F).",
+    "out": "265252859812191058636308480000000"
+  },
+  "lists-1": {
+    "out": "[b,c]"
+  },
+  "lists-2": {
+    "out": "4"
+  },
+  "lists-3": {
+    "out": "[1,2,3]",
+    "opt": true
+  },
+  "lists-4": {
+    "extra": [
+      {
+        "src": "main :-\n    ( [] = [_|_] -> writeln(yes) ; writeln(no) ).",
+        "out": "no"
+      }
+    ]
+  },
+  "lists-5": {
+    "tpl": "{{CODE}}\nmain :-\n    total([4, 5, 6], S),\n    writeln(S).",
+    "out": "15"
+  },
+  "lists-6": {
+    "tpl": "{{CODE}}\nmain :-\n    double([1, 2, 3], L),\n    writeln(L).",
+    "fix": "    double(T, DT).",
+    "out": "[2,4,6]"
+  },
+  "lists-7": {
+    "extra": [
+      {
+        "src": "t(G) :- ( call(G) -> writeln(yes) ; writeln(no) ).\nmain :-\n    t(member(b, [a, b, c])),\n    t(member(d, [a, b, c])),\n    t(member([a], [a, b])),\n    t(member(a, [])).",
+        "out": "yes\nno\nno\nno"
+      }
+    ]
+  },
+  "lists-9": {
+    "tpl": "show([]) :-\n    nl.\n{{CODE}}\nmain :-\n    show([a, b, c]).",
+    "out": "<a><b><c>"
+  },
+  "lists-10": {
+    "tpl": "main :-\n    {{CODE}} = [1, 2, 3],\n    writeln(H-T).",
+    "out": "1-[2,3]"
+  },
+  "lists-11": {
+    "out": "[]\n[x]\n[x,y]"
+  },
+  "lists-12": {
+    "out": "[10,20]"
+  },
+  "collecting-1": {
+    "out": "[10,20,30]"
+  },
+  "collecting-2": {
+    "out": "4"
+  },
+  "collecting-3": {
+    "out": "[]"
+  },
+  "collecting-4": {
+    "extra": [
+      {
+        "src": "main :-\n    forall(between(1, 3, X), writeln(X)).",
+        "out": "1\n2\n3"
+      }
+    ]
+  },
+  "collecting-5": {
+    "out": "[2,4,6]"
+  },
+  "collecting-6": {
+    "tpl": "age(ann, 31).\nage(bob, 17).\nage(cara, 45).\n{{CODE}}",
+    "fix": "    findall(Name, age(Name, _), Names),",
+    "out": "3"
+  },
+  "collecting-7": {
+    "extra": [
+      {
+        "src": "age(ann, 31).\nage(bob, 17).\nage(cara, 45).\nmain :-\n    findall(N, age(N, _), Names),\n    writeln(Names).",
+        "out": "[ann,bob,cara]"
+      },
+      {
+        "src": "age(ann, 31).\nage(bob, 17).\nage(cara, 45).\nmain :-\n    findall(Names, age(N, _), N),\n    writeln(Names).",
+        "not": "[ann,bob,cara]"
+      },
+      {
+        "src": "age(ann, 31).\nage(bob, 17).\nage(cara, 45).\nmain :-\n    forall(age(_, _), Names),\n    writeln(Names).",
+        "err": true
+      }
+    ]
+  },
+  "collecting-9": {
+    "out": "start\n1\n2\n3\ndone"
+  },
+  "collecting-10": {
+    "tpl": "main :-\n    {{CODE}},\n    writeln(L).",
+    "out": "[1,2,3,4,5]"
+  },
+  "collecting-11": {
+    "out": "abc"
+  },
+  "collecting-12": {
+    "extra": [
+      {
+        "src": "main :-\n    ( forall(member(X, [2, 4, 6]), X mod 2 =:= 0) -> writeln(yes) ; writeln(no) ).",
+        "out": "yes"
+      }
+    ]
+  }
+}

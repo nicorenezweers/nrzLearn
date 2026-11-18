@@ -1,0 +1,1922 @@
+{
+  "course": "zig",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Zig",
+      "chapter": "First steps",
+      "summary": "Write your first Zig program, print text and numbers with std.debug.print, and run it with zig run.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A program is a list of instructions for the computer. Zig is a fast language that turns your code into a program before it runs: this step is called **compiling**. This course uses **Zig 0.17**. Here is a complete Zig program:"
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    std.debug.print(\"Hello, Zig!\\n\", .{});\n}",
+          "output": "Hello, Zig!"
+        },
+        {
+          "type": "text",
+          "md": "The first line loads the **standard library**, a collection of ready-made tools, and gives it the name `std`. `pub fn main() void` defines the function `main`: `fn` starts a function, `pub` makes it visible from outside the file, and `void` means it gives back no value. The program starts in `main` and runs the lines between `{` and `}` from top to bottom."
+        },
+        {
+          "type": "text",
+          "md": "`std.debug.print` shows text. It takes two things: the text in double quotes and a list of values in `.{}`. Here the list is empty. `\\n` is a **new line**: `print` does not add one by itself. Every instruction ends with a semicolon `;`."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    std.debug.print(\"Zig \", .{});\n    std.debug.print(\"is fast\\n\", .{});\n    std.debug.print(\"Line 2\\n\", .{});\n}",
+          "output": "Zig is fast\nLine 2"
+        },
+        {
+          "type": "heading",
+          "text": "Printing values"
+        },
+        {
+          "type": "text",
+          "md": "Inside the text, `{s}` and `{d}` are **placeholders**. Zig replaces them with the values from the list, in order. Use `{s}` for text (a **string**) and `{d}` for a number. Separate the values with commas: `.{ \"Ada\", 36 }`."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    std.debug.print(\"{s} is {d} years old\\n\", .{ \"Ada\", 36 });\n    std.debug.print(\"{d} + {d} = {d}\\n\", .{ 2, 3, 2 + 3 });\n}",
+          "output": "Ada is 36 years old\n2 + 3 = 5"
+        },
+        {
+          "type": "warning",
+          "md": "The number of placeholders must match the number of values. If they do not match, or `{d}` gets a string, Zig stops with an error before the program runs. These checks catch many mistakes early."
+        },
+        {
+          "type": "heading",
+          "text": "Running a program"
+        },
+        {
+          "type": "text",
+          "md": "Save the code in a file that ends with `.zig`, for example `hello.zig`. In a terminal, the command `zig run hello.zig` compiles the file and runs the program right away."
+        },
+        {
+          "type": "tip",
+          "md": "`std.debug.print` writes to the **standard error** stream (stderr), not to the normal output (stdout). In the terminal you see both, so it is perfect for learning. In the exercises, short examples show only the lines inside `main`."
+        }
+      ],
+      "card": [
+        "`const std = @import(\"std\");` loads the standard library",
+        "`pub fn main() void { }` is where the program starts",
+        "`std.debug.print(\"Hi\\n\", .{});` prints a line",
+        "`{s}` text, `{d}` number: `.{ \"Ada\", 36 }`",
+        "`zig run hello.zig` compiles and runs a file"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which line prints `Hi` and a new line?",
+          "options": [
+            "`std.debug.print(\"Hi\\n\", .{});`",
+            "`std.debug.print(\"Hi\\n\");`",
+            "`print(\"Hi\\n\", .{});`",
+            "`std.debug.print(Hi\\n, .{});`"
+          ],
+          "answer": 0,
+          "explain": "`std.debug.print` needs the text in double quotes and a list of values in `.{}`, even when the list is empty."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "std.debug.print(\"{d} + {d} = {d}\\n\", .{ 2, 3, 2 + 3 });",
+          "answers": [
+            "2 + 3 = 5"
+          ],
+          "explain": "The three `{d}` placeholders are replaced by `2`, `3` and the result of `2 + 3`, in this order."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "std.debug.print(\"A\", .{});\nstd.debug.print(\"B\\n\", .{});",
+          "answers": [
+            "AB"
+          ],
+          "explain": "The first text has no `\\n`, so `B` is printed on the same line, right after `A`."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "The command `zig run hello.zig` compiles the file and then runs the program.",
+          "answer": true,
+          "explain": "`zig run` does both steps: it compiles the code and starts the program."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Complete the code so it prints `Hello, Zig!`.",
+          "code": "std.debug.print(\"Hello, ___!\\n\", .{\"Zig\"});",
+          "options": [
+            "{s}",
+            "{d}",
+            "%s",
+            "{}"
+          ],
+          "answer": 0,
+          "explain": "`{s}` is the placeholder for a string. `{d}` is for numbers."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the line that loads the standard library.",
+          "code": "___ std = @import(\"std\");",
+          "options": [
+            "const",
+            "var",
+            "let",
+            "import"
+          ],
+          "answer": 0,
+          "explain": "`const` gives the standard library the fixed name `std`."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build the first line of the `main` function.",
+          "tokens": [
+            "pub",
+            "fn",
+            "main()",
+            "void",
+            "{"
+          ],
+          "distractors": [
+            "func",
+            "int"
+          ],
+          "explain": "`pub fn main() void {` defines the public function `main` that gives back no value."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order so the program prints One, Two and Three.",
+          "lines": [
+            "pub fn main() void {",
+            "    std.debug.print(\"One\\n\", .{});",
+            "    std.debug.print(\"Two\\n\", .{});",
+            "    std.debug.print(\"Three\\n\", .{});",
+            "}"
+          ],
+          "explain": "The function starts with `pub fn main() void {` and ends with `}`. Between them, the lines run from top to bottom."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`{s}`",
+              "placeholder for a string"
+            ],
+            [
+              "`{d}`",
+              "placeholder for a number"
+            ],
+            [
+              "`\\n`",
+              "a new line"
+            ],
+            [
+              "`.{}`",
+              "an empty list of values"
+            ],
+            [
+              "`fn`",
+              "starts a function"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "const std = @import(\"std\");",
+            "pub fn main() void {",
+            "    std.debug.print(\"Hi\\n\", .{})",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "The instruction has no semicolon at the end. Write `std.debug.print(\"Hi\\n\", .{});`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "const std = @import(\"std\");",
+            "pub fn main() void {",
+            "    std.debug.print(\"Total: {s}\\n\", .{42});",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "`42` is a number, so the placeholder must be `{d}`, not `{s}`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-12",
+          "prompt": "What does this print?",
+          "code": "std.debug.print(\"{s} is {d}\\n\", .{ \"Ada\", 36 });",
+          "options": [
+            "`Ada is 36`",
+            "`{s} is {d}`",
+            "`36 is Ada`",
+            "`Ada is {d}`"
+          ],
+          "answer": 0,
+          "explain": "Each placeholder takes the next value from the list: `{s}` gets `\"Ada\"` and `{d}` gets `36`."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "const, var and types",
+      "chapter": "First steps",
+      "summary": "Store values with const and var, meet the types i32, u8, f64 and bool, and see why overflow is an error.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a name for a value. In Zig you create one with `const` or `var`. A `const` value never changes. A `var` value can change later. Use `const` whenever you can."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    const name = \"Ada\";\n    var age: i32 = 36;\n    age += 1;\n    std.debug.print(\"{s} is {d}\\n\", .{ name, age });\n}",
+          "output": "Ada is 37"
+        },
+        {
+          "type": "text",
+          "md": "`var age: i32 = 36` creates a variable `age` of the **type** `i32` with the value `36`. The type comes after the colon `:`. `age += 1` adds 1 to `age`. You can also write `age = age + 1`."
+        },
+        {
+          "type": "heading",
+          "text": "Types"
+        },
+        {
+          "type": "text",
+          "md": "The type says what kind of value a variable holds. `i32` is a whole number that can be negative. `u8` is a whole number from 0 to 255 (`u` means **unsigned**: no minus sign). `f64` is a decimal number. `bool` is `true` or `false`. Print a `bool` with the placeholder `{}`."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    const year: i32 = -500;\n    const level: u8 = 200;\n    const price: f64 = 4.75;\n    const ready: bool = true;\n    std.debug.print(\"{d} {d} {d} {}\\n\", .{ year, level, price, ready });\n}",
+          "output": "-500 200 4.75 true"
+        },
+        {
+          "type": "text",
+          "md": "With `const name = \"Ada\"` you do not write a type: Zig works it out from the value. This is called **type inference**. A `var` needs a type when you give it a plain number, as in `var age: i32 = 36`."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    var total: u32 = 10;\n    total = total * 3;\n    total -= 4;\n    const rest = total % 7;\n    std.debug.print(\"{d} {d}\\n\", .{ total, rest });\n}",
+          "output": "26 5"
+        },
+        {
+          "type": "text",
+          "md": "You calculate with `+`, `-` and `*`. `%` gives the rest of a division: 26 divided by 7 is 3, rest 5. `-=` and `*=` work like `+=`."
+        },
+        {
+          "type": "warning",
+          "md": "Zig is strict: an unused variable is an error, and so is a `var` that never changes. The compiler then tells you to use `const`."
+        },
+        {
+          "type": "heading",
+          "text": "Overflow"
+        },
+        {
+          "type": "text",
+          "md": "Every whole-number type has a range. A `u8` holds 0 to 255. `const x: u8 = 256;` does not compile. If a value grows too big while the program runs, the program stops with the message `integer overflow` instead of giving a wrong result."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    var level: u8 = 250;\n    level += 5;\n    std.debug.print(\"{d}\\n\", .{level});\n}",
+          "output": "255"
+        },
+        {
+          "type": "tip",
+          "md": "Here `level` reaches 255, the largest `u8`. With `level += 6` the program would stop with `integer overflow`."
+        }
+      ],
+      "card": [
+        "`const x = 5;` never changes, `var y: i32 = 5;` can",
+        "`i32` whole number, `u8` 0 to 255, `f64` decimal, `bool`",
+        "`{d}` prints a number, `{}` a `bool`",
+        "`+=`, `-=`, `*=`, `%` (rest of a division)",
+        "A value that does not fit its type is an error"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "variables-1",
+          "prompt": "What does this print?",
+          "code": "var n: i32 = 4;\nn += 3;\nn = n * 2;\nstd.debug.print(\"{d}\\n\", .{n});",
+          "answers": [
+            "14"
+          ],
+          "explain": "`n` starts at 4, `+= 3` makes it 7, and `* 2` makes it 14."
+        },
+        {
+          "type": "choice",
+          "id": "variables-2",
+          "prompt": "Which type can store the value `-3`?",
+          "options": [
+            "`i32`",
+            "`u8`",
+            "`u32`",
+            "`bool`"
+          ],
+          "answer": 0,
+          "explain": "`i32` is signed, so it can be negative. `u8` and `u32` are unsigned: they start at 0."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-3",
+          "statement": "This code compiles.",
+          "code": "const limit = 10;\nlimit = 20;\nstd.debug.print(\"{d}\\n\", .{limit});",
+          "answer": false,
+          "explain": "`limit` is a `const`, so you cannot give it a new value. Use `var limit: i32 = 10;` if it must change."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-4",
+          "statement": "A `u8` can store the value `300`.",
+          "answer": false,
+          "explain": "A `u8` holds only the numbers from 0 to 255."
+        },
+        {
+          "type": "gap",
+          "id": "variables-5",
+          "prompt": "Complete the code so it compiles and prints `1`.",
+          "code": "___ count: i32 = 0;\ncount += 1;\nstd.debug.print(\"{d}\\n\", .{count});",
+          "options": [
+            "var",
+            "const",
+            "let",
+            "mut"
+          ],
+          "answer": 0,
+          "explain": "`count` changes, so it must be a `var`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-6",
+          "prompt": "Pick the right type for a price with cents.",
+          "code": "const price: ___ = 4.5;\nstd.debug.print(\"{d}\\n\", .{price});",
+          "options": [
+            "f64",
+            "i32",
+            "u8",
+            "bool"
+          ],
+          "answer": 0,
+          "explain": "`4.5` is a decimal number, so it needs a float type like `f64`."
+        },
+        {
+          "type": "input",
+          "id": "variables-7",
+          "prompt": "What does this print?",
+          "code": "const a: u8 = 200;\nconst b: u8 = 50;\nstd.debug.print(\"{d}\\n\", .{a + b});",
+          "answers": [
+            "250"
+          ],
+          "explain": "200 + 50 is 250, which still fits into a `u8`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-8",
+          "prompt": "Create a variable `score` of type `u32` that starts at 0 and can change.",
+          "tokens": [
+            "var",
+            "score:",
+            "u32",
+            "=",
+            "0;"
+          ],
+          "distractors": [
+            "let",
+            "int"
+          ],
+          "explain": "`var` makes the value changeable, and the type `u32` comes after the colon."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-9",
+          "prompt": "Match the type with the values it holds.",
+          "pairs": [
+            [
+              "`i32`",
+              "whole numbers, also negative"
+            ],
+            [
+              "`u8`",
+              "whole numbers from 0 to 255"
+            ],
+            [
+              "`f64`",
+              "decimal numbers"
+            ],
+            [
+              "`bool`",
+              "true or false"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "variables-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "pub fn main() void {",
+            "    var lives: u8 = 3;",
+            "    const name = \"Ada\";",
+            "    std.debug.print(\"{s} has {d} lives\\n\", .{ name, lives });",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "`lives` never changes, and Zig does not accept a `var` that is never changed. Write `const lives: u8 = 3;`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "pub fn main() void {",
+            "    var count = 0;",
+            "    count += 2;",
+            "    std.debug.print(\"{d}\\n\", .{count});",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "A `var` that starts with a plain number needs a type. Write `var count: i32 = 0;`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-12",
+          "prompt": "What happens when this runs?",
+          "code": "var x: u8 = 250;\nx += 10;\nstd.debug.print(\"{d}\\n\", .{x});",
+          "options": [
+            "The program stops with `integer overflow`",
+            "It prints `260`",
+            "It prints `4`",
+            "It prints `255`"
+          ],
+          "answer": 0,
+          "explain": "260 does not fit into a `u8`, which ends at 255. Zig stops the program instead of printing a wrong number."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program decide with if and else, combine conditions with and and or, and pick a case with switch.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`if` runs code only when a **condition** is true. The condition goes in parentheses and must be a `bool`. The code after `else` runs when the condition is false."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    const temp: i32 = 25;\n    if (temp > 20) {\n        std.debug.print(\"Warm\\n\", .{});\n    } else {\n        std.debug.print(\"Cold\\n\", .{});\n    }\n}",
+          "output": "Warm"
+        },
+        {
+          "type": "text",
+          "md": "You compare values with `==` (equal), `!=` (not equal), `<`, `>`, `<=` and `>=`. Each comparison gives `true` or `false`. With `else if` you check another condition when the first one is false."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    const score: u32 = 75;\n    if (score >= 90) {\n        std.debug.print(\"Great\\n\", .{});\n    } else if (score >= 50) {\n        std.debug.print(\"Passed\\n\", .{});\n    } else {\n        std.debug.print(\"Try again\\n\", .{});\n    }\n}",
+          "output": "Passed"
+        },
+        {
+          "type": "heading",
+          "text": "if as a value"
+        },
+        {
+          "type": "text",
+          "md": "In Zig, `if` can also produce a value. `if (a) x else y` gives `x` when `a` is true and `y` otherwise. Here you need no braces."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    const n: u32 = 7;\n    const kind = if (n % 2 == 0) \"even\" else \"odd\";\n    std.debug.print(\"{d} is {s}\\n\", .{ n, kind });\n}",
+          "output": "7 is odd"
+        },
+        {
+          "type": "heading",
+          "text": "and, or, not"
+        },
+        {
+          "type": "text",
+          "md": "Zig combines conditions with words: `a and b` is true when both are true, `a or b` when at least one is true. `!a` turns `true` into `false` and back."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    const age: u32 = 16;\n    const with_parent = true;\n    if (age >= 18 or with_parent) {\n        std.debug.print(\"You can enter\\n\", .{});\n    }\n    if (!(age >= 18)) {\n        std.debug.print(\"You are under 18\\n\", .{});\n    }\n}",
+          "output": "You can enter\nYou are under 18"
+        },
+        {
+          "type": "heading",
+          "text": "switch"
+        },
+        {
+          "type": "text",
+          "md": "`switch` compares one value with several cases. Each case has the form `value => result`. You can list several values with commas or a range like `3...5` (three dots, both ends included). A `switch` must cover every possible value, so you usually end with `else`."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    const day: u8 = 6;\n    const name = switch (day) {\n        1, 2 => \"start of the week\",\n        3...5 => \"middle of the week\",\n        else => \"weekend\",\n    };\n    std.debug.print(\"{s}\\n\", .{name});\n}",
+          "output": "weekend"
+        },
+        {
+          "type": "tip",
+          "md": "Like `if`, `switch` gives a value. That is why the whole `switch` ends with `};`."
+        }
+      ],
+      "card": [
+        "`if (x > 5) { ... } else { ... }`",
+        "`==` `!=` `<` `>` `<=` `>=`; combine with `and`, `or`, `!`",
+        "`const s = if (ok) \"yes\" else \"no\";`",
+        "`switch (n) { 1, 2 => a, 3...5 => b, else => c }`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "const n: i32 = 7;\nif (n > 5) {\n    std.debug.print(\"big\\n\", .{});\n} else {\n    std.debug.print(\"small\\n\", .{});\n}",
+          "answers": [
+            "big"
+          ],
+          "explain": "7 is greater than 5, so the first block runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "const x: u32 = 10;\nconst kind = if (x % 3 == 0) \"A\" else \"B\";\nstd.debug.print(\"{s}\\n\", .{kind});",
+          "answers": [
+            "B"
+          ],
+          "explain": "10 divided by 3 leaves a rest of 1, so the condition is false and `kind` is `\"B\"`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "What does this print?",
+          "code": "const a = true;\nconst b = false;\nif (a and !b) {\n    std.debug.print(\"yes\\n\", .{});\n} else {\n    std.debug.print(\"no\\n\", .{});\n}",
+          "options": [
+            "`yes`",
+            "`no`",
+            "`yes` and `no`",
+            "Nothing"
+          ],
+          "answer": 0,
+          "explain": "`!b` is `true`, and `a` is `true`, so `a and !b` is `true`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-4",
+          "statement": "In Zig, you write `&&` for a logical and.",
+          "answer": false,
+          "explain": "Zig uses the word `and`. `&&` is a compile error."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-5",
+          "prompt": "Complete the condition: the person must be 18 or older and have a ticket.",
+          "code": "if (age >= 18 ___ has_ticket) {\n    std.debug.print(\"Welcome\\n\", .{});\n} else {\n    std.debug.print(\"Sorry\\n\", .{});\n}",
+          "options": [
+            "and",
+            "&&",
+            "or",
+            "+"
+          ],
+          "answer": 0,
+          "explain": "Both parts must be true, so you need `and`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-6",
+          "prompt": "Complete the `switch` so it covers all other numbers.",
+          "code": "const n: u8 = 9;\nconst word = switch (n) {\n    1 => \"one\",\n    2 => \"two\",\n    ___ => \"many\",\n};\nstd.debug.print(\"{s}\\n\", .{word});",
+          "options": [
+            "else",
+            "default",
+            "_",
+            "*"
+          ],
+          "answer": 0,
+          "explain": "`else` covers every value that no other case matches."
+        },
+        {
+          "type": "input",
+          "id": "conditions-7",
+          "prompt": "What does this print?",
+          "code": "const n: u8 = 4;\nconst level = switch (n) {\n    1...3 => \"low\",\n    4...6 => \"mid\",\n    else => \"high\",\n};\nstd.debug.print(\"{s}\\n\", .{level});",
+          "answers": [
+            "mid"
+          ],
+          "explain": "`4...6` includes 4, so the second case matches."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-8",
+          "prompt": "Store `\"minus\"` in `sign` when `n` is below 0, otherwise `\"plus\"`.",
+          "tokens": [
+            "const",
+            "sign",
+            "=",
+            "if",
+            "(n < 0)",
+            "\"minus\"",
+            "else",
+            "\"plus\";"
+          ],
+          "distractors": [
+            "then",
+            "?"
+          ],
+          "explain": "`if (condition) a else b` gives a value, which you can store directly in a constant."
+        },
+        {
+          "type": "order",
+          "id": "conditions-9",
+          "prompt": "Put the lines in order: a score of 90 or more prints A, 70 or more prints B, everything else prints C.",
+          "lines": [
+            "if (score >= 90) {",
+            "    std.debug.print(\"A\\n\", .{});",
+            "} else if (score >= 70) {",
+            "    std.debug.print(\"B\\n\", .{});",
+            "} else {",
+            "    std.debug.print(\"C\\n\", .{});",
+            "}"
+          ],
+          "explain": "Check the highest limit first. `else if` only runs when the first condition is false, and `else` catches the rest."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-10",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`==`",
+              "is equal to"
+            ],
+            [
+              "`!=`",
+              "is not equal to"
+            ],
+            [
+              "`and`",
+              "both are true"
+            ],
+            [
+              "`or`",
+              "at least one is true"
+            ],
+            [
+              "`!`",
+              "turns true into false"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "const x: i32 = 5;",
+            "if (x = 5) {",
+            "    std.debug.print(\"five\\n\", .{});",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "`=` gives a new value. To compare, write `==`: `if (x == 5) {`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "const n: i32 = 5;",
+            "if n > 3 {",
+            "    std.debug.print(\"big\\n\", .{});",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "In Zig the condition of an `if` must be in parentheses: `if (n > 3) {`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with while and for, count over ranges like 0..5, go through lists, and use break and continue.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **loop** repeats code. `while` repeats as long as its condition is true. The counter must be a `var`, because it changes in every round."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    var i: u32 = 1;\n    while (i <= 3) {\n        std.debug.print(\"Round {d}\\n\", .{i});\n        i += 1;\n    }\n}",
+          "output": "Round 1\nRound 2\nRound 3"
+        },
+        {
+          "type": "text",
+          "md": "You can put the step into the loop head: `while (i < 5) : (i += 1)`. The part after the colon runs at the end of every round."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    var sum: u32 = 0;\n    var i: u32 = 1;\n    while (i <= 4) : (i += 1) {\n        sum += i;\n    }\n    std.debug.print(\"Sum: {d}\\n\", .{sum});\n}",
+          "output": "Sum: 10"
+        },
+        {
+          "type": "warning",
+          "md": "If the condition of a `while` never becomes false, the loop runs forever. Make sure the counter changes."
+        },
+        {
+          "type": "heading",
+          "text": "for over a range"
+        },
+        {
+          "type": "text",
+          "md": "`for (0..3) |i|` runs once for each number from 0 up to 3, **without** 3: 0, 1 and 2. The name between the bars `|i|` holds the current number. Its type is `usize`, an unsigned whole number."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    for (1..4) |i| {\n        std.debug.print(\"{d} squared is {d}\\n\", .{ i, i * i });\n    }\n}",
+          "output": "1 squared is 1\n2 squared is 4\n3 squared is 9"
+        },
+        {
+          "type": "text",
+          "md": "`for` also goes through a list of values. `[_]u32{ 3, 5, 8 }` is such a list, called an **array**. You learn more about arrays in a later unit. `for (prices) |p|` gives you each value in turn."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    const prices = [_]u32{ 3, 5, 8 };\n    var total: u32 = 0;\n    for (prices) |p| {\n        total += p;\n    }\n    std.debug.print(\"Total: {d}\\n\", .{total});\n}",
+          "output": "Total: 16"
+        },
+        {
+          "type": "heading",
+          "text": "break and continue"
+        },
+        {
+          "type": "text",
+          "md": "`continue` skips the rest of the current round and goes to the next one. `break` ends the loop at once."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    for (1..10) |i| {\n        if (i % 2 == 0) continue;\n        if (i > 7) break;\n        std.debug.print(\"{d}\\n\", .{i});\n    }\n}",
+          "output": "1\n3\n5\n7"
+        },
+        {
+          "type": "tip",
+          "md": "When an `if` controls only one instruction, you can write it on one line without braces, as in `if (i > 7) break;`."
+        }
+      ],
+      "card": [
+        "`while (i < 5) : (i += 1) { ... }`",
+        "`for (0..5) |i|` counts 0, 1, 2, 3, 4",
+        "`for (items) |item|` visits every value",
+        "`break` ends the loop, `continue` skips to the next round"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "var i: u32 = 0;\nvar sum: u32 = 0;\nwhile (i < 4) : (i += 1) {\n    sum += i;\n}\nstd.debug.print(\"{d}\\n\", .{sum});",
+          "answers": [
+            "6"
+          ],
+          "explain": "The loop adds 0, 1, 2 and 3. Together that is 6."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "for (0..3) |i| {\n    std.debug.print(\"{d}\", .{i});\n}\nstd.debug.print(\"\\n\", .{});",
+          "answers": [
+            "012"
+          ],
+          "explain": "`0..3` gives 0, 1 and 2. There is no `\\n` inside the loop, so they stay on one line."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "How many lines does this print?",
+          "code": "for (2..5) |i| {\n    std.debug.print(\"{d}\\n\", .{i});\n}",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "2"
+          ],
+          "answer": 0,
+          "explain": "`2..5` gives 2, 3 and 4. The end, 5, is not included."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-4",
+          "statement": "The range `0..5` includes the number 5.",
+          "answer": false,
+          "explain": "The end of a range is not included: `0..5` gives 0, 1, 2, 3 and 4."
+        },
+        {
+          "type": "gap",
+          "id": "loops-5",
+          "prompt": "Complete the loop so it prints every item.",
+          "code": "const items = [_]u32{ 2, 4 };\nfor (items) ___ {\n    std.debug.print(\"{d}\\n\", .{item});\n}",
+          "options": [
+            "|item|",
+            "(item)",
+            "item",
+            "in item"
+          ],
+          "answer": 0,
+          "explain": "The name of the current value goes between two bars: `|item|`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-6",
+          "prompt": "Complete the code so it prints 1, 2, 4 and 5.",
+          "code": "for (1..6) |i| {\n    if (i == 3) ___;\n    std.debug.print(\"{d}\\n\", .{i});\n}",
+          "options": [
+            "continue",
+            "break",
+            "return",
+            "skip"
+          ],
+          "answer": 0,
+          "explain": "`continue` skips only the round with 3. `break` would end the whole loop."
+        },
+        {
+          "type": "input",
+          "id": "loops-7",
+          "prompt": "What does this print?",
+          "code": "var n: u32 = 1;\nwhile (true) {\n    n *= 2;\n    if (n > 20) break;\n}\nstd.debug.print(\"{d}\\n\", .{n});",
+          "answers": [
+            "32"
+          ],
+          "explain": "`n` becomes 2, 4, 8, 16 and 32. 32 is the first value above 20, so the loop stops there."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-8",
+          "prompt": "Build a loop head that runs while `i` is below 10 and adds 1 to `i` after every round.",
+          "tokens": [
+            "while",
+            "(i < 10)",
+            ":",
+            "(i += 1)",
+            "{"
+          ],
+          "distractors": [
+            "for",
+            "do"
+          ],
+          "explain": "The condition comes first in parentheses. The step follows after the colon."
+        },
+        {
+          "type": "order",
+          "id": "loops-9",
+          "prompt": "Put the lines in order so the program adds 1, 2 and 3 and prints `6`.",
+          "lines": [
+            "var total: usize = 0;",
+            "for (1..4) |i| {",
+            "    total += i;",
+            "}",
+            "std.debug.print(\"{d}\\n\", .{total});"
+          ],
+          "explain": "Create `total` first, add every number inside the loop, and print the result after the loop."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`while`",
+              "repeats while a condition is true"
+            ],
+            [
+              "`for`",
+              "goes through a range or a list"
+            ],
+            [
+              "`break`",
+              "ends the loop"
+            ],
+            [
+              "`continue`",
+              "jumps to the next round"
+            ],
+            [
+              "`0..3`",
+              "the numbers 0, 1 and 2"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "loops-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "const i: u32 = 0;",
+            "while (i < 3) : (i += 1) {",
+            "    std.debug.print(\"{d}\\n\", .{i});",
+            "}"
+          ],
+          "bug": 0,
+          "explain": "The counter changes in every round, so it must be a `var`: `var i: u32 = 0;`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-12",
+          "prompt": "Which numbers does this print?",
+          "code": "for (1..10) |i| {\n    if (i % 3 != 0) continue;\n    std.debug.print(\"{d}\\n\", .{i});\n}",
+          "options": [
+            "`3`, `6` and `9`",
+            "`1`, `2`, `4`, `5`, `7` and `8`",
+            "`3`, `6`, `9` and `10`",
+            "Only `3`"
+          ],
+          "answer": 0,
+          "explain": "`continue` skips every number that is not divisible by 3. From 1 to 9, only 3, 6 and 9 are left."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Write your own functions with parameters and return types, use their results, and solve problems with recursion.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** gives a piece of code a name, so you can use it many times. You already know `main`. You define your own functions with `fn`, outside of `main`, and call them by name."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nfn greet(name: []const u8) void {\n    std.debug.print(\"Hello, {s}!\\n\", .{name});\n}\n\npub fn main() void {\n    greet(\"Ada\");\n    greet(\"Ben\");\n}",
+          "output": "Hello, Ada!\nHello, Ben!"
+        },
+        {
+          "type": "text",
+          "md": "`name: []const u8` is a **parameter**: a name and its type. `[]const u8` is the type for text; a later unit explains it. The type after the parentheses is the **return type**. `void` means the function gives back nothing."
+        },
+        {
+          "type": "text",
+          "md": "To give back a value, write its type after the parentheses and use `return`. Separate several parameters with commas."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nfn add(a: i32, b: i32) i32 {\n    return a + b;\n}\n\npub fn main() void {\n    const sum = add(3, 4);\n    std.debug.print(\"{d}\\n\", .{sum});\n    std.debug.print(\"{d}\\n\", .{add(sum, 10)});\n}",
+          "output": "7\n17"
+        },
+        {
+          "type": "warning",
+          "md": "Parameters are constants: you cannot change them inside the function. Zig also refuses unused parameters, and a result you do not use. To throw a result away on purpose, write `_ = add(1, 2);`."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nfn max(a: i32, b: i32) i32 {\n    if (a > b) return a;\n    return b;\n}\n\nfn isAdult(age: u32) bool {\n    return age >= 18;\n}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{max(4, 9)});\n    std.debug.print(\"{}\\n\", .{isAdult(15)});\n}",
+          "output": "9\nfalse"
+        },
+        {
+          "type": "text",
+          "md": "`return` ends the function at once. That is why `max` needs no `else`. A function can return any type, for example a `bool`."
+        },
+        {
+          "type": "heading",
+          "text": "Recursion"
+        },
+        {
+          "type": "text",
+          "md": "A function can call itself. This is called **recursion**. It needs a **base case** that stops the calls, otherwise they never end. The factorial of 4 is 4 * 3 * 2 * 1."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nfn factorial(n: u64) u64 {\n    if (n <= 1) return 1;\n    return n * factorial(n - 1);\n}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{factorial(4)});\n    std.debug.print(\"{d}\\n\", .{factorial(10)});\n}",
+          "output": "24\n3628800"
+        },
+        {
+          "type": "tip",
+          "md": "The order of functions in a file does not matter. You can write `factorial` below `main` and still call it."
+        }
+      ],
+      "card": [
+        "`fn add(a: i32, b: i32) i32 { return a + b; }`",
+        "`void` means: no return value",
+        "Parameters are constants and must be used",
+        "`_ = add(1, 2);` throws a result away",
+        "Recursion: a function calls itself, with a base case"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "fn double(n: i32) i32 {\n    return n * 2;\n}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{double(double(3))});\n}",
+          "answers": [
+            "12"
+          ],
+          "explain": "`double(3)` is 6, and `double(6)` is 12."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print?",
+          "code": "fn sumTo(n: u32) u32 {\n    if (n == 0) return 0;\n    return n + sumTo(n - 1);\n}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{sumTo(4)});\n}",
+          "answers": [
+            "10"
+          ],
+          "explain": "`sumTo(4)` is 4 + 3 + 2 + 1 + 0, which is 10."
+        },
+        {
+          "type": "choice",
+          "id": "functions-3",
+          "prompt": "Which line correctly starts a function that takes two `i32` values and returns an `i32`?",
+          "options": [
+            "`fn sum(a: i32, b: i32) i32 {`",
+            "`fn sum(i32 a, i32 b) i32 {`",
+            "`fn sum(a, b: i32) i32 {`",
+            "`fn sum(a: i32, b: i32): i32 {`"
+          ],
+          "answer": 0,
+          "explain": "Every parameter has its own type after a colon, and the return type follows the parentheses without a colon."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-4",
+          "statement": "This function compiles.",
+          "code": "fn half(n: u32) u32 {\n    n = n / 2;\n    return n;\n}",
+          "answer": false,
+          "explain": "Parameters are constants, so `n = n / 2` is an error. Write `return n / 2;` instead."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-5",
+          "statement": "You can call `add(1, 2);` on its own line and ignore the `i32` it returns.",
+          "answer": false,
+          "explain": "Zig does not let you ignore a result by accident. Use it, or write `_ = add(1, 2);`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-6",
+          "prompt": "Complete the return type.",
+          "code": "fn isEven(n: u32) ___ {\n    return n % 2 == 0;\n}",
+          "options": [
+            "bool",
+            "u32",
+            "void",
+            "i32"
+          ],
+          "answer": 0,
+          "explain": "`n % 2 == 0` is a comparison, so its result is `true` or `false`: a `bool`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-7",
+          "prompt": "Complete the function definition.",
+          "code": "___ add(a: i32, b: i32) i32 {\n    return a + b;\n}",
+          "options": [
+            "fn",
+            "func",
+            "def",
+            "function"
+          ],
+          "answer": 0,
+          "explain": "In Zig every function starts with the keyword `fn`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-8",
+          "prompt": "Build the first line of a function `square` that takes an `i32` named `x` and returns an `i32`.",
+          "tokens": [
+            "fn",
+            "square(x:",
+            "i32)",
+            "i32",
+            "{"
+          ],
+          "distractors": [
+            "->",
+            "func"
+          ],
+          "explain": "`fn` comes first, then the name with its parameters, then the return type."
+        },
+        {
+          "type": "order",
+          "id": "functions-9",
+          "prompt": "Put the lines in order so `fact` computes the factorial.",
+          "lines": [
+            "fn fact(n: u64) u64 {",
+            "    if (n <= 1) return 1;",
+            "    return n * fact(n - 1);",
+            "}"
+          ],
+          "explain": "The base case comes first. Otherwise the function would call itself before it can stop."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`fn`",
+              "starts a function"
+            ],
+            [
+              "`return`",
+              "gives a value back to the caller"
+            ],
+            [
+              "`void`",
+              "the function returns nothing"
+            ],
+            [
+              "`_ = f();`",
+              "throws a result away"
+            ],
+            [
+              "`a: i32`",
+              "a parameter of type i32"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "functions-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fn add(a: i32, b: i32) void {",
+            "    return a + b;",
+            "}",
+            "pub fn main() void {",
+            "    std.debug.print(\"{d}\\n\", .{add(2, 3)});",
+            "}"
+          ],
+          "bug": 0,
+          "explain": "The function returns a number, so its return type must be `i32`, not `void`."
+        },
+        {
+          "type": "bug",
+          "id": "functions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fn add(a: i32, b: i32) i32 {",
+            "    return a + b;",
+            "}",
+            "pub fn main() void {",
+            "    const x = add(2);",
+            "    std.debug.print(\"{d}\\n\", .{x});",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "`add` has two parameters, so you must pass two values, for example `add(2, 3)`."
+        }
+      ]
+    },
+    {
+      "id": "arrays",
+      "title": "Arrays and slices",
+      "chapter": "Data",
+      "summary": "Keep many values in arrays, look at parts of them with slices, and work with text as []const u8.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** holds a fixed number of values of the same type. `[3]i32` is an array of three `i32` values. With `[_]` Zig counts the values for you. You read a value by its **index** in square brackets. The first index is 0. `.len` gives the number of values."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    const nums = [_]i32{ 4, 8, 15 };\n    std.debug.print(\"{d} {d}\\n\", .{ nums[0], nums[2] });\n    std.debug.print(\"Length: {d}\\n\", .{nums.len});\n}",
+          "output": "4 15\nLength: 3"
+        },
+        {
+          "type": "text",
+          "md": "In a `var` array you can change the values. The length stays the same."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    var scores = [3]u32{ 0, 0, 0 };\n    scores[1] = 7;\n    scores[2] = scores[1] + 1;\n    std.debug.print(\"{d} {d} {d}\\n\", .{ scores[0], scores[1], scores[2] });\n}",
+          "output": "0 7 8"
+        },
+        {
+          "type": "warning",
+          "md": "An index must be smaller than `.len`. `nums[3]` on an array with three values is an error: the program does not compile, or it stops with `index out of bounds`."
+        },
+        {
+          "type": "heading",
+          "text": "Slices"
+        },
+        {
+          "type": "text",
+          "md": "A **slice** is a view of a part of an array. `nums[1..3]` contains the values at index 1 and 2: like a range, the end is not included. A slice also has `.len`. A function that takes a slice such as `[]const u32` works with arrays of any length. You pass a whole array with `&prices`."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nfn sum(values: []const u32) u32 {\n    var total: u32 = 0;\n    for (values) |v| {\n        total += v;\n    }\n    return total;\n}\n\npub fn main() void {\n    const prices = [_]u32{ 2, 4, 6, 8 };\n    std.debug.print(\"{d}\\n\", .{sum(&prices)});\n    std.debug.print(\"{d}\\n\", .{sum(prices[1..3])});\n}",
+          "output": "20\n10"
+        },
+        {
+          "type": "heading",
+          "text": "Strings"
+        },
+        {
+          "type": "text",
+          "md": "Text is a list of bytes. A string is usually a slice of `u8`: `[]const u8`. Each byte is a number. `'h'` in single quotes is one character, which is also a `u8`. Print a whole string with `{s}` and one character with `{c}`. You cannot compare two strings with `==`: use `std.mem.eql(u8, a, b)`, which is `true` when both have the same bytes."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    const word: []const u8 = \"hello\";\n    std.debug.print(\"{s} {d}\\n\", .{ word, word.len });\n    std.debug.print(\"{c} {d}\\n\", .{ word[0], word[0] });\n    std.debug.print(\"{s}\\n\", .{word[1..4]});\n    std.debug.print(\"{}\\n\", .{std.mem.eql(u8, word, \"hello\")});\n}",
+          "output": "hello 5\nh 104\nell\ntrue"
+        },
+        {
+          "type": "heading",
+          "text": "for with an index"
+        },
+        {
+          "type": "text",
+          "md": "`for (names, 0..) |name, i|` goes through the array and counts at the same time: `name` is the value and `i` its index. `[_][]const u8` is an array of strings."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    const names = [_][]const u8{ \"Ann\", \"Bo\", \"Cy\" };\n    for (names, 0..) |name, i| {\n        std.debug.print(\"{d}: {s}\\n\", .{ i, name });\n    }\n}",
+          "output": "0: Ann\n1: Bo\n2: Cy"
+        }
+      ],
+      "card": [
+        "`const a = [_]i32{ 1, 2, 3 };` `a[0]` `a.len`",
+        "`a[1..3]` is a slice: index 1 and 2",
+        "Text is `[]const u8`; compare with `std.mem.eql(u8, x, y)`",
+        "`for (items, 0..) |item, i|` value and index"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arrays-1",
+          "prompt": "What does this print?",
+          "code": "const a = [_]u32{ 5, 10, 15, 20 };\nstd.debug.print(\"{d}\\n\", .{a[1] + a[3]});",
+          "answers": [
+            "30"
+          ],
+          "explain": "Index 1 is 10 and index 3 is 20, because counting starts at 0."
+        },
+        {
+          "type": "input",
+          "id": "arrays-2",
+          "prompt": "What does this print?",
+          "code": "const s: []const u8 = \"hello\";\nstd.debug.print(\"{s}\\n\", .{s[1..4]});",
+          "answers": [
+            "ell"
+          ],
+          "explain": "`s[1..4]` contains the bytes at index 1, 2 and 3: `e`, `l` and `l`."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-3",
+          "prompt": "What is the index of the first value in an array?",
+          "options": [
+            "`0`",
+            "`1`",
+            "`-1`",
+            "It depends on the array"
+          ],
+          "answer": 0,
+          "explain": "Indexes start at 0, so `a[0]` is the first value."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-4",
+          "prompt": "What does this print?",
+          "code": "const nums = [_]i32{ 3, 6, 9 };\nfor (nums, 0..) |n, i| {\n    if (i == 1) {\n        std.debug.print(\"{d}\\n\", .{n});\n    }\n}",
+          "options": [
+            "`6`",
+            "`3`",
+            "`9`",
+            "`1`"
+          ],
+          "answer": 0,
+          "explain": "The value at index 1 is 6."
+        },
+        {
+          "type": "true_false",
+          "id": "arrays-5",
+          "statement": "You compare two `[]const u8` strings with `==`.",
+          "answer": false,
+          "explain": "`==` does not work for slices. Use `std.mem.eql(u8, a, b)`."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-6",
+          "prompt": "Complete the code so it prints the number of values.",
+          "code": "const items = [_]u8{ 1, 2, 3 };\nconst n = items.___;\nstd.debug.print(\"{d}\\n\", .{n});",
+          "options": [
+            "len",
+            "len()",
+            "length",
+            "size"
+          ],
+          "answer": 0,
+          "explain": "`.len` is a field, not a function, so it has no parentheses."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-7",
+          "prompt": "Complete the parameter type so the function accepts a list of `u32` of any length.",
+          "code": "fn total(values: ___) u32 {\n    var sum: u32 = 0;\n    for (values) |v| {\n        sum += v;\n    }\n    return sum;\n}",
+          "options": [
+            "[]const u32",
+            "u32",
+            "[3]u32",
+            "const u32"
+          ],
+          "answer": 0,
+          "explain": "`[]const u32` is a slice. It works with arrays of any length."
+        },
+        {
+          "type": "blocks",
+          "id": "arrays-8",
+          "prompt": "Create an array `nums` with the values 1, 2 and 3.",
+          "tokens": [
+            "const",
+            "nums",
+            "=",
+            "[_]i32{",
+            "1,",
+            "2,",
+            "3",
+            "};"
+          ],
+          "distractors": [
+            "[]",
+            "("
+          ],
+          "explain": "`[_]i32{ ... }` creates an array of `i32`. Zig counts the values for you."
+        },
+        {
+          "type": "order",
+          "id": "arrays-9",
+          "prompt": "Put the lines in order so the program prints `0: Ann` and `1: Bo`.",
+          "lines": [
+            "const names = [_][]const u8{ \"Ann\", \"Bo\" };",
+            "for (names, 0..) |name, i| {",
+            "    std.debug.print(\"{d}: {s}\\n\", .{ i, name });",
+            "}"
+          ],
+          "explain": "Create the array first. The loop then gives each name together with its index."
+        },
+        {
+          "type": "pairs",
+          "id": "arrays-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`[3]i32`",
+              "an array of three i32 values"
+            ],
+            [
+              "`a.len`",
+              "the number of values"
+            ],
+            [
+              "`a[0]`",
+              "the first value"
+            ],
+            [
+              "`a[1..3]`",
+              "a slice with index 1 and 2"
+            ],
+            [
+              "`[]const u8`",
+              "a string"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "arrays-11",
+          "prompt": "The program should print the last value. Which line has the bug?",
+          "lines": [
+            "const a = [_]i32{ 1, 2, 3 };",
+            "const last = a[3];",
+            "std.debug.print(\"{d}\\n\", .{last});"
+          ],
+          "bug": 1,
+          "explain": "The array has three values, so the last index is 2. Write `a[2]`."
+        },
+        {
+          "type": "bug",
+          "id": "arrays-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "const scores = [_]u32{ 1, 2 };",
+            "scores[0] = 5;",
+            "std.debug.print(\"{d} {d}\\n\", .{ scores[0], scores[1] });"
+          ],
+          "bug": 0,
+          "explain": "The program changes a value, so the array must be a `var`: `var scores = [_]u32{ 1, 2 };`."
+        }
+      ]
+    },
+    {
+      "id": "structs",
+      "title": "Structs",
+      "chapter": "Data",
+      "summary": "Group values into your own types with struct, give fields default values, and add methods that use self.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **struct** groups several values into one new type. Each value is a **field** with a name and a type. You create a value with `Point{ .x = 3, .y = 4 }` and read a field with a dot: `p.x`."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nconst Point = struct {\n    x: i32,\n    y: i32,\n};\n\npub fn main() void {\n    const p = Point{ .x = 3, .y = 4 };\n    std.debug.print(\"x = {d}, y = {d}\\n\", .{ p.x, p.y });\n}",
+          "output": "x = 3, y = 4"
+        },
+        {
+          "type": "text",
+          "md": "Struct names start with a capital letter, like `Point`. In a `var` you can change the fields."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nconst Player = struct {\n    name: []const u8,\n    score: u32,\n};\n\npub fn main() void {\n    var player = Player{ .name = \"Ada\", .score = 0 };\n    player.score += 10;\n    std.debug.print(\"{s}: {d}\\n\", .{ player.name, player.score });\n}",
+          "output": "Ada: 10"
+        },
+        {
+          "type": "heading",
+          "text": "Default values"
+        },
+        {
+          "type": "text",
+          "md": "A field can have a **default value**: `level: u32 = 1`. When you create the struct, you can leave this field out. All other fields must be set."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nconst Settings = struct {\n    volume: u32 = 50,\n    dark: bool = false,\n};\n\npub fn main() void {\n    const a = Settings{};\n    const b = Settings{ .dark = true };\n    std.debug.print(\"{d} {}\\n\", .{ a.volume, a.dark });\n    std.debug.print(\"{d} {}\\n\", .{ b.volume, b.dark });\n}",
+          "output": "50 false\n50 true"
+        },
+        {
+          "type": "heading",
+          "text": "Methods"
+        },
+        {
+          "type": "text",
+          "md": "A function inside a struct is a **method**. Its first parameter, usually called `self`, is the value you call it on. You write `r.area()`, and Zig passes `r` as `self`."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nconst Rect = struct {\n    w: u32,\n    h: u32,\n\n    fn area(self: Rect) u32 {\n        return self.w * self.h;\n    }\n\n    fn isSquare(self: Rect) bool {\n        return self.w == self.h;\n    }\n};\n\npub fn main() void {\n    const r = Rect{ .w = 3, .h = 5 };\n    std.debug.print(\"{d} {}\\n\", .{ r.area(), r.isSquare() });\n}",
+          "output": "15 false"
+        },
+        {
+          "type": "text",
+          "md": "`self` is a constant. To change fields, the method takes `self: *Counter`. The star `*` makes it a **pointer**: the method works on the original value. You can call such a method only on a `var`."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nconst Counter = struct {\n    count: u32 = 0,\n\n    fn add(self: *Counter, n: u32) void {\n        self.count += n;\n    }\n};\n\npub fn main() void {\n    var c = Counter{};\n    c.add(5);\n    c.add(2);\n    std.debug.print(\"{d}\\n\", .{c.count});\n}",
+          "output": "7"
+        },
+        {
+          "type": "tip",
+          "md": "Now you know what `.{ name, age }` in `std.debug.print` is: a struct without a type name that holds the values in order."
+        }
+      ],
+      "card": [
+        "`const Point = struct { x: i32, y: i32 };`",
+        "`const p = Point{ .x = 1, .y = 2 };` then `p.x`",
+        "`level: u32 = 1` is a default value",
+        "`fn area(self: Rect) u32` is a method: `r.area()`",
+        "`self: *Counter` lets a method change fields"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "structs-1",
+          "prompt": "`Point` has the fields `x` and `y`. What does this print?",
+          "code": "const p = Point{ .x = 3, .y = 4 };\nstd.debug.print(\"{d}\\n\", .{p.x * p.y});",
+          "answers": [
+            "12"
+          ],
+          "explain": "`p.x` is 3 and `p.y` is 4, and 3 * 4 is 12."
+        },
+        {
+          "type": "input",
+          "id": "structs-2",
+          "prompt": "What does this print?",
+          "code": "const Size = struct {\n    width: u32 = 80,\n    height: u32 = 24,\n};\n\npub fn main() void {\n    const s = Size{ .height = 50 };\n    std.debug.print(\"{d}\\n\", .{s.width + s.height});\n}",
+          "answers": [
+            "130"
+          ],
+          "explain": "`width` keeps its default value 80, and `height` is set to 50. Together that is 130."
+        },
+        {
+          "type": "choice",
+          "id": "structs-3",
+          "prompt": "What does this print?",
+          "code": "const Box = struct {\n    side: u32,\n\n    fn edges(self: Box) u32 {\n        return self.side * 4;\n    }\n};\n\npub fn main() void {\n    const b = Box{ .side = 4 };\n    std.debug.print(\"{d}\\n\", .{b.edges()});\n}",
+          "options": [
+            "`16`",
+            "`4`",
+            "`8`",
+            "Nothing, it does not compile"
+          ],
+          "answer": 0,
+          "explain": "`b.edges()` calls the method with `b` as `self`, so it returns 4 * 4."
+        },
+        {
+          "type": "true_false",
+          "id": "structs-4",
+          "statement": "When you create a struct, you can leave out a field that has a default value.",
+          "answer": true,
+          "explain": "The field then gets its default value. Fields without a default must be set."
+        },
+        {
+          "type": "true_false",
+          "id": "structs-5",
+          "statement": "This code compiles.",
+          "code": "const Counter = struct {\n    count: u32 = 0,\n\n    fn increment(self: Counter) void {\n        self.count += 1;\n    }\n};",
+          "answer": false,
+          "explain": "`self: Counter` is a constant. To change a field, the method needs `self: *Counter`."
+        },
+        {
+          "type": "gap",
+          "id": "structs-6",
+          "prompt": "Complete the code that creates a `Point`.",
+          "code": "const p = Point{ ___ = 1, .y = 2 };",
+          "options": [
+            ".x",
+            "x",
+            "Point.x",
+            "self.x"
+          ],
+          "answer": 0,
+          "explain": "When you create a struct, each field name starts with a dot: `.x = 1`."
+        },
+        {
+          "type": "gap",
+          "id": "structs-7",
+          "prompt": "Complete the method so it can change `size`.",
+          "code": "const Plant = struct {\n    size: u32 = 1,\n\n    fn grow(self: ___) void {\n        self.size += 1;\n    }\n};",
+          "options": [
+            "*Plant",
+            "Plant",
+            "[]Plant",
+            "u32"
+          ],
+          "answer": 0,
+          "explain": "With `*Plant` the method gets a pointer to the original value and can change its fields."
+        },
+        {
+          "type": "blocks",
+          "id": "structs-8",
+          "prompt": "`Rect` has the fields `w` and `h`. Create a `Rect` named `r` with `w` 2 and `h` 3.",
+          "tokens": [
+            "const",
+            "r",
+            "=",
+            "Rect{",
+            ".w = 2,",
+            ".h = 3",
+            "};"
+          ],
+          "distractors": [
+            "w: 2,",
+            "new"
+          ],
+          "explain": "Write the type name, then the fields with a dot in front: `Rect{ .w = 2, .h = 3 }`."
+        },
+        {
+          "type": "order",
+          "id": "structs-9",
+          "prompt": "`Player` has a field `score` that starts at 0. Put the lines in order so the program prints `20`.",
+          "lines": [
+            "var p = Player{ .name = \"Ada\" };",
+            "p.score += 10;",
+            "p.score *= 2;",
+            "std.debug.print(\"{d}\\n\", .{p.score});"
+          ],
+          "explain": "First add 10, then double it: (0 + 10) * 2 = 20. The other way round you get 10."
+        },
+        {
+          "type": "pairs",
+          "id": "structs-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`struct { ... }`",
+              "defines a new type with fields"
+            ],
+            [
+              "`.x = 1`",
+              "sets the field x"
+            ],
+            [
+              "`p.x`",
+              "reads the field x"
+            ],
+            [
+              "`self`",
+              "the value a method is called on"
+            ],
+            [
+              "`*Counter`",
+              "a pointer to change the original"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "structs-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "const Counter = struct {",
+            "    count: u32 = 0,",
+            "    fn increment(self: *Counter) void {",
+            "        self.count += 1;",
+            "    }",
+            "};",
+            "pub fn main() void {",
+            "    const c = Counter{};",
+            "    c.increment();",
+            "    std.debug.print(\"{d}\\n\", .{c.count});",
+            "}"
+          ],
+          "bug": 7,
+          "explain": "`increment` changes the counter, so `c` must be a `var`: `var c = Counter{};`."
+        },
+        {
+          "type": "bug",
+          "id": "structs-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "const Rect = struct {",
+            "    w: u32,",
+            "    h: u32,",
+            "    fn area(self: Rect) u32 {",
+            "        return w * h;",
+            "    }",
+            "};",
+            "pub fn main() void {",
+            "    const r = Rect{ .w = 2, .h = 3 };",
+            "    std.debug.print(\"{d}\\n\", .{r.area()});",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "Inside a method you reach the fields through `self`: `return self.w * self.h;`."
+        }
+      ]
+    },
+    {
+      "id": "errors",
+      "title": "Errors and optionals",
+      "chapter": "Safety",
+      "summary": "Handle things that can fail with error sets, !T, try and catch, and values that can be missing with ?T and orelse.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Some operations can fail. In Zig an **error** is a value. An **error set** lists the possible errors: `error{ Negative, TooOld }`. A function that can fail has a return type like `AgeError!i32`: the result is an `i32` **or** an error. `return AgeError.TooOld;` returns an error."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nconst AgeError = error{ Negative, TooOld };\n\nfn checkAge(age: i32) AgeError!i32 {\n    if (age < 0) return AgeError.Negative;\n    if (age > 150) return AgeError.TooOld;\n    return age;\n}\n\npub fn main() void {\n    const a = checkAge(30) catch 0;\n    const b = checkAge(-5) catch 0;\n    std.debug.print(\"{d} {d}\\n\", .{ a, b });\n}",
+          "output": "30 0"
+        },
+        {
+          "type": "text",
+          "md": "You cannot use the result directly: you must handle the error first. `catch 0` means: use `0` if there is an error. With `catch |err|` you get the error itself and can react to it. `{}` prints an error."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nfn half(n: u32) !u32 {\n    if (n % 2 != 0) return error.Odd;\n    return n / 2;\n}\n\npub fn main() void {\n    const x = half(7) catch |err| {\n        std.debug.print(\"Failed: {}\\n\", .{err});\n        return;\n    };\n    std.debug.print(\"{d}\\n\", .{x});\n}",
+          "output": "Failed: error.Odd"
+        },
+        {
+          "type": "text",
+          "md": "Here the return type is only `!u32`, and the error is written as `error.Odd`. Zig then collects the error set by itself. The `return` inside the `catch` block ends `main`."
+        },
+        {
+          "type": "heading",
+          "text": "try"
+        },
+        {
+          "type": "text",
+          "md": "`try` is a short form: `try half(8)` gives the value, or returns the error to the caller at once. A function that uses `try` must have a `!` in its return type. Also `main` can be `pub fn main() !void`. If an error leaves `main`, the program stops and shows the error."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nfn half(n: u32) !u32 {\n    if (n % 2 != 0) return error.Odd;\n    return n / 2;\n}\n\nfn quarter(n: u32) !u32 {\n    const h = try half(n);\n    return try half(h);\n}\n\npub fn main() !void {\n    std.debug.print(\"{d}\\n\", .{try quarter(20)});\n    const q = quarter(10) catch 99;\n    std.debug.print(\"{d}\\n\", .{q});\n}",
+          "output": "5\n99"
+        },
+        {
+          "type": "heading",
+          "text": "Optionals"
+        },
+        {
+          "type": "text",
+          "md": "Sometimes a value is missing. The type `?usize` is a `usize` **or** `null`, which means no value. `orelse` gives a fallback value for `null`."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\nfn indexOf(text: []const u8, wanted: u8) ?usize {\n    for (text, 0..) |c, i| {\n        if (c == wanted) return i;\n    }\n    return null;\n}\n\npub fn main() void {\n    const a = indexOf(\"zig\", 'i') orelse 99;\n    const b = indexOf(\"zig\", 'x') orelse 99;\n    std.debug.print(\"{d} {d}\\n\", .{ a, b });\n}",
+          "output": "1 99"
+        },
+        {
+          "type": "text",
+          "md": "`if (opt) |v|` runs the block only when there is a value, and `v` holds it. The `else` block runs for `null`."
+        },
+        {
+          "type": "code",
+          "code": "const std = @import(\"std\");\n\npub fn main() void {\n    const found: ?u32 = 42;\n    const missing: ?u32 = null;\n    if (found) |v| {\n        std.debug.print(\"Found {d}\\n\", .{v});\n    }\n    if (missing) |v| {\n        std.debug.print(\"Found {d}\\n\", .{v});\n    } else {\n        std.debug.print(\"Nothing\\n\", .{});\n    }\n}",
+          "output": "Found 42\nNothing"
+        },
+        {
+          "type": "tip",
+          "md": "Use `catch` for errors and `orelse` for optionals. An error tells you **why** something failed. `null` only says that there is no value."
+        }
+      ],
+      "card": [
+        "`const E = error{ A, B };` and `fn f() E!u32`",
+        "`!u32` is a `u32` or an error; `try` passes the error on",
+        "`f() catch 0` or `catch |err| { ... }`",
+        "`?u32` is a `u32` or `null`; `x orelse 0`",
+        "`if (opt) |v| { ... } else { ... }`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "errors-1",
+          "prompt": "What does this print?",
+          "code": "fn half(n: u32) !u32 {\n    if (n % 2 != 0) return error.Odd;\n    return n / 2;\n}\n\npub fn main() void {\n    const a = half(10) catch 0;\n    const b = half(7) catch 0;\n    std.debug.print(\"{d} {d}\\n\", .{ a, b });\n}",
+          "answers": [
+            "5 0"
+          ],
+          "explain": "`half(10)` returns 5. `half(7)` returns an error, so `catch` uses 0."
+        },
+        {
+          "type": "input",
+          "id": "errors-2",
+          "prompt": "What does this print?",
+          "code": "const x: ?u32 = null;\nconst y: ?u32 = 7;\nstd.debug.print(\"{d}\\n\", .{(x orelse 1) + (y orelse 1)});",
+          "answers": [
+            "8"
+          ],
+          "explain": "`x` is `null`, so it becomes 1. `y` has the value 7. 1 + 7 is 8."
+        },
+        {
+          "type": "choice",
+          "id": "errors-3",
+          "prompt": "Which return type means \"a `u32` or an error\"?",
+          "options": [
+            "`!u32`",
+            "`?u32`",
+            "`u32!`",
+            "`[]u32`"
+          ],
+          "answer": 0,
+          "explain": "`!` before the type means the function can return an error. `?` means the value can be `null`."
+        },
+        {
+          "type": "choice",
+          "id": "errors-4",
+          "prompt": "What does this print?",
+          "code": "const opt: ?i32 = null;\nif (opt) |v| {\n    std.debug.print(\"{d}\\n\", .{v});\n} else {\n    std.debug.print(\"none\\n\", .{});\n}",
+          "options": [
+            "`none`",
+            "`null`",
+            "`0`",
+            "Nothing, it does not compile"
+          ],
+          "answer": 0,
+          "explain": "`opt` is `null`, so the `else` block runs."
+        },
+        {
+          "type": "true_false",
+          "id": "errors-5",
+          "statement": "You can use `try` inside `pub fn main() void`.",
+          "answer": false,
+          "explain": "`try` can return an error, so the function needs a `!` in its return type: `pub fn main() !void`."
+        },
+        {
+          "type": "true_false",
+          "id": "errors-6",
+          "statement": "A variable of type `u32` can hold `null`.",
+          "answer": false,
+          "explain": "Only an optional type such as `?u32` can be `null`."
+        },
+        {
+          "type": "gap",
+          "id": "errors-7",
+          "prompt": "`findPort()` returns a `?u16`. Complete the code so it uses 8080 when there is no port.",
+          "code": "const port = findPort() ___ 8080;\nstd.debug.print(\"{d}\\n\", .{port});",
+          "options": [
+            "orelse",
+            "catch",
+            "or",
+            "else"
+          ],
+          "answer": 0,
+          "explain": "`orelse` gives a fallback value when an optional is `null`. `catch` is for errors."
+        },
+        {
+          "type": "gap",
+          "id": "errors-8",
+          "prompt": "Complete the code so an error from `readCount()` is passed on to the caller.",
+          "code": "fn total() !u32 {\n    const n = ___ readCount();\n    return n + 1;\n}",
+          "options": [
+            "try",
+            "catch",
+            "orelse",
+            "error"
+          ],
+          "answer": 0,
+          "explain": "`try` gives the value, or returns the error from `total` at once."
+        },
+        {
+          "type": "blocks",
+          "id": "errors-9",
+          "prompt": "Call `checkAge(input)` and store the result in `age`, or 0 if there is an error.",
+          "tokens": [
+            "const",
+            "age",
+            "=",
+            "checkAge(input)",
+            "catch",
+            "0;"
+          ],
+          "distractors": [
+            "orelse",
+            "try"
+          ],
+          "explain": "`catch 0` replaces an error with the value 0."
+        },
+        {
+          "type": "order",
+          "id": "errors-10",
+          "prompt": "Put the lines in order so `safeDiv` returns an error when `b` is 0.",
+          "lines": [
+            "fn safeDiv(a: u32, b: u32) !u32 {",
+            "    if (b == 0) return error.DivByZero;",
+            "    return a / b;",
+            "}"
+          ],
+          "explain": "The check must come before the division. After a `return`, no more code runs."
+        },
+        {
+          "type": "pairs",
+          "id": "errors-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`!u32`",
+              "a u32 or an error"
+            ],
+            [
+              "`?u32`",
+              "a u32 or null"
+            ],
+            [
+              "`try`",
+              "passes an error on to the caller"
+            ],
+            [
+              "`catch 0`",
+              "uses 0 if there is an error"
+            ],
+            [
+              "`orelse 0`",
+              "uses 0 if the value is null"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "errors-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fn check(n: u32) u32 {",
+            "    if (n == 0) return error.Zero;",
+            "    return n;",
+            "}",
+            "pub fn main() void {",
+            "    const v = check(5) catch 0;",
+            "    std.debug.print(\"{d}\\n\", .{v});",
+            "}"
+          ],
+          "bug": 0,
+          "explain": "The function can return an error, so the return type needs a `!`: `fn check(n: u32) !u32 {`."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[package]
+name = "nrzlearn-site"
+version = "1.0.0"
+edition = "2024"
+publish = false
+license = "MIT"
+description = "Build tool of nrzLearn: checks courses and translations, builds the static SEO pages."
+
+[dependencies]
+nrzlearn-model = { path = "../model" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

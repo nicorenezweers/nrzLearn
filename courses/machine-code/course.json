@@ -1,0 +1,1856 @@
+{
+  "course": "machine-code",
+  "lang": "en",
+  "units": [
+    {
+      "id": "bits",
+      "title": "Bits and bytes",
+      "chapter": "Data",
+      "summary": "Learn why computers use only 0 and 1, and how bits form bytes and numbers.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A computer stores everything as numbers: text, pictures, music and also programs. Inside the computer, each number is made of tiny switches that are either off or on. We write off as `0` and on as `1`."
+        },
+        {
+          "type": "text",
+          "md": "One such `0` or `1` is a **bit** (short for binary digit). Computers use only two states because a circuit can tell \"no voltage\" and \"voltage\" apart quickly and reliably, even when the signal is not perfect."
+        },
+        {
+          "type": "heading",
+          "text": "Counting in binary"
+        },
+        {
+          "type": "text",
+          "md": "Numbers made of bits are **binary** numbers. In decimal, each place is worth 10 times the place to its right: 1, 10, 100. In binary, each place is worth 2 times more: 1, 2, 4, 8, 16, 32, 64, 128. To read a binary number, add the values of the places that hold a `1`. So `1101` is 8 + 4 + 1 = 13."
+        },
+        {
+          "type": "text",
+          "md": "This course uses short Python programs to check numbers. The output below each program is what it prints. `print(...)` shows a value, always in decimal. A number that starts with `0b` is written in binary, and `bin(n)` shows the number `n` in binary."
+        },
+        {
+          "type": "code",
+          "code": "print(0b1101)\nprint(bin(13))\nprint(0b10000000)",
+          "output": "13\n0b1101\n128"
+        },
+        {
+          "type": "heading",
+          "text": "Bytes"
+        },
+        {
+          "type": "text",
+          "md": "A group of 8 bits is a **byte**. A byte is the smallest unit that a computer reads or writes in memory. Its value goes from `00000000` (0) to `11111111` (255). `format(n, \"08b\")` shows `n` as 8 binary digits, with zeros in front."
+        },
+        {
+          "type": "code",
+          "code": "print(format(5, \"08b\"))\nprint(format(200, \"08b\"))\nprint(0b11111111)",
+          "output": "00000101\n11001000\n255"
+        },
+        {
+          "type": "text",
+          "md": "Every extra bit doubles the number of values. With `n` bits you get 2 to the power of `n` different values. In Python, `**` means \"to the power of\", so `2 ** 8` is 2 multiplied by itself 8 times."
+        },
+        {
+          "type": "code",
+          "code": "print(2 ** 1)\nprint(2 ** 4)\nprint(2 ** 8)\nprint(2 ** 8 - 1)",
+          "output": "2\n16\n256\n255"
+        },
+        {
+          "type": "tip",
+          "md": "One byte has 256 different values, but they are 0 to 255, because counting starts at 0. This is why the number 255 shows up so often in computing."
+        },
+        {
+          "type": "text",
+          "md": "Memory is a long row of bytes. Each byte has a number, its **address**, starting at 0. A program is also a row of bytes in memory. In this course you learn to read those bytes the way the **CPU** (the processor) does."
+        }
+      ],
+      "card": [
+        "A **bit** is `0` or `1`; a **byte** is 8 bits",
+        "Place values: `128 64 32 16 8 4 2 1`",
+        "`0b1101` is 8 + 4 + 1 = `13`",
+        "`n` bits give `2 ** n` values; a byte holds `0` to `255`",
+        "`bin(13)` gives `0b1101`; `format(5, \"08b\")` gives `00000101`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "bits-1",
+          "prompt": "What does this print?",
+          "code": "print(0b1010)",
+          "answers": [
+            "10"
+          ],
+          "explain": "The places 8 and 2 hold a `1`: 8 + 2 = 10."
+        },
+        {
+          "type": "input",
+          "id": "bits-2",
+          "prompt": "What does this print?",
+          "code": "print(bin(6))",
+          "answers": [
+            "0b110"
+          ],
+          "explain": "6 is 4 + 2, so the places 4 and 2 hold a `1`: `110`."
+        },
+        {
+          "type": "choice",
+          "id": "bits-3",
+          "prompt": "How many bits are in one byte?",
+          "options": [
+            "8",
+            "4",
+            "16",
+            "10"
+          ],
+          "answer": 0,
+          "explain": "A byte is a group of 8 bits."
+        },
+        {
+          "type": "choice",
+          "id": "bits-4",
+          "prompt": "What does this print?",
+          "code": "print(0b11111111)",
+          "options": [
+            "`255`",
+            "`256`",
+            "`128`",
+            "`11111111`"
+          ],
+          "answer": 0,
+          "explain": "All 8 places hold a `1`: 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255. `print` shows it in decimal."
+        },
+        {
+          "type": "true_false",
+          "id": "bits-5",
+          "statement": "With 4 bits you can write 16 different values.",
+          "answer": true,
+          "explain": "`2 ** 4` is 16: the values 0 to 15, from `0000` to `1111`."
+        },
+        {
+          "type": "gap",
+          "id": "bits-6",
+          "prompt": "Complete the code so it prints `00001001`.",
+          "code": "print(format(9, \"___\"))",
+          "options": [
+            "08b",
+            "8b",
+            "b",
+            "08d"
+          ],
+          "answer": 0,
+          "explain": "`08b` means binary with 8 digits and zeros in front. `8b` fills with spaces, `b` adds nothing, and `d` is decimal."
+        },
+        {
+          "type": "blocks",
+          "id": "bits-7",
+          "prompt": "Build a line that prints how many different values one byte can hold.",
+          "tokens": [
+            "print",
+            "(",
+            "2",
+            "**",
+            "8",
+            ")"
+          ],
+          "distractors": [
+            "*",
+            "16"
+          ],
+          "explain": "A byte has 8 bits, so it holds `2 ** 8` = 256 different values."
+        },
+        {
+          "type": "order",
+          "id": "bits-8",
+          "prompt": "Put the numbers in order from smallest to largest.",
+          "lines": [
+            "0b0011",
+            "0b0101",
+            "0b1000",
+            "0b1010",
+            "0b1111"
+          ],
+          "explain": "In decimal they are 3, 5, 8, 10 and 15."
+        },
+        {
+          "type": "pairs",
+          "id": "bits-9",
+          "prompt": "Match the binary number with its value.",
+          "pairs": [
+            [
+              "`0b10`",
+              "two"
+            ],
+            [
+              "`0b100`",
+              "four"
+            ],
+            [
+              "`0b111`",
+              "seven"
+            ],
+            [
+              "`0b1001`",
+              "nine"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "bits-10",
+          "prompt": "One comment shows the wrong result. Which line is it?",
+          "lines": [
+            "print(0b1)  # 1",
+            "print(0b11)  # 3",
+            "print(0b111)  # 7",
+            "print(0b1111)  # 16",
+            "print(0b11111)  # 31"
+          ],
+          "bug": 3,
+          "explain": "`0b1111` is 8 + 4 + 2 + 1 = 15. The number 16 is `0b10000`."
+        },
+        {
+          "type": "input",
+          "id": "bits-11",
+          "prompt": "How many different values can 3 bits hold?",
+          "answers": [
+            "8"
+          ],
+          "explain": "`2 ** 3` is 8: the values `000` to `111`, which are 0 to 7."
+        },
+        {
+          "type": "true_false",
+          "id": "bits-12",
+          "statement": "This code prints `0b1000`.",
+          "code": "print(0b100 + 0b100)",
+          "answer": false,
+          "explain": "`print` shows numbers in decimal, so it prints `8`. Only `bin(8)` gives `0b1000`."
+        }
+      ]
+    },
+    {
+      "id": "hex",
+      "title": "Hexadecimal",
+      "chapter": "Data",
+      "summary": "Write every byte as two hex digits and convert between hex, binary and decimal.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Binary numbers get long fast: the byte 200 is `11001000`. This is why programmers write bytes in **hexadecimal** (hex for short), a number system with 16 digits."
+        },
+        {
+          "type": "text",
+          "md": "Hex uses the digits `0` to `9` and then the letters `A` to `F` for the values 10 to 15. Each place is worth 16 times the place to its right: 1, 16, 256 and so on. So hex `2A` is 2 × 16 + 10 = 42."
+        },
+        {
+          "type": "text",
+          "md": "To show that a number is hex, write `0x` in front of it: `0x2A`. Python understands this notation. `hex(n)` shows a number in hex, and `int(\"C3\", 16)` reads the text `C3` as a hex number. Python writes the letters in lowercase, but `0x2A` and `0x2a` are the same number."
+        },
+        {
+          "type": "code",
+          "code": "print(0x2A)\nprint(hex(255))\nprint(int(\"C3\", 16))",
+          "output": "42\n0xff\n195"
+        },
+        {
+          "type": "heading",
+          "text": "One hex digit is four bits"
+        },
+        {
+          "type": "text",
+          "md": "One hex digit has 16 values, the same as 4 bits (`2 ** 4` is 16). So every hex digit stands for exactly 4 bits, and every byte is exactly two hex digits. To convert a byte from hex to binary, convert each digit on its own: `C` is `1100` and `3` is `0011`, so `0xC3` is `11000011`."
+        },
+        {
+          "type": "code",
+          "code": "print(format(0xC, \"04b\"))\nprint(format(0x3, \"04b\"))\nprint(format(0xC3, \"08b\"))",
+          "output": "1100\n0011\n11000011"
+        },
+        {
+          "type": "text",
+          "md": "`format(n, \"02X\")` shows `n` as two hex digits, with capital letters and a zero in front if needed. This is the usual way to write a byte."
+        },
+        {
+          "type": "code",
+          "code": "print(format(7, \"02X\"))\nprint(format(42, \"02X\"))\nprint(format(255, \"02X\"))",
+          "output": "07\n2A\nFF"
+        },
+        {
+          "type": "heading",
+          "text": "Bytes in hex"
+        },
+        {
+          "type": "text",
+          "md": "A row of bytes is usually written as hex pairs with spaces, like `48 69 21`. Tools show the contents of files and memory this way. Text is bytes, too: each letter has a number, for example `H` is `0x48`."
+        },
+        {
+          "type": "text",
+          "md": "In the next program, `data = ...` stores bytes under the name `data`. `bytes.fromhex` turns hex pairs into real bytes, and `list(data)` shows their values in decimal. Python prints bytes that are letters as `b'...'`. `data.hex(\" \")` turns the bytes back into hex pairs."
+        },
+        {
+          "type": "code",
+          "code": "data = bytes.fromhex(\"48 69 21\")\nprint(list(data))\nprint(data)\nprint(data.hex(\" \"))",
+          "output": "[72, 105, 33]\nb'Hi!'\n48 69 21"
+        },
+        {
+          "type": "tip",
+          "md": "Learn a few values by heart: `0x0F` is 15, `0x10` is 16, `0x7F` is 127, `0x80` is 128 and `0xFF` is 255."
+        }
+      ],
+      "card": [
+        "Hex digits: `0` to `9`, then `A` = 10 up to `F` = 15",
+        "`0x2A` = 2 × 16 + 10 = `42`",
+        "1 hex digit = 4 bits; 1 byte = 2 hex digits",
+        "`0xC3` = `1100` `0011`",
+        "`hex(255)` gives `0xff`; `int(\"C3\", 16)` gives `195`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "hex-1",
+          "prompt": "What does this print?",
+          "code": "print(0x1F)",
+          "answers": [
+            "31"
+          ],
+          "explain": "`0x1F` is 1 × 16 + 15 = 31."
+        },
+        {
+          "type": "input",
+          "id": "hex-2",
+          "prompt": "What does this print?",
+          "code": "print(hex(200))",
+          "answers": [
+            "0xc8"
+          ],
+          "explain": "200 = 12 × 16 + 8. The digit for 12 is `c`, so the result is `0xc8`."
+        },
+        {
+          "type": "choice",
+          "id": "hex-3",
+          "prompt": "Which hex number is 255?",
+          "options": [
+            "`0xFF`",
+            "`0xEE`",
+            "`0x100`",
+            "`0xF0`"
+          ],
+          "answer": 0,
+          "explain": "`0xFF` is 15 × 16 + 15 = 255, the largest value of one byte. `0x100` is 256."
+        },
+        {
+          "type": "choice",
+          "id": "hex-4",
+          "prompt": "What does this print?",
+          "code": "print(format(0xA5, \"08b\"))",
+          "options": [
+            "`10100101`",
+            "`01011010`",
+            "`10100110`",
+            "`1010101`"
+          ],
+          "answer": 0,
+          "explain": "Convert each digit: `A` is `1010` and `5` is `0101`."
+        },
+        {
+          "type": "true_false",
+          "id": "hex-5",
+          "statement": "Every byte can be written with exactly two hex digits.",
+          "answer": true,
+          "explain": "A byte goes from `00` to `FF`, and one hex digit stands for 4 bits."
+        },
+        {
+          "type": "gap",
+          "id": "hex-6",
+          "prompt": "Complete the code so it prints `195`.",
+          "code": "print(int(\"C3\", ___))",
+          "options": [
+            "16",
+            "2",
+            "10",
+            "8"
+          ],
+          "answer": 0,
+          "explain": "The `16` tells Python to read the text as hex. In the other number systems `C` is not a digit."
+        },
+        {
+          "type": "gap",
+          "id": "hex-7",
+          "prompt": "Complete the code so it prints `0A`.",
+          "code": "print(format(10, \"___\"))",
+          "options": [
+            "02X",
+            "2X",
+            "02b",
+            "X"
+          ],
+          "answer": 0,
+          "explain": "`02X` means two hex digits with capital letters and a zero in front. `2X` fills with a space."
+        },
+        {
+          "type": "blocks",
+          "id": "hex-8",
+          "prompt": "Build a line that prints the value of hex `7F` in decimal.",
+          "tokens": [
+            "print",
+            "(",
+            "int",
+            "(",
+            "\"7F\"",
+            ",",
+            "16",
+            ")",
+            ")"
+          ],
+          "distractors": [
+            "10",
+            "hex"
+          ],
+          "explain": "`int(\"7F\", 16)` reads the text as hex: 7 × 16 + 15 = 127."
+        },
+        {
+          "type": "order",
+          "id": "hex-9",
+          "prompt": "Put the numbers in order from smallest to largest.",
+          "lines": [
+            "0x09",
+            "0x10",
+            "0x1A",
+            "0xA0",
+            "0xFF"
+          ],
+          "explain": "In decimal they are 9, 16, 26, 160 and 255."
+        },
+        {
+          "type": "pairs",
+          "id": "hex-10",
+          "prompt": "Match the hex digit with its bits.",
+          "pairs": [
+            [
+              "`0x1`",
+              "binary `0001`"
+            ],
+            [
+              "`0x8`",
+              "binary `1000`"
+            ],
+            [
+              "`0xA`",
+              "binary `1010`"
+            ],
+            [
+              "`0xF`",
+              "binary `1111`"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hex-11",
+          "prompt": "One comment shows the wrong result. Which line is it?",
+          "lines": [
+            "print(0x10)  # 16",
+            "print(0x20)  # 32",
+            "print(0x0F)  # 15",
+            "print(0x1A)  # 25",
+            "print(0x40)  # 64"
+          ],
+          "bug": 3,
+          "explain": "`0x1A` is 16 + 10 = 26, not 25."
+        },
+        {
+          "type": "input",
+          "id": "hex-12",
+          "prompt": "What does this print?",
+          "code": "print(list(bytes.fromhex(\"0A FF 10\")))",
+          "answers": [
+            "[10, 255, 16]"
+          ],
+          "explain": "`0A` is 10, `FF` is 255 and `10` is 16."
+        }
+      ]
+    },
+    {
+      "id": "numbers",
+      "title": "Numbers in memory",
+      "chapter": "Data",
+      "summary": "Store big numbers in several bytes, write negative numbers in two's complement and read little-endian bytes.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "One byte only holds 0 to 255. For bigger numbers the CPU uses several bytes together: 2 bytes (16 bits), 4 bytes (32 bits) or 8 bytes (64 bits). A 64-bit CPU like x86-64 works with up to 8 bytes at once."
+        },
+        {
+          "type": "text",
+          "md": "A number that can never be negative is **unsigned**. With `n` bits it goes from 0 to `2 ** n - 1`."
+        },
+        {
+          "type": "code",
+          "code": "print(2 ** 16 - 1)\nprint(2 ** 32 - 1)\nprint(hex(2 ** 32 - 1))",
+          "output": "65535\n4294967295\n0xffffffff"
+        },
+        {
+          "type": "heading",
+          "text": "Negative numbers"
+        },
+        {
+          "type": "text",
+          "md": "A **signed** number can also be negative. x86-64 uses **two's complement**: to write `-x`, flip every bit of `x` (0 becomes 1, 1 becomes 0) and add 1. For example, 5 is `00000101`. Flipped, it is `11111010`, and plus 1 gives `11111011`, which is `0xFB`. So the byte `0xFB` means -5."
+        },
+        {
+          "type": "text",
+          "md": "In Python, `n & 0xFF` keeps only the lowest 8 bits of `n`. For a negative number this gives exactly its two's complement byte. `& 0xFFFFFFFF` keeps the lowest 32 bits."
+        },
+        {
+          "type": "code",
+          "code": "print(hex(-5 & 0xFF))\nprint(hex(-1 & 0xFF))\nprint(hex(-128 & 0xFF))\nprint(hex(-1 & 0xFFFFFFFF))",
+          "output": "0xfb\n0xff\n0x80\n0xffffffff"
+        },
+        {
+          "type": "text",
+          "md": "In a signed number, the highest bit shows the sign: `0` means zero or positive, `1` means negative. A signed byte holds -128 to 127. The same byte can mean two things: `0xFF` is 255 unsigned, but -1 signed. The bytes do not say which one is meant; the instruction that uses them decides."
+        },
+        {
+          "type": "tip",
+          "md": "Two's complement makes adding easy. 255 + 1 does not fit in a byte, so the result wraps around to 0, and -1 + 1 is also 0. The CPU uses the same adding circuit for signed and unsigned numbers."
+        },
+        {
+          "type": "heading",
+          "text": "Little endian"
+        },
+        {
+          "type": "text",
+          "md": "A 4-byte number fills 4 addresses in memory. x86-64 stores the **lowest** byte first, at the lowest address. This order is called **little endian**. The number `0x12345678` is stored as the bytes `78 56 34 12`."
+        },
+        {
+          "type": "text",
+          "md": "`n.to_bytes(4, \"little\")` makes the 4 little-endian bytes of `n`, and `int.from_bytes(data, \"little\")` reads such bytes back. With `signed=True`, Python uses two's complement."
+        },
+        {
+          "type": "code",
+          "code": "print((0x12345678).to_bytes(4, \"little\").hex(\" \"))\nprint((1000).to_bytes(4, \"little\").hex(\" \"))\nprint((-2).to_bytes(4, \"little\", signed=True).hex(\" \"))\nprint(int.from_bytes(bytes.fromhex(\"FE FF FF FF\"), \"little\", signed=True))",
+          "output": "78 56 34 12\ne8 03 00 00\nfe ff ff ff\n-2"
+        },
+        {
+          "type": "warning",
+          "md": "Little endian reverses the order of the **bytes**, not of the hex digits. `0x1234` is stored as `34 12`, not as `43 21`."
+        }
+      ],
+      "card": [
+        "Unsigned byte: `0` to `255`; signed byte: `-128` to `127`",
+        "`-x`: flip all bits of `x`, then add 1",
+        "`0xFF` is 255 unsigned or `-1` signed",
+        "Little endian: lowest byte first, `0x12345678` → `78 56 34 12`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "numbers-1",
+          "prompt": "What does this print?",
+          "code": "print(hex(-2 & 0xFF))",
+          "answers": [
+            "0xfe"
+          ],
+          "explain": "2 is `00000010`. Flipped it is `11111101`, plus 1 is `11111110`, which is `0xfe`."
+        },
+        {
+          "type": "input",
+          "id": "numbers-2",
+          "prompt": "Write the 4 bytes of `0x0A0B0C0D` in little-endian order, as hex pairs.",
+          "answers": [
+            "0D 0C 0B 0A"
+          ],
+          "explain": "The lowest byte `0D` comes first, the highest byte `0A` last."
+        },
+        {
+          "type": "choice",
+          "id": "numbers-3",
+          "prompt": "Which byte means -1 in two's complement?",
+          "options": [
+            "`0xFF`",
+            "`0x81`",
+            "`0x01`",
+            "`0x80`"
+          ],
+          "answer": 0,
+          "explain": "1 is `00000001`. Flipped it is `11111110`, plus 1 gives `11111111` = `0xFF`."
+        },
+        {
+          "type": "choice",
+          "id": "numbers-4",
+          "prompt": "What does this print?",
+          "code": "print(int.from_bytes(bytes.fromhex(\"80\"), \"little\", signed=True))",
+          "options": [
+            "`-128`",
+            "`128`",
+            "`-127`",
+            "`0`"
+          ],
+          "answer": 0,
+          "explain": "`0x80` is `10000000`. The highest bit is 1, so as a signed byte it is negative: -128."
+        },
+        {
+          "type": "true_false",
+          "id": "numbers-5",
+          "statement": "In little-endian order, the bytes `34 12` are the number `0x3412`.",
+          "answer": false,
+          "explain": "The first byte is the lowest one, so `34 12` is `0x1234`."
+        },
+        {
+          "type": "true_false",
+          "id": "numbers-6",
+          "statement": "A signed byte can hold the value 200.",
+          "answer": false,
+          "explain": "A signed byte holds -128 to 127. Only an unsigned byte can hold 200."
+        },
+        {
+          "type": "gap",
+          "id": "numbers-7",
+          "prompt": "Complete the code so it prints `e8 03 00 00`.",
+          "code": "print((1000).to_bytes(4, \"___\").hex(\" \"))",
+          "options": [
+            "little",
+            "big",
+            "reverse"
+          ],
+          "answer": 0,
+          "explain": "`little` puts the lowest byte `e8` first. `big` would give `00 00 03 e8`."
+        },
+        {
+          "type": "gap",
+          "id": "numbers-8",
+          "prompt": "Complete the code so it prints `-3`.",
+          "code": "print(int.from_bytes(bytes.fromhex(\"FD\"), \"little\", ___))",
+          "options": [
+            "signed=True",
+            "signed=False",
+            "negative=True"
+          ],
+          "answer": 0,
+          "explain": "With `signed=True` Python reads `0xFD` in two's complement, which is -3. Without it you get 253."
+        },
+        {
+          "type": "blocks",
+          "id": "numbers-9",
+          "prompt": "Build a line that prints the two's complement byte of -6 in hex.",
+          "tokens": [
+            "print",
+            "(",
+            "hex",
+            "(",
+            "-6",
+            "&",
+            "0xFF",
+            ")",
+            ")"
+          ],
+          "distractors": [
+            "|",
+            "0xF"
+          ],
+          "explain": "`& 0xFF` keeps the lowest 8 bits, so the line prints `0xfa`."
+        },
+        {
+          "type": "order",
+          "id": "numbers-10",
+          "prompt": "Put the bytes of `0x11223344` in the order they are stored in memory, lowest address first.",
+          "lines": [
+            "44",
+            "33",
+            "22",
+            "11"
+          ],
+          "explain": "x86-64 is little endian: the lowest byte `44` comes first."
+        },
+        {
+          "type": "pairs",
+          "id": "numbers-11",
+          "prompt": "Match the byte with its value as a signed byte.",
+          "pairs": [
+            [
+              "`0x01`",
+              "plus one"
+            ],
+            [
+              "`0x7F`",
+              "the largest value, 127"
+            ],
+            [
+              "`0x80`",
+              "the smallest value, -128"
+            ],
+            [
+              "`0xFF`",
+              "minus one"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "numbers-12",
+          "prompt": "One comment shows the wrong result. Which line is it?",
+          "lines": [
+            "print((1).to_bytes(2, \"little\").hex(\" \"))  # 01 00",
+            "print((256).to_bytes(2, \"little\").hex(\" \"))  # 00 01",
+            "print((4660).to_bytes(2, \"little\").hex(\" \"))  # 12 34",
+            "print((65535).to_bytes(2, \"little\").hex(\" \"))  # ff ff"
+          ],
+          "bug": 2,
+          "explain": "4660 is `0x1234`. Little endian puts the low byte first: `34 12`."
+        }
+      ]
+    },
+    {
+      "id": "instructions",
+      "title": "Instructions are bytes",
+      "chapter": "Machine code",
+      "summary": "See how the CPU fetches and runs instructions, meet NOP, RET and INT3, and turn assembly into bytes with NASM.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A program is a row of bytes, too. The CPU reads them as **instructions**: small commands like \"add two numbers\" or \"go to another place\". These bytes are called **machine code**. In this course you learn the machine code of **x86-64**, the CPU family of most PCs and servers."
+        },
+        {
+          "type": "text",
+          "md": "Each instruction starts with an **opcode**, a byte that says what to do. Some instructions are only this one byte. `0x90` is `NOP` (no operation): it does nothing. `0xC3` is `RET` (return): it ends a function and goes back to the code that called it. `0xCC` is `INT3`, a breakpoint: it stops the program and hands it to a debugger."
+        },
+        {
+          "type": "heading",
+          "text": "Fetch and execute"
+        },
+        {
+          "type": "text",
+          "md": "The CPU has a register called **RIP**, the instruction pointer. It holds the address of the next instruction. The CPU repeats a loop again and again: it **fetches** the bytes at RIP, **decodes** them to find out which instruction it is and how long it is, moves RIP forward by that length, and then **executes** the instruction."
+        },
+        {
+          "type": "text",
+          "md": "This Python program imitates the decoder for one-byte instructions. `names` is a dictionary: it maps each opcode to its name. The `for` loop repeats the indented line for every byte, and `enumerate` gives each byte together with its address."
+        },
+        {
+          "type": "code",
+          "code": "code = bytes.fromhex(\"90 90 CC C3\")\nnames = {0x90: \"nop\", 0xC3: \"ret\", 0xCC: \"int3\"}\nfor address, byte in enumerate(code):\n    print(address, format(byte, \"02X\"), names[byte])",
+          "output": "0 90 nop\n1 90 nop\n2 CC int3\n3 C3 ret"
+        },
+        {
+          "type": "heading",
+          "text": "Assembly language"
+        },
+        {
+          "type": "text",
+          "md": "Nobody wants to remember that `0xC3` means return. **Assembly language** gives each instruction a short name, like `nop` or `ret`. A program called an **assembler** turns assembly into machine code. This course uses the assembler **NASM**. The first line, `bits 64`, tells NASM to make x86-64 code."
+        },
+        {
+          "type": "text",
+          "md": "For assembly examples, the output shows the bytes that NASM makes, in hex, one line per instruction. You can make them yourself with `nasm -f bin file.asm` and look at the result with a hex viewer. Short examples in the exercises leave out the line `bits 64`."
+        },
+        {
+          "type": "code",
+          "code": "bits 64\nnop\nnop\nint3\nret",
+          "output": "90\n90\nCC\nC3"
+        },
+        {
+          "type": "text",
+          "md": "With `db` (define byte), you write bytes directly. You can put several bytes on one line, separated by commas. The CPU cannot tell where the bytes came from: `db 0x90` and `nop` give the same byte."
+        },
+        {
+          "type": "code",
+          "code": "bits 64\ndb 0x90\ndb 0xCC, 0xC3",
+          "output": "90\nCC C3"
+        },
+        {
+          "type": "warning",
+          "md": "Bytes have no meaning by themselves. `C3` is `RET` when the CPU runs it, but the number 195 when a program reads it as data. On other CPU families, like ARM, the same bytes are completely different instructions."
+        },
+        {
+          "type": "tip",
+          "md": "x86-64 instructions are 1 to 15 bytes long. A **disassembler** does the opposite of an assembler: it turns bytes back into assembly, so you can read machine code."
+        }
+      ],
+      "card": [
+        "`90` = `nop`, `C3` = `ret`, `CC` = `int3`",
+        "The opcode byte says which instruction it is",
+        "RIP holds the address of the next instruction",
+        "Fetch, decode, move RIP forward, execute",
+        "`db 0x90` writes the byte `90` directly"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "instructions-1",
+          "prompt": "What bytes does NASM make for this code?",
+          "code": "nop\nret",
+          "answers": [
+            "90 C3"
+          ],
+          "explain": "`nop` is the byte `90` and `ret` is `C3`."
+        },
+        {
+          "type": "choice",
+          "id": "instructions-2",
+          "prompt": "Which instruction is the byte `C3`?",
+          "options": [
+            "`ret`",
+            "`nop`",
+            "`int3`",
+            "`db`"
+          ],
+          "answer": 0,
+          "explain": "`C3` is `RET`. `nop` is `90`, `int3` is `CC`, and `db` is not an instruction but tells NASM to write bytes."
+        },
+        {
+          "type": "input",
+          "id": "instructions-3",
+          "prompt": "How many instructions are in these bytes?",
+          "code": "90 90 90 C3",
+          "answers": [
+            "4"
+          ],
+          "explain": "Each of these opcodes is a whole instruction of one byte: three `nop` and one `ret`."
+        },
+        {
+          "type": "choice",
+          "id": "instructions-4",
+          "prompt": "RIP is `0x1000`, and the byte there is `90` (`nop`). What is RIP after the CPU has executed it?",
+          "options": [
+            "`0x1001`",
+            "`0x1000`",
+            "`0x2000`",
+            "`0x1090`"
+          ],
+          "answer": 0,
+          "explain": "`nop` is 1 byte long, so RIP moves forward by 1."
+        },
+        {
+          "type": "true_false",
+          "id": "instructions-5",
+          "statement": "`db 0xC3` and `ret` give the same machine code.",
+          "answer": true,
+          "explain": "Both make the byte `C3`. The CPU cannot tell how the byte was written."
+        },
+        {
+          "type": "true_false",
+          "id": "instructions-6",
+          "statement": "While an instruction runs, RIP already holds the address of the next instruction.",
+          "answer": true,
+          "explain": "The CPU moves RIP forward by the length of the instruction before it executes it."
+        },
+        {
+          "type": "gap",
+          "id": "instructions-7",
+          "prompt": "Complete the code so NASM makes the bytes `90 90 C3`.",
+          "code": "nop\n___\nret",
+          "options": [
+            "db 0x90",
+            "db 90",
+            "db 0xC3",
+            "int3"
+          ],
+          "answer": 0,
+          "explain": "`db 0x90` writes the byte `90`. `db 90` is decimal 90, which is the byte `5A`."
+        },
+        {
+          "type": "blocks",
+          "id": "instructions-8",
+          "prompt": "Build a NASM line that writes the bytes `90` and `C3`.",
+          "tokens": [
+            "db",
+            "0x90,",
+            "0xC3"
+          ],
+          "distractors": [
+            "dw",
+            "90,"
+          ],
+          "explain": "`db` writes the bytes in the given order, separated by commas."
+        },
+        {
+          "type": "order",
+          "id": "instructions-9",
+          "prompt": "Put the lines in order so NASM makes the bytes `90 CC C3 90 C3`.",
+          "lines": [
+            "nop",
+            "int3",
+            "db 0xC3, 0x90",
+            "ret"
+          ],
+          "explain": "`nop` is `90`, `int3` is `CC`, the `db` line writes `C3 90`, and `ret` is `C3`."
+        },
+        {
+          "type": "pairs",
+          "id": "instructions-10",
+          "prompt": "Match the byte with what the instruction does.",
+          "pairs": [
+            [
+              "`90`",
+              "nothing"
+            ],
+            [
+              "`C3`",
+              "returns to the caller"
+            ],
+            [
+              "`CC`",
+              "stops at a breakpoint"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "instructions-11",
+          "prompt": "One comment shows the wrong bytes. Which line is it?",
+          "lines": [
+            "nop        ; 90",
+            "db 90      ; 90",
+            "int3       ; CC",
+            "ret        ; C3"
+          ],
+          "bug": 1,
+          "explain": "Without `0x`, NASM reads `90` as decimal, which is the byte `5A`. Write `db 0x90`."
+        },
+        {
+          "type": "input",
+          "id": "instructions-12",
+          "prompt": "The CPU starts at the first byte. How many of these instructions does it run?",
+          "code": "90 90 C3 90",
+          "answers": [
+            "3"
+          ],
+          "explain": "It runs two `nop` and then `ret`. `ret` goes back to the caller, so the last `nop` never runs."
+        }
+      ]
+    },
+    {
+      "id": "registers",
+      "title": "Registers in machine code",
+      "chapter": "Machine code",
+      "summary": "Meet the x86-64 registers and their numbers, and encode MOV with a value as B8 plus the register number.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "**Registers** are tiny storage places inside the CPU. They are much faster than memory, so most instructions work with registers. x86-64 has 16 general registers of 64 bits each: `RAX`, `RCX`, `RDX`, `RBX`, `RSP`, `RBP`, `RSI`, `RDI` and `R8` to `R15`."
+        },
+        {
+          "type": "text",
+          "md": "The lower 32 bits of each register have their own name: `EAX` is the lower half of `RAX`, `ECX` of `RCX`, and so on. This course mostly uses the 32-bit names. When an instruction writes a 32-bit register, the CPU sets the upper 32 bits of the full register to 0."
+        },
+        {
+          "type": "heading",
+          "text": "Register numbers"
+        },
+        {
+          "type": "text",
+          "md": "Inside machine code, a register is not a name but a number from 0 to 7. Note the order: it is A, C, D, B, not A, B, C, D. The program below prints the numbers; `names` is a list (`[...]`) of texts."
+        },
+        {
+          "type": "code",
+          "code": "names = [\"EAX\", \"ECX\", \"EDX\", \"EBX\", \"ESP\", \"EBP\", \"ESI\", \"EDI\"]\nfor number, name in enumerate(names):\n    print(number, name)",
+          "output": "0 EAX\n1 ECX\n2 EDX\n3 EBX\n4 ESP\n5 EBP\n6 ESI\n7 EDI"
+        },
+        {
+          "type": "heading",
+          "text": "MOV with a value"
+        },
+        {
+          "type": "text",
+          "md": "`mov eax, 1` puts the value 1 into `EAX`. Its machine code is the opcode `B8` plus the register number, followed by the value as 4 bytes in little-endian order. So `B8` means `EAX`, `B9` means `ECX`, `BA` means `EDX`, and so on up to `BF` for `EDI`. The register is part of the opcode byte."
+        },
+        {
+          "type": "code",
+          "code": "bits 64\nmov eax, 1\nmov ecx, 5\nmov ebx, 1000\nmov edi, 0x12345678",
+          "output": "B8 01 00 00 00\nB9 05 00 00 00\nBB E8 03 00 00\nBF 78 56 34 12"
+        },
+        {
+          "type": "text",
+          "md": "A value inside an instruction is called an **immediate**. Here it is always 4 bytes long, so every `mov` of this kind is 5 bytes: one opcode byte and four bytes for the value. A negative value is stored in two's complement."
+        },
+        {
+          "type": "code",
+          "code": "bits 64\nmov eax, -1\nmov edx, -2",
+          "output": "B8 FF FF FF FF\nBA FE FF FF FF"
+        },
+        {
+          "type": "text",
+          "md": "To decode such an instruction, subtract `0xB8` from the opcode to get the register number, and read the next 4 bytes as a little-endian number. In Python, `code[0]` is the first byte, and `code[1:5]` are the bytes at positions 1 to 4."
+        },
+        {
+          "type": "code",
+          "code": "code = bytes.fromhex(\"BB 2A 00 00 00\")\nregister = code[0] - 0xB8\nvalue = int.from_bytes(code[1:5], \"little\")\nprint(register, value)",
+          "output": "3 42"
+        },
+        {
+          "type": "tip",
+          "md": "Because writing `EAX` also clears the upper half of `RAX`, `mov eax, 1` makes the whole of `RAX` equal to 1. NASM even turns `mov rax, 1` into the shorter bytes `B8 01 00 00 00`."
+        },
+        {
+          "type": "warning",
+          "md": "`RSP` (number 4) is the **stack pointer**. It points to the stack, a memory area for return addresses and saved values. Do not use it for ordinary calculations."
+        }
+      ],
+      "card": [
+        "Numbers: `EAX` 0, `ECX` 1, `EDX` 2, `EBX` 3, `ESP` 4, `EBP` 5, `ESI` 6, `EDI` 7",
+        "`mov` register, value = `B8` + register number, then 4 value bytes",
+        "`mov ecx, 5` → `B9 05 00 00 00`",
+        "Writing `EAX` sets the upper half of `RAX` to 0"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "registers-1",
+          "prompt": "What bytes does NASM make for this code?",
+          "code": "mov edx, 7",
+          "answers": [
+            "BA 07 00 00 00"
+          ],
+          "explain": "`EDX` is number 2, so the opcode is `B8` + 2 = `BA`. Then come the 4 bytes of 7."
+        },
+        {
+          "type": "input",
+          "id": "registers-2",
+          "prompt": "Which register number does `ESI` have?",
+          "answers": [
+            "6"
+          ],
+          "explain": "The order is `EAX`, `ECX`, `EDX`, `EBX`, `ESP`, `EBP`, `ESI`, `EDI`, starting at 0. So `mov esi` uses the opcode `BE`."
+        },
+        {
+          "type": "choice",
+          "id": "registers-3",
+          "prompt": "Which instruction is this?",
+          "code": "BF 0A 00 00 00",
+          "options": [
+            "`mov edi, 10`",
+            "`mov edi, 0x0A000000`",
+            "`mov ebx, 10`",
+            "`mov edi, 0`"
+          ],
+          "answer": 0,
+          "explain": "`BF` is `B8` + 7, which is `EDI`. The bytes `0A 00 00 00` are little endian for 10."
+        },
+        {
+          "type": "choice",
+          "id": "registers-4",
+          "prompt": "How many bytes long is `mov ebx, 1`?",
+          "options": [
+            "5",
+            "2",
+            "4",
+            "8"
+          ],
+          "answer": 0,
+          "explain": "One opcode byte (`BB`) and four bytes for the value."
+        },
+        {
+          "type": "true_false",
+          "id": "registers-5",
+          "statement": "In machine code, register number 1 is `EBX`.",
+          "answer": false,
+          "explain": "Number 1 is `ECX`. `EBX` is number 3."
+        },
+        {
+          "type": "true_false",
+          "id": "registers-6",
+          "statement": "NASM makes the bytes `B8 00 01 00 00` for this code.",
+          "code": "mov eax, 0x100",
+          "answer": true,
+          "explain": "`0x100` as 4 little-endian bytes is `00 01 00 00`."
+        },
+        {
+          "type": "gap",
+          "id": "registers-7",
+          "prompt": "Complete the bytes so they mean `mov ecx, 3`.",
+          "code": "___ 03 00 00 00",
+          "options": [
+            "B9",
+            "B8",
+            "BB",
+            "C9"
+          ],
+          "answer": 0,
+          "explain": "`ECX` is number 1, so the opcode is `B8` + 1 = `B9`."
+        },
+        {
+          "type": "gap",
+          "id": "registers-8",
+          "prompt": "Complete the code so NASM makes the bytes `B8 FF FF FF FF`.",
+          "code": "mov eax, ___",
+          "options": [
+            "-1",
+            "255",
+            "0xFF",
+            "0xFFFF"
+          ],
+          "answer": 0,
+          "explain": "-1 in two's complement has all bits set. 255 would give `FF 00 00 00`."
+        },
+        {
+          "type": "blocks",
+          "id": "registers-9",
+          "prompt": "Build the bytes of `mov ebx, 0x0102`.",
+          "tokens": [
+            "BB",
+            "02",
+            "01",
+            "00",
+            "00"
+          ],
+          "distractors": [
+            "B8",
+            "20"
+          ],
+          "explain": "`EBX` gives the opcode `BB`. The value `0x00000102` is stored lowest byte first: `02 01 00 00`."
+        },
+        {
+          "type": "order",
+          "id": "registers-10",
+          "prompt": "Put the bytes in order so they mean `mov edx, 0x11223344`.",
+          "lines": [
+            "BA",
+            "44",
+            "33",
+            "22",
+            "11"
+          ],
+          "explain": "First the opcode `BA` (`B8` + 2 for `EDX`), then the value in little-endian order."
+        },
+        {
+          "type": "pairs",
+          "id": "registers-11",
+          "prompt": "Match the opcode with what it does.",
+          "pairs": [
+            [
+              "`B8`",
+              "value into `EAX`"
+            ],
+            [
+              "`B9`",
+              "value into `ECX`"
+            ],
+            [
+              "`BB`",
+              "value into `EBX`"
+            ],
+            [
+              "`BF`",
+              "value into `EDI`"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "registers-12",
+          "prompt": "One comment shows the wrong bytes. Which line is it?",
+          "lines": [
+            "mov eax, 2      ; B8 02 00 00 00",
+            "mov ecx, 3      ; B9 03 00 00 00",
+            "mov ebx, 4      ; BA 04 00 00 00",
+            "mov esi, 5      ; BE 05 00 00 00"
+          ],
+          "bug": 2,
+          "explain": "`EBX` is number 3, so the opcode is `B8` + 3 = `BB`. `BA` is `EDX`."
+        }
+      ]
+    },
+    {
+      "id": "arithmetic",
+      "title": "Arithmetic instructions",
+      "chapter": "Machine code",
+      "summary": "Encode ADD, SUB, INC and DEC, and learn how the ModR/M byte names the registers.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`add eax, ecx` adds `ECX` to `EAX` and stores the result in `EAX`. `sub eax, ecx` subtracts `ECX` from `EAX`. The first register is the **destination**: it receives the result. The second one is the **source**."
+        },
+        {
+          "type": "text",
+          "md": "These instructions are 2 bytes long. The first byte is the opcode: `01` for `ADD` and `29` for `SUB`. The second byte is the **ModR/M** byte. It names the two registers."
+        },
+        {
+          "type": "code",
+          "code": "bits 64\nadd eax, ecx\nsub edx, ebx",
+          "output": "01 C8\n29 DA"
+        },
+        {
+          "type": "heading",
+          "text": "The ModR/M byte"
+        },
+        {
+          "type": "text",
+          "md": "The 8 bits of ModR/M have three fields: `mod` (2 bits), `reg` (3 bits) and `rm` (3 bits). `mod` = `11` means that both operands are registers. Here `reg` holds the source register and `rm` the destination register."
+        },
+        {
+          "type": "text",
+          "md": "For `add eax, ecx` the source is `ECX` (number 1, `001`) and the destination is `EAX` (number 0, `000`). So ModR/M is `11` `001` `000`, which is `0xC8`. In Python you can put `_` between the fields of a binary number; the `_` only makes it easier to read."
+        },
+        {
+          "type": "code",
+          "code": "print(format(0b11_001_000, \"02X\"))\nprint(format(0b11_011_010, \"02X\"))\nprint(format(0b11_000_001, \"02X\"))",
+          "output": "C8\nDA\nC1"
+        },
+        {
+          "type": "text",
+          "md": "`DA` is the ModR/M byte of `sub edx, ebx`: the source `EBX` is `011` and the destination `EDX` is `010`. `C1` has the source `EAX` and the destination `ECX`, so `01 C1` is `add ecx, eax`."
+        },
+        {
+          "type": "heading",
+          "text": "Adding a small number"
+        },
+        {
+          "type": "text",
+          "md": "`add ecx, 5` adds a value to a register. For values from -128 to 127 the opcode is `83`, then a ModR/M byte, then the value as one signed byte. Here the `reg` field holds no register but a number that picks the operation: `0` for ADD and `5` for SUB. So `add ecx, 5` has ModR/M `11` `000` `001` = `C1`, and `sub ecx, 2` has `11` `101` `001` = `E9`."
+        },
+        {
+          "type": "code",
+          "code": "bits 64\nadd ecx, 5\nsub ecx, 2\nadd ebx, -1",
+          "output": "83 C1 05\n83 E9 02\n83 C3 FF"
+        },
+        {
+          "type": "text",
+          "md": "`inc ecx` adds 1 and `dec ecx` subtracts 1. Both use the opcode `FF` and a ModR/M byte, with `0` in the `reg` field for INC and `1` for DEC. So `inc ecx` is `FF C1` and `dec ecx` is `FF C9`."
+        },
+        {
+          "type": "code",
+          "code": "bits 64\ninc eax\ninc ecx\ndec eax\ndec edx",
+          "output": "FF C0\nFF C1\nFF C8\nFF CA"
+        },
+        {
+          "type": "tip",
+          "md": "In 64-bit code you often see the byte `48` in front of an instruction. It is a **prefix** that makes the instruction work with all 64 bits: `add rax, rcx` is `48 01 C8`."
+        }
+      ],
+      "card": [
+        "`add` = `01`, `sub` = `29`, then the ModR/M byte",
+        "ModR/M = `mod` (2 bits), `reg` (3), `rm` (3); two registers: `mod` = `11`",
+        "`add eax, ecx` → `01 C8` (`11` `001` `000`)",
+        "`add ecx, 5` → `83 C1 05`; `sub ecx, 2` → `83 E9 02`",
+        "`inc ecx` → `FF C1`; `dec ecx` → `FF C9`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arithmetic-1",
+          "prompt": "What bytes does NASM make for this code?",
+          "code": "add ebx, edx",
+          "answers": [
+            "01 D3"
+          ],
+          "explain": "The source `EDX` is `010` and the destination `EBX` is `011`, so ModR/M is `11` `010` `011` = `D3`."
+        },
+        {
+          "type": "input",
+          "id": "arithmetic-2",
+          "prompt": "Which value is in `EAX` after these instructions run?",
+          "code": "mov eax, 10\nmov ecx, 4\nsub eax, ecx\ninc eax",
+          "answers": [
+            "7"
+          ],
+          "explain": "10 - 4 is 6, and `inc` adds 1."
+        },
+        {
+          "type": "choice",
+          "id": "arithmetic-3",
+          "prompt": "Which instruction is this?",
+          "code": "29 C8",
+          "options": [
+            "`sub eax, ecx`",
+            "`sub ecx, eax`",
+            "`add eax, ecx`",
+            "`dec eax`"
+          ],
+          "answer": 0,
+          "explain": "`29` is SUB. ModR/M `C8` is `11` `001` `000`: the source is `ECX` and the destination is `EAX`."
+        },
+        {
+          "type": "choice",
+          "id": "arithmetic-4",
+          "prompt": "What is the ModR/M byte of `add edx, ecx`?",
+          "options": [
+            "`CA`",
+            "`D1`",
+            "`C8`",
+            "`CB`"
+          ],
+          "answer": 0,
+          "explain": "The source `ECX` goes into `reg` (`001`) and the destination `EDX` into `rm` (`010`): `11` `001` `010` = `CA`."
+        },
+        {
+          "type": "true_false",
+          "id": "arithmetic-5",
+          "statement": "`inc eax` and `add eax, 1` have the same machine code.",
+          "answer": false,
+          "explain": "Both add 1, but `inc eax` is `FF C0` and `add eax, 1` is `83 C0 01`."
+        },
+        {
+          "type": "true_false",
+          "id": "arithmetic-6",
+          "statement": "NASM makes the bytes `FF CB` for this code.",
+          "code": "dec ebx",
+          "answer": true,
+          "explain": "DEC uses `1` in the `reg` field, and `EBX` is `011`: `11` `001` `011` = `CB`."
+        },
+        {
+          "type": "gap",
+          "id": "arithmetic-7",
+          "prompt": "Complete the bytes so they mean `add eax, 3`.",
+          "code": "83 ___ 03",
+          "options": [
+            "C0",
+            "E8",
+            "C3",
+            "C8"
+          ],
+          "answer": 0,
+          "explain": "ADD uses `0` in the `reg` field and `EAX` is `000`, so ModR/M is `11` `000` `000` = `C0`. `E8` would be SUB."
+        },
+        {
+          "type": "gap",
+          "id": "arithmetic-8",
+          "prompt": "Complete the code so NASM makes the bytes `29 D9`.",
+          "code": "sub ___, ebx",
+          "options": [
+            "ecx",
+            "edx",
+            "eax",
+            "ebx"
+          ],
+          "answer": 0,
+          "explain": "`D9` is `11` `011` `001`: the source is `EBX` (`011`) and the destination is `ECX` (`001`)."
+        },
+        {
+          "type": "blocks",
+          "id": "arithmetic-9",
+          "prompt": "Build the instruction for the bytes `29 D1`.",
+          "tokens": [
+            "sub",
+            "ecx,",
+            "edx"
+          ],
+          "distractors": [
+            "add",
+            "edx,",
+            "ecx"
+          ],
+          "explain": "`29` is SUB. `D1` is `11` `010` `001`: the source `EDX`, the destination `ECX`."
+        },
+        {
+          "type": "order",
+          "id": "arithmetic-10",
+          "prompt": "Put the instructions in order so `EAX` ends with the value 7.",
+          "lines": [
+            "mov eax, 3",
+            "dec eax",
+            "add eax, eax",
+            "add eax, 3"
+          ],
+          "explain": "3 - 1 is 2, doubled is 4, plus 3 is 7. Every other order gives a different result."
+        },
+        {
+          "type": "pairs",
+          "id": "arithmetic-11",
+          "prompt": "Match the bytes with what they do.",
+          "pairs": [
+            [
+              "`01 C8`",
+              "adds `ECX` to `EAX`"
+            ],
+            [
+              "`29 C8`",
+              "subtracts `ECX` from `EAX`"
+            ],
+            [
+              "`FF C0`",
+              "adds 1 to `EAX`"
+            ],
+            [
+              "`FF C8`",
+              "subtracts 1 from `EAX`"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "arithmetic-12",
+          "prompt": "One comment shows the wrong bytes. Which line is it?",
+          "lines": [
+            "add eax, ecx    ; 01 C8",
+            "sub eax, ecx    ; 29 C8",
+            "inc ecx         ; FF C1",
+            "dec ecx         ; FF C1",
+            "add ecx, 4      ; 83 C1 04"
+          ],
+          "bug": 3,
+          "explain": "DEC uses `1` in the `reg` field: `11` `001` `001` = `C9`, so `dec ecx` is `FF C9`."
+        }
+      ]
+    },
+    {
+      "id": "jumps",
+      "title": "Jumps and offsets",
+      "chapter": "Control flow",
+      "summary": "Jump forward and back with short jumps, compute relative offsets, and make decisions with conditional jumps.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Normally the CPU runs one instruction after the other. A **jump** changes RIP, so the CPU goes on somewhere else. Jumps make loops and decisions possible."
+        },
+        {
+          "type": "text",
+          "md": "The short jump `JMP` is 2 bytes: the opcode `EB` and one signed byte, the **offset**. The offset says how far to jump, counted from the address **after** the jump instruction. A positive offset jumps forward, a negative one jumps back."
+        },
+        {
+          "type": "text",
+          "md": "In NASM you jump to a **label**: a name followed by `:` that marks an address. NASM computes the offset for you. Below, the jump is at address 0 and ends at address 2. The label `skip` is at address 4, so the offset is 4 - 2 = 2, and the CPU skips the two `nop` bytes."
+        },
+        {
+          "type": "code",
+          "code": "bits 64\njmp skip\nnop\nnop\nskip:\nret",
+          "output": "EB 02\n90\n90\nC3"
+        },
+        {
+          "type": "heading",
+          "text": "Jumping back"
+        },
+        {
+          "type": "text",
+          "md": "The rule for every offset is: offset = target address - address after the jump. To jump back, the offset is negative and written in two's complement. In NASM, `$` means the address of the current instruction, so `jmp $` jumps to itself, forever. Its offset is 0 - 2 = -2, which is the byte `FE`."
+        },
+        {
+          "type": "code",
+          "code": "bits 64\njmp $",
+          "output": "EB FE"
+        },
+        {
+          "type": "text",
+          "md": "Python can compute the offset byte: subtract, then keep the lowest byte with `& 0xFF`. The three lines compute the offsets of `jmp skip`, of `jmp $` and of a jump from address 9 back to address 5."
+        },
+        {
+          "type": "code",
+          "code": "print(format((4 - 2) & 0xFF, \"02X\"))\nprint(format((0 - 2) & 0xFF, \"02X\"))\nprint(format((5 - 9) & 0xFF, \"02X\"))",
+          "output": "02\nFE\nFC"
+        },
+        {
+          "type": "heading",
+          "text": "Conditional jumps"
+        },
+        {
+          "type": "text",
+          "md": "A **conditional jump** jumps only if a condition is true; otherwise the CPU goes on with the next instruction. The condition comes from the **flags**: single bits that arithmetic instructions set. For example, the **zero flag** is 1 when a result is 0. `cmp eax, ebx` compares two registers: it subtracts `EBX` from `EAX`, sets the flags and throws the result away."
+        },
+        {
+          "type": "text",
+          "md": "Short conditional jumps are 2 bytes: an opcode from `70` to `7F` and an offset. Common ones are `74` = `JZ` (jump if zero, also called `JE`, jump if equal), `75` = `JNZ` (jump if not zero, `JNE`), `7C` = `JL` (jump if less) and `7F` = `JG` (jump if greater). This loop repeats `dec ecx` until `ECX` is 0. The jump ends at address 9 and goes back to address 5, so the offset is -4 = `FC`."
+        },
+        {
+          "type": "code",
+          "code": "bits 64\nmov ecx, 3\nagain:\ndec ecx\njnz again\nret",
+          "output": "B9 03 00 00 00\nFF C9\n75 FC\nC3"
+        },
+        {
+          "type": "tip",
+          "md": "A short offset reaches from -128 to 127 bytes. For longer jumps, NASM uses the near form with a 4-byte offset: `E9` for `JMP`, or `0F 84` for `JZ`."
+        }
+      ],
+      "card": [
+        "Short `jmp` = `EB` + one signed offset byte",
+        "offset = target - address after the jump",
+        "`jmp $` → `EB FE` (jumps to itself)",
+        "`74` = `jz`/`je`, `75` = `jnz`/`jne`, `7C` = `jl`, `7F` = `jg`",
+        "`cmp eax, ebx` sets the flags like `sub` but keeps no result"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "jumps-1",
+          "prompt": "A `jmp` at address `0x10` has the bytes `EB 05`. To which address does it jump? Answer in hex with `0x`.",
+          "answers": [
+            "0x17"
+          ],
+          "explain": "The jump ends at `0x12`. `0x12` + 5 = `0x17`."
+        },
+        {
+          "type": "input",
+          "id": "jumps-2",
+          "prompt": "What bytes does NASM make for this code?",
+          "code": "jmp done\nnop\ndone:\nret",
+          "answers": [
+            "EB 01 90 C3"
+          ],
+          "explain": "The jump ends at address 2 and `done` is at address 3, so the offset is 1."
+        },
+        {
+          "type": "choice",
+          "id": "jumps-3",
+          "prompt": "A jump ends at address 20, and its target is address 16. Which offset byte does it need?",
+          "options": [
+            "`FC`",
+            "`04`",
+            "`FB`",
+            "`F4`"
+          ],
+          "answer": 0,
+          "explain": "16 - 20 = -4, and -4 in two's complement is `FC`."
+        },
+        {
+          "type": "choice",
+          "id": "jumps-4",
+          "prompt": "What does this instruction do?",
+          "code": "74 03",
+          "options": [
+            "It jumps 3 bytes forward if the zero flag is 1.",
+            "It always jumps 3 bytes forward.",
+            "It jumps 3 bytes forward if the zero flag is 0.",
+            "It jumps to address 3."
+          ],
+          "answer": 0,
+          "explain": "`74` is `JZ`: it jumps only when the zero flag is 1. The offset 3 counts from the end of the instruction."
+        },
+        {
+          "type": "true_false",
+          "id": "jumps-5",
+          "statement": "The offset of a short jump is counted from the first byte of the jump instruction.",
+          "answer": false,
+          "explain": "It is counted from the address after the jump, the place where the CPU would go on without jumping."
+        },
+        {
+          "type": "input",
+          "id": "jumps-6",
+          "prompt": "Which value is in `EAX` when the code reaches `ret`?",
+          "code": "mov eax, 0\nmov ecx, 4\nagain:\nadd eax, 2\ndec ecx\njnz again\nret",
+          "answers": [
+            "8"
+          ],
+          "explain": "The loop runs 4 times, because `ECX` goes 4, 3, 2, 1, 0. Each time `EAX` grows by 2."
+        },
+        {
+          "type": "gap",
+          "id": "jumps-7",
+          "prompt": "Complete the code so the loop runs exactly 5 times.",
+          "code": "mov eax, 0\nmov ecx, 5\nagain:\ninc eax\ndec ecx\n___ again\nret",
+          "options": [
+            "jnz",
+            "jz",
+            "jmp",
+            "jl"
+          ],
+          "answer": 0,
+          "explain": "`jnz` jumps back while `ECX` is not 0. `jz` and `jl` stop after one round, and `jmp` never stops."
+        },
+        {
+          "type": "gap",
+          "id": "jumps-8",
+          "prompt": "Complete the bytes so the jump goes to itself.",
+          "code": "EB ___",
+          "options": [
+            "FE",
+            "00",
+            "FF",
+            "02"
+          ],
+          "answer": 0,
+          "explain": "The jump is 2 bytes long, so it must go back 2 bytes: -2 = `FE`. `00` goes on with the next instruction."
+        },
+        {
+          "type": "blocks",
+          "id": "jumps-9",
+          "prompt": "Build the bytes of `dec ecx`, followed by a `jnz` that jumps back to `dec ecx`.",
+          "tokens": [
+            "FF",
+            "C9",
+            "75",
+            "FC"
+          ],
+          "distractors": [
+            "FE",
+            "74"
+          ],
+          "explain": "`dec ecx` is `FF C9`. The `jnz` (`75`) ends 4 bytes after the start of `dec ecx`, so the offset is -4 = `FC`."
+        },
+        {
+          "type": "order",
+          "id": "jumps-10",
+          "prompt": "Put the lines in order so NASM makes the bytes `B9 02 00 00 00 FF C9 75 FC C3`.",
+          "lines": [
+            "mov ecx, 2",
+            "again:",
+            "dec ecx",
+            "jnz again",
+            "ret"
+          ],
+          "explain": "The offset `FC` (-4) only fits when `again:` marks `dec ecx`."
+        },
+        {
+          "type": "pairs",
+          "id": "jumps-11",
+          "prompt": "Match the opcode with the jump.",
+          "pairs": [
+            [
+              "`EB`",
+              "always jump"
+            ],
+            [
+              "`74`",
+              "jump if zero"
+            ],
+            [
+              "`75`",
+              "jump if not zero"
+            ],
+            [
+              "`7C`",
+              "jump if less"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "jumps-12",
+          "prompt": "One comment shows the wrong bytes. Which line is it?",
+          "lines": [
+            "mov ecx, 3     ; B9 03 00 00 00",
+            "again:",
+            "dec ecx        ; FF C9",
+            "jnz again      ; 75 FE",
+            "ret            ; C3"
+          ],
+          "bug": 3,
+          "explain": "The jump ends at address 9 and `again` is at address 5: 5 - 9 = -4 = `FC`. `FE` would jump to the `jnz` itself."
+        }
+      ]
+    },
+    {
+      "id": "programs",
+      "title": "A whole program",
+      "chapter": "Programs",
+      "summary": "Call the operating system with syscall, write a complete program as bytes, and read hex dumps and disassembly.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A program cannot print text or stop by itself: it asks the operating system. On Linux, x86-64 programs do this with a **system call**. The instruction `syscall` has the 2 bytes `0F 05`."
+        },
+        {
+          "type": "text",
+          "md": "Before `syscall`, the program puts the number of the system call into `EAX` and the arguments into `EDI`, `ESI` and `EDX`, or into `RDI`, `RSI` and `RDX` for big values like addresses. Two useful numbers: `60` is `exit` (stop the program, with the exit code in `EDI`) and `1` is `write` (write bytes)."
+        },
+        {
+          "type": "text",
+          "md": "This is a complete Linux program. It puts 60 into `EAX` and the exit code 42 into `EDI`, and then calls the operating system. The output shows its 12 bytes."
+        },
+        {
+          "type": "code",
+          "code": "bits 64\nmov eax, 60\nmov edi, 42\nsyscall",
+          "output": "B8 3C 00 00 00\nBF 2A 00 00 00\n0F 05"
+        },
+        {
+          "type": "text",
+          "md": "When these 12 bytes run on Linux, the program stops at once with the exit code 42. In a terminal, `echo $?` then shows `42`. To run, the bytes must be inside an executable file, which NASM and the linker `ld` can make. The operating system loads the bytes into memory and sets RIP to the first one."
+        },
+        {
+          "type": "heading",
+          "text": "Printing text"
+        },
+        {
+          "type": "text",
+          "md": "The `write` system call needs three arguments: where to write in `EDI` (1 means the screen, called standard output), the address of the bytes in `RSI`, and how many bytes in `EDX`. `lea rsi, [rel msg]` puts the address of the label `msg` into `RSI`. `xor edi, edi` is a short way to set `EDI` to 0."
+        },
+        {
+          "type": "text",
+          "md": "`db \"Hi\", 10` writes the letters `H` and `i` and the byte 10, which starts a new line. This time the output is not the bytes but what the program prints when it runs."
+        },
+        {
+          "type": "code",
+          "code": "bits 64\nmov eax, 1\nmov edi, 1\nlea rsi, [rel msg]\nmov edx, 3\nsyscall\nmov eax, 60\nxor edi, edi\nsyscall\nmsg: db \"Hi\", 10",
+          "output": "Hi"
+        },
+        {
+          "type": "heading",
+          "text": "Hex dumps and disassembly"
+        },
+        {
+          "type": "text",
+          "md": "A **hex dump** shows the bytes of a file. The tool `xxd` prints the address of the first byte of each line, then 16 bytes in hex (in groups of two), then the same bytes as text, with a dot for each byte that is not a letter. This is the hex dump of the program above:"
+        },
+        {
+          "type": "code",
+          "code": "00000000: b801 0000 00bf 0100 0000 488d 3510 0000  ..........H.5...\n00000010: 00ba 0300 0000 0f05 b83c 0000 0031 ff0f  .........<...1..\n00000020: 0548 690a                                .Hi."
+        },
+        {
+          "type": "text",
+          "md": "A **disassembler** turns the bytes back into assembly. `ndisasm -b 64` (it comes with NASM) prints the address, the bytes and the instruction on each line. The last three bytes are the text `Hi` and the new line, but the disassembler does not know that, so it tries to read them as instructions."
+        },
+        {
+          "type": "code",
+          "code": "00000000  B801000000        mov eax,0x1\n00000005  BF01000000        mov edi,0x1\n0000000A  488D3510000000    lea rsi,[rel 0x21]\n00000011  BA03000000        mov edx,0x3\n00000016  0F05              syscall\n00000018  B83C000000        mov eax,0x3c\n0000001D  31FF              xor edi,edi\n0000001F  0F05              syscall\n00000021  48                rex.w\n00000022  69                db 0x69\n00000023  0A                db 0x0a"
+        }
+      ],
+      "card": [
+        "`syscall` = `0F 05`; number in `EAX`, arguments in `EDI`, `ESI`, `EDX`",
+        "`exit` = `60` (exit code in `EDI`), `write` = `1`",
+        "Exit program: `B8 3C 00 00 00` `BF 2A 00 00 00` `0F 05`",
+        "`xxd` shows a hex dump; `ndisasm -b 64` disassembles"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "programs-1",
+          "prompt": "In this hex dump, which byte is at address `0x05`?",
+          "code": "00000000: b83c 0000 00bf 2a00 0000 0f05            .<....*.....",
+          "answers": [
+            "BF",
+            "0xBF"
+          ],
+          "explain": "Each pair of hex digits is one byte, starting with address 0: `b8 3c 00 00 00 bf`. So address 5 holds `bf`."
+        },
+        {
+          "type": "input",
+          "id": "programs-2",
+          "prompt": "With which exit code does this program stop?",
+          "code": "B8 3C 00 00 00\nBF 07 00 00 00\n0F 05",
+          "answers": [
+            "7"
+          ],
+          "explain": "`B8 3C 00 00 00` puts 60 (`exit`) into `EAX`, `BF 07 00 00 00` puts 7 into `EDI`, and `0F 05` is `syscall`."
+        },
+        {
+          "type": "choice",
+          "id": "programs-3",
+          "prompt": "Which value must be in `EAX` for the `exit` system call?",
+          "options": [
+            "60",
+            "1",
+            "0",
+            "42"
+          ],
+          "answer": 0,
+          "explain": "60 is the number of `exit` on Linux x86-64. 1 is `write`, and 42 was only an exit code."
+        },
+        {
+          "type": "choice",
+          "id": "programs-4",
+          "prompt": "What does this print?",
+          "code": "mov eax, 1\nmov edi, 1\nlea rsi, [rel msg]\nmov edx, 2\nsyscall\nmov eax, 60\nxor edi, edi\nsyscall\nmsg: db \"OK!\", 10",
+          "options": [
+            "`OK`",
+            "`OK!`",
+            "`OK!` and a new line",
+            "Nothing"
+          ],
+          "answer": 0,
+          "explain": "`EDX` says how many bytes to write: 2, so only `O` and `K` appear."
+        },
+        {
+          "type": "true_false",
+          "id": "programs-5",
+          "statement": "`xor edi, edi` sets `EDI` to 0.",
+          "answer": true,
+          "explain": "XOR of a value with itself is always 0. It is a short way to clear a register (2 bytes instead of 5)."
+        },
+        {
+          "type": "true_false",
+          "id": "programs-6",
+          "statement": "This program stops with the exit code 0.",
+          "code": "BF 00 00 00 00\nB8 3C 00 00 00\n0F 05",
+          "answer": true,
+          "explain": "The order of the two `mov` instructions does not matter. When `syscall` runs, `EAX` is 60 and `EDI` is 0."
+        },
+        {
+          "type": "gap",
+          "id": "programs-7",
+          "prompt": "Complete the program so it stops with the exit code 3.",
+          "code": "mov eax, ___\nmov edi, 3\nsyscall",
+          "options": [
+            "60",
+            "1",
+            "3",
+            "0x60"
+          ],
+          "answer": 0,
+          "explain": "`EAX` holds the number of the system call, and `exit` is 60. `0x60` is 96."
+        },
+        {
+          "type": "gap",
+          "id": "programs-8",
+          "prompt": "Complete the bytes so the program stops with the exit code 1.",
+          "code": "B8 3C 00 00 00\nBF ___ 00 00 00\n0F 05",
+          "options": [
+            "01",
+            "10",
+            "00",
+            "3C"
+          ],
+          "answer": 0,
+          "explain": "`BF` is `mov edi`, and the value 1 in little endian is `01 00 00 00`."
+        },
+        {
+          "type": "blocks",
+          "id": "programs-9",
+          "prompt": "Build the bytes of `mov eax, 60`, then `xor edi, edi`, then `syscall`.",
+          "tokens": [
+            "B8",
+            "3C",
+            "00",
+            "00",
+            "00",
+            "31",
+            "FF",
+            "0F",
+            "05"
+          ],
+          "distractors": [
+            "60",
+            "CD"
+          ],
+          "explain": "`mov eax, 60` is `B8 3C 00 00 00`, `xor edi, edi` is `31 FF` and `syscall` is `0F 05`."
+        },
+        {
+          "type": "order",
+          "id": "programs-10",
+          "prompt": "Put the lines in order so NASM makes the bytes `31 FF B8 3C 00 00 00 FF C7 0F 05`.",
+          "lines": [
+            "xor edi, edi",
+            "mov eax, 60",
+            "inc edi",
+            "syscall"
+          ],
+          "explain": "`31 FF` is `xor edi, edi`, `B8 3C 00 00 00` is `mov eax, 60`, `FF C7` is `inc edi` and `0F 05` is `syscall`."
+        },
+        {
+          "type": "pairs",
+          "id": "programs-11",
+          "prompt": "Match the bytes with their meaning.",
+          "pairs": [
+            [
+              "`0F 05`",
+              "system call"
+            ],
+            [
+              "`B8 3C 00 00 00`",
+              "puts 60 into `EAX`"
+            ],
+            [
+              "`31 FF`",
+              "sets `EDI` to 0"
+            ],
+            [
+              "`C3`",
+              "returns from a function"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "programs-12",
+          "prompt": "This program should print `Hi` and a new line. Which line has the bug?",
+          "lines": [
+            "mov eax, 1",
+            "mov edi, 1",
+            "lea rsi, [rel msg]",
+            "mov edx, 2",
+            "syscall",
+            "mov eax, 60",
+            "xor edi, edi",
+            "syscall",
+            "msg: db \"Hi\", 10"
+          ],
+          "bug": 3,
+          "explain": "The text has 3 bytes: `H`, `i` and the new line. Write `mov edx, 3`."
+        }
+      ]
+    }
+  ]
+}

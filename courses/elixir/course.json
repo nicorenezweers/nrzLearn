@@ -1,0 +1,1923 @@
+{
+  "course": "elixir",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Elixir",
+      "chapter": "Basics",
+      "summary": "Write your first Elixir script, print text with IO.puts, join strings and add comments.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Elixir is a friendly language for building reliable programs. You write a program in a **script** file that ends in `.exs`, for example `hello.exs`. In a terminal, the command `elixir hello.exs` runs it."
+        },
+        {
+          "type": "code",
+          "code": "IO.puts(\"Hello, Elixir!\")",
+          "output": "Hello, Elixir!"
+        },
+        {
+          "type": "text",
+          "md": "`IO.puts` prints text and then starts a new line. `IO` is a **module** (a group of functions) and `puts` is a function inside it. The dot `.` connects the module and the function. Text in double quotes, like `\"Hello, Elixir!\"`, is a **string**."
+        },
+        {
+          "type": "code",
+          "code": "IO.puts(\"Line one\")\nIO.puts(\"Line two\")\nIO.puts(2 + 3)",
+          "output": "Line one\nLine two\n5"
+        },
+        {
+          "type": "text",
+          "md": "The program runs from top to bottom, one line after the other. `IO.puts` can also print numbers and the result of a calculation, like `2 + 3`."
+        },
+        {
+          "type": "heading",
+          "text": "Joining strings"
+        },
+        {
+          "type": "text",
+          "md": "The operator `<>` joins two strings into one. With `=` you give a value a name: `name = \"Ada\"`. Later you write `name` to use the value. Such a name is called a **variable**."
+        },
+        {
+          "type": "code",
+          "code": "name = \"Ada\"\nIO.puts(\"Hello, \" <> name)\nIO.puts(\"Bye, \" <> name <> \"!\")",
+          "output": "Hello, Ada\nBye, Ada!"
+        },
+        {
+          "type": "text",
+          "md": "`IO.inspect` shows a value the way Elixir writes it in code. A string appears with its quotes, so you can see what kind of value it is. This helps a lot when you look for mistakes."
+        },
+        {
+          "type": "code",
+          "code": "IO.puts(\"hi\")\nIO.inspect(\"hi\")\nIO.inspect(42)",
+          "output": "hi\n\"hi\"\n42"
+        },
+        {
+          "type": "text",
+          "md": "A line that starts with `#` is a **comment**. Elixir ignores it. You can use `#` to switch off a line of code without deleting it."
+        },
+        {
+          "type": "code",
+          "code": "IO.puts(\"one\")\n# IO.puts(\"two\")\nIO.puts(\"three\")",
+          "output": "one\nthree"
+        },
+        {
+          "type": "tip",
+          "md": "You can leave out the parentheses: `IO.puts \"Hi\"` works too. In this course you always write them, because it makes the code easier to read."
+        }
+      ],
+      "card": [
+        "`elixir hello.exs` runs a script",
+        "`IO.puts(\"Hi\")` prints text and a new line",
+        "`\"a\" <> \"b\"` joins strings: `\"ab\"`",
+        "`IO.inspect(x)` shows a value as code",
+        "`# ...` is a comment"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which command runs the script `hello.exs`?",
+          "options": [
+            "`elixir hello.exs`",
+            "`run hello.exs`",
+            "`hello.exs elixir`",
+            "`exs hello`"
+          ],
+          "answer": 0,
+          "explain": "You start a script with the command `elixir` followed by the file name."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "IO.puts(\"Good \" <> \"morning\")",
+          "answers": [
+            "Good morning"
+          ],
+          "explain": "`<>` joins the two strings. The space at the end of `\"Good \"` stays in the result."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "word = \"fun\"\nIO.puts(\"Elixir is \" <> word)",
+          "answers": [
+            "Elixir is fun"
+          ],
+          "explain": "`word` holds the string `\"fun\"`. `<>` adds it to the end of `\"Elixir is \"`."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "`IO.puts` starts a new line after the text it prints.",
+          "answer": true,
+          "explain": "That is why two calls of `IO.puts` print their texts on two separate lines."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Complete the code so it prints Hello.",
+          "code": "IO.___(\"Hello\")",
+          "options": [
+            "puts",
+            "print",
+            "echo",
+            "println"
+          ],
+          "answer": 0,
+          "explain": "The function is called `puts`. The module `IO` has no functions called `print`, `echo` or `println`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so it prints Hi, Ana.",
+          "code": "IO.puts(\"Hi, \" ___ \"Ana\")",
+          "options": [
+            "<>",
+            "+",
+            ".",
+            "&"
+          ],
+          "answer": 0,
+          "explain": "In Elixir, `<>` joins strings. `+` only works with numbers."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Print the string `\"Hi, \"` joined with the variable `name`.",
+          "tokens": [
+            "IO.puts(",
+            "\"Hi, \"",
+            "<>",
+            "name",
+            ")"
+          ],
+          "distractors": [
+            "+",
+            "IO.put("
+          ],
+          "explain": "`IO.puts` gets one string: `\"Hi, \"` joined with `name` by `<>`."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order so the program prints Hello, Ada.",
+          "lines": [
+            "name = \"Ada\"",
+            "greeting = \"Hello, \" <> name",
+            "IO.puts(greeting)"
+          ],
+          "explain": "A variable must have a value before you use it: first `name`, then `greeting`, then print."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`IO.puts`",
+              "prints text and a new line"
+            ],
+            [
+              "`IO.inspect`",
+              "shows a value as code"
+            ],
+            [
+              "`<>`",
+              "joins two strings"
+            ],
+            [
+              "`#`",
+              "starts a comment"
+            ],
+            [
+              "`.exs`",
+              "the end of a script file name"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "IO.puts(\"Start\")",
+            "IO.puts(\"Middle)",
+            "IO.puts(\"End\")"
+          ],
+          "bug": 1,
+          "explain": "The string has no closing quote. Write `IO.puts(\"Middle\")`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-11",
+          "prompt": "What does this print?",
+          "code": "# IO.puts(\"A\")\nIO.puts(\"B\")\n# IO.puts(\"C\")",
+          "options": [
+            "`B`",
+            "`A`, `B` and `C`",
+            "`A` and `C`",
+            "Nothing"
+          ],
+          "answer": 0,
+          "explain": "Lines that start with `#` are comments, so only `IO.puts(\"B\")` runs."
+        },
+        {
+          "type": "input",
+          "id": "hello-12",
+          "prompt": "What does this print?",
+          "code": "IO.puts(\"1\" <> \"2\")",
+          "answers": [
+            "12"
+          ],
+          "explain": "`\"1\"` and `\"2\"` are strings, not numbers. `<>` puts them next to each other: `12`."
+        }
+      ]
+    },
+    {
+      "id": "basics",
+      "title": "Basic types",
+      "chapter": "Basics",
+      "summary": "Work with integers, floats, atoms, booleans and strings, and put values into strings with interpolation.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Elixir has two kinds of numbers. An **integer** is a whole number like `7`. A **float** is a number with a decimal point like `3.5`. You calculate with `+`, `-`, `*` and `/`."
+        },
+        {
+          "type": "code",
+          "code": "IO.puts(7 + 3)\nIO.puts(7 * 3)\nIO.puts(10 / 2)\nIO.puts(7 / 2)",
+          "output": "10\n21\n5.0\n3.5"
+        },
+        {
+          "type": "text",
+          "md": "The operator `/` always gives a float, even when the result is whole: `10 / 2` is `5.0`. For whole-number division use `div(a, b)`. `rem(a, b)` gives the rest (the **remainder**) of that division."
+        },
+        {
+          "type": "code",
+          "code": "IO.puts(div(17, 5))\nIO.puts(rem(17, 5))",
+          "output": "3\n2"
+        },
+        {
+          "type": "heading",
+          "text": "Atoms and booleans"
+        },
+        {
+          "type": "text",
+          "md": "An **atom** is a name that stands for itself. It starts with a colon, like `:ok` or `:error`. The **booleans** `true` and `false` are the answers to questions like `5 > 3`. You compare with `==` (equal), `!=` (not equal), `<`, `>`, `<=` and `>=`, and you combine with `and`, `or` and `not`. Functions like `is_integer` and `is_float` check the type of a value."
+        },
+        {
+          "type": "code",
+          "code": "IO.inspect(:ok)\nIO.inspect(5 > 3)\nIO.inspect(2 != 2)\nIO.inspect(true and not false)\nIO.inspect(is_integer(4))\nIO.inspect(is_float(4))",
+          "output": ":ok\ntrue\nfalse\ntrue\ntrue\nfalse"
+        },
+        {
+          "type": "heading",
+          "text": "Strings"
+        },
+        {
+          "type": "text",
+          "md": "Inside a string, `#{...}` puts a value into the text. This is called **interpolation**. Between the braces you can write any expression, for example `age + 1`."
+        },
+        {
+          "type": "code",
+          "code": "name = \"Ada\"\nage = 36\nIO.puts(\"#{name} is #{age} years old.\")\nIO.puts(\"Next year: #{age + 1}\")",
+          "output": "Ada is 36 years old.\nNext year: 37"
+        },
+        {
+          "type": "text",
+          "md": "The module `String` has many functions for text. `String.length` counts the characters and `String.upcase` turns all letters into capitals."
+        },
+        {
+          "type": "code",
+          "code": "word = \"elixir\"\nIO.puts(String.length(word))\nIO.puts(String.upcase(word))",
+          "output": "6\nELIXIR"
+        },
+        {
+          "type": "tip",
+          "md": "`String.upcase(word)` returns a new string. The value of `word` does not change. In Elixir, values never change; you always create new ones."
+        }
+      ],
+      "card": [
+        "`7 / 2` is `3.5`; `div(7, 2)` is `3`",
+        "`rem(7, 2)` is the remainder `1`",
+        "`:ok` is an atom; `true`, `false` are booleans",
+        "`\"Hi #{name}\"` puts a value into a string",
+        "`String.length(s)`, `String.upcase(s)`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "basics-1",
+          "prompt": "What does this print?",
+          "code": "IO.puts(div(20, 6))",
+          "answers": [
+            "3"
+          ],
+          "explain": "`div` divides and drops the rest: 20 divided by 6 is 3, rest 2."
+        },
+        {
+          "type": "input",
+          "id": "basics-2",
+          "prompt": "What does this print?",
+          "code": "IO.puts(rem(20, 6))",
+          "answers": [
+            "2"
+          ],
+          "explain": "6 fits into 20 three times (18). The remainder is 20 - 18 = 2."
+        },
+        {
+          "type": "input",
+          "id": "basics-3",
+          "prompt": "What does this print?",
+          "code": "IO.puts(9 / 3)",
+          "answers": [
+            "3.0"
+          ],
+          "explain": "`/` always returns a float, so the result is `3.0`, not `3`."
+        },
+        {
+          "type": "choice",
+          "id": "basics-4",
+          "prompt": "Which of these is an atom?",
+          "options": [
+            "`:ok`",
+            "`\"ok\"`",
+            "`ok`",
+            "`@ok`"
+          ],
+          "answer": 0,
+          "explain": "An atom starts with a colon. `\"ok\"` is a string and `ok` is a variable name."
+        },
+        {
+          "type": "choice",
+          "id": "basics-5",
+          "prompt": "What does this print?",
+          "code": "name = \"Bo\"\nIO.puts(\"Hi #{name}!\")",
+          "options": [
+            "`Hi Bo!`",
+            "`Hi #{name}!`",
+            "`Hi name!`",
+            "`Hi \"Bo\"!`"
+          ],
+          "answer": 0,
+          "explain": "`#{name}` is replaced by the value of `name`. `IO.puts` prints a string without quotes."
+        },
+        {
+          "type": "true_false",
+          "id": "basics-6",
+          "statement": "This code prints `true`.",
+          "code": "IO.inspect(is_float(10 / 2))",
+          "answer": true,
+          "explain": "`10 / 2` is `5.0`. The operator `/` always gives a float."
+        },
+        {
+          "type": "gap",
+          "id": "basics-7",
+          "prompt": "Complete the code so it prints 2.",
+          "code": "IO.puts(___(17, 5))",
+          "options": [
+            "rem",
+            "div",
+            "max",
+            "mod"
+          ],
+          "answer": 0,
+          "explain": "17 divided by 5 is 3, rest 2. `rem` gives the rest; `div` would give 3."
+        },
+        {
+          "type": "gap",
+          "id": "basics-8",
+          "prompt": "Complete the code so it prints Total: 12.",
+          "code": "total = 12\nIO.puts(\"Total: ___\")",
+          "options": [
+            "#{total}",
+            "{total}",
+            "${total}",
+            "total"
+          ],
+          "answer": 0,
+          "explain": "Interpolation in Elixir uses `#{...}`. The other options are printed as plain text."
+        },
+        {
+          "type": "blocks",
+          "id": "basics-9",
+          "prompt": "Print the length of the string `word` plus 1.",
+          "tokens": [
+            "IO.puts(",
+            "String.length(word)",
+            "+",
+            "1",
+            ")"
+          ],
+          "distractors": [
+            "String.size(word)",
+            "<>"
+          ],
+          "explain": "`String.length(word)` returns a number, so you add 1 with `+`. `<>` only joins strings."
+        },
+        {
+          "type": "order",
+          "id": "basics-10",
+          "prompt": "Put the lines in order so the program prints 6.",
+          "lines": [
+            "x = 10",
+            "y = div(x, 3)",
+            "z = y * 2",
+            "IO.puts(z)"
+          ],
+          "explain": "Each line uses the variable from the line before: `div(10, 3)` is 3, and 3 * 2 is 6."
+        },
+        {
+          "type": "pairs",
+          "id": "basics-11",
+          "prompt": "Match the value with its type.",
+          "pairs": [
+            [
+              "`42`",
+              "integer"
+            ],
+            [
+              "`4.2`",
+              "float"
+            ],
+            [
+              "`:ok`",
+              "atom"
+            ],
+            [
+              "`\"ok\"`",
+              "string"
+            ],
+            [
+              "`true`",
+              "boolean"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "basics-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "name = \"Kim\"",
+            "age = 30",
+            "IO.puts(\"#{name} is #{age}\")",
+            "IO.puts(\"Next: \" <> age + 1)"
+          ],
+          "bug": 3,
+          "explain": "`<>` only joins strings, and `age + 1` is a number. Write `IO.puts(\"Next: #{age + 1}\")`."
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "title": "Pattern matching",
+      "chapter": "Control flow",
+      "summary": "Use the match operator to unpack tuples and lists, ignore values and keep values with the pin operator.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "In Elixir, `=` is the **match operator**. Elixir makes the left side match the right side. When the left side is a variable, the variable gets the value. Because it is a match, `5 = x` is also valid when `x` is 5. When the two sides do not match, the program stops with a `MatchError`."
+        },
+        {
+          "type": "code",
+          "code": "x = 5\nIO.puts(x)\n5 = x\nIO.puts(\"5 matches x\")",
+          "output": "5\n5 matches x"
+        },
+        {
+          "type": "heading",
+          "text": "Tuples"
+        },
+        {
+          "type": "text",
+          "md": "A **tuple** groups a fixed number of values in curly braces: `{\"Ada\", 36}`. With a match you take a tuple apart and give each part a name."
+        },
+        {
+          "type": "code",
+          "code": "{name, age} = {\"Ada\", 36}\nIO.puts(name)\nIO.puts(age)",
+          "output": "Ada\n36"
+        },
+        {
+          "type": "text",
+          "md": "Many functions return tuples like `{:ok, value}` or `{:error, reason}`. An atom in a pattern must be exactly equal, so `{:ok, result}` only matches a tuple that starts with `:ok`."
+        },
+        {
+          "type": "code",
+          "code": "{:ok, result} = {:ok, 42}\nIO.puts(result)",
+          "output": "42"
+        },
+        {
+          "type": "heading",
+          "text": "Lists"
+        },
+        {
+          "type": "text",
+          "md": "A **list** holds values in square brackets: `[10, 20, 30]`. A list pattern matches only a list with the same number of items. The underscore `_` matches any value and ignores it."
+        },
+        {
+          "type": "code",
+          "code": "[a, b, c] = [10, 20, 30]\nIO.puts(a + b + c)\n{_, count} = {:apples, 7}\nIO.puts(count)",
+          "output": "60\n7"
+        },
+        {
+          "type": "heading",
+          "text": "The pin operator"
+        },
+        {
+          "type": "text",
+          "md": "You can match a variable again: `x = 2` gives `x` a new value. If you want to use the current value of `x` instead, put the **pin operator** `^` in front of it. Then `^x = 2` only checks that the value is 2."
+        },
+        {
+          "type": "code",
+          "code": "x = 1\nIO.puts(x)\nx = 2\nIO.puts(x)\n^x = 2\nIO.puts(\"still #{x}\")",
+          "output": "1\n2\nstill 2"
+        },
+        {
+          "type": "warning",
+          "md": "A pinned variable never gets a new value. If `x` is 2, then `^x = 3` raises a `MatchError`."
+        }
+      ],
+      "card": [
+        "`=` matches: `{a, b} = {1, 2}`",
+        "`[x, y] = [1, 2]` needs the same length",
+        "`_` matches anything and ignores it",
+        "`^x` uses the current value of `x`",
+        "No match: `MatchError`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "matching-1",
+          "prompt": "What does this print?",
+          "code": "{a, b} = {3, 4}\nIO.puts(a * b)",
+          "answers": [
+            "12"
+          ],
+          "explain": "The match gives `a` the value 3 and `b` the value 4. 3 * 4 is 12."
+        },
+        {
+          "type": "input",
+          "id": "matching-2",
+          "prompt": "What does this print?",
+          "code": "[first, _, third] = [1, 2, 3]\nIO.puts(first + third)",
+          "answers": [
+            "4"
+          ],
+          "explain": "`first` is 1, `_` ignores 2 and `third` is 3. 1 + 3 is 4."
+        },
+        {
+          "type": "input",
+          "id": "matching-3",
+          "prompt": "What does this print?",
+          "code": "x = 10\nx = x + 5\nIO.puts(x)",
+          "answers": [
+            "15"
+          ],
+          "explain": "The right side is calculated first: 10 + 5 is 15. Then `x` gets the new value 15."
+        },
+        {
+          "type": "true_false",
+          "id": "matching-4",
+          "statement": "This code raises a `MatchError`.",
+          "code": "x = 4\n^x = 5",
+          "answer": true,
+          "explain": "`^x` keeps the value 4, and 4 does not match 5."
+        },
+        {
+          "type": "choice",
+          "id": "matching-5",
+          "prompt": "What does this print?",
+          "code": "{status, _} = {:error, \"not found\"}\nIO.inspect(status)",
+          "options": [
+            "`:error`",
+            "`\"not found\"`",
+            "`{:error, \"not found\"}`",
+            "`:ok`"
+          ],
+          "answer": 0,
+          "explain": "`status` matches the first element of the tuple, the atom `:error`."
+        },
+        {
+          "type": "choice",
+          "id": "matching-6",
+          "prompt": "Which match fails?",
+          "options": [
+            "`[a, b] = [1, 2, 3]`",
+            "`{a, b} = {1, 2}`",
+            "`[a, _, _] = [1, 2, 3]`",
+            "`{_, b} = {1, 2}`"
+          ],
+          "answer": 0,
+          "explain": "The pattern `[a, b]` has two items, but the list has three. The lengths must be equal."
+        },
+        {
+          "type": "gap",
+          "id": "matching-7",
+          "prompt": "Complete the code so it prints 6.",
+          "code": "values = [5, 6, 7]\n[_, ___, _] = values\nIO.puts(middle)",
+          "options": [
+            "middle",
+            "^middle",
+            "_middle",
+            ":middle"
+          ],
+          "answer": 0,
+          "explain": "The variable `middle` gets the second item, 6. `^middle` needs a value that already exists, and `:middle` is an atom."
+        },
+        {
+          "type": "gap",
+          "id": "matching-8",
+          "prompt": "Complete the code so it prints 3.",
+          "code": "___ = {1, 2}\nIO.puts(a + b)",
+          "options": [
+            "{a, b}",
+            "[a, b]",
+            "{a, b, c}",
+            "(a, b)"
+          ],
+          "answer": 0,
+          "explain": "The right side is a tuple with two values, so the pattern must be a tuple with two variables."
+        },
+        {
+          "type": "blocks",
+          "id": "matching-9",
+          "prompt": "Unpack the tuple `{\"Max\", 40}` into `name` and `age`.",
+          "tokens": [
+            "{name,",
+            "age}",
+            "=",
+            "{\"Max\",",
+            "40}"
+          ],
+          "distractors": [
+            "==",
+            "[name,"
+          ],
+          "explain": "The pattern goes on the left of `=` and the value on the right. Both are tuples with two elements."
+        },
+        {
+          "type": "order",
+          "id": "matching-10",
+          "prompt": "Put the lines in order so the program prints 22.",
+          "lines": [
+            "x = 1",
+            "y = x + 1",
+            "x = y * 10",
+            "IO.puts(x + y)"
+          ],
+          "explain": "`x` is 1, so `y` is 2. Then `x` gets the new value 20. 20 + 2 is 22."
+        },
+        {
+          "type": "pairs",
+          "id": "matching-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`=`",
+              "the match operator"
+            ],
+            [
+              "`_`",
+              "ignores a value"
+            ],
+            [
+              "`^x`",
+              "uses the current value of x"
+            ],
+            [
+              "`{1, 2}`",
+              "a tuple"
+            ],
+            [
+              "`[1, 2]`",
+              "a list"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "matching-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "point = {2, 3}",
+            "{x, y, z} = point",
+            "IO.puts(x + y)"
+          ],
+          "bug": 1,
+          "explain": "`point` has two values, but the pattern has three. Write `{x, y} = point`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program choose with if and else, case, cond and guards with when.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`if` runs code only when a condition is true. The code goes between `do` and `end`. The part after `else` runs when the condition is not true. Only `false` and `nil` (which means \"no value\") count as false; every other value counts as true, also `0` and `\"\"`."
+        },
+        {
+          "type": "code",
+          "code": "temp = 25\n\nif temp > 20 do\n  IO.puts(\"warm\")\nelse\n  IO.puts(\"cold\")\nend",
+          "output": "warm"
+        },
+        {
+          "type": "text",
+          "md": "`if` returns a value, so you can store its result in a variable. For short cases there is a one-line form with `do:` and `else:`. Note the commas."
+        },
+        {
+          "type": "code",
+          "code": "age = 15\nlabel = if age >= 18, do: \"adult\", else: \"minor\"\nIO.puts(label)",
+          "output": "minor"
+        },
+        {
+          "type": "heading",
+          "text": "case"
+        },
+        {
+          "type": "text",
+          "md": "`case` compares a value with several **patterns**, from top to bottom. The first pattern that matches wins, and the code after its arrow `->` runs. Variables in the pattern get their values from the match."
+        },
+        {
+          "type": "code",
+          "code": "result = {:ok, 7}\n\ncase result do\n  {:ok, n} -> IO.puts(\"got #{n}\")\n  {:error, msg} -> IO.puts(\"error: #{msg}\")\nend",
+          "output": "got 7"
+        },
+        {
+          "type": "heading",
+          "text": "cond"
+        },
+        {
+          "type": "text",
+          "md": "`cond` checks several conditions from top to bottom and runs the code of the first one that is true. The last condition is often `true`, which always matches. It works like a final `else`."
+        },
+        {
+          "type": "code",
+          "code": "score = 72\n\ncond do\n  score >= 90 -> IO.puts(\"A\")\n  score >= 70 -> IO.puts(\"B\")\n  true -> IO.puts(\"C\")\nend",
+          "output": "B"
+        },
+        {
+          "type": "heading",
+          "text": "Guards"
+        },
+        {
+          "type": "text",
+          "md": "A **guard** adds a condition to a pattern with the keyword `when`. The pattern matches only when the guard is also true. The pattern `_` at the end catches every other value."
+        },
+        {
+          "type": "code",
+          "code": "n = -4\n\ncase n do\n  x when x < 0 -> IO.puts(\"negative\")\n  0 -> IO.puts(\"zero\")\n  _ -> IO.puts(\"positive\")\nend",
+          "output": "negative"
+        },
+        {
+          "type": "warning",
+          "md": "If no pattern of a `case` matches, the program stops with a `CaseClauseError`. If no condition of a `cond` is true, it stops with a `CondClauseError`. Add `_ ->` or `true ->` at the end to avoid this."
+        }
+      ],
+      "card": [
+        "`if x > 0 do ... else ... end`",
+        "`if ok, do: 1, else: 2` (one line)",
+        "`case v do {:ok, n} -> ... end`",
+        "`cond do x > 9 -> ... end`; last: `true ->`",
+        "Guard: `n when n < 0 -> ...`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "x = 7\n\nif rem(x, 2) == 0 do\n  IO.puts(\"even\")\nelse\n  IO.puts(\"odd\")\nend",
+          "answers": [
+            "odd"
+          ],
+          "explain": "`rem(7, 2)` is 1, so the condition is false and the `else` part runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "t = 15\n\ncond do\n  t > 25 -> IO.puts(\"hot\")\n  t > 10 -> IO.puts(\"mild\")\n  true -> IO.puts(\"cold\")\nend",
+          "answers": [
+            "mild"
+          ],
+          "explain": "15 is not greater than 25, but it is greater than 10. The first true condition wins."
+        },
+        {
+          "type": "input",
+          "id": "conditions-3",
+          "prompt": "What does this print?",
+          "code": "case {1, 2} do\n  {1, x} -> IO.puts(x * 10)\n  _ -> IO.puts(0)\nend",
+          "answers": [
+            "20"
+          ],
+          "explain": "`{1, x}` matches `{1, 2}`, so `x` is 2. 2 * 10 is 20."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-4",
+          "prompt": "Which values count as false in an `if`?",
+          "options": [
+            "Only `false` and `nil`",
+            "`false`, `nil`, `0` and `\"\"`",
+            "Only `false`",
+            "`false` and `0`"
+          ],
+          "answer": 0,
+          "explain": "In Elixir, only `false` and `nil` are false. `0` and `\"\"` count as true."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-5",
+          "prompt": "What does this print?",
+          "code": "n = 0\n\ncase n do\n  x when x > 0 -> IO.puts(\"positive\")\n  0 -> IO.puts(\"zero\")\n  _ -> IO.puts(\"negative\")\nend",
+          "options": [
+            "`zero`",
+            "`positive`",
+            "`negative`",
+            "Nothing, it raises an error"
+          ],
+          "answer": 0,
+          "explain": "The guard `x > 0` is false for 0, so the next pattern `0` matches."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-6",
+          "statement": "This code prints `big`.",
+          "code": "n = 5\nif n > 10, do: IO.puts(\"big\"), else: IO.puts(\"small\")",
+          "answer": false,
+          "explain": "5 is not greater than 10, so the `else:` part runs and prints `small`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Complete the code so the last line catches every other case.",
+          "code": "x = -1\n\ncond do\n  x > 0 -> IO.puts(\"positive\")\n  ___ -> IO.puts(\"other\")\nend",
+          "options": [
+            "true",
+            "else",
+            "_",
+            "default"
+          ],
+          "answer": 0,
+          "explain": "In `cond`, the condition `true` is always true, so it works as the final case. `_` is only for patterns in `case`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-8",
+          "prompt": "Complete the guard so the code prints big.",
+          "code": "value = {:ok, 9}\n\ncase value do\n  {:ok, n} ___ n > 5 -> IO.puts(\"big\")\n  _ -> IO.puts(\"small\")\nend",
+          "options": [
+            "when",
+            "if",
+            "and",
+            "where"
+          ],
+          "answer": 0,
+          "explain": "A guard starts with the keyword `when`."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-9",
+          "prompt": "Write a one-line `if` that gives `\"yes\"` when `x > 3` and `\"no\"` otherwise.",
+          "tokens": [
+            "if",
+            "x",
+            ">",
+            "3,",
+            "do:",
+            "\"yes\",",
+            "else:",
+            "\"no\""
+          ],
+          "distractors": [
+            "then:",
+            "do"
+          ],
+          "explain": "The one-line form is `if condition, do: value, else: value`."
+        },
+        {
+          "type": "order",
+          "id": "conditions-10",
+          "prompt": "Put the lines in order so a score of 95 prints A, 85 prints B and 50 prints C.",
+          "lines": [
+            "cond do",
+            "  score >= 90 -> IO.puts(\"A\")",
+            "  score >= 80 -> IO.puts(\"B\")",
+            "  true -> IO.puts(\"C\")",
+            "end"
+          ],
+          "explain": "`cond` takes the first true condition. With `score >= 80` first, 95 would print B, and `true` must come last."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`if`",
+              "chooses between two branches"
+            ],
+            [
+              "`case`",
+              "matches a value against patterns"
+            ],
+            [
+              "`cond`",
+              "runs the first true condition"
+            ],
+            [
+              "`when`",
+              "adds a guard to a pattern"
+            ],
+            [
+              "`nil`",
+              "no value"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "age = 20",
+            "cond do",
+            "  age >= 65 -> IO.puts(\"senior\")",
+            "  age >= 18 -> IO.puts(\"adult\")",
+            "  else -> IO.puts(\"child\")",
+            "end"
+          ],
+          "bug": 4,
+          "explain": "`cond` has no `else`. Use the condition `true`: `true -> IO.puts(\"child\")`."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Write anonymous functions, named functions in modules, and chain calls with the pipe operator.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A function takes values (its **arguments**) and returns a result. `fn x -> x * 2 end` is an **anonymous function**: it has no name, but you can store it in a variable. To call it, write a dot before the parentheses: `double.(4)`."
+        },
+        {
+          "type": "code",
+          "code": "double = fn x -> x * 2 end\nIO.puts(double.(4))",
+          "output": "8"
+        },
+        {
+          "type": "text",
+          "md": "Arguments are separated by commas. The function returns the value of its last expression; Elixir has no `return` keyword."
+        },
+        {
+          "type": "code",
+          "code": "add = fn a, b -> a + b end\nIO.puts(add.(2, 3))",
+          "output": "5"
+        },
+        {
+          "type": "heading",
+          "text": "Named functions in modules"
+        },
+        {
+          "type": "text",
+          "md": "Named functions live in a **module**. `defmodule` creates the module and `def` defines a function inside it. Module names start with a capital letter. You call the function with the module name and a dot, without an extra dot before the parentheses: `Math.square(5)`."
+        },
+        {
+          "type": "code",
+          "code": "defmodule Math do\n  def square(n) do\n    n * n\n  end\nend\n\nIO.puts(Math.square(5))",
+          "output": "25"
+        },
+        {
+          "type": "text",
+          "md": "A short function fits on one line with `, do:`. A function can have several **clauses** with different patterns. Elixir tries them from top to bottom and runs the first one that matches. Guards with `when` work here too."
+        },
+        {
+          "type": "code",
+          "code": "defmodule Greeter do\n  def hello(:es), do: \"Hola\"\n  def hello(:fr), do: \"Bonjour\"\n  def hello(_), do: \"Hello\"\nend\n\nIO.puts(Greeter.hello(:fr))\nIO.puts(Greeter.hello(:de))",
+          "output": "Bonjour\nHello"
+        },
+        {
+          "type": "code",
+          "code": "defmodule Check do\n  def sign(n) when n < 0, do: \"negative\"\n  def sign(0), do: \"zero\"\n  def sign(_), do: \"positive\"\nend\n\nIO.puts(Check.sign(-3))\nIO.puts(Check.sign(0))",
+          "output": "negative\nzero"
+        },
+        {
+          "type": "tip",
+          "md": "A function is known by its name and its number of arguments, the **arity**. You write it as `square/1` or `add/2`. `defp` instead of `def` makes a **private** function that only the same module can call."
+        },
+        {
+          "type": "heading",
+          "text": "The pipe operator"
+        },
+        {
+          "type": "text",
+          "md": "The **pipe operator** `|>` takes the result on its left and passes it as the first argument to the function on its right. `\"hi\" |> String.upcase()` is the same as `String.upcase(\"hi\")`. A chain of pipes reads from top to bottom."
+        },
+        {
+          "type": "code",
+          "code": "\"elixir\"\n|> String.upcase()\n|> String.reverse()\n|> IO.puts()",
+          "output": "RIXILE"
+        }
+      ],
+      "card": [
+        "`f = fn x -> x + 1 end`, call: `f.(2)`",
+        "`def name(arg), do: ...` inside `defmodule`",
+        "Clauses are tried from top to bottom",
+        "`square/1`: name and arity",
+        "`x |> f(y)` is `f(x, y)`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "triple = fn x -> x * 3 end\nIO.puts(triple.(5))",
+          "answers": [
+            "15"
+          ],
+          "explain": "`triple.(5)` calls the function with `x` = 5, and 5 * 3 is 15."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print?",
+          "code": "defmodule Shop do\n  def total(price, count), do: price * count\nend\n\nIO.puts(Shop.total(4, 3))",
+          "answers": [
+            "12"
+          ],
+          "explain": "`price` is 4 and `count` is 3. The function returns 4 * 3."
+        },
+        {
+          "type": "input",
+          "id": "functions-3",
+          "prompt": "What does this print?",
+          "code": "10 |> div(3) |> IO.puts()",
+          "answers": [
+            "3"
+          ],
+          "explain": "The pipe passes 10 as the first argument: `div(10, 3)` is 3. Then 3 goes into `IO.puts`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-4",
+          "prompt": "How do you call the anonymous function stored in `greet` with `\"Ana\"`?",
+          "options": [
+            "`greet.(\"Ana\")`",
+            "`greet(\"Ana\")`",
+            "`greet->(\"Ana\")`",
+            "`greet.call(\"Ana\")`"
+          ],
+          "answer": 0,
+          "explain": "An anonymous function in a variable is called with a dot before the parentheses."
+        },
+        {
+          "type": "choice",
+          "id": "functions-5",
+          "prompt": "What does this print?",
+          "code": "defmodule Size do\n  def label(n) when n > 100, do: \"large\"\n  def label(n) when n > 10, do: \"medium\"\n  def label(_), do: \"small\"\nend\n\nIO.puts(Size.label(50))",
+          "options": [
+            "`medium`",
+            "`large`",
+            "`small`",
+            "Nothing, it raises an error"
+          ],
+          "answer": 0,
+          "explain": "50 is not greater than 100, so the first clause does not match. The second guard `50 > 10` is true."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-6",
+          "statement": "`\"abc\" |> String.upcase()` gives the same result as `String.upcase(\"abc\")`.",
+          "answer": true,
+          "explain": "The pipe passes the value on its left as the first argument. Both give `\"ABC\"`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-7",
+          "prompt": "Complete the code so it prints 4.5.",
+          "code": "defmodule Calc do\n  ___ half(n), do: n / 2\nend\n\nIO.puts(Calc.half(9))",
+          "options": [
+            "def",
+            "fn",
+            "defmodule",
+            "function"
+          ],
+          "answer": 0,
+          "explain": "Named functions in a module are defined with `def`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-8",
+          "prompt": "Complete the code so it prints 3.",
+          "code": "add = fn a, b -> a + b ___\nIO.puts(add.(1, 2))",
+          "options": [
+            "end",
+            "do",
+            "done",
+            "}"
+          ],
+          "answer": 0,
+          "explain": "An anonymous function starts with `fn` and finishes with `end`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-9",
+          "prompt": "Turn `\"hello\"` into capitals and print it, using two pipes.",
+          "tokens": [
+            "\"hello\"",
+            "|>",
+            "String.upcase()",
+            "|>",
+            "IO.puts()"
+          ],
+          "distractors": [
+            "->",
+            "String.upper()"
+          ],
+          "explain": "The value comes first. Each `|>` passes the result to the next function: first `String.upcase()`, then `IO.puts()`."
+        },
+        {
+          "type": "order",
+          "id": "functions-10",
+          "prompt": "Put the lines in order so the program prints 212.0.",
+          "lines": [
+            "defmodule Temp do",
+            "  def to_f(c), do: c * 9 / 5 + 32",
+            "end",
+            "IO.puts(Temp.to_f(100))"
+          ],
+          "explain": "The module must be defined before the script calls `Temp.to_f`. The function goes between `defmodule` and `end`."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`fn x -> x end`",
+              "an anonymous function"
+            ],
+            [
+              "`def`",
+              "defines a named function"
+            ],
+            [
+              "`defp`",
+              "defines a private function"
+            ],
+            [
+              "`|>`",
+              "passes a value to the next function"
+            ],
+            [
+              "`square/1`",
+              "a function name with its arity"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "functions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "defmodule Greet do",
+            "  def hi(name), do: \"Hi, #{name}\"",
+            "end",
+            "IO.puts(Greet.hi.(\"Ana\"))"
+          ],
+          "bug": 3,
+          "explain": "Named functions are called without the extra dot. Write `IO.puts(Greet.hi(\"Ana\"))`."
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "Lists and maps",
+      "chapter": "Collections",
+      "summary": "Store many values in lists and maps, split lists into head and tail, and use keyword lists and Map functions.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A list keeps values in order. `++` joins two lists, `--` removes items, and `length` counts the items. To print a list, use `IO.inspect`; `IO.puts` is only for text and numbers."
+        },
+        {
+          "type": "code",
+          "code": "nums = [1, 2, 3]\nIO.inspect(nums ++ [4, 5])\nIO.inspect([1, 2, 3, 2] -- [2])\nIO.puts(length(nums))",
+          "output": "[1, 2, 3, 4, 5]\n[1, 3, 2]\n3"
+        },
+        {
+          "type": "heading",
+          "text": "Head and tail"
+        },
+        {
+          "type": "text",
+          "md": "The pattern `[head | tail]` splits a list. `head` gets the first item and `tail` gets a list with all the other items. The same `|` also adds an item to the front: `[5 | tail]`. The tail of a one-item list is the empty list `[]`, and `[]` itself does not match `[head | tail]`."
+        },
+        {
+          "type": "code",
+          "code": "[head | tail] = [10, 20, 30]\nIO.inspect(head)\nIO.inspect(tail)\nIO.inspect([5 | tail])",
+          "output": "10\n[20, 30]\n[5, 20, 30]"
+        },
+        {
+          "type": "heading",
+          "text": "Maps"
+        },
+        {
+          "type": "text",
+          "md": "A **map** stores values under **keys**: `%{name: \"Ada\", age: 36}`. When the keys are atoms, you read a value with `user.name` or `user[:name]`. For a missing key, `user[:email]` gives `nil`, while `user.email` stops with a `KeyError`."
+        },
+        {
+          "type": "code",
+          "code": "user = %{name: \"Ada\", age: 36}\nIO.puts(user.name)\nIO.puts(user[:age])\nIO.inspect(user[:email])",
+          "output": "Ada\n36\nnil"
+        },
+        {
+          "type": "text",
+          "md": "You can match maps too. A map pattern only needs the keys it names, so `%{name: name} = user` takes the name out of `user`, even though `user` also has the key `:age`."
+        },
+        {
+          "type": "text",
+          "md": "`Map.put` returns a new map with one more key; the old map does not change. `Map.get(map, key, default)` returns the default when the key is missing. `%{map | key: value}` returns a copy with a new value for a key that already exists."
+        },
+        {
+          "type": "code",
+          "code": "prices = %{apple: 2, pear: 3}\nmore = Map.put(prices, :plum, 5)\nIO.inspect(more)\nIO.inspect(prices)\nIO.puts(Map.get(prices, :kiwi, 0))\nIO.inspect(%{prices | apple: 4})",
+          "output": "%{apple: 2, pear: 3, plum: 5}\n%{apple: 2, pear: 3}\n0\n%{apple: 4, pear: 3}"
+        },
+        {
+          "type": "heading",
+          "text": "Keyword lists"
+        },
+        {
+          "type": "text",
+          "md": "A **keyword list** is a list of pairs with atom keys, written `[size: 10, color: \"red\"]`. It is a short way to write `[{:size, 10}, {:color, \"red\"}]`. Functions often take options in this form. You read a value with `opts[:color]`."
+        },
+        {
+          "type": "code",
+          "code": "opts = [size: 10, color: \"red\"]\nIO.puts(opts[:color])\nIO.inspect(opts == [{:size, 10}, {:color, \"red\"}])",
+          "output": "red\ntrue"
+        }
+      ],
+      "card": [
+        "`[1, 2] ++ [3]`, `length(list)`",
+        "`[head | tail] = [1, 2, 3]`",
+        "`m = %{a: 1}`; `m.a`, `m[:a]`",
+        "`Map.put(m, :b, 2)`, `Map.get(m, :c, 0)`",
+        "Keyword list: `[size: 10]`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "collections-1",
+          "prompt": "What does this print?",
+          "code": "[_ | rest] = [3, 6, 9]\nIO.inspect(rest)",
+          "answers": [
+            "[6, 9]",
+            "[6,9]"
+          ],
+          "explain": "`_` ignores the first item, 3. `rest` gets the list of the other items."
+        },
+        {
+          "type": "input",
+          "id": "collections-2",
+          "prompt": "What does this print?",
+          "code": "IO.puts(length([1, 2] ++ [3, 4, 5]))",
+          "answers": [
+            "5"
+          ],
+          "explain": "`++` joins the lists into `[1, 2, 3, 4, 5]`, which has 5 items."
+        },
+        {
+          "type": "input",
+          "id": "collections-3",
+          "prompt": "What does this print?",
+          "code": "m = %{x: 1, y: 2}\nIO.puts(Map.get(m, :z, 7))",
+          "answers": [
+            "7"
+          ],
+          "explain": "The map has no key `:z`, so `Map.get` returns the default value 7."
+        },
+        {
+          "type": "choice",
+          "id": "collections-4",
+          "prompt": "What does this print?",
+          "code": "user = %{name: \"Lea\"}\nIO.inspect(user[:age])",
+          "options": [
+            "`nil`",
+            "`0`",
+            "`\"\"`",
+            "Nothing, it raises a `KeyError`"
+          ],
+          "answer": 0,
+          "explain": "With square brackets, a missing key gives `nil`. Only `user.age` would raise a `KeyError`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-5",
+          "prompt": "Which expression gives a list with 0 in front of the items of `nums`?",
+          "options": [
+            "`[0 | nums]`",
+            "`[nums | 0]`",
+            "`0 + nums`",
+            "`0 <> nums`"
+          ],
+          "answer": 0,
+          "explain": "`[item | list]` puts a new item in front of a list."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-6",
+          "statement": "This code prints `%{ana: 1, bo: 2}`.",
+          "code": "scores = %{ana: 1}\nMap.put(scores, :bo, 2)\nIO.inspect(scores)",
+          "answer": false,
+          "explain": "`Map.put` returns a new map and does not change `scores`. The code prints `%{ana: 1}`."
+        },
+        {
+          "type": "gap",
+          "id": "collections-7",
+          "prompt": "Complete the code so it prints 7.",
+          "code": "[___ | _] = [7, 8, 9]\nIO.puts(first)",
+          "options": [
+            "first",
+            ":first",
+            "\"first\"",
+            "^first"
+          ],
+          "answer": 0,
+          "explain": "The variable `first` gets the head of the list, 7."
+        },
+        {
+          "type": "gap",
+          "id": "collections-8",
+          "prompt": "Complete the code so it prints `%{x: 5, y: 2}`.",
+          "code": "point = %{x: 1, y: 2}\nIO.inspect(%{point ___ x: 5})",
+          "options": [
+            "|",
+            ",",
+            "=>",
+            "++"
+          ],
+          "answer": 0,
+          "explain": "`%{map | key: value}` makes a copy of the map with a new value for an existing key."
+        },
+        {
+          "type": "blocks",
+          "id": "collections-9",
+          "prompt": "Get the value of the key `:name` from the map `person` into the variable `name`.",
+          "tokens": [
+            "%{name:",
+            "name}",
+            "=",
+            "person"
+          ],
+          "distractors": [
+            "==",
+            "[name:"
+          ],
+          "explain": "A map pattern on the left of `=` takes values out of the map on the right."
+        },
+        {
+          "type": "order",
+          "id": "collections-10",
+          "prompt": "Put the lines in order so the program prints 4.",
+          "lines": [
+            "nums = [5]",
+            "nums = [4 | nums]",
+            "[first | _] = nums",
+            "IO.puts(first)"
+          ],
+          "explain": "After `[4 | nums]` the list is `[4, 5]`. Its head is 4."
+        },
+        {
+          "type": "pairs",
+          "id": "collections-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`[1, 2]`",
+              "a list"
+            ],
+            [
+              "`{1, 2}`",
+              "a tuple"
+            ],
+            [
+              "`%{a: 1}`",
+              "a map"
+            ],
+            [
+              "`[a: 1]`",
+              "a keyword list"
+            ],
+            [
+              "`[h | t]`",
+              "first item and the rest"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "collections-12",
+          "prompt": "The program should print 3 and then 5. Which line has the bug?",
+          "lines": [
+            "stock = %{apples: 3}",
+            "stock = Map.put(stock, :pears, 5)",
+            "IO.puts(stock.apples)",
+            "IO.puts(stock.plums)"
+          ],
+          "bug": 3,
+          "explain": "The map has no key `:plums`, so `stock.plums` raises a `KeyError`. Write `IO.puts(stock.pears)`."
+        }
+      ]
+    },
+    {
+      "id": "enum",
+      "title": "Enum and ranges",
+      "chapter": "Collections",
+      "summary": "Transform lists and ranges with Enum.map, filter, reduce and sum, and write short functions with the capture operator.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "The module `Enum` has functions that work with every item of a list. `Enum.map(list, function)` calls the function for each item and returns a new list with the results."
+        },
+        {
+          "type": "code",
+          "code": "nums = [1, 2, 3]\nIO.inspect(Enum.map(nums, fn n -> n * 10 end))",
+          "output": "[10, 20, 30]"
+        },
+        {
+          "type": "text",
+          "md": "`Enum.filter` keeps only the items for which the function returns `true`. `Enum.sum` adds all items, `Enum.max` finds the largest one and `Enum.count` counts them."
+        },
+        {
+          "type": "code",
+          "code": "nums = [4, 7, 10, 13]\nIO.inspect(Enum.filter(nums, fn n -> rem(n, 2) == 0 end))\nIO.puts(Enum.sum(nums))\nIO.puts(Enum.max(nums))",
+          "output": "[4, 10]\n34\n13"
+        },
+        {
+          "type": "heading",
+          "text": "Ranges and reduce"
+        },
+        {
+          "type": "text",
+          "md": "A **range** like `1..5` stands for all whole numbers from 1 to 5, including both ends. `Enum` functions work with ranges too. `Enum.to_list` turns a range into a list."
+        },
+        {
+          "type": "code",
+          "code": "IO.inspect(Enum.to_list(1..5))\nIO.puts(Enum.sum(1..100))",
+          "output": "[1, 2, 3, 4, 5]\n5050"
+        },
+        {
+          "type": "text",
+          "md": "`Enum.reduce(list, start, function)` combines all items into one value. The function gets an item and the **accumulator** `acc`, the result so far. It returns the new result. `acc` starts with the value `start`."
+        },
+        {
+          "type": "code",
+          "code": "product = Enum.reduce(1..5, 1, fn n, acc -> n * acc end)\nIO.puts(product)",
+          "output": "120"
+        },
+        {
+          "type": "heading",
+          "text": "The capture operator"
+        },
+        {
+          "type": "text",
+          "md": "The **capture operator** `&` writes short functions. In `&(&1 * 2)`, `&1` is the first argument, so it means `fn x -> x * 2 end`. `&String.upcase/1` turns the named function `String.upcase` with arity 1 into a function value."
+        },
+        {
+          "type": "code",
+          "code": "IO.inspect(Enum.map([1, 2, 3], &(&1 * 2)))\nIO.inspect(Enum.map([\"a\", \"b\"], &String.upcase/1))",
+          "output": "[2, 4, 6]\n[\"A\", \"B\"]"
+        },
+        {
+          "type": "text",
+          "md": "`Enum` functions take the list as their first argument, so they work well with the pipe. This pipeline keeps the even numbers from 1 to 10, squares them and adds them up."
+        },
+        {
+          "type": "code",
+          "code": "1..10\n|> Enum.filter(&(rem(&1, 2) == 0))\n|> Enum.map(&(&1 * &1))\n|> Enum.sum()\n|> IO.puts()",
+          "output": "220"
+        }
+      ],
+      "card": [
+        "`Enum.map(list, fn x -> x * 2 end)`",
+        "`Enum.filter(list, &(&1 > 0))`",
+        "`Enum.reduce(list, 0, fn x, acc -> x + acc end)`",
+        "`1..5` is a range; `Enum.sum(1..5)` is `15`",
+        "`&String.upcase/1` captures a function"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "enum-1",
+          "prompt": "What does this print?",
+          "code": "IO.inspect(Enum.map([1, 2, 3], fn x -> x + 1 end))",
+          "answers": [
+            "[2, 3, 4]",
+            "[2,3,4]"
+          ],
+          "explain": "`Enum.map` adds 1 to every item and returns the new list."
+        },
+        {
+          "type": "bug",
+          "id": "enum-2",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "nums = [1, 2, 3]",
+            "doubled = Enum.map(nums, fn n -> n * 2)",
+            "IO.inspect(doubled)"
+          ],
+          "bug": 1,
+          "explain": "The anonymous function needs `end`: `Enum.map(nums, fn n -> n * 2 end)`."
+        },
+        {
+          "type": "input",
+          "id": "enum-3",
+          "prompt": "What does this print?",
+          "code": "[3, 8, 1, 6]\n|> Enum.filter(&(&1 > 4))\n|> Enum.count()\n|> IO.puts()",
+          "answers": [
+            "2"
+          ],
+          "explain": "Only 8 and 6 are greater than 4, so the filtered list has 2 items."
+        },
+        {
+          "type": "input",
+          "id": "enum-4",
+          "prompt": "What does this print?",
+          "code": "result = Enum.reduce([2, 3, 4], 1, fn n, acc -> n * acc end)\nIO.puts(result)",
+          "answers": [
+            "24"
+          ],
+          "explain": "`acc` starts at 1. Then 1 * 2 = 2, 2 * 3 = 6 and 6 * 4 = 24."
+        },
+        {
+          "type": "choice",
+          "id": "enum-5",
+          "prompt": "What does `Enum.to_list(2..5)` return?",
+          "options": [
+            "`[2, 3, 4, 5]`",
+            "`[2, 3, 4]`",
+            "`[3, 4, 5]`",
+            "`[2, 5]`"
+          ],
+          "answer": 0,
+          "explain": "A range includes both ends, so `2..5` has the numbers 2, 3, 4 and 5."
+        },
+        {
+          "type": "choice",
+          "id": "enum-6",
+          "prompt": "What does this print?",
+          "code": "IO.inspect(Enum.map([1, 2, 3], &(&1 * &1)))",
+          "options": [
+            "`[1, 4, 9]`",
+            "`[2, 4, 6]`",
+            "`[1, 2, 3]`",
+            "`14`"
+          ],
+          "answer": 0,
+          "explain": "`&(&1 * &1)` multiplies each item by itself."
+        },
+        {
+          "type": "true_false",
+          "id": "enum-7",
+          "statement": "This code prints `[1, 3]`.",
+          "code": "IO.inspect(Enum.filter([1, 2, 3, 4], &(rem(&1, 2) == 0)))",
+          "answer": false,
+          "explain": "`filter` keeps the items where the function is true. `rem(n, 2) == 0` is true for the even numbers, so it prints `[2, 4]`."
+        },
+        {
+          "type": "gap",
+          "id": "enum-8",
+          "prompt": "Complete the code so it prints `[\"HI\", \"YO\"]`.",
+          "code": "words = [\"hi\", \"yo\"]\nIO.inspect(Enum.map(words, &String.upcase___))",
+          "options": [
+            "/1",
+            "/0",
+            "/2",
+            ".1"
+          ],
+          "answer": 0,
+          "explain": "`String.upcase` takes one argument, so you capture it as `&String.upcase/1`."
+        },
+        {
+          "type": "gap",
+          "id": "enum-9",
+          "prompt": "Complete the code so it prints 9.",
+          "code": "IO.puts(Enum.___([5, 9, 2]))",
+          "options": [
+            "max",
+            "sum",
+            "count",
+            "top"
+          ],
+          "answer": 0,
+          "explain": "`Enum.max` returns the largest item, 9. `sum` would give 16 and `count` 3."
+        },
+        {
+          "type": "blocks",
+          "id": "enum-10",
+          "prompt": "Double every number in `nums` with `Enum.map`.",
+          "tokens": [
+            "Enum.map(nums,",
+            "fn",
+            "n",
+            "->",
+            "n * 2",
+            "end)"
+          ],
+          "distractors": [
+            "do",
+            "=>"
+          ],
+          "explain": "An anonymous function is written `fn argument -> result end`."
+        },
+        {
+          "type": "order",
+          "id": "enum-11",
+          "prompt": "Put the lines in order so the program prints `[400, 500, 600]`.",
+          "lines": [
+            "1..6",
+            "|> Enum.filter(&(&1 > 3))",
+            "|> Enum.map(&(&1 * 100))",
+            "|> IO.inspect()"
+          ],
+          "explain": "First keep 4, 5 and 6, then multiply them by 100. If you map first, all six numbers pass the filter."
+        },
+        {
+          "type": "pairs",
+          "id": "enum-12",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`Enum.map`",
+              "changes every item"
+            ],
+            [
+              "`Enum.filter`",
+              "keeps the items that pass a test"
+            ],
+            [
+              "`Enum.reduce`",
+              "combines all items into one value"
+            ],
+            [
+              "`1..5`",
+              "a range of numbers"
+            ],
+            [
+              "`&1`",
+              "the first argument of a captured function"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recursion",
+      "title": "Recursion",
+      "chapter": "Recursion",
+      "summary": "Repeat work with functions that call themselves, stop them with a base case, and carry results in an accumulator.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Elixir has no `while` loop. To repeat work, a function calls itself. This is called **recursion**. Every recursive function needs a **base case**: a clause that stops without calling itself again."
+        },
+        {
+          "type": "code",
+          "code": "defmodule Count do\n  def down(0), do: IO.puts(\"Go!\")\n\n  def down(n) do\n    IO.puts(n)\n    down(n - 1)\n  end\nend\n\nCount.down(3)",
+          "output": "3\n2\n1\nGo!"
+        },
+        {
+          "type": "text",
+          "md": "`down(3)` prints 3 and calls `down(2)`, which prints 2 and calls `down(1)`, and so on. `down(0)` matches the first clause, the base case, so the calls stop there."
+        },
+        {
+          "type": "heading",
+          "text": "Recursion on lists"
+        },
+        {
+          "type": "text",
+          "md": "With `[head | tail]` a function handles the first item and leaves the rest of the list to a recursive call. The base case is the empty list `[]`."
+        },
+        {
+          "type": "code",
+          "code": "defmodule MyList do\n  def sum([]), do: 0\n  def sum([head | tail]), do: head + sum(tail)\nend\n\nIO.puts(MyList.sum([4, 5, 6]))",
+          "output": "15"
+        },
+        {
+          "type": "text",
+          "md": "Step by step: `sum([4, 5, 6])` is `4 + sum([5, 6])`, which is `4 + 5 + sum([6])`, which is `4 + 5 + 6 + sum([])`. `sum([])` is 0, so the result is 15."
+        },
+        {
+          "type": "text",
+          "md": "A recursive function can also build a new list. Here each call puts the doubled head in front of the result for the tail."
+        },
+        {
+          "type": "code",
+          "code": "defmodule Double do\n  def all([]), do: []\n  def all([h | t]), do: [h * 2 | all(t)]\nend\n\nIO.inspect(Double.all([1, 2, 3]))",
+          "output": "[2, 4, 6]"
+        },
+        {
+          "type": "heading",
+          "text": "Accumulators"
+        },
+        {
+          "type": "text",
+          "md": "An **accumulator** is an extra argument that carries the result so far. A public function starts it with a first value and a private helper made with `defp` does the work. When the list is empty, the helper returns the accumulator."
+        },
+        {
+          "type": "code",
+          "code": "defmodule Counter do\n  def count(list), do: count(list, 0)\n\n  defp count([], acc), do: acc\n  defp count([_ | tail], acc), do: count(tail, acc + 1)\nend\n\nIO.puts(Counter.count([:a, :b, :c]))",
+          "output": "3"
+        },
+        {
+          "type": "warning",
+          "md": "Put the base case before the general clause, and make sure each call gets closer to it. Without a base case that matches, the function never stops."
+        },
+        {
+          "type": "tip",
+          "md": "In real programs, `Enum.sum`, `Enum.map` and `Enum.count` do this work for you. Inside, they use the same idea: recursion."
+        }
+      ],
+      "card": [
+        "A recursive function calls itself",
+        "Base case first: `def sum([]), do: 0`",
+        "`def sum([h | t]), do: h + sum(t)`",
+        "Accumulator: `count(t, acc + 1)`",
+        "`defp` makes a private helper"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "recursion-1",
+          "prompt": "What does this print?",
+          "code": "defmodule R do\n  def f(0), do: 0\n  def f(n), do: n + f(n - 1)\nend\n\nIO.puts(R.f(4))",
+          "answers": [
+            "10"
+          ],
+          "explain": "`f(4)` is 4 + 3 + 2 + 1 + `f(0)`, and `f(0)` is 0. The sum is 10."
+        },
+        {
+          "type": "input",
+          "id": "recursion-2",
+          "prompt": "What does this print?",
+          "code": "defmodule L do\n  def last([x]), do: x\n  def last([_ | t]), do: last(t)\nend\n\nIO.puts(L.last([3, 5, 8]))",
+          "answers": [
+            "8"
+          ],
+          "explain": "The second clause drops the head until one item is left. `[x]` then matches the list `[8]`."
+        },
+        {
+          "type": "input",
+          "id": "recursion-3",
+          "prompt": "What does this print?",
+          "code": "defmodule Pow do\n  def two(0), do: 1\n  def two(n), do: 2 * two(n - 1)\nend\n\nIO.puts(Pow.two(5))",
+          "answers": [
+            "32"
+          ],
+          "explain": "Each call multiplies by 2, five times: 2 * 2 * 2 * 2 * 2 * 1 is 32."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-4",
+          "prompt": "What is the base case of a recursive function?",
+          "options": [
+            "The clause that returns without calling the function again",
+            "The first function in a module",
+            "The largest input the function accepts",
+            "The call that starts the recursion"
+          ],
+          "answer": 0,
+          "explain": "The base case stops the recursion. Without it, the function would call itself forever."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-5",
+          "prompt": "What does this print?",
+          "code": "defmodule M do\n  def biggest([x]), do: x\n\n  def biggest([h | t]) do\n    rest = biggest(t)\n    if h > rest, do: h, else: rest\n  end\nend\n\nIO.puts(M.biggest([4, 9, 2]))",
+          "options": [
+            "`9`",
+            "`4`",
+            "`2`",
+            "`15`"
+          ],
+          "answer": 0,
+          "explain": "Each call compares the head with the biggest item of the tail and keeps the larger one, so the result is 9."
+        },
+        {
+          "type": "true_false",
+          "id": "recursion-6",
+          "statement": "This code prints `28`.",
+          "code": "defmodule S do\n  def len([]), do: 0\n  def len([_ | t]), do: 1 + len(t)\nend\n\nIO.puts(S.len([7, 7, 7, 7]))",
+          "answer": false,
+          "explain": "`len` adds 1 for each item and ignores the values, so it prints the length 4."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-7",
+          "prompt": "Complete the code so it prints 6.",
+          "code": "defmodule S do\n  def sum([]), do: 0\n  def sum([h | t]), do: h + sum(___)\nend\n\nIO.puts(S.sum([1, 2, 3]))",
+          "options": [
+            "t",
+            "h",
+            "[t]",
+            "h + t"
+          ],
+          "answer": 0,
+          "explain": "The recursive call works on the rest of the list, the tail `t`."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-8",
+          "prompt": "Complete the base case so the code prints 5.",
+          "code": "defmodule Sum do\n  def total(list), do: go(list, 0)\n\n  defp go([], acc), do: ___\n  defp go([h | t], acc), do: go(t, acc + h)\nend\n\nIO.puts(Sum.total([2, 3]))",
+          "options": [
+            "acc",
+            "0",
+            "[]",
+            "nil"
+          ],
+          "answer": 0,
+          "explain": "When the list is empty, the accumulator holds the finished result, so the base case returns `acc`."
+        },
+        {
+          "type": "blocks",
+          "id": "recursion-9",
+          "prompt": "Write the clause that doubles the head and continues with the tail.",
+          "tokens": [
+            "def",
+            "double([h | t]),",
+            "do:",
+            "[h * 2 |",
+            "double(t)]"
+          ],
+          "distractors": [
+            "do",
+            "double(h)]"
+          ],
+          "explain": "The new list starts with `h * 2`, and its tail is the result of the recursive call on `t`."
+        },
+        {
+          "type": "order",
+          "id": "recursion-10",
+          "prompt": "Put the lines in order so the program prints 6.",
+          "lines": [
+            "defmodule Fact do",
+            "  def of(0), do: 1",
+            "  def of(n), do: n * of(n - 1)",
+            "end",
+            "IO.puts(Fact.of(3))"
+          ],
+          "explain": "The base case `of(0)` must come first. If `of(n)` came first, it would match every number and never stop."
+        },
+        {
+          "type": "pairs",
+          "id": "recursion-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`def f(0), do: 1`",
+              "a base case"
+            ],
+            [
+              "`n * f(n - 1)`",
+              "a recursive call"
+            ],
+            [
+              "`acc`",
+              "the result so far"
+            ],
+            [
+              "`defp`",
+              "a private helper"
+            ],
+            [
+              "`[]`",
+              "the empty list"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "recursion-12",
+          "prompt": "The program should print 3. Which line has the bug?",
+          "lines": [
+            "defmodule Len do",
+            "  def count([]), do: 1",
+            "  def count([_ | t]), do: 1 + count(t)",
+            "end",
+            "IO.puts(Len.count([:a, :b, :c]))"
+          ],
+          "bug": 1,
+          "explain": "The empty list has no items, so its count must be 0: `def count([]), do: 0`."
+        }
+      ]
+    }
+  ]
+}

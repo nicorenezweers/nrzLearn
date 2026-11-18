@@ -1,0 +1,330 @@
+{
+  "hello-2": {
+    "out": "Hello World"
+  },
+  "hello-3": {
+    "out": "a-b"
+  },
+  "hello-4": {
+    "tpl": "{{CODE}}",
+    "out": "Loading...done"
+  },
+  "hello-5": {
+    "code": "echo \"A\" # B",
+    "out": "A"
+  },
+  "hello-6": {
+    "out": "Ada is 36",
+    "distractors": true
+  },
+  "hello-7": {
+    "out": "Start\nHello, Bash\nEnd"
+  },
+  "hello-9": {
+    "fix": "echo \"Hello\"",
+    "out": "Hello\nWorld"
+  },
+  "hello-10": {
+    "out": "abcd"
+  },
+  "hello-11": {
+    "out": "ok"
+  },
+  "hello-12": {
+    "fix": "echo \"End\"",
+    "out": "Start\nMiddle\nEnd"
+  },
+  "variables-1": {
+    "out": "13"
+  },
+  "variables-2": {
+    "out": "Hi $name"
+  },
+  "variables-3": {
+    "fix": "count=3",
+    "out": "Total: 15"
+  },
+  "variables-4": {
+    "out": "apples"
+  },
+  "variables-5": {
+    "extra": [
+      {
+        "src": "x = 10\necho \"[$x]\"",
+        "out": "[]",
+        "stderr": true
+      }
+    ]
+  },
+  "variables-6": {
+    "out": "6"
+  },
+  "variables-7": {
+    "tpl": "a=10\nb=4\n{{CODE}}",
+    "out": "Difference: 6",
+    "distractors": true
+  },
+  "variables-8": {
+    "out": "8"
+  },
+  "variables-10": {
+    "out": "3"
+  },
+  "variables-11": {
+    "out": "10"
+  },
+  "variables-12": {
+    "fix": "greeting=\"Hello, $name\"",
+    "out": "Hello, Ada"
+  },
+  "arguments-1": {
+    "out": "4"
+  },
+  "arguments-2": {
+    "out": "two"
+  },
+  "arguments-3": {
+    "out": "yx"
+  },
+  "arguments-4": {
+    "extra": [
+      {
+        "src": "set -- a b c\necho \"$#\"",
+        "out": "3"
+      }
+    ]
+  },
+  "arguments-5": {
+    "out": "Hello, guest"
+  },
+  "arguments-6": {
+    "out": "3 files"
+  },
+  "arguments-7": {
+    "code": "set -- a b c\nbefore=$#\nshift\necho \"$before $#\"",
+    "out": "3 2"
+  },
+  "arguments-8": {
+    "tpl": "set -- tea milk\n{{CODE}}",
+    "out": "milk and tea",
+    "distractors": true
+  },
+  "arguments-9": {
+    "out": "add: 12"
+  },
+  "arguments-11": {
+    "fix": "second=$2",
+    "out": "Hello, Ada and Bob"
+  },
+  "arguments-12": {
+    "fix": "set -- \"big apple\" pie",
+    "out": "2 arguments"
+  },
+  "conditions-1": {
+    "out": "odd"
+  },
+  "conditions-2": {
+    "out": "yes"
+  },
+  "conditions-3": {
+    "out": "different"
+  },
+  "conditions-4": {
+    "fix": "if [[ $score -ge 50 ]]; then",
+    "out": "pass"
+  },
+  "conditions-5": {
+    "extra": [
+      {
+        "src": "[[ 1 -eq 1 ]]\necho \"$?\"",
+        "out": "0"
+      },
+      {
+        "src": "if true; then echo \"success\"; fi",
+        "out": "success"
+      }
+    ]
+  },
+  "conditions-6": {
+    "out": "small"
+  },
+  "conditions-7": {
+    "tpl": "user=\"\"\n{{CODE}}",
+    "out": "no user",
+    "distractors": true
+  },
+  "conditions-8": {
+    "tpl": "age=20\n{{CODE}}",
+    "out": "adult"
+  },
+  "conditions-10": {
+    "out": "weekend"
+  },
+  "conditions-11": {
+    "out": "one"
+  },
+  "conditions-12": {
+    "fix": "if [[ $a -gt $b ]]; then",
+    "out": "b is bigger"
+  },
+  "loops-1": {
+    "out": "12"
+  },
+  "loops-2": {
+    "out": "4"
+  },
+  "loops-3": {
+    "out": "12"
+  },
+  "loops-4": {
+    "out": "{1..3}"
+  },
+  "loops-5": {
+    "out": "012"
+  },
+  "loops-6": {
+    "out": "red\ngreen\nblue"
+  },
+  "loops-7": {
+    "code": "for i in 1 2 3; do\n    if (( i == 2 )); then\n        continue\n    fi\n    echo \"$i\"\ndone",
+    "out": "1\n3"
+  },
+  "loops-8": {
+    "out": "1\n2\n3\n4\n5",
+    "distractors": true
+  },
+  "loops-9": {
+    "out": "1\n2\n3"
+  },
+  "loops-11": {
+    "fix": "echo \"$sum\"",
+    "out": "10"
+  },
+  "loops-12": {
+    "fix": "done",
+    "out": "a\nb\nc"
+  },
+  "functions-1": {
+    "out": "Sum: 9"
+  },
+  "functions-2": {
+    "out": "21"
+  },
+  "functions-3": {
+    "out": "1"
+  },
+  "functions-4": {
+    "out": "3"
+  },
+  "functions-5": {
+    "out": "Hi, Ada"
+  },
+  "functions-6": {
+    "out": "100"
+  },
+  "functions-7": {
+    "extra": [
+      {
+        "src": "hello\nhello() {\n    echo \"Hi\"\n}",
+        "err": true
+      }
+    ]
+  },
+  "functions-8": {
+    "tpl": "{{CODE}}\ndec 10",
+    "out": "9",
+    "distractors": true
+  },
+  "functions-9": {
+    "out": "8"
+  },
+  "functions-11": {
+    "fix": "result=$(area 3 4)",
+    "out": "Area: 12"
+  },
+  "functions-12": {
+    "fix": "    if (( $1 % 2 == 0 )); then",
+    "out": "4 is even"
+  },
+  "text-1": {
+    "out": "3"
+  },
+  "text-2": {
+    "out": "Paris"
+  },
+  "text-3": {
+    "out": "two\nthree"
+  },
+  "text-4": {
+    "extra": [
+      {
+        "src": "printf \"%s\\n\" \"INFO a\" \"ERROR b\" > log.txt\ngrep -v \"INFO\" log.txt",
+        "out": "ERROR b"
+      }
+    ]
+  },
+  "text-5": {
+    "out": "2"
+  },
+  "text-6": {
+    "out": "first\nsecond"
+  },
+  "text-7": {
+    "code": "printf \"%s\\n\" a b a | uniq",
+    "out": "a\nb\na"
+  },
+  "text-8": {
+    "tpl": "name=\"ada\"\n{{CODE}}",
+    "out": "ADA",
+    "distractors": true
+  },
+  "text-9": {
+    "out": "apple\npear"
+  },
+  "text-11": {
+    "fix": "grep \"ERROR\" log.txt | wc -l | tr -d \" \"",
+    "out": "1"
+  },
+  "text-12": {
+    "fix": "sort letters.txt | uniq",
+    "out": "Unique letters:\na\nb\nc"
+  },
+  "arrays-1": {
+    "out": "16"
+  },
+  "arrays-2": {
+    "out": "4"
+  },
+  "arrays-3": {
+    "out": "cat"
+  },
+  "arrays-4": {
+    "out": "2 Paris"
+  },
+  "arrays-5": {
+    "out": "red green blue"
+  },
+  "arrays-6": {
+    "out": "3"
+  },
+  "arrays-7": {
+    "code": "arr=(x y z)\necho \"${arr[1]}\"",
+    "out": "y"
+  },
+  "arrays-8": {
+    "tpl": "names=(Ada Bob)\n{{CODE}}",
+    "out": "Ada\nBob",
+    "distractors": true
+  },
+  "arrays-9": {
+    "out": "Hi, Ada\nHi, Bob\nHi, Eve"
+  },
+  "arrays-11": {
+    "fix": "count=${#colors[@]}",
+    "out": "4 colors"
+  },
+  "arrays-12": {
+    "fix": "echo \"Bob is ${ages[Bob]}\"",
+    "out": "Bob is 25"
+  }
+}

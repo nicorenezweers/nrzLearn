@@ -1,0 +1,441 @@
+{
+  "hello-1": {
+    "extra": [
+      {
+        "src": "let () =\n  print_endline \"Hi\";\n  print_endline \"x\"\n",
+        "out": "Hi\nx"
+      },
+      {
+        "src": "let () =\n  print_string \"Hi\";\n  print_endline \"x\"\n",
+        "out": "Hix"
+      },
+      {
+        "src": "let () = print_endline 'Hi'\n",
+        "err": true
+      },
+      {
+        "src": "let () = print \"Hi\"\n",
+        "err": true
+      }
+    ]
+  },
+  "hello-2": {
+    "out": "Goodbye"
+  },
+  "hello-3": {
+    "out": "2 + 3 = 5"
+  },
+  "hello-4": {
+    "extra": [
+      {
+        "src": "let () =\n  print_string \"a\";\n  print_string \"b\\n\"\n",
+        "out": "ab"
+      }
+    ]
+  },
+  "hello-5": {
+    "out": "Hello\nWorld"
+  },
+  "hello-6": {
+    "out": "Name: Ada"
+  },
+  "hello-7": {
+    "out": "Hi",
+    "distractors": true
+  },
+  "hello-8": {
+    "out": "1\n2\n3"
+  },
+  "hello-10": {
+    "fix": "  print_endline \"Middle\";",
+    "out": "Start\nMiddle\nEnd"
+  },
+  "hello-11": {
+    "fix": "  Printf.printf \"%d apples\\n\" 6",
+    "out": "Shop\n6 apples"
+  },
+  "hello-12": {
+    "out": "AB\nC"
+  },
+  "values-1": {
+    "out": "10"
+  },
+  "values-2": {
+    "out": "3 2"
+  },
+  "values-3": {
+    "extra": [
+      {
+        "src": "let () = Printf.printf \"%.1f\\n\" (1.5 +. 2.0)\n",
+        "out": "3.5"
+      },
+      {
+        "src": "let () = Printf.printf \"%.1f\\n\" (1.5 + 2.0)\n",
+        "err": true
+      },
+      {
+        "src": "let () = Printf.printf \"%.1f\\n\" (1.5 +. 2)\n",
+        "err": true
+      },
+      {
+        "src": "let () = Printf.printf \"%.1f\\n\" (1 +. 2.0)\n",
+        "err": true
+      }
+    ]
+  },
+  "values-4": {
+    "err": true
+  },
+  "values-5": {
+    "out": "Level 3"
+  },
+  "values-6": {
+    "out": "7.5"
+  },
+  "values-7": {
+    "out": "Score: 42"
+  },
+  "values-8": {
+    "tpl": "let () =\n  let a = 1 in\n  let b = 2 in\n  {{CODE}}\n  Printf.printf \"%d\\n\" total\n",
+    "out": "3",
+    "distractors": true
+  },
+  "values-9": {
+    "out": "Area: 12"
+  },
+  "values-11": {
+    "fix": "  let total = float_of_int count *. price in",
+    "out": "10.0"
+  },
+  "values-12": {
+    "fix": "  print_endline (name ^ \" is \" ^ string_of_int age)",
+    "out": "Bea is 30"
+  },
+  "functions-1": {
+    "out": "12"
+  },
+  "functions-2": {
+    "out": "7"
+  },
+  "functions-3": {
+    "extra": [
+      {
+        "src": "let area w h = w * h\nlet () = Printf.printf \"%d\\n\" (area 3 4)\n",
+        "out": "12"
+      },
+      {
+        "src": "let area w h = w * h\nlet () = Printf.printf \"%d\\n\" (area(3, 4))\n",
+        "err": true
+      },
+      {
+        "src": "let area w h = w * h\nlet () = Printf.printf \"%d\\n\" (area 3, 4)\n",
+        "err": true
+      },
+      {
+        "src": "let area w h = w * h\nlet () = Printf.printf \"%d\\n\" (area [3 4])\n",
+        "err": true
+      }
+    ]
+  },
+  "functions-4": {
+    "out": "15"
+  },
+  "functions-5": {
+    "extra": [
+      {
+        "src": "let inc x = x + 1\nlet () = Printf.printf \"%d\\n\" (inc 41)\n",
+        "out": "42"
+      },
+      {
+        "src": "let inc = fun x -> x + 1\nlet () = Printf.printf \"%d\\n\" (inc 41)\n",
+        "out": "42"
+      }
+    ]
+  },
+  "functions-6": {
+    "out": "Hi, Ada"
+  },
+  "functions-7": {
+    "out": "8"
+  },
+  "functions-8": {
+    "tpl": "{{CODE}}\n\nlet () =\n  Printf.printf \"%d\\n\" (area 3 4)\n",
+    "out": "12",
+    "distractors": true
+  },
+  "functions-9": {
+    "out": "Hello, Ada!"
+  },
+  "functions-11": {
+    "fix": "  Printf.printf \"%d\\n\" (add 2 3)",
+    "out": "5"
+  },
+  "functions-12": {
+    "fix": "  say_hi ();",
+    "out": "Hi\nBye"
+  },
+  "conditions-1": {
+    "out": "medium"
+  },
+  "conditions-2": {
+    "out": "small"
+  },
+  "conditions-3": {
+    "extra": [
+      {
+        "src": "let () = Printf.printf \"%b\\n\" (3 <> 4)\n",
+        "out": "true"
+      },
+      {
+        "src": "let () = Printf.printf \"%b\\n\" (3 /= 4)\n",
+        "err": true
+      },
+      {
+        "src": "let () = Printf.printf \"%b\\n\" (3 =/= 4)\n",
+        "err": true
+      },
+      {
+        "src": "let () = Printf.printf \"%b\\n\" (3 not= 4)\n",
+        "err": true
+      }
+    ]
+  },
+  "conditions-4": {
+    "out": "true"
+  },
+  "conditions-5": {
+    "err": true
+  },
+  "conditions-6": {
+    "out": "even"
+  },
+  "conditions-7": {
+    "out": "weekday"
+  },
+  "conditions-8": {
+    "tpl": "let () =\n  let x = 5 in\n  print_endline ({{CODE}})\n",
+    "out": "yes"
+  },
+  "conditions-9": {
+    "out": "B"
+  },
+  "conditions-11": {
+    "fix": "  | _ -> \"many\"",
+    "out": "two"
+  },
+  "conditions-12": {
+    "fix": "  if age >= 18 && age < 65 then",
+    "out": "adult"
+  },
+  "lists-1": {
+    "out": "4"
+  },
+  "lists-2": {
+    "out": "1 4 9 16"
+  },
+  "lists-3": {
+    "extra": [
+      {
+        "src": "let () = Printf.printf \"%d\\n\" (List.length [1; 2; 3])\n",
+        "out": "3"
+      },
+      {
+        "src": "let () = Printf.printf \"%d\\n\" (List.length [1, 2, 3])\n",
+        "out": "1"
+      },
+      {
+        "src": "let () = Printf.printf \"%d\\n\" (List.length (1; 2; 3))\n",
+        "err": true
+      },
+      {
+        "src": "let () = Printf.printf \"%d\\n\" (List.length {1; 2; 3})\n",
+        "err": true
+      }
+    ]
+  },
+  "lists-4": {
+    "out": "4\n2"
+  },
+  "lists-5": {
+    "extra": [
+      {
+        "src": "let () =\n  let nums = [1; 2; 3] in\n  let bigger = List.map (fun x -> x + 10) nums in\n  print_endline (String.concat \" \" (List.map string_of_int nums));\n  print_endline (String.concat \" \" (List.map string_of_int bigger))\n",
+        "out": "1 2 3\n11 12 13"
+      }
+    ]
+  },
+  "lists-6": {
+    "out": "a\nb\nc"
+  },
+  "lists-7": {
+    "out": "3"
+  },
+  "lists-8": {
+    "tpl": "let () =\n  let nums = [1; 2] in\n  {{CODE}}\n  Printf.printf \"%d\\n\" (List.length all)\n",
+    "out": "3",
+    "distractors": true
+  },
+  "lists-9": {
+    "out": "20\n40"
+  },
+  "lists-11": {
+    "fix": "  let nums = [3; 6; 9] in",
+    "out": "9\n18\n27"
+  },
+  "lists-12": {
+    "fix": "  let all = names @ [\"Cy\"] in",
+    "out": "Ada, Bea, Cy"
+  },
+  "recursion-1": {
+    "out": "10"
+  },
+  "recursion-2": {
+    "out": "3"
+  },
+  "recursion-3": {
+    "out": "24"
+  },
+  "recursion-4": {
+    "err": true
+  },
+  "recursion-5": {
+    "extra": [
+      {
+        "src": "let () =\n  match [1; 2; 3] with\n  | [] -> print_endline \"empty\"\n  | x :: rest -> Printf.printf \"%d %d\\n\" x (List.length rest)\n",
+        "out": "1 2"
+      }
+    ]
+  },
+  "recursion-6": {
+    "out": "6"
+  },
+  "recursion-7": {
+    "out": "24"
+  },
+  "recursion-8": {
+    "tpl": "let sum list =\n  {{CODE}}\n    match rest with\n    | [] -> acc\n    | x :: tail -> go (acc + x) tail\n  in\n  go 0 list\n\nlet () =\n  Printf.printf \"%d\\n\" (sum [1; 2; 3])\n",
+    "out": "6"
+  },
+  "recursion-9": {
+    "out": "24"
+  },
+  "recursion-11": {
+    "fix": "  | x :: rest -> x + sum rest",
+    "out": "6"
+  },
+  "recursion-12": {
+    "fix": "  go 0 list",
+    "out": "2"
+  },
+  "types-1": {
+    "out": "wait"
+  },
+  "types-2": {
+    "out": "Cy 30"
+  },
+  "types-3": {
+    "out": "19"
+  },
+  "types-4": {
+    "extra": [
+      {
+        "src": "type color = Red | Green\nlet () = print_endline (if Red = Red then \"ok\" else \"no\")\n",
+        "out": "ok"
+      },
+      {
+        "src": "type color = red | green\nlet () = print_endline \"ok\"\n",
+        "err": true
+      }
+    ]
+  },
+  "types-5": {
+    "extra": [
+      {
+        "src": "type person = { name : string; age : int }\nlet () =\n  let p = { name = \"Ada\"; age = 36 } in\n  print_endline p.name\n",
+        "out": "Ada"
+      },
+      {
+        "src": "type person = { name : string; age : int }\nlet () =\n  let p = { name: \"Ada\", age: 36 } in\n  print_endline p.name\n",
+        "err": true
+      },
+      {
+        "src": "type person = { name : string; age : int }\nlet () =\n  let p = { name = \"Ada\", age = 36 } in\n  print_endline p.name\n",
+        "err": true
+      },
+      {
+        "src": "type person = { name : string; age : int }\nlet () =\n  let p = ( name = \"Ada\"; age = 36 ) in\n  print_endline p.name\n",
+        "err": true
+      }
+    ]
+  },
+  "types-6": {
+    "out": "Ada"
+  },
+  "types-7": {
+    "out": "5.0"
+  },
+  "types-8": {
+    "tpl": "type person = { name : string; age : int }\n\nlet () =\n  let p = { name = \"Ada\"; age = 36 } in\n  let q = {{CODE}} in\n  Printf.printf \"%s %d\\n\" q.name q.age\n",
+    "out": "Ada 37"
+  },
+  "types-9": {
+    "out": "Ada 37"
+  },
+  "types-11": {
+    "fix": "  | Square side -> side *. side",
+    "out": "4.0"
+  },
+  "types-12": {
+    "fix": "  let p = { name = \"Ada\"; age = 36 } in",
+    "out": "Ada"
+  },
+  "options-1": {
+    "out": "9"
+  },
+  "options-2": {
+    "out": "12"
+  },
+  "options-3": {
+    "out": "big"
+  },
+  "options-4": {
+    "extra": [
+      {
+        "src": "let () =\n  let x : string option = Some \"hi\" in\n  match x with\n  | Some s -> print_endline s\n  | None -> ()\n",
+        "out": "hi"
+      },
+      {
+        "src": "let () =\n  let x : string = Some \"hi\" in\n  print_endline x\n",
+        "err": true
+      },
+      {
+        "src": "let () =\n  let x : string list = Some \"hi\" in\n  List.iter print_endline x\n",
+        "err": true
+      }
+    ]
+  },
+  "options-5": {
+    "err": true
+  },
+  "options-6": {
+    "out": "no result"
+  },
+  "options-7": {
+    "out": "24"
+  },
+  "options-8": {
+    "tpl": "let sign n =\n  match n with\n  | 0 -> \"zero\"\n  {{CODE}}\n  | _ -> \"positive\"\n\nlet () =\n  print_endline (sign (-3))\n",
+    "out": "negative"
+  },
+  "options-9": {
+    "out": "4"
+  },
+  "options-11": {
+    "fix": "  | Some x -> \"value \" ^ string_of_int x",
+    "out": "value 5"
+  },
+  "options-12": {
+    "fix": "  let total = List.fold_left (fun acc w -> acc + String.length w) 0 words in",
+    "out": "7"
+  }
+}

@@ -1,0 +1,1879 @@
+{
+  "course": "sql",
+  "lang": "en",
+  "units": [
+    {
+      "id": "select",
+      "title": "First queries",
+      "chapter": "Reading data",
+      "summary": "Meet tables, rows and columns, and read data from a table with your first SELECT queries.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **database** stores data in **tables**. A table looks like a spreadsheet: each **row** is one record, and each **column** is one property of it. You talk to a database in **SQL**, the Structured Query Language. Almost every database understands SQL. This course runs it in SQLite."
+        },
+        {
+          "type": "text",
+          "md": "This course uses a small table called `books`. The code below creates it: `CREATE TABLE` makes an empty table with six columns, and `INSERT INTO` adds seven rows. You learn both commands in the last world. For now, read the code as a description of the data. Every query in this course runs on this table."
+        },
+        {
+          "type": "code",
+          "code": "CREATE TABLE books (\n  id INTEGER,\n  title TEXT,\n  author_id INTEGER,\n  genre TEXT,\n  year INTEGER,\n  price REAL\n);\nINSERT INTO books (id, title, author_id, genre, year, price) VALUES\n  (1, 'Emma', 1, 'novel', 1815, 8.5),\n  (2, 'Dracula', 2, 'horror', 1897, 7.5),\n  (3, 'Frankenstein', 3, 'horror', 1818, 6.25),\n  (4, 'Persuasion', 1, 'novel', 1817, 7.75),\n  (5, 'The Time Machine', 4, 'sci-fi', 1895, 5.5),\n  (6, 'The War of the Worlds', 4, 'sci-fi', 1898, NULL),\n  (7, 'Moby Dick', 5, 'adventure', 1851, 11.75);"
+        },
+        {
+          "type": "heading",
+          "text": "Your first query"
+        },
+        {
+          "type": "text",
+          "md": "`SELECT` reads data from a table. `SELECT * FROM books;` means: show all columns of the table `books`. The `*` stands for **all columns**. The answer of the database is again a table."
+        },
+        {
+          "type": "code",
+          "code": "SELECT * FROM books;",
+          "output": "+----+-----------------------+-----------+-----------+------+-------+\n| id |         title         | author_id |   genre   | year | price |\n+----+-----------------------+-----------+-----------+------+-------+\n|  1 | Emma                  |         1 | novel     | 1815 |   8.5 |\n|  2 | Dracula               |         2 | horror    | 1897 |   7.5 |\n|  3 | Frankenstein          |         3 | horror    | 1818 |  6.25 |\n|  4 | Persuasion            |         1 | novel     | 1817 |  7.75 |\n|  5 | The Time Machine      |         4 | sci-fi    | 1895 |   5.5 |\n|  6 | The War of the Worlds |         4 | sci-fi    | 1898 |       |\n|  7 | Moby Dick             |         5 | adventure | 1851 | 11.75 |\n+----+-----------------------+-----------+-----------+------+-------+"
+        },
+        {
+          "type": "text",
+          "md": "The price of `The War of the Worlds` is empty: the table has no price for this book. A missing value is called `NULL`. You learn how to work with it in world 4."
+        },
+        {
+          "type": "heading",
+          "text": "Choosing columns"
+        },
+        {
+          "type": "text",
+          "md": "Most of the time you need only some columns. Write their names after `SELECT`, separated by commas. The result shows the columns in the order you write them."
+        },
+        {
+          "type": "code",
+          "code": "SELECT title, year FROM books;",
+          "output": "+-----------------------+------+\n|         title         | year |\n+-----------------------+------+\n| Emma                  | 1815 |\n| Dracula               | 1897 |\n| Frankenstein          | 1818 |\n| Persuasion            | 1817 |\n| The Time Machine      | 1895 |\n| The War of the Worlds | 1898 |\n| Moby Dick             | 1851 |\n+-----------------------+------+"
+        },
+        {
+          "type": "text",
+          "md": "Line breaks and extra spaces do not matter in SQL, so you can split a long query over several lines. The **semicolon** `;` marks the end of a statement. Keywords like `SELECT` and `FROM` are not case-sensitive, so `select` works too. Most people write keywords in capital letters, so they stand out from the names of tables and columns."
+        },
+        {
+          "type": "code",
+          "code": "SELECT\n  genre,\n  title\nFROM books;",
+          "output": "+-----------+-----------------------+\n|   genre   |         title         |\n+-----------+-----------------------+\n| novel     | Emma                  |\n| horror    | Dracula               |\n| horror    | Frankenstein          |\n| novel     | Persuasion            |\n| sci-fi    | The Time Machine      |\n| sci-fi    | The War of the Worlds |\n| adventure | Moby Dick             |\n+-----------+-----------------------+"
+        },
+        {
+          "type": "warning",
+          "md": "A name that does not exist is an error. `SELECT name FROM books;` fails with the message `no such column: name`, because the table has no column called `name`."
+        },
+        {
+          "type": "tip",
+          "md": "Without sorting, a database may return the rows in any order. SQLite returns them here in the order they were added. In world 3 you learn how to sort the result."
+        }
+      ],
+      "card": [
+        "A table has rows (records) and columns (properties)",
+        "`SELECT * FROM books;` shows all columns",
+        "`SELECT title, year FROM books;` shows two columns",
+        "Keywords are not case-sensitive: `SELECT` = `select`",
+        "`;` ends a statement"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "select-1",
+          "prompt": "What does the `*` mean in `SELECT * FROM books;`?",
+          "options": [
+            "all columns",
+            "all rows that are not empty",
+            "multiply",
+            "only the first column"
+          ],
+          "answer": 0,
+          "explain": "After `SELECT`, the `*` stands for all columns of the table."
+        },
+        {
+          "type": "input",
+          "id": "select-2",
+          "prompt": "How many rows does this query return?",
+          "code": "SELECT title FROM books;",
+          "answers": [
+            "7"
+          ],
+          "explain": "The query has no filter, so it returns one row for each of the 7 books."
+        },
+        {
+          "type": "gap",
+          "id": "select-3",
+          "prompt": "Complete the query so it shows all columns of the table `books`.",
+          "code": "SELECT * ___ books;",
+          "options": [
+            "FROM",
+            "IN",
+            "TABLE",
+            "OF"
+          ],
+          "answer": 0,
+          "explain": "`FROM` names the table that the data comes from: `SELECT * FROM books;`."
+        },
+        {
+          "type": "blocks",
+          "id": "select-4",
+          "prompt": "Build a query that shows the title and the genre of every book.",
+          "tokens": [
+            "SELECT",
+            "title,",
+            "genre",
+            "FROM",
+            "books;"
+          ],
+          "distractors": [
+            "*",
+            "TABLE"
+          ],
+          "explain": "List the columns after `SELECT`, separated by a comma, then name the table after `FROM`."
+        },
+        {
+          "type": "true_false",
+          "id": "select-5",
+          "statement": "`select title from books;` is a valid query.",
+          "answer": true,
+          "explain": "Keywords are not case-sensitive. `select` and `SELECT` mean the same thing."
+        },
+        {
+          "type": "bug",
+          "id": "select-6",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "SELECT",
+            "  title,",
+            "  year,",
+            "  price,",
+            "FROM books;"
+          ],
+          "bug": 3,
+          "explain": "The last column before `FROM` must not end with a comma. Write `price` without the comma."
+        },
+        {
+          "type": "choice",
+          "id": "select-7",
+          "prompt": "Which columns does the result have, and in which order?",
+          "code": "SELECT year, title FROM books;",
+          "options": [
+            "`year`, then `title`",
+            "`title`, then `year`",
+            "all six columns",
+            "only `year`"
+          ],
+          "answer": 0,
+          "explain": "The result shows the columns in the order you list them after `SELECT`."
+        },
+        {
+          "type": "input",
+          "id": "select-8",
+          "prompt": "How many columns does the result have?",
+          "code": "SELECT * FROM books;",
+          "answers": [
+            "6"
+          ],
+          "explain": "`*` shows all columns of `books`: `id`, `title`, `author_id`, `genre`, `year` and `price`."
+        },
+        {
+          "type": "pairs",
+          "id": "select-9",
+          "prompt": "Match the part of the query with its job.",
+          "pairs": [
+            [
+              "`SELECT`",
+              "chooses the columns"
+            ],
+            [
+              "`FROM`",
+              "names the table"
+            ],
+            [
+              "`*`",
+              "all columns"
+            ],
+            [
+              "`;`",
+              "ends the statement"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "select-10",
+          "prompt": "Put the lines in order to get a query that shows the title and the price of every book.",
+          "lines": [
+            "SELECT",
+            "  title,",
+            "  price",
+            "FROM books;"
+          ],
+          "explain": "`SELECT` comes first, then the columns separated by commas, and `FROM` with the table name comes last."
+        },
+        {
+          "type": "true_false",
+          "id": "select-11",
+          "statement": "Without sorting, SQL guarantees that the rows come back in the order they were added.",
+          "answer": false,
+          "explain": "SQL does not guarantee an order unless you sort. SQLite often keeps the order of the table, but other databases may not."
+        },
+        {
+          "type": "choice",
+          "id": "select-12",
+          "prompt": "Which query shows only the titles of the books?",
+          "options": [
+            "`SELECT title FROM books;`",
+            "`SELECT books FROM title;`",
+            "`SELECT * FROM books;`",
+            "`FROM books SELECT title;`"
+          ],
+          "answer": 0,
+          "explain": "The column comes after `SELECT` and the table after `FROM`. `*` would show all columns."
+        }
+      ]
+    },
+    {
+      "id": "where",
+      "title": "Filtering rows",
+      "chapter": "Reading data",
+      "summary": "Keep only the rows you need with WHERE, comparisons, AND, OR, NOT, BETWEEN, IN and LIKE.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`WHERE` comes after `FROM` and keeps only the rows that match a **condition**. Here the condition is `year > 1850`: the database checks it for every row and shows only the books published after 1850."
+        },
+        {
+          "type": "code",
+          "code": "SELECT title, year FROM books WHERE year > 1850;",
+          "output": "+-----------------------+------+\n|         title         | year |\n+-----------------------+------+\n| Dracula               | 1897 |\n| The Time Machine      | 1895 |\n| The War of the Worlds | 1898 |\n| Moby Dick             | 1851 |\n+-----------------------+------+"
+        },
+        {
+          "type": "text",
+          "md": "Text values go in **single quotes**: `'horror'`. Numbers have no quotes. To compare, SQL uses `=` (equal), `<>` (not equal), `<`, `>`, `<=` and `>=`. Note that SQL uses a single `=` to compare."
+        },
+        {
+          "type": "code",
+          "code": "SELECT title FROM books WHERE genre = 'horror';",
+          "output": "+--------------+\n|    title     |\n+--------------+\n| Dracula      |\n| Frankenstein |\n+--------------+"
+        },
+        {
+          "type": "tip",
+          "md": "Many databases, SQLite included, also accept `!=` for not equal, but `<>` is the standard. Always use single quotes for text: in standard SQL, double quotes are for names of tables and columns."
+        },
+        {
+          "type": "heading",
+          "text": "Combining conditions"
+        },
+        {
+          "type": "text",
+          "md": "`AND` keeps a row only when both conditions are true. `OR` keeps a row when at least one of them is true. `NOT` turns a condition around: `NOT year > 1850` is the same as `year <= 1850`."
+        },
+        {
+          "type": "code",
+          "code": "SELECT title, genre, year FROM books WHERE genre = 'horror' OR year < 1816;",
+          "output": "+--------------+--------+------+\n|    title     | genre  | year |\n+--------------+--------+------+\n| Emma         | novel  | 1815 |\n| Dracula      | horror | 1897 |\n| Frankenstein | horror | 1818 |\n+--------------+--------+------+"
+        },
+        {
+          "type": "warning",
+          "md": "`AND` is evaluated before `OR`, like `*` before `+` in mathematics. `genre = 'horror' OR genre = 'novel' AND year < 1850` means `genre = 'horror' OR (genre = 'novel' AND year < 1850)`. Use parentheses to make your meaning clear: `(genre = 'horror' OR genre = 'novel') AND year < 1850`."
+        },
+        {
+          "type": "text",
+          "md": "`BETWEEN 1815 AND 1818` keeps values from 1815 to 1818, **including** both ends. `IN` checks a list of values: `genre IN ('novel', 'horror')` is shorter than two conditions with `OR`. `NOT IN` keeps all other values."
+        },
+        {
+          "type": "code",
+          "code": "SELECT title, year FROM books WHERE year BETWEEN 1815 AND 1818;",
+          "output": "+--------------+------+\n|    title     | year |\n+--------------+------+\n| Emma         | 1815 |\n| Frankenstein | 1818 |\n| Persuasion   | 1817 |\n+--------------+------+"
+        },
+        {
+          "type": "code",
+          "code": "SELECT title, genre FROM books WHERE genre NOT IN ('novel', 'horror');",
+          "output": "+-----------------------+-----------+\n|         title         |   genre   |\n+-----------------------+-----------+\n| The Time Machine      | sci-fi    |\n| The War of the Worlds | sci-fi    |\n| Moby Dick             | adventure |\n+-----------------------+-----------+"
+        },
+        {
+          "type": "text",
+          "md": "`LIKE` compares text with a **pattern**. In the pattern, `%` stands for any number of characters (also none), and `_` stands for exactly one character. `'The%'` matches every title that starts with `The`. In SQLite, `LIKE` ignores the difference between upper and lower case letters; in PostgreSQL, it does not."
+        },
+        {
+          "type": "code",
+          "code": "SELECT title FROM books WHERE title LIKE 'The%';",
+          "output": "+-----------------------+\n|         title         |\n+-----------------------+\n| The Time Machine      |\n| The War of the Worlds |\n+-----------------------+"
+        }
+      ],
+      "card": [
+        "`WHERE year > 1850` keeps only matching rows",
+        "Text in single quotes: `genre = 'horror'`; not equal: `<>`",
+        "`AND`, `OR`, `NOT`; use parentheses when you mix `AND` and `OR`",
+        "`year BETWEEN 1815 AND 1818`, `genre IN ('novel', 'horror')`",
+        "`title LIKE 'The%'`: `%` = any text, `_` = one character"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "where-1",
+          "prompt": "How many rows does this query return?",
+          "code": "SELECT title FROM books WHERE year < 1820;",
+          "answers": [
+            "3"
+          ],
+          "explain": "Three books are older than 1820: `Emma` (1815), `Persuasion` (1817) and `Frankenstein` (1818)."
+        },
+        {
+          "type": "choice",
+          "id": "where-2",
+          "prompt": "Which operator means \"not equal\" in standard SQL?",
+          "options": [
+            "`<>`",
+            "`=!`",
+            "`><`",
+            "`=/=`"
+          ],
+          "answer": 0,
+          "explain": "`<>` is the standard operator for not equal. Many databases also accept `!=`."
+        },
+        {
+          "type": "gap",
+          "id": "where-3",
+          "prompt": "Complete the query so it shows the novels.",
+          "code": "SELECT title FROM books WHERE genre = ___;",
+          "options": [
+            "'novel'",
+            "novel",
+            "(novel)"
+          ],
+          "answer": 0,
+          "explain": "Text values need single quotes. Without quotes, SQL reads `novel` as the name of a column, and there is no such column."
+        },
+        {
+          "type": "blocks",
+          "id": "where-4",
+          "prompt": "Build a query that shows the titles of the horror books.",
+          "tokens": [
+            "SELECT",
+            "title",
+            "FROM",
+            "books",
+            "WHERE",
+            "genre",
+            "=",
+            "'horror';"
+          ],
+          "distractors": [
+            "IF",
+            "horror;"
+          ],
+          "explain": "`WHERE` comes after `FROM`, and the text value `'horror'` needs single quotes."
+        },
+        {
+          "type": "true_false",
+          "id": "where-5",
+          "statement": "`year BETWEEN 1815 AND 1818` also matches books from 1815 and from 1818.",
+          "answer": true,
+          "explain": "`BETWEEN` includes both ends of the range."
+        },
+        {
+          "type": "choice",
+          "id": "where-6",
+          "prompt": "Which titles does this query return?",
+          "code": "SELECT title FROM books\nWHERE genre = 'horror' OR genre = 'novel' AND year > 1850;",
+          "options": [
+            "`Dracula` and `Frankenstein`",
+            "only `Dracula`",
+            "`Dracula`, `Frankenstein`, `Emma` and `Persuasion`",
+            "no titles"
+          ],
+          "answer": 0,
+          "explain": "`AND` is evaluated first: the query keeps all horror books, plus novels after 1850. There are no novels after 1850, so only the two horror books remain."
+        },
+        {
+          "type": "bug",
+          "id": "where-7",
+          "prompt": "This query should show the books from 1815 to 1818. Which line has the bug?",
+          "lines": [
+            "SELECT title, year",
+            "FROM books",
+            "WHERE year BETWEEN 1815 OR 1818;"
+          ],
+          "bug": 2,
+          "explain": "`BETWEEN` always works with `AND`: write `WHERE year BETWEEN 1815 AND 1818;`."
+        },
+        {
+          "type": "input",
+          "id": "where-8",
+          "prompt": "What does this query return?",
+          "code": "SELECT title FROM books WHERE title LIKE '_mma';",
+          "answers": [
+            "Emma"
+          ],
+          "explain": "`_` stands for exactly one character, so `'_mma'` matches a four-letter title that ends with `mma`."
+        },
+        {
+          "type": "pairs",
+          "id": "where-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`%`",
+              "any number of characters"
+            ],
+            [
+              "`_`",
+              "exactly one character"
+            ],
+            [
+              "`IN (...)`",
+              "one of the values in a list"
+            ],
+            [
+              "`BETWEEN`",
+              "a range including both ends"
+            ],
+            [
+              "`<>`",
+              "not equal"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "where-10",
+          "prompt": "Put the lines in order: show the books from 1851 to 1897 that are not horror books.",
+          "lines": [
+            "SELECT title",
+            "FROM books",
+            "WHERE year BETWEEN 1851 AND 1897",
+            "  AND genre <> 'horror';"
+          ],
+          "explain": "`WHERE` comes after `FROM`. The second condition is joined to the first one with `AND`."
+        },
+        {
+          "type": "true_false",
+          "id": "where-11",
+          "statement": "In SQLite, `WHERE title LIKE 'the%'` also finds `The Time Machine`.",
+          "answer": true,
+          "explain": "In SQLite, `LIKE` ignores upper and lower case for English letters. In PostgreSQL, `LIKE` is case-sensitive."
+        },
+        {
+          "type": "input",
+          "id": "where-12",
+          "prompt": "How many rows does this query return?",
+          "code": "SELECT title FROM books\nWHERE genre NOT IN ('novel', 'sci-fi') AND year > 1850;",
+          "answers": [
+            "2"
+          ],
+          "explain": "Without novels and sci-fi, three books are left. Of these, `Dracula` (1897) and `Moby Dick` (1851) are newer than 1850."
+        }
+      ]
+    },
+    {
+      "id": "sorting",
+      "title": "Sorting and limiting",
+      "chapter": "Reading data",
+      "summary": "Sort results with ORDER BY, keep the first rows with LIMIT, remove duplicates and rename columns with AS.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`ORDER BY` sorts the result by a column. It comes after `FROM` and `WHERE`. By default, it sorts in **ascending** order (`ASC`): small numbers first, and text from A to Z."
+        },
+        {
+          "type": "code",
+          "code": "SELECT title, year FROM books ORDER BY year;",
+          "output": "+-----------------------+------+\n|         title         | year |\n+-----------------------+------+\n| Emma                  | 1815 |\n| Persuasion            | 1817 |\n| Frankenstein          | 1818 |\n| Moby Dick             | 1851 |\n| The Time Machine      | 1895 |\n| Dracula               | 1897 |\n| The War of the Worlds | 1898 |\n+-----------------------+------+"
+        },
+        {
+          "type": "text",
+          "md": "Add `DESC` after the column to sort in **descending** order: large numbers first, and text from Z to A."
+        },
+        {
+          "type": "code",
+          "code": "SELECT title FROM books ORDER BY title DESC;",
+          "output": "+-----------------------+\n|         title         |\n+-----------------------+\n| The War of the Worlds |\n| The Time Machine      |\n| Persuasion            |\n| Moby Dick             |\n| Frankenstein          |\n| Emma                  |\n| Dracula               |\n+-----------------------+"
+        },
+        {
+          "type": "text",
+          "md": "You can sort by several columns, separated by commas. The database sorts by the first column. Rows with the same value there are sorted by the second column."
+        },
+        {
+          "type": "code",
+          "code": "SELECT genre, title, year FROM books ORDER BY genre, year DESC;",
+          "output": "+-----------+-----------------------+------+\n|   genre   |         title         | year |\n+-----------+-----------------------+------+\n| adventure | Moby Dick             | 1851 |\n| horror    | Dracula               | 1897 |\n| horror    | Frankenstein          | 1818 |\n| novel     | Persuasion            | 1817 |\n| novel     | Emma                  | 1815 |\n| sci-fi    | The War of the Worlds | 1898 |\n| sci-fi    | The Time Machine      | 1895 |\n+-----------+-----------------------+------+"
+        },
+        {
+          "type": "heading",
+          "text": "Only the first rows"
+        },
+        {
+          "type": "text",
+          "md": "`LIMIT 3` keeps only the first three rows of the result. Together with `ORDER BY`, it answers questions like \"which are the three newest books?\". `LIMIT` is not part of standard SQL, but SQLite, PostgreSQL and MySQL all support it. The standard form is `FETCH FIRST 3 ROWS ONLY`."
+        },
+        {
+          "type": "code",
+          "code": "SELECT title, year FROM books ORDER BY year DESC LIMIT 3;",
+          "output": "+-----------------------+------+\n|         title         | year |\n+-----------------------+------+\n| The War of the Worlds | 1898 |\n| Dracula               | 1897 |\n| The Time Machine      | 1895 |\n+-----------------------+------+"
+        },
+        {
+          "type": "text",
+          "md": "`SELECT DISTINCT` removes duplicate rows from the result. Here every genre appears only once, even though most genres have two books."
+        },
+        {
+          "type": "code",
+          "code": "SELECT DISTINCT genre FROM books ORDER BY genre;",
+          "output": "+-----------+\n|   genre   |\n+-----------+\n| adventure |\n| horror    |\n| novel     |\n| sci-fi    |\n+-----------+"
+        },
+        {
+          "type": "text",
+          "md": "`AS` gives a column a new name in the result. This new name is called an **alias**. You can also use the alias in `ORDER BY`. The table itself does not change."
+        },
+        {
+          "type": "code",
+          "code": "SELECT title AS book, year AS published\nFROM books\nWHERE genre = 'horror'\nORDER BY published;",
+          "output": "+--------------+-----------+\n|     book     | published |\n+--------------+-----------+\n| Frankenstein |      1818 |\n| Dracula      |      1897 |\n+--------------+-----------+"
+        },
+        {
+          "type": "tip",
+          "md": "The parts of a query always come in this order: `SELECT`, `FROM`, `WHERE`, `ORDER BY`, `LIMIT`."
+        }
+      ],
+      "card": [
+        "`ORDER BY year` sorts from small to large (`ASC`)",
+        "`ORDER BY year DESC` sorts from large to small",
+        "`LIMIT 3` keeps the first three rows",
+        "`SELECT DISTINCT genre` removes duplicates",
+        "`title AS book` renames a column in the result"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "sorting-1",
+          "prompt": "What does this query return?",
+          "code": "SELECT title FROM books ORDER BY year LIMIT 1;",
+          "answers": [
+            "Emma"
+          ],
+          "explain": "Sorted by year, the oldest book comes first. That is `Emma` from 1815, and `LIMIT 1` keeps only this row."
+        },
+        {
+          "type": "choice",
+          "id": "sorting-2",
+          "prompt": "Which keyword sorts from the largest to the smallest value?",
+          "options": [
+            "`DESC`",
+            "`ASC`",
+            "`DOWN`",
+            "`REVERSE`"
+          ],
+          "answer": 0,
+          "explain": "`DESC` means descending. `ASC` (ascending) is the default."
+        },
+        {
+          "type": "gap",
+          "id": "sorting-3",
+          "prompt": "Complete the query so it shows only the two newest books.",
+          "code": "SELECT title FROM books ORDER BY year DESC ___ 2;",
+          "options": [
+            "LIMIT",
+            "TOP",
+            "FIRST",
+            "MAX"
+          ],
+          "answer": 0,
+          "explain": "`LIMIT 2` keeps the first two rows of the sorted result."
+        },
+        {
+          "type": "blocks",
+          "id": "sorting-4",
+          "prompt": "Build a query that shows every genre once, sorted from A to Z.",
+          "tokens": [
+            "SELECT",
+            "DISTINCT",
+            "genre",
+            "FROM",
+            "books",
+            "ORDER BY",
+            "genre;"
+          ],
+          "distractors": [
+            "UNIQUE",
+            "SORT BY"
+          ],
+          "explain": "`DISTINCT` comes right after `SELECT`, and `ORDER BY` comes at the end."
+        },
+        {
+          "type": "true_false",
+          "id": "sorting-5",
+          "statement": "`ORDER BY price` without `ASC` or `DESC` sorts from the smallest to the largest price.",
+          "answer": true,
+          "explain": "Ascending order (`ASC`) is the default."
+        },
+        {
+          "type": "choice",
+          "id": "sorting-6",
+          "prompt": "Which title is in the first row?",
+          "code": "SELECT title, genre FROM books ORDER BY genre DESC, title;",
+          "options": [
+            "`The Time Machine`",
+            "`The War of the Worlds`",
+            "`Moby Dick`",
+            "`Dracula`"
+          ],
+          "answer": 0,
+          "explain": "`sci-fi` comes last in the alphabet, so it comes first with `DESC`. Within `sci-fi`, the titles are sorted from A to Z, and `Ti` comes before `Wa`."
+        },
+        {
+          "type": "bug",
+          "id": "sorting-7",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "SELECT title, year",
+            "FROM books",
+            "ORDER year DESC",
+            "LIMIT 3;"
+          ],
+          "bug": 2,
+          "explain": "The keyword is `ORDER BY`. Write `ORDER BY year DESC`."
+        },
+        {
+          "type": "input",
+          "id": "sorting-8",
+          "prompt": "How many rows does this query return?",
+          "code": "SELECT DISTINCT author_id FROM books;",
+          "answers": [
+            "5"
+          ],
+          "explain": "There are seven books, but only five different values in `author_id`: the values `1` and `4` appear twice."
+        },
+        {
+          "type": "pairs",
+          "id": "sorting-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`ASC`",
+              "from small to large"
+            ],
+            [
+              "`DESC`",
+              "from large to small"
+            ],
+            [
+              "`LIMIT 5`",
+              "at most five rows"
+            ],
+            [
+              "`DISTINCT`",
+              "removes duplicate rows"
+            ],
+            [
+              "`AS`",
+              "gives a column a new name"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "sorting-10",
+          "prompt": "Put the lines in order: show the newest novel, with the column name `book`.",
+          "lines": [
+            "SELECT title AS book",
+            "FROM books",
+            "WHERE genre = 'novel'",
+            "ORDER BY year DESC",
+            "LIMIT 1;"
+          ],
+          "explain": "The order is always `SELECT`, `FROM`, `WHERE`, `ORDER BY`, `LIMIT`."
+        },
+        {
+          "type": "true_false",
+          "id": "sorting-11",
+          "statement": "`LIMIT` is part of standard SQL.",
+          "answer": false,
+          "explain": "`LIMIT` is not in the SQL standard, but SQLite, PostgreSQL and MySQL support it. The standard form is `FETCH FIRST n ROWS ONLY`."
+        },
+        {
+          "type": "input",
+          "id": "sorting-12",
+          "prompt": "What does this query return?",
+          "code": "SELECT title FROM books\nWHERE genre = 'horror'\nORDER BY title DESC\nLIMIT 1;",
+          "answers": [
+            "Frankenstein"
+          ],
+          "explain": "The horror books are `Dracula` and `Frankenstein`. Sorted from Z to A, `Frankenstein` comes first."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Calculations and functions",
+      "chapter": "Calculating",
+      "summary": "Calculate with columns, change text with functions and handle missing values with NULL and IS NULL.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`SELECT` can calculate. You can use `+`, `-`, `*` and `/` with columns and numbers. The result is a new column in the result, and `AS` gives it a name."
+        },
+        {
+          "type": "code",
+          "code": "SELECT title, price, price * 2 AS two_copies\nFROM books\nWHERE genre = 'novel';",
+          "output": "+------------+-------+------------+\n|   title    | price | two_copies |\n+------------+-------+------------+\n| Emma       |   8.5 |       17.0 |\n| Persuasion |  7.75 |       15.5 |\n+------------+-------+------------+"
+        },
+        {
+          "type": "warning",
+          "md": "You can also calculate without a table, as below; this works in SQLite, PostgreSQL and MySQL. Be careful when you divide two whole numbers: SQLite and PostgreSQL give a whole number and drop the rest, so `7 / 2` is `3`. Write one number with a decimal point, like `7 / 2.0`, to get `3.5`."
+        },
+        {
+          "type": "code",
+          "code": "SELECT 7 / 2, 7 / 2.0;",
+          "output": "+-------+---------+\n| 7 / 2 | 7 / 2.0 |\n+-------+---------+\n|     3 |     3.5 |\n+-------+---------+"
+        },
+        {
+          "type": "heading",
+          "text": "Functions"
+        },
+        {
+          "type": "text",
+          "md": "A **function** takes values in parentheses and gives back a result. `ROUND(price, 1)` rounds the price to one decimal place. Without the second value, `ROUND` rounds to a whole number. In SQLite the result still has `.0` at the end."
+        },
+        {
+          "type": "code",
+          "code": "SELECT title, price, ROUND(price) AS whole, ROUND(price, 1) AS one_digit\nFROM books\nWHERE genre = 'horror'\nORDER BY title;",
+          "output": "+--------------+-------+-------+-----------+\n|    title     | price | whole | one_digit |\n+--------------+-------+-------+-----------+\n| Dracula      |   7.5 |   8.0 |       7.5 |\n| Frankenstein |  6.25 |   6.0 |       6.3 |\n+--------------+-------+-------+-----------+"
+        },
+        {
+          "type": "text",
+          "md": "`UPPER` changes text to capital letters, `LOWER` to small letters, and `LENGTH` counts the characters. The operator `||` joins texts together. It is standard SQL and works in SQLite and PostgreSQL; MySQL uses the function `CONCAT` instead."
+        },
+        {
+          "type": "code",
+          "code": "SELECT UPPER(title) AS big, LENGTH(title) AS letters, genre || '!' AS label\nFROM books\nWHERE genre = 'novel'\nORDER BY title;",
+          "output": "+------------+---------+--------+\n|    big     | letters | label  |\n+------------+---------+--------+\n| EMMA       |       4 | novel! |\n| PERSUASION |      10 | novel! |\n+------------+---------+--------+"
+        },
+        {
+          "type": "heading",
+          "text": "NULL: missing values"
+        },
+        {
+          "type": "text",
+          "md": "`NULL` means **no value**: the value is missing or unknown. `NULL` is not `0` and not an empty text. Every calculation with `NULL` gives `NULL`. A comparison with `NULL` is never true, so `price = NULL` finds nothing. To find missing values, use `IS NULL`, and for existing values, `IS NOT NULL`."
+        },
+        {
+          "type": "code",
+          "code": "SELECT title, price FROM books WHERE price IS NULL;",
+          "output": "+-----------------------+-------+\n|         title         | price |\n+-----------------------+-------+\n| The War of the Worlds |       |\n+-----------------------+-------+"
+        },
+        {
+          "type": "code",
+          "code": "SELECT title, price * 2 AS doubled\nFROM books\nWHERE genre = 'sci-fi'\nORDER BY year;",
+          "output": "+-----------------------+---------+\n|         title         | doubled |\n+-----------------------+---------+\n| The Time Machine      |    11.0 |\n| The War of the Worlds |         |\n+-----------------------+---------+"
+        },
+        {
+          "type": "tip",
+          "md": "`COALESCE(price, 0)` gives the price, or `0` when the price is `NULL`. It is standard SQL and works in all common databases."
+        }
+      ],
+      "card": [
+        "`price * 2 AS doubled` calculates a new column",
+        "`ROUND(price, 1)`, `UPPER(title)`, `LOWER(title)`, `LENGTH(title)`",
+        "`7 / 2` is `3`, but `7 / 2.0` is `3.5`",
+        "`NULL` means no value; `NULL + 1` is `NULL`",
+        "`WHERE price IS NULL`, never `= NULL`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this query return?",
+          "code": "SELECT LENGTH(title) FROM books WHERE id = 2;",
+          "answers": [
+            "7"
+          ],
+          "explain": "The book with `id` 2 is `Dracula`, and `LENGTH` counts its 7 characters."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this query return?",
+          "code": "SELECT 10 / 4;",
+          "answers": [
+            "2"
+          ],
+          "explain": "Both numbers are whole numbers, so SQLite drops the rest: `10 / 4` is `2`. With `10 / 4.0` you get `2.5`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-3",
+          "prompt": "Which condition finds the books without a price?",
+          "options": [
+            "`price IS NULL`",
+            "`price = NULL`",
+            "`price = 0`",
+            "`price = ''`"
+          ],
+          "answer": 0,
+          "explain": "A comparison with `NULL` is never true. Only `IS NULL` finds missing values."
+        },
+        {
+          "type": "gap",
+          "id": "functions-4",
+          "prompt": "Complete the query so it shows only the books that have a price.",
+          "code": "SELECT title FROM books WHERE price IS ___ NULL;",
+          "options": [
+            "NOT",
+            "NO",
+            "<>",
+            "!"
+          ],
+          "answer": 0,
+          "explain": "`IS NOT NULL` keeps the rows where the value exists."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-5",
+          "statement": "`NULL + 5` gives `5`.",
+          "answer": false,
+          "explain": "Every calculation with `NULL` gives `NULL`, because the value is unknown."
+        },
+        {
+          "type": "choice",
+          "id": "functions-6",
+          "prompt": "What does this query return?",
+          "code": "SELECT ROUND(11.75, 1);",
+          "options": [
+            "`11.8`",
+            "`11.7`",
+            "`12.0`",
+            "`11.75`"
+          ],
+          "answer": 0,
+          "explain": "`ROUND` with `1` keeps one decimal place. The digit after it is `5`, so the number is rounded up to `11.8`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-7",
+          "prompt": "Build a query that shows every title in capital letters, with the column name `big`.",
+          "tokens": [
+            "SELECT",
+            "UPPER(title)",
+            "AS",
+            "big",
+            "FROM",
+            "books;"
+          ],
+          "distractors": [
+            "LENGTH(title)",
+            "IS"
+          ],
+          "explain": "`UPPER` changes the text to capital letters, and `AS` names the new column."
+        },
+        {
+          "type": "bug",
+          "id": "functions-8",
+          "prompt": "This query should show the books without a price. Which line has the bug?",
+          "lines": [
+            "SELECT title",
+            "FROM books",
+            "WHERE price = NULL;"
+          ],
+          "bug": 2,
+          "explain": "`price = NULL` is never true, so the query returns nothing. Write `WHERE price IS NULL;`."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-9",
+          "prompt": "Match the code with what it does.",
+          "pairs": [
+            [
+              "`ROUND(x, 2)`",
+              "rounds to two decimal places"
+            ],
+            [
+              "`UPPER(t)`",
+              "capital letters"
+            ],
+            [
+              "`LOWER(t)`",
+              "small letters"
+            ],
+            [
+              "`LENGTH(t)`",
+              "number of characters"
+            ],
+            [
+              "`a || b`",
+              "joins two texts"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "functions-10",
+          "prompt": "Put the lines in order: show each title with its price plus 20 percent, for books that have a price.",
+          "lines": [
+            "SELECT",
+            "  title,",
+            "  ROUND(price * 1.2, 2) AS new_price",
+            "FROM books",
+            "WHERE price IS NOT NULL;"
+          ],
+          "explain": "The columns come after `SELECT`, separated by a comma. `FROM` and then `WHERE` follow."
+        },
+        {
+          "type": "input",
+          "id": "functions-11",
+          "prompt": "What does this query return?",
+          "code": "SELECT title || '-' || genre FROM books WHERE id = 1;",
+          "answers": [
+            "Emma-novel"
+          ],
+          "explain": "`||` joins the title, the text `'-'` and the genre of the book with `id` 1 into one text."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-12",
+          "statement": "This query also returns `The War of the Worlds`, which has no price.",
+          "code": "SELECT title FROM books WHERE price < 6 OR price >= 6;",
+          "answer": false,
+          "explain": "Comparisons with `NULL` are never true, so the row with the missing price matches neither condition."
+        }
+      ]
+    },
+    {
+      "id": "aggregates",
+      "title": "Counting and totals",
+      "chapter": "Calculating",
+      "summary": "Summarize many rows into one value with the aggregate functions COUNT, SUM, AVG, MIN and MAX.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **aggregate function** combines the values of many rows into one value. The result has only one row. `COUNT(*)` counts the rows."
+        },
+        {
+          "type": "code",
+          "code": "SELECT COUNT(*) AS total FROM books;",
+          "output": "+-------+\n| total |\n+-------+\n|     7 |\n+-------+"
+        },
+        {
+          "type": "text",
+          "md": "`COUNT(*)` counts all rows. `COUNT(price)` counts only the rows where `price` is not `NULL`. One book has no price, so the two numbers are different."
+        },
+        {
+          "type": "code",
+          "code": "SELECT COUNT(*) AS all_rows, COUNT(price) AS with_price FROM books;",
+          "output": "+----------+------------+\n| all_rows | with_price |\n+----------+------------+\n|        7 |          6 |\n+----------+------------+"
+        },
+        {
+          "type": "text",
+          "md": "`SUM` adds up the values, `MIN` finds the smallest and `MAX` the largest. Like `COUNT(price)`, they skip `NULL` values."
+        },
+        {
+          "type": "code",
+          "code": "SELECT SUM(price) AS total, MIN(price) AS cheapest, MAX(price) AS most_expensive\nFROM books;",
+          "output": "+-------+----------+----------------+\n| total | cheapest | most_expensive |\n+-------+----------+----------------+\n| 47.25 |      5.5 |          11.75 |\n+-------+----------+----------------+"
+        },
+        {
+          "type": "text",
+          "md": "`AVG` calculates the average. The result often has many decimal places, so it is common to round it. It also skips `NULL`: the average is the sum of the six prices divided by six, not by seven."
+        },
+        {
+          "type": "code",
+          "code": "SELECT AVG(price) AS average, ROUND(AVG(price), 2) AS rounded FROM books;",
+          "output": "+---------+---------+\n| average | rounded |\n+---------+---------+\n|   7.875 |    7.88 |\n+---------+---------+"
+        },
+        {
+          "type": "text",
+          "md": "`WHERE` filters the rows **before** they are counted. This query counts only the horror books and finds the oldest year among them."
+        },
+        {
+          "type": "code",
+          "code": "SELECT COUNT(*) AS horror_books, MIN(year) AS oldest\nFROM books\nWHERE genre = 'horror';",
+          "output": "+--------------+--------+\n| horror_books | oldest |\n+--------------+--------+\n|            2 |   1818 |\n+--------------+--------+"
+        },
+        {
+          "type": "text",
+          "md": "`MIN` and `MAX` also work with text: they use alphabetical order. `COUNT(DISTINCT genre)` counts how many **different** values a column has."
+        },
+        {
+          "type": "code",
+          "code": "SELECT MIN(title) AS first_title, COUNT(DISTINCT genre) AS genres FROM books;",
+          "output": "+-------------+--------+\n| first_title | genres |\n+-------------+--------+\n| Dracula     |      4 |\n+-------------+--------+"
+        },
+        {
+          "type": "warning",
+          "md": "Do not mix aggregates and normal columns: `SELECT title, MAX(price) FROM books;` is an error in most databases, because the database does not know which title to show next to the one maximum. SQLite allows it, but you should not rely on it. The next world shows the right way with `GROUP BY`."
+        }
+      ],
+      "card": [
+        "`COUNT(*)` counts rows; `COUNT(price)` counts values that are not `NULL`",
+        "`SUM(price)`, `AVG(price)`, `MIN(year)`, `MAX(year)`",
+        "Aggregates skip `NULL` values",
+        "`WHERE` filters the rows before the aggregate",
+        "`COUNT(DISTINCT genre)` counts different values"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "aggregates-1",
+          "prompt": "What does this query return?",
+          "code": "SELECT COUNT(*) FROM books WHERE genre = 'sci-fi';",
+          "answers": [
+            "2"
+          ],
+          "explain": "Two books have the genre `sci-fi`: `The Time Machine` and `The War of the Worlds`."
+        },
+        {
+          "type": "input",
+          "id": "aggregates-2",
+          "prompt": "What does this query return?",
+          "code": "SELECT MAX(year) FROM books;",
+          "answers": [
+            "1898"
+          ],
+          "explain": "`MAX` finds the largest year. The newest book is `The War of the Worlds` from 1898."
+        },
+        {
+          "type": "choice",
+          "id": "aggregates-3",
+          "prompt": "Which function calculates the average?",
+          "options": [
+            "`AVG`",
+            "`MEAN`",
+            "`AVERAGE`",
+            "`MID`"
+          ],
+          "answer": 0,
+          "explain": "In SQL, the average is `AVG`."
+        },
+        {
+          "type": "choice",
+          "id": "aggregates-4",
+          "prompt": "What does this query return?",
+          "code": "SELECT COUNT(price) FROM books;",
+          "options": [
+            "`6`",
+            "`7`",
+            "`0`",
+            "`47.25`"
+          ],
+          "answer": 0,
+          "explain": "`COUNT(price)` counts only the values that are not `NULL`. One of the seven books has no price."
+        },
+        {
+          "type": "gap",
+          "id": "aggregates-5",
+          "prompt": "Complete the query so it shows the total price of all novels.",
+          "code": "SELECT ___(price) FROM books WHERE genre = 'novel';",
+          "options": [
+            "SUM",
+            "COUNT",
+            "ADD",
+            "MAX"
+          ],
+          "answer": 0,
+          "explain": "`SUM` adds up the values. `COUNT` would count the rows, and `MAX` would find the largest price."
+        },
+        {
+          "type": "true_false",
+          "id": "aggregates-6",
+          "statement": "`AVG(price)` counts a missing price as `0`.",
+          "answer": false,
+          "explain": "Aggregate functions skip `NULL`. The average uses only the prices that exist."
+        },
+        {
+          "type": "blocks",
+          "id": "aggregates-7",
+          "prompt": "Build a query that shows the lowest price, with the column name `cheapest`.",
+          "tokens": [
+            "SELECT",
+            "MIN(price)",
+            "AS",
+            "cheapest",
+            "FROM",
+            "books;"
+          ],
+          "distractors": [
+            "LOW(price)",
+            "WHERE"
+          ],
+          "explain": "`MIN` finds the smallest value, and `AS` names the result column."
+        },
+        {
+          "type": "bug",
+          "id": "aggregates-8",
+          "prompt": "This query should show the price of the most expensive book. Which line has the bug?",
+          "lines": [
+            "SELECT",
+            "  MIN(price) AS most_expensive",
+            "FROM books;"
+          ],
+          "bug": 1,
+          "explain": "`MIN` finds the smallest value. For the most expensive book, write `MAX(price) AS most_expensive`."
+        },
+        {
+          "type": "pairs",
+          "id": "aggregates-9",
+          "prompt": "Match the function with its result.",
+          "pairs": [
+            [
+              "`COUNT(*)`",
+              "number of rows"
+            ],
+            [
+              "`SUM(x)`",
+              "total of all values"
+            ],
+            [
+              "`AVG(x)`",
+              "average"
+            ],
+            [
+              "`MIN(x)`",
+              "smallest value"
+            ],
+            [
+              "`MAX(x)`",
+              "largest value"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "aggregates-10",
+          "prompt": "Put the lines in order: count the books from before 1850 and show the oldest year.",
+          "lines": [
+            "SELECT",
+            "  COUNT(*) AS old_books,",
+            "  MIN(year) AS oldest",
+            "FROM books",
+            "WHERE year < 1850;"
+          ],
+          "explain": "The aggregates come after `SELECT`, separated by a comma. `WHERE` comes after `FROM` and filters the rows first."
+        },
+        {
+          "type": "input",
+          "id": "aggregates-11",
+          "prompt": "What does this query return? Write it as SQLite shows it.",
+          "code": "SELECT AVG(year) FROM books WHERE genre = 'novel';",
+          "answers": [
+            "1816.0",
+            "1816"
+          ],
+          "explain": "The two novels are from 1815 and 1817, so the average is 1816. `AVG` returns a decimal number, so SQLite shows `1816.0`."
+        },
+        {
+          "type": "true_false",
+          "id": "aggregates-12",
+          "statement": "This query returns exactly one row.",
+          "code": "SELECT SUM(price) FROM books WHERE genre = 'horror';",
+          "answer": true,
+          "explain": "Without `GROUP BY`, an aggregate function combines all matching rows into one row."
+        }
+      ]
+    },
+    {
+      "id": "grouping",
+      "title": "Grouping",
+      "chapter": "Calculating",
+      "summary": "Calculate aggregates for each group of rows with GROUP BY, and filter the groups with HAVING.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`GROUP BY genre` puts all rows with the same genre into one **group**. An aggregate function then works on each group separately. The result has one row per group."
+        },
+        {
+          "type": "code",
+          "code": "SELECT genre, COUNT(*) AS books\nFROM books\nGROUP BY genre\nORDER BY genre;",
+          "output": "+-----------+-------+\n|   genre   | books |\n+-----------+-------+\n| adventure |     1 |\n| horror    |     2 |\n| novel     |     2 |\n| sci-fi    |     2 |\n+-----------+-------+"
+        },
+        {
+          "type": "tip",
+          "md": "Without `ORDER BY`, the order of the groups is not guaranteed. Sort the result when the order matters."
+        },
+        {
+          "type": "text",
+          "md": "You can calculate several aggregates for each group. Here you see the oldest year and the average price of every genre. The average for `sci-fi` uses only one price, because the other one is `NULL`."
+        },
+        {
+          "type": "code",
+          "code": "SELECT genre, MIN(year) AS oldest, ROUND(AVG(price), 2) AS avg_price\nFROM books\nGROUP BY genre\nORDER BY genre;",
+          "output": "+-----------+--------+-----------+\n|   genre   | oldest | avg_price |\n+-----------+--------+-----------+\n| adventure |   1851 |     11.75 |\n| horror    |   1818 |      6.88 |\n| novel     |   1815 |      8.13 |\n| sci-fi    |   1895 |       5.5 |\n+-----------+--------+-----------+"
+        },
+        {
+          "type": "warning",
+          "md": "Every column in `SELECT` must either be in `GROUP BY` or be inside an aggregate function. `SELECT genre, title, COUNT(*) FROM books GROUP BY genre;` is an error in most databases, because a group has many titles. SQLite does not report this error, but the result is not useful."
+        },
+        {
+          "type": "text",
+          "md": "You can group by any column. This query counts the books of each author and sorts by the number of books first."
+        },
+        {
+          "type": "code",
+          "code": "SELECT author_id, COUNT(*) AS books\nFROM books\nGROUP BY author_id\nORDER BY books DESC, author_id;",
+          "output": "+-----------+-------+\n| author_id | books |\n+-----------+-------+\n|         1 |     2 |\n|         4 |     2 |\n|         2 |     1 |\n|         3 |     1 |\n|         5 |     1 |\n+-----------+-------+"
+        },
+        {
+          "type": "heading",
+          "text": "Filtering groups with HAVING"
+        },
+        {
+          "type": "text",
+          "md": "`WHERE` filters rows **before** they are grouped, so it cannot use aggregates. `HAVING` filters groups **after** grouping, so it can: `HAVING COUNT(*) > 1` keeps only the groups with more than one row."
+        },
+        {
+          "type": "code",
+          "code": "SELECT genre, COUNT(*) AS books\nFROM books\nGROUP BY genre\nHAVING COUNT(*) > 1\nORDER BY genre;",
+          "output": "+--------+-------+\n| genre  | books |\n+--------+-------+\n| horror |     2 |\n| novel  |     2 |\n| sci-fi |     2 |\n+--------+-------+"
+        },
+        {
+          "type": "text",
+          "md": "You can use `WHERE` and `HAVING` in the same query. Here `WHERE` first removes the books from 1890 and later. Then `GROUP BY` makes the groups, and `HAVING` keeps the genres with more than one of the remaining books."
+        },
+        {
+          "type": "code",
+          "code": "SELECT genre, COUNT(*) AS old_books\nFROM books\nWHERE year < 1890\nGROUP BY genre\nHAVING COUNT(*) > 1;",
+          "output": "+-------+-----------+\n| genre | old_books |\n+-------+-----------+\n| novel |         2 |\n+-------+-----------+"
+        },
+        {
+          "type": "tip",
+          "md": "The full order of a query is: `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `ORDER BY`, `LIMIT`."
+        }
+      ],
+      "card": [
+        "`GROUP BY genre` makes one row per genre",
+        "`SELECT genre, COUNT(*) FROM books GROUP BY genre;`",
+        "`HAVING COUNT(*) > 1` filters the groups",
+        "`WHERE` filters rows before grouping, `HAVING` after",
+        "Order: `WHERE`, `GROUP BY`, `HAVING`, `ORDER BY`, `LIMIT`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "grouping-1",
+          "prompt": "How many rows does this query return?",
+          "code": "SELECT genre, COUNT(*) FROM books GROUP BY genre;",
+          "answers": [
+            "4"
+          ],
+          "explain": "There are four different genres: `adventure`, `horror`, `novel` and `sci-fi`. Each group becomes one row."
+        },
+        {
+          "type": "choice",
+          "id": "grouping-2",
+          "prompt": "Which clause filters groups with an aggregate function like `COUNT(*)`?",
+          "options": [
+            "`HAVING`",
+            "`WHERE`",
+            "`ORDER BY`",
+            "`LIMIT`"
+          ],
+          "answer": 0,
+          "explain": "`HAVING` works after grouping, so it can use aggregates. `WHERE` works on single rows before grouping."
+        },
+        {
+          "type": "gap",
+          "id": "grouping-3",
+          "prompt": "Complete the query so it counts the books of each genre.",
+          "code": "SELECT genre, COUNT(*) FROM books ___ genre ORDER BY genre;",
+          "options": [
+            "GROUP BY",
+            "ORDER BY",
+            "SORT BY",
+            "HAVING"
+          ],
+          "answer": 0,
+          "explain": "`GROUP BY genre` makes one group for each genre, and `COUNT(*)` counts the rows of each group."
+        },
+        {
+          "type": "choice",
+          "id": "grouping-4",
+          "prompt": "Which genre is missing from the result?",
+          "code": "SELECT genre FROM books\nGROUP BY genre\nHAVING COUNT(*) >= 2\nORDER BY genre;",
+          "options": [
+            "`adventure`",
+            "`horror`",
+            "`novel`",
+            "`sci-fi`"
+          ],
+          "answer": 0,
+          "explain": "`adventure` has only one book (`Moby Dick`), so `HAVING COUNT(*) >= 2` removes this group."
+        },
+        {
+          "type": "true_false",
+          "id": "grouping-5",
+          "statement": "`WHERE COUNT(*) > 1` keeps only the groups with more than one row.",
+          "answer": false,
+          "explain": "`WHERE` runs before grouping and cannot use aggregates. Use `HAVING COUNT(*) > 1`."
+        },
+        {
+          "type": "blocks",
+          "id": "grouping-6",
+          "prompt": "Build a query that shows the newest year of each genre.",
+          "tokens": [
+            "SELECT",
+            "genre,",
+            "MAX(year)",
+            "FROM",
+            "books",
+            "GROUP BY",
+            "genre;"
+          ],
+          "distractors": [
+            "SORT BY",
+            "COUNT(*)"
+          ],
+          "explain": "The grouped column and the aggregate come after `SELECT`, and `GROUP BY` comes after `FROM`."
+        },
+        {
+          "type": "input",
+          "id": "grouping-7",
+          "prompt": "What does this query return?",
+          "code": "SELECT author_id FROM books\nGROUP BY author_id\nHAVING COUNT(*) = 2\nORDER BY author_id DESC\nLIMIT 1;",
+          "answers": [
+            "4"
+          ],
+          "explain": "Authors 1 and 4 have two books each. Sorted from large to small, `4` comes first, and `LIMIT 1` keeps it."
+        },
+        {
+          "type": "bug",
+          "id": "grouping-8",
+          "prompt": "This query should show the genres with an average price above 7. Which line has the bug?",
+          "lines": [
+            "SELECT genre, AVG(price) AS avg_price",
+            "FROM books",
+            "GROUP BY genre",
+            "WHERE AVG(price) > 7",
+            "ORDER BY genre;"
+          ],
+          "bug": 3,
+          "explain": "Groups are filtered with `HAVING`, not `WHERE`. Write `HAVING AVG(price) > 7`."
+        },
+        {
+          "type": "pairs",
+          "id": "grouping-9",
+          "prompt": "Match the clause with its job.",
+          "pairs": [
+            [
+              "`GROUP BY`",
+              "puts rows with equal values together"
+            ],
+            [
+              "`HAVING`",
+              "filters the groups"
+            ],
+            [
+              "`WHERE`",
+              "filters the rows before grouping"
+            ],
+            [
+              "`ORDER BY`",
+              "sorts the result"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "grouping-10",
+          "prompt": "Put the lines in order: for books after 1850, show the genres with more than one book.",
+          "lines": [
+            "SELECT genre, COUNT(*) AS books",
+            "FROM books",
+            "WHERE year > 1850",
+            "GROUP BY genre",
+            "HAVING COUNT(*) > 1",
+            "ORDER BY genre;"
+          ],
+          "explain": "The order is `SELECT`, `FROM`, `WHERE`, `GROUP BY`, `HAVING`, `ORDER BY`."
+        },
+        {
+          "type": "true_false",
+          "id": "grouping-11",
+          "statement": "A query with `GROUP BY genre` returns one row for each different genre.",
+          "answer": true,
+          "explain": "`GROUP BY` puts all rows with the same value into one group, and every group becomes one row."
+        },
+        {
+          "type": "input",
+          "id": "grouping-12",
+          "prompt": "What number does this query show for `horror`?",
+          "code": "SELECT genre, SUM(price)\nFROM books\nGROUP BY genre\nORDER BY genre;",
+          "answers": [
+            "13.75"
+          ],
+          "explain": "The horror books cost `7.5` and `6.25`, so the sum for this group is `13.75`."
+        }
+      ]
+    },
+    {
+      "id": "joins",
+      "title": "Joining tables",
+      "chapter": "Several tables",
+      "summary": "Add a second table for the authors and combine rows from both tables with INNER JOIN, LEFT JOIN and ON.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Data is often split over several tables, so nothing is stored twice. The column `author_id` in `books` contains a number. This number is the `id` of a row in a second table, `authors`. From this world on, the database has both tables."
+        },
+        {
+          "type": "code",
+          "code": "CREATE TABLE authors (\n  id INTEGER,\n  name TEXT,\n  country TEXT\n);\nINSERT INTO authors (id, name, country) VALUES\n  (1, 'Jane Austen', 'UK'),\n  (2, 'Bram Stoker', 'Ireland'),\n  (3, 'Mary Shelley', 'UK'),\n  (4, 'H. G. Wells', 'UK'),\n  (5, 'Herman Melville', 'USA'),\n  (6, 'Jules Verne', 'France');"
+        },
+        {
+          "type": "code",
+          "code": "SELECT * FROM authors ORDER BY id;",
+          "output": "+----+-----------------+---------+\n| id |      name       | country |\n+----+-----------------+---------+\n|  1 | Jane Austen     | UK      |\n|  2 | Bram Stoker     | Ireland |\n|  3 | Mary Shelley    | UK      |\n|  4 | H. G. Wells     | UK      |\n|  5 | Herman Melville | USA     |\n|  6 | Jules Verne     | France  |\n+----+-----------------+---------+"
+        },
+        {
+          "type": "heading",
+          "text": "INNER JOIN"
+        },
+        {
+          "type": "text",
+          "md": "`JOIN` combines the rows of two tables. After `ON` you write the condition that says which rows belong together: `books.author_id = authors.id`. Both tables have a column `id`, so you write the table name and a dot in front of the column name."
+        },
+        {
+          "type": "code",
+          "code": "SELECT books.title, authors.name\nFROM books\nINNER JOIN authors ON books.author_id = authors.id\nORDER BY books.title;",
+          "output": "+-----------------------+-----------------+\n|         title         |      name       |\n+-----------------------+-----------------+\n| Dracula               | Bram Stoker     |\n| Emma                  | Jane Austen     |\n| Frankenstein          | Mary Shelley    |\n| Moby Dick             | Herman Melville |\n| Persuasion            | Jane Austen     |\n| The Time Machine      | H. G. Wells     |\n| The War of the Worlds | H. G. Wells     |\n+-----------------------+-----------------+"
+        },
+        {
+          "type": "text",
+          "md": "Long table names make a query hard to read. Give each table a short alias with `AS`: after `FROM books AS b` you can write `b.title`. `JOIN` without a word in front means `INNER JOIN`. You can use `WHERE` and `ORDER BY` as usual."
+        },
+        {
+          "type": "code",
+          "code": "SELECT b.title, a.name, a.country\nFROM books AS b\nJOIN authors AS a ON b.author_id = a.id\nWHERE a.country = 'UK'\nORDER BY b.year;",
+          "output": "+-----------------------+--------------+---------+\n|         title         |     name     | country |\n+-----------------------+--------------+---------+\n| Emma                  | Jane Austen  | UK      |\n| Persuasion            | Jane Austen  | UK      |\n| Frankenstein          | Mary Shelley | UK      |\n| The Time Machine      | H. G. Wells  | UK      |\n| The War of the Worlds | H. G. Wells  | UK      |\n+-----------------------+--------------+---------+"
+        },
+        {
+          "type": "text",
+          "md": "`INNER JOIN` keeps only the rows that have a partner in the other table. Jules Verne has no book in `books`, so he never appears in an inner join."
+        },
+        {
+          "type": "heading",
+          "text": "LEFT JOIN"
+        },
+        {
+          "type": "text",
+          "md": "`LEFT JOIN` keeps **every** row of the left table, which is the table after `FROM`. When a row has no partner, the columns of the other table are `NULL`. Now Jules Verne appears, with an empty title."
+        },
+        {
+          "type": "code",
+          "code": "SELECT a.name, b.title\nFROM authors AS a\nLEFT JOIN books AS b ON b.author_id = a.id\nORDER BY a.name, b.title;",
+          "output": "+-----------------+-----------------------+\n|      name       |         title         |\n+-----------------+-----------------------+\n| Bram Stoker     | Dracula               |\n| H. G. Wells     | The Time Machine      |\n| H. G. Wells     | The War of the Worlds |\n| Herman Melville | Moby Dick             |\n| Jane Austen     | Emma                  |\n| Jane Austen     | Persuasion            |\n| Jules Verne     |                       |\n| Mary Shelley    | Frankenstein          |\n+-----------------+-----------------------+"
+        },
+        {
+          "type": "text",
+          "md": "Joins work together with `GROUP BY`. `COUNT(b.id)` counts only the rows with a book, so Jules Verne gets `0`. Grouping by `a.id` keeps two authors with the same name apart."
+        },
+        {
+          "type": "code",
+          "code": "SELECT a.name, COUNT(b.id) AS books\nFROM authors AS a\nLEFT JOIN books AS b ON b.author_id = a.id\nGROUP BY a.id, a.name\nORDER BY books DESC, a.name;",
+          "output": "+-----------------+-------+\n|      name       | books |\n+-----------------+-------+\n| H. G. Wells     |     2 |\n| Jane Austen     |     2 |\n| Bram Stoker     |     1 |\n| Herman Melville |     1 |\n| Mary Shelley    |     1 |\n| Jules Verne     |     0 |\n+-----------------+-------+"
+        }
+      ],
+      "card": [
+        "`FROM books JOIN authors ON books.author_id = authors.id`",
+        "`INNER JOIN` (or `JOIN`) keeps only rows with a partner",
+        "`LEFT JOIN` keeps every row of the left table; missing values are `NULL`",
+        "`FROM books AS b` lets you write `b.title`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "joins-1",
+          "prompt": "How many rows does this query return?",
+          "code": "SELECT b.title\nFROM books AS b\nJOIN authors AS a ON b.author_id = a.id\nWHERE a.name = 'Jane Austen';",
+          "answers": [
+            "2"
+          ],
+          "explain": "Jane Austen has two books in the table: `Emma` and `Persuasion`."
+        },
+        {
+          "type": "choice",
+          "id": "joins-2",
+          "prompt": "What does the condition after `ON` describe?",
+          "options": [
+            "which rows of the two tables belong together",
+            "the order of the result",
+            "which columns the result shows",
+            "the name of a new table"
+          ],
+          "answer": 0,
+          "explain": "The `ON` condition connects the rows, here a book with its author."
+        },
+        {
+          "type": "gap",
+          "id": "joins-3",
+          "prompt": "Complete the query so it shows each book with its author.",
+          "code": "SELECT b.title, a.name\nFROM books AS b\nJOIN authors AS a ___ b.author_id = a.id;",
+          "options": [
+            "ON",
+            "BY",
+            "IF",
+            "WITH"
+          ],
+          "answer": 0,
+          "explain": "The join condition always comes after `ON`."
+        },
+        {
+          "type": "choice",
+          "id": "joins-4",
+          "prompt": "How many rows does this query return?",
+          "code": "SELECT a.name, b.title\nFROM authors AS a\nLEFT JOIN books AS b ON b.author_id = a.id;",
+          "options": [
+            "`8`",
+            "`7`",
+            "`6`",
+            "`42`"
+          ],
+          "answer": 0,
+          "explain": "All 7 books have an author, and `LEFT JOIN` adds one more row for Jules Verne, who has no book."
+        },
+        {
+          "type": "true_false",
+          "id": "joins-5",
+          "statement": "With `INNER JOIN`, an author without books still appears in the result.",
+          "answer": false,
+          "explain": "`INNER JOIN` keeps only rows with a partner. Use `LEFT JOIN` to keep every author."
+        },
+        {
+          "type": "blocks",
+          "id": "joins-6",
+          "prompt": "Build a query that shows each title with the name of its author.",
+          "tokens": [
+            "SELECT",
+            "books.title,",
+            "authors.name",
+            "FROM",
+            "books",
+            "JOIN",
+            "authors",
+            "ON",
+            "books.author_id = authors.id;"
+          ],
+          "distractors": [
+            "IF",
+            "BY"
+          ],
+          "explain": "`JOIN` names the second table, and `ON` gives the condition that connects the rows."
+        },
+        {
+          "type": "bug",
+          "id": "joins-7",
+          "prompt": "This query should list every author, also authors without books. Which line has the bug?",
+          "lines": [
+            "SELECT a.name, b.title",
+            "FROM authors AS a",
+            "INNER JOIN books AS b",
+            "  ON b.author_id = a.id",
+            "ORDER BY a.name;"
+          ],
+          "bug": 2,
+          "explain": "`INNER JOIN` drops authors without books. Write `LEFT JOIN books AS b`."
+        },
+        {
+          "type": "input",
+          "id": "joins-8",
+          "prompt": "What does this query return?",
+          "code": "SELECT a.country\nFROM books AS b\nJOIN authors AS a ON b.author_id = a.id\nWHERE b.title = 'Dracula';",
+          "answers": [
+            "Ireland"
+          ],
+          "explain": "`Dracula` has the `author_id` 2. In `authors`, the row with `id` 2 is Bram Stoker from Ireland."
+        },
+        {
+          "type": "pairs",
+          "id": "joins-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`INNER JOIN`",
+              "only rows with a partner in both tables"
+            ],
+            [
+              "`LEFT JOIN`",
+              "every row of the left table"
+            ],
+            [
+              "`ON`",
+              "the join condition"
+            ],
+            [
+              "`b.title`",
+              "the column title of the table with the alias b"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "joins-10",
+          "prompt": "Put the lines in order: show each book with its author, sorted by title.",
+          "lines": [
+            "SELECT b.title, a.name",
+            "FROM books AS b",
+            "JOIN authors AS a",
+            "  ON b.author_id = a.id",
+            "ORDER BY b.title;"
+          ],
+          "explain": "The first table comes after `FROM`, the second after `JOIN`, then `ON` with the condition, and `ORDER BY` at the end."
+        },
+        {
+          "type": "input",
+          "id": "joins-11",
+          "prompt": "What does this query return?",
+          "code": "SELECT a.name\nFROM authors AS a\nLEFT JOIN books AS b ON b.author_id = a.id\nWHERE b.id IS NULL;",
+          "answers": [
+            "Jules Verne"
+          ],
+          "explain": "`LEFT JOIN` keeps every author. For an author without a book, `b.id` is `NULL`, and only Jules Verne has no book."
+        },
+        {
+          "type": "true_false",
+          "id": "joins-12",
+          "statement": "This query returns 3 rows, one for each author from the UK.",
+          "code": "SELECT b.title\nFROM books AS b\nJOIN authors AS a ON b.author_id = a.id\nWHERE a.country = 'UK';",
+          "answer": false,
+          "explain": "The join makes one row per book. The three authors from the UK have five books, so the query returns 5 rows."
+        }
+      ]
+    },
+    {
+      "id": "changing",
+      "title": "Changing data and tables",
+      "chapter": "Changing data",
+      "summary": "Add, change and delete rows with INSERT, UPDATE and DELETE, and create tables with PRIMARY KEY and NOT NULL.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "So far you have only read data. `INSERT INTO` adds a new row. After the table name, list the columns in parentheses, and after `VALUES`, the values in the same order. Every example in this world starts again from the original tables."
+        },
+        {
+          "type": "code",
+          "code": "INSERT INTO books (id, title, author_id, genre, year, price)\nVALUES (8, 'Michael Strogoff', 6, 'adventure', 1876, 9.5);\nSELECT title, year FROM books WHERE author_id = 6;",
+          "output": "+------------------+------+\n|      title       | year |\n+------------------+------+\n| Michael Strogoff | 1876 |\n+------------------+------+"
+        },
+        {
+          "type": "text",
+          "md": "The columns you leave out get `NULL`. You can add several rows at once: separate them with commas after `VALUES`, like the course did when it created the `books` table."
+        },
+        {
+          "type": "code",
+          "code": "INSERT INTO books (id, title) VALUES (8, 'Kipps');\nSELECT * FROM books WHERE id = 8;",
+          "output": "+----+-------+-----------+-------+------+-------+\n| id | title | author_id | genre | year | price |\n+----+-------+-----------+-------+------+-------+\n|  8 | Kipps |           |       |      |       |\n+----+-------+-----------+-------+------+-------+"
+        },
+        {
+          "type": "heading",
+          "text": "Changing rows with UPDATE"
+        },
+        {
+          "type": "text",
+          "md": "`UPDATE` changes existing rows. `SET` says which column gets which new value, and `WHERE` says which rows change. The new value can be a calculation, like `price + 1`."
+        },
+        {
+          "type": "code",
+          "code": "UPDATE books SET price = 6.99 WHERE id = 6;\nUPDATE books SET price = price + 1 WHERE genre = 'horror';\nSELECT title, price FROM books WHERE year > 1890 ORDER BY id;",
+          "output": "+-----------------------+-------+\n|         title         | price |\n+-----------------------+-------+\n| Dracula               |   8.5 |\n| The Time Machine      |   5.5 |\n| The War of the Worlds |  6.99 |\n+-----------------------+-------+"
+        },
+        {
+          "type": "warning",
+          "md": "Without `WHERE`, `UPDATE` and `DELETE` change **every row** of the table. Before you run them, test the condition with a `SELECT` that uses the same `WHERE`."
+        },
+        {
+          "type": "heading",
+          "text": "Deleting rows with DELETE"
+        },
+        {
+          "type": "code",
+          "code": "DELETE FROM books WHERE year < 1850;\nSELECT COUNT(*) AS books_left FROM books;",
+          "output": "+------------+\n| books_left |\n+------------+\n|          4 |\n+------------+"
+        },
+        {
+          "type": "heading",
+          "text": "Creating tables"
+        },
+        {
+          "type": "text",
+          "md": "`CREATE TABLE` creates a table. For each column you write a name and a type: `INTEGER` for whole numbers, `REAL` for decimal numbers and `TEXT` for text. `PRIMARY KEY` marks the column that identifies every row, so its values must be different. `NOT NULL` means the column must always have a value. In SQLite, an `INTEGER PRIMARY KEY` gets the next number automatically when you leave it out; other databases use words like `AUTO_INCREMENT` or `GENERATED ALWAYS AS IDENTITY` for this."
+        },
+        {
+          "type": "code",
+          "code": "CREATE TABLE members (\n  id INTEGER PRIMARY KEY,\n  name TEXT NOT NULL,\n  email TEXT\n);\nINSERT INTO members (name, email) VALUES ('Ana', 'ana@example.com');\nINSERT INTO members (name) VALUES ('Ben');\nSELECT * FROM members ORDER BY id;",
+          "output": "+----+------+-----------------+\n| id | name |      email      |\n+----+------+-----------------+\n|  1 | Ana  | ana@example.com |\n|  2 | Ben  |                 |\n+----+------+-----------------+"
+        },
+        {
+          "type": "text",
+          "md": "The rules protect your data. If you insert a member without a name, the database refuses with the error `NOT NULL constraint failed: members.name`. If you insert a second row with the same `id`, the error is `UNIQUE constraint failed: members.id`."
+        }
+      ],
+      "card": [
+        "`INSERT INTO books (id, title) VALUES (8, 'Kipps');`",
+        "`UPDATE books SET price = 6.99 WHERE id = 6;`",
+        "`DELETE FROM books WHERE year < 1850;`",
+        "Without `WHERE`, `UPDATE` and `DELETE` change every row",
+        "`id INTEGER PRIMARY KEY`, `name TEXT NOT NULL`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "changing-1",
+          "prompt": "What does the `SELECT` return?",
+          "code": "UPDATE books SET price = price + 1 WHERE id = 3;\nSELECT price FROM books WHERE id = 3;",
+          "answers": [
+            "7.25"
+          ],
+          "explain": "The book with `id` 3 costs `6.25`. The `UPDATE` adds `1`, so the new price is `7.25`."
+        },
+        {
+          "type": "input",
+          "id": "changing-2",
+          "prompt": "What does the `SELECT` return?",
+          "code": "DELETE FROM books WHERE genre = 'horror';\nSELECT COUNT(*) FROM books;",
+          "answers": [
+            "5"
+          ],
+          "explain": "The two horror books are deleted, so 5 of the 7 books are left."
+        },
+        {
+          "type": "choice",
+          "id": "changing-3",
+          "prompt": "Which statement adds a new row to a table?",
+          "options": [
+            "`INSERT INTO`",
+            "`UPDATE`",
+            "`CREATE TABLE`",
+            "`ADD ROW`"
+          ],
+          "answer": 0,
+          "explain": "`INSERT INTO` adds rows. `UPDATE` changes existing rows, and `CREATE TABLE` creates a new table."
+        },
+        {
+          "type": "gap",
+          "id": "changing-4",
+          "prompt": "Complete the statement so it changes the price of the book with `id` 1.",
+          "code": "UPDATE books ___ price = 9.99 WHERE id = 1;",
+          "options": [
+            "SET",
+            "VALUES",
+            "TO",
+            "WITH"
+          ],
+          "answer": 0,
+          "explain": "`UPDATE` uses `SET` to give a column its new value."
+        },
+        {
+          "type": "true_false",
+          "id": "changing-5",
+          "statement": "`DELETE FROM books;` without `WHERE` deletes every row of the table.",
+          "answer": true,
+          "explain": "Without `WHERE`, the statement applies to all rows. The table itself stays, but it is empty."
+        },
+        {
+          "type": "choice",
+          "id": "changing-6",
+          "prompt": "What happens when you run this code?",
+          "code": "CREATE TABLE members (\n  id INTEGER PRIMARY KEY,\n  name TEXT NOT NULL\n);\nINSERT INTO members (id) VALUES (1);",
+          "options": [
+            "an error, because `name` must not be `NULL`",
+            "a row with an empty `name` is added",
+            "a row with the name `1` is added",
+            "the table is deleted"
+          ],
+          "answer": 0,
+          "explain": "The column `name` is `NOT NULL`, but the `INSERT` gives it no value. The database refuses the row."
+        },
+        {
+          "type": "blocks",
+          "id": "changing-7",
+          "prompt": "Build a statement that deletes the book with `id` 7.",
+          "tokens": [
+            "DELETE",
+            "FROM",
+            "books",
+            "WHERE",
+            "id",
+            "=",
+            "7;"
+          ],
+          "distractors": [
+            "*",
+            "SET"
+          ],
+          "explain": "`DELETE FROM` names the table, and `WHERE` chooses the row. There is no `*` in `DELETE`."
+        },
+        {
+          "type": "bug",
+          "id": "changing-8",
+          "prompt": "This code should create a table and add one row. Which line has the bug?",
+          "lines": [
+            "CREATE TABLE genres (",
+            "  id INTEGER PRIMARY KEY,",
+            "  name TEXT NOT NULL",
+            ");",
+            "INSERT INTO genres (id, name)",
+            "VALUES (1, horror);"
+          ],
+          "bug": 5,
+          "explain": "Text values need single quotes. Write `VALUES (1, 'horror');`."
+        },
+        {
+          "type": "pairs",
+          "id": "changing-9",
+          "prompt": "Match the code with what it does.",
+          "pairs": [
+            [
+              "`INSERT INTO`",
+              "adds rows"
+            ],
+            [
+              "`UPDATE`",
+              "changes rows"
+            ],
+            [
+              "`DELETE FROM`",
+              "removes rows"
+            ],
+            [
+              "`CREATE TABLE`",
+              "creates a new table"
+            ],
+            [
+              "`PRIMARY KEY`",
+              "identifies every row"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "changing-10",
+          "prompt": "Put the lines in order: create the table, add a row and show the table.",
+          "lines": [
+            "CREATE TABLE shelves (",
+            "  id INTEGER PRIMARY KEY,",
+            "  label TEXT NOT NULL",
+            ");",
+            "INSERT INTO shelves (label) VALUES ('A');",
+            "SELECT * FROM shelves;"
+          ],
+          "explain": "A table must exist before you can insert rows, and the rows must exist before you can see them."
+        },
+        {
+          "type": "true_false",
+          "id": "changing-11",
+          "statement": "After this code, the book with `id` 2 still costs `7.5`.",
+          "code": "UPDATE books SET price = 5;\nSELECT price FROM books WHERE id = 2;",
+          "answer": false,
+          "explain": "The `UPDATE` has no `WHERE`, so it sets the price of every book to `5`."
+        },
+        {
+          "type": "input",
+          "id": "changing-12",
+          "prompt": "What does the `SELECT` return?",
+          "code": "INSERT INTO books (id, title) VALUES (8, 'Kipps');\nSELECT COUNT(price) FROM books;",
+          "answers": [
+            "6"
+          ],
+          "explain": "The new row has no price, so its `price` is `NULL`. `COUNT(price)` skips `NULL` values: 6 of the now 8 books have a price."
+        }
+      ]
+    }
+  ]
+}

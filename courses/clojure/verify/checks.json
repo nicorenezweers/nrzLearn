@@ -1,0 +1,325 @@
+{
+  "hello-1": {
+    "out": "9"
+  },
+  "hello-2": {
+    "out": "15"
+  },
+  "hello-3": {
+    "out": "abc12"
+  },
+  "hello-4": {
+    "extra": [
+      {
+        "src": "(println (+ 5 3))",
+        "out": "8"
+      },
+      {
+        "src": "(println (5 + 3))",
+        "err": true
+      },
+      {
+        "src": "(println +(5 3))",
+        "err": true
+      },
+      {
+        "src": "(println (5 3 +))",
+        "err": true
+      }
+    ]
+  },
+  "hello-5": {
+    "out": "a b\nc"
+  },
+  "hello-6": {
+    "out": "HelloAda"
+  },
+  "hello-7": {
+    "out": "10"
+  },
+  "hello-8": {
+    "out": "Hi, Bo"
+  },
+  "hello-9": {
+    "tpl": "{{CODE}}",
+    "out": "20"
+  },
+  "hello-10": {
+    "out": "Start\n6\nEnd"
+  },
+  "hello-12": {
+    "fix": "(println (+ 2 3))",
+    "out": "Start\n5\nEnd"
+  },
+  "values-1": {
+    "out": "3"
+  },
+  "values-2": {
+    "out": "3/2"
+  },
+  "values-3": {
+    "out": "2"
+  },
+  "values-4": {
+    "out": "15"
+  },
+  "values-5": {
+    "extra": [
+      {
+        "src": "(println (keyword? :size) (keyword? \"size\"))",
+        "out": "true false"
+      }
+    ]
+  },
+  "values-6": {
+    "out": "\"pear\""
+  },
+  "values-7": {
+    "out": "2.5"
+  },
+  "values-8": {
+    "out": "Total: 5"
+  },
+  "values-9": {
+    "tpl": "{{CODE}}\n(println city)",
+    "out": "Rome"
+  },
+  "values-10": {
+    "out": "Area: 12"
+  },
+  "values-12": {
+    "fix": "(def people 700000)",
+    "out": "Oslo 700000"
+  },
+  "functions-1": {
+    "out": "21"
+  },
+  "functions-2": {
+    "out": "-7"
+  },
+  "functions-3": {
+    "out": "9/2"
+  },
+  "functions-4": {
+    "out": "x is 2\n3"
+  },
+  "functions-5": {
+    "extra": [
+      {
+        "src": "(println (#(+ % 10) 5) ((fn [x] (+ x 10)) 5))",
+        "out": "15 15"
+      },
+      {
+        "src": "(println ((fn x (+ x 10)) 5))",
+        "err": true
+      },
+      {
+        "src": "(println ((defn [x] (+ x 10)) 5))",
+        "err": true
+      },
+      {
+        "src": "(println ((fn [x] + x 10) 5))",
+        "out": "10"
+      }
+    ]
+  },
+  "functions-6": {
+    "out": "Hello!"
+  },
+  "functions-7": {
+    "out": "27"
+  },
+  "functions-8": {
+    "out": "15"
+  },
+  "functions-9": {
+    "tpl": "{{CODE}}\n(println (add-two 5))",
+    "out": "7"
+  },
+  "functions-10": {
+    "out": "9 10"
+  },
+  "functions-12": {
+    "fix": "(defn square [x]",
+    "out": "16\n25"
+  },
+  "conditions-1": {
+    "out": "small"
+  },
+  "conditions-2": {
+    "out": "zero"
+  },
+  "conditions-3": {
+    "out": "false"
+  },
+  "conditions-4": {
+    "out": "yes"
+  },
+  "conditions-5": {
+    "out": "medium"
+  },
+  "conditions-6": {
+    "out": "true"
+  },
+  "conditions-7": {
+    "out": "adult adult child"
+  },
+  "conditions-8": {
+    "out": "true"
+  },
+  "conditions-9": {
+    "tpl": "(def n -3)\n(println {{CODE}})",
+    "out": "yes"
+  },
+  "conditions-10": {
+    "out": "Fizz FizzBuzz 7"
+  },
+  "conditions-12": {
+    "fix": "(when (> score 50)",
+    "out": "pass\nwell done"
+  },
+  "collections-1": {
+    "out": "30"
+  },
+  "collections-2": {
+    "out": "5"
+  },
+  "collections-3": {
+    "out": "(0 1 2)"
+  },
+  "collections-4": {
+    "out": "3"
+  },
+  "collections-5": {
+    "out": "[1 2 3]"
+  },
+  "collections-6": {
+    "out": "Bo"
+  },
+  "collections-7": {
+    "out": "[a b c]"
+  },
+  "collections-8": {
+    "tpl": "(def item {:name \"pen\"})\n(println {{CODE}})",
+    "out": "0"
+  },
+  "collections-9": {
+    "out": "1 2"
+  },
+  "collections-11": {
+    "fix": "(println (get fruits 1))",
+    "out": "3\npear"
+  },
+  "collections-12": {
+    "fix": "(def point {:x 3 :y 4})",
+    "out": "3\n2"
+  },
+  "sequences-1": {
+    "out": "(10 20 30)"
+  },
+  "sequences-2": {
+    "out": "10"
+  },
+  "sequences-3": {
+    "out": "(1 3 5)"
+  },
+  "sequences-4": {
+    "out": "(2 3 4 5)"
+  },
+  "sequences-5": {
+    "out": "(0 1 2)"
+  },
+  "sequences-6": {
+    "out": "(3 5)"
+  },
+  "sequences-7": {
+    "out": "24"
+  },
+  "sequences-8": {
+    "tpl": "(println {{CODE}})",
+    "out": "(0 2 4)"
+  },
+  "sequences-9": {
+    "out": "24"
+  },
+  "sequences-11": {
+    "fix": "(println (filter even? [1 2 3 4]))",
+    "out": "(1 4 9)\n(2 4)\n6"
+  },
+  "sequences-12": {
+    "fix": "(def nums (range 1 6))",
+    "out": "15"
+  },
+  "recursion-1": {
+    "out": "21"
+  },
+  "recursion-2": {
+    "out": "10"
+  },
+  "recursion-3": {
+    "out": "3\n5"
+  },
+  "recursion-4": {
+    "out": "[0 1 4]"
+  },
+  "recursion-5": {
+    "err": true
+  },
+  "recursion-6": {
+    "out": "24"
+  },
+  "recursion-7": {
+    "out": "5\n3\n1"
+  },
+  "recursion-8": {
+    "tpl": "(println {{CODE}})",
+    "out": "20"
+  },
+  "recursion-9": {
+    "out": "32"
+  },
+  "recursion-11": {
+    "fix": "  (let [half (/ n 2)]",
+    "out": "9 / 2 = 9/2"
+  },
+  "recursion-12": {
+    "fix": "    (* n (factorial (dec n)))))",
+    "out": "120"
+  },
+  "maps-1": {
+    "out": "5"
+  },
+  "maps-2": {
+    "out": "20"
+  },
+  "maps-3": {
+    "out": "{:name \"Li\"}"
+  },
+  "maps-4": {
+    "out": "{:n 20}"
+  },
+  "maps-5": {
+    "out": "{:a 1, :b 2}"
+  },
+  "maps-6": {
+    "out": "{:owner \"Sam\", :balance 150}"
+  },
+  "maps-7": {
+    "out": "Item: Lamp"
+  },
+  "maps-8": {
+    "tpl": "(def m {:size 2})\n(prn {{CODE}})",
+    "out": "{:size 2, :color \"red\"}"
+  },
+  "maps-9": {
+    "out": "{:price 20}"
+  },
+  "maps-11": {
+    "fix": "(def updated (-> item (assoc :price 3)))",
+    "out": "3"
+  },
+  "maps-12": {
+    "fix": "(let [{:keys [x y]} point]",
+    "out": "9"
+  }
+}

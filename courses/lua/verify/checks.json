@@ -1,0 +1,371 @@
+{
+  "hello-2": {
+    "out": "11"
+  },
+  "hello-3": {
+    "out": "3.0"
+  },
+  "hello-4": {
+    "out": "2"
+  },
+  "hello-5": {
+    "out": "3",
+    "claim": "3"
+  },
+  "hello-6": {
+    "out": "Hello, Lua!"
+  },
+  "hello-8": {
+    "out": "10"
+  },
+  "hello-9": {
+    "out": "Ready\nSet\nGo!"
+  },
+  "hello-10": {
+    "fix": "print(\"Lua\")",
+    "out": "Hello\nLua\nBye"
+  },
+  "hello-11": {
+    "out": "4.0"
+  },
+  "hello-12": {
+    "out": "10",
+    "claim": "20"
+  },
+  "variables-1": {
+    "out": "7"
+  },
+  "variables-2": {
+    "out": "string"
+  },
+  "variables-3": {
+    "extra": [
+      {
+        "src": "local x\nprint(x)",
+        "out": "nil"
+      }
+    ]
+  },
+  "variables-4": {
+    "out": "Rome"
+  },
+  "variables-5": {
+    "out": "5"
+  },
+  "variables-7": {
+    "post": "print(total)",
+    "out": "100"
+  },
+  "variables-8": {
+    "fix": "local total = price + tax",
+    "out": "15"
+  },
+  "variables-9": {
+    "out": "nil"
+  },
+  "variables-10": {
+    "out": "12"
+  },
+  "variables-11": {
+    "out": "12"
+  },
+  "variables-12": {
+    "out": "1",
+    "claim": "2"
+  },
+  "strings-1": {
+    "out": "sunflower"
+  },
+  "strings-2": {
+    "out": "6"
+  },
+  "strings-3": {
+    "out": "ell"
+  },
+  "strings-4": {
+    "out": "HELLO"
+  },
+  "strings-5": {
+    "out": "lua",
+    "claim": "LUA"
+  },
+  "strings-7": {
+    "pre": "local word = \"ha\"",
+    "out": "hahaha"
+  },
+  "strings-8": {
+    "out": "Hi, Sam!"
+  },
+  "strings-9": {
+    "fix": "local first = string.sub(word, 1, 1)",
+    "out": "L"
+  },
+  "strings-10": {
+    "out": "2 + 3 = 5"
+  },
+  "strings-11": {
+    "out": "33"
+  },
+  "strings-12": {
+    "fix": "local text = string.format(\"Price: %.2f\", price)",
+    "out": "Price: 4.50"
+  },
+  "conditions-1": {
+    "out": "odd"
+  },
+  "conditions-2": {
+    "out": "false"
+  },
+  "conditions-3": {
+    "out": "not equal"
+  },
+  "conditions-4": {
+    "extra": [
+      {
+        "src": "if 0 then\n    print(\"true\")\nelse\n    print(\"false\")\nend",
+        "out": "true"
+      }
+    ]
+  },
+  "conditions-5": {
+    "out": "mild"
+  },
+  "conditions-7": {
+    "out": "big"
+  },
+  "conditions-8": {
+    "fix": "if age >= 18 then",
+    "out": "adult"
+  },
+  "conditions-9": {
+    "out": "guest"
+  },
+  "conditions-10": {
+    "pre": "local x = 5",
+    "post": "    print(\"yes\")\nend",
+    "out": "yes"
+  },
+  "conditions-11": {
+    "out": "true",
+    "claim": "true"
+  },
+  "conditions-12": {
+    "fix": "if n == 0 then",
+    "out": "zero"
+  },
+  "loops-1": {
+    "out": "15"
+  },
+  "loops-2": {
+    "out": "Hi\nHi\nHi\nHi"
+  },
+  "loops-3": {
+    "out": "5\n4\n3\n2\n1"
+  },
+  "loops-4": {
+    "extra": [
+      {
+        "src": "local n = 10\nrepeat\n    print(n)\nuntil true",
+        "out": "10"
+      }
+    ]
+  },
+  "loops-5": {
+    "out": "6"
+  },
+  "loops-6": {
+    "out": "1\n2\n3"
+  },
+  "loops-7": {
+    "fix": "    i = i + 1",
+    "out": "1\n2\n3\n4\n5"
+  },
+  "loops-9": {
+    "post": "    print(i)\nend",
+    "out": "0\n5\n10"
+  },
+  "loops-10": {
+    "out": "15"
+  },
+  "loops-11": {
+    "out": "3"
+  },
+  "loops-12": {
+    "out": "nil",
+    "claim": "3"
+  },
+  "functions-1": {
+    "out": "10"
+  },
+  "functions-2": {
+    "out": "nil"
+  },
+  "functions-3": {
+    "out": "8"
+  },
+  "functions-4": {
+    "out": "3",
+    "claim": "3"
+  },
+  "functions-5": {
+    "out": "12"
+  },
+  "functions-6": {
+    "fix": "    return n * n",
+    "out": "25"
+  },
+  "functions-7": {
+    "out": "9"
+  },
+  "functions-9": {
+    "post": "    return a + b\nend\n\nprint(add(2, 3))",
+    "out": "5"
+  },
+  "functions-10": {
+    "out": "3"
+  },
+  "functions-11": {
+    "out": "21"
+  },
+  "functions-12": {
+    "fix": "greet(\"Max\")",
+    "out": "Hi, Max"
+  },
+  "tables-1": {
+    "out": "10"
+  },
+  "tables-2": {
+    "out": "4"
+  },
+  "tables-3": {
+    "extra": [
+      {
+        "src": "local t = {\"x\", \"y\"}\nprint(t[1])\nprint(t[0])",
+        "out": "x\nnil"
+      }
+    ]
+  },
+  "tables-4": {
+    "out": "Ana\nBen"
+  },
+  "tables-5": {
+    "out": "z-x-y"
+  },
+  "tables-7": {
+    "pre": "local list = {\"eggs\"}",
+    "post": "print(table.concat(list, \", \"))",
+    "out": "eggs, milk"
+  },
+  "tables-8": {
+    "out": "60"
+  },
+  "tables-9": {
+    "fix": "local last = fruits[#fruits]",
+    "out": "plum"
+  },
+  "tables-10": {
+    "out": "5"
+  },
+  "tables-11": {
+    "out": "32"
+  },
+  "tables-12": {
+    "fix": "table.insert(letters, \"c\")",
+    "out": "a, b, c"
+  },
+  "objects-1": {
+    "out": "2021"
+  },
+  "objects-2": {
+    "out": "2"
+  },
+  "objects-4": {
+    "out": "Ana"
+  },
+  "objects-5": {
+    "out": "10"
+  },
+  "objects-7": {
+    "pre": "local bot = {name = \"Robo\"}\n\nfunction bot:greet()\n    print(\"I am \" .. self.name)\nend\n",
+    "out": "I am Robo"
+  },
+  "objects-8": {
+    "fix": "counter:add(5)",
+    "out": "15"
+  },
+  "objects-9": {
+    "out": "Hi, I am Lia"
+  },
+  "objects-10": {
+    "out": "6"
+  },
+  "objects-11": {
+    "out": "LUA!"
+  },
+  "objects-12": {
+    "out": "2",
+    "claim": "2"
+  },
+  "_facts": [
+    {
+      "what": "strings tip: # counts bytes",
+      "src": "print(#\"é\")\nprint(#\"ü\")",
+      "out": "2\n2"
+    },
+    {
+      "what": "objects warning: # of a key-only table",
+      "src": "local t = {name = \"Ana\", age = 30}\nprint(#t)",
+      "out": "0"
+    },
+    {
+      "what": "strings tip: s:upper() and s:sub()",
+      "src": "local s = \"hello\"\nprint(s:upper() == string.upper(s))\nprint(s:sub(1, 3) == string.sub(s, 1, 3))",
+      "out": "true\ntrue"
+    },
+    {
+      "what": "conditions tip: or as default",
+      "src": "local name\nprint(name or \"guest\")\nname = \"Ana\"\nprint(name or \"guest\")",
+      "out": "guest\nAna"
+    },
+    {
+      "what": "conditions: empty string counts as true",
+      "src": "if \"\" then\n    print(\"yes\")\nend",
+      "out": "yes"
+    },
+    {
+      "what": "variables warning: without local, a global",
+      "src": "local function f()\n    g = 1\nend\nf()\nprint(g)",
+      "out": "1"
+    },
+    {
+      "what": "variables: unknown names are nil",
+      "src": "print(unknown)",
+      "out": "nil"
+    },
+    {
+      "what": "variables: names cannot start with a digit",
+      "src": "local 1x = 2",
+      "err": true
+    },
+    {
+      "what": "variables: keywords cannot be names",
+      "src": "local end = 2",
+      "err": true
+    },
+    {
+      "what": "loops: break continues after end; while checks first",
+      "src": "local n = 10\nwhile n < 5 do\n    print(n)\nend\nprint(\"after\")",
+      "out": "after"
+    },
+    {
+      "what": "tables: print(t) shows table and an address",
+      "src": "local s = tostring({})\nprint(s:sub(1, 7))",
+      "out": "table: "
+    },
+    {
+      "what": "functions: missing parameters are nil",
+      "src": "local function f(a, b)\n    print(b)\nend\nf(1)",
+      "out": "nil"
+    }
+  ]
+}

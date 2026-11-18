@@ -1,0 +1,33 @@
+[package]
+name = "nrzlearn"
+version = "1.0.0"
+edition = "2024"
+publish = false
+license = "MIT"
+
+[dependencies]
+nrzlearn-model = { path = "model" }
+dioxus = { version = "=0.7.10", features = ["router", "web"] }
+icons = { version = "0.18", features = ["dioxus"] }
+tw_merge = "0.1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+gloo-net = { version = "0.6", default-features = false, features = ["http", "json"] }
+gloo-timers = { version = "0.3", features = ["futures"] }
+js-sys = "0.3"
+web-sys = { version = "0.3", features = ["Window", "Storage", "MediaQueryList", "Navigator", "Location"] }
+
+[build-dependencies]
+nrzlearn-model = { path = "model" }
+serde_json = "1"
+
+[workspace]
+members = ["server", "model", "site"]
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+
+[profile.release.package.nrzlearn-server]
+opt-level = 3

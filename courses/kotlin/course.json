@@ -1,0 +1,1977 @@
+{
+  "course": "kotlin",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Kotlin",
+      "chapter": "First steps",
+      "summary": "Write your first Kotlin program with fun main and println, and print text and numbers.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Every Kotlin program starts in a function called `main`. You write it as `fun main()`, followed by curly braces `{ }`. The code between the braces runs from top to bottom."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    println(\"Hello, Kotlin!\")\n}",
+          "output": "Hello, Kotlin!"
+        },
+        {
+          "type": "text",
+          "md": "`println` prints a value and then starts a new line. Text in double quotes, like `\"Hello\"`, is called a **string**. You do not need a semicolon at the end of a line."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    println(\"One\")\n    println(\"Two\")\n    println(\"Three\")\n}",
+          "output": "One\nTwo\nThree"
+        },
+        {
+          "type": "heading",
+          "text": "print and println"
+        },
+        {
+          "type": "text",
+          "md": "`print` prints without starting a new line. The next output continues on the same line. A `println` ends the line."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    print(\"Hello, \")\n    print(\"world\")\n    println(\"!\")\n    println(\"Next line\")\n}",
+          "output": "Hello, world!\nNext line"
+        },
+        {
+          "type": "heading",
+          "text": "Numbers"
+        },
+        {
+          "type": "text",
+          "md": "Numbers do not need quotes. Kotlin calculates with `+`, `-`, `*` and `/`. It calculates the result first and then prints it. As in mathematics, `*` and `/` come before `+` and `-`, and parentheses come first."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    println(2 + 3)\n    println(10 - 4)\n    println(6 * 7)\n    println(2 + 3 * 4)\n    println((2 + 3) * 4)\n}",
+          "output": "5\n6\n42\n14\n20"
+        },
+        {
+          "type": "text",
+          "md": "When you divide two whole numbers with `/`, Kotlin drops the rest: `7 / 2` is `3`. The operator `%` gives you the rest of a division. Write `7.0 / 2` to get `3.5`."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    println(7 / 2)\n    println(7 % 2)\n    println(7.0 / 2)\n}",
+          "output": "3\n1\n3.5"
+        },
+        {
+          "type": "warning",
+          "md": "`\"5\"` with quotes is a string, `5` without quotes is a number. For strings, `+` joins the text, so `\"2\" + \"3\"` is `23`."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    println(\"2\" + \"3\")\n    println(2 + 3)\n}",
+          "output": "23\n5"
+        }
+      ],
+      "card": [
+        "`fun main() { }` is where the program starts",
+        "`println(x)` prints `x` and a new line",
+        "`print(x)` prints without a new line",
+        "`7 / 2` is `3`, `7 % 2` is `1`, `7.0 / 2` is `3.5`",
+        "`\"5\"` is a string, `5` is a number"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which line prints Hello and starts a new line?",
+          "options": [
+            "`println(\"Hello\")`",
+            "`print \"Hello\"`",
+            "`echo(\"Hello\")`",
+            "`printLine(\"Hello\")`"
+          ],
+          "answer": 0,
+          "explain": "`println` prints the value in the parentheses and then starts a new line."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    println(3 + 4 * 2)\n}",
+          "answers": [
+            "11"
+          ],
+          "explain": "`*` comes before `+`: `4 * 2` is `8`, and `3 + 8` is `11`."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    println(17 % 5)\n}",
+          "answers": [
+            "2"
+          ],
+          "explain": "`17 / 5` is `3` with a rest of `2`. The operator `%` gives the rest."
+        },
+        {
+          "type": "choice",
+          "id": "hello-4",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    print(\"A\")\n    println(\"B\")\n    println(\"C\")\n}",
+          "options": [
+            "`AB` and then `C` on the next line",
+            "`A`, `B` and `C` on three lines",
+            "`ABC` on one line",
+            "`A` and then `BC` on the next line"
+          ],
+          "answer": 0,
+          "explain": "`print` does not start a new line, so `B` follows `A` directly. `println(\"B\")` ends the line, and `C` comes on the next one."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-5",
+          "statement": "`print` starts a new line after the output, like `println`.",
+          "answer": false,
+          "explain": "Only `println` starts a new line. After `print`, the next output continues on the same line."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Fill the gap so the program prints Hi.",
+          "code": "fun main() {\n    ___(\"Hi\")\n}",
+          "options": [
+            "println",
+            "echo",
+            "say",
+            "write"
+          ],
+          "answer": 0,
+          "explain": "Kotlin prints with `println` (or `print`). `echo`, `say` and `write` do not exist in Kotlin."
+        },
+        {
+          "type": "gap",
+          "id": "hello-7",
+          "prompt": "Fill the gap so the program prints 3.5.",
+          "code": "fun main() {\n    println(___ / 2)\n}",
+          "options": [
+            "7.0",
+            "7",
+            "3.5"
+          ],
+          "answer": 0,
+          "explain": "`7 / 2` divides two whole numbers and gives `3`. With `7.0` the result has a decimal part: `3.5`."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-8",
+          "prompt": "Build a line that prints the result of 6 times 7.",
+          "tokens": [
+            "println",
+            "(",
+            "6",
+            "*",
+            "7",
+            ")"
+          ],
+          "distractors": [
+            "/",
+            "+"
+          ],
+          "explain": "`println(6 * 7)` calculates `6 * 7` first and prints `42`."
+        },
+        {
+          "type": "order",
+          "id": "hello-9",
+          "prompt": "Put the lines in order so the program prints Kotlin on the first line and Done on the second.",
+          "lines": [
+            "fun main() {",
+            "    print(\"Kot\")",
+            "    println(\"lin\")",
+            "    println(\"Done\")",
+            "}"
+          ],
+          "explain": "`print(\"Kot\")` stays on the line, `println(\"lin\")` completes `Kotlin` and ends the line, then `Done` follows."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`println`",
+              "prints and starts a new line"
+            ],
+            [
+              "`print`",
+              "prints without a new line"
+            ],
+            [
+              "`%`",
+              "rest of a division"
+            ],
+            [
+              "`\"Hi\"`",
+              "a string"
+            ],
+            [
+              "`fun main()`",
+              "where the program starts"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fun main() {",
+            "    println(\"Start\")",
+            "    println(\"Middle)",
+            "    println(\"End\")",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "The string is not closed. Write `println(\"Middle\")` with a closing quote."
+        },
+        {
+          "type": "bug",
+          "id": "hello-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fun main() {",
+            "    println(\"Hi\")",
+            "    Println(\"Bye\")",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "Kotlin is case-sensitive. `Println` does not exist; write `println` with a small `p`."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "val, var and types",
+      "chapter": "Basics",
+      "summary": "Store values with val and var, and meet the types Int, Double, String and Boolean.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a name for a value. You create one with `val`, a name, `=` and a value. After that, you can use the name instead of the value."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val name = \"Ada\"\n    val age = 36\n    println(name)\n    println(age)\n}",
+          "output": "Ada\n36"
+        },
+        {
+          "type": "text",
+          "md": "A `val` can never get a new value. If you need a value that changes, use `var`. You give it a new value with `=` again."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    var score = 10\n    println(score)\n    score = 15\n    println(score)\n    score = score + 5\n    println(score)\n}",
+          "output": "10\n15\n20"
+        },
+        {
+          "type": "warning",
+          "md": "Giving a `val` a new value is an error, and the program does not compile. Use `val` by default, and `var` only when the value must change."
+        },
+        {
+          "type": "heading",
+          "text": "Types"
+        },
+        {
+          "type": "text",
+          "md": "Every value has a **type**. `Int` is a whole number, `Double` is a number with a decimal point, `String` is text and `Boolean` is `true` or `false`. Kotlin finds the type from the value. This is called **type inference**."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val count = 3\n    val price = 2.5\n    val city = \"Lima\"\n    val open = true\n    println(count)\n    println(price)\n    println(city)\n    println(open)\n}",
+          "output": "3\n2.5\nLima\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "You can also write the type yourself, after the name and a colon: `val count: Int = 3`. A variable keeps its type: an `Int` variable can never hold a string. When you multiply an `Int` by a `Double`, the result is a `Double`."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val items: Int = 4\n    val weight: Double = 1.5\n    val total: Double = items * weight\n    println(total)\n}",
+          "output": "6.0"
+        },
+        {
+          "type": "text",
+          "md": "Short forms change a `var` in place: `x += 2` means `x = x + 2`, and `x -= 2` means `x = x - 2`. `x++` adds `1` and `x--` subtracts `1`."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    var steps = 0\n    steps += 5\n    steps++\n    println(steps)\n    steps -= 2\n    println(steps)\n}",
+          "output": "6\n4"
+        },
+        {
+          "type": "text",
+          "md": "To turn a value into another type, use functions like `toDouble()`, `toInt()` and `toString()`. `toInt()` on a `Double` drops the decimal part. `toInt()` on a string like `\"42\"` gives the number `42`."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val a = 7\n    println(a.toDouble())\n    val b = 9.99\n    println(b.toInt())\n    val text = \"42\"\n    println(text.toInt() + 1)\n}",
+          "output": "7.0\n9\n43"
+        }
+      ],
+      "card": [
+        "`val x = 5` cannot change, `var y = 5` can",
+        "`Int`, `Double`, `String`, `Boolean`",
+        "`val price: Double = 2.5` writes the type",
+        "`x += 2`, `x++`, `x--` change a `var`",
+        "`toInt()`, `toDouble()`, `toString()` convert"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "variables-1",
+          "prompt": "Which keyword creates a variable that can get a new value later?",
+          "options": [
+            "`var`",
+            "`val`",
+            "`fun`",
+            "`main`"
+          ],
+          "answer": 0,
+          "explain": "A `var` can change. A `val` keeps its first value forever."
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    var x = 4\n    x = x * 3\n    x -= 2\n    println(x)\n}",
+          "answers": [
+            "10"
+          ],
+          "explain": "`x` starts at `4`, becomes `4 * 3 = 12`, and then `12 - 2 = 10`."
+        },
+        {
+          "type": "input",
+          "id": "variables-3",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val price = 3\n    val count = 2.0\n    println(price * count)\n}",
+          "answers": [
+            "6.0"
+          ],
+          "explain": "An `Int` times a `Double` gives a `Double`, so the result is `6.0`, not `6`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-4",
+          "statement": "`val city = \"Rome\"` gives `city` the type `String`, even though no type is written.",
+          "answer": true,
+          "explain": "Kotlin infers the type from the value. A value in double quotes is a `String`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-5",
+          "prompt": "Fill the gap so the program compiles and prints 11.",
+          "code": "fun main() {\n    ___ total = 10\n    total++\n    println(total)\n}",
+          "options": [
+            "var",
+            "val",
+            "fun"
+          ],
+          "answer": 0,
+          "explain": "`total++` changes the variable, so it must be a `var`. A `val` cannot change."
+        },
+        {
+          "type": "gap",
+          "id": "variables-6",
+          "prompt": "Fill the gap with the right type.",
+          "code": "fun main() {\n    val height: ___ = 1.75\n    println(height)\n}",
+          "options": [
+            "Double",
+            "Int",
+            "String",
+            "Boolean"
+          ],
+          "answer": 0,
+          "explain": "`1.75` has a decimal point, so its type is `Double`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-7",
+          "prompt": "Build a line that creates a variable age of type Int with the value 30.",
+          "tokens": [
+            "val",
+            "age",
+            ":",
+            "Int",
+            "=",
+            "30"
+          ],
+          "distractors": [
+            "String",
+            "\"30\""
+          ],
+          "explain": "The type comes after the name and a colon: `val age: Int = 30`. `\"30\"` would be a string."
+        },
+        {
+          "type": "order",
+          "id": "variables-8",
+          "prompt": "Put the lines in order so the program prints 8.",
+          "lines": [
+            "fun main() {",
+            "    var n = 3",
+            "    n += 5",
+            "    println(n)",
+            "}"
+          ],
+          "explain": "First create `n`, then add `5` to it, and print it at the end: `3 + 5 = 8`."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-9",
+          "prompt": "Match each type with the values it holds.",
+          "pairs": [
+            [
+              "`Int`",
+              "whole numbers"
+            ],
+            [
+              "`Double`",
+              "numbers with a decimal point"
+            ],
+            [
+              "`String`",
+              "text"
+            ],
+            [
+              "`Boolean`",
+              "true or false"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "variables-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fun main() {",
+            "    val name: String = \"Kim\"",
+            "    val age: Int = \"25\"",
+            "    println(name)",
+            "    println(age)",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "`\"25\"` is a string, but `age` has the type `Int`. Write `val age: Int = 25` without quotes."
+        },
+        {
+          "type": "bug",
+          "id": "variables-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fun main() {",
+            "    val text = \"7\"",
+            "    val number = text.toInt()",
+            "    val double = number.toDouble()",
+            "    val back: Int = double",
+            "    println(back)",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "A `Double` cannot go into an `Int` variable. Convert it first: `val back: Int = double.toInt()`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-12",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val a = 10\n    val b = 4\n    println(a / b)\n}",
+          "options": [
+            "`2`",
+            "`2.5`",
+            "`3`",
+            "`2.0`"
+          ],
+          "answer": 0,
+          "explain": "`a` and `b` are both `Int`, so `/` drops the rest: `10 / 4` is `2`."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings and templates",
+      "chapter": "Basics",
+      "summary": "Build text with string templates and work with length, uppercase() and substring().",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "You can join strings with `+`. Kotlin also has a shorter way: a **string template**. Write `$` and a variable name inside a string, and Kotlin puts in the value."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val name = \"Sam\"\n    val age = 20\n    println(\"Hello, \" + name + \"!\")\n    println(\"Hello, $name!\")\n    println(\"$name is $age years old.\")\n}",
+          "output": "Hello, Sam!\nHello, Sam!\nSam is 20 years old."
+        },
+        {
+          "type": "text",
+          "md": "For a calculation or anything longer than a name, use curly braces: `${a + b}`. Kotlin runs the code inside the braces and puts the result into the string."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val a = 4\n    val b = 6\n    println(\"$a + $b = ${a + b}\")\n    println(\"Double: ${a * 2}\")\n}",
+          "output": "4 + 6 = 10\nDouble: 8"
+        },
+        {
+          "type": "heading",
+          "text": "Length and case"
+        },
+        {
+          "type": "text",
+          "md": "`length` tells you how many characters a string has. Spaces count too. `uppercase()` and `lowercase()` return the string in capital or small letters."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val word = \"Kotlin\"\n    println(word.length)\n    println(word.uppercase())\n    println(word.lowercase())\n    println(\"Hi there\".length)\n}",
+          "output": "6\nKOTLIN\nkotlin\n8"
+        },
+        {
+          "type": "text",
+          "md": "The characters are numbered from `0`, so `word[0]` is the first character. `substring(start, end)` returns the part from `start` up to `end`, without `end`. With only `start`, it goes to the end of the string."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val word = \"Kotlin\"\n    println(word[0])\n    println(word.substring(0, 3))\n    println(word.substring(3))\n    println(word[word.length - 1])\n}",
+          "output": "K\nKot\nlin\nn"
+        },
+        {
+          "type": "tip",
+          "md": "Because `end` is not included, `substring(1, 4)` has `4 - 1 = 3` characters."
+        },
+        {
+          "type": "heading",
+          "text": "More string functions"
+        },
+        {
+          "type": "text",
+          "md": "Strings have many more functions. `trim()` removes spaces at both ends, `contains` checks for a part, `replace` swaps text and `reversed()` turns the string around."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val text = \"  I like tea  \"\n    val clean = text.trim()\n    println(clean)\n    println(clean.contains(\"tea\"))\n    println(clean.replace(\"tea\", \"coffee\"))\n    println(\"abc\".reversed())\n}",
+          "output": "I like tea\ntrue\nI like coffee\ncba"
+        },
+        {
+          "type": "warning",
+          "md": "A string never changes. Functions like `uppercase()` return a **new** string. To keep the result, store it in a variable: `val loud = word.uppercase()`."
+        }
+      ],
+      "card": [
+        "`\"Hi, $name\"` puts a value into a string",
+        "`\"${a + b}\"` puts in the result of code",
+        "`s.length`, `s.uppercase()`, `s.lowercase()`",
+        "`s[0]` is the first character",
+        "`s.substring(1, 4)`: from index `1` up to `4`, without `4`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val city = \"Oslo\"\n    println(\"I live in $city.\")\n}",
+          "answers": [
+            "I live in Oslo.",
+            "I live in Oslo"
+          ],
+          "explain": "`$city` inside the string is replaced by the value of `city`."
+        },
+        {
+          "type": "input",
+          "id": "strings-2",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val word = \"banana\"\n    println(word.length)\n}",
+          "answers": [
+            "6"
+          ],
+          "explain": "`banana` has six characters, so `length` is `6`."
+        },
+        {
+          "type": "input",
+          "id": "strings-3",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val s = \"Kotlin\"\n    println(s.substring(1, 4))\n}",
+          "answers": [
+            "otl"
+          ],
+          "explain": "Index `1` is `o`. The part goes up to index `4` without it: `o`, `t`, `l`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-4",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val a = 2\n    val b = 3\n    println(\"$a + $b = ${a + b}\")\n}",
+          "options": [
+            "`2 + 3 = 5`",
+            "`$a + $b = 5`",
+            "`2 + 3 = 2 + 3`",
+            "`5 = 5`"
+          ],
+          "answer": 0,
+          "explain": "`$a` and `$b` become `2` and `3`. `${a + b}` runs the calculation and becomes `5`."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-5",
+          "statement": "This program prints `HELLO`.",
+          "code": "fun main() {\n    val word = \"hello\"\n    word.uppercase()\n    println(word)\n}",
+          "answer": false,
+          "explain": "`uppercase()` returns a new string, and the program does not store it. `word` is still `hello`."
+        },
+        {
+          "type": "gap",
+          "id": "strings-6",
+          "prompt": "Fill the gap so the program prints Hi, Lea!",
+          "code": "fun main() {\n    val name = \"Lea\"\n    println(\"Hi, ___!\")\n}",
+          "options": [
+            "$name",
+            "name",
+            "{name}",
+            "$(name)"
+          ],
+          "answer": 0,
+          "explain": "A string template starts with `$`: `\"Hi, $name!\"`. Without `$`, Kotlin prints the word `name`."
+        },
+        {
+          "type": "gap",
+          "id": "strings-7",
+          "prompt": "Fill the gap so the program prints 7.",
+          "code": "fun main() {\n    val text = \"Tuesday\"\n    println(text.___)\n}",
+          "options": [
+            "length",
+            "length()",
+            "size"
+          ],
+          "answer": 0,
+          "explain": "`length` is a property, so you write it without parentheses: `text.length`."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-8",
+          "prompt": "Build a line that prints Name: and then the name in capital letters.",
+          "tokens": [
+            "println",
+            "(",
+            "\"Name: ${name.uppercase()}\"",
+            ")"
+          ],
+          "distractors": [
+            "\"Name: $name.uppercase()\"",
+            "print"
+          ],
+          "explain": "A function call inside a template needs curly braces: `${name.uppercase()}`. Without braces, only `$name` is replaced."
+        },
+        {
+          "type": "order",
+          "id": "strings-9",
+          "prompt": "Put the lines in order so the program prints KOTLIN has 6 letters.",
+          "lines": [
+            "fun main() {",
+            "    val word = \"kotlin\"",
+            "    val loud = word.uppercase()",
+            "    println(\"$loud has ${word.length} letters\")",
+            "}"
+          ],
+          "explain": "You need `word` before you can make `loud` from it, and both before the `println`."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-10",
+          "prompt": "Match the code with what it gives you.",
+          "pairs": [
+            [
+              "`s.length`",
+              "number of characters"
+            ],
+            [
+              "`s.uppercase()`",
+              "all capital letters"
+            ],
+            [
+              "`s.trim()`",
+              "no spaces at the ends"
+            ],
+            [
+              "`s[0]`",
+              "the first character"
+            ],
+            [
+              "`s.reversed()`",
+              "characters in reverse order"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "strings-11",
+          "prompt": "The program should print the number of letters in the first name. Which line has the bug?",
+          "lines": [
+            "fun main() {",
+            "    val first = \"Ana\"",
+            "    val last = \"Silva\"",
+            "    println(\"Name: $first $last\")",
+            "    println(\"Letters: {first.length}\")",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "Without `$`, the braces are printed as normal text. Write `${first.length}`."
+        },
+        {
+          "type": "bug",
+          "id": "strings-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fun main() {",
+            "    val word = \"apple\"",
+            "    val first = word.substring(0, 1)",
+            "    val rest = word.substring(1)",
+            "    println(first.uppercase() + rest)",
+            "    println(word.length())",
+            "}"
+          ],
+          "bug": 5,
+          "explain": "`length` is a property, not a function. Write `word.length` without parentheses."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Make decisions with if, else and when, and combine comparisons with &&, || and !.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A comparison gives a `Boolean`: `true` or `false`. Kotlin has `==` (equal), `!=` (not equal), `<` (less than), `>` (greater than), `<=` and `>=`."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val age = 17\n    println(age >= 18)\n    println(age == 17)\n    println(age != 17)\n    println(\"cat\" == \"cat\")\n}",
+          "output": "false\ntrue\nfalse\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "`if` runs a block of code only when a condition is `true`. The condition goes in parentheses. The `else` block is optional: it runs when the condition is `false`."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val temperature = 25\n    if (temperature > 20) {\n        println(\"It is warm.\")\n    } else {\n        println(\"It is cold.\")\n    }\n}",
+          "output": "It is warm."
+        },
+        {
+          "type": "text",
+          "md": "With `else if` you can check more conditions, one after the other. Kotlin runs the first block whose condition is `true` and skips the rest."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val score = 72\n    if (score >= 90) {\n        println(\"Grade A\")\n    } else if (score >= 70) {\n        println(\"Grade B\")\n    } else {\n        println(\"Grade C\")\n    }\n}",
+          "output": "Grade B"
+        },
+        {
+          "type": "heading",
+          "text": "if is an expression"
+        },
+        {
+          "type": "text",
+          "md": "In Kotlin, `if` also gives back a value. You can store this value in a variable. In this case, the `else` part is required, because the variable needs a value in every case."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val a = 8\n    val b = 5\n    val max = if (a > b) a else b\n    println(max)\n    val label = if (max % 2 == 0) \"even\" else \"odd\"\n    println(label)\n}",
+          "output": "8\neven"
+        },
+        {
+          "type": "heading",
+          "text": "when"
+        },
+        {
+          "type": "text",
+          "md": "`when` compares one value with many options. Each branch has a value, an arrow `->` and a result. Several values can share a branch, separated by commas. `else` handles all other values. Like `if`, `when` can give back a value."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val day = 6\n    val name = when (day) {\n        1 -> \"Monday\"\n        6, 7 -> \"Weekend\"\n        else -> \"Workday\"\n    }\n    println(name)\n    val n = 15\n    when {\n        n < 0 -> println(\"negative\")\n        n < 10 -> println(\"small\")\n        else -> println(\"large\")\n    }\n}",
+          "output": "Weekend\nlarge"
+        },
+        {
+          "type": "text",
+          "md": "Without a value after `when`, every branch has its own condition, and the first true one wins. To combine conditions, use **logical operators**: `&&` (and) is `true` when both sides are true, `||` (or) when at least one side is true, and `!` (not) turns `true` into `false`."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val age = 25\n    val hasTicket = true\n    println(age >= 18 && hasTicket)\n    println(age < 12 || age > 65)\n    println(!hasTicket)\n}",
+          "output": "true\nfalse\nfalse"
+        }
+      ],
+      "card": [
+        "`==`, `!=`, `<`, `>`, `<=`, `>=` compare",
+        "`if (x > 0) { … } else { … }`",
+        "`val max = if (a > b) a else b`",
+        "`when (x) { 1 -> \"one\"; else -> \"other\" }`",
+        "`&&` and, `||` or, `!` not"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val x = 7\n    if (x > 5) {\n        println(\"big\")\n    } else {\n        println(\"small\")\n    }\n}",
+          "answers": [
+            "big"
+          ],
+          "explain": "`7 > 5` is `true`, so the first block runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val n = 9\n    val result = if (n % 2 == 0) \"even\" else \"odd\"\n    println(result)\n}",
+          "answers": [
+            "odd"
+          ],
+          "explain": "`9 % 2` is `1`, not `0`. The condition is `false`, so `if` gives back `\"odd\"`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val code = 3\n    val text = when (code) {\n        1 -> \"one\"\n        2, 3 -> \"few\"\n        else -> \"many\"\n    }\n    println(text)\n}",
+          "options": [
+            "`few`",
+            "`one`",
+            "`many`",
+            "`3`"
+          ],
+          "answer": 0,
+          "explain": "The branch `2, 3` matches both `2` and `3`, so `text` is `\"few\"`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-4",
+          "prompt": "What is the value of `5 != 5`?",
+          "options": [
+            "`false`",
+            "`true`",
+            "`5`",
+            "`0`"
+          ],
+          "answer": 0,
+          "explain": "`!=` means \"not equal\". `5` is equal to `5`, so the result is `false`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-5",
+          "statement": "This program prints `true`.",
+          "code": "fun main() {\n    val a = 3\n    val b = 10\n    println(a > 2 && b < 5)\n}",
+          "answer": false,
+          "explain": "`a > 2` is `true`, but `b < 5` is `false`. With `&&`, both sides must be true, so it prints `false`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-6",
+          "prompt": "Fill the gap so that both conditions must be true to get in.",
+          "code": "fun main() {\n    val age = 15\n    val member = true\n    if (age >= 18 ___ member) {\n        println(\"Welcome\")\n    } else {\n        println(\"Sorry\")\n    }\n}",
+          "options": [
+            "&&",
+            "||",
+            "!"
+          ],
+          "answer": 0,
+          "explain": "`&&` needs both sides to be true. With `||`, the member would get in although `age` is only `15`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Fill the gap so the program prints large.",
+          "code": "fun main() {\n    val n = 50\n    val size = ___ (n > 10) \"large\" else \"small\"\n    println(size)\n}",
+          "options": [
+            "if",
+            "when",
+            "else"
+          ],
+          "answer": 0,
+          "explain": "`if (condition) a else b` gives back `a` or `b`. Here `n > 10` is `true`, so `size` is `\"large\"`."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-8",
+          "prompt": "Build a line that stores the smaller of a and b in min.",
+          "tokens": [
+            "val",
+            "min",
+            "=",
+            "if",
+            "(a < b)",
+            "a",
+            "else",
+            "b"
+          ],
+          "distractors": [
+            "then",
+            "when"
+          ],
+          "explain": "`if (a < b) a else b` gives back `a` when it is smaller, otherwise `b`."
+        },
+        {
+          "type": "order",
+          "id": "conditions-9",
+          "prompt": "Put the lines in order so the program prints Grade B.",
+          "lines": [
+            "fun main() {",
+            "    val score = 75",
+            "    if (score >= 90) {",
+            "        println(\"Grade A\")",
+            "    } else {",
+            "        println(\"Grade B\")",
+            "    }",
+            "}"
+          ],
+          "explain": "`75 >= 90` is `false`, so the `else` block runs. It must contain `println(\"Grade B\")`."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-10",
+          "prompt": "Match each operator with its meaning.",
+          "pairs": [
+            [
+              "`&&`",
+              "and: both must be true"
+            ],
+            [
+              "`||`",
+              "or: at least one must be true"
+            ],
+            [
+              "`!`",
+              "not: turns true into false"
+            ],
+            [
+              "`==`",
+              "is equal to"
+            ],
+            [
+              "`!=`",
+              "is not equal to"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fun main() {",
+            "    val age = 16",
+            "    if (age = 18) {",
+            "        println(\"Exactly 18\")",
+            "    } else {",
+            "        println(\"Not 18\")",
+            "    }",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "A single `=` gives a variable a value. To compare, write `==`: `if (age == 18)`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fun main() {",
+            "    val points = 12",
+            "    val bonus = if (points > 10) 5",
+            "    println(bonus)",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "When `if` gives a value to a variable, it needs an `else`: `if (points > 10) 5 else 0`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops and ranges",
+      "chapter": "Control flow",
+      "summary": "Repeat code with for loops over ranges like 1..5, until, step and downTo, and with while loops.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **range** is a sequence of numbers. `1..5` means `1`, `2`, `3`, `4`, `5`: both ends are included. A `for` loop runs its block once for every number in the range. The variable `i` holds the current number."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    for (i in 1..3) {\n        println(\"Round $i\")\n    }\n}",
+          "output": "Round 1\nRound 2\nRound 3"
+        },
+        {
+          "type": "text",
+          "md": "`until` leaves out the end: `0 until 3` means `0`, `1`, `2`. You can also write it as `0..<3`. This is useful when you count from `0`."
+        },
+        {
+          "type": "text",
+          "md": "`step` jumps by more than one: `1..9 step 4` means `1`, `5`, `9`. `downTo` counts backwards: `3 downTo 1` means `3`, `2`, `1`. You can combine them."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    for (i in 0 until 3) {\n        println(i)\n    }\n    for (i in 10 downTo 0 step 5) {\n        println(i)\n    }\n}",
+          "output": "0\n1\n2\n10\n5\n0"
+        },
+        {
+          "type": "text",
+          "md": "A loop often updates a variable. Here `sum` starts at `0`, and every round adds the current number to it."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    var sum = 0\n    for (n in 1..4) {\n        sum += n\n    }\n    println(sum)\n}",
+          "output": "10"
+        },
+        {
+          "type": "text",
+          "md": "A `for` loop also works with a string. It goes through the characters one by one."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    for (c in \"abc\") {\n        println(c.uppercase())\n    }\n}",
+          "output": "A\nB\nC"
+        },
+        {
+          "type": "heading",
+          "text": "while"
+        },
+        {
+          "type": "text",
+          "md": "A `while` loop repeats as long as its condition is `true`. It checks the condition before every round. Make sure that the condition becomes `false` at some point, or the loop never ends."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    var n = 1\n    while (n < 50) {\n        n *= 3\n    }\n    println(n)\n}",
+          "output": "81"
+        },
+        {
+          "type": "text",
+          "md": "`continue` skips the rest of the current round and goes on with the next one. `break` stops the whole loop at once."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    for (i in 1..10) {\n        if (i % 2 == 0) {\n            continue\n        }\n        if (i > 7) {\n            break\n        }\n        println(i)\n    }\n}",
+          "output": "1\n3\n5\n7"
+        }
+      ],
+      "card": [
+        "`for (i in 1..5)`: 1 to 5, both included",
+        "`0 until 3` or `0..<3`: 0, 1, 2",
+        "`1..10 step 2`, `5 downTo 1`",
+        "`while (x < 10) { … }` repeats while true",
+        "`break` stops, `continue` skips a round"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    var total = 0\n    for (i in 1..5) {\n        total += i\n    }\n    println(total)\n}",
+          "answers": [
+            "15"
+          ],
+          "explain": "The loop adds `1 + 2 + 3 + 4 + 5`, which is `15`."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    var count = 0\n    for (i in 0 until 10 step 3) {\n        count++\n    }\n    println(count)\n}",
+          "answers": [
+            "4"
+          ],
+          "explain": "`i` takes the values `0`, `3`, `6` and `9`. `10` is not included, so the loop runs four times."
+        },
+        {
+          "type": "input",
+          "id": "loops-3",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    var x = 100\n    while (x > 10) {\n        x /= 2\n    }\n    println(x)\n}",
+          "answers": [
+            "6"
+          ],
+          "explain": "`x` becomes `50`, `25`, `12` and then `6`. Now `x > 10` is `false`, and the loop stops."
+        },
+        {
+          "type": "choice",
+          "id": "loops-4",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    for (i in 5 downTo 1 step 2) {\n        print(i)\n    }\n}",
+          "options": [
+            "`531`",
+            "`54321`",
+            "`135`",
+            "`53`"
+          ],
+          "answer": 0,
+          "explain": "`downTo` counts backwards from `5`, and `step 2` skips every second number: `5`, `3`, `1`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-5",
+          "prompt": "Which range contains exactly the numbers 0, 1, 2 and 3?",
+          "options": [
+            "`0..3`",
+            "`0 until 3`",
+            "`0..4`",
+            "`3 downTo 1`"
+          ],
+          "answer": 0,
+          "explain": "`..` includes both ends. `0 until 3` stops before `3`."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-6",
+          "statement": "A `while` loop always runs its block at least once.",
+          "answer": false,
+          "explain": "`while` checks the condition first. If it is `false` from the start, the block never runs."
+        },
+        {
+          "type": "gap",
+          "id": "loops-7",
+          "prompt": "Fill the gap so the program prints 3, 2 and 1 on separate lines.",
+          "code": "fun main() {\n    for (i in 3 ___ 1) {\n        println(i)\n    }\n}",
+          "options": [
+            "downTo",
+            "..",
+            "until"
+          ],
+          "answer": 0,
+          "explain": "`3 downTo 1` counts backwards. `3..1` is an empty range, so the loop would print nothing."
+        },
+        {
+          "type": "gap",
+          "id": "loops-8",
+          "prompt": "Fill the gap so the program prints 0, 2, 4, 6 and 8.",
+          "code": "fun main() {\n    for (i in 0..8 ___ 2) {\n        println(i)\n    }\n}",
+          "options": [
+            "step",
+            "downTo",
+            "until"
+          ],
+          "answer": 0,
+          "explain": "`step 2` jumps by two: `0`, `2`, `4`, `6`, `8`."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-9",
+          "prompt": "Build the first line of a loop that counts from 1 to 10.",
+          "tokens": [
+            "for",
+            "(",
+            "i",
+            "in",
+            "1..10",
+            ")",
+            "{"
+          ],
+          "distractors": [
+            "while",
+            "1 until 10"
+          ],
+          "explain": "`for (i in 1..10) {` runs the block for every number from `1` to `10`. `1 until 10` would stop at `9`."
+        },
+        {
+          "type": "order",
+          "id": "loops-10",
+          "prompt": "Put the lines in order so the program prints 2, 4 and 6.",
+          "lines": [
+            "fun main() {",
+            "    var n = 2",
+            "    while (n <= 6) {",
+            "        println(n)",
+            "        n += 2",
+            "    }",
+            "}"
+          ],
+          "explain": "Print `n` first and then add `2`. In the other order, the program would print `4`, `6` and `8`."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-11",
+          "prompt": "Match each range with its numbers.",
+          "pairs": [
+            [
+              "`1..4`",
+              "1, 2, 3, 4"
+            ],
+            [
+              "`1 until 4`",
+              "1, 2, 3"
+            ],
+            [
+              "`4 downTo 1`",
+              "4, 3, 2, 1"
+            ],
+            [
+              "`1..7 step 3`",
+              "1, 4, 7"
+            ],
+            [
+              "`break`",
+              "stops the loop"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "loops-12",
+          "prompt": "The program should print the sum of 1 to 10, which is 55. Which line has the bug?",
+          "lines": [
+            "fun main() {",
+            "    var sum = 0",
+            "    for (n in 1 until 10) {",
+            "        sum += n",
+            "    }",
+            "    println(sum)",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "`1 until 10` stops at `9`, so the sum is `45`. Write `1..10` to include `10`."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Building blocks",
+      "summary": "Write your own functions with parameters, return types, default values and named arguments.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** is a block of code with a name. You can run it again and again. You define it with `fun`, a name, parentheses and a block. You call it with its name and `()`."
+        },
+        {
+          "type": "code",
+          "code": "fun greet() {\n    println(\"Hello!\")\n}\n\nfun main() {\n    greet()\n    greet()\n}",
+          "output": "Hello!\nHello!"
+        },
+        {
+          "type": "text",
+          "md": "**Parameters** pass values into a function. Each parameter has a name and a type, like `name: String`. When you call the function, you pass the values in the same order."
+        },
+        {
+          "type": "code",
+          "code": "fun greet(name: String, times: Int) {\n    for (i in 1..times) {\n        println(\"Hi, $name!\")\n    }\n}\n\nfun main() {\n    greet(\"Mia\", 2)\n}",
+          "output": "Hi, Mia!\nHi, Mia!"
+        },
+        {
+          "type": "text",
+          "md": "A function can give back a result with `return`. Write the type of the result after the parentheses, like `: Int`. The caller can use the result like any other value."
+        },
+        {
+          "type": "code",
+          "code": "fun add(a: Int, b: Int): Int {\n    return a + b\n}\n\nfun main() {\n    val sum = add(3, 4)\n    println(sum)\n    println(add(10, add(1, 2)))\n}",
+          "output": "7\n13"
+        },
+        {
+          "type": "heading",
+          "text": "Single-expression functions"
+        },
+        {
+          "type": "text",
+          "md": "When a function only returns one expression, you can write it with `=`. Then you leave out the braces and `return`. Kotlin can infer the return type."
+        },
+        {
+          "type": "code",
+          "code": "fun square(x: Int) = x * x\n\nfun isEven(n: Int): Boolean = n % 2 == 0\n\nfun main() {\n    println(square(5))\n    println(isEven(7))\n}",
+          "output": "25\nfalse"
+        },
+        {
+          "type": "heading",
+          "text": "Default and named arguments"
+        },
+        {
+          "type": "text",
+          "md": "A parameter can have a **default value**, like `greeting: String = \"Hello\"`. If the caller leaves it out, Kotlin uses the default value."
+        },
+        {
+          "type": "code",
+          "code": "fun welcome(name: String, greeting: String = \"Hello\") {\n    println(\"$greeting, $name!\")\n}\n\nfun main() {\n    welcome(\"Leo\")\n    welcome(\"Leo\", \"Good morning\")\n}",
+          "output": "Hello, Leo!\nGood morning, Leo!"
+        },
+        {
+          "type": "text",
+          "md": "With **named arguments**, you write the parameter name in the call, like `price = 3.5`. This makes calls easier to read. You can also skip a parameter with a default value, and you can pass the arguments in any order."
+        },
+        {
+          "type": "code",
+          "code": "fun order(item: String, count: Int = 1, price: Double = 2.0) {\n    println(\"$count x $item = ${count * price}\")\n}\n\nfun main() {\n    order(\"tea\")\n    order(\"cake\", price = 3.5)\n    order(count = 3, item = \"juice\")\n}",
+          "output": "1 x tea = 2.0\n1 x cake = 3.5\n3 x juice = 6.0"
+        }
+      ],
+      "card": [
+        "`fun greet(name: String) { … }`",
+        "`fun add(a: Int, b: Int): Int { return a + b }`",
+        "`fun square(x: Int) = x * x`",
+        "`fun f(n: Int = 1)`: default value",
+        "`f(n = 5)`: named argument"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this program print?",
+          "code": "fun triple(x: Int): Int {\n    return x * 3\n}\n\nfun main() {\n    println(triple(4) + 1)\n}",
+          "answers": [
+            "13"
+          ],
+          "explain": "`triple(4)` returns `12`, and `12 + 1` is `13`."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this program print?",
+          "code": "fun describe(name: String, age: Int = 30) = \"$name ($age)\"\n\nfun main() {\n    println(describe(\"Eva\"))\n}",
+          "answers": [
+            "Eva (30)"
+          ],
+          "explain": "The call leaves out `age`, so the default value `30` is used."
+        },
+        {
+          "type": "choice",
+          "id": "functions-3",
+          "prompt": "What does this program print?",
+          "code": "fun area(width: Int, height: Int = 2) = width * height\n\nfun main() {\n    println(area(5))\n}",
+          "options": [
+            "`10`",
+            "`5`",
+            "`7`",
+            "Nothing, because `height` is missing"
+          ],
+          "answer": 0,
+          "explain": "`height` has the default value `2`, so `area(5)` is `5 * 2 = 10`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-4",
+          "prompt": "Which line correctly defines a function that returns an `Int`?",
+          "options": [
+            "`fun double(x: Int): Int = x * 2`",
+            "`fun double(x: Int) -> Int = x * 2`",
+            "`fun double(x): Int = x * 2`",
+            "`fun double(x: Int): Int { x * 2 }`"
+          ],
+          "answer": 0,
+          "explain": "The return type comes after a colon, and every parameter needs a type. A block body needs `return`."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-5",
+          "statement": "With named arguments, you can pass the arguments in a different order than the parameters.",
+          "answer": true,
+          "explain": "Kotlin matches named arguments by their names, so `info(age = 7, name = \"Tim\")` works."
+        },
+        {
+          "type": "gap",
+          "id": "functions-6",
+          "prompt": "Fill the gap so the function returns the sum.",
+          "code": "fun sum(a: Int, b: Int): Int {\n    ___ a + b\n}\n\nfun main() {\n    println(sum(2, 3))\n}",
+          "options": [
+            "return",
+            "val",
+            "println"
+          ],
+          "answer": 0,
+          "explain": "`return` gives the value back to the caller. A function with the type `: Int` must return an `Int`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-7",
+          "prompt": "Fill the gap so the program prints Hi, Max!",
+          "code": "fun hello(name: String, greeting: String = \"Hi\") {\n    println(\"$greeting, $name!\")\n}\n\nfun main() {\n    hello(___)\n}",
+          "options": [
+            "\"Max\"",
+            "greeting = \"Max\"",
+            "\"Hi\", \"Max\"",
+            "name: \"Max\""
+          ],
+          "answer": 0,
+          "explain": "`\"Max\"` goes to the first parameter, `name`, and `greeting` keeps its default value `\"Hi\"`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-8",
+          "prompt": "Build a single-expression function half that returns half of x.",
+          "tokens": [
+            "fun",
+            "half",
+            "(x: Double)",
+            "=",
+            "x / 2"
+          ],
+          "distractors": [
+            "return",
+            "{"
+          ],
+          "explain": "A single-expression function uses `=` instead of a block: `fun half(x: Double) = x / 2`."
+        },
+        {
+          "type": "order",
+          "id": "functions-9",
+          "prompt": "Put the lines in order to build a function that returns the larger number.",
+          "lines": [
+            "fun max(a: Int, b: Int): Int {",
+            "    if (a > b) {",
+            "        return a",
+            "    }",
+            "    return b",
+            "}"
+          ],
+          "explain": "If `a` is larger, the function returns `a` right away. Otherwise it goes on and returns `b`."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`fun`",
+              "starts a function definition"
+            ],
+            [
+              "`return x`",
+              "gives back the value of x"
+            ],
+            [
+              "`name: String`",
+              "a parameter with its type"
+            ],
+            [
+              "`= x * x`",
+              "the body of a single-expression function"
+            ],
+            [
+              "`count = 3` in a call",
+              "a named argument"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "functions-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fun average(a: Int, b: Int): Double {",
+            "    return (a + b) / 2.0",
+            "}",
+            "fun main() {",
+            "    val avg = average(3, 4)",
+            "    println(\"Average: $avg\")",
+            "    println(average(5))",
+            "}"
+          ],
+          "bug": 6,
+          "explain": "`average` needs two arguments and has no default values. Pass both, like `average(5, 6)`."
+        },
+        {
+          "type": "bug",
+          "id": "functions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fun isAdult(age: Int): Boolean {",
+            "    return age >= 18",
+            "}",
+            "fun main() {",
+            "    val ok: Int = isAdult(20)",
+            "    println(ok)",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "`isAdult` returns a `Boolean`, not an `Int`. Write `val ok: Boolean = isAdult(20)`."
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "Lists, sets and maps",
+      "chapter": "Data",
+      "summary": "Store many values in lists, sets and maps, and transform lists with map and filter.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **list** holds many values in a fixed order. You create one with `listOf`. Indexes start at `0`, so `fruits[0]` is the first element. `size` tells you how many elements there are, and the last index is `size - 1`."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val fruits = listOf(\"apple\", \"banana\", \"cherry\")\n    println(fruits)\n    println(fruits[0])\n    println(fruits.size)\n    println(fruits.last())\n}",
+          "output": "[apple, banana, cherry]\napple\n3\ncherry"
+        },
+        {
+          "type": "text",
+          "md": "A list from `listOf` cannot change. If you want to add, remove or replace elements, create it with `mutableListOf`."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val tasks = mutableListOf(\"read\", \"write\")\n    tasks.add(\"sleep\")\n    tasks.remove(\"read\")\n    tasks[0] = \"code\"\n    println(tasks)\n    println(tasks.contains(\"sleep\"))\n}",
+          "output": "[code, sleep]\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "A `for` loop goes through every element of a list, in order. Lists also have ready-made functions like `sum()`, `max()` and `sorted()`."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val prices = listOf(3, 8, 5)\n    for (p in prices) {\n        println(\"Price: $p\")\n    }\n    println(prices.sum())\n    println(prices.max())\n    println(prices.sorted())\n}",
+          "output": "Price: 3\nPrice: 8\nPrice: 5\n16\n8\n[3, 5, 8]"
+        },
+        {
+          "type": "heading",
+          "text": "map and filter"
+        },
+        {
+          "type": "text",
+          "md": "`map` creates a new list by changing every element. `filter` creates a new list with only the elements that match a condition. Inside the braces, `it` stands for the current element."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val numbers = listOf(1, 2, 3, 4, 5)\n    val doubled = numbers.map { it * 2 }\n    val even = numbers.filter { it % 2 == 0 }\n    println(doubled)\n    println(even)\n    println(numbers.filter { it > 2 }.map { it * 10 })\n}",
+          "output": "[2, 4, 6, 8, 10]\n[2, 4]\n[30, 40, 50]"
+        },
+        {
+          "type": "heading",
+          "text": "Sets and maps"
+        },
+        {
+          "type": "text",
+          "md": "A **set** stores every value only once, so duplicates are ignored. Use `setOf`, or `mutableSetOf` for a set that can change. The operator `in` checks if a value is in a collection."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val colors = setOf(\"red\", \"blue\", \"red\", \"green\")\n    println(colors)\n    println(colors.size)\n    println(\"blue\" in colors)\n}",
+          "output": "[red, blue, green]\n3\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "A **map** stores pairs of a key and a value. You create a pair with `to`. `ages[\"Ben\"]` gives you the value for the key `\"Ben\"`. A `for` loop with `(name, age)` goes through all pairs."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val ages = mutableMapOf(\"Ana\" to 31, \"Ben\" to 25)\n    ages[\"Cleo\"] = 40\n    println(ages[\"Ben\"])\n    println(ages)\n    for ((name, age) in ages) {\n        println(\"$name is $age\")\n    }\n}",
+          "output": "25\n{Ana=31, Ben=25, Cleo=40}\nAna is 31\nBen is 25\nCleo is 40"
+        }
+      ],
+      "card": [
+        "`listOf(1, 2)`, `list[0]`, `list.size`",
+        "`mutableListOf(…)` with `add(x)` and `remove(x)`",
+        "`list.map { it * 2 }`, `list.filter { it > 0 }`",
+        "`setOf(…)` has no duplicates",
+        "`mapOf(\"a\" to 1)`, `map[\"a\"]`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "collections-1",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val nums = listOf(4, 7, 1, 9)\n    println(nums[2])\n}",
+          "answers": [
+            "1"
+          ],
+          "explain": "Indexes start at `0`: `nums[0]` is `4`, `nums[1]` is `7` and `nums[2]` is `1`."
+        },
+        {
+          "type": "input",
+          "id": "collections-2",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val words = listOf(\"sun\", \"moon\", \"star\")\n    println(words.map { it.length }.sum())\n}",
+          "answers": [
+            "11"
+          ],
+          "explain": "`map` gives the lengths `[3, 4, 4]`, and their sum is `11`."
+        },
+        {
+          "type": "input",
+          "id": "collections-3",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val s = setOf(1, 2, 2, 3, 3, 3)\n    println(s.size)\n}",
+          "answers": [
+            "3"
+          ],
+          "explain": "A set keeps every value only once. Only `1`, `2` and `3` are left."
+        },
+        {
+          "type": "choice",
+          "id": "collections-4",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val n = listOf(1, 2, 3, 4, 5, 6)\n    println(n.filter { it > 3 })\n}",
+          "options": [
+            "`[4, 5, 6]`",
+            "`[1, 2, 3]`",
+            "`[3, 4, 5, 6]`",
+            "`[false, false, false, true, true, true]`"
+          ],
+          "answer": 0,
+          "explain": "`filter` keeps only the elements for which `it > 3` is `true`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-5",
+          "prompt": "Which collection lets you add elements later?",
+          "options": [
+            "`mutableListOf(1, 2)`",
+            "`listOf(1, 2)`",
+            "`setOf(1, 2)`",
+            "`mapOf(1 to 2)`"
+          ],
+          "answer": 0,
+          "explain": "Only the `mutable…` collections can change. `listOf`, `setOf` and `mapOf` are read-only."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-6",
+          "statement": "This program prints `2`.",
+          "code": "fun main() {\n    val m = mapOf(\"a\" to 1, \"b\" to 2)\n    println(m[\"b\"])\n}",
+          "answer": true,
+          "explain": "`m[\"b\"]` gives the value of the key `\"b\"`, which is `2`."
+        },
+        {
+          "type": "gap",
+          "id": "collections-7",
+          "prompt": "Fill the gap so the program prints [1, 4, 9].",
+          "code": "fun main() {\n    val n = listOf(1, 2, 3)\n    println(n.___ { it * it })\n}",
+          "options": [
+            "map",
+            "filter",
+            "sum"
+          ],
+          "answer": 0,
+          "explain": "`map` changes every element: each number is multiplied by itself."
+        },
+        {
+          "type": "gap",
+          "id": "collections-8",
+          "prompt": "Fill the gap so the program prints 3.",
+          "code": "fun main() {\n    val prices = mapOf(\"tea\" to 3, \"cake\" to 5)\n    println(prices[___])\n}",
+          "options": [
+            "\"tea\"",
+            "0",
+            "tea"
+          ],
+          "answer": 0,
+          "explain": "A map is accessed by its key, here the string `\"tea\"`. Maps do not use indexes like `0`."
+        },
+        {
+          "type": "blocks",
+          "id": "collections-9",
+          "prompt": "Build a line that keeps only the even numbers of nums.",
+          "tokens": [
+            "val",
+            "even",
+            "=",
+            "nums.filter",
+            "{",
+            "it % 2 == 0",
+            "}"
+          ],
+          "distractors": [
+            "nums.map",
+            "it % 2 == 1"
+          ],
+          "explain": "`filter` keeps the elements that match the condition. `it % 2 == 0` is `true` for even numbers."
+        },
+        {
+          "type": "order",
+          "id": "collections-10",
+          "prompt": "Put the lines in order so the program prints [10, 20, 30].",
+          "lines": [
+            "fun main() {",
+            "    val nums = mutableListOf(1, 2)",
+            "    nums.add(3)",
+            "    val big = nums.map { it * 10 }",
+            "    println(big)",
+            "}"
+          ],
+          "explain": "Add `3` before you call `map`. Otherwise `big` is only `[10, 20]`."
+        },
+        {
+          "type": "pairs",
+          "id": "collections-11",
+          "prompt": "Match each collection with its description.",
+          "pairs": [
+            [
+              "`listOf(1, 2, 2)`",
+              "ordered, values may repeat"
+            ],
+            [
+              "`setOf(1, 2)`",
+              "every value only once"
+            ],
+            [
+              "`mapOf(\"a\" to 1)`",
+              "keys with values"
+            ],
+            [
+              "`mutableListOf(1)`",
+              "a list you can change"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "collections-12",
+          "prompt": "The program should print the last name. Which line has the bug?",
+          "lines": [
+            "fun main() {",
+            "    val names = listOf(\"Ada\", \"Bo\", \"Cy\")",
+            "    val last = names[names.size]",
+            "    println(last)",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "The indexes are `0` to `size - 1`. `names[3]` does not exist. Write `names[names.size - 1]`."
+        }
+      ]
+    },
+    {
+      "id": "classes",
+      "title": "Classes and null safety",
+      "chapter": "Data",
+      "summary": "Create your own types with class and data class, and handle missing values safely with ?, ?., ?: and !!.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **class** describes your own type. Its properties go into the parentheses after the class name: `val` for a property that never changes, `var` for one that can change. You create an **object** by calling the class like a function."
+        },
+        {
+          "type": "code",
+          "code": "class Dog(val name: String, var age: Int)\n\nfun main() {\n    val dog = Dog(\"Rex\", 3)\n    println(dog.name)\n    dog.age = 4\n    println(dog.age)\n}",
+          "output": "Rex\n4"
+        },
+        {
+          "type": "text",
+          "md": "A function inside a class is called a **method**. It can use the properties of the object. You call it with a dot, like `room.area()`."
+        },
+        {
+          "type": "code",
+          "code": "class Room(val width: Int, val length: Int) {\n    fun area() = width * length\n\n    fun describe() {\n        println(\"$width x $length = ${area()}\")\n    }\n}\n\nfun main() {\n    val room = Room(3, 4)\n    println(room.area())\n    room.describe()\n}",
+          "output": "12\n3 x 4 = 12"
+        },
+        {
+          "type": "heading",
+          "text": "Data classes"
+        },
+        {
+          "type": "text",
+          "md": "A `data class` is a class for holding data. Kotlin adds useful features: `println` shows the values, `==` compares the values, and `copy` creates a copy with some values changed. For a normal class, `==` only checks if both names point to the same object."
+        },
+        {
+          "type": "code",
+          "code": "data class Point(val x: Int, val y: Int)\n\nfun main() {\n    val a = Point(1, 2)\n    val b = Point(1, 2)\n    println(a)\n    println(a == b)\n    val c = a.copy(y = 5)\n    println(c)\n}",
+          "output": "Point(x=1, y=2)\ntrue\nPoint(x=1, y=5)"
+        },
+        {
+          "type": "heading",
+          "text": "Null safety"
+        },
+        {
+          "type": "text",
+          "md": "`null` means \"no value\". In Kotlin, a normal type like `String` can never be `null`. If a variable may have no value, add a question mark to the type: `String?` is a **nullable** type."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    var nickname: String? = null\n    println(nickname)\n    nickname = \"Bee\"\n    println(nickname)\n}",
+          "output": "null\nBee"
+        },
+        {
+          "type": "text",
+          "md": "You cannot write `b.length` when `b` is nullable. The **safe call** `?.` gives `null` instead of an error when the value is `null`. The **Elvis operator** `?:` gives a default value when the left side is `null`."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val a: String? = \"Kotlin\"\n    val b: String? = null\n    println(a?.length)\n    println(b?.length)\n    println(b?.length ?: 0)\n    val name = b ?: \"Guest\"\n    println(\"Hello, $name\")\n}",
+          "output": "6\nnull\n0\nHello, Guest"
+        },
+        {
+          "type": "warning",
+          "md": "`!!` tells Kotlin: \"I am sure that this is not `null`.\" If the value is `null` anyway, the program stops with a `NullPointerException`. Use `?.` and `?:` when you can."
+        },
+        {
+          "type": "code",
+          "code": "fun main() {\n    val input: String? = \"42\"\n    val number = input!!.toInt()\n    println(number + 1)\n}",
+          "output": "43"
+        }
+      ],
+      "card": [
+        "`class Dog(val name: String)`, `Dog(\"Rex\")` creates an object",
+        "`data class Point(val x: Int)`: printing, `==`, `copy`",
+        "`String?` may be `null`",
+        "`s?.length`: safe call, gives `null` if `s` is `null`",
+        "`s ?: \"none\"`: default for `null`; `s!!` stops if `null`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "classes-1",
+          "prompt": "What does this program print?",
+          "code": "data class Book(val title: String, val pages: Int)\n\nfun main() {\n    val b = Book(\"Kotlin\", 300)\n    println(b)\n}",
+          "answers": [
+            "Book(title=Kotlin, pages=300)"
+          ],
+          "explain": "A data class prints its name and all its properties with their values."
+        },
+        {
+          "type": "input",
+          "id": "classes-2",
+          "prompt": "What does this program print?",
+          "code": "fun main() {\n    val text: String? = null\n    println(text?.length ?: -1)\n}",
+          "answers": [
+            "-1"
+          ],
+          "explain": "`text` is `null`, so `text?.length` is `null`, and `?:` uses the default value `-1`."
+        },
+        {
+          "type": "input",
+          "id": "classes-3",
+          "prompt": "What does this program print?",
+          "code": "class Box(val w: Int, val h: Int) {\n    fun area() = w * h\n}\n\nfun main() {\n    val box = Box(2, 5)\n    println(box.area())\n}",
+          "answers": [
+            "10"
+          ],
+          "explain": "The method `area` uses the properties of the object: `2 * 5 = 10`."
+        },
+        {
+          "type": "choice",
+          "id": "classes-4",
+          "prompt": "What does this program print?",
+          "code": "data class Pet(val name: String)\n\nfun main() {\n    val a = Pet(\"Kiki\")\n    val b = Pet(\"Kiki\")\n    println(a == b)\n}",
+          "options": [
+            "`true`",
+            "`false`",
+            "`Pet(name=Kiki)`",
+            "`Kiki`"
+          ],
+          "answer": 0,
+          "explain": "For a data class, `==` compares the values. Both objects have the same name, so the result is `true`."
+        },
+        {
+          "type": "choice",
+          "id": "classes-5",
+          "prompt": "Which line compiles?",
+          "options": [
+            "`val a: String? = null`",
+            "`val a: String = null`",
+            "`val a: Int = null`",
+            "`val a = String?`"
+          ],
+          "answer": 0,
+          "explain": "Only a nullable type with `?`, like `String?`, can hold `null`."
+        },
+        {
+          "type": "true_false",
+          "id": "classes-6",
+          "statement": "This program prints `true`.",
+          "code": "class Cat(val name: String)\n\nfun main() {\n    val a = Cat(\"Tom\")\n    val b = Cat(\"Tom\")\n    println(a == b)\n}",
+          "answer": false,
+          "explain": "`Cat` is a normal class, so `==` checks if `a` and `b` are the same object. They are two different objects."
+        },
+        {
+          "type": "gap",
+          "id": "classes-7",
+          "prompt": "Fill the gap so the program prints 0.",
+          "code": "fun main() {\n    val word: String? = null\n    println(word?.length ___ 0)\n}",
+          "options": [
+            "?:",
+            "?.",
+            "||"
+          ],
+          "answer": 0,
+          "explain": "The Elvis operator `?:` gives the default value `0` when the left side is `null`."
+        },
+        {
+          "type": "gap",
+          "id": "classes-8",
+          "prompt": "Fill the gap so you can read the property name from outside.",
+          "code": "class User(___ name: String)\n\nfun main() {\n    val u = User(\"Ida\")\n    println(u.name)\n}",
+          "options": [
+            "val",
+            "fun",
+            "new"
+          ],
+          "answer": 0,
+          "explain": "`val` in the parentheses makes `name` a property. Without it, `name` is only a parameter, and `u.name` does not exist."
+        },
+        {
+          "type": "blocks",
+          "id": "classes-9",
+          "prompt": "Build a line that creates a copy of p in which y is 0.",
+          "tokens": [
+            "val",
+            "q",
+            "=",
+            "p.copy",
+            "(",
+            "y = 0",
+            ")"
+          ],
+          "distractors": [
+            "new",
+            "p.clone"
+          ],
+          "explain": "`copy` creates a new object. With the named argument `y = 0`, only `y` changes."
+        },
+        {
+          "type": "order",
+          "id": "classes-10",
+          "prompt": "Put the lines in order so the program prints none and then ZOE.",
+          "lines": [
+            "fun main() {",
+            "    var name: String? = null",
+            "    println(name ?: \"none\")",
+            "    name = \"Zoe\"",
+            "    println(name?.uppercase())",
+            "}"
+          ],
+          "explain": "While `name` is `null`, `?:` gives `none`. After `name = \"Zoe\"`, the safe call gives `ZOE`."
+        },
+        {
+          "type": "pairs",
+          "id": "classes-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`String?`",
+              "a type that allows null"
+            ],
+            [
+              "`?.`",
+              "safe call"
+            ],
+            [
+              "`?:`",
+              "default value for null"
+            ],
+            [
+              "`!!`",
+              "stops the program if the value is null"
+            ],
+            [
+              "`data class`",
+              "a class for holding data"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "classes-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fun main() {",
+            "    val city: String? = null",
+            "    val upper = city?.uppercase()",
+            "    val size: Int = city.length",
+            "    println(\"$upper $size\")",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "`city` may be `null`, so `city.length` does not compile. Write `city?.length ?: 0`."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,427 @@
+{
+  "hello-1": {
+    "out": "10"
+  },
+  "hello-2": {
+    "out": "Julia!"
+  },
+  "hello-3": {
+    "out": "3.0"
+  },
+  "hello-4": {
+    "extra": [
+      {
+        "src": "println(\"Hello\")\nprint(\"x\")",
+        "out": "Hello\nx"
+      },
+      {
+        "src": "print(\"Hello\")\nprint(\"x\")",
+        "out": "Hellox"
+      },
+      {
+        "src": "println(Hello)",
+        "err": true
+      },
+      {
+        "src": "println \"Hello\"",
+        "err": true
+      }
+    ]
+  },
+  "hello-5": {
+    "out": "ab"
+  },
+  "hello-6": {
+    "out": "8"
+  },
+  "hello-7": {
+    "out": "1"
+  },
+  "hello-8": {
+    "out": "3.0"
+  },
+  "hello-9": {
+    "out": "Hello, Julia!\nDone"
+  },
+  "hello-11": {
+    "fix": "println(\"Middle\")",
+    "out": "Start\nMiddle\nEnd"
+  },
+  "hello-12": {
+    "fix": "println(2 + 3)",
+    "out": "Sum:\n2 + 3 = 5"
+  },
+  "variables-1": {
+    "out": "14"
+  },
+  "variables-2": {
+    "out": "3 + 4 = 7"
+  },
+  "variables-3": {
+    "out": "Float64"
+  },
+  "variables-4": {
+    "extra": [
+      {
+        "src": "println(typeof(false))\nprintln(typeof(\"true\"))\nprintln(typeof(0))\nprintln(typeof(1.0))",
+        "out": "Bool\nString\nInt64\nFloat64"
+      }
+    ]
+  },
+  "variables-5": {
+    "err": true
+  },
+  "variables-6": {
+    "out": "Hello, Ana."
+  },
+  "variables-7": {
+    "out": "Int64"
+  },
+  "variables-8": {
+    "tpl": "{{CODE}}\nprintln(n + 1)",
+    "out": "13"
+  },
+  "variables-9": {
+    "out": "Total: 15"
+  },
+  "variables-11": {
+    "fix": "println(\"$name is $age\")",
+    "out": "Ana is 30"
+  },
+  "variables-12": {
+    "fix": "println(\"Score: $(score + bonus)\")",
+    "out": "Score: 15"
+  },
+  "strings-1": {
+    "out": "abcc"
+  },
+  "strings-2": {
+    "out": "ell"
+  },
+  "strings-3": {
+    "out": "false"
+  },
+  "strings-4": {
+    "extra": [
+      {
+        "src": "println(\"abc\"^2)",
+        "out": "abcabc"
+      },
+      {
+        "src": "println(\"abc\" * 2)",
+        "err": true
+      },
+      {
+        "src": "println(\"abc\" + \"abc\")",
+        "err": true
+      },
+      {
+        "src": "println(2 * \"abc\")",
+        "err": true
+      }
+    ]
+  },
+  "strings-5": {
+    "out": "hello"
+  },
+  "strings-6": {
+    "out": "Hi, Ana"
+  },
+  "strings-7": {
+    "out": "n"
+  },
+  "strings-8": {
+    "tpl": "s = \"concatenate\"\n{{CODE}}",
+    "out": "true"
+  },
+  "strings-9": {
+    "out": "HI!HI!"
+  },
+  "strings-11": {
+    "fix": "println(first_name * \" \" * last_name)",
+    "out": "Ada Lovelace"
+  },
+  "strings-12": {
+    "fix": "c = s[1]",
+    "out": "J"
+  },
+  "conditions-1": {
+    "out": "medium"
+  },
+  "conditions-2": {
+    "out": "9"
+  },
+  "conditions-3": {
+    "out": "false"
+  },
+  "conditions-4": {
+    "extra": [
+      {
+        "src": "x = 10\nif x == 10\n    println(\"yes\")\nend",
+        "out": "yes"
+      },
+      {
+        "src": "x = 10\nif x = 10\n    println(\"yes\")\nend",
+        "err": true
+      },
+      {
+        "src": "x = 10\nif x => 10\n    println(\"yes\")\nend",
+        "err": true
+      },
+      {
+        "src": "x = 10\nif x != 10\n    println(\"yes\")\nend",
+        "out": ""
+      }
+    ]
+  },
+  "conditions-5": {
+    "err": true
+  },
+  "conditions-6": {
+    "out": "not both"
+  },
+  "conditions-7": {
+    "out": "even"
+  },
+  "conditions-8": {
+    "tpl": "age = 30\n{{CODE}}\nprintln(group)",
+    "out": "adult"
+  },
+  "conditions-9": {
+    "out": "mild"
+  },
+  "conditions-11": {
+    "fix": "elseif n == 0",
+    "out": "positive"
+  },
+  "conditions-12": {
+    "fix": "if x == 10",
+    "out": "ten"
+  },
+  "loops-1": {
+    "out": "2468"
+  },
+  "loops-2": {
+    "out": "3"
+  },
+  "loops-3": {
+    "out": "Hi\nHi\nHi\nHi"
+  },
+  "loops-4": {
+    "out": "123"
+  },
+  "loops-5": {
+    "out": ""
+  },
+  "loops-6": {
+    "out": "10\n7\n4\n1"
+  },
+  "loops-7": {
+    "out": "1\n2\n4\n5"
+  },
+  "loops-8": {
+    "tpl": "{{CODE}}\n    println(i)\nend",
+    "out": "1\n4\n7\n10"
+  },
+  "loops-9": {
+    "out": "1\n2\n3"
+  },
+  "loops-11": {
+    "fix": "    global total += i",
+    "out": "6"
+  },
+  "loops-12": {
+    "fix": "while n > 0",
+    "out": "3\n2\n1"
+  },
+  "functions-1": {
+    "out": "12"
+  },
+  "functions-2": {
+    "out": "15"
+  },
+  "functions-3": {
+    "out": "Float"
+  },
+  "functions-4": {
+    "extra": [
+      {
+        "src": "half(x) = x / 2\nprintln(half(4))",
+        "out": "2.0"
+      },
+      {
+        "src": "half = x / 2\nprintln(half(4))",
+        "err": true
+      },
+      {
+        "src": "function half(x) = x / 2\nprintln(half(4))",
+        "err": true
+      },
+      {
+        "src": "half(x) -> x / 2\nprintln(half(4))",
+        "err": true
+      }
+    ]
+  },
+  "functions-5": {
+    "out": "5"
+  },
+  "functions-6": {
+    "out": "Hello, World!"
+  },
+  "functions-7": {
+    "out": "some text"
+  },
+  "functions-8": {
+    "tpl": "{{CODE}}\nprintln(cube(2))",
+    "out": "8"
+  },
+  "functions-9": {
+    "out": "6"
+  },
+  "functions-11": {
+    "fix": "result = square(5)",
+    "out": "25"
+  },
+  "functions-12": {
+    "fix": "greet(\"Ana\")",
+    "out": "Hi, Ana!"
+  },
+  "arrays-1": {
+    "out": "23"
+  },
+  "arrays-2": {
+    "out": "[10, 20, 30]"
+  },
+  "arrays-3": {
+    "out": "4"
+  },
+  "arrays-4": {
+    "out": "[2, 4, 6]"
+  },
+  "arrays-5": {
+    "extra": [
+      {
+        "src": "nums = [5, 6]\nprintln(nums[1])",
+        "out": "5"
+      },
+      {
+        "src": "nums = [5, 6]\nprintln(nums[0])",
+        "err": true
+      }
+    ]
+  },
+  "arrays-6": {
+    "out": "[1, 2, 3, 4]"
+  },
+  "arrays-7": {
+    "out": "[11, 21, 31]"
+  },
+  "arrays-8": {
+    "tpl": "{{CODE}}\nprintln(squares)",
+    "out": "[1, 4, 9, 16, 25]"
+  },
+  "arrays-9": {
+    "out": "[3, 6, 9]"
+  },
+  "arrays-11": {
+    "fix": "more = nums .+ 1",
+    "out": "[2, 3, 4]"
+  },
+  "arrays-12": {
+    "fix": "evens = [n for n in nums if n % 2 == 0]",
+    "out": "[2, 4, 6]"
+  },
+  "dicts-1": {
+    "out": "12"
+  },
+  "dicts-2": {
+    "out": "7"
+  },
+  "dicts-3": {
+    "out": "unknown"
+  },
+  "dicts-4": {
+    "err": true
+  },
+  "dicts-5": {
+    "out": "2"
+  },
+  "dicts-6": {
+    "out": "30"
+  },
+  "dicts-7": {
+    "out": "Ana"
+  },
+  "dicts-8": {
+    "tpl": "{{CODE}}\nprintln(prices[\"tea\"])",
+    "out": "3"
+  },
+  "dicts-9": {
+    "out": "Bo is 4"
+  },
+  "dicts-11": {
+    "fix": "n = get(stock, \"pear\", 0)",
+    "out": "0"
+  },
+  "dicts-12": {
+    "fix": "mutable struct Counter",
+    "out": "2"
+  },
+  "_lesson": {
+    "extra": [
+      {
+        "src": "println(\"Hi\")\nprintln (2)",
+        "err": true
+      },
+      {
+        "src": "println(\"5\" + 1)",
+        "err": true
+      },
+      {
+        "src": "println(parse(Int, \"5\") + 1)",
+        "out": "6"
+      },
+      {
+        "src": "name = \"Ana\"\nprintln(\"$name!\")",
+        "err": true
+      },
+      {
+        "src": "name = \"Ana\"\nprintln(\"$(name)!\")",
+        "out": "Ana!"
+      },
+      {
+        "src": "println(\"a\" + \"b\")",
+        "err": true
+      },
+      {
+        "src": "c = 'Hi'",
+        "err": true
+      },
+      {
+        "src": "if 1\n    println(\"yes\")\nend",
+        "err": true
+      },
+      {
+        "src": "x = 5\nkind = x > 3? \"big\" : \"small\"\nprintln(kind)",
+        "err": true
+      },
+      {
+        "src": "describe(x::Int) = \"a whole number\"\nprintln(describe(2.5))",
+        "err": true
+      },
+      {
+        "src": "stock = Dict(\"apple\" => 5)\nprintln(stock[\"kiwi\"])",
+        "err": true
+      },
+      {
+        "src": "nums = [1, 2]\nprintln(nums + 1)",
+        "err": true
+      },
+      {
+        "src": "println(typeof(Int))\nprintln(Int === Int64)",
+        "out": "DataType\ntrue"
+      }
+    ]
+  }
+}

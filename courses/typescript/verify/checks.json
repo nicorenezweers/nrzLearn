@@ -1,0 +1,461 @@
+{
+  "lessons": {
+    "hello.lesson.12": {
+      "errors": [
+        2
+      ]
+    },
+    "objects.lesson.12": {
+      "errors": [
+        6
+      ]
+    }
+  },
+  "exercises": {
+    "hello-2": {
+      "snippets": [
+        {
+          "code": "const a = 1;\na = 2;",
+          "errors": [
+            2
+          ]
+        },
+        {
+          "code": "let b = 1;\nb = 2;",
+          "errors": []
+        }
+      ]
+    },
+    "hello-3": {
+      "snippets": [
+        {
+          "code": "let n: number = 5;\nconsole.log(n);",
+          "output": "5"
+        },
+        {
+          "code": "let n = 5;\nconsole.log(n);",
+          "output": "5"
+        }
+      ]
+    },
+    "hello-4": {
+      "output": "9.5"
+    },
+    "hello-5": {
+      "fix": "total = 10;",
+      "output": "Total 10"
+    },
+    "hello-6": {
+      "wrap": "$\nconsole.log(city);",
+      "output": "Oslo"
+    },
+    "hello-7": {
+      "output": "Score: 30"
+    },
+    "hello-10": {
+      "snippets": [
+        {
+          "code": "@CODE",
+          "errors": [
+            2
+          ]
+        }
+      ]
+    },
+    "hello-11": {
+      "snippets": [
+        {
+          "code": "@CODE",
+          "output": "5"
+        }
+      ]
+    },
+    "types-2": {
+      "snippets": [
+        {
+          "code": "const x: [string, number] = [\"pen\", 2];",
+          "errors": []
+        },
+        {
+          "code": "const x: string[] = [\"pen\", 2];",
+          "errors": [
+            1
+          ]
+        },
+        {
+          "code": "const x: number[] = [\"pen\", 2];",
+          "errors": [
+            1
+          ]
+        },
+        {
+          "code": "const x: [number, string] = [\"pen\", 2];",
+          "errors": [
+            1
+          ]
+        }
+      ]
+    },
+    "types-3": {
+      "snippets": [
+        {
+          "code": "@CODE\nconst s: string = title;\ntitle = 5;",
+          "errors": [
+            3
+          ]
+        }
+      ]
+    },
+    "types-4": {
+      "output": "3"
+    },
+    "types-5": {
+      "fix": "names.push(\"Dan\");",
+      "output": "[ 'Ana', 'Ben', 'Cleo', 'Dan' ] [ 3, 4 ]"
+    },
+    "types-7": {
+      "wrap": "$\nconsole.log(pair);",
+      "output": "[ 'x', 1 ]"
+    },
+    "types-8": {
+      "snippets": [
+        {
+          "code": "@CODE",
+          "errors": [
+            2
+          ]
+        }
+      ]
+    },
+    "types-10": {
+      "output": "[ 1, 2, 3 ]"
+    },
+    "types-12": {
+      "snippets": [
+        {
+          "code": "const x: any = \"hi\";\nconsole.log(x.lenght);",
+          "errors": [],
+          "output": "undefined"
+        }
+      ]
+    },
+    "functions-2": {
+      "output": "true"
+    },
+    "functions-3": {
+      "fix": "const result: number = half(10);",
+      "output": "5"
+    },
+    "functions-5": {
+      "snippets": [
+        {
+          "code": "@CODE\nmove(1);",
+          "errors": []
+        },
+        {
+          "code": "@CODE\nmove(1, 2);",
+          "errors": []
+        },
+        {
+          "code": "@CODE\nmove();",
+          "errors": [
+            2
+          ]
+        },
+        {
+          "code": "@CODE\nmove(5, 0);",
+          "errors": []
+        }
+      ]
+    },
+    "functions-6": {
+      "snippets": [
+        {
+          "code": "function f(): void {\n  return 5;\n}",
+          "errors": [
+            2
+          ]
+        }
+      ]
+    },
+    "functions-7": {
+      "wrap": "$\nconsole.log(square(4));",
+      "output": "16"
+    },
+    "functions-8": {
+      "output": "30"
+    },
+    "functions-11": {
+      "snippets": [
+        {
+          "code": "@CODE\nconst r: number = result;",
+          "errors": []
+        },
+        {
+          "code": "@CODE\nconst s: string = result;",
+          "errors": [
+            3
+          ]
+        }
+      ]
+    },
+    "functions-12": {
+      "output": "Hello, Ben!"
+    },
+    "objects-2": {
+      "fix": "const bird: Pet = { name: \"Kiwi\", legs: 2 };",
+      "output": "{ name: 'Tom', legs: 4 } { name: 'Kiwi', legs: 2 }"
+    },
+    "objects-3": {
+      "snippets": [
+        {
+          "code": "type Contact = { name: string; email?: string };\nconst c: Contact = { name: \"Ana\" };\nconsole.log(c.email);",
+          "errors": [],
+          "output": "undefined"
+        }
+      ]
+    },
+    "objects-4": {
+      "output": "{ title: 'New notes', isbn: '123' }"
+    },
+    "objects-5": {
+      "answerOutput": true
+    },
+    "objects-6": {
+      "wrap": "$\nconst a: Id = \"x1\";\nconsole.log(a);",
+      "output": "x1"
+    },
+    "objects-7": {
+      "output": "{ apples: 0, pears: 5 }"
+    },
+    "objects-10": {
+      "snippets": [
+        {
+          "code": "@CODE",
+          "errors": [
+            7
+          ]
+        }
+      ]
+    },
+    "objects-11": {
+      "snippets": [
+        {
+          "code": "@CODE",
+          "errors": [
+            4
+          ]
+        }
+      ]
+    },
+    "unions-2": {
+      "fix": "let c: Color = \"blue\";",
+      "output": "red green blue"
+    },
+    "unions-3": {
+      "output": "8"
+    },
+    "unions-4": {
+      "snippets": [
+        {
+          "code": "@CODE",
+          "errors": []
+        }
+      ]
+    },
+    "unions-5": {
+      "snippets": [
+        {
+          "code": "@CODE\npick(\"S\");",
+          "errors": []
+        },
+        {
+          "code": "@CODE\npick(\"L\");",
+          "errors": []
+        },
+        {
+          "code": "@CODE\npick(\"XL\");",
+          "errors": [
+            3
+          ]
+        },
+        {
+          "code": "@CODE\npick(\"M\");",
+          "errors": []
+        }
+      ]
+    },
+    "unions-7": {
+      "wrap": "$\nconst a: Answer = \"yes\";\nconsole.log(a);",
+      "output": "yes"
+    },
+    "unions-8": {
+      "output": "3"
+    },
+    "unions-10": {
+      "answerOutput": true
+    },
+    "unions-12": {
+      "snippets": [
+        {
+          "code": "function f(v: string | number): string {\n  return v.toUpperCase();\n}",
+          "errors": [
+            2
+          ]
+        },
+        {
+          "code": "function f(v: string | number): string {\n  if (typeof v === \"string\") {\n    return v.toUpperCase();\n  }\n  return \"\";\n}",
+          "errors": []
+        }
+      ]
+    },
+    "arrays-3": {
+      "output": "30"
+    },
+    "arrays-4": {
+      "snippets": [
+        {
+          "code": "@CODE\nconsole.log(first);",
+          "output": "30"
+        }
+      ]
+    },
+    "arrays-5": {
+      "snippets": [
+        {
+          "code": "const a = [1, 2];\nconst b = a.map((n) => n * 10);\nconsole.log(a, b);",
+          "output": "[ 1, 2 ] [ 10, 20 ]"
+        }
+      ]
+    },
+    "arrays-6": {
+      "fix": "const first: string | undefined = names.find((n) => n.startsWith(\"a\"));",
+      "output": "[ 'ANA', 'BEN' ] 6 ana"
+    },
+    "arrays-7": {
+      "wrap": "const nums = [4, 12, 30, 7];\n$\nconsole.log(big);",
+      "output": "[ 12, 30 ]"
+    },
+    "arrays-8": {
+      "output": "[ 2, 4, 6 ]"
+    },
+    "arrays-11": {
+      "snippets": [
+        {
+          "code": "@CODE\nconst x: string | undefined = found;",
+          "errors": []
+        },
+        {
+          "code": "@CODE\nconst y: string = found;",
+          "errors": [
+            3
+          ]
+        }
+      ]
+    },
+    "classes-2": {
+      "fix": "console.log(s.check(1234));",
+      "output": "false\ntrue"
+    },
+    "classes-3": {
+      "output": "Rex"
+    },
+    "classes-4": {
+      "snippets": [
+        {
+          "code": "class A {\n  private x: number = 1;\n}\nconsole.log(new A().x);",
+          "errors": [
+            4
+          ]
+        },
+        {
+          "code": "class A {\n  readonly x: number = 1;\n}\nconsole.log(new A().x);",
+          "errors": [],
+          "output": "1"
+        }
+      ]
+    },
+    "classes-5": {
+      "snippets": [
+        {
+          "code": "@CODE\nconst p = new Point(1);\nconsole.log(p.x);",
+          "errors": [],
+          "output": "1"
+        }
+      ]
+    },
+    "classes-6": {
+      "output": "Light { on: true }"
+    },
+    "classes-7": {
+      "wrap": "class Player {\n  name: string;\n  constructor(name: string) {\n    this.name = name;\n  }\n}\n$\nconsole.log(p.name);",
+      "output": "Ana"
+    },
+    "classes-9": {
+      "snippets": [
+        {
+          "code": "@CODE",
+          "errors": [
+            5
+          ]
+        }
+      ]
+    },
+    "classes-11": {
+      "fixAt": 1,
+      "fix": "  id: number;",
+      "suffix": "t.renumber(2);\nconsole.log(t);",
+      "output": "Ticket { id: 2, seat: 'A3' }"
+    },
+    "generics-2": {
+      "output": "[ 5 ]"
+    },
+    "generics-3": {
+      "snippets": [
+        {
+          "code": "@CODE\nconst s: string = result;",
+          "errors": []
+        },
+        {
+          "code": "@CODE\nconst n: number = result;",
+          "errors": [
+            6
+          ]
+        }
+      ]
+    },
+    "generics-4": {
+      "snippets": [
+        {
+          "code": "const a: Array<string> = [\"x\"];\nconst b: string[] = a;\nconst c: Array<string> = b;\nconsole.log(c);",
+          "errors": [],
+          "output": "[ 'x' ]"
+        }
+      ]
+    },
+    "generics-5": {
+      "fix": "const c: Box<boolean> = { value: true };",
+      "output": "{ value: 1 } { value: 'two' } { value: true }"
+    },
+    "generics-7": {
+      "wrap": "$\n  return value;\n}\nconsole.log(echo(\"hi\"));",
+      "output": "hi"
+    },
+    "generics-8": {
+      "output": "{ apples: 4, pears: 8 }"
+    },
+    "generics-10": {
+      "answerOutput": true
+    },
+    "generics-12": {
+      "snippets": [
+        {
+          "code": "@CODE",
+          "errors": [
+            2
+          ]
+        }
+      ]
+    }
+  }
+}

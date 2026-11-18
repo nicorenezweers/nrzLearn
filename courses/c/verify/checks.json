@@ -1,0 +1,454 @@
+{
+ "hello-1": [
+  {
+   "kind": "options",
+   "src": "@OPTION@\nprintf(\"\\n\");",
+   "expect": "Hello"
+  }
+ ],
+ "hello-2": [
+  {}
+ ],
+ "hello-3": [
+  {}
+ ],
+ "hello-4": [
+  {
+   "src": "printf(\"ok\\n\");",
+   "expect": "ok"
+  },
+  {
+   "kind": "manual",
+   "note": "C17 5.1.2.2.3: returning 0 from main reports successful termination"
+  }
+ ],
+ "hello-5": [
+  {
+   "expect": "Hi"
+  }
+ ],
+ "hello-6": [
+  {
+   "expect": "Line 1\nLine 2"
+  }
+ ],
+ "hello-7": [
+  {
+   "expect": "Hi!"
+  }
+ ],
+ "hello-8": [
+  {
+   "expect": "Ready\nGo"
+  }
+ ],
+ "hello-10": [
+  {
+   "fix": "    printf(\"Hello\\n\");",
+   "expect": "Hello\nWorld"
+  }
+ ],
+ "hello-11": [
+  {}
+ ],
+ "hello-12": [
+  {
+   "kind": "fail",
+   "src": "Printf(\"Hi\\n\");"
+  }
+ ],
+ "variables-1": [
+  {
+   "kind": "options",
+   "src": "@OPTION@ x = 3.75;\nprintf(\"%.2f\\n\", (double)x);",
+   "expect": "3.75"
+  }
+ ],
+ "variables-2": [
+  {}
+ ],
+ "variables-3": [
+  {}
+ ],
+ "variables-4": [
+  {}
+ ],
+ "variables-5": [
+  {
+   "expect": "B"
+  }
+ ],
+ "variables-6": [
+  {
+   "expect": "7"
+  }
+ ],
+ "variables-7": [
+  {
+   "src": "@ANSWER@\nprintf(\"%d\\n\", max);",
+   "expect": "100"
+  }
+ ],
+ "variables-8": [
+  {
+   "expect": "15"
+  }
+ ],
+ "variables-10": [
+  {
+   "fix": "    printf(\"%.2f\\n\", price);",
+   "expect": "9.99"
+  }
+ ],
+ "variables-11": [
+  {
+   "src": "printf(\"%.2f\\n\", 2.0);",
+   "expect": "2.00"
+  }
+ ],
+ "variables-12": [
+  {
+   "kind": "fail",
+   "src": "const int max = 10;\nmax = 20;\nprintf(\"%d\\n\", max);"
+  }
+ ],
+ "operators-1": [
+  {}
+ ],
+ "operators-2": [
+  {}
+ ],
+ "operators-3": [
+  {}
+ ],
+ "operators-4": [
+  {}
+ ],
+ "operators-5": [
+  {
+   "src": "printf(\"%d\\n\", 10 / 4);",
+   "expect": "2"
+  }
+ ],
+ "operators-6": [
+  {
+   "expect": "3.5"
+  }
+ ],
+ "operators-7": [
+  {
+   "expect": "6"
+  }
+ ],
+ "operators-8": [
+  {
+   "src": "int total = 5;\n@ANSWER@\nprintf(\"%d\\n\", total);",
+   "expect": "15"
+  }
+ ],
+ "operators-9": [
+  {
+   "expect": "2"
+  }
+ ],
+ "operators-10": [
+  {
+   "fix": "    double half = cost / 2.0;",
+   "expect": "2.50"
+  }
+ ],
+ "operators-12": [
+  {
+   "src": "printf(\"%d\\n\", -7 / 2);",
+   "expect": "-3"
+  }
+ ],
+ "conditions-1": [
+  {}
+ ],
+ "conditions-2": [
+  {}
+ ],
+ "conditions-3": [
+  {}
+ ],
+ "conditions-4": [
+  {
+   "kind": "options",
+   "src": "int count = 0;\nfor (int x = -5; x <= 15; x++) {\n    if (@OPTION@) {\n        count++;\n    }\n}\nprintf(\"%d\\n\", count);",
+   "expect": "10"
+  }
+ ],
+ "conditions-5": [
+  {
+   "src": "int x = 3;\nif ((x = 0)) {\n    printf(\"zero\\n\");\n}\nprintf(\"%d\\n\", x);",
+   "expect": "0"
+  }
+ ],
+ "conditions-6": [
+  {
+   "expect": "Even"
+  }
+ ],
+ "conditions-7": [
+  {
+   "expect": "Small"
+  }
+ ],
+ "conditions-8": [
+  {
+   "src": "int age = 18;\n@ANSWER@\n    printf(\"ok\\n\");\n}",
+   "expect": "ok"
+  },
+  {
+   "src": "int age = 17;\n@ANSWER@\n    printf(\"ok\\n\");\n}",
+   "expect": ""
+  }
+ ],
+ "conditions-9": [
+  {
+   "src": "int t = 30;\n@ANSWER@",
+   "expect": "Hot"
+  },
+  {
+   "src": "int t = 20;\n@ANSWER@",
+   "expect": "Warm"
+  },
+  {
+   "src": "int t = 5;\n@ANSWER@",
+   "expect": "Cold"
+  }
+ ],
+ "conditions-10": [
+  {
+   "fix": "    if (code == 3) {",
+   "expect": ""
+  }
+ ],
+ "conditions-12": [
+  {
+   "src": "int n = 1;\nswitch (n) {\n    case 1:\n        printf(\"A\\n\");\n        /* fall through */\n    case 2:\n        printf(\"B\\n\");\n}",
+   "expect": "A\nB"
+  }
+ ],
+ "loops-1": [
+  {}
+ ],
+ "loops-2": [
+  {}
+ ],
+ "loops-3": [
+  {}
+ ],
+ "loops-4": [
+  {
+   "kind": "options",
+   "src": "@OPTION@ {\n    printf(\"%d\\n\", i);\n}",
+   "expect": "1\n2\n3\n4\n5"
+  }
+ ],
+ "loops-5": [
+  {
+   "src": "do {\n    printf(\"x\\n\");\n} while (0);",
+   "expect": "x"
+  }
+ ],
+ "loops-6": [
+  {
+   "expect": "0\n1\n2"
+  }
+ ],
+ "loops-7": [
+  {
+   "expect": "1\n2\n3"
+  }
+ ],
+ "loops-8": [
+  {
+   "src": "@ANSWER@ {\n    printf(\"%d\\n\", i);\n}",
+   "expect": "10\n9\n8\n7\n6\n5\n4\n3\n2\n1"
+  }
+ ],
+ "loops-9": [
+  {
+   "expect": "3\n2\n1"
+  }
+ ],
+ "loops-10": [
+  {
+   "fix": "} while (n < 3);",
+   "expect": "0\n1\n2"
+  }
+ ],
+ "loops-12": [
+  {}
+ ],
+ "functions-1": [
+  {}
+ ],
+ "functions-2": [
+  {}
+ ],
+ "functions-3": [
+  {
+   "expect": "0\n42"
+  }
+ ],
+ "functions-4": [
+  {
+   "kind": "options",
+   "src": "#include <stdio.h>\n\n@OPTION@ show(void) {\n    printf(\"x\\n\");\n}\n\nint main(void) {\n    show();\n    return 0;\n}",
+   "expect": "x"
+  }
+ ],
+ "functions-5": [
+  {
+   "kind": "fail",
+   "src": "#include <stdio.h>\n\nint main(void) {\n    printf(\"%d\\n\", twice(2));\n    return 0;\n}\n\nint twice(int n) {\n    return 2 * n;\n}"
+  }
+ ],
+ "functions-6": [
+  {
+   "expect": "2.5"
+  }
+ ],
+ "functions-7": [
+  {
+   "expect": "8"
+  }
+ ],
+ "functions-8": [
+  {
+   "src": "#include <stdio.h>\n\n@ANSWER@ {\n    return w * h;\n}\n\nint main(void) {\n    printf(\"%.1f\\n\", area(2.0, 1.5));\n    return 0;\n}",
+   "expect": "3.0"
+  }
+ ],
+ "functions-9": [
+  {
+   "expect": "10"
+  }
+ ],
+ "functions-10": [
+  {
+   "fix": "    return a + b;",
+   "expect": "5"
+  }
+ ],
+ "functions-12": [
+  {
+   "kind": "fail",
+   "src": "#include <stdio.h>\n\nvoid show(void) {\n    printf(\"%d\\n\", count);\n}\n\nint main(void) {\n    int count = 3;\n    show();\n    printf(\"%d\\n\", count);\n    return 0;\n}"
+  }
+ ],
+ "arrays-1": [
+  {}
+ ],
+ "arrays-2": [
+  {}
+ ],
+ "arrays-3": [
+  {}
+ ],
+ "arrays-4": [
+  {
+   "kind": "options",
+   "src": "double temps[5] = {1.5, 2.5, 3.5, 4.5, 5.5};\nprintf(\"%.1f\\n\", @OPTION@);",
+   "expect": "5.5"
+  }
+ ],
+ "arrays-5": [
+  {
+   "src": "char a[] = \"abc\";\nchar b[] = \"abc\";\nprintf(\"%d\\n\", strcmp(a, b));",
+   "expect": "0"
+  }
+ ],
+ "arrays-6": [
+  {
+   "expect": "Rome"
+  }
+ ],
+ "arrays-7": [
+  {
+   "expect": "18"
+  }
+ ],
+ "arrays-8": [
+  {
+   "src": "@ANSWER@\nprintf(\"%d %d %d\\n\", primes[0], primes[1], primes[2]);",
+   "expect": "2 3 5"
+  }
+ ],
+ "arrays-9": [
+  {
+   "expect": "cat\n3"
+  }
+ ],
+ "arrays-10": [
+  {
+   "fix": "    if (strcmp(answer, \"yes\") == 0) {",
+   "expect": "OK"
+  }
+ ],
+ "arrays-12": [
+  {
+   "src": "char word[] = \"sun\";\nprintf(\"%zu\\n\", sizeof(word));",
+   "expect": "4"
+  }
+ ],
+ "pointers-1": [
+  {}
+ ],
+ "pointers-2": [
+  {}
+ ],
+ "pointers-3": [
+  {}
+ ],
+ "pointers-4": [
+  {
+   "kind": "options",
+   "src": "#include <stdio.h>\n\nstruct Point {\n    int x;\n    int y;\n};\n\nint main(void) {\n    struct Point pt = {7, 2};\n    struct Point *p = &pt;\n    printf(\"%d\\n\", @OPTION@);\n    return 0;\n}",
+   "expect": "7"
+  }
+ ],
+ "pointers-5": [
+  {
+   "src": "int x = 1;\nint *p = &x;\n*p = 9;\nprintf(\"%d\\n\", x);",
+   "expect": "9"
+  }
+ ],
+ "pointers-6": [
+  {
+   "expect": "8"
+  }
+ ],
+ "pointers-7": [
+  {
+   "expect": "0"
+  }
+ ],
+ "pointers-8": [
+  {
+   "src": "#include <stdio.h>\n\nstruct Person {\n    int age;\n};\n\nint main(void) {\n    struct Person bob = {25};\n    struct Person *ptr = &bob;\n    @ANSWER@\n    printf(\"%d\\n\", bob.age);\n    return 0;\n}",
+   "expect": "30"
+  }
+ ],
+ "pointers-9": [
+  {
+   "src": "#include <stdio.h>\n\n@ANSWER@",
+   "expect": "120"
+  }
+ ],
+ "pointers-10": [
+  {
+   "fix": "    double_it(&x);",
+   "expect": "8"
+  }
+ ],
+ "pointers-12": [
+  {
+   "src": "#include <stdio.h>\n\nstruct Point {\n    int x;\n};\n\nint main(void) {\n    struct Point pt = {7};\n    struct Point *ptr = &pt;\n    printf(\"%d %d\\n\", ptr->x, (*ptr).x);\n    return 0;\n}",
+   "expect": "7 7"
+  }
+ ]
+}

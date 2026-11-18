@@ -1,0 +1,521 @@
+{
+  "hello-2": {
+    "out": "6"
+  },
+  "hello-3": {
+    "out": "ABC"
+  },
+  "hello-4": {
+    "extra": [
+      {
+        "src": "fn main() {\n    println('a', 'b')\n}",
+        "err": true
+      },
+      {
+        "src": "fn main() {\n    println('a b')\n}",
+        "out": "a b"
+      }
+    ]
+  },
+  "hello-5": {
+    "out": "Hi"
+  },
+  "hello-6": {
+    "out": "Hello"
+  },
+  "hello-7": {
+    "out": "Hello, V!"
+  },
+  "hello-8": {
+    "out": "First\nSecond"
+  },
+  "hello-10": {
+    "fix": "    println('Stop')",
+    "out": "Start\nStop"
+  },
+  "hello-11": {
+    "fix": "    println('World')",
+    "out": "Hello\nWorld"
+  },
+  "hello-12": {
+    "out": "4"
+  },
+  "variables-1": {
+    "extra": [
+      {
+        "src": "fn main() {\n    mut x := 1\n    x = 2\n    println(x)\n}",
+        "out": "2"
+      },
+      {
+        "src": "fn main() {\n    x := 1\n    x = 2\n    println(x)\n}",
+        "err": true
+      },
+      {
+        "src": "fn main() {\n    var x = 1\n    x = 2\n    println(x)\n}",
+        "err": true
+      },
+      {
+        "src": "fn main() {\n    let mut x = 1\n    x = 2\n    println(x)\n}",
+        "err": true
+      }
+    ]
+  },
+  "variables-2": {
+    "out": "12"
+  },
+  "variables-3": {
+    "out": "3"
+  },
+  "variables-4": {
+    "out": "20",
+    "err": true
+  },
+  "variables-5": {
+    "out": "f64"
+  },
+  "variables-6": {
+    "out": "1"
+  },
+  "variables-7": {
+    "out": "3.5"
+  },
+  "variables-8": {
+    "tpl": "fn main() {\n    {{CODE}}\n    total += 1\n    println(total)\n}",
+    "out": "1"
+  },
+  "variables-9": {
+    "out": "21"
+  },
+  "variables-10": {
+    "fix": "mut total := 0",
+    "out": "5"
+  },
+  "variables-11": {
+    "fix": "ready := true",
+    "out": "Ada\ntrue"
+  },
+  "strings-1": {
+    "out": "Hello, V!"
+  },
+  "strings-2": {
+    "out": "6"
+  },
+  "strings-3": {
+    "out": "false"
+  },
+  "strings-4": {
+    "extra": [
+      {
+        "src": "fn main() {\n    println('Total: ' + 5)\n}",
+        "err": true
+      },
+      {
+        "src": "fn main() {\n    println('Total: ${5}')\n}",
+        "out": "Total: 5"
+      },
+      {
+        "src": "fn main() {\n    println('Total: ' + 5.str())\n}",
+        "out": "Total: 5"
+      }
+    ]
+  },
+  "strings-5": {
+    "out": "You have 3 items."
+  },
+  "strings-6": {
+    "out": "SHOUT"
+  },
+  "strings-7": {
+    "tpl": "fn main() {\n    first := 'Ada'\n    last := 'Lovelace'\n    {{CODE}}\n}",
+    "out": "Ada Lovelace"
+  },
+  "strings-8": {
+    "out": "RAIN"
+  },
+  "strings-10": {
+    "fix": "println('${name} will be ${next}')",
+    "out": "Ada will be 37"
+  },
+  "strings-11": {
+    "fix": "println(word.len)",
+    "out": "HELLO\n5"
+  },
+  "strings-12": {
+    "out": "ana"
+  },
+  "conditions-1": {
+    "out": "big"
+  },
+  "conditions-2": {
+    "out": "odd"
+  },
+  "conditions-3": {
+    "out": "B"
+  },
+  "conditions-4": {
+    "extra": [
+      {
+        "src": "fn main() {\n    n := 3\n    s := if n > 2 { 'big' }\n    println(s)\n}",
+        "err": true
+      },
+      {
+        "src": "fn main() {\n    n := 3\n    s := if n > 2 { 'big' } else { 'small' }\n    println(s)\n}",
+        "out": "big"
+      }
+    ]
+  },
+  "conditions-5": {
+    "out": "other"
+  },
+  "conditions-6": {
+    "out": "9"
+  },
+  "conditions-7": {
+    "tpl": "fn main() {\n    n := 4\n    {{CODE}}\n    println(sign)\n}",
+    "out": "1"
+  },
+  "conditions-8": {
+    "tpl": "fn grade(score int) {\n    {{CODE}}\n}\n\nfn main() {\n    grade(95)\n    println('-')\n    grade(75)\n    println('-')\n    grade(10)\n}",
+    "out": "A\n-\nB\n-\nC"
+  },
+  "conditions-10": {
+    "fix": "if x == 10 {",
+    "out": "ten"
+  },
+  "conditions-11": {
+    "fix": "    else { 'many' }",
+    "out": "many",
+    "nofmt": true
+  },
+  "conditions-12": {
+    "extra": [
+      {
+        "src": "fn main() {\n    a := 1\n    b := 2\n    println(a != b)\n}",
+        "out": "true"
+      },
+      {
+        "src": "fn main() {\n    a := 1\n    b := 2\n    println(a <> b)\n}",
+        "err": true
+      },
+      {
+        "src": "fn main() {\n    a := 1\n    b := 2\n    println(a =! b)\n}",
+        "err": true
+      },
+      {
+        "src": "fn main() {\n    a := 1\n    b := 2\n    println(a ~= b)\n}",
+        "err": true
+      }
+    ]
+  },
+  "loops-1": {
+    "out": "6"
+  },
+  "loops-2": {
+    "out": "0123"
+  },
+  "loops-3": {
+    "out": "2\n3\n4\n5"
+  },
+  "loops-4": {
+    "extra": [
+      {
+        "src": "fn main() {\n    for i in 0 .. 3 {\n        print(i)\n    }\n    println('')\n}",
+        "out": "012"
+      }
+    ]
+  },
+  "loops-5": {
+    "out": "64"
+  },
+  "loops-6": {
+    "out": "135"
+  },
+  "loops-7": {
+    "tpl": "fn main() {\n    names := ['Ada', 'Bob']\n    {{CODE}}\n        println('${i} ${name}')\n    }\n}",
+    "out": "0 Ada\n1 Bob"
+  },
+  "loops-8": {
+    "out": "12"
+  },
+  "loops-10": {
+    "fix": "for n > 0 {",
+    "out": "3\n2\n1"
+  },
+  "loops-11": {
+    "fix": "for fruit in fruits {",
+    "out": "apple\npear"
+  },
+  "loops-12": {
+    "out": "32"
+  },
+  "functions-1": {
+    "out": "12"
+  },
+  "functions-2": {
+    "out": "4-9"
+  },
+  "functions-3": {
+    "extra": [
+      {
+        "src": "fn area(w int, h int) int {\n    return w * h\n}\n\nfn main() {\n    println(area(3, 4))\n}",
+        "out": "12"
+      },
+      {
+        "src": "fn area(w int, h int) int {\n    return w * h\n}\n\nfn main() {\n    println(area(3))\n}",
+        "err": true
+      },
+      {
+        "src": "fn area(w int, h int) int {\n    return w * h\n}\n\nfn main() {\n    println(area(w int, h int))\n}",
+        "err": true
+      },
+      {
+        "src": "fn area(w int, h int) int {\n    return w * h\n}\n\nfn main() {\n    println(area(3.5, 4))\n}",
+        "err": true
+      }
+    ]
+  },
+  "functions-4": {
+    "extra": [
+      {
+        "src": "fn two() (int, int) {\n    return 1, 2\n}\n\nfn main() {\n    a, b := two()\n    println(a + b)\n}",
+        "out": "3"
+      }
+    ]
+  },
+  "functions-5": {
+    "out": "25"
+  },
+  "functions-6": {
+    "out": "1"
+  },
+  "functions-7": {
+    "tpl": "{{CODE}}\n    return a + b\n}\n\nfn main() {\n    println(add(2, 3))\n}",
+    "out": "5"
+  },
+  "functions-8": {
+    "tpl": "{{CODE}}\n\nfn main() {\n    println(average(4, 8))\n}",
+    "out": "6"
+  },
+  "functions-10": {
+    "tpl": "{{CODE}}",
+    "fix": "    println(add(2, 3))",
+    "out": "5",
+    "nofmt": true
+  },
+  "functions-11": {
+    "tpl": "{{CODE}}",
+    "fix": "fn half(n int) int {",
+    "out": "5",
+    "nofmt": true
+  },
+  "functions-12": {
+    "out": "2"
+  },
+  "arrays-1": {
+    "out": "4"
+  },
+  "arrays-2": {
+    "out": "green"
+  },
+  "arrays-3": {
+    "out": "0"
+  },
+  "arrays-4": {
+    "extra": [
+      {
+        "src": "fn main() {\n    nums := [1, 2]\n    nums << 3\n    println(nums)\n}",
+        "err": true
+      },
+      {
+        "src": "fn main() {\n    mut nums := [1, 2]\n    nums << 3\n    println(nums)\n}",
+        "out": "[1, 2, 3]"
+      }
+    ]
+  },
+  "arrays-5": {
+    "out": "[5]"
+  },
+  "arrays-6": {
+    "out": "2.5"
+  },
+  "arrays-7": {
+    "tpl": "fn main() {\n    ages := {\n        'Ada': 36\n    }\n    {{CODE}}\n        println('yes')\n    }\n}",
+    "out": "yes"
+  },
+  "arrays-8": {
+    "out": "['milk', 'bread']"
+  },
+  "arrays-10": {
+    "fix": "mut nums := [1, 2, 3]",
+    "out": "[1, 2, 3, 4]"
+  },
+  "arrays-11": {
+    "fix": "ages['Bob'] = 20",
+    "out": "2"
+  },
+  "arrays-12": {
+    "out": "15"
+  },
+  "structs-1": {
+    "out": "7"
+  },
+  "structs-2": {
+    "out": "99"
+  },
+  "structs-3": {
+    "out": "14"
+  },
+  "structs-4": {
+    "extra": [
+      {
+        "src": "struct Dog {\n    name string\nmut:\n    age int\n}\n\nfn main() {\n    mut d := Dog{\n        name: 'Rex'\n    }\n    d.name = 'Max'\n    println(d.name)\n}",
+        "err": true
+      },
+      {
+        "src": "struct Dog {\n    name string\nmut:\n    age int\n}\n\nfn main() {\n    mut d := Dog{\n        name: 'Rex'\n    }\n    d.age = 3\n    println(d.age)\n}",
+        "out": "3"
+      }
+    ]
+  },
+  "structs-5": {
+    "out": "1"
+  },
+  "structs-6": {
+    "out": "4"
+  },
+  "structs-7": {
+    "tpl": "fn lookup(name string) ?int {\n    if name == 'Ada' {\n        return 36\n    }\n    return none\n}\n\nfn main() {\n    {{CODE}}\n    println(age)\n}",
+    "out": "0"
+  },
+  "structs-8": {
+    "tpl": "struct Player {\n    name string\nmut:\n    score int\n}\n\nfn (mut p Player) add(n int) {\n    p.score += n\n}\n\nfn main() {\n    {{CODE}}\n}",
+    "out": "5"
+  },
+  "structs-10": {
+    "tpl": "{{CODE}}",
+    "fix": "fn (mut c Counter) inc() {",
+    "out": "1",
+    "nofmt": true
+  },
+  "structs-11": {
+    "tpl": "{{CODE}}",
+    "fix": "        return none",
+    "out": "5",
+    "nofmt": true
+  },
+  "structs-12": {
+    "out": "5"
+  },
+  "_facts": [
+    {
+      "about": "hello: println takes one value",
+      "src": "fn main() {\n    println('a', 'b')\n}",
+      "err": true
+    },
+    {
+      "about": "hello: Println is unknown",
+      "src": "fn main() {\n    Println('a')\n}",
+      "err": true
+    },
+    {
+      "about": "hello: comment with result",
+      "src": "fn main() {\n    println(1 + 1) // 2\n}",
+      "out": "2"
+    },
+    {
+      "about": "variables: redefinition",
+      "src": "fn main() {\n    x := 1\n    x := 2\n    println(x)\n}",
+      "err": true
+    },
+    {
+      "about": "variables: unused variable warns",
+      "src": "fn main() {\n    x := 1\n    y := 2\n    println(x)\n}",
+      "warn": true
+    },
+    {
+      "about": "strings: string + int",
+      "src": "fn main() {\n    age := 3\n    println('Age: ' + age)\n}",
+      "err": true
+    },
+    {
+      "about": "strings: interpolation fix",
+      "src": "fn main() {\n    age := 3\n    println('Age: ${age}')\n}",
+      "out": "Age: 3"
+    },
+    {
+      "about": "conditions: if x = 5",
+      "src": "fn main() {\n    x := 5\n    if x = 5 {\n        println(x)\n    }\n}",
+      "err": true
+    },
+    {
+      "about": "conditions: match needs else",
+      "src": "fn main() {\n    n := 3\n    s := match n {\n        1 { 'a' }\n        2 { 'b' }\n    }\n    println(s)\n}",
+      "err": true
+    },
+    {
+      "about": "loops: three dots in for",
+      "src": "fn main() {\n    for i in 0...3 {\n        println(i)\n    }\n}",
+      "err": true
+    },
+    {
+      "about": "loops: n-- subtracts 1",
+      "src": "fn main() {\n    mut n := 3\n    n--\n    println(n)\n}",
+      "out": "2"
+    },
+    {
+      "about": "functions: main may come first",
+      "src": "fn main() {\n    println(add(1, 2))\n}\n\nfn add(a int, b int) int {\n    return a + b\n}",
+      "out": "3"
+    },
+    {
+      "about": "functions: add(2) fails",
+      "src": "fn add(a int, b int) int {\n    return a + b\n}\n\nfn main() {\n    println(add(2))\n}",
+      "err": true
+    },
+    {
+      "about": "functions: add(2.5, 1) fails",
+      "src": "fn add(a int, b int) int {\n    return a + b\n}\n\nfn main() {\n    println(add(2.5, 1))\n}",
+      "err": true
+    },
+    {
+      "about": "functions: parameters are immutable",
+      "src": "fn f(n int) int {\n    n = 2\n    return n\n}\n\nfn main() {\n    println(f(1))\n}",
+      "err": true
+    },
+    {
+      "about": "arrays: index out of range stops",
+      "src": "fn main() {\n    nums := [1, 2, 3]\n    println(nums[3])\n}",
+      "err": true
+    },
+    {
+      "about": "arrays: missing string key gives ''",
+      "src": "fn main() {\n    m := {\n        'a': 'x'\n    }\n    println('[${m['b']}]')\n}",
+      "out": "[]"
+    },
+    {
+      "about": "structs: card struct on one line",
+      "src": "struct Point { x int y int }\n\nfn main() {\n    p := Point{ x: 1, y: 2 }\n    println(p.y)\n}",
+      "out": "2"
+    },
+    {
+      "about": "structs: struct literal on one line",
+      "src": "struct Point {\n    x int\n    y int\n}\n\nfn main() {\n    p := Point{ x: 1, y: 2 }\n    println(p.x)\n}",
+      "out": "1"
+    },
+    {
+      "about": "structs: mut var does not make fields mutable",
+      "src": "struct Book {\n    pages int\n}\n\nfn main() {\n    mut b := Book{}\n    b.pages = 3\n    println(b.pages)\n}",
+      "err": true
+    },
+    {
+      "about": "structs: mut receiver needs mut variable",
+      "src": "struct Counter {\nmut:\n    count int\n}\n\nfn (mut c Counter) inc() {\n    c.count++\n}\n\nfn main() {\n    c := Counter{}\n    c.inc()\n    println(c.count)\n}",
+      "err": true
+    },
+    {
+      "about": "structs: option + 1 fails",
+      "src": "fn f() ?int {\n    return 1\n}\n\nfn main() {\n    println(f() + 1)\n}",
+      "err": true
+    }
+  ]
+}

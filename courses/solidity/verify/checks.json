@@ -1,0 +1,954 @@
+{
+  "lesson:hello:1": {
+    "calls": [
+      "greet()"
+    ]
+  },
+  "lesson:hello:2": {
+    "calls": [
+      "bye()",
+      "hello()",
+      "bye()"
+    ]
+  },
+  "hello-2": {
+    "calls": [
+      "greet()"
+    ],
+    "out": "Good morning"
+  },
+  "hello-3": {
+    "calls": [
+      "b()",
+      "a()"
+    ],
+    "out": "Two\nOne"
+  },
+  "hello-4": {
+    "extra": [
+      {
+        "src": "contract A {\n    function f() public pure returns (string memory) {\n        return \"ok\";\n    }\n}",
+        "calls": [
+          "f()"
+        ],
+        "out": "ok"
+      }
+    ]
+  },
+  "hello-5": {
+    "calls": [
+      "greet()"
+    ],
+    "out": "Hi"
+  },
+  "hello-6": {
+    "calls": [
+      "greet()"
+    ],
+    "out": "Hi"
+  },
+  "hello-7": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    function f() public pure returns (string memory) {\n        {{CODE}}\n    }\n}",
+    "calls": [
+      "f()"
+    ],
+    "out": "Hi"
+  },
+  "hello-8": {
+    "tpl": "{{CODE}}",
+    "calls": [
+      "check()"
+    ],
+    "out": "Ready",
+    "swapOk": [
+      4
+    ]
+  },
+  "hello-10": {
+    "tpl": "{{CODE}}",
+    "fix": "        return \"Hello\";",
+    "calls": [
+      "greet()"
+    ],
+    "out": "Hello"
+  },
+  "hello-11": {
+    "tpl": "{{CODE}}",
+    "fix": "contract Hello {",
+    "calls": [
+      "greet()"
+    ],
+    "out": "Hello"
+  },
+  "lesson:types:1": {
+    "calls": [
+      "balance()",
+      "open()",
+      "owner()"
+    ]
+  },
+  "lesson:types:2": {
+    "calls": [
+      "temperature()",
+      "divide()",
+      "remainder()"
+    ]
+  },
+  "lesson:types:3": {
+    "calls": [
+      "count()",
+      "increment()",
+      "increment()",
+      "count()"
+    ]
+  },
+  "lesson:types:4": {
+    "calls": [
+      "owner()",
+      "nobody()"
+    ]
+  },
+  "types-1": {
+    "calls": [
+      "split()"
+    ],
+    "out": "3"
+  },
+  "types-2": {
+    "calls": [
+      "add()",
+      "add()",
+      "count()"
+    ],
+    "out": "10"
+  },
+  "types-3": {
+    "extra": [
+      {
+        "src": "int256 public x = -3;",
+        "calls": [
+          "x()"
+        ],
+        "out": "-3"
+      },
+      {
+        "src": "uint256 public x = -3;",
+        "err": true
+      },
+      {
+        "src": "bool public x = -3;",
+        "err": true
+      },
+      {
+        "src": "address public x = -3;",
+        "err": true
+      }
+    ]
+  },
+  "types-4": {
+    "extra": [
+      {
+        "src": "uint256 public score;",
+        "calls": [
+          "score()"
+        ],
+        "out": "0"
+      }
+    ]
+  },
+  "types-5": {
+    "extra": [
+      {
+        "src": "function next() public pure returns (uint256) {\n    uint256 n = 0;\n    n = n + 1;\n    return n;\n}",
+        "calls": [
+          "next()",
+          "next()"
+        ],
+        "out": "1\n1"
+      }
+    ]
+  },
+  "types-6": {
+    "calls": [
+      "open()"
+    ],
+    "out": "true"
+  },
+  "types-7": {
+    "calls": [
+      "name()"
+    ],
+    "out": "Ada"
+  },
+  "types-8": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    {{CODE}}\n}",
+    "calls": [
+      "count()"
+    ],
+    "out": "7"
+  },
+  "types-10": {
+    "fix": "    bool public active = true;",
+    "calls": [
+      "name()",
+      "age()",
+      "active()"
+    ],
+    "out": "Ada\n36\ntrue"
+  },
+  "types-11": {
+    "calls": [
+      "warm()",
+      "t()"
+    ],
+    "out": "3"
+  },
+  "types-12": {
+    "fix": "        count = 0;",
+    "calls": [
+      "add()",
+      "add()",
+      "count()",
+      "reset()",
+      "count()"
+    ],
+    "out": "4\n0"
+  },
+  "lesson:functions:1": {
+    "calls": [
+      "add(2, 3)",
+      "add(10, 20)"
+    ]
+  },
+  "lesson:functions:2": {
+    "calls": [
+      "greet(\"Ada\")"
+    ]
+  },
+  "lesson:functions:3": {
+    "calls": [
+      "total(3)",
+      "setPrice(25)",
+      "total(3)"
+    ]
+  },
+  "lesson:functions:4": {
+    "calls": [
+      "withTax(50)"
+    ]
+  },
+  "lesson:functions:5": {
+    "calls": [
+      "divide(17, 5)"
+    ]
+  },
+  "functions-1": {
+    "calls": [
+      "f(4)"
+    ],
+    "out": "9"
+  },
+  "functions-2": {
+    "extra": [
+      {
+        "src": "uint256 public price = 5;\n\nfunction get() public view returns (uint256) {\n    return price;\n}",
+        "calls": [
+          "get()"
+        ],
+        "out": "5"
+      },
+      {
+        "src": "uint256 public price = 5;\n\nfunction get() public pure returns (uint256) {\n    return price;\n}",
+        "err": true
+      },
+      {
+        "src": "uint256 public price = 5;\n\nfunction get() public constant returns (uint256) {\n    return price;\n}",
+        "err": true
+      }
+    ]
+  },
+  "functions-3": {
+    "extra": [
+      {
+        "src": "uint256 public x = 1;\n\nfunction get() public pure returns (uint256) {\n    return x;\n}",
+        "err": true
+      }
+    ]
+  },
+  "functions-4": {
+    "calls": [
+      "getPrice()"
+    ],
+    "out": "10"
+  },
+  "functions-5": {
+    "calls": [
+      "both()"
+    ],
+    "out": "1, true"
+  },
+  "functions-6": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    {{CODE}} {\n        return x * 2;\n    }\n}",
+    "calls": [
+      "double(21)"
+    ],
+    "out": "42"
+  },
+  "functions-7": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n{{CODE}}\n}",
+    "calls": [
+      "perimeter(3, 4)"
+    ],
+    "out": "14"
+  },
+  "functions-9": {
+    "fix": "    function add(uint256 n) public {",
+    "calls": [
+      "add(3)",
+      "count()"
+    ],
+    "out": "3"
+  },
+  "functions-10": {
+    "fix": "    function greet(string memory name) public pure returns (string memory) {",
+    "calls": [
+      "greet(\"Ada\")"
+    ],
+    "out": "Hi, Ada"
+  },
+  "functions-11": {
+    "calls": [
+      "divide(20, 6)"
+    ],
+    "out": "3, 2"
+  },
+  "functions-12": {
+    "calls": [
+      "setPrice(8)",
+      "total(2)"
+    ],
+    "out": "16"
+  },
+  "lesson:conditions:1": {
+    "calls": [
+      "grade(95)",
+      "grade(70)",
+      "grade(20)"
+    ]
+  },
+  "lesson:conditions:2": {
+    "calls": [
+      "canVote(20, true)",
+      "canVote(20, false)",
+      "canVote(15, true)"
+    ]
+  },
+  "lesson:conditions:3": {
+    "calls": [
+      "withdraw(30)",
+      "withdraw(500)",
+      "amount()"
+    ]
+  },
+  "lesson:conditions:4": {
+    "calls": [
+      "add(4)",
+      "add(8)",
+      "count()"
+    ]
+  },
+  "lesson:conditions:5": {
+    "calls": [
+      "price(10)",
+      "price(30)",
+      "price(2)"
+    ]
+  },
+  "conditions-1": {
+    "calls": [
+      "check(7)"
+    ],
+    "out": "medium"
+  },
+  "conditions-2": {
+    "calls": [
+      "withdraw(20)",
+      "withdraw(40)",
+      "amount()"
+    ],
+    "out": "revert: Not enough funds\n30",
+    "last": true
+  },
+  "conditions-3": {
+    "extra": [
+      {
+        "src": "uint256 public count;\n\nfunction add(uint256 n) public {\n    count += n;\n    require(count <= 10, \"Too high\");\n}",
+        "calls": [
+          "add(20)",
+          "count()"
+        ],
+        "out": "revert: Too high\n0"
+      }
+    ]
+  },
+  "conditions-4": {
+    "extra": [
+      {
+        "src": "function f(uint256 x) public pure returns (uint256) {\n    require(x > 0, \"Zero\");\n    return x;\n}",
+        "calls": [
+          "f(0)",
+          "f(2)"
+        ],
+        "out": "revert: Zero\n2"
+      }
+    ]
+  },
+  "conditions-5": {
+    "calls": [
+      "deposit(5)",
+      "deposit(20)"
+    ],
+    "out": "revert: Too small\n20"
+  },
+  "conditions-6": {
+    "calls": [
+      "status(18)",
+      "status(17)",
+      "status(30)"
+    ],
+    "out": "adult\nminor\nadult"
+  },
+  "conditions-7": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    function f(uint256 balance, uint256 amount) public pure returns (uint256) {\n        {{CODE}}\n        return balance - amount;\n    }\n}",
+    "calls": [
+      "f(10, 3)",
+      "f(3, 10)"
+    ],
+    "out": "7\nrevert: Too low"
+  },
+  "conditions-8": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n{{CODE}}\n}",
+    "calls": [
+      "sign(5)",
+      "sign(-5)",
+      "sign(0)"
+    ],
+    "out": "positive\nnegative\nzero"
+  },
+  "conditions-10": {
+    "fix": "        require(value <= amount, \"Not enough funds\");",
+    "calls": [
+      "withdraw(30)",
+      "withdraw(500)",
+      "amount()"
+    ],
+    "out": "revert: Not enough funds\n70"
+  },
+  "conditions-11": {
+    "fix": "        if (x > 5) {",
+    "calls": [
+      "size(9)",
+      "size(1)"
+    ],
+    "out": "big\nsmall"
+  },
+  "conditions-12": {
+    "calls": [
+      "add(6)",
+      "add(6)",
+      "count()"
+    ],
+    "out": "revert: Too high\n6"
+  },
+  "lesson:loops:1": {
+    "calls": [
+      "sumTo(4)",
+      "sumTo(10)"
+    ]
+  },
+  "lesson:loops:2": {
+    "calls": [
+      "steps(8)",
+      "steps(20)"
+    ]
+  },
+  "lesson:loops:3": {
+    "calls": [
+      "add(70)",
+      "add(30)",
+      "add(90)",
+      "count()",
+      "scores(1)"
+    ]
+  },
+  "lesson:loops:4": {
+    "calls": [
+      "add(70)",
+      "add(30)",
+      "add(90)",
+      "all()",
+      "total()"
+    ]
+  },
+  "lesson:loops:5": {
+    "calls": [
+      "temps(2)",
+      "squares(4)"
+    ]
+  },
+  "loops-1": {
+    "calls": [
+      "f()"
+    ],
+    "out": "10"
+  },
+  "loops-2": {
+    "calls": [
+      "f()"
+    ],
+    "out": "81"
+  },
+  "loops-3": {
+    "extra": [
+      {
+        "src": "function first() public pure returns (uint256) {\n    uint256[] memory list = new uint256[](2);\n    list[0] = 7;\n    list[1] = 8;\n    return list[0];\n}",
+        "calls": [
+          "first()"
+        ],
+        "out": "7"
+      }
+    ]
+  },
+  "loops-4": {
+    "extra": [
+      {
+        "src": "uint256[] public scores;\n\nfunction add(uint256 s) public {\n    scores.push(s);\n}\n\nfunction count() public view returns (uint256) {\n    return scores.length;\n}",
+        "calls": [
+          "add(1)",
+          "add(2)",
+          "add(3)",
+          "count()"
+        ],
+        "out": "3"
+      }
+    ]
+  },
+  "loops-5": {
+    "calls": [
+      "add(4)",
+      "add(9)",
+      "scores(1)"
+    ],
+    "out": "9"
+  },
+  "loops-6": {
+    "calls": [
+      "total()"
+    ],
+    "out": "15"
+  },
+  "loops-7": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    function f() public pure returns (uint256) {\n        uint256 c = 0;\n        {{CODE}}\n            c++;\n        }\n        return c;\n    }\n}",
+    "calls": [
+      "f()"
+    ],
+    "out": "3"
+  },
+  "loops-8": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    uint256[] public scores = [70, 30, 90];\n\n{{CODE}}\n}",
+    "calls": [
+      "total()"
+    ],
+    "out": "190"
+  },
+  "loops-10": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    uint256[] public scores = [70, 30, 90];\n\n{{CODE}}\n}",
+    "fix": "        for (uint256 i = 0; i < scores.length; i++) {",
+    "calls": [
+      "total()"
+    ],
+    "out": "190"
+  },
+  "loops-11": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n{{CODE}}\n}",
+    "fix": "            n--;",
+    "calls": [
+      "countdown(3)"
+    ],
+    "out": "3"
+  },
+  "loops-12": {
+    "calls": [
+      "squares(3)"
+    ],
+    "out": "[0, 1, 4]"
+  },
+  "lesson:mappings:1": {
+    "calls": [
+      "setAge(\"Ada\", 36)",
+      "setAge(\"Alan\", 41)",
+      "ages(\"Ada\")",
+      "ages(\"Grace\")"
+    ]
+  },
+  "lesson:mappings:2": {
+    "calls": [
+      "earn(5)",
+      "earn(10)",
+      "points(you)",
+      "points(bob)"
+    ]
+  },
+  "lesson:mappings:3": {
+    "calls": [
+      "task()",
+      "complete()",
+      "task()"
+    ]
+  },
+  "lesson:mappings:4": {
+    "calls": [
+      "add(\"Read\")",
+      "add(\"Write\")",
+      "complete(1)",
+      "tasks(0)",
+      "tasks(1)"
+    ]
+  },
+  "mappings-1": {
+    "calls": [
+      "setAge(\"Ada\", 36)",
+      "ages(\"Bob\")"
+    ],
+    "out": "0"
+  },
+  "mappings-2": {
+    "calls": [
+      "earn(4)",
+      "earn(4)",
+      "points(you)"
+    ],
+    "out": "8"
+  },
+  "mappings-3": {
+    "extra": [
+      {
+        "src": "mapping(uint256 => uint256) public m;\n\nfunction set() public {\n    m[1] = 5;\n}",
+        "calls": [
+          "set()",
+          "m(2)"
+        ],
+        "out": "0"
+      }
+    ]
+  },
+  "mappings-4": {
+    "extra": [
+      {
+        "src": "mapping(address => uint256) public points;\n\nfunction size() public view returns (uint256) {\n    return points.length;\n}",
+        "err": true
+      }
+    ]
+  },
+  "mappings-5": {
+    "calls": [
+      "setMine(7)",
+      "balances(you)"
+    ],
+    "out": "7"
+  },
+  "mappings-6": {
+    "calls": [
+      "add(\"Read\")",
+      "complete(0)",
+      "tasks(0)"
+    ],
+    "out": "Read, true"
+  },
+  "mappings-7": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    mapping(address => uint256) public points;\n\n    function earn() public {\n        {{CODE}}\n    }\n}",
+    "calls": [
+      "earn()",
+      "earn()",
+      "points(you)"
+    ],
+    "out": "10"
+  },
+  "mappings-8": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    struct Task {\n        string text;\n        bool done;\n    }\n\n    Task[] public tasks;\n\n    function add(string memory text) public {\n        tasks.push(Task(text, false));\n    }\n\n{{CODE}}\n}",
+    "calls": [
+      "add(\"Read\")",
+      "rename(0, \"Write\")",
+      "tasks(0)",
+      "rename(5, \"Sleep\")"
+    ],
+    "out": "Write, false\nrevert: No such task"
+  },
+  "mappings-10": {
+    "fix": "        tasks.push(Task(text, false));",
+    "calls": [
+      "add(\"Read\")",
+      "tasks(0)"
+    ],
+    "out": "Read, false"
+  },
+  "mappings-11": {
+    "fix": "        task.done = true;",
+    "calls": [
+      "complete()",
+      "task()"
+    ],
+    "out": "Read, true"
+  },
+  "mappings-12": {
+    "calls": [
+      "vote(1)",
+      "voted(2, you)",
+      "voted(1, you)"
+    ],
+    "out": "false\ntrue"
+  },
+  "lesson:events:1": {
+    "calls": [
+      "increase()",
+      "increase()"
+    ]
+  },
+  "lesson:events:2": {
+    "calls": [
+      "withdraw(60)",
+      "withdraw(60)",
+      "amount()"
+    ]
+  },
+  "lesson:events:3": {
+    "calls": [
+      "setPrice(20)",
+      "bob: setPrice(5)",
+      "price()"
+    ]
+  },
+  "events-1": {
+    "calls": [
+      "increase()",
+      "increase()",
+      "increase()"
+    ],
+    "out": "event Increased(1)\nevent Increased(2)\nevent Increased(3)",
+    "last": true
+  },
+  "events-2": {
+    "calls": [
+      "withdraw(80)"
+    ],
+    "out": "revert: NotEnough(50)"
+  },
+  "events-3": {
+    "extra": [
+      {
+        "src": "event Done(uint256 x);\n\nfunction f() public {\n    emit Done(1);\n}",
+        "calls": [
+          "f()"
+        ],
+        "out": "event Done(1)"
+      },
+      {
+        "src": "event Done(uint256 x);\n\nfunction f() public {\n    event Done(1);\n}",
+        "err": true
+      },
+      {
+        "src": "event Done(uint256 x);\n\nfunction f() public {\n    log Done(1);\n}",
+        "err": true
+      }
+    ]
+  },
+  "events-5": {
+    "calls": [
+      "setPrice(3)",
+      "bob: setPrice(4)",
+      "price()"
+    ],
+    "out": "revert: NotOwner()\n3"
+  },
+  "events-6": {
+    "calls": [
+      "check(3)",
+      "check(12)"
+    ],
+    "out": "revert: TooSmall(3)\n12"
+  },
+  "events-7": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    event Paid(address from, uint256 amount);\n\n    function pay(uint256 amount) public {\n        {{CODE}}\n    }\n}",
+    "calls": [
+      "pay(5)"
+    ],
+    "out": "event Paid(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4, 5)"
+  },
+  "events-8": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    uint256 public amount = 100;\n\n    event Withdrawn(uint256 value, uint256 left);\n    error NotEnough(uint256 available);\n\n{{CODE}}\n}",
+    "calls": [
+      "withdraw(30)",
+      "withdraw(500)"
+    ],
+    "out": "event Withdrawn(30, 70)\nrevert: NotEnough(70)"
+  },
+  "events-10": {
+    "fix": "        emit Increased(count);",
+    "calls": [
+      "increase()"
+    ],
+    "out": "event Increased(1)"
+  },
+  "events-11": {
+    "fix": "        require(msg.sender == owner, \"Not owner\");",
+    "calls": [
+      "setPrice(3)",
+      "bob: setPrice(4)",
+      "price()"
+    ],
+    "out": "revert: Not owner\n3"
+  },
+  "events-12": {
+    "calls": [
+      "bob: setPrice(5)",
+      "price()",
+      "owner()"
+    ],
+    "out": "revert: NotOwner()\n10\n0x5B38Da6a701c568545dCfcB03FcB875f56beddC4"
+  },
+  "lesson:tokens:1": {
+    "calls": [
+      "balanceOf(you)",
+      "balanceOf(bob)"
+    ],
+    "deploy": [
+      1000
+    ]
+  },
+  "lesson:tokens:2": {
+    "calls": [
+      "transfer(bob, 300)",
+      "balanceOf(you)",
+      "balanceOf(bob)",
+      "bob: transfer(you, 500)"
+    ],
+    "deploy": [
+      1000
+    ]
+  },
+  "lesson:tokens:3": {
+    "calls": [
+      "subtract(5, 3)",
+      "subtract(3, 5)",
+      "grow(255)"
+    ]
+  },
+  "lesson:tokens:4": {
+    "calls": [
+      "transfer(bob, 250)",
+      "bob: transfer(you, 300)",
+      "totalSupply()",
+      "balanceOf(bob)"
+    ],
+    "deploy": [
+      1000
+    ]
+  },
+  "tokens-1": {
+    "deploy": [
+      1000
+    ],
+    "calls": [
+      "transfer(bob, 100)",
+      "transfer(bob, 50)",
+      "balanceOf(you)"
+    ],
+    "out": "850"
+  },
+  "tokens-2": {
+    "calls": [
+      "f()"
+    ],
+    "out": "250"
+  },
+  "tokens-3": {
+    "extra": [
+      {
+        "src": "function who() public view returns (address) {\n    return msg.sender;\n}",
+        "calls": [
+          "who()",
+          "bob: who()"
+        ],
+        "out": "0x5B38Da6a701c568545dCfcB03FcB875f56beddC4\n0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2"
+      }
+    ]
+  },
+  "tokens-4": {
+    "extra": [
+      {
+        "src": "function f(uint256 a, uint256 b) public pure returns (uint256) {\n    return a - b;\n}",
+        "calls": [
+          "f(0, 1)"
+        ],
+        "out": "revert: Panic(0x11)"
+      }
+    ]
+  },
+  "tokens-5": {
+    "calls": [
+      "transfer(bob, 30)",
+      "balanceOf(you)",
+      "balanceOf(bob)"
+    ],
+    "out": "70\n30"
+  },
+  "tokens-6": {
+    "deploy": [
+      500
+    ],
+    "calls": [
+      "balanceOf(you)"
+    ],
+    "out": "500"
+  },
+  "tokens-7": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    mapping(address => uint256) public balanceOf;\n\n    function give(address to, uint256 amount) public {\n        {{CODE}}\n    }\n}",
+    "calls": [
+      "give(bob, 5)",
+      "balanceOf(bob)"
+    ],
+    "out": "5"
+  },
+  "tokens-8": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    mapping(address => uint256) public balanceOf;\n\n    event Burned(uint256 amount, uint256 left);\n\n    constructor() {\n        balanceOf[msg.sender] = 100;\n    }\n\n{{CODE}}\n}",
+    "calls": [
+      "burn(40)",
+      "burn(500)"
+    ],
+    "out": "event Burned(40, 60)\nrevert: Not enough tokens"
+  },
+  "tokens-10": {
+    "tpl": "pragma solidity ^0.8.20;\n\ncontract T {\n    mapping(address => uint256) public balanceOf;\n\n    constructor() {\n        balanceOf[msg.sender] = 100;\n    }\n\n{{CODE}}\n}",
+    "fix": "        balanceOf[msg.sender] -= amount;",
+    "calls": [
+      "transfer(bob, 30)",
+      "balanceOf(you)",
+      "balanceOf(bob)"
+    ],
+    "out": "70\n30"
+  },
+  "tokens-11": {
+    "fix": "    uint8 public decimals = 18;",
+    "calls": [
+      "decimals()",
+      "totalSupply()"
+    ],
+    "out": "18\n1000"
+  },
+  "tokens-12": {
+    "calls": [
+      "wrap()"
+    ],
+    "out": "0"
+  }
+}

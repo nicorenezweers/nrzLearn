@@ -1,0 +1,370 @@
+{
+  "hello-2": {
+    "out": "Good morning"
+  },
+  "hello-3": {
+    "out": "Elixir is fun"
+  },
+  "hello-4": {
+    "extra": [
+      {
+        "src": "IO.puts(\"a\")\nIO.puts(\"b\")\n",
+        "out": "a\nb"
+      }
+    ]
+  },
+  "hello-5": {
+    "out": "Hello"
+  },
+  "hello-6": {
+    "out": "Hi, Ana"
+  },
+  "hello-7": {
+    "out": "Hi, Ana",
+    "tpl": "name = \"Ana\"\n{{CODE}}"
+  },
+  "hello-8": {
+    "out": "Hello, Ada"
+  },
+  "hello-10": {
+    "out": "Start\nMiddle\nEnd",
+    "fix": "IO.puts(\"Middle\")"
+  },
+  "hello-11": {
+    "out": "B"
+  },
+  "hello-12": {
+    "out": "12"
+  },
+  "basics-1": {
+    "out": "3"
+  },
+  "basics-2": {
+    "out": "2"
+  },
+  "basics-3": {
+    "out": "3.0"
+  },
+  "basics-4": {
+    "extra": [
+      {
+        "src": "IO.inspect(is_atom(:ok))\n",
+        "out": "true"
+      },
+      {
+        "src": "IO.inspect(is_atom(\"ok\"))\n",
+        "out": "false"
+      },
+      {
+        "src": "IO.inspect(is_atom(ok))\n",
+        "err": true
+      },
+      {
+        "src": "IO.inspect(is_atom(@ok))\n",
+        "err": true
+      }
+    ]
+  },
+  "basics-5": {
+    "out": "Hi Bo!"
+  },
+  "basics-6": {
+    "out": "true"
+  },
+  "basics-7": {
+    "out": "2"
+  },
+  "basics-8": {
+    "out": "Total: 12"
+  },
+  "basics-9": {
+    "out": "6",
+    "tpl": "word = \"hello\"\n{{CODE}}"
+  },
+  "basics-10": {
+    "out": "6"
+  },
+  "basics-12": {
+    "out": "Kim is 30\nNext: 31",
+    "fix": "IO.puts(\"Next: #{age + 1}\")"
+  },
+  "matching-1": {
+    "out": "12"
+  },
+  "matching-2": {
+    "out": "4"
+  },
+  "matching-3": {
+    "out": "15"
+  },
+  "matching-4": {
+    "err": true
+  },
+  "matching-5": {
+    "out": ":error"
+  },
+  "matching-6": {
+    "extra": [
+      {
+        "src": "[a, b] = [1, 2, 3]\nIO.puts(a + b)\n",
+        "err": true
+      },
+      {
+        "src": "{a, b} = {1, 2}\nIO.puts(a + b)\n",
+        "out": "3"
+      },
+      {
+        "src": "[a, _, _] = [1, 2, 3]\nIO.puts(a)\n",
+        "out": "1"
+      },
+      {
+        "src": "{_, b} = {1, 2}\nIO.puts(b)\n",
+        "out": "2"
+      }
+    ]
+  },
+  "matching-7": {
+    "out": "6"
+  },
+  "matching-8": {
+    "out": "3"
+  },
+  "matching-9": {
+    "out": "Max 40",
+    "tpl": "{{CODE}}\nIO.puts(\"#{name} #{age}\")"
+  },
+  "matching-10": {
+    "out": "22"
+  },
+  "matching-12": {
+    "out": "5",
+    "fix": "{x, y} = point"
+  },
+  "conditions-1": {
+    "out": "odd"
+  },
+  "conditions-2": {
+    "out": "mild"
+  },
+  "conditions-3": {
+    "out": "20"
+  },
+  "conditions-4": {
+    "extra": [
+      {
+        "src": "Enum.each([0, \"\", nil, false], fn v ->\n  r = if v, do: \"yes\", else: \"no\"\n  IO.puts(r)\nend)\n",
+        "out": "yes\nyes\nno\nno"
+      }
+    ]
+  },
+  "conditions-5": {
+    "out": "zero"
+  },
+  "conditions-6": {
+    "out": "small"
+  },
+  "conditions-7": {
+    "out": "other"
+  },
+  "conditions-8": {
+    "out": "big"
+  },
+  "conditions-9": {
+    "out": "yes",
+    "tpl": "x = 5\nanswer = {{CODE}}\nIO.puts(answer)",
+    "extra": [
+      {
+        "src": "x = 2\nanswer = if x > 3, do: \"yes\", else: \"no\"\nIO.puts(answer)\n",
+        "out": "no"
+      }
+    ]
+  },
+  "conditions-10": {
+    "tpl": "for score <- [95, 85, 50] do\n  {{CODE}}\nend",
+    "out": "A\nB\nC"
+  },
+  "conditions-12": {
+    "out": "adult",
+    "fix": "  true -> IO.puts(\"child\")"
+  },
+  "functions-1": {
+    "out": "15"
+  },
+  "functions-2": {
+    "out": "12"
+  },
+  "functions-3": {
+    "out": "3"
+  },
+  "functions-4": {
+    "extra": [
+      {
+        "src": "greet = fn n -> \"Hi, \" <> n end\nIO.puts(greet.(\"Ana\"))\n",
+        "out": "Hi, Ana"
+      },
+      {
+        "src": "greet = fn n -> \"Hi, \" <> n end\nIO.puts(greet(\"Ana\"))\n",
+        "err": true
+      },
+      {
+        "src": "greet = fn n -> \"Hi, \" <> n end\nIO.puts(greet->(\"Ana\"))\n",
+        "err": true
+      },
+      {
+        "src": "greet = fn n -> \"Hi, \" <> n end\nIO.puts(greet.call(\"Ana\"))\n",
+        "err": true
+      }
+    ]
+  },
+  "functions-5": {
+    "out": "medium"
+  },
+  "functions-6": {
+    "extra": [
+      {
+        "src": "IO.puts(\"abc\" |> String.upcase())\nIO.puts(String.upcase(\"abc\"))\n",
+        "out": "ABC\nABC"
+      }
+    ]
+  },
+  "functions-7": {
+    "out": "4.5"
+  },
+  "functions-8": {
+    "out": "3"
+  },
+  "functions-9": {
+    "out": "HELLO"
+  },
+  "functions-10": {
+    "out": "212.0"
+  },
+  "functions-12": {
+    "out": "Hi, Ana",
+    "fix": "IO.puts(Greet.hi(\"Ana\"))"
+  },
+  "collections-1": {
+    "out": "[6, 9]"
+  },
+  "collections-2": {
+    "out": "5"
+  },
+  "collections-3": {
+    "out": "7"
+  },
+  "collections-4": {
+    "out": "nil"
+  },
+  "collections-5": {
+    "extra": [
+      {
+        "src": "nums = [1, 2]\nIO.inspect([0 | nums])\n",
+        "out": "[0, 1, 2]"
+      },
+      {
+        "src": "nums = [1, 2]\nIO.inspect([nums | 0])\n",
+        "out": "[[1, 2] | 0]"
+      },
+      {
+        "src": "nums = [1, 2]\nIO.inspect(0 + nums)\n",
+        "err": true
+      },
+      {
+        "src": "nums = [1, 2]\nIO.inspect(0 <> nums)\n",
+        "err": true
+      }
+    ]
+  },
+  "collections-6": {
+    "out": "%{ana: 1}"
+  },
+  "collections-7": {
+    "out": "7"
+  },
+  "collections-8": {
+    "out": "%{x: 5, y: 2}"
+  },
+  "collections-9": {
+    "out": "Ivo",
+    "tpl": "person = %{name: \"Ivo\", age: 50}\n{{CODE}}\nIO.puts(name)"
+  },
+  "collections-10": {
+    "out": "4"
+  },
+  "collections-12": {
+    "out": "3\n5",
+    "fix": "IO.puts(stock.pears)"
+  },
+  "enum-1": {
+    "out": "[2, 3, 4]"
+  },
+  "enum-2": {
+    "out": "[2, 4, 6]",
+    "fix": "doubled = Enum.map(nums, fn n -> n * 2 end)"
+  },
+  "enum-3": {
+    "out": "2"
+  },
+  "enum-4": {
+    "out": "24"
+  },
+  "enum-5": {
+    "extra": [
+      {
+        "src": "IO.inspect(Enum.to_list(2..5))\n",
+        "out": "[2, 3, 4, 5]"
+      }
+    ]
+  },
+  "enum-6": {
+    "out": "[1, 4, 9]"
+  },
+  "enum-7": {
+    "out": "[2, 4]"
+  },
+  "enum-8": {
+    "out": "[\"HI\", \"YO\"]"
+  },
+  "enum-9": {
+    "out": "9"
+  },
+  "enum-10": {
+    "out": "[2, 4]",
+    "tpl": "nums = [1, 2]\nIO.inspect({{CODE}})"
+  },
+  "enum-11": {
+    "out": "[400, 500, 600]"
+  },
+  "recursion-1": {
+    "out": "10"
+  },
+  "recursion-2": {
+    "out": "8"
+  },
+  "recursion-3": {
+    "out": "32"
+  },
+  "recursion-5": {
+    "out": "9"
+  },
+  "recursion-6": {
+    "out": "4"
+  },
+  "recursion-7": {
+    "out": "6"
+  },
+  "recursion-8": {
+    "out": "5"
+  },
+  "recursion-9": {
+    "out": "[2, 4, 6]",
+    "tpl": "defmodule S do\n  def double([]), do: []\n  {{CODE}}\nend\n\nIO.inspect(S.double([1, 2, 3]))"
+  },
+  "recursion-10": {
+    "out": "6"
+  },
+  "recursion-12": {
+    "out": "3",
+    "fix": "  def count([]), do: 0"
+  }
+}

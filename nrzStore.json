@@ -1,0 +1,6 @@
+{
+  "store": "nicorenezweers/nrzStore",
+  "app": "nrz-rust-learn",
+  "tagPrefix": "umbrel-",
+  "package": "umbrel"
+}

@@ -1,0 +1,7 @@
+/target
+/dist
+/data
+/node_modules
+assets/tailwind.css
+.DS_Store
+/public

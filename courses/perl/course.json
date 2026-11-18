@@ -1,0 +1,1979 @@
+{
+  "course": "perl",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Perl!",
+      "chapter": "Basics",
+      "summary": "Write your first Perl programs with print and say, and start every program with use strict and use warnings.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A program is a list of instructions for the computer. Perl runs them from top to bottom. You save a Perl program in a text file, for example `hello.pl`, and run it with the command `perl hello.pl`."
+        },
+        {
+          "type": "text",
+          "md": "Your first instruction is `print`: it writes text on the screen. Text between double quotes is called a **string**. Inside a string, `\\n` means a line break. Every statement ends with a semicolon `;`."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nprint \"Hello, Perl!\\n\";",
+          "output": "Hello, Perl!"
+        },
+        {
+          "type": "text",
+          "md": "The first two lines are not output. `use strict;` makes Perl stop at common mistakes, for example a misspelled variable name. `use warnings;` makes Perl print a warning when your code looks suspicious. Start every program with these two lines."
+        },
+        {
+          "type": "text",
+          "md": "`print` does not add a line break by itself. Without `\\n`, the next `print` continues on the same line."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nprint \"One \";\nprint \"line\\n\";\nprint \"Second line\\n\";",
+          "output": "One line\nSecond line"
+        },
+        {
+          "type": "heading",
+          "text": "say"
+        },
+        {
+          "type": "text",
+          "md": "`say` works like `print`, but it adds a line break at the end. You turn it on once with the line `use feature 'say';` at the top of the program. The rest of this course uses `say` in almost every program."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nsay \"Hello\";\nsay \"World\";",
+          "output": "Hello\nWorld"
+        },
+        {
+          "type": "text",
+          "md": "`print` and `say` can show several values at once: separate them with commas. Numbers need no quotes, and Perl can calculate with `+`, `-`, `*` (multiply) and `/` (divide)."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nsay \"Sum: \", 2 + 3;\nsay 10 * 4;\nsay \"A\", \"B\", \"C\";",
+          "output": "Sum: 5\n40\nABC"
+        },
+        {
+          "type": "tip",
+          "md": "Perl is case-sensitive: `say` works, `Say` does not. A `#` starts a comment: Perl ignores everything from `#` to the end of the line."
+        },
+        {
+          "type": "warning",
+          "md": "A missing semicolon is the most common beginner mistake. Perl then reads two lines as one statement and stops with a `syntax error`."
+        }
+      ],
+      "card": [
+        "`use strict;` and `use warnings;` start every program",
+        "`print \"Hi\\n\";` prints text, `\\n` is a line break",
+        "`use feature 'say';` turns on `say`",
+        "`say \"Hi\";` prints text and a line break",
+        "`say \"Sum: \", 2 + 3;` prints several values"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which command runs the program in the file `hello.pl`?",
+          "options": [
+            "`perl hello.pl`",
+            "`hello.pl perl`",
+            "`run perl hello.pl`",
+            "`use hello.pl`"
+          ],
+          "answer": 0,
+          "explain": "You start a Perl program with the `perl` command, followed by the file name."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "print \"Good \";\nprint \"morning\\n\";",
+          "answers": [
+            "Good morning"
+          ],
+          "explain": "The first `print` has no line break, so the second `print` continues on the same line."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "say \"Total: \", 4 * 5;",
+          "answers": [
+            "Total: 20"
+          ],
+          "explain": "`say` prints the string and then the result of `4 * 5`, which is `20`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-4",
+          "prompt": "What does this print?",
+          "code": "print \"A\";\nprint \"B\\n\";\nsay \"C\";",
+          "options": [
+            "`AB` and then `C` on a new line",
+            "`A`, `B` and `C` on three lines",
+            "`ABC` on one line",
+            "`A` and then `BC` on a new line"
+          ],
+          "answer": 0,
+          "explain": "`print \"A\"` adds no line break, so `B` follows directly. `\\n` ends the line, and `say` prints `C` on the next line."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-5",
+          "statement": "`say` adds a line break after the text, but `print` does not.",
+          "answer": true,
+          "explain": "That is the only difference between the two. With `print`, you add `\\n` yourself."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the line so that `say` works.",
+          "code": "use strict;\nuse warnings;\nuse ___ 'say';\nsay \"Ready\";",
+          "options": [
+            "feature",
+            "say",
+            "strict",
+            "warnings"
+          ],
+          "answer": 0,
+          "explain": "`use feature 'say';` turns on the `say` feature. The other words are not modules that turn on `say`."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build a line that prints `Sum: 7` and a line break.",
+          "tokens": [
+            "say",
+            "\"Sum: \"",
+            ",",
+            "3",
+            "+",
+            "4",
+            ";"
+          ],
+          "distractors": [
+            "print",
+            "echo"
+          ],
+          "explain": "`say` prints all values in the list and adds a line break. The comma separates the string from the calculation."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order so the program prints `Perl is fun` and then `Bye`.",
+          "lines": [
+            "print \"Perl \";",
+            "print \"is \";",
+            "print \"fun\\n\";",
+            "say \"Bye\";"
+          ],
+          "explain": "The three `print` lines build the first line, and `\\n` ends it. Then `say` prints `Bye`."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`print`",
+              "prints text without a line break"
+            ],
+            [
+              "`say`",
+              "prints text and a line break"
+            ],
+            [
+              "`\\n`",
+              "a line break inside a string"
+            ],
+            [
+              "`;`",
+              "ends a statement"
+            ],
+            [
+              "`use strict;`",
+              "stops at common mistakes"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "use strict;",
+            "use warnings;",
+            "use feature 'say';",
+            "say \"Line 1\"",
+            "say \"Line 2\";"
+          ],
+          "bug": 3,
+          "explain": "The statement has no semicolon at the end. Write `say \"Line 1\";`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "print \"Start\\n\";",
+            "Print \"Middle\\n\";",
+            "print \"End\\n\";"
+          ],
+          "bug": 1,
+          "explain": "Perl is case-sensitive. The command is `print` in lowercase: `print \"Middle\\n\";`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-12",
+          "prompt": "Which line prints `5`?",
+          "options": [
+            "`say 2 + 3;`",
+            "`say \"2 + 3\";`",
+            "`say \"2\", \"3\";`",
+            "`say 23 - 3;`"
+          ],
+          "answer": 0,
+          "explain": "Perl calculates `2 + 3` outside of quotes. Inside quotes, `2 + 3` is text, and `say \"2\", \"3\"` prints `23`."
+        }
+      ]
+    },
+    {
+      "id": "scalars",
+      "title": "Scalars",
+      "chapter": "Basics",
+      "summary": "Store numbers and strings in scalar variables, put them into strings and calculate with them.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A variable is a name for a value. In Perl, a variable that holds one value is called a **scalar**. Its name starts with `$`, for example `$name`. The value can be a number or a string. `my` creates a new variable, and `=` stores a value in it."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $name = \"Ada\";\nmy $age = 36;\nsay $name;\nsay $age;",
+          "output": "Ada\n36"
+        },
+        {
+          "type": "text",
+          "md": "Inside double quotes, Perl replaces a variable with its value. This is called **interpolation**. Single quotes keep the text exactly as written: no variables and no `\\n`."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $city = \"Paris\";\nsay \"I live in $city.\";\nsay 'I live in $city.';",
+          "output": "I live in Paris.\nI live in $city."
+        },
+        {
+          "type": "heading",
+          "text": "Numbers"
+        },
+        {
+          "type": "text",
+          "md": "Perl calculates with `+`, `-`, `*` and `/`. `/` can give a decimal number. `%` gives the rest of a division, and `**` raises to a power. `$x += 3` is short for `$x = $x + 3`, and `$x++` adds 1."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $x = 7;\nmy $y = 2;\nsay $x + $y;\nsay $x / $y;\nsay $x % $y;\nsay $x ** $y;\n$x += 3;\nsay $x;\n$x++;\nsay $x;",
+          "output": "9\n3.5\n1\n49\n10\n11"
+        },
+        {
+          "type": "heading",
+          "text": "Strings"
+        },
+        {
+          "type": "text",
+          "md": "The dot `.` joins two strings into one. The operator `x` repeats a string. `length` counts the characters of a string."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $first = \"Ada\";\nmy $last = \"Lovelace\";\nmy $full = $first . \" \" . $last;\nsay $full;\nsay \"-\" x 10;\nsay length($full);",
+          "output": "Ada Lovelace\n----------\n12"
+        },
+        {
+          "type": "text",
+          "md": "Perl changes between numbers and strings for you. The operator decides: `+` treats both values as numbers, `.` treats both values as strings. So `\"3\" + 4` is `7`, and `3 . 4` is `34`."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nsay \"3\" + 4;\nsay 3 . 4;\nsay \"10\" * \"2\";",
+          "output": "7\n34\n20"
+        },
+        {
+          "type": "tip",
+          "md": "When letters follow a variable directly inside a string, put the name in braces: `\"${fruit}s\"` gives `apples` when `$fruit` is `\"apple\"`."
+        },
+        {
+          "type": "warning",
+          "md": "With `use strict`, you must create every variable with `my` before you use it. Otherwise Perl stops with the error `Global symbol \"$total\" requires explicit package name`."
+        }
+      ],
+      "card": [
+        "`my $name = \"Ada\";` creates a scalar variable",
+        "`\"Hi $name\"` interpolates, `'Hi $name'` does not",
+        "`+ - * / % **` calculate, `$x += 2;` and `$x++;` change a value",
+        "`\"ab\" . \"cd\"` gives `abcd`, `\"-\" x 3` gives `---`",
+        "`length($s)` counts the characters"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "scalars-1",
+          "prompt": "What does this print?",
+          "code": "my $n = 17;\nsay $n % 5;",
+          "answers": [
+            "2"
+          ],
+          "explain": "17 divided by 5 is 3, with a rest of 2. `%` gives the rest."
+        },
+        {
+          "type": "input",
+          "id": "scalars-2",
+          "prompt": "What does this print?",
+          "code": "my $word = \"ha\";\nsay $word x 3;",
+          "answers": [
+            "hahaha"
+          ],
+          "explain": "`x 3` repeats the string three times."
+        },
+        {
+          "type": "choice",
+          "id": "scalars-3",
+          "prompt": "What does this print?",
+          "code": "my $item = \"pen\";\nsay 'I have a $item';",
+          "options": [
+            "`I have a $item`",
+            "`I have a pen`",
+            "`I have a`",
+            "An error message"
+          ],
+          "answer": 0,
+          "explain": "Single quotes do not interpolate, so Perl prints the text exactly as written, including `$item`."
+        },
+        {
+          "type": "choice",
+          "id": "scalars-4",
+          "prompt": "What does this print?",
+          "code": "my $x = \"5\";\nmy $y = 3;\nsay $x . $y;",
+          "options": [
+            "`53`",
+            "`8`",
+            "`5 3`",
+            "`15`"
+          ],
+          "answer": 0,
+          "explain": "The dot `.` joins strings. Perl treats both values as strings, so the result is `53`."
+        },
+        {
+          "type": "true_false",
+          "id": "scalars-5",
+          "statement": "This program stops with an error.",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\n$total = 5;\nsay $total;",
+          "answer": true,
+          "explain": "With `use strict`, every variable needs `my` the first time. Write `my $total = 5;`."
+        },
+        {
+          "type": "gap",
+          "id": "scalars-6",
+          "prompt": "Complete the code so it prints `Hello, Bob!`.",
+          "code": "my $name = \"Bob\";\nsay \"Hello, \" ___ $name . \"!\";",
+          "options": [
+            ".",
+            "+",
+            "x",
+            "*"
+          ],
+          "answer": 0,
+          "explain": "The dot `.` joins strings. `+` and `*` calculate with numbers, and `x` repeats a string."
+        },
+        {
+          "type": "gap",
+          "id": "scalars-7",
+          "prompt": "Complete the code so it prints `25`.",
+          "code": "my $side = 5;\nmy $area = $side ___ 2;\nsay $area;",
+          "options": [
+            "**",
+            "*",
+            "x",
+            "%"
+          ],
+          "answer": 0,
+          "explain": "`**` raises to a power: 5 to the power of 2 is 25. `5 * 2` is `10`, and `5 x 2` is the string `55`."
+        },
+        {
+          "type": "blocks",
+          "id": "scalars-8",
+          "prompt": "Build a line that creates the variable `$price` with the value `9.99`.",
+          "tokens": [
+            "my",
+            "$price",
+            "=",
+            "9.99",
+            ";"
+          ],
+          "distractors": [
+            "price",
+            "=="
+          ],
+          "explain": "`my` creates the variable, the name starts with `$`, and `=` stores the value. `==` compares, it does not store."
+        },
+        {
+          "type": "order",
+          "id": "scalars-9",
+          "prompt": "Put the lines in order so the program prints `Total: 12`.",
+          "lines": [
+            "my $count = 2;",
+            "$count += 4;",
+            "$count = $count * 2;",
+            "say \"Total: $count\";"
+          ],
+          "explain": "First create the variable. 2 + 4 is 6, and 6 * 2 is 12. Then print the result."
+        },
+        {
+          "type": "pairs",
+          "id": "scalars-10",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`.`",
+              "joins two strings"
+            ],
+            [
+              "`x`",
+              "repeats a string"
+            ],
+            [
+              "`%`",
+              "rest of a division"
+            ],
+            [
+              "`**`",
+              "raises to a power"
+            ],
+            [
+              "`my`",
+              "creates a variable"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "scalars-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "my $first = \"Grace\";",
+            "my $last = \"Hopper\";",
+            "my $full = $first + \" \" + $last;",
+            "say $full;"
+          ],
+          "bug": 2,
+          "explain": "`+` adds numbers. To join strings, use the dot: `my $full = $first . \" \" . $last;`."
+        },
+        {
+          "type": "bug",
+          "id": "scalars-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "my $apples = 3;",
+            "my $pears = 4;",
+            "my $sum = $apples + $pears;",
+            "say 'Sum: $sum';"
+          ],
+          "bug": 3,
+          "explain": "Single quotes do not interpolate, so this prints `$sum` as text. Use double quotes: `say \"Sum: $sum\";`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Run code only when a condition is true with if, elsif, else and unless, and compare numbers and strings.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`if` runs a block of code only when a condition is true. The condition goes in parentheses, and the block goes in braces `{ }`. Both are required. `elsif` checks another condition when the first one is false (note the spelling), and `else` runs when no condition was true. You compare numbers with `==` (equal), `!=` (not equal), `<`, `>`, `<=` and `>=`."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $score = 72;\nif ($score >= 90) {\n    say \"A\";\n} elsif ($score >= 70) {\n    say \"B\";\n} else {\n    say \"C\";\n}",
+          "output": "B"
+        },
+        {
+          "type": "heading",
+          "text": "Comparing strings"
+        },
+        {
+          "type": "text",
+          "md": "Perl has separate operators to compare strings: `eq` (equal), `ne` (not equal), `lt` (comes first in alphabetical order) and `gt` (comes later). Use `==` for numbers and `eq` for strings. The number `10` and the number `10.0` are equal, but the strings `\"10\"` and `\"10.0\"` are different."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $color = \"red\";\nif ($color eq \"red\") {\n    say \"Stop\";\n}\nif (10 == 10.0) {\n    say \"Same number\";\n}\nif (\"10\" ne \"10.0\") {\n    say \"Different text\";\n}",
+          "output": "Stop\nSame number\nDifferent text"
+        },
+        {
+          "type": "warning",
+          "md": "If you compare strings with `==`, Perl turns them into numbers first. A word without digits becomes `0`, so `\"abc\" == \"xyz\"` is true. `use warnings` then prints a warning. Always use `eq` for strings."
+        },
+        {
+          "type": "heading",
+          "text": "True, false and unless"
+        },
+        {
+          "type": "text",
+          "md": "Perl has no special values for true and false. The number `0`, the empty string `\"\"`, the string `\"0\"` and an undefined value are false. Every other value is true. `unless` is the opposite of `if`: it runs the block when the condition is false."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $items = 0;\nunless ($items) {\n    say \"The cart is empty\";\n}",
+          "output": "The cart is empty"
+        },
+        {
+          "type": "text",
+          "md": "You combine conditions with `&&` (and: both must be true) and `||` (or: at least one must be true). `!` (not) turns true into false and false into true."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $age = 20;\nmy $has_ticket = 1;\nif ($age >= 18 && $has_ticket) {\n    say \"Welcome\";\n}\nif ($age < 12 || $age > 65) {\n    say \"Discount\";\n} else {\n    say \"Full price\";\n}",
+          "output": "Welcome\nFull price"
+        },
+        {
+          "type": "text",
+          "md": "For a single statement, you can put `if` or `unless` after it. This short form needs no parentheses and no braces."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $n = 8;\nsay \"Even\" if $n % 2 == 0;\nsay \"Not ten\" unless $n == 10;",
+          "output": "Even\nNot ten"
+        }
+      ],
+      "card": [
+        "`if (...) { } elsif (...) { } else { }`",
+        "Numbers: `==` `!=` `<` `>`; strings: `eq` `ne` `lt` `gt`",
+        "`unless ($x) { }` runs when `$x` is false",
+        "False: `0`, `\"\"`, `\"0\"` and undefined values",
+        "`&&` and, `||` or, `!` not; `say \"Hi\" if $ok;`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "my $x = 15;\nif ($x > 20) {\n    say \"big\";\n} elsif ($x > 10) {\n    say \"medium\";\n} else {\n    say \"small\";\n}",
+          "answers": [
+            "medium"
+          ],
+          "explain": "15 is not greater than 20, but it is greater than 10, so the `elsif` block runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "my $level = \"0\";\nif ($level) {\n    say \"on\";\n} else {\n    say \"off\";\n}",
+          "answers": [
+            "off"
+          ],
+          "explain": "The string `\"0\"` is false in Perl, so the `else` block runs."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "Which operator checks if two strings are equal?",
+          "options": [
+            "`eq`",
+            "`==`",
+            "`=`",
+            "`equals`"
+          ],
+          "answer": 0,
+          "explain": "`eq` compares strings. `==` compares numbers, and `=` stores a value."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-4",
+          "prompt": "What does this print?",
+          "code": "my $word = \"cat\";\nif ($word == \"dog\") {\n    say \"same\";\n} else {\n    say \"different\";\n}",
+          "options": [
+            "`same`, and Perl prints a warning",
+            "`different`",
+            "`different`, and Perl prints a warning",
+            "Only an error message"
+          ],
+          "answer": 0,
+          "explain": "`==` turns both words into the number `0`, so the condition is true. `use warnings` reports that the strings are not numbers."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-5",
+          "statement": "In Perl, the keyword for \"else if\" is `elsif`.",
+          "answer": true,
+          "explain": "Perl writes `elsif`, without the second `e`. `else if` is a syntax error in Perl."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-6",
+          "prompt": "Complete the condition so that access needs both the right user and the right PIN.",
+          "code": "my $user = \"admin\";\nmy $pin = 1111;\nif ($user eq \"admin\" ___ $pin == 1234) {\n    say \"Access granted\";\n} else {\n    say \"Access denied\";\n}",
+          "options": [
+            "&&",
+            "||",
+            "!",
+            "="
+          ],
+          "answer": 0,
+          "explain": "`&&` is true only when both conditions are true. Here the PIN is wrong, so access is denied. With `||`, the right user alone would be enough."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Complete the code so it prints `Hello, Ada`.",
+          "code": "my $name = \"Ada\";\nif ($name ___ \"Ada\") {\n    say \"Hello, Ada\";\n} else {\n    say \"Who are you?\";\n}",
+          "options": [
+            "eq",
+            "ne",
+            "lt",
+            "gt"
+          ],
+          "answer": 0,
+          "explain": "`eq` checks if two strings are equal. `ne` means not equal."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-8",
+          "prompt": "Build a line that prints `Adult` when `$age` is 18 or more.",
+          "tokens": [
+            "say",
+            "\"Adult\"",
+            "if",
+            "$age",
+            ">=",
+            "18",
+            ";"
+          ],
+          "distractors": [
+            "elsif",
+            "=<"
+          ],
+          "explain": "In the short form, the condition comes after the statement. `>=` means greater than or equal."
+        },
+        {
+          "type": "order",
+          "id": "conditions-9",
+          "prompt": "Put the lines in order so the program prints `5 is cold` and then `25 is warm`.",
+          "lines": [
+            "for my $temp (5, 25) {",
+            "    if ($temp > 20) {",
+            "        say \"$temp is warm\";",
+            "    } else {",
+            "        say \"$temp is cold\";",
+            "    }",
+            "}"
+          ],
+          "explain": "The `if` runs inside the loop for each value. 5 is not greater than 20, so the `else` block runs. 25 is greater than 20."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`==`",
+              "numbers are equal"
+            ],
+            [
+              "`eq`",
+              "strings are equal"
+            ],
+            [
+              "`ne`",
+              "strings are different"
+            ],
+            [
+              "`||`",
+              "at least one is true"
+            ],
+            [
+              "`unless`",
+              "runs when the condition is false"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "my $age = 16;",
+            "if ($age >= 18) {",
+            "    say \"adult\";",
+            "} else if ($age >= 13) {",
+            "    say \"teen\";",
+            "} else {",
+            "    say \"child\";",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "Perl has no `else if`. Write `} elsif ($age >= 13) {`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "my $answer = \"yes\";",
+            "if ($answer == \"no\") {",
+            "    say \"Stopping\";",
+            "} else {",
+            "    say \"Going on\";",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "`==` compares numbers, and both words become `0`. Compare strings with `eq`: `if ($answer eq \"no\") {`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with foreach, for and while, count with ranges like 1..5 and control loops with next and last.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A loop repeats a block of code. `foreach` runs the block once for every value in a list. `1..4` is a **range**: the numbers from 1 to 4. The variable after `my` holds the current value in each round."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $sum = 0;\nforeach my $i (1..4) {\n    say \"Adding $i\";\n    $sum += $i;\n}\nsay \"Sum: $sum\";",
+          "output": "Adding 1\nAdding 2\nAdding 3\nAdding 4\nSum: 10"
+        },
+        {
+          "type": "text",
+          "md": "`for` and `foreach` mean the same in Perl, and most people write the shorter `for`. A list can also be values in parentheses, separated by commas."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nfor my $fruit (\"apple\", \"pear\", \"plum\") {\n    say \"I like $fruit\";\n}",
+          "output": "I like apple\nI like pear\nI like plum"
+        },
+        {
+          "type": "heading",
+          "text": "while"
+        },
+        {
+          "type": "text",
+          "md": "`while` repeats the block as long as the condition is true. Change something inside the loop, otherwise it never ends. `$n *= 3` is short for `$n = $n * 3`."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $n = 1;\nwhile ($n < 100) {\n    $n *= 3;\n}\nsay $n;",
+          "output": "243"
+        },
+        {
+          "type": "text",
+          "md": "`for` also has a classic form with three parts, separated by semicolons: a start, a condition and a step that runs after each round. `$i -= 4` is short for `$i = $i - 4`."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nfor (my $i = 10; $i > 0; $i -= 4) {\n    say $i;\n}",
+          "output": "10\n6\n2"
+        },
+        {
+          "type": "heading",
+          "text": "next and last"
+        },
+        {
+          "type": "text",
+          "md": "`next` jumps to the next round at once. `last` ends the loop at once. Both are often used with the short `if` form."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nfor my $i (1..10) {\n    next if $i % 2 == 0;\n    last if $i > 7;\n    say $i;\n}",
+          "output": "1\n3\n5\n7"
+        },
+        {
+          "type": "tip",
+          "md": "A range always counts up, so `5..1` is an empty list. To count down, write `reverse 1..5`."
+        }
+      ],
+      "card": [
+        "`for my $x (1..5) { }` counts from 1 to 5",
+        "`foreach my $f (\"a\", \"b\") { }` loops over a list",
+        "`while ($n < 10) { }` repeats while the condition is true",
+        "`next` jumps to the next round, `last` ends the loop",
+        "`for (my $i = 0; $i < 3; $i++) { }`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "my $total = 0;\nfor my $n (1..5) {\n    $total += $n;\n}\nsay $total;",
+          "answers": [
+            "15"
+          ],
+          "explain": "The loop adds 1, 2, 3, 4 and 5. The sum is 15."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "my $x = 1;\nwhile ($x < 20) {\n    $x *= 2;\n}\nsay $x;",
+          "answers": [
+            "32"
+          ],
+          "explain": "`$x` becomes 2, 4, 8, 16 and 32. 32 is not less than 20, so the loop stops."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "How many lines does this print?",
+          "code": "for my $i (3..7) {\n    say $i;\n}",
+          "options": [
+            "`5`",
+            "`4`",
+            "`7`",
+            "`3`"
+          ],
+          "answer": 0,
+          "explain": "The range `3..7` contains 3, 4, 5, 6 and 7. That is five numbers."
+        },
+        {
+          "type": "choice",
+          "id": "loops-4",
+          "prompt": "What does this print?",
+          "code": "for my $i (1..6) {\n    next if $i == 3;\n    last if $i == 5;\n    print $i;\n}\nprint \"\\n\";",
+          "options": [
+            "`124`",
+            "`1234`",
+            "`12`",
+            "`12456`"
+          ],
+          "answer": 0,
+          "explain": "`next` skips 3, and `last` ends the loop when `$i` is 5. So the loop prints 1, 2 and 4."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-5",
+          "statement": "This loop prints nothing.",
+          "code": "for my $i (5..1) {\n    say $i;\n}",
+          "answer": true,
+          "explain": "A range always counts up. `5..1` is an empty list, so the block never runs."
+        },
+        {
+          "type": "gap",
+          "id": "loops-6",
+          "prompt": "Complete the loop so it prints 1, 2 and 3.",
+          "code": "for my $i (1 ___ 3) {\n    say $i;\n}",
+          "options": [
+            "..",
+            ",",
+            "-",
+            ":"
+          ],
+          "answer": 0,
+          "explain": "`1 .. 3` is the range 1, 2, 3. With a comma, the list has only 1 and 3."
+        },
+        {
+          "type": "gap",
+          "id": "loops-7",
+          "prompt": "Complete the loop so it prints `1`, `2` and `3`.",
+          "code": "for my $n (4, 1, 2, 9, 3) {\n    ___ if $n > 3;\n    say $n;\n}",
+          "options": [
+            "next",
+            "last",
+            "break",
+            "continue"
+          ],
+          "answer": 0,
+          "explain": "`next` skips 4 and 9 and goes on with the next value. `last` would end the loop at the first value, 4."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-8",
+          "prompt": "Build the first line of a loop that runs while `$count` is greater than `0`.",
+          "tokens": [
+            "while",
+            "(",
+            "$count",
+            ">",
+            "0",
+            ")",
+            "{"
+          ],
+          "distractors": [
+            "for",
+            "until"
+          ],
+          "explain": "`while` repeats as long as the condition in parentheses is true."
+        },
+        {
+          "type": "order",
+          "id": "loops-9",
+          "prompt": "Put the lines in order so the program prints `Sum: 6`.",
+          "lines": [
+            "my $sum = 0;",
+            "for my $i (1..3) {",
+            "    $sum += $i;",
+            "}",
+            "say \"Sum: $sum\";"
+          ],
+          "explain": "Create `$sum` before the loop, add inside the loop and print once after the loop."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`1..4`",
+              "the numbers from 1 to 4"
+            ],
+            [
+              "`last`",
+              "ends the loop"
+            ],
+            [
+              "`next`",
+              "jumps to the next round"
+            ],
+            [
+              "`while`",
+              "repeats while a condition is true"
+            ],
+            [
+              "`foreach`",
+              "runs once for every value in a list"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "loops-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "my $total = 0;",
+            "for my $n (1..4) {",
+            "    $total += $n;",
+            "}",
+            "say \"Total: $Total\";"
+          ],
+          "bug": 4,
+          "explain": "Perl is case-sensitive, and `$Total` was never created. Write `say \"Total: $total\";`."
+        },
+        {
+          "type": "bug",
+          "id": "loops-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "for my $i (1..5) {",
+            "    if ($i == 4) {",
+            "        stop;",
+            "    }",
+            "    say $i;",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "Perl has no `stop`. To end a loop, write `last;`."
+        }
+      ]
+    },
+    {
+      "id": "arrays",
+      "title": "Arrays",
+      "chapter": "Data",
+      "summary": "Keep many values in order in an array, add and remove items with push and pop, and use join and sort.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** stores a list of scalars in a fixed order. Its name starts with `@`. You create it with a list in parentheses. Inside double quotes, an array prints its items with a space between them."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy @fruits = (\"apple\", \"banana\", \"cherry\", \"plum\");\nsay \"@fruits\";\nsay $fruits[0];\nsay $fruits[2];\nsay $fruits[-1];",
+          "output": "apple banana cherry plum\napple\ncherry\nplum"
+        },
+        {
+          "type": "text",
+          "md": "Each item has an **index**, a position number that starts at `0`. One item is a scalar, so you write `$fruits[0]` with `$`, not `@`. A negative index counts from the end: `$fruits[-1]` is the last item."
+        },
+        {
+          "type": "text",
+          "md": "`push` adds items at the end of an array. `pop` removes the last item and returns it, so you can store it in a variable."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy @stack = (1, 2, 3);\npush @stack, 4;\npush @stack, 5, 6;\nmy $last = pop @stack;\nsay \"Removed: $last\";\nsay \"@stack\";",
+          "output": "Removed: 6\n1 2 3 4 5"
+        },
+        {
+          "type": "text",
+          "md": "You change an item with `=`. `scalar(@colors)` gives the number of items, and `$#colors` gives the last index."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy @colors = (\"red\", \"green\", \"blue\");\n$colors[1] = \"yellow\";\nsay scalar(@colors);\nsay $#colors;\nsay \"@colors\";",
+          "output": "3\n2\nred yellow blue"
+        },
+        {
+          "type": "text",
+          "md": "`foreach` goes through the items of an array, one after the other."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy @prices = (4, 10, 6);\nmy $total = 0;\nforeach my $price (@prices) {\n    $total += $price;\n}\nsay \"Total: $total\";",
+          "output": "Total: 20"
+        },
+        {
+          "type": "heading",
+          "text": "join and sort"
+        },
+        {
+          "type": "text",
+          "md": "`join` glues all items into one string, with a separator between them. `sort` returns a sorted copy of a list. By default, it sorts alphabetically."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy @names = (\"Zoe\", \"Adam\", \"Mia\");\nmy @sorted = sort @names;\nsay join(\", \", @sorted);\nsay join(\"-\", 1..4);",
+          "output": "Adam, Mia, Zoe\n1-2-3-4"
+        },
+        {
+          "type": "warning",
+          "md": "`sort` compares strings by default, so `10` comes before `9`. To sort numbers, write `sort { $a <=> $b } @nums`. `$a` and `$b` are special variables that `sort` fills with two items, and `<=>` compares them as numbers."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy @nums = (10, 9, 100, 1);\nsay join(\" \", sort @nums);\nsay join(\" \", sort { $a <=> $b } @nums);",
+          "output": "1 10 100 9\n1 9 10 100"
+        }
+      ],
+      "card": [
+        "`my @list = (1, 2, 3);` creates an array",
+        "`$list[0]` is the first item, `$list[-1]` the last",
+        "`push @list, 4;` adds, `pop @list` removes the last item",
+        "`scalar(@list)` counts the items",
+        "`join(\", \", sort @list)`; numbers: `sort { $a <=> $b } @list`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arrays-1",
+          "prompt": "What does this print?",
+          "code": "my @letters = (\"a\", \"b\", \"c\", \"d\");\nsay $letters[2];",
+          "answers": [
+            "c"
+          ],
+          "explain": "Indexes start at 0, so index 2 is the third item."
+        },
+        {
+          "type": "input",
+          "id": "arrays-2",
+          "prompt": "What does this print?",
+          "code": "my @nums = (5, 8, 2);\npush @nums, 7;\nsay scalar(@nums);",
+          "answers": [
+            "4"
+          ],
+          "explain": "The array has three items, and `push` adds a fourth."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-3",
+          "prompt": "What does this print?",
+          "code": "my @days = (\"Mon\", \"Tue\", \"Wed\");\nsay $days[-1];",
+          "options": [
+            "`Wed`",
+            "`Mon`",
+            "`Tue`",
+            "An error message"
+          ],
+          "answer": 0,
+          "explain": "The index `-1` means the last item."
+        },
+        {
+          "type": "choice",
+          "id": "arrays-4",
+          "prompt": "What does this print?",
+          "code": "my @n = (3, 20, 100);\nsay join(\",\", sort @n);",
+          "options": [
+            "`100,20,3`",
+            "`3,20,100`",
+            "`100,3,20`",
+            "`20,3,100`"
+          ],
+          "answer": 0,
+          "explain": "Without a block, `sort` compares strings character by character. `\"1\"` comes before `\"2\"`, and `\"2\"` before `\"3\"`."
+        },
+        {
+          "type": "true_false",
+          "id": "arrays-5",
+          "statement": "`pop` removes the first item of an array.",
+          "answer": false,
+          "explain": "`pop` removes the last item."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-6",
+          "prompt": "Complete the code so it prints `red green blue`.",
+          "code": "my @colors = (\"red\", \"green\");\n___ @colors, \"blue\";\nsay \"@colors\";",
+          "options": [
+            "push",
+            "pop",
+            "join",
+            "sort"
+          ],
+          "answer": 0,
+          "explain": "`push` adds `\"blue\"` at the end of the array."
+        },
+        {
+          "type": "gap",
+          "id": "arrays-7",
+          "prompt": "Complete the code so it prints `1, 2, 3`.",
+          "code": "my @nums = (1, 2, 3);\nsay ___(\", \", @nums);",
+          "options": [
+            "join",
+            "push",
+            "scalar",
+            "sort"
+          ],
+          "answer": 0,
+          "explain": "`join` puts the separator `\", \"` between the items and returns one string."
+        },
+        {
+          "type": "blocks",
+          "id": "arrays-8",
+          "prompt": "Build a line that creates the array `@pets`, so that `say \"@pets\";` prints `cat dog`.",
+          "tokens": [
+            "my",
+            "@pets",
+            "=",
+            "(",
+            "\"cat\"",
+            ",",
+            "\"dog\"",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            "$pets",
+            "["
+          ],
+          "explain": "An array name starts with `@`, and the items go in parentheses, separated by commas."
+        },
+        {
+          "type": "order",
+          "id": "arrays-9",
+          "prompt": "Put the lines in order so the program prints `3 5 7`.",
+          "lines": [
+            "my @scores = (7, 3);",
+            "push @scores, 5;",
+            "my @sorted = sort { $a <=> $b } @scores;",
+            "say join(\" \", @sorted);"
+          ],
+          "explain": "Create the array, add 5, sort the numbers and then print them."
+        },
+        {
+          "type": "pairs",
+          "id": "arrays-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`push @list, $x`",
+              "adds an item at the end"
+            ],
+            [
+              "`pop @list`",
+              "removes the last item"
+            ],
+            [
+              "`scalar(@list)`",
+              "the number of items"
+            ],
+            [
+              "`$list[0]`",
+              "the first item"
+            ],
+            [
+              "`join(\",\", @list)`",
+              "one string from all items"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "arrays-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "my @animals = (\"cat\", \"dog\", \"cow\");",
+            "my $count = scalar(@animals);",
+            "say \"There are $count animals\";",
+            "say \"The first is $animals[1]\";"
+          ],
+          "bug": 3,
+          "explain": "Indexes start at 0. The first item is `$animals[0]`."
+        },
+        {
+          "type": "bug",
+          "id": "arrays-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "my @nums = (12, 4, 30);",
+            "my @sorted = sort @nums;",
+            "my $smallest = $sorted[0];",
+            "say \"Smallest: $smallest\";"
+          ],
+          "bug": 1,
+          "explain": "`sort` without a block compares strings, so `12` comes first. Sort numbers with `my @sorted = sort { $a <=> $b } @nums;`."
+        }
+      ]
+    },
+    {
+      "id": "hashes",
+      "title": "Hashes",
+      "chapter": "Data",
+      "summary": "Store pairs of keys and values in a hash, check keys with exists and loop over a hash in a fixed order.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **hash** stores pairs of keys and values. You look up a value by its key, like a word in a dictionary. A hash name starts with `%`. Between a key and its value you write `=>`."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy %ages = (\n    \"Ann\" => 31,\n    \"Ben\" => 25,\n);\nsay $ages{\"Ann\"};\nsay $ages{Ben};",
+          "output": "31\n25"
+        },
+        {
+          "type": "text",
+          "md": "One value is a scalar, so you read it with `$` and the key in braces: `$ages{\"Ann\"}`. When the key is a simple word, you can leave out the quotes."
+        },
+        {
+          "type": "text",
+          "md": "You add a new pair or change a value with `=`."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy %stock = (apples => 5);\n$stock{pears} = 3;\n$stock{apples} += 2;\nsay \"apples: $stock{apples}\";\nsay \"pears: $stock{pears}\";",
+          "output": "apples: 7\npears: 3"
+        },
+        {
+          "type": "text",
+          "md": "`exists` checks whether a key is in the hash. `delete` removes a key and its value."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy %capital = (France => \"Paris\", Japan => \"Tokyo\", Peru => \"Lima\");\ndelete $capital{Peru};\nif (exists $capital{Japan}) {\n    say \"Japan: $capital{Japan}\";\n}\nunless (exists $capital{Peru}) {\n    say \"No entry for Peru\";\n}",
+          "output": "Japan: Tokyo\nNo entry for Peru"
+        },
+        {
+          "type": "heading",
+          "text": "Looping over a hash"
+        },
+        {
+          "type": "text",
+          "md": "`keys %price` gives a list of all keys, and `values %price` a list of all values. A hash has no fixed order, and the order can change every time the program runs. For a fixed order, sort the keys: `sort keys %price`."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy %price = (tea => 3, cake => 5, juice => 4);\nforeach my $item (sort keys %price) {\n    say \"$item costs $price{$item}\";\n}",
+          "output": "cake costs 5\njuice costs 4\ntea costs 3"
+        },
+        {
+          "type": "text",
+          "md": "`scalar(keys %points)` counts the pairs. When the order does not matter, for example for a sum, you can use `values` directly."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy %points = (Ann => 12, Ben => 7, Cy => 9);\nmy $total = 0;\nforeach my $p (values %points) {\n    $total += $p;\n}\nsay \"Players: \", scalar(keys %points);\nsay \"Total: $total\";",
+          "output": "Players: 3\nTotal: 28"
+        },
+        {
+          "type": "text",
+          "md": "A hash is great for counting. `my %count;` creates an empty hash. `$count{$w}++` adds 1 to the value of the key `$w`. A new key starts at 0."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy @words = (\"a\", \"b\", \"a\", \"c\", \"a\");\nmy %count;\nforeach my $w (@words) {\n    $count{$w}++;\n}\nforeach my $w (sort keys %count) {\n    say \"$w: $count{$w}\";\n}",
+          "output": "a: 3\nb: 1\nc: 1"
+        }
+      ],
+      "card": [
+        "`my %h = (Ann => 31, Ben => 25);` creates a hash",
+        "`$h{Ann}` reads a value, `$h{Cy} = 40;` adds a pair",
+        "`exists $h{Ann}` checks a key, `delete $h{Ann}` removes it",
+        "`for my $k (sort keys %h) { }` loops in a fixed order",
+        "`values %h` gives the values, `scalar(keys %h)` counts the pairs"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "hashes-1",
+          "prompt": "What does this print?",
+          "code": "my %color = (sky => \"blue\", grass => \"green\");\nsay $color{grass};",
+          "answers": [
+            "green"
+          ],
+          "explain": "`$color{grass}` reads the value of the key `grass`."
+        },
+        {
+          "type": "input",
+          "id": "hashes-2",
+          "prompt": "What does this print?",
+          "code": "my %h = (a => 1, b => 2);\n$h{c} = 3;\n$h{a} = 10;\nsay scalar(keys %h);",
+          "answers": [
+            "3"
+          ],
+          "explain": "`$h{c} = 3` adds a new key, but `$h{a} = 10` only changes an existing value. So there are three keys."
+        },
+        {
+          "type": "choice",
+          "id": "hashes-3",
+          "prompt": "What does this print?",
+          "code": "my %stock = (pen => 4, cup => 0);\nif (exists $stock{cup}) {\n    say \"known\";\n} else {\n    say \"unknown\";\n}",
+          "options": [
+            "`known`",
+            "`unknown`",
+            "`0`",
+            "Nothing"
+          ],
+          "answer": 0,
+          "explain": "`exists` only checks if the key is there. The value `0` does not matter."
+        },
+        {
+          "type": "choice",
+          "id": "hashes-4",
+          "prompt": "What does this print?",
+          "code": "my %legs = (cat => 4, bird => 2, fish => 0);\nsay join(\",\", sort keys %legs);",
+          "options": [
+            "`bird,cat,fish`",
+            "`cat,bird,fish`",
+            "`0,2,4`",
+            "`fish,cat,bird`"
+          ],
+          "answer": 0,
+          "explain": "`sort keys` returns the keys in alphabetical order."
+        },
+        {
+          "type": "true_false",
+          "id": "hashes-5",
+          "statement": "`keys %h` always returns the keys in the order you added them.",
+          "answer": false,
+          "explain": "A hash has no fixed order. Use `sort keys %h` when you need a fixed order."
+        },
+        {
+          "type": "gap",
+          "id": "hashes-6",
+          "prompt": "Complete the code so it prints `Paris`.",
+          "code": "my %capital = (France => \"Paris\", Italy => \"Rome\");\nsay ___{France};",
+          "options": [
+            "$capital",
+            "%capital",
+            "capital"
+          ],
+          "answer": 0,
+          "explain": "One value of a hash is a scalar, so you write `$` before the name: `$capital{France}`."
+        },
+        {
+          "type": "gap",
+          "id": "hashes-7",
+          "prompt": "Complete the loop so it prints the pairs in alphabetical order of the keys.",
+          "code": "my %h = (b => 2, c => 3, a => 1);\nfor my $k (___ keys %h) {\n    say \"$k=$h{$k}\";\n}",
+          "options": [
+            "sort",
+            "values",
+            "exists",
+            "scalar"
+          ],
+          "answer": 0,
+          "explain": "`sort keys %h` returns the keys in alphabetical order."
+        },
+        {
+          "type": "blocks",
+          "id": "hashes-8",
+          "prompt": "Build a line that adds the key `\"Eve\"` with the value `28` to the hash `%ages`.",
+          "tokens": [
+            "$ages",
+            "{",
+            "\"Eve\"",
+            "}",
+            "=",
+            "28",
+            ";"
+          ],
+          "distractors": [
+            "%ages",
+            "=>"
+          ],
+          "explain": "One value is a scalar, so the line starts with `$ages`. The key goes in braces, and `=` stores the value."
+        },
+        {
+          "type": "order",
+          "id": "hashes-9",
+          "prompt": "Put the lines in order so the program prints `a: 2`.",
+          "lines": [
+            "my %count;",
+            "for my $w (\"a\", \"b\", \"a\") {",
+            "    $count{$w}++;",
+            "}",
+            "say \"a: $count{a}\";"
+          ],
+          "explain": "Create the empty hash first, count every word in the loop and print the result after the loop."
+        },
+        {
+          "type": "pairs",
+          "id": "hashes-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`%h`",
+              "the whole hash"
+            ],
+            [
+              "`$h{k}`",
+              "the value of the key k"
+            ],
+            [
+              "`keys %h`",
+              "all keys"
+            ],
+            [
+              "`values %h`",
+              "all values"
+            ],
+            [
+              "`exists $h{k}`",
+              "checks if the key is there"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hashes-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "my %ages = (Ann => 31, Ben => 25);",
+            "$ages{Cy} = 40;",
+            "for my $name (sort keys %ages) {",
+            "    say \"$name is $ages{name}\";",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "`$ages{name}` looks up the key `\"name\"`. Use the variable: `say \"$name is $ages{$name}\";`."
+        },
+        {
+          "type": "bug",
+          "id": "hashes-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "my %price = (tea => 3, cake => 5);",
+            "my $total = 0;",
+            "for my $p (keys %price) {",
+            "    $total += $p;",
+            "}",
+            "say \"Total: $total\";"
+          ],
+          "bug": 2,
+          "explain": "`keys` gives the names `tea` and `cake`, not the prices. Use `for my $p (values %price) {`."
+        }
+      ]
+    },
+    {
+      "id": "subs",
+      "title": "Subroutines",
+      "chapter": "Structure",
+      "summary": "Put code into reusable subroutines, pass arguments with @_ and give back results with return.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **subroutine**, or sub, is a named block of code that you can run many times. You define it with `sub`, a name and a block in braces. You run, or **call**, it with its name and parentheses."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nsub greet {\n    say \"Hello!\";\n}\ngreet();\ngreet();",
+          "output": "Hello!\nHello!"
+        },
+        {
+          "type": "text",
+          "md": "The values in the parentheses of a call are the **arguments**. Inside the sub, they are in the special array `@_`. `my ($name) = @_;` copies the first argument into a new variable. A variable created with `my` inside a sub exists only inside that sub."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nsub greet {\n    my ($name) = @_;\n    say \"Hello, $name!\";\n}\ngreet(\"Ada\");\ngreet(\"Linus\");",
+          "output": "Hello, Ada!\nHello, Linus!"
+        },
+        {
+          "type": "text",
+          "md": "`return` gives a value back to the caller. You can store the result in a variable or use it directly."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nsub add {\n    my ($x, $y) = @_;\n    return $x + $y;\n}\nmy $sum = add(3, 4);\nsay $sum;\nsay add(10, 20);",
+          "output": "7\n30"
+        },
+        {
+          "type": "warning",
+          "md": "Do not forget the parentheses in `my ($name) = @_;`. Without them, `my $count = @_;` stores the number of arguments, because an array used as a single value gives its size."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nsub show {\n    my $count = @_;\n    my ($name) = @_;\n    say \"$count / $name\";\n}\nshow(\"Ada\");",
+          "output": "1 / Ada"
+        },
+        {
+          "type": "text",
+          "md": "`return` also ends the sub at once. This works well with the short `if` form."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nsub sign {\n    my ($n) = @_;\n    return \"negative\" if $n < 0;\n    return \"zero\" if $n == 0;\n    return \"positive\";\n}\nsay sign(-5);\nsay sign(0);\nsay sign(8);",
+          "output": "negative\nzero\npositive"
+        },
+        {
+          "type": "text",
+          "md": "A sub can take any number of arguments. When you pass an array, all its items go into `@_`."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nsub total {\n    my $sum = 0;\n    foreach my $n (@_) {\n        $sum += $n;\n    }\n    return $sum;\n}\nmy @prices = (3, 4, 5);\nsay total(@prices);\nsay total(1, 2);",
+          "output": "12\n3"
+        },
+        {
+          "type": "text",
+          "md": "A sub can also return a list. You catch the values with a list of variables in parentheses."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nsub min_max {\n    my @sorted = sort { $a <=> $b } @_;\n    return ($sorted[0], $sorted[-1]);\n}\nmy ($low, $high) = min_max(7, 2, 9, 4);\nsay \"Low: $low, High: $high\";",
+          "output": "Low: 2, High: 9"
+        }
+      ],
+      "card": [
+        "`sub name { ... }` defines a sub, `name();` calls it",
+        "`my ($x, $y) = @_;` reads the arguments",
+        "`return $x + $y;` gives back a value",
+        "`my` variables in a sub exist only inside it",
+        "`return ($min, $max);` gives back a list"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "subs-1",
+          "prompt": "What does this print?",
+          "code": "sub double {\n    my ($n) = @_;\n    return $n * 2;\n}\nsay double(21);",
+          "answers": [
+            "42"
+          ],
+          "explain": "`double` gets 21 and returns 21 * 2."
+        },
+        {
+          "type": "input",
+          "id": "subs-2",
+          "prompt": "What does this print?",
+          "code": "sub area {\n    my ($w, $h) = @_;\n    return $w * $h;\n}\nsay area(3, 5) + area(2, 2);",
+          "answers": [
+            "19"
+          ],
+          "explain": "`area(3, 5)` is 15 and `area(2, 2)` is 4. 15 + 4 is 19."
+        },
+        {
+          "type": "choice",
+          "id": "subs-3",
+          "prompt": "What does this print?",
+          "code": "sub count_args {\n    my $n = @_;\n    return $n;\n}\nsay count_args(\"a\", \"b\", \"c\");",
+          "options": [
+            "`3`",
+            "`a`",
+            "`c`",
+            "`abc`"
+          ],
+          "answer": 0,
+          "explain": "Without parentheses, `my $n = @_;` stores the number of arguments, which is 3."
+        },
+        {
+          "type": "choice",
+          "id": "subs-4",
+          "prompt": "What does this print?",
+          "code": "sub check {\n    my ($x) = @_;\n    return \"big\" if $x > 10;\n    return \"small\";\n}\nsay check(15), \" \", check(5);",
+          "options": [
+            "`big small`",
+            "`big big`",
+            "`small small`",
+            "`small big`"
+          ],
+          "answer": 0,
+          "explain": "15 is greater than 10, so the first call returns `big`. For 5, the first `return` is skipped and the sub returns `small`."
+        },
+        {
+          "type": "true_false",
+          "id": "subs-5",
+          "statement": "This program prints `5`.",
+          "code": "sub setup {\n    my $level = 5;\n}\nsetup();\nsay $level;",
+          "answer": false,
+          "explain": "`$level` is created with `my` inside the sub, so it does not exist outside it. With `use strict`, Perl stops with an error."
+        },
+        {
+          "type": "gap",
+          "id": "subs-6",
+          "prompt": "Complete the code so it prints `Hi, Sam`.",
+          "code": "sub hi {\n    my ($name) = ___;\n    return \"Hi, $name\";\n}\nsay hi(\"Sam\");",
+          "options": [
+            "@_",
+            "$_",
+            "$_[1]",
+            "@name"
+          ],
+          "answer": 0,
+          "explain": "The arguments of a sub are in the array `@_`."
+        },
+        {
+          "type": "gap",
+          "id": "subs-7",
+          "prompt": "Complete the code so it prints `9`.",
+          "code": "sub square {\n    my ($n) = @_;\n    ___ $n * $n;\n}\nsay square(3);",
+          "options": [
+            "return",
+            "say",
+            "print",
+            "my"
+          ],
+          "answer": 0,
+          "explain": "`return` gives the value back, and the `say` outside prints it. A `say` inside the sub would print an extra line."
+        },
+        {
+          "type": "blocks",
+          "id": "subs-8",
+          "prompt": "Build a line that calls `diff` with the arguments `10` and `4`, in this order, and stores the result in a new variable `$result`.",
+          "tokens": [
+            "my",
+            "$result",
+            "=",
+            "diff",
+            "(",
+            "10",
+            ",",
+            "4",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            "@_",
+            "sub"
+          ],
+          "explain": "The arguments go in parentheses after the name of the sub. `my` creates the new variable."
+        },
+        {
+          "type": "order",
+          "id": "subs-9",
+          "prompt": "Put the lines in order to define a sub that returns the largest number.",
+          "lines": [
+            "sub largest {",
+            "    my @nums = @_;",
+            "    my @sorted = sort { $a <=> $b } @nums;",
+            "    return $sorted[-1];",
+            "}"
+          ],
+          "explain": "Copy the arguments, sort them as numbers and return the last item, which is the largest."
+        },
+        {
+          "type": "pairs",
+          "id": "subs-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`sub`",
+              "defines a subroutine"
+            ],
+            [
+              "`@_`",
+              "holds the arguments"
+            ],
+            [
+              "`return`",
+              "gives a value back"
+            ],
+            [
+              "`my ($x) = @_;`",
+              "copies the first argument"
+            ],
+            [
+              "`add(1, 2)`",
+              "calls a sub with two arguments"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "subs-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "sub greet {",
+            "    my $name = @_;",
+            "    return \"Hello, $name\";",
+            "}",
+            "say greet(\"Ada\");"
+          ],
+          "bug": 1,
+          "explain": "Without parentheses, `$name` gets the number of arguments. Write `my ($name) = @_;`."
+        },
+        {
+          "type": "bug",
+          "id": "subs-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "sub max_of {",
+            "    my ($x, $y) = @_;",
+            "    if ($x > $y) {",
+            "        return $x;",
+            "    }",
+            "    return $x;",
+            "}",
+            "say max_of(3, 8);"
+          ],
+          "bug": 5,
+          "explain": "When `$x` is not greater, the larger number is `$y`. The line must be `return $y;`."
+        }
+      ]
+    },
+    {
+      "id": "regex",
+      "title": "Regular expressions",
+      "chapter": "Text",
+      "summary": "Search text with patterns using =~ and m//, capture parts of a match and replace text with s///.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **regular expression**, or regex, is a pattern that describes text. `=~` applies a pattern to a string. `m/Perl/`, or short `/Perl/`, is true when the text contains `Perl` anywhere. `!~` is true when the text does not match."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $text = \"I love Perl\";\nif ($text =~ m/Perl/) {\n    say \"Found Perl\";\n}\nif ($text !~ /Java/) {\n    say \"No Java\";\n}",
+          "output": "Found Perl\nNo Java"
+        },
+        {
+          "type": "text",
+          "md": "In a pattern, `^` means the start of the string and `$` means the end. The letter `i` after the pattern ignores the difference between upper and lower case."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nforeach my $item (\"cat\", \"car\", \"scar\", \"Cart\") {\n    say $item if $item =~ /^ca/i;\n}",
+          "output": "cat\ncar\nCart"
+        },
+        {
+          "type": "text",
+          "md": "Some characters have a special meaning. `\\d` matches one digit, `\\w` one letter, digit or `_`, and `\\s` one space. A dot `.` matches any character, so write `\\.` for a real dot. `+` after a character means one or more times, and `*` means zero or more times."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nforeach my $s (\"2024\", \"12a\", \"abc\", \"7\") {\n    if ($s =~ /^\\d+$/) {\n        say \"$s is a number\";\n    }\n}",
+          "output": "2024 is a number\n7 is a number"
+        },
+        {
+          "type": "heading",
+          "text": "Captures"
+        },
+        {
+          "type": "text",
+          "md": "Parentheses in a pattern **capture** the part of the text they match. After a successful match, the first group is in `$1`, the second in `$2`, and so on. You can also assign the captured groups to a list of variables."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $date = \"2024-03-15\";\nif ($date =~ /^(\\d+)-(\\d+)-(\\d+)$/) {\n    say \"Year: $1, month: $2, day: $3\";\n}\nmy ($name, $age) = \"Ada:36\" =~ /^(\\w+):(\\d+)$/;\nsay \"$name is $age\";",
+          "output": "Year: 2024, month: 03, day: 15\nAda is 36"
+        },
+        {
+          "type": "heading",
+          "text": "Replacing with s///"
+        },
+        {
+          "type": "text",
+          "md": "`s/old/new/` replaces the first match in a variable. The variable itself changes. With `g` at the end, it replaces every match."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $text = \"I like cats. cats are nice.\";\n$text =~ s/cats/dogs/;\nsay $text;\n$text =~ s/cats/dogs/g;\nsay $text;",
+          "output": "I like dogs. cats are nice.\nI like dogs. dogs are nice."
+        },
+        {
+          "type": "text",
+          "md": "The new text can use the captured groups. `s///` also returns the number of replacements."
+        },
+        {
+          "type": "code",
+          "code": "use strict;\nuse warnings;\nuse feature 'say';\nmy $name = \"Lovelace Ada\";\n$name =~ s/(\\w+) (\\w+)/$2 $1/;\nsay $name;\nmy $s = \"a-b-c\";\nmy $count = ($s =~ s/-/+/g);\nsay \"$s ($count)\";",
+          "output": "Ada Lovelace\na+b+c (2)"
+        }
+      ],
+      "card": [
+        "`$s =~ /cat/` is true when `$s` contains `cat`",
+        "`^` start, `$` end, `\\d` digit, `\\w` word character, `+` one or more",
+        "`/(\\d+)-(\\d+)/` captures into `$1` and `$2`",
+        "`$s =~ s/old/new/g;` replaces every match",
+        "`/abc/i` ignores upper and lower case"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "regex-1",
+          "prompt": "What does this print?",
+          "code": "my $s = \"Room 42, floor 3\";\nif ($s =~ /(\\d+)/) {\n    say $1;\n}",
+          "answers": [
+            "42"
+          ],
+          "explain": "`\\d+` finds the first group of digits, `42`, and the parentheses capture it into `$1`."
+        },
+        {
+          "type": "input",
+          "id": "regex-2",
+          "prompt": "What does this print?",
+          "code": "my $t = \"a.b.c\";\n$t =~ s/\\./-/g;\nsay $t;",
+          "answers": [
+            "a-b-c"
+          ],
+          "explain": "`\\.` matches a real dot, and `g` replaces every dot with `-`."
+        },
+        {
+          "type": "choice",
+          "id": "regex-3",
+          "prompt": "Which string matches the pattern `/^\\d+$/`?",
+          "options": [
+            "`\"2024\"`",
+            "`\"20 24\"`",
+            "`\"year 2024\"`",
+            "`\"2024!\"`"
+          ],
+          "answer": 0,
+          "explain": "The pattern allows only digits from the start `^` to the end `$`. The other strings contain a space, letters or `!`."
+        },
+        {
+          "type": "choice",
+          "id": "regex-4",
+          "prompt": "What does this print?",
+          "code": "my $s = \"banana\";\n$s =~ s/a/o/;\nsay $s;",
+          "options": [
+            "`bonana`",
+            "`bonono`",
+            "`banana`",
+            "`bnana`"
+          ],
+          "answer": 0,
+          "explain": "Without `g`, `s///` replaces only the first match."
+        },
+        {
+          "type": "true_false",
+          "id": "regex-5",
+          "statement": "This prints `match`.",
+          "code": "say \"match\" if \"Hello World\" =~ /world/;",
+          "answer": false,
+          "explain": "Patterns are case-sensitive: `world` does not match `World`. With `/world/i`, it would match."
+        },
+        {
+          "type": "gap",
+          "id": "regex-6",
+          "prompt": "Complete the code so it prints `yes`.",
+          "code": "my $name = \"PERL\";\nsay \"yes\" if $name =~ /perl/___;",
+          "options": [
+            "i",
+            "g",
+            "x"
+          ],
+          "answer": 0,
+          "explain": "The `i` after the pattern ignores upper and lower case."
+        },
+        {
+          "type": "gap",
+          "id": "regex-7",
+          "prompt": "Complete the code so it prints `2024`.",
+          "code": "my $date = \"15.03.2024\";\nif ($date =~ /(\\d+)$/) {\n    say ___;\n}",
+          "options": [
+            "$1",
+            "$0",
+            "$2",
+            "$date"
+          ],
+          "answer": 0,
+          "explain": "The pattern has one group, so the captured digits are in `$1`."
+        },
+        {
+          "type": "blocks",
+          "id": "regex-8",
+          "prompt": "Build a line that replaces every `x` in `$word` with `y`.",
+          "tokens": [
+            "$word",
+            "=~",
+            "s/x/y/g",
+            ";"
+          ],
+          "distractors": [
+            "=",
+            "s/x/y/"
+          ],
+          "explain": "`=~` applies `s///` to `$word`, and `g` replaces every match, not only the first."
+        },
+        {
+          "type": "order",
+          "id": "regex-9",
+          "prompt": "Put the lines in order so the program prints `Hello, Ada`.",
+          "lines": [
+            "my $line = \"name: Ada\";",
+            "$line =~ s/: /=/;",
+            "my ($name) = $line =~ /^name=(\\w+)$/;",
+            "say \"Hello, $name\";"
+          ],
+          "explain": "First replace `: ` with `=`. Then the pattern matches and captures `Ada` into `$name`."
+        },
+        {
+          "type": "pairs",
+          "id": "regex-10",
+          "prompt": "Match the pattern part with its meaning.",
+          "pairs": [
+            [
+              "`\\d`",
+              "one digit"
+            ],
+            [
+              "`^`",
+              "start of the string"
+            ],
+            [
+              "`+`",
+              "one or more times"
+            ],
+            [
+              "`$1`",
+              "the first captured group"
+            ],
+            [
+              "`=~`",
+              "applies a pattern to a string"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "regex-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "my $phone = \"555-1234\";",
+            "if ($phone =~ /^(\\d+)-(\\d+)$/) {",
+            "    say \"Prefix: $1\";",
+            "    say \"Number: $1\";",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "The second group is in `$2`. Write `say \"Number: $2\";`."
+        },
+        {
+          "type": "bug",
+          "id": "regex-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "my $text = \"one two one\";",
+            "$text = s/one/1/g;",
+            "say $text;"
+          ],
+          "bug": 1,
+          "explain": "`=` stores the result of `s///` instead of changing `$text`. Use `=~`: `$text =~ s/one/1/g;`."
+        }
+      ]
+    }
+  ]
+}

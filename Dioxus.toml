@@ -1,0 +1,8 @@
+[application]
+name = "nrzlearn"
+
+[web.app]
+title = "nrzLearn"
+
+[serve]
+port = 8091

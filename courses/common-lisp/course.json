@@ -1,0 +1,1875 @@
+{
+  "course": "common-lisp",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Lisp",
+      "chapter": "Basics",
+      "summary": "Write your first Lisp program, print text with format and calculate with prefix notation.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Common Lisp is one of the oldest programming languages that people still use today. A Lisp program is a series of **forms**. A form in parentheses is a call: the first element names the operator, and the other elements are its arguments. This program prints one line:"
+        },
+        {
+          "type": "code",
+          "code": "(format t \"Hello, World!~%\")",
+          "output": "Hello, World!"
+        },
+        {
+          "type": "text",
+          "md": "`format` prints text. Its first argument is the destination: `t` means the screen (the standard output). The second argument is the text in double quotes, called a **string**. Inside it, `~%` starts a new line. A semicolon `;` starts a comment, which Lisp ignores until the end of the line."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"Hello, \")\n(format t \"Lisp!~%\")\n(format t \"Bye~%\")",
+          "output": "Hello, Lisp!\nBye"
+        },
+        {
+          "type": "heading",
+          "text": "Prefix notation"
+        },
+        {
+          "type": "text",
+          "md": "In Lisp, the operator always comes first: you write `(+ 2 3)` instead of `2 + 3`. This is called **prefix notation**. A form like this, with parentheses around it, is also called an **s-expression** (symbolic expression). `+` and `*` accept any number of arguments, and `-` and `/` work the same way."
+        },
+        {
+          "type": "text",
+          "md": "To print a value, put `~a` into the string. `format` replaces each `~a` with the next argument after the string. Forms can be nested: Lisp evaluates the inner form first, so `(* 2 (+ 3 4))` becomes `(* 2 7)` and then `14`."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"~a~%\" (+ 2 3))\n(format t \"~a~%\" (+ 1 2 3 4))\n(format t \"~a~%\" (* 2 (+ 3 4)))\n(format t \"~a plus ~a is ~a~%\" 2 3 (+ 2 3))",
+          "output": "5\n10\n14\n2 plus 3 is 5"
+        },
+        {
+          "type": "heading",
+          "text": "print and ~s"
+        },
+        {
+          "type": "text",
+          "md": "`~s` also inserts a value, but it shows it the way Lisp reads it, so a string keeps its double quotes. The function `print` shows a value in the same way. It writes a new line first, then the value, then a space. That is why this course mostly uses `format` for clean output."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"~a~%\" \"Hi\")\n(format t \"~s~%\" \"Hi\")",
+          "output": "Hi\n\"Hi\""
+        },
+        {
+          "type": "tip",
+          "md": "Every opening parenthesis needs a closing one. Most Lisp editors show you which parentheses belong together, and programmers read Lisp code by its indentation."
+        }
+      ],
+      "card": [
+        "`(format t \"Hi~%\")` prints `Hi` and a new line",
+        "`~a` inserts the next argument, `~s` keeps quotes",
+        "`(+ 2 3)` the operator comes first (prefix notation)",
+        "`(* 2 (+ 3 4))` inner forms are evaluated first",
+        "`(print x)` new line, value with quotes, space"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "hello-1",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (+ 4 5))",
+          "answers": [
+            "9"
+          ],
+          "explain": "`(+ 4 5)` adds 4 and 5, and `~a` puts the result into the text."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (* 2 (+ 1 4)))",
+          "answers": [
+            "10"
+          ],
+          "explain": "The inner form `(+ 1 4)` is 5. Then `(* 2 5)` is 10."
+        },
+        {
+          "type": "choice",
+          "id": "hello-3",
+          "prompt": "Which form adds 2 and 3?",
+          "options": [
+            "`(+ 2 3)`",
+            "`(2 + 3)`",
+            "`+(2 3)`",
+            "`(2 3 +)`"
+          ],
+          "answer": 0,
+          "explain": "In Lisp the operator always comes first, inside the parentheses."
+        },
+        {
+          "type": "choice",
+          "id": "hello-4",
+          "prompt": "What does this print?",
+          "code": "(format t \"Hi\")\n(format t \"there~%\")",
+          "options": [
+            "`Hithere`",
+            "`Hi there`",
+            "`Hi` and `there` on two lines",
+            "`\"Hi\"\"there\"`"
+          ],
+          "answer": 0,
+          "explain": "The first string has no `~%`, so no new line follows `Hi`. The second text continues on the same line."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-5",
+          "statement": "Inside a `format` string, `~%` starts a new line.",
+          "answer": true,
+          "explain": "`~%` is the directive for a new line. Without it, the next output continues on the same line."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so it prints `Sum: 7`.",
+          "code": "(format t \"Sum: ___~%\" (+ 3 4))",
+          "options": [
+            "~a",
+            "~%",
+            "%a",
+            "$a"
+          ],
+          "answer": 0,
+          "explain": "`~a` is replaced by the next argument, the result of `(+ 3 4)`."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build a form that prints the result of 10 minus 4.",
+          "tokens": [
+            "(format",
+            "t",
+            "\"~a~%\"",
+            "(-",
+            "10",
+            "4))"
+          ],
+          "distractors": [
+            "(+",
+            "print"
+          ],
+          "explain": "The operator `-` comes first, then 10 and 4. `format` prints the result with `~a`."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order so the program prints `Hello, Lisp!` and then `2`.",
+          "lines": [
+            "(format t \"Hello, \")",
+            "(format t \"Lisp!~%\")",
+            "(format t \"~a~%\" (+ 1 1))"
+          ],
+          "explain": "The forms run from top to bottom. `Hello, ` has no new line, so `Lisp!` follows on the same line."
+        },
+        {
+          "type": "bug",
+          "id": "hello-9",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(format t \"Start~%\")",
+            "(format t \"~a~%\" (+ 1 2))",
+            "(format t \"~a~%\" (3 * 4))",
+            "(format t \"End~%\")"
+          ],
+          "bug": 2,
+          "explain": "Lisp uses prefix notation. Write `(* 3 4)` instead of `(3 * 4)`."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`(+ 1 2)`",
+              "Adds 1 and 2"
+            ],
+            [
+              "`(* 2 3)`",
+              "Multiplies 2 and 3"
+            ],
+            [
+              "`~a`",
+              "Inserts the next argument"
+            ],
+            [
+              "`~%`",
+              "Starts a new line"
+            ],
+            [
+              "`t`",
+              "The screen as the destination"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "hello-11",
+          "prompt": "How does `(print \"Hi\")` show the string?",
+          "options": [
+            "On a new line, with double quotes",
+            "On the same line, without quotes",
+            "On a new line, without quotes",
+            "It shows nothing"
+          ],
+          "answer": 0,
+          "explain": "`print` writes a new line first and shows strings the way Lisp reads them, with quotes."
+        },
+        {
+          "type": "input",
+          "id": "hello-12",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a and ~a~%\" (- 10 3) (/ 8 2))",
+          "answers": [
+            "7 and 4"
+          ],
+          "explain": "The first `~a` gets `(- 10 3)`, which is 7. The second gets `(/ 8 2)`, which is 4."
+        }
+      ]
+    },
+    {
+      "id": "values",
+      "title": "Values",
+      "chapter": "Basics",
+      "summary": "Work with numbers, exact ratios, strings, symbols, t and nil, and name values with defparameter.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Lisp has whole numbers (integers) like `42` and decimal numbers (floats) like `2.5`. Integers can be as large as you need. `expt` raises a number to a power, so `(expt 2 100)` is 2 to the power of 100."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"~a~%\" (+ 10 5))\n(format t \"~a~%\" (* 1.5 4))\n(format t \"~a~%\" (expt 2 100))",
+          "output": "15\n6.0\n1267650600228229401496703205376"
+        },
+        {
+          "type": "text",
+          "md": "When you divide two integers and the result is not whole, Lisp gives an exact fraction called a **ratio**: `(/ 10 4)` is `5/2`. If one number is a float, the result is a float. `mod` gives the remainder of a division: `(mod 17 5)` is `2`."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"~a~%\" (/ 10 4))\n(format t \"~a~%\" (/ 10 2))\n(format t \"~a~%\" (/ 10 4.0))\n(format t \"~a~%\" (+ 1/3 1/3))\n(format t \"~a~%\" (mod 17 5))",
+          "output": "5/2\n5\n2.5\n2/3\n2"
+        },
+        {
+          "type": "heading",
+          "text": "Strings and symbols"
+        },
+        {
+          "type": "text",
+          "md": "A string is text in double quotes. `length` counts its characters, and `string-upcase` returns it in capital letters. `(concatenate 'string \"a\" \"b\")` joins strings into one new string."
+        },
+        {
+          "type": "text",
+          "md": "A **symbol** is a name. The quote `'` tells Lisp: do not evaluate this, take it as it is. So `'apple` is the symbol `APPLE`. Lisp turns symbol names into capital letters when it reads them, so they print in capitals. In `concatenate`, the symbol `'string` says what kind of result you want."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"~a~%\" (length \"Lisp\"))\n(format t \"~a~%\" (string-upcase \"hello\"))\n(format t \"~a~%\" 'apple)\n(format t \"~a~%\" (concatenate 'string \"Hello, \" \"Lisp\"))",
+          "output": "4\nHELLO\nAPPLE\nHello, Lisp"
+        },
+        {
+          "type": "heading",
+          "text": "True, false and variables"
+        },
+        {
+          "type": "text",
+          "md": "Lisp writes true as `t` and false as `nil`. Comparisons return one of them: `>` (greater than), `<` (less than), `>=`, `<=` and `=` (equal numbers). `(< 1 2 3)` checks that each number is smaller than the next. Functions that answer a yes or no question often end in `p`, like `stringp` (is it a string?). Every value except `nil` counts as true."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"~a~%\" (> 5 3))\n(format t \"~a~%\" (= 2 3))\n(format t \"~a~%\" (< 1 2 3))\n(format t \"~a~%\" (stringp \"hi\"))",
+          "output": "T\nNIL\nT\nT"
+        },
+        {
+          "type": "text",
+          "md": "`(defparameter *price* 12)` creates a global variable named `*price*` with the value `12`. The stars around the name are a convention for global variables. Names can contain hyphens, like `*max-speed*`."
+        },
+        {
+          "type": "code",
+          "code": "(defparameter *price* 12)\n(defparameter *count* 3)\n(format t \"Total: ~a~%\" (* *price* *count*))",
+          "output": "Total: 36"
+        },
+        {
+          "type": "tip",
+          "md": "Because Lisp turns names into capital letters, `*Price*` and `*price*` are the same variable. Most Lisp programmers write all code in lowercase."
+        }
+      ],
+      "card": [
+        "`5/2` ratio, `2.5` float, `(mod 17 5)` is `2`",
+        "`\"text\"` string, `'apple` symbol (prints `APPLE`)",
+        "`t` is true, `nil` is false",
+        "`(< 1 2 3)` compares, `=` for numbers",
+        "`(defparameter *x* 10)` global variable"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "values-1",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (/ 12 8))",
+          "answers": [
+            "3/2"
+          ],
+          "explain": "12 divided by 8 is not whole, so Lisp gives the exact ratio `3/2`."
+        },
+        {
+          "type": "input",
+          "id": "values-2",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (mod 20 6))",
+          "answers": [
+            "2"
+          ],
+          "explain": "6 fits into 20 three times (18), and the remainder is 2."
+        },
+        {
+          "type": "choice",
+          "id": "values-3",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" 'hello)",
+          "options": [
+            "`HELLO`",
+            "`hello`",
+            "`'hello`",
+            "`\"hello\"`"
+          ],
+          "answer": 0,
+          "explain": "The quote makes `hello` a symbol. Lisp stores symbol names in capital letters."
+        },
+        {
+          "type": "choice",
+          "id": "values-4",
+          "prompt": "Which value counts as false in Lisp?",
+          "options": [
+            "`nil`",
+            "`0`",
+            "`\"\"`",
+            "`t`"
+          ],
+          "answer": 0,
+          "explain": "Only `nil` is false. Every other value, even `0` and the empty string, counts as true."
+        },
+        {
+          "type": "true_false",
+          "id": "values-5",
+          "statement": "`(/ 10 4)` gives `2.5`.",
+          "answer": false,
+          "explain": "Both numbers are integers, so the result is the exact ratio `5/2`. Write `(/ 10 4.0)` to get `2.5`."
+        },
+        {
+          "type": "gap",
+          "id": "values-6",
+          "prompt": "Complete the code so it prints `2.5`.",
+          "code": "(format t \"~a~%\" (/ 5 ___))",
+          "options": [
+            "2.0",
+            "2",
+            "1/2",
+            "\"2\""
+          ],
+          "answer": 0,
+          "explain": "With the float `2.0`, the result is a float: `2.5`. With `2` the result is the ratio `5/2`."
+        },
+        {
+          "type": "blocks",
+          "id": "values-7",
+          "prompt": "Build a line that creates a global variable `*speed*` with the value 50.",
+          "tokens": [
+            "(defparameter",
+            "*speed*",
+            "50)"
+          ],
+          "distractors": [
+            "(define",
+            "="
+          ],
+          "explain": "`defparameter` takes the name and then the value."
+        },
+        {
+          "type": "bug",
+          "id": "values-8",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(defparameter *width* 4)",
+            "(defparameter *height* 5)",
+            "(format t \"Area: ~a~%\" (* *width* height))",
+            "(format t \"Done~%\")"
+          ],
+          "bug": 2,
+          "explain": "The variable is called `*height*`, with stars. `height` without stars does not exist."
+        },
+        {
+          "type": "pairs",
+          "id": "values-9",
+          "prompt": "Match the value with its kind.",
+          "pairs": [
+            [
+              "`42`",
+              "Integer"
+            ],
+            [
+              "`3/4`",
+              "Ratio"
+            ],
+            [
+              "`2.5`",
+              "Float"
+            ],
+            [
+              "`\"cat\"`",
+              "String"
+            ],
+            [
+              "`'cat`",
+              "Symbol"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "values-10",
+          "prompt": "Put the lines in order so the program prints `10 and 15`.",
+          "lines": [
+            "(defparameter *a* 10)",
+            "(defparameter *b* (+ *a* 5))",
+            "(format t \"~a and ~a~%\" *a* *b*)"
+          ],
+          "explain": "`*b*` uses `*a*`, so `*a*` must exist first. The program prints both values at the end."
+        },
+        {
+          "type": "choice",
+          "id": "values-11",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (< 1 5 3))",
+          "options": [
+            "`NIL`",
+            "`T`",
+            "`5`",
+            "`1`"
+          ],
+          "answer": 0,
+          "explain": "`<` checks that each number is smaller than the next. 5 is not smaller than 3, so the result is `NIL`."
+        },
+        {
+          "type": "input",
+          "id": "values-12",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (length (concatenate 'string \"ab\" \"cde\")))",
+          "answers": [
+            "5"
+          ],
+          "explain": "`concatenate` joins the strings into `abcde`, which has 5 characters."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Basics",
+      "summary": "Define your own functions with defun, use parameters and return values, and write functions without a name.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`defun` defines a function. After `defun` comes the name, then a list of **parameters** in parentheses, then the body. A function returns the value of the last form in its body. Lisp needs no `return` keyword."
+        },
+        {
+          "type": "code",
+          "code": "(defun square (x)\n  (* x x))\n\n(format t \"~a~%\" (square 5))\n(format t \"~a~%\" (square 12))",
+          "output": "25\n144"
+        },
+        {
+          "type": "text",
+          "md": "A function can have several parameters. You call your own functions like the built-in ones: the name first, then the arguments."
+        },
+        {
+          "type": "code",
+          "code": "(defun area (width height)\n  (* width height))\n\n(format t \"Area: ~a~%\" (area 3 4))",
+          "output": "Area: 12"
+        },
+        {
+          "type": "text",
+          "md": "The body can contain several forms. Lisp runs them in order, but only the value of the last one is returned. Here the function prints a greeting and returns the length of the name."
+        },
+        {
+          "type": "code",
+          "code": "(defun greet (name)\n  (format t \"Hello, ~a!~%\" name)\n  (length name))\n\n(format t \"~a~%\" (greet \"Ada\"))",
+          "output": "Hello, Ada!\n3"
+        },
+        {
+          "type": "text",
+          "md": "Functions can call other functions. A function without parameters has an empty list `()`."
+        },
+        {
+          "type": "code",
+          "code": "(defun twice (n)\n  (* 2 n))\n\n(defun four-times (n)\n  (twice (twice n)))\n\n(defun say-hello ()\n  (format t \"Hello!~%\"))\n\n(say-hello)\n(format t \"~a~%\" (four-times 5))",
+          "output": "Hello!\n20"
+        },
+        {
+          "type": "heading",
+          "text": "Functions without a name"
+        },
+        {
+          "type": "text",
+          "md": "`(lambda (x) (* x 10))` creates a function without a name. It has a parameter list and a body, like `defun`. You can call it directly by putting it first in a form. In the unit about higher-order functions, you pass such functions to other functions."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"~a~%\" ((lambda (x) (* x 10)) 4))\n(format t \"~a~%\" ((lambda (a b) (+ a b)) 2 3))",
+          "output": "40\n5"
+        },
+        {
+          "type": "tip",
+          "md": "Lisp programmers write names in lowercase with hyphens between words, like `four-times` or `celsius-to-fahrenheit`."
+        },
+        {
+          "type": "warning",
+          "md": "A call needs exactly as many arguments as the function has parameters. `(square 2 3)` stops the program with an error."
+        }
+      ],
+      "card": [
+        "`(defun name (a b) body)` defines a function",
+        "The last form of the body is the return value",
+        "`(name 1 2)` calls it",
+        "`(lambda (x) (* x 2))` function without a name"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "(defun triple (n)\n  (* 3 n))\n\n(format t \"~a~%\" (triple 7))",
+          "answers": [
+            "21"
+          ],
+          "explain": "`triple` multiplies its argument by 3, and 3 times 7 is 21."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print?",
+          "code": "(defun diff (a b)\n  (- a b))\n\n(format t \"~a~%\" (diff 3 10))",
+          "answers": [
+            "-7"
+          ],
+          "explain": "The arguments go into the parameters in order: `a` is 3 and `b` is 10, so the result is `(- 3 10)`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-3",
+          "prompt": "What does this print?",
+          "code": "(defun test (x)\n  (* x 2)\n  (+ x 1))\n\n(format t \"~a~%\" (test 5))",
+          "options": [
+            "`6`",
+            "`10`",
+            "`10` and `6`",
+            "`11`"
+          ],
+          "answer": 0,
+          "explain": "Both forms run, but only the value of the last form, `(+ x 1)`, is returned."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-4",
+          "statement": "A Lisp function needs a `return` statement to give back a value.",
+          "answer": false,
+          "explain": "A function returns the value of the last form in its body automatically."
+        },
+        {
+          "type": "gap",
+          "id": "functions-5",
+          "prompt": "Complete the code so it prints `10`.",
+          "code": "(___ add-one (n)\n  (+ n 1))\n\n(format t \"~a~%\" (add-one 9))",
+          "options": [
+            "defun",
+            "def",
+            "function",
+            "lambda"
+          ],
+          "answer": 0,
+          "explain": "`defun` defines a named function. `lambda` creates a function without a name."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-6",
+          "prompt": "Build the first line of a function `average` with the parameters `a` and `b`.",
+          "tokens": [
+            "(defun",
+            "average",
+            "(a",
+            "b)"
+          ],
+          "distractors": [
+            "(lambda",
+            "def"
+          ],
+          "explain": "After `defun` comes the name and then the parameter list in parentheses."
+        },
+        {
+          "type": "order",
+          "id": "functions-7",
+          "prompt": "Put the lines in order so the program prints `8` and then `27`.",
+          "lines": [
+            "(defun cube (n)",
+            "  (* n n n))",
+            "(format t \"~a~%\" (cube 2))",
+            "(format t \"~a~%\" (cube 3))"
+          ],
+          "explain": "The function must be defined before it is called. Then the calls print 8 and 27."
+        },
+        {
+          "type": "bug",
+          "id": "functions-8",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(defun half (n)",
+            "  (/ x 2))",
+            "(format t \"~a~%\" (half 10))"
+          ],
+          "bug": 1,
+          "explain": "The parameter is called `n`, not `x`. Write `(/ n 2)`."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`defun`",
+              "Defines a named function"
+            ],
+            [
+              "`lambda`",
+              "Creates a function without a name"
+            ],
+            [
+              "`(a b)`",
+              "A list of two parameters"
+            ],
+            [
+              "`(area 2 5)`",
+              "Calls a function with two arguments"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "functions-10",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" ((lambda (x) (+ x 100)) 5))",
+          "options": [
+            "`105`",
+            "`100`",
+            "`5`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "The lambda is called with `5`, so `x` is 5 and the result is `(+ 5 100)`."
+        },
+        {
+          "type": "input",
+          "id": "functions-11",
+          "prompt": "What does this print?",
+          "code": "(defun twice (n)\n  (* 2 n))\n\n(defun inc (n)\n  (+ n 1))\n\n(format t \"~a~%\" (twice (inc 4)))",
+          "answers": [
+            "10"
+          ],
+          "explain": "The inner call `(inc 4)` returns 5. Then `(twice 5)` returns 10."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-12",
+          "statement": "This code prints `Hi` two times.",
+          "code": "(defun say-hi ()\n  (format t \"Hi~%\"))\n\n(say-hi)\n(say-hi)",
+          "answer": true,
+          "explain": "`say-hi` has no parameters. Each call runs its body once, so `Hi` appears twice."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program choose with if, when, unless and cond, and combine tests with and, or and not.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`(if test then else)` has three parts. When the test is true (anything except `nil`), Lisp evaluates the `then` form. Otherwise it evaluates the `else` form."
+        },
+        {
+          "type": "code",
+          "code": "(defparameter *age* 20)\n\n(if (>= *age* 18)\n    (format t \"Adult~%\")\n    (format t \"Child~%\"))",
+          "output": "Adult"
+        },
+        {
+          "type": "text",
+          "md": "`if` returns a value, like every form in Lisp. You can use it inside other forms, for example as the body of a function."
+        },
+        {
+          "type": "code",
+          "code": "(defun sign-word (n)\n  (if (< n 0) \"negative\" \"not negative\"))\n\n(format t \"~a~%\" (sign-word -5))\n(format t \"~a~%\" (sign-word 3))",
+          "output": "negative\nnot negative"
+        },
+        {
+          "type": "text",
+          "md": "`when` runs its body only when the test is true. `unless` runs its body only when the test is false. Both can contain several forms, but they have no `else` part. When the body does not run, they return `nil`."
+        },
+        {
+          "type": "code",
+          "code": "(defparameter *temp* 31)\n\n(when (> *temp* 30)\n  (format t \"Hot!~%\")\n  (format t \"Drink water.~%\"))\n(unless (> *temp* 40)\n  (format t \"Not extreme.~%\"))",
+          "output": "Hot!\nDrink water.\nNot extreme."
+        },
+        {
+          "type": "heading",
+          "text": "cond"
+        },
+        {
+          "type": "text",
+          "md": "`cond` checks several clauses in order. Each clause is a list: a test, then the result. Only the first clause whose test is true runs. A last clause with the test `t` is always true, so it catches all other cases."
+        },
+        {
+          "type": "code",
+          "code": "(defun grade (score)\n  (cond ((>= score 90) \"A\")\n        ((>= score 70) \"B\")\n        (t \"C\")))\n\n(format t \"~a~%\" (grade 95))\n(format t \"~a~%\" (grade 75))\n(format t \"~a~%\" (grade 40))",
+          "output": "A\nB\nC"
+        },
+        {
+          "type": "heading",
+          "text": "and, or, not"
+        },
+        {
+          "type": "text",
+          "md": "`(and a b)` is true when all its arguments are true, and `(or a b)` when at least one is. `and` returns the last value, `or` returns the first value that is not `nil`. `(not x)` turns `nil` into `T` and every other value into `NIL`. `evenp` and `oddp` check whether a number is even or odd."
+        },
+        {
+          "type": "code",
+          "code": "(defun even-and-positive (n)\n  (and (> n 0) (evenp n)))\n\n(format t \"~a~%\" (even-and-positive 4))\n(format t \"~a~%\" (even-and-positive 7))\n(format t \"~a~%\" (or nil 5))\n(format t \"~a~%\" (not nil))",
+          "output": "T\nNIL\n5\nT"
+        },
+        {
+          "type": "tip",
+          "md": "`=` compares only numbers. To compare strings, use `equal`: `(equal \"yes\" \"yes\")` is `T`."
+        }
+      ],
+      "card": [
+        "`(if test then else)` returns a value",
+        "`(when test ...)` and `(unless test ...)` without else",
+        "`(cond (test1 a) (test2 b) (t c))` first true clause",
+        "`and`, `or`, `not`; `equal` compares strings"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "(defparameter *n* 7)\n\n(if (evenp *n*)\n    (format t \"even~%\")\n    (format t \"odd~%\"))",
+          "answers": [
+            "odd"
+          ],
+          "explain": "7 is not even, so `evenp` returns `nil` and the `else` form runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "(defun size (n)\n  (cond ((< n 10) \"small\")\n        ((< n 100) \"medium\")\n        (t \"large\")))\n\n(format t \"~a~%\" (size 150))",
+          "answers": [
+            "large"
+          ],
+          "explain": "150 is neither below 10 nor below 100, so only the last clause with `t` matches."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (and 1 2 3))",
+          "options": [
+            "`3`",
+            "`T`",
+            "`1`",
+            "`NIL`"
+          ],
+          "answer": 0,
+          "explain": "All values are true, so `and` returns the last one: `3`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-4",
+          "prompt": "What does this print?",
+          "code": "(when (> 2 5)\n  (format t \"A~%\"))\n(unless (> 2 5)\n  (format t \"B~%\"))",
+          "options": [
+            "`B`",
+            "`A`",
+            "`A` and `B`",
+            "Nothing"
+          ],
+          "answer": 0,
+          "explain": "2 is not greater than 5. So `when` does not run its body, but `unless` does."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-5",
+          "statement": "In Lisp, the number `0` counts as false in an `if`.",
+          "answer": false,
+          "explain": "Only `nil` is false. `0` is a normal value, so it counts as true."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-6",
+          "prompt": "Complete the code so it prints `adult`.",
+          "code": "(defun check-age (age)\n  (___ (>= age 18) \"adult\" \"child\"))\n\n(format t \"~a~%\" (check-age 21))",
+          "options": [
+            "if",
+            "when",
+            "cond",
+            "unless"
+          ],
+          "answer": 0,
+          "explain": "`if` chooses between two values. `when` has no else part: it would return the last form, `\"child\"`."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-7",
+          "prompt": "Build a test that is true when `n` is even and greater than 10.",
+          "tokens": [
+            "(and",
+            "(evenp",
+            "n)",
+            "(>",
+            "n",
+            "10))"
+          ],
+          "distractors": [
+            "(or",
+            "(oddp"
+          ],
+          "explain": "`and` is true only when both tests are true."
+        },
+        {
+          "type": "order",
+          "id": "conditions-8",
+          "prompt": "Put the lines in order so the program prints `negative zero`.",
+          "lines": [
+            "(defun describe-number (n)",
+            "  (cond ((< n 0) \"negative\")",
+            "        ((= n 0) \"zero\")",
+            "        (t \"positive\")))",
+            "(format t \"~a ~a~%\" (describe-number -2) (describe-number 0))"
+          ],
+          "explain": "The function comes first. Inside `cond`, the clause with `t` must be the last one."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-9",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(defun greet (lang)",
+            "  (if (= lang \"es\")",
+            "      \"Hola\"",
+            "      \"Hello\"))",
+            "(format t \"~a~%\" (greet \"en\"))"
+          ],
+          "bug": 1,
+          "explain": "`=` works only with numbers. Use `(equal lang \"es\")` to compare strings."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`if`",
+              "One test, two branches"
+            ],
+            [
+              "`when`",
+              "Runs the body if the test is true"
+            ],
+            [
+              "`unless`",
+              "Runs the body if the test is false"
+            ],
+            [
+              "`cond`",
+              "Checks several tests in order"
+            ],
+            [
+              "`not`",
+              "Turns nil into T"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "conditions-11",
+          "prompt": "What does this print?",
+          "code": "(defun classify (x)\n  (cond ((> x 5) \"big\")\n        ((> x 2) \"medium\")\n        (t \"small\")))\n\n(format t \"~a~%\" (classify 10))",
+          "options": [
+            "`big`",
+            "`medium`",
+            "`big` and `medium`",
+            "`small`"
+          ],
+          "answer": 0,
+          "explain": "10 matches the first two tests, but `cond` runs only the first clause that matches."
+        },
+        {
+          "type": "input",
+          "id": "conditions-12",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (or nil nil 7 8))",
+          "answers": [
+            "7"
+          ],
+          "explain": "`or` returns the first value that is not `nil`, which is 7."
+        }
+      ]
+    },
+    {
+      "id": "lists",
+      "title": "Lists",
+      "chapter": "Data",
+      "summary": "Build lists with list and cons, take them apart with first and rest, and join them with append.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A list holds values in order. `(list 1 2 3)` creates a list. You can also write a list with a quote: `'(1 2 3)`. The quote stops Lisp from treating the list as a call. With `~a`, a list prints in parentheses."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"~a~%\" (list 1 2 3))\n(format t \"~a~%\" '(apple banana cherry))\n(format t \"~a~%\" (list (+ 1 1) \"two\"))",
+          "output": "(1 2 3)\n(APPLE BANANA CHERRY)\n(2 two)"
+        },
+        {
+          "type": "text",
+          "md": "`first` returns the first element. `rest` returns a list of all the other elements. The older names `car` and `cdr` do the same, and you see them often in Lisp code. `(nth 2 list)` returns the element at position 2, counting from 0."
+        },
+        {
+          "type": "code",
+          "code": "(defparameter *fruits* '(\"apple\" \"banana\" \"cherry\"))\n\n(format t \"~a~%\" (first *fruits*))\n(format t \"~a~%\" (rest *fruits*))\n(format t \"~a~%\" (car *fruits*))\n(format t \"~a~%\" (cdr *fruits*))\n(format t \"~a~%\" (nth 2 *fruits*))",
+          "output": "apple\n(banana cherry)\napple\n(banana cherry)\ncherry"
+        },
+        {
+          "type": "heading",
+          "text": "cons cells"
+        },
+        {
+          "type": "text",
+          "md": "`cons` puts a value in front of a list and returns the new list. Inside, a list is a chain of **cons cells**: each cell holds one value (the `car`) and the rest of the list (the `cdr`). The empty list is `nil`, which you can also write as `()`."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"~a~%\" (cons 0 '(1 2 3)))\n(format t \"~a~%\" (cons 1 nil))\n(format t \"~a~%\" (rest '(5)))\n(format t \"~a~%\" (cons 1 (cons 2 (cons 3 nil))))",
+          "output": "(0 1 2 3)\n(1)\nNIL\n(1 2 3)"
+        },
+        {
+          "type": "heading",
+          "text": "length, append and reverse"
+        },
+        {
+          "type": "text",
+          "md": "`length` counts the elements. `append` joins lists into one, and `reverse` returns the elements in the opposite order. `null` checks whether a list is empty."
+        },
+        {
+          "type": "code",
+          "code": "(defparameter *a* '(1 2))\n(defparameter *b* '(3 4 5))\n\n(format t \"~a~%\" (length *b*))\n(format t \"~a~%\" (append *a* *b*))\n(format t \"~a~%\" (reverse *b*))\n(format t \"~a~%\" (null '()))",
+          "output": "3\n(1 2 3 4 5)\n(5 4 3)\nT"
+        },
+        {
+          "type": "tip",
+          "md": "`cons`, `append` and `reverse` do not change the original list. They return a new list."
+        },
+        {
+          "type": "warning",
+          "md": "Without a quote, `(1 2 3)` is a call: Lisp tries to use `1` as a function and stops with an error. Write `'(1 2 3)` or `(list 1 2 3)`."
+        }
+      ],
+      "card": [
+        "`(list 1 2 3)` or `'(1 2 3)` creates a list",
+        "`first`/`car` first element, `rest`/`cdr` the others",
+        "`(cons 0 '(1 2))` gives `(0 1 2)`",
+        "`length`, `append`, `reverse`, `null`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "lists-1",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (first (rest '(10 20 30))))",
+          "answers": [
+            "20"
+          ],
+          "explain": "`rest` returns `(20 30)`, and its first element is 20."
+        },
+        {
+          "type": "input",
+          "id": "lists-2",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (length (append '(1 2) '(3) '(4 5))))",
+          "answers": [
+            "5"
+          ],
+          "explain": "`append` joins the three lists into `(1 2 3 4 5)`, which has 5 elements."
+        },
+        {
+          "type": "choice",
+          "id": "lists-3",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (cons 'a '(b c)))",
+          "options": [
+            "`(A B C)`",
+            "`(A (B C))`",
+            "`((A) B C)`",
+            "`(B C A)`"
+          ],
+          "answer": 0,
+          "explain": "`cons` puts the symbol `A` in front of the list `(B C)`."
+        },
+        {
+          "type": "choice",
+          "id": "lists-4",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (rest '(7)))",
+          "options": [
+            "`NIL`",
+            "`7`",
+            "`(7)`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "The list has only one element, so the rest is the empty list, `NIL`."
+        },
+        {
+          "type": "true_false",
+          "id": "lists-5",
+          "statement": "`car` and `first` return the same value.",
+          "answer": true,
+          "explain": "`car` is the old name of `first`. Both return the first element of a list."
+        },
+        {
+          "type": "gap",
+          "id": "lists-6",
+          "prompt": "Complete the code so it prints `(8 15)`.",
+          "code": "(defparameter *nums* '(4 8 15))\n(format t \"~a~%\" (___ *nums*))",
+          "options": [
+            "rest",
+            "first",
+            "cons",
+            "length"
+          ],
+          "answer": 0,
+          "explain": "`rest` returns all elements except the first one."
+        },
+        {
+          "type": "blocks",
+          "id": "lists-7",
+          "prompt": "Build a form that puts 0 in front of the list `(1 2)`.",
+          "tokens": [
+            "(cons",
+            "0",
+            "'(1",
+            "2))"
+          ],
+          "distractors": [
+            "(append",
+            "(list"
+          ],
+          "explain": "`cons` takes the new element first and the list second."
+        },
+        {
+          "type": "order",
+          "id": "lists-8",
+          "prompt": "Put the lines in order so the program prints `(BLUE RED GREEN)` and then `3`.",
+          "lines": [
+            "(defparameter *colors* '(red green))",
+            "(defparameter *more* (cons 'blue *colors*))",
+            "(format t \"~a~%\" *more*)",
+            "(format t \"~a~%\" (length *more*))"
+          ],
+          "explain": "`*more*` is built from `*colors*`, so `*colors*` comes first. Then the list is printed before its length."
+        },
+        {
+          "type": "bug",
+          "id": "lists-9",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(defparameter *scores* (3 5 9))",
+            "(format t \"~a~%\" (first *scores*))",
+            "(format t \"~a~%\" (length *scores*))"
+          ],
+          "bug": 0,
+          "explain": "Without a quote, Lisp tries to call `3` as a function. Write `'(3 5 9)` or `(list 3 5 9)`."
+        },
+        {
+          "type": "pairs",
+          "id": "lists-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`(first x)`",
+              "The first element"
+            ],
+            [
+              "`(rest x)`",
+              "All elements except the first"
+            ],
+            [
+              "`(cons 1 x)`",
+              "A new list with 1 in front"
+            ],
+            [
+              "`(length x)`",
+              "The number of elements"
+            ],
+            [
+              "`(append x y)`",
+              "Joins two lists"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "lists-11",
+          "prompt": "Which form creates the list `(1 2 3)`?",
+          "options": [
+            "`(list 1 2 3)`",
+            "`(1 2 3)`",
+            "`(cons 1 2 3)`",
+            "`(append 1 2 3)`"
+          ],
+          "answer": 0,
+          "explain": "`list` creates a list from its arguments. `cons` takes exactly two arguments, and `append` needs lists."
+        },
+        {
+          "type": "input",
+          "id": "lists-12",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (reverse (cons 1 '(2 3))))",
+          "answers": [
+            "(3 2 1)"
+          ],
+          "explain": "`cons` builds `(1 2 3)`, and `reverse` turns it into `(3 2 1)`."
+        }
+      ]
+    },
+    {
+      "id": "mapping",
+      "title": "Higher-order functions",
+      "chapter": "Functional style",
+      "summary": "Pass functions to other functions: transform lists with mapcar, filter with remove-if-not and combine with reduce.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "In Lisp, functions are values. `#'square` means the function named `square`; it is short for `(function square)`. A function that takes other functions as arguments is called a **higher-order function**."
+        },
+        {
+          "type": "text",
+          "md": "`mapcar` calls a function on every element of a list and returns a new list with the results."
+        },
+        {
+          "type": "code",
+          "code": "(defun square (x)\n  (* x x))\n\n(format t \"~a~%\" (mapcar #'square '(1 2 3 4)))\n(format t \"~a~%\" (mapcar #'string-upcase '(\"a\" \"b\")))",
+          "output": "(1 4 9 16)\n(A B)"
+        },
+        {
+          "type": "text",
+          "md": "Often you pass a `lambda` instead of a named function. With two lists, `mapcar` takes one element from each list for every call."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"~a~%\" (mapcar (lambda (x) (+ x 10)) '(1 2 3)))\n(format t \"~a~%\" (mapcar #'+ '(1 2 3) '(10 20 30)))",
+          "output": "(11 12 13)\n(11 22 33)"
+        },
+        {
+          "type": "heading",
+          "text": "Filtering"
+        },
+        {
+          "type": "text",
+          "md": "`remove-if-not` keeps only the elements for which the test function returns true. `remove-if` does the opposite: it removes them."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"~a~%\" (remove-if-not #'evenp '(1 2 3 4 5 6)))\n(format t \"~a~%\" (remove-if #'evenp '(1 2 3 4 5 6)))\n(format t \"~a~%\" (remove-if-not (lambda (n) (> n 3)) '(1 5 2 8)))",
+          "output": "(2 4 6)\n(1 3 5)\n(5 8)"
+        },
+        {
+          "type": "heading",
+          "text": "reduce"
+        },
+        {
+          "type": "text",
+          "md": "`reduce` combines all elements into one value with a function of two arguments. `(reduce #'+ '(1 2 3 4))` first adds 1 and 2, then adds 3 to the result, then 4. `max` returns the largest of its arguments."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"~a~%\" (reduce #'+ '(1 2 3 4)))\n(format t \"~a~%\" (reduce #'max '(3 9 2)))\n(format t \"~a~%\" (reduce #'* '(1 2 3 4 5)))",
+          "output": "10\n9\n120"
+        },
+        {
+          "type": "text",
+          "md": "`funcall` calls a function that you have as a value, for example in a parameter. With it, you can write your own higher-order functions. `1+` adds one to a number."
+        },
+        {
+          "type": "code",
+          "code": "(defun apply-twice (f x)\n  (funcall f (funcall f x)))\n\n(format t \"~a~%\" (apply-twice #'1+ 5))\n(format t \"~a~%\" (apply-twice (lambda (n) (* n 3)) 2))",
+          "output": "7\n18"
+        },
+        {
+          "type": "tip",
+          "md": "Lisp keeps the names of functions and variables apart. That is why you need `#'` to pass a function, and `funcall` to call a function stored in a variable."
+        }
+      ],
+      "card": [
+        "`#'square` the function named `square`",
+        "`(mapcar f list)` applies `f` to every element",
+        "`(remove-if-not test list)` keeps matching elements",
+        "`(reduce #'+ list)` combines into one value",
+        "`(funcall f x)` calls a function value"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "mapping-1",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (mapcar (lambda (x) (* x 2)) '(1 2 3)))",
+          "answers": [
+            "(2 4 6)"
+          ],
+          "explain": "`mapcar` doubles each element and returns the new list."
+        },
+        {
+          "type": "input",
+          "id": "mapping-2",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (reduce #'+ (mapcar #'1+ '(1 2 3))))",
+          "answers": [
+            "9"
+          ],
+          "explain": "`mapcar` returns `(2 3 4)`, and `reduce` adds them: 2 + 3 + 4 is 9."
+        },
+        {
+          "type": "choice",
+          "id": "mapping-3",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (remove-if-not #'oddp '(1 2 3 4 5)))",
+          "options": [
+            "`(1 3 5)`",
+            "`(2 4)`",
+            "`(T NIL T NIL T)`",
+            "`3`"
+          ],
+          "answer": 0,
+          "explain": "`remove-if-not` keeps the elements for which `oddp` is true."
+        },
+        {
+          "type": "choice",
+          "id": "mapping-4",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (mapcar #'evenp '(1 2 3)))",
+          "options": [
+            "`(NIL T NIL)`",
+            "`(2)`",
+            "`(1 3)`",
+            "`T`"
+          ],
+          "answer": 0,
+          "explain": "`mapcar` collects the result of `evenp` for each element. It does not filter."
+        },
+        {
+          "type": "true_false",
+          "id": "mapping-5",
+          "statement": "`(mapcar #'1+ *x*)` changes the list in `*x*`.",
+          "answer": false,
+          "explain": "`mapcar` returns a new list. The original list stays the same."
+        },
+        {
+          "type": "gap",
+          "id": "mapping-6",
+          "prompt": "Complete the code so it prints `30`.",
+          "code": "(format t \"~a~%\" (___ #'+ '(5 10 15)))",
+          "options": [
+            "reduce",
+            "mapcar",
+            "funcall",
+            "remove-if"
+          ],
+          "answer": 0,
+          "explain": "`reduce` combines all elements with `+` into one number."
+        },
+        {
+          "type": "blocks",
+          "id": "mapping-7",
+          "prompt": "Build a form that keeps only the numbers greater than 10 from `*nums*`.",
+          "tokens": [
+            "(remove-if-not",
+            "(lambda",
+            "(n)",
+            "(>",
+            "n",
+            "10))",
+            "*nums*)"
+          ],
+          "distractors": [
+            "(mapcar",
+            "#'>"
+          ],
+          "explain": "`remove-if-not` takes the test function first and the list second."
+        },
+        {
+          "type": "order",
+          "id": "mapping-8",
+          "prompt": "Put the lines in order so the program prints `56`.",
+          "lines": [
+            "(defparameter *nums* '(1 2 3 4 5 6))",
+            "(defparameter *evens* (remove-if-not #'evenp *nums*))",
+            "(defparameter *squares* (mapcar (lambda (n) (* n n)) *evens*))",
+            "(format t \"~a~%\" (reduce #'+ *squares*))"
+          ],
+          "explain": "Each step uses the result of the step before: filter, then square, then add: 4 + 16 + 36 is 56."
+        },
+        {
+          "type": "bug",
+          "id": "mapping-9",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(defun add-ten (n)",
+            "  (+ n 10))",
+            "(format t \"~a~%\" (mapcar add-ten '(10 20)))"
+          ],
+          "bug": 2,
+          "explain": "To pass a function, write `#'add-ten`. Without `#'`, Lisp looks for a variable named `add-ten`."
+        },
+        {
+          "type": "pairs",
+          "id": "mapping-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`mapcar`",
+              "Applies a function to every element"
+            ],
+            [
+              "`remove-if-not`",
+              "Keeps the elements that pass a test"
+            ],
+            [
+              "`reduce`",
+              "Combines all elements into one value"
+            ],
+            [
+              "`funcall`",
+              "Calls a function value"
+            ],
+            [
+              "`#'square`",
+              "The function named square"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "mapping-11",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (reduce #'max '(4 1 7 3)))",
+          "options": [
+            "`7`",
+            "`4`",
+            "`(7)`",
+            "`15`"
+          ],
+          "answer": 0,
+          "explain": "`reduce` with `max` keeps the larger value at each step, so the result is the largest element."
+        },
+        {
+          "type": "input",
+          "id": "mapping-12",
+          "prompt": "What does this print?",
+          "code": "(defun apply-twice (f x)\n  (funcall f (funcall f x)))\n\n(format t \"~a~%\" (apply-twice (lambda (n) (* n 10)) 3))",
+          "answers": [
+            "300"
+          ],
+          "explain": "The lambda runs two times: 3 times 10 is 30, and 30 times 10 is 300."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Iteration and recursion",
+      "chapter": "Control flow",
+      "summary": "Repeat code with dotimes, dolist and loop, and solve problems with functions that call themselves.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`(dotimes (i 3) body)` runs the body 3 times. The variable `i` counts from `0` up to, but not including, `3`."
+        },
+        {
+          "type": "code",
+          "code": "(dotimes (i 3)\n  (format t \"Round ~a~%\" i))",
+          "output": "Round 0\nRound 1\nRound 2"
+        },
+        {
+          "type": "text",
+          "md": "`(dolist (x list) body)` runs the body once for every element of a list. Each time, `x` holds the next element."
+        },
+        {
+          "type": "code",
+          "code": "(dolist (fruit '(\"apple\" \"pear\" \"plum\"))\n  (format t \"I like ~a.~%\" fruit))",
+          "output": "I like apple.\nI like pear.\nI like plum."
+        },
+        {
+          "type": "heading",
+          "text": "The loop macro"
+        },
+        {
+          "type": "text",
+          "md": "`loop` is a small language of its own. `for i from 1 to 5` counts from 1 to 5, including both ends, and `for i below 3` counts from 0 to 2. `for x in list` goes through a list. `collect` builds a list of values, `sum` adds them up, and `do` runs forms. `downto` counts down."
+        },
+        {
+          "type": "code",
+          "code": "(format t \"~a~%\" (loop for i from 1 to 5 collect (* i i)))\n(format t \"~a~%\" (loop for i below 3 collect i))\n(format t \"~a~%\" (loop for x in '(3 4 5) sum x))\n(loop for i from 10 downto 8\n      do (format t \"~a~%\" i))",
+          "output": "(1 4 9 16 25)\n(0 1 2)\n12\n10\n9\n8"
+        },
+        {
+          "type": "heading",
+          "text": "Recursion"
+        },
+        {
+          "type": "text",
+          "md": "A **recursive** function calls itself. It needs a **base case**, a simple case that it answers without calling itself. The factorial of `n` is `n` times the factorial of `n - 1`, and the factorial of 1 is 1."
+        },
+        {
+          "type": "code",
+          "code": "(defun factorial (n)\n  (if (<= n 1)\n      1\n      (* n (factorial (- n 1)))))\n\n(format t \"~a~%\" (factorial 5))\n(format t \"~a~%\" (factorial 20))",
+          "output": "120\n2432902008176640000"
+        },
+        {
+          "type": "text",
+          "md": "Recursion fits lists well: handle the first element, call the function again on the rest, and stop at the empty list. `null` checks for the empty list."
+        },
+        {
+          "type": "code",
+          "code": "(defun sum-list (items)\n  (if (null items)\n      0\n      (+ (first items) (sum-list (rest items)))))\n\n(format t \"~a~%\" (sum-list '(4 5 6)))",
+          "output": "15"
+        },
+        {
+          "type": "warning",
+          "md": "Without a base case, a recursive function calls itself again and again until the program stops with an error."
+        }
+      ],
+      "card": [
+        "`(dotimes (i 3) ...)` with `i` = 0, 1, 2",
+        "`(dolist (x list) ...)` once per element",
+        "`(loop for i from 1 to 5 collect i)`, also `sum`, `do`",
+        "Recursion: base case first, then call with a smaller value"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "(dotimes (i 4)\n  (format t \"~a\" i))",
+          "answers": [
+            "0123"
+          ],
+          "explain": "`i` takes the values 0, 1, 2 and 3. The text has no `~%`, so they print on one line."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (loop for i from 1 to 4 sum i))",
+          "answers": [
+            "10"
+          ],
+          "explain": "`from 1 to 4` includes both ends: 1 + 2 + 3 + 4 is 10."
+        },
+        {
+          "type": "choice",
+          "id": "loops-3",
+          "prompt": "What does this print?",
+          "code": "(format t \"~a~%\" (loop for i below 4 collect i))",
+          "options": [
+            "`(0 1 2 3)`",
+            "`(1 2 3 4)`",
+            "`(0 1 2 3 4)`",
+            "`4`"
+          ],
+          "answer": 0,
+          "explain": "`below 4` starts at 0 and stops before 4."
+        },
+        {
+          "type": "choice",
+          "id": "loops-4",
+          "prompt": "What does this print?",
+          "code": "(dolist (x '(1 2 3))\n  (when (oddp x)\n    (format t \"~a~%\" x)))",
+          "options": [
+            "`1` and `3`",
+            "`2`",
+            "`1`, `2` and `3`",
+            "`T`"
+          ],
+          "answer": 0,
+          "explain": "`dolist` visits every element, but `when` prints only the odd ones."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-5",
+          "statement": "The last number this code prints is `5`.",
+          "code": "(dotimes (i 5)\n  (format t \"~a~%\" i))",
+          "answer": false,
+          "explain": "`dotimes` counts from 0 and stops before 5, so the last number is 4."
+        },
+        {
+          "type": "gap",
+          "id": "loops-6",
+          "prompt": "Complete the function so it prints `24`.",
+          "code": "(defun factorial (n)\n  (if (<= n 1)\n      1\n      (___ n (factorial (- n 1)))))\n\n(format t \"~a~%\" (factorial 4))",
+          "options": [
+            "*",
+            "+",
+            "-",
+            "max"
+          ],
+          "answer": 0,
+          "explain": "The factorial multiplies: 4 times 3 times 2 times 1 is 24."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-7",
+          "prompt": "Build a form that adds up all numbers in `*prices*`.",
+          "tokens": [
+            "(loop",
+            "for",
+            "x",
+            "in",
+            "*prices*",
+            "sum",
+            "x)"
+          ],
+          "distractors": [
+            "collect",
+            "from"
+          ],
+          "explain": "`for x in` goes through the list, and `sum x` adds up the elements."
+        },
+        {
+          "type": "order",
+          "id": "loops-8",
+          "prompt": "Put the lines in order so the program prints `3`.",
+          "lines": [
+            "(defun count-items (items)",
+            "  (if (null items)",
+            "      0",
+            "      (+ 1 (count-items (rest items)))))",
+            "(format t \"~a~%\" (count-items '(a b c)))"
+          ],
+          "explain": "The base case returns 0 for the empty list. Otherwise the function adds 1 for the first element and counts the rest."
+        },
+        {
+          "type": "bug",
+          "id": "loops-9",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(defun sum-to (n)",
+            "  (if (= n 0)",
+            "      0",
+            "      (+ n (sum-to n))))",
+            "(format t \"~a~%\" (sum-to 4))"
+          ],
+          "bug": 3,
+          "explain": "The function calls itself with the same `n` and never reaches the base case. Write `(sum-to (- n 1))`."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`(dotimes (i 3) ...)`",
+              "Repeats with i = 0, 1, 2"
+            ],
+            [
+              "`(dolist (x xs) ...)`",
+              "Runs once for every element"
+            ],
+            [
+              "`collect`",
+              "Builds a list in a loop"
+            ],
+            [
+              "`sum`",
+              "Adds up values in a loop"
+            ],
+            [
+              "`(null items)`",
+              "Checks for the empty list"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "loops-11",
+          "prompt": "What does this print?",
+          "code": "(defun down-from (n)\n  (if (= n 0)\n      nil\n      (cons n (down-from (- n 1)))))\n\n(format t \"~a~%\" (down-from 3))",
+          "options": [
+            "`(3 2 1)`",
+            "`(1 2 3)`",
+            "`(3 2 1 0)`",
+            "`6`"
+          ],
+          "answer": 0,
+          "explain": "Each call puts `n` in front of the list for `n - 1`. At 0 the base case returns the empty list."
+        },
+        {
+          "type": "input",
+          "id": "loops-12",
+          "prompt": "What does this print?",
+          "code": "(defun power (base n)\n  (if (= n 0)\n      1\n      (* base (power base (- n 1)))))\n\n(format t \"~a~%\" (power 2 5))",
+          "answers": [
+            "32"
+          ],
+          "explain": "The function multiplies 2 five times: 2 * 2 * 2 * 2 * 2 is 32."
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "title": "Local variables and data",
+      "chapter": "Data",
+      "summary": "Use local variables with let, change values with setf, and store data in hash tables and structures.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`let` creates **local variables**. They exist only inside the body of the `let`. The first part is a list of pairs: a name and its value."
+        },
+        {
+          "type": "code",
+          "code": "(let ((width 4)\n      (height 3))\n  (format t \"Area: ~a~%\" (* width height)))",
+          "output": "Area: 12"
+        },
+        {
+          "type": "text",
+          "md": "`let` creates all its variables at the same time, so one value cannot use another variable of the same `let`. `let*` creates them one after another, so later values can use earlier ones."
+        },
+        {
+          "type": "code",
+          "code": "(let* ((price 20)\n       (tax (/ price 4))\n       (total (+ price tax)))\n  (format t \"Total: ~a~%\" total))",
+          "output": "Total: 25"
+        },
+        {
+          "type": "text",
+          "md": "`setf` gives a variable a new value. `incf` adds 1 to a variable, or the number you give it."
+        },
+        {
+          "type": "code",
+          "code": "(let ((x 5))\n  (setf x (* x 2))\n  (format t \"~a~%\" x))\n\n(defun count-even (numbers)\n  (let ((result 0))\n    (dolist (n numbers)\n      (when (evenp n)\n        (incf result)))\n    result))\n\n(format t \"~a~%\" (count-even '(1 2 4 6 7)))",
+          "output": "10\n3"
+        },
+        {
+          "type": "heading",
+          "text": "Hash tables"
+        },
+        {
+          "type": "text",
+          "md": "A **hash table** stores values under keys. `(make-hash-table :test #'equal)` creates one. Words that start with a colon, like `:test`, are **keywords**; they name an argument. `:test #'equal` lets you use strings as keys. `(gethash key table)` reads a value, and `(setf (gethash key table) value)` stores one. A missing key gives `NIL`, or the default value you pass as a third argument. `incf` also works on `(gethash key table 0)`, which makes counting easy. `hash-table-count` counts the entries."
+        },
+        {
+          "type": "code",
+          "code": "(defparameter *ages* (make-hash-table :test #'equal))\n\n(setf (gethash \"Ada\" *ages*) 36)\n(setf (gethash \"Alan\" *ages*) 41)\n(format t \"~a~%\" (gethash \"Ada\" *ages*))\n(format t \"~a~%\" (gethash \"Bob\" *ages*))\n(format t \"~a~%\" (gethash \"Bob\" *ages* 0))\n(format t \"~a~%\" (hash-table-count *ages*))",
+          "output": "36\nNIL\n0\n2"
+        },
+        {
+          "type": "heading",
+          "text": "Structures"
+        },
+        {
+          "type": "text",
+          "md": "`defstruct` defines a new kind of record with named fields. `(defstruct point x y)` creates the function `make-point`, the readers `point-x` and `point-y`, and the test `point-p`. You give the field values with keywords, like `:x 3`. `setf` also changes a field."
+        },
+        {
+          "type": "code",
+          "code": "(defstruct point x y)\n\n(defparameter *p* (make-point :x 3 :y 4))\n(format t \"~a~%\" (point-x *p*))\n(setf (point-y *p*) 10)\n(format t \"~a ~a~%\" (point-x *p*) (point-y *p*))\n(format t \"~a~%\" (point-p *p*))",
+          "output": "3\n3 10\nT"
+        },
+        {
+          "type": "warning",
+          "md": "A variable from `let` does not exist outside the `let`. Using it there stops the program with an error."
+        }
+      ],
+      "card": [
+        "`(let ((x 1) (y 2)) ...)` local variables, `let*` in order",
+        "`(setf x 5)` new value, `(incf x)` adds 1",
+        "`(gethash key table)` read, `(setf (gethash key table) v)` store",
+        "`(defstruct point x y)` gives `make-point`, `point-x`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "data-1",
+          "prompt": "What does this print?",
+          "code": "(let ((a 3)\n      (b 4))\n  (format t \"~a~%\" (+ (* a a) (* b b))))",
+          "answers": [
+            "25"
+          ],
+          "explain": "3 times 3 is 9, 4 times 4 is 16, and 9 + 16 is 25."
+        },
+        {
+          "type": "input",
+          "id": "data-2",
+          "prompt": "What does this print?",
+          "code": "(let ((x 10))\n  (setf x (+ x 5))\n  (incf x)\n  (format t \"~a~%\" x))",
+          "answers": [
+            "16"
+          ],
+          "explain": "`setf` makes `x` 15, and `incf` adds 1."
+        },
+        {
+          "type": "choice",
+          "id": "data-3",
+          "prompt": "What does this print?",
+          "code": "(let* ((a 2)\n       (b (* a 3))\n       (c (+ a b)))\n  (format t \"~a~%\" c))",
+          "options": [
+            "`8`",
+            "`6`",
+            "`5`",
+            "`2`"
+          ],
+          "answer": 0,
+          "explain": "`let*` creates the variables in order: `a` is 2, `b` is 6 and `c` is 2 + 6."
+        },
+        {
+          "type": "true_false",
+          "id": "data-4",
+          "statement": "This code prints `2`.",
+          "code": "(let ((a 1)\n      (b (+ a 1)))\n  (format t \"~a~%\" b))",
+          "answer": false,
+          "explain": "`let` creates its variables at the same time, so `a` does not exist yet when `b` is computed. With `let*` it would print `2`."
+        },
+        {
+          "type": "gap",
+          "id": "data-5",
+          "prompt": "Complete the code so it prints `12`.",
+          "code": "(defparameter *stock* (make-hash-table :test #'equal))\n(setf (gethash \"apples\" *stock*) 12)\n(format t \"~a~%\" (___ \"apples\" *stock*))",
+          "options": [
+            "gethash",
+            "getf",
+            "hash-ref",
+            "get"
+          ],
+          "answer": 0,
+          "explain": "`gethash` takes the key first and the hash table second."
+        },
+        {
+          "type": "blocks",
+          "id": "data-6",
+          "prompt": "Build a line that stores 5 under the key `\"pens\"` in `*stock*`.",
+          "tokens": [
+            "(setf",
+            "(gethash",
+            "\"pens\"",
+            "*stock*)",
+            "5)"
+          ],
+          "distractors": [
+            "(set",
+            "(make-hash-table"
+          ],
+          "explain": "`setf` with a `gethash` place stores a value in the hash table."
+        },
+        {
+          "type": "order",
+          "id": "data-7",
+          "prompt": "Put the lines in order so the program prints `Dune: 500`.",
+          "lines": [
+            "(defstruct book title pages)",
+            "(defparameter *b* (make-book :title \"Dune\" :pages 412))",
+            "(setf (book-pages *b*) 500)",
+            "(format t \"~a: ~a~%\" (book-title *b*) (book-pages *b*))"
+          ],
+          "explain": "The structure must be defined before `make-book` exists. The field is changed before it is printed."
+        },
+        {
+          "type": "bug",
+          "id": "data-8",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "(defstruct dog name age)",
+            "(defparameter *rex* (make-dog :name \"Rex\" :age 3))",
+            "(format t \"~a~%\" (dog-name *rex*))",
+            "(format t \"~a~%\" (age *rex*))"
+          ],
+          "bug": 3,
+          "explain": "The reader functions start with the structure name. Write `(dog-age *rex*)`."
+        },
+        {
+          "type": "pairs",
+          "id": "data-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`let`",
+              "Creates local variables"
+            ],
+            [
+              "`let*`",
+              "Local variables, one after another"
+            ],
+            [
+              "`setf`",
+              "Gives a place a new value"
+            ],
+            [
+              "`gethash`",
+              "Reads a value from a hash table"
+            ],
+            [
+              "`defstruct`",
+              "Defines a record with named fields"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "data-10",
+          "prompt": "What does this print?",
+          "code": "(defparameter *h* (make-hash-table))\n(format t \"~a~%\" (gethash 'x *h*))",
+          "options": [
+            "`NIL`",
+            "`0`",
+            "An error",
+            "`X`"
+          ],
+          "answer": 0,
+          "explain": "A key that is not in the table gives `NIL` when you pass no default value."
+        },
+        {
+          "type": "choice",
+          "id": "data-11",
+          "prompt": "After `(defstruct point x y)`, which function creates a new point?",
+          "options": [
+            "`make-point`",
+            "`new-point`",
+            "`point`",
+            "`create-point`"
+          ],
+          "answer": 0,
+          "explain": "`defstruct` creates a constructor named `make-` plus the structure name."
+        },
+        {
+          "type": "input",
+          "id": "data-12",
+          "prompt": "What does this print?",
+          "code": "(defparameter *counts* (make-hash-table))\n\n(dolist (w '(a b a c a))\n  (incf (gethash w *counts* 0)))\n(format t \"~a~%\" (gethash 'a *counts*))",
+          "answers": [
+            "3"
+          ],
+          "explain": "For each symbol, `incf` adds 1 to its count, starting from the default 0. `A` appears three times."
+        }
+      ]
+    }
+  ]
+}

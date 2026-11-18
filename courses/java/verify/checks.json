@@ -1,0 +1,307 @@
+{
+  "hello-1": {
+    "programs": [
+      {
+        "code": "System.out.println(\"Hello\");\nSystem.out.print(\"X\");",
+        "expect": "Hello\nX"
+      },
+      {
+        "code": "System.out.print(\"Hello\");\nSystem.out.print(\"X\");",
+        "expect": "HelloX"
+      },
+      {
+        "code": "println(\"Hello\");",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "System.out.println(Hello);",
+        "expect": "@compile_error"
+      }
+    ]
+  },
+  "hello-4": {
+    "expect": "AB\nC"
+  },
+  "hello-5": {
+    "programs": [
+      {
+        "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hi\");\n    }\n}",
+        "expect": "@compile_error",
+        "raw": true
+      }
+    ]
+  },
+  "hello-6": {
+    "expect": "Hi"
+  },
+  "hello-7": {
+    "expect": "3.5"
+  },
+  "hello-8": {
+    "tpl": "public class Main {\n    public static void main(String[] args) {\n        {{CODE}}\n    }\n}",
+    "expect": "42"
+  },
+  "hello-9": {
+    "expect": "Java\nDone"
+  },
+  "hello-11": {
+    "fix": "        System.out.println(\"Middle\");",
+    "expect": "Start\nMiddle\nEnd"
+  },
+  "hello-12": {
+    "fix": "        System.out.println(\"Bye\");",
+    "expect": "Hi\nBye"
+  },
+  "variables-1": {
+    "programs": [
+      {
+        "code": "int age = 30;\nSystem.out.println(age);",
+        "expect": "30"
+      },
+      {
+        "code": "int age = \"30\";\nSystem.out.println(age);",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "age int = 30;\nSystem.out.println(age);",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "Int age = 30;\nSystem.out.println(age);",
+        "expect": "@compile_error"
+      }
+    ]
+  },
+  "variables-5": {
+    "programs": [
+      {
+        "code": "var x = 5;\nx = \"five\";\nSystem.out.println(x);",
+        "expect": "@compile_error"
+      }
+    ]
+  },
+  "variables-6": {
+    "expect": "2.0"
+  },
+  "variables-7": {
+    "expect": "J"
+  },
+  "variables-8": {
+    "tpl": "public class Main {\n    public static void main(String[] args) {\n        {{CODE}}\n        System.out.println(price);\n    }\n}",
+    "expect": "9.5"
+  },
+  "variables-9": {
+    "expect": "12"
+  },
+  "variables-11": {
+    "fix": "double price = 4.99;",
+    "expect": "Book\n9.98"
+  },
+  "variables-12": {
+    "fix": "String name = \"Ana\";",
+    "expect": "Ana\n25"
+  },
+  "strings-5": {
+    "expect": "Java"
+  },
+  "strings-6": {
+    "programs": [
+      {
+        "code": "String a = \"hi\";\nString b = \"HI\".toLowerCase();\nSystem.out.println(a.equals(b));\nSystem.out.println(a == b);",
+        "expect": "true\nfalse"
+      },
+      {
+        "code": "String a = \"hi\";\nString b = \"hi\";\nSystem.out.println(a.same(b));",
+        "expect": "@compile_error"
+      }
+    ]
+  },
+  "strings-7": {
+    "expect": "Ann"
+  },
+  "strings-8": {
+    "fix": "char last = word.charAt(word.length() - 1);",
+    "expect": "r"
+  },
+  "strings-9": {
+    "tpl": "public class Main {\n    public static void main(String[] args) {\n        String first = \"Ada\";\n        String last = \"King\";\n        {{CODE}}\n        System.out.println(full);\n    }\n}",
+    "expect": "Ada King"
+  },
+  "strings-10": {
+    "expect": "NANA 4"
+  },
+  "strings-12": {
+    "fix": "boolean same = a.equals(b);",
+    "expect": "true"
+  },
+  "conditions-4": {
+    "programs": [
+      {
+        "code": "int x = 3;\nif (x = 5) {\n    System.out.println(\"five\");\n}",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "int x = 5;\nif (x == 5) {\n    System.out.println(\"five\");\n}",
+        "expect": "five"
+      }
+    ]
+  },
+  "conditions-7": {
+    "expect": "Wait"
+  },
+  "conditions-8": {
+    "expect": "stop"
+  },
+  "conditions-9": {
+    "tpl": "public class Main {\n    public static void main(String[] args) {\n        int n = 5;\n        {{CODE}}\n        System.out.println(result);\n    }\n}",
+    "expect": "positive"
+  },
+  "conditions-10": {
+    "expect": "Hot"
+  },
+  "conditions-12": {
+    "fix": "} else if (age >= 13) {",
+    "expect": "Teen"
+  },
+  "loops-3": {
+    "expect": "Hi\nHi\nHi"
+  },
+  "loops-5": {
+    "programs": [
+      {
+        "code": "do {\n    System.out.println(\"once\");\n} while (false);",
+        "expect": "once"
+      }
+    ]
+  },
+  "loops-8": {
+    "expect": "1\n2\n3\n4\n5"
+  },
+  "loops-9": {
+    "expect": "4\n8\n15"
+  },
+  "loops-10": {
+    "tpl": "public class Main {\n    public static void main(String[] args) {\n        {{CODE}} {\n            System.out.println(i);\n        }\n    }\n}",
+    "expect": "0\n1\n2"
+  },
+  "loops-11": {
+    "expect": "3\n2\n1\nGo!"
+  },
+  "loops-12": {
+    "fix": "} while (n < 3);",
+    "expect": "0\n1\n2"
+  },
+  "methods-3": {
+    "programs": [
+      {
+        "code": "static void greet() {\n    return 5;\n}\n\npublic static void main(String[] args) {\n    greet();\n}",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "static void greet() {\n    System.out.println(\"Hi\");\n}\n\npublic static void main(String[] args) {\n    greet();\n    greet();\n}",
+        "expect": "Hi\nHi"
+      }
+    ]
+  },
+  "methods-5": {
+    "expect": "1"
+  },
+  "methods-7": {
+    "expect": "12"
+  },
+  "methods-8": {
+    "expect": "9"
+  },
+  "methods-9": {
+    "tpl": "public class Main {\n    {{CODE}} {\n        return x / 2;\n    }\n\n    public static void main(String[] args) {\n        System.out.println(half(7.0));\n    }\n}",
+    "expect": "3.5"
+  },
+  "methods-10": {
+    "tpl": "public class Main {\n    {{CODE}}\n\n    public static void main(String[] args) {\n        System.out.println(grade(70));\n        System.out.println(grade(20));\n    }\n}",
+    "expect": "pass\nfail"
+  },
+  "methods-12": {
+    "fix": "static int square(int n) {",
+    "expect": "25"
+  },
+  "collections-5": {
+    "programs": [
+      {
+        "code": "List<Integer> nums = List.of(1, 2);\nnums.add(3);\nSystem.out.println(nums);",
+        "expect": "@runtime_error"
+      },
+      {
+        "code": "ArrayList<Integer> nums = new ArrayList<>(List.of(1, 2));\nnums.add(3);\nSystem.out.println(nums);",
+        "expect": "[1, 2, 3]"
+      }
+    ]
+  },
+  "collections-6": {
+    "programs": [
+      {
+        "code": "ArrayList<Integer> nums = new ArrayList<>();\nSystem.out.println(nums.size());",
+        "expect": "0"
+      },
+      {
+        "code": "ArrayList<int> nums = new ArrayList<>();\nSystem.out.println(nums.size());",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "int[] nums = new ArrayList<>();\nSystem.out.println(nums.length);",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "ArrayList<Integer> nums = ArrayList();\nSystem.out.println(nums.size());",
+        "expect": "@compile_error"
+      }
+    ]
+  },
+  "collections-7": {
+    "expect": "Ana"
+  },
+  "collections-8": {
+    "expect": "12"
+  },
+  "collections-9": {
+    "tpl": "public class Main {\n    public static void main(String[] args) {\n        {{CODE}}\n        System.out.println(colors[1]);\n    }\n}",
+    "expect": "blue"
+  },
+  "collections-10": {
+    "expect": "[pen, ink]"
+  },
+  "collections-12": {
+    "fix": "for (int i = 0; i < values.length; i++) {",
+    "expect": "30"
+  },
+  "classes-5": {
+    "programs": [
+      {
+        "code": "class Dog {\n    String name;\n\n    void Dog(String name) {\n        this.name = name;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Dog d = new Dog(\"Rex\");\n        System.out.println(d.name);\n    }\n}",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "class Dog {\n    String name;\n\n    Dog(String name) {\n        this.name = name;\n    }\n}\n\npublic class Main {\n    public static void main(String[] args) {\n        Dog d = new Dog(\"Rex\");\n        System.out.println(d.name);\n    }\n}",
+        "expect": "Rex"
+      }
+    ]
+  },
+  "classes-7": {
+    "expect": "Tom"
+  },
+  "classes-8": {
+    "expect": "Point[x=1, y=2]"
+  },
+  "classes-9": {
+    "tpl": "{{CODE}}\n\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(new Book(\"Java\", 300).pages());\n    }\n}",
+    "expect": "300"
+  },
+  "classes-10": {
+    "tpl": "record Point(int x, int y) {}\n\npublic class Main {\n    public static void main(String[] args) {\n        {{CODE}}\n    }\n}",
+    "expect": "Point[x=4, y=2]"
+  },
+  "classes-12": {
+    "tpl": "{{CODE}}\n\npublic class Main {\n    public static void main(String[] args) {\n        System.out.println(new Box(5).size);\n    }\n}",
+    "fix": "        this.size = size;",
+    "expect": "5"
+  }
+}

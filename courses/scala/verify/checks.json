@@ -1,0 +1,369 @@
+{
+  "hello-1": {
+    "programs": [
+      {
+        "code": "println(\"Hello\")",
+        "expect": "Hello"
+      },
+      {
+        "code": "print Hello",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "echo(\"Hello\")",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "printLine(\"Hello\")",
+        "expect": "@compile_error"
+      }
+    ]
+  },
+  "hello-2": {},
+  "hello-3": {},
+  "hello-4": {
+    "expect": "3 + 4"
+  },
+  "hello-5": {
+    "expect": "Hi\nBye"
+  },
+  "hello-6": {
+    "expect": "Start"
+  },
+  "hello-7": {
+    "template": "@main def run(): Unit =\n  @@",
+    "expect": "5"
+  },
+  "hello-8": {
+    "expect": "One\nTwo\nThree"
+  },
+  "hello-9": {
+    "programs": [
+      {
+        "code": "print(\"Hi\")\nprintln(\"Hi\")",
+        "expect": "HiHi"
+      }
+    ]
+  },
+  "hello-10": {
+    "fix": "  println(\"Middle\")",
+    "expect": "Start\nMiddle\nEnd"
+  },
+  "hello-11": {
+    "fix": "  println(\"Bye\")",
+    "expect": "Hi\nBye"
+  },
+  "hello-12": {
+    "programs": [
+      {
+        "code": "@main def run(): Unit =\n  println(1)",
+        "expect": "1"
+      }
+    ]
+  },
+  "values-1": {
+    "programs": [
+      {
+        "code": "var a = 1\na = 2\nprintln(a)",
+        "expect": "2"
+      },
+      {
+        "code": "val a = 1\na = 2\nprintln(a)",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "let a = 1\nprintln(a)",
+        "expect": "@compile_error"
+      }
+    ]
+  },
+  "values-2": {},
+  "values-3": {},
+  "values-4": {},
+  "values-5": {
+    "expect": "@compile_error"
+  },
+  "values-6": {
+    "expect": "4.5"
+  },
+  "values-7": {
+    "expect": "3"
+  },
+  "values-8": {
+    "template": "@main def run(): Unit =\n  @@\n  println(age)",
+    "expect": "30"
+  },
+  "values-9": {
+    "expect": "12"
+  },
+  "values-10": {
+    "fix": "  val age: Int = 25",
+    "expect": "Kim\n25"
+  },
+  "values-11": {
+    "fix": "  val whole: Int = price.toInt",
+    "expect": "9"
+  },
+  "values-12": {
+    "programs": [
+      {
+        "code": "val a: Int = 42\nval b: Double = 4.2\nval c: Boolean = true\nval d: String = \"hi\"\nprintln(s\"$a $b $c $d\")",
+        "expect": "42 4.2 true hi"
+      }
+    ]
+  },
+  "strings-1": {},
+  "strings-2": {},
+  "strings-3": {},
+  "strings-4": {},
+  "strings-5": {
+    "expect": "Hello, $name"
+  },
+  "strings-6": {
+    "expect": "ANA"
+  },
+  "strings-7": {
+    "expect": "I live in Paris."
+  },
+  "strings-8": {
+    "template": "@main def run(): Unit =\n  val word = \"hi\"\n  @@\n  println(upper)",
+    "expect": "HI"
+  },
+  "strings-9": {
+    "expect": "SCALA has 5 letters"
+  },
+  "strings-10": {
+    "programs": [
+      {
+        "code": "val text = \"banana\"\nval name = \"Bo\"\nprintln(s\"Hi $name\")\nprintln(text.length)\nprintln(text.toUpperCase)\nprintln(text.contains(\"a\"))\nprintln(text.substring(1, 3))",
+        "expect": "Hi Bo\n6\nBANANA\ntrue\nan"
+      }
+    ]
+  },
+  "strings-11": {
+    "fix": "  println(s\"Letters: ${first.length}\")",
+    "expect": "Name: Ana Silva\nLetters: 3"
+  },
+  "strings-12": {
+    "fix": "  println(word.toUpperCase)",
+    "expect": "APPLE\n5"
+  },
+  "conditions-1": {},
+  "conditions-2": {},
+  "conditions-3": {},
+  "conditions-4": {
+    "programs": [
+      {
+        "code": "println(5 != 5)",
+        "expect": "false"
+      }
+    ]
+  },
+  "conditions-5": {
+    "expect": "false"
+  },
+  "conditions-6": {
+    "expect": "Sorry"
+  },
+  "conditions-7": {
+    "expect": "large"
+  },
+  "conditions-8": {
+    "template": "@main def run(): Unit =\n  val a = 4\n  val b = 9\n  @@\n  println(min)",
+    "expect": "4"
+  },
+  "conditions-9": {
+    "expect": "Grade B"
+  },
+  "conditions-10": {
+    "programs": [
+      {
+        "code": "println(true && false)\nprintln(true || false)\nprintln(!true)\nprintln(3 == 3)\nprintln(3 != 3)",
+        "expect": "false\ntrue\nfalse\ntrue\nfalse"
+      }
+    ]
+  },
+  "conditions-11": {
+    "fix": "  if age == 18 then",
+    "expect": "Not 18"
+  },
+  "conditions-12": {
+    "fix": "    case _ => \"many\"",
+    "expect": "many"
+  },
+  "loops-1": {},
+  "loops-2": {},
+  "loops-3": {},
+  "loops-4": {},
+  "loops-5": {
+    "programs": [
+      {
+        "code": "println((1 to 5).toList)\nprintln((1 until 5).toList)",
+        "expect": "List(1, 2, 3, 4, 5)\nList(1, 2, 3, 4)"
+      }
+    ]
+  },
+  "loops-6": {
+    "expect": "1\n2\n3"
+  },
+  "loops-7": {
+    "expect": "Vector(2, 4, 6)"
+  },
+  "loops-8": {
+    "template": "@main def run(): Unit =\n  @@",
+    "expect": "0\n1\n2\n3\n4"
+  },
+  "loops-9": {
+    "expect": "3\n2\n1"
+  },
+  "loops-10": {
+    "programs": [
+      {
+        "code": "println((1 to 3).toList)\nprintln((1 until 3).toList)\nprintln((1 to 9 by 4).toList)\nprintln((3 to 1 by -1).toList)",
+        "expect": "List(1, 2, 3)\nList(1, 2)\nList(1, 5, 9)\nList(3, 2, 1)"
+      }
+    ]
+  },
+  "loops-11": {
+    "fix": "  for i <- 1 to 3 do",
+    "expect": "6"
+  },
+  "loops-12": {
+    "fix": "  for i <- 1 to 3 do",
+    "expect": "Line 1\nLine 2\nLine 3"
+  },
+  "functions-1": {},
+  "functions-2": {},
+  "functions-3": {},
+  "functions-4": {
+    "programs": [
+      {
+        "code": "def add(a: Int, b: Int): Int = a + b\n\n@main def run(): Unit =\n  println(add(2, 3))",
+        "expect": "5"
+      },
+      {
+        "code": "def add(a, b) = a + b\n\n@main def run(): Unit =\n  println(add(2, 3))",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "fun add(a: Int, b: Int): Int = a + b\n\n@main def run(): Unit =\n  println(add(2, 3))",
+        "expect": "@compile_error"
+      },
+      {
+        "code": "def add(a: Int, b: Int): Int => a + b\n\n@main def run(): Unit =\n  println(add(2, 3))",
+        "expect": "@compile_error"
+      }
+    ]
+  },
+  "functions-5": {
+    "programs": [
+      {
+        "code": "def five(): Int =\n  val x = 2\n  x + 3\n\n@main def run(): Unit =\n  println(five())",
+        "expect": "5"
+      }
+    ]
+  },
+  "functions-6": {
+    "expect": "true"
+  },
+  "functions-7": {
+    "expect": "4.5"
+  },
+  "functions-8": {
+    "template": "@@\n\n@main def run(): Unit =\n  println(cube(3))",
+    "expect": "27"
+  },
+  "functions-9": {
+    "append": "\n\n@main def run(): Unit =\n  println(price(100.0, 0.25))",
+    "expect": "125.0"
+  },
+  "functions-10": {
+    "programs": [
+      {
+        "code": "def hi(name: String = \"you\"): Unit =\n  println(s\"Hi, $name\")\n\n@main def run(): Unit =\n  hi()\n  val inc = (x: Int) => x + 1\n  println(inc(1))",
+        "expect": "Hi, you\n2"
+      }
+    ]
+  },
+  "functions-11": {
+    "fix": "  println(greet(\"Ana\"))",
+    "expect": "Hi, Ana"
+  },
+  "functions-12": {
+    "fix": "def add(a: Int, b: Int): Int =",
+    "expect": "5"
+  },
+  "collections-1": {},
+  "collections-2": {},
+  "collections-3": {},
+  "collections-4": {},
+  "collections-5": {
+    "expect": "List(1, 2)"
+  },
+  "collections-6": {
+    "expect": "List(HI, YO)"
+  },
+  "collections-7": {
+    "expect": "List(8, 6)"
+  },
+  "collections-8": {
+    "template": "@main def run(): Unit =\n  val nums = List(1, 2, 3, 4)\n  @@\n  println(even)",
+    "expect": "List(2, 4)"
+  },
+  "collections-9": {
+    "expect": "12"
+  },
+  "collections-10": {
+    "programs": [
+      {
+        "code": "val xs = List(1, 2, 3)\nprintln(xs.map(_ * 2))\nprintln(xs.filter(_ > 1))\nprintln(xs.sum)\nxs.foreach(println)\nprintln(Map(\"a\" -> 1).getOrElse(\"b\", 0))",
+        "expect": "List(2, 4, 6)\nList(2, 3)\n6\n1\n2\n3\n0"
+      }
+    ]
+  },
+  "collections-11": {
+    "fix": "  val more = fruits :+ \"kiwi\"",
+    "expect": "List(apple, pear, kiwi)"
+  },
+  "collections-12": {
+    "fix": "  println(stock.getOrElse(\"coffee\", 0))",
+    "expect": "3\n0"
+  },
+  "classes-1": {},
+  "classes-2": {},
+  "classes-3": {},
+  "classes-4": {},
+  "classes-5": {
+    "expect": "true"
+  },
+  "classes-6": {
+    "expect": "Hi, stranger"
+  },
+  "classes-7": {
+    "expect": "Point(1,2)"
+  },
+  "classes-8": {
+    "template": "case class Person(name: String, age: Int)\n\n@main def run(): Unit =\n  @@\n  println(ana)",
+    "expect": "Person(Ana,30)"
+  },
+  "classes-9": {
+    "prepend": "case class Person(name: String, age: Int)\n\n",
+    "expect": "31"
+  },
+  "classes-10": {
+    "programs": [
+      {
+        "code": "case class P(x: Int)\n\n@main def run(): Unit =\n  println(P(2).copy(x = 1))\n  val a: Option[Int] = Some(5)\n  val b: Option[Int] = None\n  println(a.getOrElse(0))\n  println(b.getOrElse(0))",
+        "expect": "P(1)\n5\n0"
+      }
+    ]
+  },
+  "classes-11": {
+    "fix": "  p = p.copy(x = 5)",
+    "expect": "Point(5,2)"
+  },
+  "classes-12": {
+    "fix": "  println(h.getOrElse(0) + 1)",
+    "expect": "5"
+  }
+}

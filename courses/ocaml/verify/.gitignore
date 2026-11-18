@@ -1,0 +1,4 @@
+.cache.json
+.cache.tmp
+last_run.log
+__pycache__/

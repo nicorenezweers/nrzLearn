@@ -1,0 +1,1927 @@
+{
+  "course": "dart",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Dart",
+      "chapter": "First steps",
+      "summary": "Write your first Dart program with void main and print, and work with strings and numbers.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Every Dart program starts in a function called `main`. You write it as `void main()`, followed by curly braces `{ }`. The word `void` means that `main` gives back no value. The code between the braces runs from top to bottom."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  print('Hello, Dart!');\n}",
+          "output": "Hello, Dart!"
+        },
+        {
+          "type": "text",
+          "md": "`print` shows a value and then starts a new line. Text in quotes, like `'Hello'`, is called a **string**. Dart accepts single quotes `'...'` and double quotes `\"...\"`; this course uses single quotes. Every statement ends with a semicolon `;`."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  print('One');\n  print('Two');\n  print('Three');\n}",
+          "output": "One\nTwo\nThree"
+        },
+        {
+          "type": "warning",
+          "md": "If you forget a semicolon, Dart reports an error and the program does not run at all. Dart is also case-sensitive: `Print` is not the same as `print`."
+        },
+        {
+          "type": "heading",
+          "text": "Numbers"
+        },
+        {
+          "type": "text",
+          "md": "Numbers do not need quotes. Dart calculates with `+`, `-`, `*` and `/`. As in mathematics, `*` and `/` come before `+` and `-`, and parentheses come first."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  print(2 + 3);\n  print(10 - 4);\n  print(2 + 3 * 4);\n  print((2 + 3) * 4);\n}",
+          "output": "5\n6\n14\n20"
+        },
+        {
+          "type": "text",
+          "md": "The operator `/` always gives a decimal number: `7 / 2` is `3.5`, and `6 / 2` is `3.0`. The operator `~/` divides and drops the rest, so `7 ~/ 2` is `3`. The operator `%` gives the rest of a division: `7 % 2` is `1`."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  print(7 / 2);\n  print(6 / 2);\n  print(7 ~/ 2);\n  print(7 % 2);\n}",
+          "output": "3.5\n3.0\n3\n1"
+        },
+        {
+          "type": "heading",
+          "text": "Joining strings"
+        },
+        {
+          "type": "text",
+          "md": "For strings, `+` joins the text: `'2' + '3'` is `23`, not `5`. Inside a string, `\\n` starts a new line."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  print('Hello, ' + 'world!');\n  print('2' + '3');\n  print(2 + 3);\n  print('Line 1\\nLine 2');\n}",
+          "output": "Hello, world!\n23\n5\nLine 1\nLine 2"
+        },
+        {
+          "type": "warning",
+          "md": "You cannot join a string and a number with `+`: `'Age: ' + 5` is an error. Unit 3 shows how to put numbers into strings."
+        }
+      ],
+      "card": [
+        "`void main() { }` is where the program starts",
+        "`print(x);` shows `x` and starts a new line",
+        "Every statement ends with `;`",
+        "`7 / 2` is `3.5`, `7 ~/ 2` is `3`, `7 % 2` is `1`",
+        "`'2' + '3'` is `'23'`, `2 + 3` is `5`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which line prints Hello?",
+          "options": [
+            "`print('Hello');`",
+            "`print('Hello')`",
+            "`Print('Hello');`",
+            "`echo('Hello');`"
+          ],
+          "answer": 0,
+          "explain": "`print` with a small `p` shows the value, and the statement ends with a semicolon. Without `;`, or with `Print` or `echo`, the program does not compile."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  print(3 + 4 * 2);\n}",
+          "answers": [
+            "11"
+          ],
+          "explain": "`*` comes before `+`: `4 * 2` is `8`, and `3 + 8` is `11`."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  print(17 % 5);\n}",
+          "answers": [
+            "2"
+          ],
+          "explain": "`17` divided by `5` is `3` with a rest of `2`. The operator `%` gives the rest."
+        },
+        {
+          "type": "choice",
+          "id": "hello-4",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  print(10 / 4);\n}",
+          "options": [
+            "`2.5`",
+            "`2`",
+            "`2.0`",
+            "`3`"
+          ],
+          "answer": 0,
+          "explain": "The operator `/` always gives a decimal number. `10 / 4` is `2.5`."
+        },
+        {
+          "type": "input",
+          "id": "hello-5",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  print('4' + '5');\n}",
+          "answers": [
+            "45"
+          ],
+          "explain": "`'4'` and `'5'` are strings because of the quotes. `+` joins strings, so the result is `45`."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-6",
+          "statement": "This program prints `4`.",
+          "code": "void main() {\n  print(8 / 2);\n}",
+          "answer": false,
+          "explain": "`/` always gives a decimal number, so the program prints `4.0`. Use `8 ~/ 2` to get `4`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-7",
+          "prompt": "Fill the gap so the program prints 3.",
+          "code": "void main() {\n  print(7 ___ 2);\n}",
+          "options": [
+            "~/",
+            "/",
+            "%",
+            "*"
+          ],
+          "answer": 0,
+          "explain": "`~/` divides and drops the rest: `7 ~/ 2` is `3`. `/` gives `3.5`, `%` gives `1` and `*` gives `14`."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-8",
+          "prompt": "Build a line that prints Hi, Dart!",
+          "tokens": [
+            "print",
+            "(",
+            "'Hi, Dart!'",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            "Print",
+            "echo"
+          ],
+          "explain": "`print('Hi, Dart!');` passes the string to `print` and ends the statement with `;`."
+        },
+        {
+          "type": "order",
+          "id": "hello-9",
+          "prompt": "Put the lines in order so the program prints Ready, Set and Go on three lines.",
+          "lines": [
+            "void main() {",
+            "  print('Ready');",
+            "  print('Set');",
+            "  print('Go');",
+            "}"
+          ],
+          "explain": "The program starts with `void main() {` and ends with `}`. The statements in between run from top to bottom."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`print`",
+              "shows a value and starts a new line"
+            ],
+            [
+              "`;`",
+              "ends a statement"
+            ],
+            [
+              "`~/`",
+              "division without the rest"
+            ],
+            [
+              "`%`",
+              "rest of a division"
+            ],
+            [
+              "`'Hi'`",
+              "a string"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "void main() {",
+            "  print('Start');",
+            "  print('Middle')",
+            "  print('End');",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "The semicolon is missing. Write `print('Middle');`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "void main() {",
+            "  print('Total:');",
+            "  print(4 + 5);",
+            "  print('Done);",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "The string is not closed. Write `print('Done');` with a closing quote."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Store values in variables with var, final and const, meet int, double, String and bool, and handle null.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a name for a value. `var count = 3;` creates the variable `count` and stores `3` in it. The `=` stores a value; this is called **assignment**. Later you can store a new value without `var`. `count += 2` adds `2` to the variable, and `count++` adds `1`."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var count = 3;\n  print(count);\n  count = 5;\n  print(count);\n  count += 2;\n  print(count);\n  count++;\n  print(count);\n}",
+          "output": "3\n5\n7\n8"
+        },
+        {
+          "type": "text",
+          "md": "Every value has a **type**. `int` is a whole number, `double` is a number with a decimal part, `String` is text and `bool` is `true` or `false`. With `var`, Dart works out the type from the value. You can also write the type instead of `var`."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  int age = 30;\n  double price = 4.5;\n  String name = 'Ada';\n  bool ready = true;\n  print(age);\n  print(price);\n  print(name);\n  print(ready);\n}",
+          "output": "30\n4.5\nAda\ntrue"
+        },
+        {
+          "type": "warning",
+          "md": "A variable keeps its type. After `var count = 3;`, the line `count = 'three';` is an error, because `count` is an `int`."
+        },
+        {
+          "type": "heading",
+          "text": "final and const"
+        },
+        {
+          "type": "text",
+          "md": "A `final` variable gets its value only once. A `const` variable also never changes, and its value must be known before the program runs, for example a number written in the code. Use `final` or `const` for every value that does not change."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  const maxPlayers = 4;\n  final name = 'Ada';\n  final total = maxPlayers * 2;\n  print(maxPlayers);\n  print(name);\n  print(total);\n}",
+          "output": "4\nAda\n8"
+        },
+        {
+          "type": "heading",
+          "text": "Null safety"
+        },
+        {
+          "type": "text",
+          "md": "The value `null` means \"no value\". Normal types like `int` and `String` can never hold `null`. Add a `?` to the type to allow it: a `String?` holds a string or `null`. A `String?` variable without a value starts as `null`."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  String? nickname;\n  print(nickname);\n  nickname = 'Ace';\n  print(nickname);\n}",
+          "output": "null\nAce"
+        },
+        {
+          "type": "text",
+          "md": "`int.tryParse('42')` turns a string into an `int`. If the string is not a number, it gives `null`, so its type is `int?`. Where Dart needs an `int`, you can write `!` after the value: it says \"this is not `null`\". If the value is `null` after all, the program stops with an error."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  int? number = int.tryParse('42');\n  int? bad = int.tryParse('abc');\n  print(number);\n  print(bad);\n  int sure = number!;\n  print(sure + 1);\n}",
+          "output": "42\nnull\n43"
+        }
+      ],
+      "card": [
+        "`var x = 5;` creates a variable, Dart works out the type",
+        "`int`, `double`, `String`, `bool` are the basic types",
+        "`final` is set once, `const` is fixed before the program runs",
+        "`String?` can hold `null`, `String` cannot",
+        "`x!` says that `x` is not `null`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "variables-1",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var x = 4;\n  x = x * 2;\n  x += 1;\n  print(x);\n}",
+          "answers": [
+            "9"
+          ],
+          "explain": "`x` starts as `4`, becomes `8` after `x * 2`, and `x += 1` adds `1`: `9`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-2",
+          "prompt": "Which type fits the value 4.5?",
+          "options": [
+            "`double`",
+            "`int`",
+            "`String`",
+            "`bool`"
+          ],
+          "answer": 0,
+          "explain": "`4.5` has a decimal part, so it is a `double`. An `int` holds only whole numbers."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-3",
+          "statement": "This program prints `Oslo`.",
+          "code": "void main() {\n  final city = 'Rome';\n  city = 'Oslo';\n  print(city);\n}",
+          "answer": false,
+          "explain": "A `final` variable gets its value only once. The line `city = 'Oslo';` is an error, so the program does not run."
+        },
+        {
+          "type": "choice",
+          "id": "variables-4",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  String? name;\n  print(name);\n}",
+          "options": [
+            "`null`",
+            "an empty line",
+            "`0`",
+            "nothing, it is an error"
+          ],
+          "answer": 0,
+          "explain": "A `String?` variable without a value starts as `null`, and `print` shows `null`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-5",
+          "prompt": "Fill the gap so the variable can hold null.",
+          "code": "void main() {\n  ___ middleName;\n  print(middleName);\n}",
+          "options": [
+            "String?",
+            "String",
+            "String!",
+            "?String"
+          ],
+          "answer": 0,
+          "explain": "Only a type with `?` can hold `null`. `String` cannot, and `String!` and `?String` are not valid types."
+        },
+        {
+          "type": "input",
+          "id": "variables-6",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  int a = 7;\n  double b = 2.5;\n  print(a + b);\n}",
+          "answers": [
+            "9.5"
+          ],
+          "explain": "An `int` plus a `double` gives a `double`: `7 + 2.5` is `9.5`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-7",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "void main() {",
+            "  int count = 3;",
+            "  count = count + 1;",
+            "  count = 'four';",
+            "  print(count);",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "`count` is an `int` and cannot hold the string `'four'`. Write `count = 4;`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-8",
+          "prompt": "Build a line that creates a constant named limit with the value 10.",
+          "tokens": [
+            "const",
+            "limit",
+            "=",
+            "10",
+            ";"
+          ],
+          "distractors": [
+            "let",
+            "=="
+          ],
+          "explain": "`const limit = 10;` creates a value that never changes. Dart has no `let`, and `==` compares instead of storing."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-9",
+          "prompt": "Match the type or value with its meaning.",
+          "pairs": [
+            [
+              "`int`",
+              "a whole number"
+            ],
+            [
+              "`double`",
+              "a number with a decimal part"
+            ],
+            [
+              "`String`",
+              "text"
+            ],
+            [
+              "`bool`",
+              "true or false"
+            ],
+            [
+              "`null`",
+              "no value"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "variables-10",
+          "prompt": "Put the lines in order so the program prints 15.",
+          "lines": [
+            "void main() {",
+            "  var total = 10;",
+            "  total += 5;",
+            "  print(total);",
+            "}"
+          ],
+          "explain": "First create `total` with `10`, then add `5`, then print the result `15`."
+        },
+        {
+          "type": "input",
+          "id": "variables-11",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  int? score = int.tryParse('7x');\n  print(score);\n}",
+          "answers": [
+            "null"
+          ],
+          "explain": "`'7x'` is not a number, so `int.tryParse` gives `null`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-12",
+          "statement": "The value of a `const` variable must be known before the program runs.",
+          "answer": true,
+          "explain": "`const` values are fixed in the code, like `const maxPlayers = 4;`. For a value that is calculated while the program runs, use `final`."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings",
+      "chapter": "Basics",
+      "summary": "Put values into strings with $ and ${...}, and use length, toUpperCase, contains and substring.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "You can put a variable into a string with `$` and the name: `'Hello, $name!'`. Dart replaces `$name` with the value of `name`. This is called **string interpolation**, and it works with numbers too."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var name = 'Ada';\n  var age = 36;\n  print('Hello, $name!');\n  print('$name is $age years old.');\n}",
+          "output": "Hello, Ada!\nAda is 36 years old."
+        },
+        {
+          "type": "text",
+          "md": "For more than a name, use `${...}` with curly braces. Dart calculates what is inside the braces and puts the result into the string."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var a = 3;\n  var b = 4;\n  print('$a + $b = ${a + b}');\n  print('Next year: ${36 + 1}');\n}",
+          "output": "3 + 4 = 7\nNext year: 37"
+        },
+        {
+          "type": "heading",
+          "text": "Length and methods"
+        },
+        {
+          "type": "text",
+          "md": "A string knows things about itself. `.length` gives the number of characters. A **method** is a function that belongs to a value. You call it with a dot and parentheses: `word.toUpperCase()` gives the string in capital letters, `word.toLowerCase()` in small letters."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var word = 'Dart';\n  print(word.length);\n  print(word.toUpperCase());\n  print(word.toLowerCase());\n  print('${word.length} letters');\n}",
+          "output": "4\nDART\ndart\n4 letters"
+        },
+        {
+          "type": "text",
+          "md": "`contains` checks whether a string contains another string and gives `true` or `false`. `startsWith` checks the beginning. Capital and small letters count as different."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var text = 'I like Dart';\n  print(text.contains('Dart'));\n  print(text.contains('dart'));\n  print(text.startsWith('I'));\n}",
+          "output": "true\nfalse\ntrue"
+        },
+        {
+          "type": "heading",
+          "text": "Positions"
+        },
+        {
+          "type": "text",
+          "md": "Every character has a position, called its **index**. Counting starts at `0`, so `word[0]` is the first character. `substring(start, end)` gives the part from `start` up to, but not including, `end`. Without `end`, it goes to the end of the string. `indexOf` gives the index where a part first appears."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var word = 'Flutter';\n  print(word[0]);\n  print(word.substring(0, 4));\n  print(word.substring(4));\n  print(word.indexOf('t'));\n}",
+          "output": "F\nFlut\nter\n3"
+        },
+        {
+          "type": "tip",
+          "md": "Strings never change. `word.toUpperCase()` gives a **new** string; `word` itself keeps its value. Store the result if you need it: `var big = word.toUpperCase();`."
+        }
+      ],
+      "card": [
+        "`'Hi, $name'` puts a variable into a string",
+        "`'${a + b}'` puts a result into a string",
+        "`s.length`, `s.toUpperCase()`, `s.toLowerCase()`",
+        "`s.contains('x')` gives `true` or `false`",
+        "`s[0]` is the first character, `s.substring(1, 3)` a part"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var name = 'Sam';\n  print('Hi, $name!');\n}",
+          "answers": [
+            "Hi, Sam!"
+          ],
+          "explain": "`$name` is replaced by the value of `name`, which is `Sam`."
+        },
+        {
+          "type": "input",
+          "id": "strings-2",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var x = 5;\n  print('x = ${x * 2}');\n}",
+          "answers": [
+            "x = 10"
+          ],
+          "explain": "Dart calculates `x * 2` inside `${...}`, which is `10`. The `x = ` outside the braces is normal text."
+        },
+        {
+          "type": "choice",
+          "id": "strings-3",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var word = 'hello';\n  print(word.length);\n}",
+          "options": [
+            "`5`",
+            "`4`",
+            "`6`",
+            "`hello`"
+          ],
+          "answer": 0,
+          "explain": "`length` counts the characters: `h`, `e`, `l`, `l`, `o` are `5` characters."
+        },
+        {
+          "type": "input",
+          "id": "strings-4",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  print('Dart'.substring(1, 3));\n}",
+          "answers": [
+            "ar"
+          ],
+          "explain": "The index starts at `0`. `substring(1, 3)` takes the characters at index `1` and `2`: `a` and `r`."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-5",
+          "statement": "This program prints `true`.",
+          "code": "void main() {\n  var city = 'Paris';\n  print(city.contains('paris'));\n}",
+          "answer": false,
+          "explain": "Capital and small letters count as different. `'Paris'` does not contain `'paris'`, so it prints `false`."
+        },
+        {
+          "type": "gap",
+          "id": "strings-6",
+          "prompt": "Fill the gap so the program prints DART.",
+          "code": "void main() {\n  var lang = 'dart';\n  print(lang.___());\n}",
+          "options": [
+            "toUpperCase",
+            "upper",
+            "toUpper",
+            "uppercase"
+          ],
+          "answer": 0,
+          "explain": "The method is called `toUpperCase`. The other names do not exist for strings in Dart."
+        },
+        {
+          "type": "choice",
+          "id": "strings-7",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var s = 'code';\n  s.toUpperCase();\n  print(s);\n}",
+          "options": [
+            "`code`",
+            "`CODE`",
+            "`Code`",
+            "nothing, it is an error"
+          ],
+          "answer": 0,
+          "explain": "`toUpperCase()` gives a new string, but the result is not stored. `s` still holds `'code'`."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-8",
+          "prompt": "Build a line that prints the number of characters in name.",
+          "tokens": [
+            "print",
+            "(",
+            "name",
+            ".",
+            "length",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            "size",
+            "len"
+          ],
+          "explain": "`print(name.length);` reads the `length` of the string and prints it."
+        },
+        {
+          "type": "order",
+          "id": "strings-9",
+          "prompt": "Put the lines in order so the program prints Hello, Ada!",
+          "lines": [
+            "void main() {",
+            "  var first = 'Ada';",
+            "  var greeting = 'Hello, $first!';",
+            "  print(greeting);",
+            "}"
+          ],
+          "explain": "`first` must exist before it is used in `greeting`, and `greeting` must exist before it is printed."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`s.length`",
+              "number of characters"
+            ],
+            [
+              "`s[0]`",
+              "the first character"
+            ],
+            [
+              "`s.toUpperCase()`",
+              "the text in capital letters"
+            ],
+            [
+              "`s.contains('a')`",
+              "true if s contains a"
+            ],
+            [
+              "`'$x'`",
+              "the value of x inside a string"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "strings-11",
+          "prompt": "The program should print Sum: 5. Which line has the bug?",
+          "lines": [
+            "void main() {",
+            "  var a = 2;",
+            "  var b = 3;",
+            "  print('Sum: $a + b');",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "`$a + b` puts only `a` into the string and keeps `+ b` as text. Write `print('Sum: ${a + b}');`."
+        },
+        {
+          "type": "input",
+          "id": "strings-12",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  print('banana'.indexOf('n'));\n}",
+          "answers": [
+            "2"
+          ],
+          "explain": "The index starts at `0`: `b` is `0`, `a` is `1`, and the first `n` is at index `2`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program decide with if and else, comparisons, && and ||, switch, the ternary operator and ??.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`if` runs code only when a condition is `true`. The condition goes in parentheses, the code in curly braces. The code after `else` runs when the condition is `false`."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var age = 20;\n  if (age >= 18) {\n    print('Adult');\n  } else {\n    print('Child');\n  }\n}",
+          "output": "Adult"
+        },
+        {
+          "type": "text",
+          "md": "Comparison operators give a `bool`: `==` means equal, `!=` not equal, `<` less than, `>` greater than, `<=` less than or equal, `>=` greater than or equal. Do not mix them up: `=` stores a value, `==` compares two values."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  print(3 == 3);\n  print(3 != 3);\n  print(5 > 2);\n  print(2 >= 5);\n}",
+          "output": "true\nfalse\ntrue\nfalse"
+        },
+        {
+          "type": "text",
+          "md": "With `else if` you check another condition when the one before was `false`. Dart checks from top to bottom and runs only the first block whose condition is `true`."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var score = 75;\n  if (score >= 90) {\n    print('A');\n  } else if (score >= 70) {\n    print('B');\n  } else {\n    print('C');\n  }\n}",
+          "output": "B"
+        },
+        {
+          "type": "text",
+          "md": "Logical operators combine conditions: `&&` (and) is `true` when both sides are `true`, `||` (or) when at least one side is `true`. `!` (not) turns `true` into `false` and `false` into `true`."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var age = 25;\n  var hasTicket = true;\n  if (age >= 18 && hasTicket) {\n    print('Welcome');\n  }\n  print(age < 12 || age > 65);\n  print(!hasTicket);\n}",
+          "output": "Welcome\nfalse\nfalse"
+        },
+        {
+          "type": "heading",
+          "text": "switch"
+        },
+        {
+          "type": "text",
+          "md": "`switch` compares one value with several `case` labels and runs the code of the matching one. Only that case runs; you do not need `break`. The `default` case runs when no case matches."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var day = 3;\n  switch (day) {\n    case 1:\n      print('Monday');\n    case 2:\n      print('Tuesday');\n    case 3:\n      print('Wednesday');\n    default:\n      print('Another day');\n  }\n}",
+          "output": "Wednesday"
+        },
+        {
+          "type": "text",
+          "md": "The **ternary operator** `condition ? a : b` gives `a` when the condition is `true`, and `b` otherwise. The operator `??` gives the value on the left, or the value on the right when the left one is `null`."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var temp = 30;\n  var feel = temp > 25 ? 'hot' : 'mild';\n  print(feel);\n  String? nickname;\n  print(nickname ?? 'Guest');\n}",
+          "output": "hot\nGuest"
+        }
+      ],
+      "card": [
+        "`if (x > 0) { } else if (x < 0) { } else { }`",
+        "`==` `!=` `<` `>` `<=` `>=` compare, `=` stores",
+        "`&&` and, `||` or, `!` not",
+        "`switch (x) { case 1: ... default: ... }`",
+        "`c ? a : b` picks a value, `x ?? 'none'` replaces `null`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var x = 7;\n  if (x % 2 == 0) {\n    print('even');\n  } else {\n    print('odd');\n  }\n}",
+          "answers": [
+            "odd"
+          ],
+          "explain": "`7 % 2` is `1`, so `x % 2 == 0` is `false` and the `else` block runs."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-2",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var t = 15;\n  if (t > 20) {\n    print('warm');\n  } else if (t > 10) {\n    print('mild');\n  } else {\n    print('cold');\n  }\n}",
+          "options": [
+            "`mild`",
+            "`warm`",
+            "`cold`",
+            "`mild` and `cold`"
+          ],
+          "answer": 0,
+          "explain": "`15 > 20` is `false`, `15 > 10` is `true`, so `mild` is printed. After that, Dart skips the rest."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-3",
+          "statement": "In Dart, `=` compares two values and `==` stores a value.",
+          "answer": false,
+          "explain": "It is the other way round: `=` stores a value in a variable, `==` compares two values."
+        },
+        {
+          "type": "input",
+          "id": "conditions-4",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  print(5 > 3 && 2 > 4);\n}",
+          "answers": [
+            "false"
+          ],
+          "explain": "`5 > 3` is `true`, but `2 > 4` is `false`. `&&` needs both sides to be `true`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-5",
+          "prompt": "Fill the gap so the program prints Welcome.",
+          "code": "void main() {\n  var age = 20;\n  var member = false;\n  if (age >= 18 ___ member) {\n    print('Welcome');\n  }\n}",
+          "options": [
+            "||",
+            "&&",
+            "=="
+          ],
+          "answer": 0,
+          "explain": "`age >= 18` is `true` and `member` is `false`. Only `||` needs just one `true` side."
+        },
+        {
+          "type": "input",
+          "id": "conditions-6",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  String? city;\n  print(city ?? 'unknown');\n}",
+          "answers": [
+            "unknown"
+          ],
+          "explain": "`city` is `null`, so `??` gives the value on the right: `unknown`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-7",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var n = 0;\n  print(n > 0 ? 'positive' : 'not positive');\n}",
+          "options": [
+            "`not positive`",
+            "`positive`",
+            "`0`",
+            "`false`"
+          ],
+          "answer": 0,
+          "explain": "`0 > 0` is `false`, so the ternary operator gives the value after `:`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-8",
+          "prompt": "The program should print Equal. Which line has the bug?",
+          "lines": [
+            "void main() {",
+            "  var a = 5;",
+            "  var b = 5;",
+            "  if (a = b) {",
+            "    print('Equal');",
+            "  }",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "`=` stores a value; to compare, use `==`. Write `if (a == b) {`."
+        },
+        {
+          "type": "order",
+          "id": "conditions-9",
+          "prompt": "Put the lines in order so the program prints Big.",
+          "lines": [
+            "var n = 50;",
+            "if (n > 10) {",
+            "  print('Big');",
+            "} else {",
+            "  print('Small');",
+            "}"
+          ],
+          "explain": "Create `n` first. `50 > 10` is `true`, so `print('Big')` belongs in the `if` block and `print('Small')` in the `else` block."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-10",
+          "prompt": "Build a line that stores 'yes' in label when n is greater than 0, and 'no' otherwise.",
+          "tokens": [
+            "var",
+            "label",
+            "=",
+            "n > 0",
+            "?",
+            "'yes'",
+            ":",
+            "'no'",
+            ";"
+          ],
+          "distractors": [
+            "??",
+            "if"
+          ],
+          "explain": "`condition ? a : b` gives `a` when the condition is `true` and `b` otherwise."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-11",
+          "prompt": "Match the operator with its meaning.",
+          "pairs": [
+            [
+              "`==`",
+              "equal to"
+            ],
+            [
+              "`!=`",
+              "not equal to"
+            ],
+            [
+              "`&&`",
+              "both sides must be true"
+            ],
+            [
+              "`||`",
+              "at least one side must be true"
+            ],
+            [
+              "`??`",
+              "a value to use instead of null"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "conditions-12",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var grade = 'B';\n  switch (grade) {\n    case 'A':\n      print('Great');\n    case 'B':\n      print('Good');\n    default:\n      print('Keep going');\n  }\n}",
+          "options": [
+            "`Good`",
+            "`Good` and then `Keep going`",
+            "`Great`",
+            "`Keep going`"
+          ],
+          "answer": 0,
+          "explain": "`switch` runs only the matching case. After `print('Good')`, the switch ends; `default` does not run."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat code with for, for-in, while and do-while, and control loops with break and continue.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A `for` loop repeats code. `for (var i = 0; i < 3; i++)` has three parts, separated by semicolons: the start `var i = 0`, the condition `i < 3` that is checked before every round, and the step `i++` that runs after every round."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  for (var i = 0; i < 3; i++) {\n    print('Round $i');\n  }\n}",
+          "output": "Round 0\nRound 1\nRound 2"
+        },
+        {
+          "type": "text",
+          "md": "The step can be anything that changes the variable. `i--` subtracts `1`, `i -= 3` subtracts `3`, and `i *= 2` multiplies by `2`."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  for (var i = 10; i > 0; i -= 3) {\n    print(i);\n  }\n}",
+          "output": "10\n7\n4\n1"
+        },
+        {
+          "type": "heading",
+          "text": "for-in"
+        },
+        {
+          "type": "text",
+          "md": "`for (var item in items)` runs once for every item of a list, from first to last. A list is written in square brackets, like `['apple', 'pear']`; you learn more about lists in unit 7."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var fruits = ['apple', 'pear', 'plum'];\n  for (var fruit in fruits) {\n    print(fruit);\n  }\n}",
+          "output": "apple\npear\nplum"
+        },
+        {
+          "type": "heading",
+          "text": "while and do-while"
+        },
+        {
+          "type": "text",
+          "md": "A `while` loop repeats as long as its condition is `true`. It checks the condition before every round, so it can also run zero times. Change a variable inside the loop, or the loop never ends."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var count = 3;\n  while (count > 0) {\n    print(count);\n    count--;\n  }\n  print('Go!');\n}",
+          "output": "3\n2\n1\nGo!"
+        },
+        {
+          "type": "text",
+          "md": "A `do` ... `while` loop runs its body first and checks the condition after it, so the body runs at least once. Note the semicolon after `while (...)`."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var n = 10;\n  do {\n    print(n);\n    n++;\n  } while (n < 3);\n}",
+          "output": "10"
+        },
+        {
+          "type": "text",
+          "md": "`break` stops the loop at once. `continue` skips the rest of the current round and goes on with the next one."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  for (var i = 1; i <= 10; i++) {\n    if (i % 2 == 0) {\n      continue;\n    }\n    if (i > 7) {\n      break;\n    }\n    print(i);\n  }\n}",
+          "output": "1\n3\n5\n7"
+        }
+      ],
+      "card": [
+        "`for (var i = 0; i < 3; i++) { }` counts 0, 1, 2",
+        "`for (var x in items) { }` goes through every item",
+        "`while (c) { }` checks first, `do { } while (c);` runs at least once",
+        "`break` stops the loop, `continue` goes to the next round"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var total = 0;\n  for (var i = 1; i <= 4; i++) {\n    total += i;\n  }\n  print(total);\n}",
+          "answers": [
+            "10"
+          ],
+          "explain": "The loop adds `1`, `2`, `3` and `4` to `total`: `1 + 2 + 3 + 4` is `10`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-2",
+          "prompt": "How many times does this program print Hi?",
+          "code": "void main() {\n  for (var i = 0; i < 5; i += 2) {\n    print('Hi');\n  }\n}",
+          "options": [
+            "3",
+            "2",
+            "4",
+            "5"
+          ],
+          "answer": 0,
+          "explain": "`i` takes the values `0`, `2` and `4`. At `6`, the condition `i < 5` is `false`, so the loop runs 3 times."
+        },
+        {
+          "type": "input",
+          "id": "loops-3",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var n = 1;\n  while (n < 20) {\n    n *= 3;\n  }\n  print(n);\n}",
+          "answers": [
+            "27"
+          ],
+          "explain": "`n` goes from `1` to `3`, `9` and `27`. Then `27 < 20` is `false` and the loop stops."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-4",
+          "statement": "This program prints `inside` once.",
+          "code": "void main() {\n  var n = 5;\n  while (n < 5) {\n    print('inside');\n    n++;\n  }\n  print('done');\n}",
+          "answer": false,
+          "explain": "`while` checks the condition first. `5 < 5` is `false`, so the body never runs and only `done` is printed."
+        },
+        {
+          "type": "choice",
+          "id": "loops-5",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var n = 5;\n  do {\n    print('inside');\n    n++;\n  } while (n < 5);\n}",
+          "options": [
+            "`inside` once",
+            "nothing",
+            "`inside` five times",
+            "nothing, it is an error"
+          ],
+          "answer": 0,
+          "explain": "A `do` ... `while` loop runs its body before it checks the condition, so `inside` is printed once."
+        },
+        {
+          "type": "gap",
+          "id": "loops-6",
+          "prompt": "Fill the gap so the program prints every fruit.",
+          "code": "void main() {\n  var fruits = ['kiwi', 'fig'];\n  for (var f ___ fruits) {\n    print(f);\n  }\n}",
+          "options": [
+            "in",
+            "of",
+            ":",
+            "from"
+          ],
+          "answer": 0,
+          "explain": "A for-in loop in Dart uses the keyword `in`: `for (var f in fruits)`."
+        },
+        {
+          "type": "input",
+          "id": "loops-7",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var sum = 0;\n  for (var i = 1; i <= 5; i++) {\n    if (i == 3) {\n      continue;\n    }\n    sum += i;\n  }\n  print(sum);\n}",
+          "answers": [
+            "12"
+          ],
+          "explain": "`continue` skips `3`, so the sum is `1 + 2 + 4 + 5`, which is `12`."
+        },
+        {
+          "type": "order",
+          "id": "loops-8",
+          "prompt": "Put the lines in order so the program prints 3, 2 and 1 on three lines.",
+          "lines": [
+            "var n = 3;",
+            "while (n > 0) {",
+            "  print(n);",
+            "  n--;",
+            "}"
+          ],
+          "explain": "Create `n` first. Inside the loop, print `n` before you make it smaller; otherwise it prints `2`, `1` and `0`."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-9",
+          "prompt": "Build a loop header that makes i go from 0 to 4.",
+          "tokens": [
+            "for",
+            "(",
+            "var i = 0;",
+            "i < 5;",
+            "i++",
+            ")",
+            "{"
+          ],
+          "distractors": [
+            "i <= 5;",
+            "in"
+          ],
+          "explain": "`for (var i = 0; i < 5; i++) {` starts at `0` and stops before `5`. With `i <= 5`, it would also run for `5`."
+        },
+        {
+          "type": "bug",
+          "id": "loops-10",
+          "prompt": "The program should print 1, 2 and 3. Which line has the bug?",
+          "lines": [
+            "void main() {",
+            "  for (var i = 1; i < 3; i++) {",
+            "    print(i);",
+            "  }",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "With `i < 3` the loop stops after `2`. Write `for (var i = 1; i <= 3; i++) {`."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`break`",
+              "stops the loop"
+            ],
+            [
+              "`continue`",
+              "goes on with the next round"
+            ],
+            [
+              "`i++`",
+              "adds 1 to i"
+            ],
+            [
+              "`for (var x in list)`",
+              "runs once for every item"
+            ],
+            [
+              "`do { } while (c);`",
+              "runs at least once"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "loops-12",
+          "prompt": "Which loop checks its condition only after the first round?",
+          "options": [
+            "`do { } while (c);`",
+            "`while (c) { }`",
+            "`for (var i = 0; i < n; i++) { }`",
+            "`for (var x in items) { }`"
+          ],
+          "answer": 0,
+          "explain": "A `do` ... `while` loop runs the body first and checks the condition at the end. The other loops check before every round."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Write your own functions with return types, optional and named parameters, and the short arrow syntax =>.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** is a named block of code that you can run as often as you like. You already know `main`. You write your own functions outside of `main`: first the return type, then the name, then the **parameters** in parentheses. `void` means that the function gives back no value."
+        },
+        {
+          "type": "code",
+          "code": "void greet(String name) {\n  print('Hello, $name!');\n}\n\nvoid main() {\n  greet('Ada');\n  greet('Linus');\n}",
+          "output": "Hello, Ada!\nHello, Linus!"
+        },
+        {
+          "type": "text",
+          "md": "`return` sends a value back to the code that called the function, and the function ends there. Write the type of that value before the name, for example `int add(int a, int b)`."
+        },
+        {
+          "type": "code",
+          "code": "int add(int a, int b) {\n  return a + b;\n}\n\nvoid main() {\n  var sum = add(2, 3);\n  print(sum);\n  print(add(10, 20));\n}",
+          "output": "5\n30"
+        },
+        {
+          "type": "heading",
+          "text": "Arrow functions"
+        },
+        {
+          "type": "text",
+          "md": "When a function only returns one expression, you can use `=>`. `int square(int x) => x * x;` means the same as `int square(int x) { return x * x; }`."
+        },
+        {
+          "type": "code",
+          "code": "int square(int x) => x * x;\n\nbool isEven(int n) => n % 2 == 0;\n\nvoid main() {\n  print(square(4));\n  print(isEven(7));\n}",
+          "output": "16\nfalse"
+        },
+        {
+          "type": "heading",
+          "text": "Optional and named parameters"
+        },
+        {
+          "type": "text",
+          "md": "Parameters in square brackets `[ ]` are **optional**. You can leave them out when you call the function. Give them a default value with `=`, which is used when the value is missing."
+        },
+        {
+          "type": "code",
+          "code": "String greet(String name, [String greeting = 'Hello']) {\n  return '$greeting, $name!';\n}\n\nvoid main() {\n  print(greet('Ada'));\n  print(greet('Ada', 'Hi'));\n}",
+          "output": "Hello, Ada!\nHi, Ada!"
+        },
+        {
+          "type": "text",
+          "md": "Parameters in curly braces `{ }` are **named**. When you call the function, you write the name and a colon, like `width: 3`, and the order does not matter. Named parameters are optional, unless you mark them with `required`."
+        },
+        {
+          "type": "code",
+          "code": "double area({required double width, double height = 1}) {\n  return width * height;\n}\n\nvoid main() {\n  print(area(width: 3, height: 2));\n  print(area(height: 4, width: 2.5));\n  print(area(width: 5));\n}",
+          "output": "6.0\n10.0\n5.0"
+        },
+        {
+          "type": "tip",
+          "md": "Dart checks the types of the parameters before the program runs. `add('2', 3)` is an error, because `add` needs two `int` values."
+        }
+      ],
+      "card": [
+        "`int add(int a, int b) { return a + b; }`",
+        "`int square(int x) => x * x;` for one expression",
+        "`void` means the function gives back no value",
+        "`[String g = 'Hi']` is an optional parameter",
+        "`{required int x, int y = 0}` are named, call with `f(x: 1)`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this program print?",
+          "code": "int twice(int n) => n * 2;\n\nvoid main() {\n  print(twice(twice(3)));\n}",
+          "answers": [
+            "12"
+          ],
+          "explain": "The inner call `twice(3)` gives `6`, and `twice(6)` gives `12`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-2",
+          "prompt": "What does void before a function name mean?",
+          "options": [
+            "The function gives back no value",
+            "The function has no parameters",
+            "The function has no code inside",
+            "The function can run only once"
+          ],
+          "answer": 0,
+          "explain": "`void` is the return type for \"no value\". A `void` function can still have parameters and code, and you can call it as often as you like."
+        },
+        {
+          "type": "input",
+          "id": "functions-3",
+          "prompt": "What does this program print?",
+          "code": "int sub(int a, int b) => a - b;\n\nvoid main() {\n  print(sub(3, 10));\n}",
+          "answers": [
+            "-7"
+          ],
+          "explain": "Positional parameters are filled in order: `a` is `3` and `b` is `10`, so `3 - 10` is `-7`."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-4",
+          "statement": "This program prints `Go!`.",
+          "code": "String tag(String text, [String mark = '!']) => '$text$mark';\n\nvoid main() {\n  print(tag('Go'));\n}",
+          "answer": true,
+          "explain": "The optional parameter `mark` is missing in the call, so its default value `'!'` is used."
+        },
+        {
+          "type": "gap",
+          "id": "functions-5",
+          "prompt": "Fill the gap so the function gives back the sum.",
+          "code": "int add(int a, int b) {\n  ___ a + b;\n}\n\nvoid main() {\n  print(add(2, 3));\n}",
+          "options": [
+            "return",
+            "print",
+            "give",
+            "yield"
+          ],
+          "answer": 0,
+          "explain": "`return` sends the value back to the caller. The other words do not return a value here."
+        },
+        {
+          "type": "choice",
+          "id": "functions-6",
+          "prompt": "What does this program print?",
+          "code": "void box({int width = 1, int height = 1}) {\n  print(width * height);\n}\n\nvoid main() {\n  box(height: 5);\n}",
+          "options": [
+            "`5`",
+            "`1`",
+            "`6`",
+            "nothing, it is an error"
+          ],
+          "answer": 0,
+          "explain": "`width` is missing, so it uses its default value `1`. `1 * 5` is `5`."
+        },
+        {
+          "type": "bug",
+          "id": "functions-7",
+          "prompt": "The program should print 9. Which line has the bug?",
+          "lines": [
+            "int square(int x) {",
+            "  x * x;",
+            "}",
+            "void main() {",
+            "  print(square(3));",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "The function calculates `x * x` but never gives it back. Write `return x * x;`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-8",
+          "prompt": "Build an arrow function twice that gives back n times 2.",
+          "tokens": [
+            "int",
+            "twice",
+            "(",
+            "int n",
+            ")",
+            "=>",
+            "n * 2",
+            ";"
+          ],
+          "distractors": [
+            "return",
+            "->"
+          ],
+          "explain": "`int twice(int n) => n * 2;` is the short form of a function with one `return`."
+        },
+        {
+          "type": "order",
+          "id": "functions-9",
+          "prompt": "Put the lines in order so that total(1, 2) gives back 6.",
+          "lines": [
+            "int total(int a, int b) {",
+            "  var sum = a + b;",
+            "  sum = sum * 2;",
+            "  return sum;",
+            "}"
+          ],
+          "explain": "First add the numbers (`3`), then double the sum (`6`), then return it. Code after `return` would never run."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`void`",
+              "gives back no value"
+            ],
+            [
+              "`return`",
+              "sends a value back"
+            ],
+            [
+              "`=>`",
+              "short form for one expression"
+            ],
+            [
+              "`[int x = 0]`",
+              "an optional parameter"
+            ],
+            [
+              "`{required int x}`",
+              "a named parameter that must be given"
+            ]
+          ]
+        },
+        {
+          "type": "input",
+          "id": "functions-11",
+          "prompt": "What does this program print?",
+          "code": "String label(String name, {String prefix = 'Mr'}) {\n  return '$prefix $name';\n}\n\nvoid main() {\n  print(label('Lee', prefix: 'Dr'));\n}",
+          "answers": [
+            "Dr Lee"
+          ],
+          "explain": "The call gives the named parameter `prefix` the value `'Dr'`, so the default `'Mr'` is not used."
+        },
+        {
+          "type": "bug",
+          "id": "functions-12",
+          "prompt": "The program should print 6.0. Which line has the bug?",
+          "lines": [
+            "double area({required double w, required double h}) {",
+            "  return w * h;",
+            "}",
+            "void main() {",
+            "  print(area(2, 3));",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "`w` and `h` are named parameters, so the call must use their names. Write `print(area(w: 2, h: 3));`."
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "Collections",
+      "chapter": "Data",
+      "summary": "Keep many values in a List, a Map or a Set, change them, and transform lists with map and where.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **List** holds many values in a fixed order. You write it in square brackets `[ ]`, with commas between the values. `List<String>` means a list of strings. `names[0]` is the first item, because the index starts at `0`. `.length` gives the number of items, and `.last` the last item."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  List<String> names = ['Ada', 'Linus', 'Grace'];\n  print(names);\n  print(names[0]);\n  print(names.length);\n  print(names.last);\n}",
+          "output": "[Ada, Linus, Grace]\nAda\n3\nGrace"
+        },
+        {
+          "type": "text",
+          "md": "`add` puts a value at the end of a list. `list[i] = value` replaces an item, and `remove` takes a value out. `contains` checks whether a value is in the list."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var numbers = [3, 1, 2];\n  numbers.add(5);\n  numbers[0] = 4;\n  numbers.remove(1);\n  print(numbers);\n  print(numbers.contains(2));\n}",
+          "output": "[4, 2, 5]\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "You can go through a list with a for-in loop. `map` makes a new value from every item, and `where` keeps only the items for which a condition is `true`. Both take a short function, like `(n) => n * 2`. Add `.toList()` to get a list again."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var nums = [1, 2, 3, 4];\n  var doubled = nums.map((n) => n * 2).toList();\n  var even = nums.where((n) => n % 2 == 0).toList();\n  print(doubled);\n  print(even);\n}",
+          "output": "[2, 4, 6, 8]\n[2, 4]"
+        },
+        {
+          "type": "heading",
+          "text": "Map"
+        },
+        {
+          "type": "text",
+          "md": "A **Map** stores pairs of a **key** and a **value**, in curly braces: `{'apple': 3}`. `stock['apple']` reads the value for a key; a missing key gives `null`. Assigning to a key adds or changes a pair. `<String, int>{}` is an empty map with `String` keys and `int` values."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var stock = {'apple': 3, 'pear': 5};\n  print(stock['apple']);\n  stock['plum'] = 7;\n  stock['apple'] = 4;\n  print(stock);\n  print(stock['kiwi']);\n  print(stock.length);\n}",
+          "output": "3\n{apple: 4, pear: 5, plum: 7}\nnull\n3"
+        },
+        {
+          "type": "text",
+          "md": "`.keys` gives all keys and `.values` all values; `print` shows them in round brackets. To go through the pairs, loop over `.entries`; every entry has a `key` and a `value`."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var ages = {'Ada': 36, 'Alan': 41};\n  for (var entry in ages.entries) {\n    print('${entry.key} is ${entry.value}');\n  }\n  print(ages.keys);\n}",
+          "output": "Ada is 36\nAlan is 41\n(Ada, Alan)"
+        },
+        {
+          "type": "heading",
+          "text": "Set"
+        },
+        {
+          "type": "text",
+          "md": "A **Set** holds every value only once. You write it in curly braces with values only: `{'dart', 'code'}`. Adding a value that is already in the set changes nothing. An empty `{}` is a map, so write `<String>{}` for an empty set."
+        },
+        {
+          "type": "code",
+          "code": "void main() {\n  var tags = {'dart', 'code'};\n  tags.add('dart');\n  tags.add('fun');\n  print(tags);\n  print(tags.length);\n  print(tags.contains('code'));\n}",
+          "output": "{dart, code, fun}\n3\ntrue"
+        }
+      ],
+      "card": [
+        "`var list = [1, 2, 3];` with `list[0]`, `list.add(4)`, `list.length`",
+        "`list.map((x) => x * 2).toList()`, `list.where((x) => x > 1).toList()`",
+        "`var m = {'a': 1};` with `m['a']` and `m['b'] = 2`",
+        "`var s = {1, 2};` holds every value once"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "collections-1",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var nums = [4, 8, 15];\n  print(nums[1]);\n}",
+          "answers": [
+            "8"
+          ],
+          "explain": "The index starts at `0`: `nums[0]` is `4`, `nums[1]` is `8`."
+        },
+        {
+          "type": "input",
+          "id": "collections-2",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var list = [1, 2, 3];\n  list.add(4);\n  print(list.length);\n}",
+          "answers": [
+            "4"
+          ],
+          "explain": "`add` puts `4` at the end, so the list has `4` items."
+        },
+        {
+          "type": "choice",
+          "id": "collections-3",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var prices = {'tea': 2, 'cake': 3};\n  print(prices['coffee']);\n}",
+          "options": [
+            "`null`",
+            "`0`",
+            "nothing, it is an error",
+            "`{}`"
+          ],
+          "answer": 0,
+          "explain": "The key `'coffee'` is not in the map, so reading it gives `null`."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-4",
+          "statement": "This program prints `4`.",
+          "code": "void main() {\n  var s = {1, 2};\n  s.add(2);\n  s.add(3);\n  print(s.length);\n}",
+          "answer": false,
+          "explain": "A set holds every value once. Adding `2` again changes nothing, so the set is `{1, 2, 3}` with `3` values."
+        },
+        {
+          "type": "gap",
+          "id": "collections-5",
+          "prompt": "Fill the gap so the program prints [2, 4].",
+          "code": "void main() {\n  var nums = [1, 2, 3, 4];\n  print(nums.___((n) => n % 2 == 0).toList());\n}",
+          "options": [
+            "where",
+            "map",
+            "filter",
+            "forEach"
+          ],
+          "answer": 0,
+          "explain": "`where` keeps the items for which the condition is `true`. `map` would give `[false, true, false, true]`, and `filter` does not exist in Dart."
+        },
+        {
+          "type": "input",
+          "id": "collections-6",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var nums = [1, 2, 3];\n  print(nums.map((n) => n * 10).toList());\n}",
+          "answers": [
+            "[10, 20, 30]"
+          ],
+          "explain": "`map` multiplies every item by `10`, and `toList()` makes a list of the results."
+        },
+        {
+          "type": "choice",
+          "id": "collections-7",
+          "prompt": "Which code creates an empty Set of strings?",
+          "options": [
+            "`<String>{}`",
+            "`{}`",
+            "`[]`",
+            "`<String>[]`"
+          ],
+          "answer": 0,
+          "explain": "`{}` alone is an empty map, and square brackets make a list. `<String>{}` is an empty set of strings."
+        },
+        {
+          "type": "bug",
+          "id": "collections-8",
+          "prompt": "The program should print blue. Which line has the bug?",
+          "lines": [
+            "void main() {",
+            "  var colors = ['red', 'green', 'blue'];",
+            "  print(colors[3]);",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "The index starts at `0`, so the third item has index `2`. Write `print(colors[2]);`."
+        },
+        {
+          "type": "order",
+          "id": "collections-9",
+          "prompt": "Put the lines in order so the program prints {pen: 3, cup: 1}.",
+          "lines": [
+            "var stock = <String, int>{};",
+            "stock['pen'] = 3;",
+            "stock['cup'] = 1;",
+            "print(stock);"
+          ],
+          "explain": "Create the empty map first. A map keeps the order in which you add the keys, so add `pen` before `cup`, then print."
+        },
+        {
+          "type": "blocks",
+          "id": "collections-10",
+          "prompt": "Build a line that adds 'kiwi' to the list fruits.",
+          "tokens": [
+            "fruits",
+            ".",
+            "add",
+            "(",
+            "'kiwi'",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            "push",
+            "append"
+          ],
+          "explain": "`fruits.add('kiwi');` puts `'kiwi'` at the end of the list. Dart lists have no `push` or `append`."
+        },
+        {
+          "type": "pairs",
+          "id": "collections-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`[1, 2]`",
+              "a list"
+            ],
+            [
+              "`{'a': 1}`",
+              "a map"
+            ],
+            [
+              "`{1, 2}`",
+              "a set"
+            ],
+            [
+              "`list.length`",
+              "number of items"
+            ],
+            [
+              "`m['a']`",
+              "the value for the key a"
+            ]
+          ]
+        },
+        {
+          "type": "input",
+          "id": "collections-12",
+          "prompt": "What does this program print?",
+          "code": "void main() {\n  var ages = {'Ada': 36, 'Alan': 41};\n  var total = 0;\n  for (var age in ages.values) {\n    total += age;\n  }\n  print(total);\n}",
+          "answers": [
+            "77"
+          ],
+          "explain": "`ages.values` gives `36` and `41`, and the loop adds them: `77`."
+        }
+      ]
+    },
+    {
+      "id": "classes",
+      "title": "Classes",
+      "chapter": "Objects",
+      "summary": "Build your own types with classes: fields, constructors with this., methods, getters and toString.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **class** is a plan for your own type. It describes data, called **fields**, and actions, called **methods**. A value made from a class is an **object**. `Dog()` creates a new object of the class `Dog`. You reach its fields and methods with a dot."
+        },
+        {
+          "type": "code",
+          "code": "class Dog {\n  String name = '';\n\n  void bark() {\n    print('$name says woof');\n  }\n}\n\nvoid main() {\n  var dog = Dog();\n  dog.name = 'Rex';\n  dog.bark();\n}",
+          "output": "Rex says woof"
+        },
+        {
+          "type": "heading",
+          "text": "Constructors"
+        },
+        {
+          "type": "text",
+          "md": "A **constructor** sets the fields when an object is created. It has the same name as the class. `Point(this.x, this.y);` takes two values and stores them in the fields `x` and `y`. The word `this` means the object itself. Fields that never change can be `final`."
+        },
+        {
+          "type": "code",
+          "code": "class Point {\n  final int x;\n  final int y;\n\n  Point(this.x, this.y);\n\n  int sum() => x + y;\n}\n\nvoid main() {\n  var p = Point(3, 4);\n  print(p.x);\n  print(p.sum());\n}",
+          "output": "3\n7"
+        },
+        {
+          "type": "text",
+          "md": "A constructor can also have named parameters, like a function: `Person({required this.name, this.age = 0});`. The caller writes the names, and missing values use their default."
+        },
+        {
+          "type": "code",
+          "code": "class Person {\n  final String name;\n  final int age;\n\n  Person({required this.name, this.age = 0});\n}\n\nvoid main() {\n  var a = Person(name: 'Ada', age: 36);\n  var b = Person(name: 'Bo');\n  print('${a.name} ${a.age}');\n  print('${b.name} ${b.age}');\n}",
+          "output": "Ada 36\nBo 0"
+        },
+        {
+          "type": "heading",
+          "text": "Getters and toString"
+        },
+        {
+          "type": "text",
+          "md": "A **getter** looks like a field, but it calculates its value every time you read it. Write `get` before the name and no parentheses. You also read it without parentheses: `r.area`."
+        },
+        {
+          "type": "code",
+          "code": "class Rect {\n  final double width;\n  final double height;\n\n  Rect(this.width, this.height);\n\n  double get area => width * height;\n}\n\nvoid main() {\n  var r = Rect(2, 3.5);\n  print(r.area);\n}",
+          "output": "7.0"
+        },
+        {
+          "type": "text",
+          "md": "When you print an object, Dart calls its method `toString`. Without your own version, it prints `Instance of 'Point'`. You write your own `toString` with `@override` in front; `@override` says that you replace a method that every class already has."
+        },
+        {
+          "type": "code",
+          "code": "class Point {\n  final int x;\n  final int y;\n\n  Point(this.x, this.y);\n\n  @override\n  String toString() => 'Point($x, $y)';\n}\n\nvoid main() {\n  var p = Point(1, 2);\n  print(p);\n  print('At $p');\n}",
+          "output": "Point(1, 2)\nAt Point(1, 2)"
+        }
+      ],
+      "card": [
+        "`class Dog { String name = ''; void bark() { } }`",
+        "`Point(this.x, this.y);` is a constructor that sets fields",
+        "`var p = Point(1, 2);` then `p.x`, `p.sum()`",
+        "`int get sum => x + y;` is a getter, read as `p.sum`",
+        "`@override String toString() => '...';` controls `print(p)`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "classes-1",
+          "prompt": "What does this program print?",
+          "code": "class Counter {\n  int value = 0;\n\n  void up() {\n    value++;\n  }\n}\n\nvoid main() {\n  var c = Counter();\n  c.up();\n  c.up();\n  print(c.value);\n}",
+          "answers": [
+            "2"
+          ],
+          "explain": "`value` starts at `0`, and every call of `up()` adds `1`. After two calls it is `2`."
+        },
+        {
+          "type": "choice",
+          "id": "classes-2",
+          "prompt": "What does this program print?",
+          "code": "class Cat {\n  final String name;\n\n  Cat(this.name);\n}\n\nvoid main() {\n  var c = Cat('Tom');\n  print(c.name);\n}",
+          "options": [
+            "`Tom`",
+            "`name`",
+            "`Cat`",
+            "`Instance of 'Cat'`"
+          ],
+          "answer": 0,
+          "explain": "The constructor `Cat(this.name)` stores `'Tom'` in the field `name`, and `c.name` reads it."
+        },
+        {
+          "type": "true_false",
+          "id": "classes-3",
+          "statement": "This program prints `5`.",
+          "code": "class Box {\n  final int size;\n\n  Box(this.size);\n}\n\nvoid main() {\n  var b = Box(3);\n  b.size = 5;\n  print(b.size);\n}",
+          "answer": false,
+          "explain": "`size` is `final`, so it cannot change after the constructor has set it. `b.size = 5;` is an error."
+        },
+        {
+          "type": "gap",
+          "id": "classes-4",
+          "prompt": "Fill the gap so the program prints 5.",
+          "code": "class Point {\n  final int x;\n  final int y;\n\n  Point(___);\n}\n\nvoid main() {\n  print(Point(2, 5).y);\n}",
+          "options": [
+            "this.x, this.y",
+            "this.y, this.x",
+            "x, y",
+            "int x, int y"
+          ],
+          "answer": 0,
+          "explain": "`this.x, this.y` stores the first value in `x` and the second in `y`. Without `this.`, the fields get no value, which is an error."
+        },
+        {
+          "type": "input",
+          "id": "classes-5",
+          "prompt": "What does this program print?",
+          "code": "class Square {\n  final int side;\n\n  Square(this.side);\n\n  int get area => side * side;\n}\n\nvoid main() {\n  print(Square(5).area);\n}",
+          "answers": [
+            "25"
+          ],
+          "explain": "The getter `area` calculates `side * side`, which is `5 * 5 = 25`."
+        },
+        {
+          "type": "choice",
+          "id": "classes-6",
+          "prompt": "What does this program print?",
+          "code": "class Car {}\n\nvoid main() {\n  print(Car());\n}",
+          "options": [
+            "`Instance of 'Car'`",
+            "`Car`",
+            "`Car()`",
+            "`null`"
+          ],
+          "answer": 0,
+          "explain": "`Car` has no own `toString`, so Dart uses the default one, which prints `Instance of 'Car'`."
+        },
+        {
+          "type": "bug",
+          "id": "classes-7",
+          "prompt": "The program should print 3.0. Which line has the bug?",
+          "lines": [
+            "class Circle {",
+            "  final double r;",
+            "  Circle(r);",
+            "  double get diameter => 2 * r;",
+            "}",
+            "void main() {",
+            "  print(Circle(1.5).diameter);",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "The constructor must store the value in the field. Write `Circle(this.r);`."
+        },
+        {
+          "type": "order",
+          "id": "classes-8",
+          "prompt": "The class Counter has a field value that starts at 0 and a method up() that adds 1. Put the lines in order so the program prints 0 and then after: 1.",
+          "lines": [
+            "var c = Counter();",
+            "print(c.value);",
+            "c.up();",
+            "print('after: ${c.value}');"
+          ],
+          "explain": "Create the object first. Print `value` while it is still `0`, then call `up()`, then print the new value."
+        },
+        {
+          "type": "blocks",
+          "id": "classes-9",
+          "prompt": "Build a line that creates a Point with x 3 and y 4 and stores it in p.",
+          "tokens": [
+            "var",
+            "p",
+            "=",
+            "Point",
+            "(",
+            "3, 4",
+            ")",
+            ";"
+          ],
+          "distractors": [
+            "this",
+            "class"
+          ],
+          "explain": "`var p = Point(3, 4);` calls the constructor with two values and stores the new object in `p`."
+        },
+        {
+          "type": "pairs",
+          "id": "classes-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`class`",
+              "defines a new type"
+            ],
+            [
+              "`Point(this.x, this.y);`",
+              "a constructor that sets fields"
+            ],
+            [
+              "`get`",
+              "a value that is calculated when you read it"
+            ],
+            [
+              "`toString()`",
+              "the text shown when you print an object"
+            ],
+            [
+              "`this`",
+              "the object itself"
+            ]
+          ]
+        },
+        {
+          "type": "input",
+          "id": "classes-11",
+          "prompt": "What does this program print?",
+          "code": "class Temp {\n  final int deg;\n\n  Temp(this.deg);\n\n  @override\n  String toString() => '$deg degrees';\n}\n\nvoid main() {\n  print(Temp(21));\n}",
+          "answers": [
+            "21 degrees"
+          ],
+          "explain": "`print` calls the own `toString` method, which puts `deg` into the string."
+        },
+        {
+          "type": "choice",
+          "id": "classes-12",
+          "prompt": "What does this program print?",
+          "code": "class User {\n  final String name;\n  final bool admin;\n\n  User(this.name, {this.admin = false});\n}\n\nvoid main() {\n  var u = User('Kim');\n  print(u.admin);\n}",
+          "options": [
+            "`false`",
+            "`true`",
+            "`null`",
+            "nothing, it is an error"
+          ],
+          "answer": 0,
+          "explain": "The named parameter `admin` is missing in the call, so it gets its default value `false`."
+        }
+      ]
+    }
+  ]
+}

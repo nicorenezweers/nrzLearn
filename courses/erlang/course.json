@@ -1,0 +1,1908 @@
+{
+  "course": "erlang",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Erlang",
+      "chapter": "Basics",
+      "summary": "Write your first Erlang program: a module with a main function that prints text with io:format.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "**Erlang** is a language for systems that must run for years without stopping, such as chat servers and phone networks. An Erlang program is made of **modules**, and every module contains **functions**."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(hello).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"Hello, World!~n\").",
+          "output": "Hello, World!"
+        },
+        {
+          "type": "text",
+          "md": "Save this program as `hello.erl` and run it in a terminal with `escript hello.erl`. The tool `escript` comes with Erlang. It reads the file and calls the function `main`. The first line `#!/usr/bin/env escript` marks the file as a script. Every complete program in this course is run this way."
+        },
+        {
+          "type": "text",
+          "md": "Lines that start with `-` are **attributes**. `-module(hello).` gives the module its name. `-export([main/1]).` makes the function `main` usable from outside the module. `main/1` means: the function `main` with **one** argument. This number is called the **arity**."
+        },
+        {
+          "type": "text",
+          "md": "`main(_) ->` starts the function. `escript` passes the command-line arguments as the one argument; the `_` means that you ignore it. After the arrow `->` comes the body. The period `.` ends the function, and every attribute ends with a period too."
+        },
+        {
+          "type": "heading",
+          "text": "Printing with io:format"
+        },
+        {
+          "type": "text",
+          "md": "`io:format(...)` calls the function `format` from the module `io`. The colon `:` separates the module name from the function name. The text goes in double quotes. `~n` inside the text starts a new line."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(lines).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"Line 1~n\"),\n    io:format(\"Line 2~n\").",
+          "output": "Line 1\nLine 2"
+        },
+        {
+          "type": "text",
+          "md": "A body can have several **expressions**. A comma `,` separates them, and they run from top to bottom. Only the last one ends with the period."
+        },
+        {
+          "type": "text",
+          "md": "To print values, write `~p` in the text and give the values as a second argument: a **list** in square brackets `[...]`. Each `~p` is replaced by the next value from the list. Erlang calculates `2 + 3` before it prints."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(sum).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~p + ~p = ~p~n\", [2, 3, 2 + 3]).",
+          "output": "2 + 3 = 5"
+        },
+        {
+          "type": "tip",
+          "md": "Without `~n` the next output continues on the same line. `io:format(\"a\")` followed by `io:format(\"b~n\")` prints `ab`."
+        },
+        {
+          "type": "warning",
+          "md": "Watch the punctuation: a period in the middle of a body ends the function too early, and the next line is then an error. Between expressions you need a comma."
+        }
+      ],
+      "card": [
+        "`-module(hello).` names the module",
+        "`-export([main/1]).` makes `main/1` public",
+        "`io:format(\"Hi~n\")` prints; `~n` is a new line",
+        "`io:format(\"~p~n\", [42])` prints a value",
+        "`,` separates expressions, `.` ends a function"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "What does `/1` mean in `main/1`?",
+          "options": [
+            "The function has one argument",
+            "It is version 1 of the function",
+            "It is the first function in the module",
+            "The function returns one value"
+          ],
+          "answer": 0,
+          "explain": "The number after `/` is the arity: how many arguments the function takes."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "io:format(\"~p~p~n\", [4, 2])",
+          "answers": [
+            "42"
+          ],
+          "explain": "Each `~p` prints the next value from the list. There is no space between them, so you see `42`."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "io:format(\"Sum: ~p~n\", [10 + 5])",
+          "answers": [
+            "Sum: 15"
+          ],
+          "explain": "Erlang calculates `10 + 5` first. `~p` is replaced by `15`."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "This code prints `ab` on one line.",
+          "code": "io:format(\"a\"),\nio:format(\"b~n\")",
+          "answer": true,
+          "explain": "The first call prints `a` without `~n`, so `b` follows on the same line."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Complete the code so it prints Hello.",
+          "code": "io:___(\"Hello~n\")",
+          "options": [
+            "format",
+            "println",
+            "printf",
+            "puts"
+          ],
+          "answer": 0,
+          "explain": "The function is `io:format`. The module `io` has no `println`, `printf` or `puts`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the attribute so `escript` can call `main(_)`.",
+          "code": "-module(app).\n-export([___]).\n\nmain(_) ->\n    io:format(\"Ready~n\").",
+          "options": [
+            "main/1",
+            "main/0",
+            "main",
+            "main(1)"
+          ],
+          "answer": 0,
+          "explain": "An export names a function with its arity. `main(_)` has one argument, so it is `main/1`."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build the expression that prints the value `7` and a new line.",
+          "tokens": [
+            "io:format(",
+            "\"~p~n\",",
+            "[7]",
+            ")"
+          ],
+          "distractors": [
+            "print(",
+            "{7}"
+          ],
+          "explain": "First the module and function, then the text with `~p~n`, then the list with the value."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order to get a complete program that prints Hi.",
+          "lines": [
+            "#!/usr/bin/env escript",
+            "-module(hi).",
+            "-export([main/1]).",
+            "main(_) ->",
+            "    io:format(\"Hi~n\")."
+          ],
+          "explain": "The script line comes first, then `-module` and `-export`, then the function `main`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-9",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "#!/usr/bin/env escript",
+            "-module(app).",
+            "-export([main/1]).",
+            "main(_) ->",
+            "    io:format(\"Start~n\").",
+            "    io:format(\"Stop~n\")."
+          ],
+          "bug": 4,
+          "explain": "The period ends the function after the first line of the body. Write a comma there: `io:format(\"Start~n\"),`."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-10",
+          "prompt": "Match the symbol with its meaning.",
+          "pairs": [
+            [
+              "`~n`",
+              "a new line"
+            ],
+            [
+              "`~p`",
+              "prints the next value"
+            ],
+            [
+              "`->`",
+              "starts the function body"
+            ],
+            [
+              "`,`",
+              "separates expressions"
+            ],
+            [
+              "`.`",
+              "ends a function"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "hello-11",
+          "prompt": "What does this print?",
+          "code": "io:format(\"~p~n\", [2 * 3 + 1])",
+          "options": [
+            "`7`",
+            "`8`",
+            "`2 * 3 + 1`",
+            "`9`"
+          ],
+          "answer": 0,
+          "explain": "Multiplication comes before addition: `2 * 3` is `6`, plus `1` is `7`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "#!/usr/bin/env escript",
+            "-module(total).",
+            "-export([main/1]).",
+            "main(_) ->",
+            "    io:format(\"Total: ~p~n\", 5)."
+          ],
+          "bug": 4,
+          "explain": "The values must be in a list. Write `io:format(\"Total: ~p~n\", [5])`."
+        }
+      ]
+    },
+    {
+      "id": "values",
+      "title": "Values and types",
+      "chapter": "Basics",
+      "summary": "Calculate with integers and floats, and get to know atoms, booleans, strings and binaries.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Erlang calculates with `+`, `-` and `*`. The operator `/` always gives a **float** (a decimal number), even when the result is whole. For whole numbers, `div` divides without the rest and `rem` gives the rest."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(calc).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~p ~p ~p ~p~n\", [7 + 2, 7 * 2, 7 div 2, 7 rem 2]),\n    io:format(\"~p~n\", [7 / 2]),\n    io:format(\"~p~n\", [6 / 2]).",
+          "output": "9 14 3 1\n3.5\n3.0"
+        },
+        {
+          "type": "text",
+          "md": "A float needs a digit on both sides of the point: write `0.5`, not `.5`. `round` rounds a float to the nearest integer, and `trunc` cuts off the decimals. Integers have no size limit, so you can calculate with very big numbers."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(floats).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~p~n\", [2.5 * 2]),\n    io:format(\"~p ~p~n\", [round(2.7), trunc(2.7)]),\n    io:format(\"~p~n\", [12345678901234567890 * 10]).",
+          "output": "5.0\n3 2\n123456789012345678900"
+        },
+        {
+          "type": "heading",
+          "text": "Atoms and booleans"
+        },
+        {
+          "type": "text",
+          "md": "An **atom** is a constant whose value is its own name, such as `ok`, `error` or `red`. Atoms start with a lowercase letter. Words that start with an uppercase letter are variables; you meet them in the next unit."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(atoms).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~p ~p~n\", [ok, red]),\n    io:format(\"~p~n\", [ok == ok]),\n    io:format(\"~p~n\", [ok == error]).",
+          "output": "ok red\ntrue\nfalse"
+        },
+        {
+          "type": "text",
+          "md": "The booleans are the atoms `true` and `false`. You compare with `==`, `/=` (not equal), `<`, `>`, `>=` and `=<` (careful: not `<=`). `==` treats `1` and `1.0` as equal; `=:=` also compares the type. `and`, `or` and `not` combine booleans."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(compare).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~p ~p~n\", [3 =< 4, 5 /= 5]),\n    io:format(\"~p ~p~n\", [1 == 1.0, 1 =:= 1.0]),\n    io:format(\"~p~n\", [not (true and false)]).",
+          "output": "true false\ntrue false\ntrue"
+        },
+        {
+          "type": "heading",
+          "text": "Strings and binaries"
+        },
+        {
+          "type": "text",
+          "md": "A string in double quotes like `\"Hello\"` is a **list of character codes**. `~s` prints it as text. `++` joins two lists, and `length` counts the elements. Because `~p` shows a list of character codes as text, `[72, 105]` prints as `\"Hi\"`."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(strings).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~s~n\", [\"Hello\" ++ \" World\"]),\n    io:format(\"~p~n\", [length(\"Hello\")]),\n    io:format(\"~p~n\", [\"abc\" == [97, 98, 99]]),\n    io:format(\"~p~n\", [[72, 105]]).",
+          "output": "Hello World\n5\ntrue\n\"Hi\""
+        },
+        {
+          "type": "text",
+          "md": "A **binary** like `<<\"Erlang\">>` stores text as compact bytes. Modern Erlang code uses binaries for text a lot. `~s` prints binaries as text too, and `byte_size` counts the bytes."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(binaries).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~s~n\", [<<\"Erlang\">>]),\n    io:format(\"~p~n\", [<<\"Erlang\">>]),\n    io:format(\"~p~n\", [byte_size(<<\"Erlang\">>)]).",
+          "output": "Erlang\n<<\"Erlang\">>\n6"
+        }
+      ],
+      "card": [
+        "`7 div 2` is `3`, `7 rem 2` is `1`",
+        "`/` always gives a float: `6 / 2` is `3.0`",
+        "Atoms: `ok`, `error`, `true`, `false`",
+        "`/=` and `=<`; `=:=` also compares the type",
+        "`\"hi\"` is a list, `<<\"hi\">>` is a binary"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "values-1",
+          "prompt": "What does this print?",
+          "code": "io:format(\"~p~n\", [17 div 5])",
+          "answers": [
+            "3"
+          ],
+          "explain": "`div` divides whole numbers and drops the rest: 17 = 3 * 5 + 2."
+        },
+        {
+          "type": "input",
+          "id": "values-2",
+          "prompt": "What does this print?",
+          "code": "io:format(\"~p~n\", [17 rem 5])",
+          "answers": [
+            "2"
+          ],
+          "explain": "`rem` gives the rest of the division: 17 = 3 * 5 + 2."
+        },
+        {
+          "type": "choice",
+          "id": "values-3",
+          "prompt": "What does this print?",
+          "code": "io:format(\"~p~n\", [8 / 2])",
+          "options": [
+            "`4.0`",
+            "`4`",
+            "`4.00`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "`/` always gives a float, so `8 / 2` is `4.0`."
+        },
+        {
+          "type": "true_false",
+          "id": "values-4",
+          "statement": "`1 =:= 1.0` is `true`.",
+          "answer": false,
+          "explain": "`=:=` also compares the type. `1` is an integer and `1.0` is a float, so the result is `false`. `1 == 1.0` is `true`."
+        },
+        {
+          "type": "choice",
+          "id": "values-5",
+          "prompt": "Which of these is an atom?",
+          "options": [
+            "`ok`",
+            "`Ok`",
+            "`\"ok\"`",
+            "`<<\"ok\">>`"
+          ],
+          "answer": 0,
+          "explain": "Atoms start with a lowercase letter. `Ok` is a variable, `\"ok\"` is a string and `<<\"ok\">>` is a binary."
+        },
+        {
+          "type": "gap",
+          "id": "values-6",
+          "prompt": "Complete the code so it prints `true`.",
+          "code": "io:format(\"~p~n\", [3 ___ 3])",
+          "options": [
+            "=<",
+            "<=",
+            "/=",
+            "<"
+          ],
+          "answer": 0,
+          "explain": "`=<` means less than or equal, so `3 =< 3` is `true`. Erlang has no `<=` operator for numbers."
+        },
+        {
+          "type": "input",
+          "id": "values-7",
+          "prompt": "What does this print?",
+          "code": "io:format(\"~p~n\", [length(\"cat\" ++ \"s\")])",
+          "answers": [
+            "4"
+          ],
+          "explain": "`++` joins the lists to `\"cats\"`, which has 4 characters."
+        },
+        {
+          "type": "pairs",
+          "id": "values-8",
+          "prompt": "Match the value with its type.",
+          "pairs": [
+            [
+              "`42`",
+              "integer"
+            ],
+            [
+              "`4.2`",
+              "float"
+            ],
+            [
+              "`ok`",
+              "atom"
+            ],
+            [
+              "`\"ok\"`",
+              "list of character codes"
+            ],
+            [
+              "`<<\"ok\">>`",
+              "binary"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "values-9",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "io:format(\"~p~n\", [10 div 3]),",
+            "io:format(\"~p~n\", [10 rem 3]),",
+            "io:format(\"~p~n\", [10 div 2.5]),",
+            "io:format(\"~p~n\", [10 / 4])"
+          ],
+          "bug": 2,
+          "explain": "`div` works only with integers, and `2.5` is a float. Use `10 / 2.5` instead."
+        },
+        {
+          "type": "blocks",
+          "id": "values-10",
+          "prompt": "Build the expression that gives the rest of 10 divided by 3.",
+          "tokens": [
+            "10",
+            "rem",
+            "3"
+          ],
+          "distractors": [
+            "div",
+            "%",
+            "mod"
+          ],
+          "explain": "`rem` gives the rest of a whole-number division. `%` starts a comment in Erlang."
+        },
+        {
+          "type": "input",
+          "id": "values-11",
+          "prompt": "What does this print?",
+          "code": "io:format(\"~p~n\", [[72, 105]])",
+          "answers": [
+            "\"Hi\"",
+            "Hi"
+          ],
+          "explain": "A string is a list of character codes. `72` is `H` and `105` is `i`, so `~p` shows the list as `\"Hi\"`."
+        },
+        {
+          "type": "choice",
+          "id": "values-12",
+          "prompt": "Which operator joins two strings?",
+          "options": [
+            "`++`",
+            "`+`",
+            "`..`",
+            "`<>`"
+          ],
+          "answer": 0,
+          "explain": "Strings are lists, and `++` joins two lists. `+` works only with numbers."
+        }
+      ]
+    },
+    {
+      "id": "matching",
+      "title": "Variables and pattern matching",
+      "chapter": "Basics",
+      "summary": "Bind values to variables once, and use pattern matching to take tuples and lists apart.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** starts with an uppercase letter, for example `Name` or `Age`. The `=` gives it a value. We say the variable is **bound** to the value."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(vars).\n-export([main/1]).\n\nmain(_) ->\n    Name = \"Ada\",\n    Age = 36,\n    io:format(\"~s is ~p~n\", [Name, Age]).",
+          "output": "Ada is 36"
+        },
+        {
+          "type": "text",
+          "md": "A variable is bound only **once** and never changes. This is called **single assignment**. When you need a new value, you use a new name."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(single).\n-export([main/1]).\n\nmain(_) ->\n    Count = 5,\n    Count2 = Count + 1,\n    io:format(\"~p ~p~n\", [Count, Count2]).",
+          "output": "5 6"
+        },
+        {
+          "type": "warning",
+          "md": "`Count = Count + 1` does not add one. `Count` is already `5`, so Erlang checks `5 = 6`, which fails. The program stops with a `badmatch` error."
+        },
+        {
+          "type": "text",
+          "md": "This is because `=` is the **match operator**. The left side is a **pattern**. If it contains a variable without a value, the variable gets bound. If the variable already has a value, both sides must be equal. So `10 = X` works when `X` is `10`."
+        },
+        {
+          "type": "heading",
+          "text": "Tuples"
+        },
+        {
+          "type": "text",
+          "md": "A **tuple** groups a fixed number of values in curly braces, for example `{point, 3, 4}`. The first element is often an atom that says what the tuple is. `element(2, T)` returns the second element, and `tuple_size(T)` the number of elements."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(tuples).\n-export([main/1]).\n\nmain(_) ->\n    Point = {point, 3, 4},\n    io:format(\"~p~n\", [Point]),\n    io:format(\"~p ~p~n\", [element(2, Point), tuple_size(Point)]).",
+          "output": "{point,3,4}\n3 3"
+        },
+        {
+          "type": "text",
+          "md": "Pattern matching takes a tuple apart. The pattern `{point, X, Y}` matches any tuple with three elements whose first element is the atom `point`. `X` and `Y` get bound to the other two values."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(unpack).\n-export([main/1]).\n\nmain(_) ->\n    Point = {point, 3, 4},\n    {point, X, Y} = Point,\n    io:format(\"X = ~p, Y = ~p~n\", [X, Y]).",
+          "output": "X = 3, Y = 4"
+        },
+        {
+          "type": "text",
+          "md": "The underscore `_` matches any value and ignores it. Names that start with an underscore, such as `_Year`, also match anything; use them when you want to show what the value means. Lists in square brackets can be matched in the same way."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(results).\n-export([main/1]).\n\nmain(_) ->\n    {ok, Result} = {ok, 42},\n    [A, B, _] = [10, 20, 30],\n    io:format(\"~p ~p ~p~n\", [Result, A, B]).",
+          "output": "42 10 20"
+        },
+        {
+          "type": "tip",
+          "md": "Many Erlang functions return `{ok, Value}` when they succeed and `{error, Reason}` when they fail. With a pattern like `{ok, Value}` you take the result out and check for success in one step."
+        }
+      ],
+      "card": [
+        "`X = 5` binds `X` once; it never changes",
+        "`{point, 3, 4}` is a tuple",
+        "`{point, X, Y} = P` takes a tuple apart",
+        "`_` matches anything and ignores it",
+        "`[A, B] = [1, 2]` matches a list"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "matching-1",
+          "prompt": "What does this print?",
+          "code": "{A, B} = {3, 4},\nio:format(\"~p~n\", [A * B])",
+          "answers": [
+            "12"
+          ],
+          "explain": "The pattern binds `A` to `3` and `B` to `4`. `3 * 4` is `12`."
+        },
+        {
+          "type": "choice",
+          "id": "matching-2",
+          "prompt": "Which of these is a valid variable name?",
+          "options": [
+            "`Total`",
+            "`total`",
+            "`2total`",
+            "`\"Total\"`"
+          ],
+          "answer": 0,
+          "explain": "Variables start with an uppercase letter. `total` is an atom and `\"Total\"` is a string."
+        },
+        {
+          "type": "true_false",
+          "id": "matching-3",
+          "statement": "This code runs without an error.",
+          "code": "X = 1,\nX = 2,\nio:format(\"~p~n\", [X])",
+          "answer": false,
+          "explain": "`X` is already `1`. `X = 2` checks `1 = 2`, which fails with a `badmatch` error."
+        },
+        {
+          "type": "input",
+          "id": "matching-4",
+          "prompt": "What does this print?",
+          "code": "{_, Name, _} = {user, \"Bo\", 42},\nio:format(\"~s~n\", [Name])",
+          "answers": [
+            "Bo"
+          ],
+          "explain": "The underscores ignore the first and the last element. `Name` is bound to `\"Bo\"`."
+        },
+        {
+          "type": "gap",
+          "id": "matching-5",
+          "prompt": "Complete the code so it prints 7.",
+          "code": "{ok, ___} = {ok, 7},\nio:format(\"~p~n\", [Value])",
+          "options": [
+            "Value",
+            "value",
+            "_",
+            "7"
+          ],
+          "answer": 0,
+          "explain": "The pattern must bind the variable `Value`. `value` is an atom, and `_` or `7` do not bind anything."
+        },
+        {
+          "type": "choice",
+          "id": "matching-6",
+          "prompt": "What happens when this line runs?",
+          "code": "{ok, N} = {error, 5}",
+          "options": [
+            "The program stops with a `badmatch` error",
+            "`N` is bound to `5`",
+            "`N` is bound to `error`",
+            "Nothing, the line is skipped"
+          ],
+          "answer": 0,
+          "explain": "The atom `ok` in the pattern does not match the atom `error`, so the match fails."
+        },
+        {
+          "type": "blocks",
+          "id": "matching-7",
+          "prompt": "Take the tuple `{point, 3, 4}` apart so that `X` is 3 and `Y` is 4.",
+          "tokens": [
+            "{point,",
+            "X,",
+            "Y}",
+            "=",
+            "{point, 3, 4}"
+          ],
+          "distractors": [
+            "==",
+            "(X, Y)"
+          ],
+          "explain": "The pattern goes on the left side of `=`, the value on the right side."
+        },
+        {
+          "type": "order",
+          "id": "matching-8",
+          "prompt": "Put the lines in order so the program prints 8.",
+          "lines": [
+            "Pair = {3, 5},",
+            "{A, B} = Pair,",
+            "Sum = A + B,",
+            "io:format(\"~p~n\", [Sum])"
+          ],
+          "explain": "Each line uses a variable bound in the line before. The last expression has no comma."
+        },
+        {
+          "type": "bug",
+          "id": "matching-9",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "Total = 100,",
+            "{ok, Count} = {ok, 4},",
+            "Average = Total / count,",
+            "io:format(\"~p~n\", [Average])"
+          ],
+          "bug": 2,
+          "explain": "`count` with a lowercase letter is an atom, not the variable. Write `Average = Total / Count,`."
+        },
+        {
+          "type": "pairs",
+          "id": "matching-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`X = 5`",
+              "binds a variable"
+            ],
+            [
+              "`_`",
+              "matches anything"
+            ],
+            [
+              "`{a, b}`",
+              "a tuple"
+            ],
+            [
+              "`[a, b]`",
+              "a list"
+            ],
+            [
+              "`ok`",
+              "an atom"
+            ]
+          ]
+        },
+        {
+          "type": "input",
+          "id": "matching-11",
+          "prompt": "What does this print?",
+          "code": "[First, _, Third] = [a, b, c],\nio:format(\"~p ~p~n\", [First, Third])",
+          "answers": [
+            "a c"
+          ],
+          "explain": "The pattern binds `First` to `a` and `Third` to `c`; `_` ignores `b`."
+        },
+        {
+          "type": "true_false",
+          "id": "matching-12",
+          "statement": "This code runs without an error.",
+          "code": "{ok, X} = {ok, 1},\n{ok, X} = {ok, 1}",
+          "answer": true,
+          "explain": "The first match binds `X` to `1`. The second match checks `{ok, 1} = {ok, 1}`, which is true."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions and lists",
+      "summary": "Write your own functions with several clauses and guards, and store anonymous functions in variables.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "You write a function as `name(Arguments) -> Body.` and call it with `name(Values)`. A module can have many functions. `main` can call the other functions of the module directly; only functions called from outside need `-export`."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(double).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~p~n\", [double(21)]).\n\ndouble(X) ->\n    X * 2.",
+          "output": "42"
+        },
+        {
+          "type": "text",
+          "md": "Erlang has no `return` keyword. A function returns the value of its **last expression**. A function with two arguments has the arity 2, so the function below is `area/2`."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(area).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~p~n\", [area(3, 4)]).\n\narea(Width, Height) ->\n    Width * Height.",
+          "output": "12"
+        },
+        {
+          "type": "heading",
+          "text": "Clauses"
+        },
+        {
+          "type": "text",
+          "md": "A function can have several **clauses**. Each clause has its own pattern for the arguments, and a semicolon `;` separates the clauses. Erlang tries them from top to bottom and runs the first one that matches. The last clause ends with a period."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(greet).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~s~n\", [greet(en)]),\n    io:format(\"~s~n\", [greet(es)]),\n    io:format(\"~s~n\", [greet(fr)]).\n\ngreet(en) -> \"Hello\";\ngreet(es) -> \"Hola\";\ngreet(_) -> \"Hi\".",
+          "output": "Hello\nHola\nHi"
+        },
+        {
+          "type": "tip",
+          "md": "Functions with the same name but a different arity are different functions. `greet/1` and `greet/2` can both exist in one module."
+        },
+        {
+          "type": "heading",
+          "text": "Guards"
+        },
+        {
+          "type": "text",
+          "md": "A **guard** adds a condition to a clause. It starts with `when` after the arguments. The clause runs only when the pattern matches **and** the guard is `true`. Guards can use comparisons and tests like `is_integer(X)`."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(sign).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~p ~p ~p~n\", [sign(-5), sign(0), sign(7)]).\n\nsign(N) when N < 0 -> negative;\nsign(0) -> zero;\nsign(N) when N > 0 -> positive.",
+          "output": "negative zero positive"
+        },
+        {
+          "type": "warning",
+          "md": "If no clause matches, the program stops with a `function_clause` error. Order the clauses from the most specific to the most general."
+        },
+        {
+          "type": "text",
+          "md": "An **anonymous function** has no name: `fun(X) -> X * 3 end`. You can store it in a variable and call it like a function. You can also pass it to another function as an argument."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(funs).\n-export([main/1]).\n\nmain(_) ->\n    Triple = fun(X) -> X * 3 end,\n    io:format(\"~p~n\", [Triple(5)]),\n    Apply = fun(F, V) -> F(V) end,\n    io:format(\"~p~n\", [Apply(Triple, 2)]).",
+          "output": "15\n6"
+        }
+      ],
+      "card": [
+        "`double(X) -> X * 2.` defines `double/1`",
+        "Clauses: `f(0) -> zero; f(_) -> other.`",
+        "Guard: `f(N) when N > 0 -> positive;`",
+        "`F = fun(X) -> X + 1 end`, then `F(2)`",
+        "The last expression is the return value"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "main(_) ->\n    io:format(\"~p~n\", [add(2, 3) * 2]).\n\nadd(A, B) -> A + B.",
+          "answers": [
+            "10"
+          ],
+          "explain": "`add(2, 3)` returns `5`, and `5 * 2` is `10`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-2",
+          "prompt": "What is the arity of this function?",
+          "code": "area(Width, Height) -> Width * Height.",
+          "options": [
+            "2",
+            "1",
+            "3",
+            "0"
+          ],
+          "answer": 0,
+          "explain": "The function takes two arguments, `Width` and `Height`, so it is `area/2`."
+        },
+        {
+          "type": "input",
+          "id": "functions-3",
+          "prompt": "What does `size_of(25)` return?",
+          "code": "size_of(0) -> none;\nsize_of(N) when N < 10 -> small;\nsize_of(_) -> big.",
+          "answers": [
+            "big"
+          ],
+          "explain": "`25` is not `0` and not less than `10`, so the last clause runs."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-4",
+          "statement": "`f/1` and `f/2` are the same function.",
+          "answer": false,
+          "explain": "The arity is part of the function's identity. `f/1` and `f/2` are two different functions."
+        },
+        {
+          "type": "gap",
+          "id": "functions-5",
+          "prompt": "Complete the code so `max_of(7, 3)` returns 7.",
+          "code": "max_of(A, B) ___ A >= B -> A;\nmax_of(_, B) -> B.",
+          "options": [
+            "when",
+            "if",
+            "where",
+            "and"
+          ],
+          "answer": 0,
+          "explain": "A guard starts with the keyword `when`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-6",
+          "prompt": "Complete the anonymous function.",
+          "code": "Square = fun(X) -> X * X ___,\nio:format(\"~p~n\", [Square(4)])",
+          "options": [
+            "end",
+            ".",
+            "done",
+            "}"
+          ],
+          "answer": 0,
+          "explain": "An anonymous function starts with `fun` and ends with `end`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-7",
+          "prompt": "What does this print?",
+          "code": "F = fun(X) -> X + 1 end,\nio:format(\"~p~n\", [F(F(1))])",
+          "options": [
+            "`3`",
+            "`2`",
+            "`1`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "`F(1)` is `2`, and `F(2)` is `3`."
+        },
+        {
+          "type": "order",
+          "id": "functions-8",
+          "prompt": "Put the clauses in order so `grade(95)` returns `top` and `grade(70)` returns `pass`.",
+          "lines": [
+            "grade(N) when N >= 90 -> top;",
+            "grade(N) when N >= 50 -> pass;",
+            "grade(_) -> fail."
+          ],
+          "explain": "Erlang uses the first clause that matches. The check for 90 must come before the check for 50, and the clause with the period comes last."
+        },
+        {
+          "type": "bug",
+          "id": "functions-9",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "main(_) ->",
+            "    io:format(\"~p~n\", [abs_value(-4)]).",
+            "abs_value(N) when N < 0 -> -N.",
+            "abs_value(N) -> N."
+          ],
+          "bug": 2,
+          "explain": "The first clause must end with a semicolon, because another clause follows: `abs_value(N) when N < 0 -> -N;`."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-10",
+          "prompt": "Build an anonymous function that adds 1 to its argument.",
+          "tokens": [
+            "fun(X)",
+            "->",
+            "X + 1",
+            "end"
+          ],
+          "distractors": [
+            "fn(X)",
+            "=>"
+          ],
+          "explain": "An anonymous function is `fun`, the arguments, `->`, the body and `end`."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`when`",
+              "starts a guard"
+            ],
+            [
+              "`;`",
+              "separates clauses"
+            ],
+            [
+              "`.`",
+              "ends the function"
+            ],
+            [
+              "`fun ... end`",
+              "an anonymous function"
+            ],
+            [
+              "`->`",
+              "separates the head from the body"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "functions-12",
+          "prompt": "What does `check(10)` return?",
+          "code": "check(X) when X > 10 -> big;\ncheck(X) when X > 5 -> medium;\ncheck(_) -> small.",
+          "options": [
+            "`medium`",
+            "`big`",
+            "`small`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "`10 > 10` is false, so the first clause does not match. `10 > 5` is true, so the second clause runs."
+        }
+      ]
+    },
+    {
+      "id": "lists",
+      "title": "Lists",
+      "chapter": "Functions and lists",
+      "summary": "Take lists apart with [H | T], use lists:map, lists:filter and lists:sum, and write list comprehensions.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **list** holds any number of values: `[10, 20, 30]`. `length` counts the elements, `hd` returns the first element (the **head**), and `tl` returns the rest (the **tail**). `++` joins two lists."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(nums).\n-export([main/1]).\n\nmain(_) ->\n    Nums = [10, 20, 30],\n    io:format(\"~p ~p~n\", [length(Nums), hd(Nums)]),\n    io:format(\"~p~n\", [tl(Nums)]),\n    io:format(\"~p~n\", [Nums ++ [40]]).",
+          "output": "3 10\n[20,30]\n[10,20,30,40]"
+        },
+        {
+          "type": "text",
+          "md": "The pattern `[H | T]` splits a list into its head and its tail. The bar `|` separates the first element from the rest. You can also use `|` to build a list: `[0 | Nums]` puts `0` in front of `Nums`."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(headtail).\n-export([main/1]).\n\nmain(_) ->\n    [First | Rest] = [a, b, c],\n    io:format(\"~p ~p~n\", [First, Rest]),\n    io:format(\"~p~n\", [[z | Rest]]).",
+          "output": "a [b,c]\n[z,b,c]"
+        },
+        {
+          "type": "tip",
+          "md": "The empty list `[]` has no head, so `[H | T] = []` fails. A list with one element has the empty list as its tail: `[x]` is the same as `[x | []]`."
+        },
+        {
+          "type": "heading",
+          "text": "The lists module"
+        },
+        {
+          "type": "text",
+          "md": "The module `lists` has many useful functions. `lists:sum` adds all numbers, `lists:max` finds the biggest, `lists:sort` sorts, `lists:reverse` reverses, and `lists:member` checks if a value is in the list."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(listsmod).\n-export([main/1]).\n\nmain(_) ->\n    Nums = [3, 1, 2],\n    io:format(\"~p ~p~n\", [lists:sum(Nums), lists:max(Nums)]),\n    io:format(\"~p ~p~n\", [lists:sort(Nums), lists:reverse(Nums)]),\n    io:format(\"~p~n\", [lists:member(2, Nums)]).",
+          "output": "6 3\n[1,2,3] [2,1,3]\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "`lists:map(F, List)` calls the function `F` for every element and returns a list of the results. `lists:filter(F, List)` keeps only the elements for which `F` returns `true`. The function comes first, the list second."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(mapfilter).\n-export([main/1]).\n\nmain(_) ->\n    Nums = [1, 2, 3, 4],\n    Doubled = lists:map(fun(X) -> X * 2 end, Nums),\n    Even = lists:filter(fun(X) -> X rem 2 == 0 end, Nums),\n    io:format(\"~p ~p~n\", [Doubled, Even]).",
+          "output": "[2,4,6,8] [2,4]"
+        },
+        {
+          "type": "heading",
+          "text": "List comprehensions"
+        },
+        {
+          "type": "text",
+          "md": "A **list comprehension** builds a new list in one line: `[X * X || X <- Nums]`. Read it as: the list of `X * X` for every `X` taken from `Nums`. The arrow `<-` takes the elements one by one. Conditions after a comma keep only some elements."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(comp).\n-export([main/1]).\n\nmain(_) ->\n    Nums = [1, 2, 3, 4, 5],\n    io:format(\"~p~n\", [[X * X || X <- Nums]]),\n    io:format(\"~p~n\", [[X || X <- Nums, X > 2]]).",
+          "output": "[1,4,9,16,25]\n[3,4,5]"
+        }
+      ],
+      "card": [
+        "`[H | T] = [1, 2, 3]` gives `H = 1`, `T = [2, 3]`",
+        "`[0 | L]` puts `0` in front of `L`",
+        "`lists:sum(L)`, `lists:max(L)`, `lists:sort(L)`",
+        "`lists:map(F, L)` and `lists:filter(F, L)`",
+        "`[X * 2 || X <- L, X > 0]` is a list comprehension"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "lists-1",
+          "prompt": "What does this print?",
+          "code": "[H | T] = [5, 6, 7],\nio:format(\"~p~n\", [T])",
+          "answers": [
+            "[6,7]",
+            "[6, 7]"
+          ],
+          "explain": "`H` is the first element `5`, and `T` is the rest of the list."
+        },
+        {
+          "type": "input",
+          "id": "lists-2",
+          "prompt": "What does this print?",
+          "code": "io:format(\"~p~n\", [lists:sum([X * 2 || X <- [1, 2, 3]])])",
+          "answers": [
+            "12"
+          ],
+          "explain": "The comprehension gives `[2,4,6]`, and the sum is `12`."
+        },
+        {
+          "type": "choice",
+          "id": "lists-3",
+          "prompt": "What does this print?",
+          "code": "L = lists:filter(fun(X) -> X > 2 end, [1, 5, 2, 8]),\nio:format(\"~p~n\", [L])",
+          "options": [
+            "`[5,8]`",
+            "`[1,2]`",
+            "`[false,true,false,true]`",
+            "`2`"
+          ],
+          "answer": 0,
+          "explain": "`lists:filter` keeps the elements for which the function returns `true`: the numbers greater than 2."
+        },
+        {
+          "type": "true_false",
+          "id": "lists-4",
+          "statement": "`lists:reverse([1, 2, 3])` returns `[3, 2, 1]`.",
+          "answer": true,
+          "explain": "`lists:reverse` returns a new list with the elements in the opposite order."
+        },
+        {
+          "type": "gap",
+          "id": "lists-5",
+          "prompt": "Complete the code so it prints `[1,4,9]`.",
+          "code": "Squares = [X * X ___ X <- [1, 2, 3]],\nio:format(\"~p~n\", [Squares])",
+          "options": [
+            "||",
+            "|",
+            "for",
+            "<-"
+          ],
+          "answer": 0,
+          "explain": "A list comprehension uses `||` between the result and the part with `<-`."
+        },
+        {
+          "type": "gap",
+          "id": "lists-6",
+          "prompt": "Complete the code so it prints `[2,4,6]`.",
+          "code": "Doubled = lists:___(fun(X) -> X * 2 end, [1, 2, 3]),\nio:format(\"~p~n\", [Doubled])",
+          "options": [
+            "map",
+            "filter",
+            "sum",
+            "each"
+          ],
+          "answer": 0,
+          "explain": "`lists:map` calls the function for every element and collects the results."
+        },
+        {
+          "type": "blocks",
+          "id": "lists-7",
+          "prompt": "Build a list comprehension that adds 1 to every number in `[1, 2, 3]`.",
+          "tokens": [
+            "[X + 1",
+            "||",
+            "X",
+            "<-",
+            "[1, 2, 3]]"
+          ],
+          "distractors": [
+            "|",
+            "->"
+          ],
+          "explain": "First the result `X + 1`, then `||`, then the variable, `<-` and the list."
+        },
+        {
+          "type": "pairs",
+          "id": "lists-8",
+          "prompt": "Match the code with its result.",
+          "pairs": [
+            [
+              "`hd(L)`",
+              "the first element"
+            ],
+            [
+              "`tl(L)`",
+              "the list without its first element"
+            ],
+            [
+              "`length(L)`",
+              "the number of elements"
+            ],
+            [
+              "`lists:sort(L)`",
+              "a sorted copy"
+            ],
+            [
+              "`[]`",
+              "the empty list"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "lists-9",
+          "prompt": "The program should print `23 15`. Which line has the bug?",
+          "lines": [
+            "Nums = [4, 8, 15],",
+            "Big = lists:filter(fun(X) -> X > 5 end, Nums),",
+            "Total = lists:sum(Big),",
+            "Max = lists:max(Total),",
+            "io:format(\"~p ~p~n\", [Total, Max])"
+          ],
+          "bug": 3,
+          "explain": "`Total` is a number, but `lists:max` needs a list. Write `Max = lists:max(Big),`."
+        },
+        {
+          "type": "order",
+          "id": "lists-10",
+          "prompt": "Put the lines in order so the program prints 18.",
+          "lines": [
+            "Nums = [1, 2, 3, 4],",
+            "[_ | Rest] = Nums,",
+            "Doubled = [X * 2 || X <- Rest],",
+            "io:format(\"~p~n\", [lists:sum(Doubled)])"
+          ],
+          "explain": "`Rest` is `[2,3,4]`, doubled it is `[4,6,8]`, and the sum is `18`."
+        },
+        {
+          "type": "choice",
+          "id": "lists-11",
+          "prompt": "What is `H` after this match?",
+          "code": "[H | _] = [[1, 2], [3]]",
+          "options": [
+            "`[1,2]`",
+            "`1`",
+            "`[3]`",
+            "`[[1,2]]`"
+          ],
+          "answer": 0,
+          "explain": "The list has two elements, `[1,2]` and `[3]`. The head is the first element: the list `[1,2]`."
+        },
+        {
+          "type": "true_false",
+          "id": "lists-12",
+          "statement": "This code runs without an error.",
+          "code": "[H | T] = [],\nio:format(\"~p~n\", [H])",
+          "answer": false,
+          "explain": "The empty list has no head and no tail, so the match fails."
+        }
+      ]
+    },
+    {
+      "id": "recursion",
+      "title": "Recursion",
+      "chapter": "Functions and lists",
+      "summary": "Repeat work with functions that call themselves, and use accumulators for tail recursion.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Erlang has no `for` or `while` loops. To repeat something, a function calls itself. This is called **recursion**."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(countdown).\n-export([main/1]).\n\nmain(_) ->\n    countdown(3).\n\ncountdown(0) ->\n    io:format(\"Go!~n\");\ncountdown(N) ->\n    io:format(\"~p~n\", [N]),\n    countdown(N - 1).",
+          "output": "3\n2\n1\nGo!"
+        },
+        {
+          "type": "text",
+          "md": "Every recursive function needs a **base case**: a clause that stops. Here it is `countdown(0)`. The other clause makes the problem smaller (`N - 1`) and calls the function again."
+        },
+        {
+          "type": "text",
+          "md": "Lists fit recursion well. The base case is the empty list `[]`. The other clause takes the list apart with `[H | T]` and calls itself with the tail."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(sum).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~p~n\", [sum([1, 2, 3, 4])]).\n\nsum([]) -> 0;\nsum([H | T]) -> H + sum(T).",
+          "output": "10"
+        },
+        {
+          "type": "text",
+          "md": "Step by step: `sum([1, 2, 3])` is `1 + sum([2, 3])`, which is `1 + 2 + sum([3])`, which is `1 + 2 + 3 + sum([])`, and `sum([])` is `0`. Each call must wait for the next one, so a long list needs a lot of memory."
+        },
+        {
+          "type": "heading",
+          "text": "Accumulators"
+        },
+        {
+          "type": "text",
+          "md": "An **accumulator** is an extra argument that carries the result so far. `sum/1` starts the work by calling `sum/2` with `0`. Remember: `sum/1` and `sum/2` are different functions."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(acc).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~p~n\", [sum([1, 2, 3, 4])]).\n\nsum(List) -> sum(List, 0).\n\nsum([], Acc) -> Acc;\nsum([H | T], Acc) -> sum(T, Acc + H).",
+          "output": "10"
+        },
+        {
+          "type": "text",
+          "md": "In `sum(T, Acc + H)` the recursive call is the **last** thing the function does. This is a **tail call**, and the function is **tail recursive**. Erlang does not need extra memory for tail calls. In `H + sum(T)` the addition comes after the call, so it is not a tail call."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(fact).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~p~n\", [fact(5)]),\n    io:format(\"~p~n\", [fact(20)]).\n\nfact(N) -> fact(N, 1).\n\nfact(0, Acc) -> Acc;\nfact(N, Acc) when N > 0 -> fact(N - 1, Acc * N).",
+          "output": "120\n2432902008176640000"
+        },
+        {
+          "type": "text",
+          "md": "When you build a list with an accumulator, each new element goes to the front with `[New | Acc]`. The result is then in reverse order, so the base case calls `lists:reverse`."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(double).\n-export([main/1]).\n\nmain(_) ->\n    io:format(\"~p~n\", [double_all([1, 2, 3])]).\n\ndouble_all(List) -> double_all(List, []).\n\ndouble_all([], Acc) -> lists:reverse(Acc);\ndouble_all([H | T], Acc) -> double_all(T, [H * 2 | Acc]).",
+          "output": "[2,4,6]"
+        },
+        {
+          "type": "warning",
+          "md": "A recursion that never reaches its base case never stops. For example, `countdown(-1)` above never reaches `0`. A guard like `when N > 0` protects against this."
+        }
+      ],
+      "card": [
+        "A recursive function calls itself",
+        "Base case: `len([]) -> 0;`",
+        "`len([_ | T]) -> 1 + len(T).`",
+        "Accumulator: `sum([H | T], Acc) -> sum(T, Acc + H).`",
+        "Tail call: the recursive call is the last step"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "recursion-1",
+          "prompt": "What does `count([a, b, c])` return?",
+          "code": "count([]) -> 0;\ncount([_ | T]) -> 1 + count(T).",
+          "answers": [
+            "3"
+          ],
+          "explain": "Each clause with `[_ | T]` adds 1 for one element. The empty list adds 0."
+        },
+        {
+          "type": "input",
+          "id": "recursion-2",
+          "prompt": "What does `f(4)` return?",
+          "code": "f(0) -> 0;\nf(N) -> N + f(N - 1).",
+          "answers": [
+            "10"
+          ],
+          "explain": "`f(4)` is `4 + 3 + 2 + 1 + 0`, which is `10`."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-3",
+          "prompt": "Which clause is the base case?",
+          "code": "len([]) -> 0;\nlen([_ | T]) -> 1 + len(T).",
+          "options": [
+            "`len([]) -> 0;`",
+            "`len([_ | T]) -> 1 + len(T).`",
+            "Both clauses",
+            "Neither clause"
+          ],
+          "answer": 0,
+          "explain": "The base case stops the recursion: it does not call `len` again."
+        },
+        {
+          "type": "true_false",
+          "id": "recursion-4",
+          "statement": "This function is tail recursive.",
+          "code": "sum([]) -> 0;\nsum([H | T]) -> H + sum(T).",
+          "answer": false,
+          "explain": "After the call `sum(T)` returns, the function still adds `H`. So the call is not the last step."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-5",
+          "prompt": "Complete the code so `len([a, b])` returns 2.",
+          "code": "len(List) -> len(List, 0).\n\nlen([], Acc) -> Acc;\nlen([_ | T], Acc) -> len(T, ___).",
+          "options": [
+            "Acc + 1",
+            "Acc",
+            "T + 1",
+            "1"
+          ],
+          "answer": 0,
+          "explain": "The accumulator counts the elements, so each step adds 1 to it."
+        },
+        {
+          "type": "order",
+          "id": "recursion-6",
+          "prompt": "Put the lines in order so `countdown(2)` prints `2`, `1` and `Go!`.",
+          "lines": [
+            "countdown(0) ->",
+            "    io:format(\"Go!~n\");",
+            "countdown(N) ->",
+            "    io:format(\"~p~n\", [N]),",
+            "    countdown(N - 1)."
+          ],
+          "explain": "The base case comes first and ends with a semicolon. The recursive clause prints `N` and then calls itself with `N - 1`."
+        },
+        {
+          "type": "bug",
+          "id": "recursion-7",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "main(_) ->",
+            "    io:format(\"~p~n\", [sum([1, 2, 3])]).",
+            "sum([]) -> 0;",
+            "sum([H | T]) -> H + sum(H)."
+          ],
+          "bug": 3,
+          "explain": "The recursive call must use the tail. Write `sum([H | T]) -> H + sum(T).`."
+        },
+        {
+          "type": "bug",
+          "id": "recursion-8",
+          "prompt": "The program should print `[3,2,1]`. Which line has the bug?",
+          "lines": [
+            "main(_) ->",
+            "    io:format(\"~p~n\", [rev([1, 2, 3])]).",
+            "rev(List) -> rev(List, []).",
+            "rev([], Acc) -> Acc;",
+            "rev([H | T], Acc) -> rev(T, [Acc | H])."
+          ],
+          "bug": 4,
+          "explain": "The new element must go in front of the accumulator. Write `rev(T, [H | Acc])`."
+        },
+        {
+          "type": "blocks",
+          "id": "recursion-9",
+          "prompt": "Build the recursive clause of `len`, which counts the elements of a list.",
+          "tokens": [
+            "len([_ | T])",
+            "->",
+            "1",
+            "+",
+            "len(T)."
+          ],
+          "distractors": [
+            "len(H)",
+            "=>"
+          ],
+          "explain": "The clause takes one element off the list, counts it with `1` and adds the length of the tail."
+        },
+        {
+          "type": "pairs",
+          "id": "recursion-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`f([]) -> 0;`",
+              "the base case"
+            ],
+            [
+              "`[H | T]`",
+              "the first element and the rest"
+            ],
+            [
+              "`lists:reverse(Acc)`",
+              "puts the collected elements back in order"
+            ],
+            [
+              "`fact(N - 1, Acc * N)`",
+              "a tail call with an accumulator"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "recursion-11",
+          "prompt": "What does this print?",
+          "code": "main(_) ->\n    io:format(\"~p~n\", [build(3)]).\n\nbuild(0) -> [];\nbuild(N) -> [N | build(N - 1)].",
+          "options": [
+            "`[3,2,1]`",
+            "`[1,2,3]`",
+            "`[3,2,1,0]`",
+            "`6`"
+          ],
+          "answer": 0,
+          "explain": "`build(3)` is `[3 | build(2)]`, which becomes `[3, 2, 1]`. `build(0)` adds the empty list at the end."
+        },
+        {
+          "type": "true_false",
+          "id": "recursion-12",
+          "statement": "`sum/1` and `sum/2` can both exist in the same module.",
+          "answer": true,
+          "explain": "Functions with a different arity are different functions. This is common with accumulators."
+        }
+      ]
+    },
+    {
+      "id": "maps",
+      "title": "Maps and tuples",
+      "chapter": "Data",
+      "summary": "Store key-value pairs in maps, read and update them, and use tagged tuples as small records.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **map** stores pairs of keys and values: `#{name => \"Ada\", age => 36}`. The arrow `=>` links a key to its value. Keys are often atoms. `maps:get(Key, Map)` returns the value, and `map_size` counts the pairs."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(user).\n-export([main/1]).\n\nmain(_) ->\n    User = #{name => \"Ada\", age => 36},\n    io:format(\"~s~n\", [maps:get(name, User)]),\n    io:format(\"~p~n\", [maps:get(age, User)]),\n    io:format(\"~p~n\", [map_size(User)]).",
+          "output": "Ada\n36\n2"
+        },
+        {
+          "type": "text",
+          "md": "If a key is missing, `maps:get(Key, Map)` stops the program with a `badkey` error. `maps:get(Key, Map, Default)` returns the default value instead. `maps:is_key` checks if a key exists."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(stock).\n-export([main/1]).\n\nmain(_) ->\n    Stock = #{apple => 3},\n    io:format(\"~p~n\", [maps:get(pear, Stock, 0)]),\n    io:format(\"~p~n\", [maps:is_key(apple, Stock)]).",
+          "output": "0\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "Maps never change, like variables. `maps:put(Key, Value, Map)` returns a **new** map with the pair added or replaced. The short form `Map#{Key => Value}` does the same. The old map stays as it was."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(prices).\n-export([main/1]).\n\nmain(_) ->\n    Prices = #{tea => 2},\n    Prices2 = maps:put(coffee, 3, Prices),\n    Prices3 = Prices2#{tea => 5},\n    io:format(\"~p ~p~n\", [map_size(Prices), map_size(Prices2)]),\n    io:format(\"~p~n\", [maps:get(tea, Prices3)]).",
+          "output": "1 2\n5"
+        },
+        {
+          "type": "text",
+          "md": "You can take values out of a map with pattern matching. In a pattern you write `:=` instead of `=>`. The pattern matches when the map has these keys; other keys are ignored."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(person).\n-export([main/1]).\n\nmain(_) ->\n    User = #{name => \"Bo\", age => 25, city => \"Oslo\"},\n    #{name := Name, city := City} = User,\n    io:format(\"~s lives in ~s~n\", [Name, City]).",
+          "output": "Bo lives in Oslo"
+        },
+        {
+          "type": "text",
+          "md": "`maps:to_list` returns all pairs as `{Key, Value}` tuples, and `maps:keys` returns the keys. The order is not fixed, so sort the result with `lists:sort` when the order matters."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(ages).\n-export([main/1]).\n\nmain(_) ->\n    Ages = #{bo => 25, ada => 36},\n    io:format(\"~p~n\", [lists:sort(maps:to_list(Ages))]),\n    io:format(\"~p~n\", [lists:sort(maps:keys(Ages))]).",
+          "output": "[{ada,36},{bo,25}]\n[ada,bo]"
+        },
+        {
+          "type": "heading",
+          "text": "Tuples as records"
+        },
+        {
+          "type": "text",
+          "md": "A tuple with an atom as its first element works like a small record: `{book, Title, Year}`. The atom is a **tag** that says what the data is. Functions can have one clause for each tag. Use a tuple for a few fixed fields and a map when you want named keys."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(records).\n-export([main/1]).\n\nmain(_) ->\n    Book = {book, \"Dune\", 1965},\n    io:format(\"~s~n\", [describe(Book)]),\n    io:format(\"~s~n\", [describe({film, \"Up\"})]).\n\ndescribe({book, Title, _Year}) -> \"Book: \" ++ Title;\ndescribe({film, Title}) -> \"Film: \" ++ Title.",
+          "output": "Book: Dune\nFilm: Up"
+        }
+      ],
+      "card": [
+        "`M = #{a => 1}` creates a map",
+        "`maps:get(a, M)` or `maps:get(b, M, 0)`",
+        "`M#{b => 2}` or `maps:put(b, 2, M)` gives a new map",
+        "`#{a := A} = M` takes a value out",
+        "`{book, Title, Year}` is a tagged tuple"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "maps-1",
+          "prompt": "What does this print?",
+          "code": "M = #{x => 4, y => 5},\nio:format(\"~p~n\", [maps:get(x, M) * maps:get(y, M)])",
+          "answers": [
+            "20"
+          ],
+          "explain": "`maps:get` returns `4` for `x` and `5` for `y`. `4 * 5` is `20`."
+        },
+        {
+          "type": "input",
+          "id": "maps-2",
+          "prompt": "What does this print?",
+          "code": "M = #{a => 1},\nM2 = M#{b => 2},\nio:format(\"~p~n\", [map_size(M)])",
+          "answers": [
+            "1"
+          ],
+          "explain": "`M#{b => 2}` creates a new map `M2`. `M` itself does not change and still has one pair."
+        },
+        {
+          "type": "choice",
+          "id": "maps-3",
+          "prompt": "What does this print?",
+          "code": "M = #{color => red},\nio:format(\"~p~n\", [maps:get(size, M, small)])",
+          "options": [
+            "`small`",
+            "`red`",
+            "A `badkey` error",
+            "`undefined`"
+          ],
+          "answer": 0,
+          "explain": "The key `size` is missing, so `maps:get/3` returns the default value `small`."
+        },
+        {
+          "type": "true_false",
+          "id": "maps-4",
+          "statement": "`maps:put` changes the map that you pass to it.",
+          "answer": false,
+          "explain": "Maps never change. `maps:put` returns a new map, and the old one stays the same."
+        },
+        {
+          "type": "gap",
+          "id": "maps-5",
+          "prompt": "Complete the code so it prints 3.",
+          "code": "Stock = #{apple => 3},\n#{apple ___ N} = Stock,\nio:format(\"~p~n\", [N])",
+          "options": [
+            ":=",
+            "=>",
+            "=",
+            "->"
+          ],
+          "answer": 0,
+          "explain": "In a map pattern you write `:=`. The arrow `=>` is only used to build maps."
+        },
+        {
+          "type": "gap",
+          "id": "maps-6",
+          "prompt": "Complete the code so it prints 2.",
+          "code": "Counts = #{a => 1},\nCounts2 = maps:___(b, 2, Counts),\nio:format(\"~p~n\", [map_size(Counts2)])",
+          "options": [
+            "put",
+            "get",
+            "set",
+            "add"
+          ],
+          "answer": 0,
+          "explain": "`maps:put` adds the key `b`, so the new map has two pairs. The module `maps` has no `set` or `add`."
+        },
+        {
+          "type": "blocks",
+          "id": "maps-7",
+          "prompt": "Build a map with the key `name` and the value `\"Ada\"`.",
+          "tokens": [
+            "#{",
+            "name",
+            "=>",
+            "\"Ada\"",
+            "}"
+          ],
+          "distractors": [
+            ":",
+            "%{"
+          ],
+          "explain": "A map starts with `#{` and ends with `}`. `=>` links the key to the value."
+        },
+        {
+          "type": "pairs",
+          "id": "maps-8",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`#{}`",
+              "an empty map"
+            ],
+            [
+              "`maps:get(K, M)`",
+              "the value for a key"
+            ],
+            [
+              "`M#{K => V}`",
+              "a new map with the key set"
+            ],
+            [
+              "`maps:is_key(K, M)`",
+              "checks if the key exists"
+            ],
+            [
+              "`map_size(M)`",
+              "the number of pairs"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "maps-9",
+          "prompt": "The program should print `9 0`. Which line has the bug?",
+          "lines": [
+            "Scores = #{ana => 7, ben => 9},",
+            "Ben = maps:get(ben, Scores),",
+            "Cara = maps:get(cara, Scores),",
+            "io:format(\"~p ~p~n\", [Ben, Cara])"
+          ],
+          "bug": 2,
+          "explain": "The key `cara` is missing, so `maps:get/2` fails with `badkey`. Write `maps:get(cara, Scores, 0)`."
+        },
+        {
+          "type": "order",
+          "id": "maps-10",
+          "prompt": "Put the lines in order so the program prints 7.",
+          "lines": [
+            "Cart = #{apples => 4},",
+            "Cart2 = Cart#{pears => 3},",
+            "#{apples := A, pears := P} = Cart2,",
+            "io:format(\"~p~n\", [A + P])"
+          ],
+          "explain": "First create the map, then add `pears`, then take both values out and print their sum."
+        },
+        {
+          "type": "choice",
+          "id": "maps-11",
+          "prompt": "What does `area({rect, 2, 5})` return?",
+          "code": "area({square, Side}) -> Side * Side;\narea({rect, W, H}) -> W * H.",
+          "options": [
+            "`10`",
+            "`4`",
+            "`25`",
+            "A `function_clause` error"
+          ],
+          "answer": 0,
+          "explain": "The tag `rect` matches the second clause, so the result is `2 * 5`."
+        },
+        {
+          "type": "bug",
+          "id": "maps-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "Book = {book, \"Dune\", 1965},",
+            "{book, Title} = Book,",
+            "Year = element(3, Book),",
+            "io:format(\"~s ~p~n\", [Title, Year])"
+          ],
+          "bug": 1,
+          "explain": "The tuple has three elements, but the pattern has only two. Write `{book, Title, _} = Book,`."
+        }
+      ]
+    },
+    {
+      "id": "processes",
+      "title": "Processes",
+      "chapter": "Concurrency",
+      "summary": "Start processes with spawn, send them messages with !, and wait for answers with receive.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An Erlang program can run thousands of small **processes** at the same time. Each process has its own memory. Processes do not share variables; they work together by sending **messages**."
+        },
+        {
+          "type": "text",
+          "md": "`spawn(Fun)` starts a new process that runs the function `Fun`, and returns its **process identifier**, or **pid**. `self()` returns the pid of the process that is running the code. `is_pid` checks if a value is a pid."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(start).\n-export([main/1]).\n\nmain(_) ->\n    Pid = spawn(fun() -> ok end),\n    io:format(\"~p~n\", [is_pid(Pid)]),\n    io:format(\"~p~n\", [is_pid(self())]).",
+          "output": "true\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "`Pid ! Message` sends a message to a process. A message can be any value. It goes into the **mailbox** of the receiving process. The sender does not wait."
+        },
+        {
+          "type": "text",
+          "md": "`receive` waits for a message and matches it against patterns, like the clauses of a function. The block ends with `end`. A process can also send a message to itself."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(mailbox).\n-export([main/1]).\n\nmain(_) ->\n    self() ! hello,\n    receive\n        hello -> io:format(\"Got hello~n\")\n    end.",
+          "output": "Got hello"
+        },
+        {
+          "type": "text",
+          "md": "To get an answer, send your own pid with the message, for example `{self(), 21}`. The other process uses this pid to reply. Here the new process doubles the number and sends back `{result, 42}`."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(reply).\n-export([main/1]).\n\nmain(_) ->\n    Doubler = spawn(fun() ->\n        receive\n            {From, N} -> From ! {result, N * 2}\n        end\n    end),\n    Doubler ! {self(), 21},\n    receive\n        {result, R} -> io:format(\"Result: ~p~n\", [R])\n    end.",
+          "output": "Result: 42"
+        },
+        {
+          "type": "text",
+          "md": "A process that serves many messages runs a recursive **loop**. The argument of the loop is the state of the process. After each message, the loop calls itself with the new state. The atom `stop` ends the loop."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(counter).\n-export([main/1]).\n\nmain(_) ->\n    Counter = spawn(fun() -> loop(0) end),\n    Counter ! add,\n    Counter ! add,\n    Counter ! add,\n    Counter ! {get, self()},\n    receive\n        {count, N} -> io:format(\"Count: ~p~n\", [N])\n    end,\n    Counter ! stop.\n\nloop(N) ->\n    receive\n        add ->\n            loop(N + 1);\n        {get, From} ->\n            From ! {count, N},\n            loop(N);\n        stop ->\n            ok\n    end.",
+          "output": "Count: 3"
+        },
+        {
+          "type": "tip",
+          "md": "Messages from one process to another arrive in the order they were sent. Messages from different processes can arrive in any order. That is why the examples wait for a reply before they print."
+        },
+        {
+          "type": "text",
+          "md": "`receive` can wait forever. With `after` you set a time limit in milliseconds. If no matching message arrives in time, the code after `after` runs."
+        },
+        {
+          "type": "code",
+          "code": "#!/usr/bin/env escript\n-module(timeout).\n-export([main/1]).\n\nmain(_) ->\n    receive\n        hello -> io:format(\"Got hello~n\")\n    after 100 ->\n        io:format(\"No message~n\")\n    end.",
+          "output": "No message"
+        },
+        {
+          "type": "warning",
+          "md": "`receive` takes only messages that match one of its patterns. Other messages stay in the mailbox. If no message ever matches and there is no `after`, the process waits forever."
+        }
+      ],
+      "card": [
+        "`Pid = spawn(fun() -> ... end)` starts a process",
+        "`Pid ! Msg` sends a message",
+        "`receive Pattern -> ... end` waits for a message",
+        "`self()` is the pid of the current process",
+        "`after 1000 -> ...` stops waiting after 1 second"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "processes-1",
+          "prompt": "What does this print?",
+          "code": "self() ! {num, 5},\nreceive\n    {num, N} -> io:format(\"~p~n\", [N * 10])\nend",
+          "answers": [
+            "50"
+          ],
+          "explain": "The process sends `{num, 5}` to itself. The pattern binds `N` to `5`."
+        },
+        {
+          "type": "choice",
+          "id": "processes-2",
+          "prompt": "Which function returns the pid of the current process?",
+          "options": [
+            "`self()`",
+            "`pid()`",
+            "`this()`",
+            "`me()`"
+          ],
+          "answer": 0,
+          "explain": "`self()` returns the pid of the process that runs the code."
+        },
+        {
+          "type": "true_false",
+          "id": "processes-3",
+          "statement": "`Pid ! Msg` waits until the other process has received the message.",
+          "answer": false,
+          "explain": "Sending never waits. The message goes into the mailbox, and the sender continues at once."
+        },
+        {
+          "type": "input",
+          "id": "processes-4",
+          "prompt": "What does this print?",
+          "code": "self() ! a,\nself() ! b,\nreceive b -> ok end,\nreceive X -> io:format(\"~p~n\", [X]) end",
+          "answers": [
+            "a"
+          ],
+          "explain": "The first `receive` takes only `b`; the message `a` stays in the mailbox. The second `receive` takes `a`."
+        },
+        {
+          "type": "gap",
+          "id": "processes-5",
+          "prompt": "Complete the code so it prints 5.",
+          "code": "Pid = spawn(fun() -> receive {From, X} -> From ! X + 1 end end),\nPid ___ {self(), 4},\nreceive\n    R -> io:format(\"~p~n\", [R])\nend",
+          "options": [
+            "!",
+            "<-",
+            "->",
+            "="
+          ],
+          "answer": 0,
+          "explain": "`!` sends a message. The new process adds 1 to `4` and sends `5` back."
+        },
+        {
+          "type": "gap",
+          "id": "processes-6",
+          "prompt": "Complete the code so it prints `timeout`.",
+          "code": "receive\n    hello -> io:format(\"hi~n\")\n___ 50 ->\n    io:format(\"timeout~n\")\nend",
+          "options": [
+            "after",
+            "timeout",
+            "wait",
+            "else"
+          ],
+          "answer": 0,
+          "explain": "`after` sets a time limit. No message arrives, so after 50 milliseconds the code after `after` runs."
+        },
+        {
+          "type": "blocks",
+          "id": "processes-7",
+          "prompt": "Send the tuple `{ping, self()}` to the process `Pid`.",
+          "tokens": [
+            "Pid",
+            "!",
+            "{ping,",
+            "self()}"
+          ],
+          "distractors": [
+            "<-",
+            "self"
+          ],
+          "explain": "The pid comes first, then `!`, then the message."
+        },
+        {
+          "type": "order",
+          "id": "processes-8",
+          "prompt": "Put the lines in order so the program prints pong.",
+          "lines": [
+            "Pid = spawn(fun() -> receive {ping, From} -> From ! pong end end),",
+            "Pid ! {ping, self()},",
+            "receive",
+            "    pong -> io:format(\"pong~n\")",
+            "end"
+          ],
+          "explain": "First start the process, then send it your pid, then wait for the reply."
+        },
+        {
+          "type": "bug",
+          "id": "processes-9",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "main(_) ->",
+            "    Pid = spawn(fun() -> receive {From, N} -> From ! N * N end end),",
+            "    Pid ! {self, 6},",
+            "    receive",
+            "        R -> io:format(\"~p~n\", [R])",
+            "    end."
+          ],
+          "bug": 2,
+          "explain": "`self` without parentheses is only an atom, so the reply cannot reach you. Write `Pid ! {self(), 6},`."
+        },
+        {
+          "type": "pairs",
+          "id": "processes-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`spawn(F)`",
+              "starts a new process"
+            ],
+            [
+              "`Pid ! Msg`",
+              "sends a message"
+            ],
+            [
+              "`receive ... end`",
+              "waits for a message"
+            ],
+            [
+              "`self()`",
+              "the current process"
+            ],
+            [
+              "`after 100`",
+              "stops waiting after 100 ms"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "processes-11",
+          "prompt": "What does this print?",
+          "code": "self() ! {add, 2},\nself() ! {add, 3},\nreceive {add, A} -> ok end,\nreceive {add, B} -> ok end,\nio:format(\"~p~n\", [A * 10 + B])",
+          "options": [
+            "`23`",
+            "`32`",
+            "`5`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "Messages from the same sender arrive in order, so `A` is `2` and `B` is `3`."
+        },
+        {
+          "type": "true_false",
+          "id": "processes-12",
+          "statement": "A process can send a message to itself.",
+          "answer": true,
+          "explain": "`self() ! Msg` puts the message into the process's own mailbox."
+        }
+      ]
+    }
+  ]
+}

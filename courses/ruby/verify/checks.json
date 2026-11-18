@@ -1,0 +1,256 @@
+{
+  "hello-1": {
+    "programs": [
+      {
+        "code": "puts \"Hello\"\nputs \"!\"",
+        "expect": "Hello\n!"
+      },
+      {
+        "code": "print \"Hello\"\nputs \"!\"",
+        "expect": "Hello!"
+      },
+      {
+        "code": "echo \"Hello\"",
+        "expect": "@error:NoMethodError"
+      },
+      {
+        "code": "puts Hello",
+        "expect": "@error:NameError"
+      }
+    ]
+  },
+  "hello-2": {},
+  "hello-3": {},
+  "hello-4": {},
+  "hello-5": {
+    "expect": "23"
+  },
+  "hello-6": {
+    "expect": "3.5"
+  },
+  "hello-8": {
+    "expect": "6"
+  },
+  "hello-9": {
+    "expect": "Hello, Ruby!"
+  },
+  "hello-10": {
+    "fix": "puts 3 * 4",
+    "expect": "Start\n12\nEnd"
+  },
+  "hello-11": {},
+  "hello-12": {
+    "fix": "print \"Sam\"",
+    "expect": "Hi, Sam!"
+  },
+  "variables-1": {},
+  "variables-2": {},
+  "variables-3": {},
+  "variables-4": {
+    "expect": "Hello, #{name}"
+  },
+  "variables-5": {
+    "expect": "Total: 15"
+  },
+  "variables-7": {
+    "template": "a = 2\nb = 3\n@@\nputs total",
+    "expect": "5"
+  },
+  "variables-8": {
+    "expect": "8"
+  },
+  "variables-9": {
+    "fix": "text = \"Score: \" + score.to_s",
+    "expect": "Score: 10"
+  },
+  "variables-10": {},
+  "variables-11": {},
+  "variables-12": {
+    "fix": "greeting = \"Hi, #{name}!\"",
+    "expect": "Hi, Max!"
+  },
+  "strings-1": {},
+  "strings-2": {},
+  "strings-3": {},
+  "strings-4": {},
+  "strings-5": {
+    "expect": "hello"
+  },
+  "strings-6": {
+    "expect": "true"
+  },
+  "strings-8": {
+    "template": "text = \"banana\"\n@@\nputs text",
+    "expect": "bonono"
+  },
+  "strings-9": {
+    "expect": "YBUR"
+  },
+  "strings-10": {
+    "fix": "first = word[0]",
+    "expect": "R"
+  },
+  "strings-11": {},
+  "strings-12": {
+    "fix": "count = name.length",
+    "expect": "4"
+  },
+  "conditions-1": {},
+  "conditions-2": {},
+  "conditions-3": {
+    "expect": "yes"
+  },
+  "conditions-4": {},
+  "conditions-5": {
+    "expect": "Different"
+  },
+  "conditions-7": {
+    "template": "temp = 35\n@@\ntemp = 20\n@@",
+    "expect": "Hot"
+  },
+  "conditions-8": {
+    "expect": "Cold"
+  },
+  "conditions-9": {
+    "fix": "if answer == 7",
+    "expect": "Wrong"
+  },
+  "conditions-10": {},
+  "conditions-11": {},
+  "conditions-12": {
+    "fix": "elsif n < 0",
+    "expect": "positive"
+  },
+  "loops-1": {},
+  "loops-2": {},
+  "loops-3": {},
+  "loops-4": {
+    "programs": [
+      {
+        "code": "puts (1..5).include?(5)",
+        "expect": "true"
+      },
+      {
+        "code": "puts (1...5).include?(5)",
+        "expect": "false"
+      }
+    ]
+  },
+  "loops-5": {
+    "expect": "1\n2\n3"
+  },
+  "loops-7": {
+    "expect": "1\n2\n3\n4\n5"
+  },
+  "loops-8": {
+    "expect": "3\n2\n1"
+  },
+  "loops-9": {
+    "fix": "(1..5).each do |n|",
+    "expect": "1\n2\n3\n4\n5"
+  },
+  "loops-10": {},
+  "loops-11": {},
+  "loops-12": {
+    "fix": "5.downto(1) do |i|",
+    "expect": "5\n4\n3\n2\n1\nGo!"
+  },
+  "methods-1": {},
+  "methods-2": {},
+  "methods-3": {},
+  "methods-4": {
+    "programs": [
+      {
+        "code": "x = 5\ndef show\n  puts x\nend\nshow",
+        "expect": "@error:NameError"
+      },
+      {
+        "code": "x = 5\ndef show(x)\n  puts x\nend\nshow(x)",
+        "expect": "5"
+      }
+    ]
+  },
+  "methods-5": {
+    "expect": "9"
+  },
+  "methods-7": {
+    "template": "def check(n)\n  @@\n  \"ok\"\nend\n\nputs check(-1)\nputs check(5)",
+    "expect": "negative\nok"
+  },
+  "methods-8": {
+    "expect": "15"
+  },
+  "methods-9": {
+    "fix": "def add(a, b)",
+    "expect": "10"
+  },
+  "methods-10": {},
+  "methods-11": {},
+  "methods-12": {
+    "fix": "  n % 2 == 0",
+    "expect": "true"
+  },
+  "collections-1": {},
+  "collections-2": {},
+  "collections-3": {},
+  "collections-4": {},
+  "collections-5": {
+    "expect": "nil"
+  },
+  "collections-6": {
+    "expect": "[2, 4]"
+  },
+  "collections-8": {
+    "template": "nums = [1, 2, 3]\n@@",
+    "expect": "[2, 4, 6]"
+  },
+  "collections-9": {
+    "expect": "Ana: 30\nBen: 25"
+  },
+  "collections-10": {
+    "fix": "name = person[:name]",
+    "expect": "Hello, Ana!"
+  },
+  "collections-11": {},
+  "collections-12": {
+    "fix": "prices.each { |price| total += price }",
+    "expect": "9"
+  },
+  "classes-1": {},
+  "classes-2": {
+    "programs": [
+      {
+        "code": "class Box\n  def initialize\n    puts \"initialize\"\n  end\nend\n\nBox.new",
+        "expect": "initialize"
+      },
+      {
+        "code": "class Box\n  def create\n    puts \"create\"\n  end\n\n  def start\n    puts \"start\"\n  end\nend\n\nBox.new\nputs \"done\"",
+        "expect": "done"
+      }
+    ]
+  },
+  "classes-3": {},
+  "classes-4": {
+    "expect": "@error:NoMethodError"
+  },
+  "classes-5": {
+    "expect": "Ruby Basics"
+  },
+  "classes-7": {
+    "template": "class Dog\n  def initialize(name)\n    @name = name\n  end\n\n  def to_s\n    \"Dog #{@name}\"\n  end\nend\n\n@@\nputs pet",
+    "expect": "Dog Rex"
+  },
+  "classes-8": {
+    "expect": "Hi"
+  },
+  "classes-9": {
+    "fix": "    @name = name",
+    "expect": "Ana"
+  },
+  "classes-10": {},
+  "classes-11": {},
+  "classes-12": {
+    "fix": "rex = Dog.new(\"Rex\")",
+    "expect": "Rex: Woof"
+  }
+}

@@ -1,0 +1,674 @@
+{
+  "templates": {},
+  "checks": {
+    "hello-2": {
+      "out": "Good"
+    },
+    "hello-4": {
+      "extra": [
+        {
+          "src": "default rel\n\nsection .text\nglobal _start\n\n_start:\n    mov rax, 60\n    mov rdi, 7\n    syscall\n    mov rax, 1\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "exit": 7
+        }
+      ]
+    },
+    "hello-5": {
+      "out": "Hi"
+    },
+    "hello-6": {
+      "run": false,
+      "extra": [
+        {
+          "src": "default rel\n\nsection .data\nmsg db \"Assembly is fun\", 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 16\n    syscall\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 16\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "out": "Assembly is fun\nAssembly is fun"
+        }
+      ]
+    },
+    "hello-7": {
+      "tpl": "default rel\nsection .text\nglobal _start\n\n_start:\n    mov rdi, 5\n    {{CODE}}\n    syscall",
+      "exit": 5
+    },
+    "hello-8": {
+      "tpl": "default rel\nsection .data\n    {{CODE}}\n\nsection .text\nglobal _start\n\n_start:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 3\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+      "out": "Hi",
+      "wrong": [
+        "msg db \"Hi\\n\""
+      ]
+    },
+    "hello-10": {
+      "data": "section .data\n    msg db \"Hi\", 10",
+      "fix": "    mov rax, 1",
+      "out": "Hi"
+    },
+    "hello-11": {
+      "fix": "    msg db \"OK\", 10",
+      "out": "OK"
+    },
+    "hello-12": {
+      "extra": [
+        {
+          "src": "default rel\n\nsection .data\nmsg db \"Hi\", 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 3\n    syscall\n    mov rdi, rax\n    mov rax, 60\n    syscall\n    mov rax, 60\n    mov rdi, 0\n    syscall",
+          "out": "Hi",
+          "exit": 3
+        },
+        {
+          "src": "default rel\nsection .data\n    msg db \"Hi\", 10\n\nsection .text\nglobal _start\n\n_start:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 3\n    syscall",
+          "err": true,
+          "out": "Hi"
+        }
+      ]
+    },
+    "registers-1": {
+      "show": [
+        "rbx"
+      ],
+      "out": "7",
+      "match_option": true
+    },
+    "registers-2": {
+      "show": [
+        "rcx"
+      ],
+      "out": "3"
+    },
+    "registers-3": {
+      "extra": [
+        {
+          "src": "    mov rax, 1\n    mov rbx, 2\n    mov rax, rbx",
+          "show": [
+            "rax",
+            "rbx"
+          ],
+          "out": "2 2"
+        }
+      ]
+    },
+    "registers-5": {
+      "out": "Hello"
+    },
+    "registers-6": {
+      "err": true,
+      "options": [
+        "    mov rax, rbx",
+        "    mov eax, ecx",
+        "    mov al, bl",
+        "    mov al, rbx"
+      ]
+    },
+    "registers-7": {
+      "out": "C"
+    },
+    "registers-8": {
+      "pre": "    mov rsi, 9\n    mov rdi, 1",
+      "show": [
+        "rdi",
+        "rsi"
+      ],
+      "out": "9 9",
+      "wrong": [
+        "mov rsi , rdi"
+      ]
+    },
+    "registers-9": {
+      "show": [
+        "rax"
+      ],
+      "hex": true,
+      "out": "0x5",
+      "match_option": true
+    },
+    "registers-10": {
+      "show": [
+        "rax"
+      ],
+      "hex": true,
+      "out": "0x1200"
+    },
+    "registers-11": {
+      "data": "section .data\n    msg db \"Hello, world!\", 10",
+      "fix": "    mov rdx, rcx",
+      "out": "Hello"
+    },
+    "registers-12": {
+      "pre": "    mov rax, 1\n    mov rbx, 2\n    mov rcx, 9",
+      "show": [
+        "rax",
+        "rbx"
+      ],
+      "out": "2 1"
+    },
+    "arithmetic-1": {
+      "show": [
+        "rbx"
+      ],
+      "out": "9"
+    },
+    "arithmetic-2": {
+      "show": [
+        "rax"
+      ],
+      "out": "7",
+      "match_option": true
+    },
+    "arithmetic-3": {
+      "show": [
+        "rdx"
+      ],
+      "out": "3"
+    },
+    "arithmetic-4": {
+      "extra": [
+        {
+          "src": "    mov rax, 20\n    mov rdx, 0\n    mov rcx, 6\n    div rcx",
+          "show": [
+            "rax",
+            "rdx",
+            "rcx"
+          ],
+          "out": "3 2 6"
+        },
+        {
+          "src": "    div 5",
+          "err": true
+        },
+        {
+          "src": "    mov rax, 20\n    mov rdx, 4\n    mov rcx, 4\n    div rcx",
+          "err": true
+        },
+        {
+          "src": "    mov rax, 20\n    mov rdx, 0\n    mov rcx, 0\n    div rcx",
+          "err": true
+        },
+        {
+          "src": "    mov rbx, 5\n    imul rbx, 3",
+          "show": [
+            "rbx"
+          ],
+          "out": "15"
+        }
+      ]
+    },
+    "arithmetic-5": {
+      "extra": [
+        {
+          "src": "    mov rax, 2\n    mov rbx, 3\n    add rax, rbx",
+          "show": [
+            "rax",
+            "rbx"
+          ],
+          "out": "5 3"
+        }
+      ]
+    },
+    "arithmetic-6": {
+      "out": "6"
+    },
+    "arithmetic-7": {
+      "pre": "    mov rbx, 3\n    mov rcx, 4",
+      "show": [
+        "rbx"
+      ],
+      "out": "12",
+      "wrong": [
+        "imul rcx , rbx"
+      ]
+    },
+    "arithmetic-8": {
+      "data": "section .data\n    digit db 0, 10",
+      "post": "    mov rax, 1\n    mov rdi, 1\n    mov rsi, digit\n    mov rdx, 2\n    syscall",
+      "fix": "    div rcx",
+      "out": "5"
+    },
+    "arithmetic-10": {
+      "show": [
+        "rbx"
+      ],
+      "out": "20"
+    },
+    "arithmetic-11": {
+      "out": "9",
+      "match_option": true
+    },
+    "arithmetic-12": {
+      "out": "1"
+    },
+    "jumps-1": {
+      "extra": [
+        {
+          "src": "    mov rax, 5\n    mov rbx, 3\n    cmp rax, rbx",
+          "show": [
+            "rax",
+            "rbx"
+          ],
+          "out": "5 3"
+        }
+      ]
+    },
+    "jumps-2": {
+      "show": [
+        "rbx"
+      ],
+      "out": "2"
+    },
+    "jumps-3": {
+      "out": "small"
+    },
+    "jumps-4": {
+      "show": [
+        "rbx"
+      ],
+      "cases": [
+        {
+          "pre": "    mov rax, 4",
+          "out": "2"
+        },
+        {
+          "pre": "    mov rax, 12",
+          "out": "1"
+        },
+        {
+          "pre": "    mov rax, 10",
+          "out": "1"
+        }
+      ]
+    },
+    "jumps-5": {
+      "post": "    je zero\n    mov rbx, 1\n    jmp done\nzero:\n    mov rbx, 2\ndone:",
+      "show": [
+        "rbx"
+      ],
+      "cases": [
+        {
+          "pre": "    mov rcx, 0",
+          "out": "2"
+        },
+        {
+          "pre": "    mov rcx, 3",
+          "out": "1"
+        }
+      ],
+      "wrong": [
+        "cmp 0 , rcx"
+      ]
+    },
+    "jumps-7": {
+      "show": [
+        "rax"
+      ],
+      "fix": "    jge done",
+      "out": "8"
+    },
+    "jumps-8": {
+      "post": "done:",
+      "show": [
+        "rax"
+      ],
+      "cases": [
+        {
+          "pre": "    mov rax, 2",
+          "out": "12"
+        },
+        {
+          "pre": "    mov rax, 5",
+          "out": "4"
+        },
+        {
+          "pre": "    mov rax, 9",
+          "out": "8"
+        }
+      ]
+    },
+    "jumps-9": {
+      "options": [
+        "    cmp rax, rbx\n    jge yes\n    mov rcx, 0\n    jmp done\nyes:\n    mov rcx, 1\ndone:",
+        "    cmp rax, rbx\n    jg yes\n    mov rcx, 0\n    jmp done\nyes:\n    mov rcx, 1\ndone:",
+        "    cmp rax, rbx\n    jle yes\n    mov rcx, 0\n    jmp done\nyes:\n    mov rcx, 1\ndone:",
+        "    cmp rax, rbx\n    jne yes\n    mov rcx, 0\n    jmp done\nyes:\n    mov rcx, 1\ndone:"
+      ],
+      "show": [
+        "rcx"
+      ],
+      "cases": [
+        {
+          "pre": "    mov rax, 5\n    mov rbx, 3",
+          "out": "1"
+        },
+        {
+          "pre": "    mov rax, 3\n    mov rbx, 3",
+          "out": "1"
+        },
+        {
+          "pre": "    mov rax, 2\n    mov rbx, 3",
+          "out": "0"
+        }
+      ]
+    },
+    "jumps-10": {
+      "out": "2"
+    },
+    "jumps-11": {
+      "post": "    mov rbx, 0\n    jmp end\nskip:\n    mov rbx, 1\nend:",
+      "show": [
+        "rbx"
+      ],
+      "out": "0"
+    },
+    "jumps-12": {
+      "data": "section .data\n    big db \"big\", 10\n    small db \"small\", 10",
+      "post": "    mov rax, 1\n    mov rdi, 1\n    syscall",
+      "fix": "    jmp print",
+      "out": "small"
+    },
+    "loops-1": {
+      "show": [
+        "rax"
+      ],
+      "out": "8"
+    },
+    "loops-2": {
+      "out": "abc",
+      "match_option": true
+    },
+    "loops-3": {
+      "extra": [
+        {
+          "src": "section .data\nmsg db \"Hi\", 10\nsame db \"same\", 10\nchanged db \"changed\", 10\n\nsection .text\n    mov rcx, 7\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 3\n    syscall\n    cmp rcx, 7\n    je keep\n    mov rsi, changed\n    mov rdx, 8\n    jmp print\nkeep:\n    mov rsi, same\n    mov rdx, 5\nprint:\n    mov rax, 1\n    mov rdi, 1\n    syscall",
+          "out": "Hi\nchanged"
+        }
+      ]
+    },
+    "loops-4": {
+      "out": "***"
+    },
+    "loops-5": {
+      "out": "***"
+    },
+    "loops-6": {
+      "post": "    je same\n    mov rax, 0\n    jmp done\nsame:\n    mov rax, 1\ndone:",
+      "show": [
+        "rax"
+      ],
+      "cases": [
+        {
+          "pre": "    mov bl, 'Z'",
+          "out": "1"
+        },
+        {
+          "pre": "    mov bl, 'Y'",
+          "out": "0"
+        }
+      ],
+      "wrong": [
+        "cmp bl , Z"
+      ]
+    },
+    "loops-7": {
+      "pre": "    mov rax, 0",
+      "show": [
+        "rax"
+      ],
+      "out": "15"
+    },
+    "loops-8": {
+      "data": "section .data\n    digit db 0, 10",
+      "fix": "    jl next",
+      "out": "0\n1\n2\n3\n4"
+    },
+    "loops-10": {
+      "options": [
+        "section .data\nstar db \"*\"\nnewline db 10\n\nsection .text\n    mov rbx, 3\nagain:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, star\n    mov rdx, 1\n    syscall\n    dec rbx\n    jnz again\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, newline\n    mov rdx, 1\n    syscall",
+        "section .data\nstar db \"*\"\nnewline db 10\n\nsection .text\n    mov rcx, 3\nagain:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, star\n    mov rdx, 1\n    syscall\n    dec rcx\n    jnz again\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, newline\n    mov rdx, 1\n    syscall",
+        "section .data\nstar db \"*\"\nnewline db 10\n\nsection .text\n    mov r11, 3\nagain:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, star\n    mov rdx, 1\n    syscall\n    dec r11\n    jnz again\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, newline\n    mov rdx, 1\n    syscall",
+        "section .data\nstar db \"*\"\nnewline db 10\n\nsection .text\n    mov rax, 3\nagain:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, star\n    mov rdx, 1\n    syscall\n    dec rax\n    jnz again\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, newline\n    mov rdx, 1\n    syscall"
+      ],
+      "out": "***"
+    },
+    "loops-11": {
+      "run": false,
+      "extra": [
+        {
+          "src": "section .data\nmsg db \"Hi\", 10\n\nsection .text\n    mov rbx, 0\nnext:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, msg\n    mov rdx, 3\n    syscall\n    add rbx, 2\n    cmp rbx, 6\n    jl next",
+          "out": "Hi\nHi\nHi"
+        }
+      ]
+    },
+    "loops-12": {
+      "show": [
+        "rbx"
+      ],
+      "out": "10",
+      "match_option": true
+    },
+    "memory-2": {
+      "out": "s"
+    },
+    "memory-3": {
+      "extra": [
+        {
+          "src": "section .data\nmsg db \"A\"\n\nsection .text\n    mov rax, 0\n    mov rsi, msg\n    mov al, [rsi]\n    mov rbx, msg\n    cmp rbx, rsi\n    jne done\n    mov rcx, 1\ndone:",
+          "show": [
+            "rax",
+            "rcx"
+          ],
+          "out": "65 1"
+        }
+      ]
+    },
+    "memory-4": {
+      "err": true,
+      "extra": [
+        {
+          "src": "section .data\na dq 1\nb dq 2\n\nsection .text\n    mov rax, [b]\n    mov [a], rax\n    mov rbx, [a]",
+          "show": [
+            "rbx"
+          ],
+          "out": "2"
+        },
+        {
+          "src": "section .data\ncount dq 0\n\nsection .text\n    mov qword [count], 5\n    mov rax, [count]",
+          "show": [
+            "rax"
+          ],
+          "out": "5"
+        }
+      ]
+    },
+    "memory-5": {
+      "out": "Cat"
+    },
+    "memory-6": {
+      "show": [
+        "rax"
+      ],
+      "out": "20",
+      "match_option": true
+    },
+    "memory-7": {
+      "show": [
+        "rbx"
+      ],
+      "out": "8"
+    },
+    "memory-8": {
+      "data": "section .data\n    text db \"Hey\"",
+      "pre": "    mov rax, 0",
+      "show": [
+        "rax"
+      ],
+      "out": "101",
+      "wrong": [
+        "mov al , text+1",
+        "mov rax , [text+1]"
+      ]
+    },
+    "memory-9": {
+      "data": "section .data\n    numbers db 1, 2, 5",
+      "pre": "    mov rax, 0",
+      "show": [
+        "rax"
+      ],
+      "fix": "    add al, [numbers+rbx]",
+      "out": "8"
+    },
+    "memory-10": {
+      "data": "section .data\n    count dq 2",
+      "post": "    mov rbx, [count]",
+      "show": [
+        "rbx"
+      ],
+      "out": "7"
+    },
+    "memory-11": {
+      "extra": [
+        {
+          "src": "section .bss\n    buf resq 4\n    after resb 1\n\nsection .text\n    mov rax, after - buf",
+          "show": [
+            "rax"
+          ],
+          "out": "32"
+        }
+      ]
+    },
+    "memory-12": {
+      "show": [
+        "rbx"
+      ],
+      "out": "6"
+    },
+    "stack-1": {
+      "show": [
+        "rbx"
+      ],
+      "out": "2"
+    },
+    "stack-2": {
+      "pre": "    mov r12, rsp",
+      "post": "    sub r12, rsp",
+      "show": [
+        "r12"
+      ],
+      "out": "16",
+      "match_option": true
+    },
+    "stack-3": {
+      "extra": [
+        {
+          "src": "    mov rbx, rsp\n    push rax\n    sub rbx, rsp",
+          "show": [
+            "rbx"
+          ],
+          "out": "8"
+        }
+      ]
+    },
+    "stack-4": {
+      "pre": "    mov rax, 1\n    mov rbx, 2",
+      "show": [
+        "rax",
+        "rbx"
+      ],
+      "out": "2 1"
+    },
+    "stack-5": {
+      "tpl": "section .text\nglobal _start\n\n_start:\n    mov rbx, 7\n    call f\n{{SHOW}}\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\n{{CODE}}\n    ud2",
+      "show": [
+        "rax",
+        "rbx"
+      ],
+      "out": "5 7"
+    },
+    "stack-6": {
+      "pre": "    push 9",
+      "show": [
+        "rax"
+      ],
+      "out": "9",
+      "wrong": [
+        "mov rax , rsp"
+      ]
+    },
+    "stack-7": {
+      "tpl": "section .text\nglobal _start\n\n_start:\n    mov rax, 3\n    mov rbx, 7\n    call f\n{{SHOW}}\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\n{{CODE}}\n    ud2",
+      "show": [
+        "rax",
+        "rbx"
+      ],
+      "fix": "    pop rbx",
+      "out": "5 7"
+    },
+    "stack-9": {
+      "extra": [
+        {
+          "src": "default rel\n\nsection .data\nyes db \"yes\", 10\nno db \"no\", 10\n\nsection .text\nglobal _start\n\n_start:\n    call check\nafter:\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\ncheck:\n    mov rax, [rsp]\n    mov rbx, after\n    cmp rax, rbx\n    jne other\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, yes\n    mov rdx, 4\n    syscall\n    ret\nother:\n    mov rax, 1\n    mov rdi, 1\n    mov rsi, no\n    mov rdx, 3\n    syscall\n    ret",
+          "out": "yes"
+        }
+      ]
+    },
+    "stack-10": {
+      "out": "B"
+    },
+    "stack-11": {
+      "out": "3",
+      "match_option": true
+    },
+    "stack-12": {
+      "err": true,
+      "out": "Hi\nHi"
+    },
+    "functions-3": {
+      "code": "triple:\n    mov rax, rdi\n    imul rax, 3\n    ret",
+      "tpl": "section .text\nglobal _start\n\n_start:\n    mov rdi, 4\n    call triple\n{{SHOW}}\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\n{{CODE}}\n    ud2",
+      "show": [
+        "rax"
+      ],
+      "out": "12"
+    },
+    "functions-5": {
+      "tpl": "section .text\nglobal _start\n\n_start:\n    mov rdi, 9\n    mov rsi, 4\n    call sub_numbers\n{{SHOW}}\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\n{{CODE}}\n    ud2",
+      "show": [
+        "rax"
+      ],
+      "out": "5"
+    },
+    "functions-6": {
+      "data": "section .data\n    msg db \"Hi\", 10",
+      "funcs": "print:\n    mov rdx, rsi\n    mov rsi, rdi\n    mov rax, 1\n    mov rdi, 1\n    syscall\n    ret",
+      "fix": "    mov rsi, 3",
+      "out": "Hi"
+    },
+    "functions-7": {
+      "tpl": "section .text\nglobal _start\n\n_start:\n    mov rbx, 7\n    mov rdi, 3\n    call square\n{{SHOW}}\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\n{{CODE}}\n    ud2",
+      "show": [
+        "rax",
+        "rbx"
+      ],
+      "out": "9 7"
+    },
+    "functions-8": {
+      "tpl": "section .text\nglobal _start\n\n_start:\n{{CODE}}\n    call f\n{{SHOW}}\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\nf:\n    mov rax, rdi\n    ret",
+      "show": [
+        "rax"
+      ],
+      "out": "7",
+      "wrong": [
+        "mov rsi , 7",
+        "mov rax , 7"
+      ]
+    },
+    "functions-10": {
+      "out": "3\n2\n1"
+    },
+    "functions-11": {
+      "code": "double:\n    push r12\n    mov r12, rdi\n    add r12, rdi\n    mov rax, r12\n    pop r12\n    ret",
+      "tpl": "section .text\nglobal _start\n\n_start:\n    mov r12, 4\n    mov rdi, 3\n    call double\n{{SHOW}}\n    mov rax, 60\n    mov rdi, 0\n    syscall\n\n{{CODE}}\n    ud2",
+      "show": [
+        "r12",
+        "rax"
+      ],
+      "out": "4 6"
+    },
+    "functions-12": {
+      "out": "2"
+    }
+  }
+}

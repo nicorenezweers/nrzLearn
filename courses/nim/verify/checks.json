@@ -1,0 +1,424 @@
+{
+  "hello-1": {
+    "extra": [
+      {
+        "src": "echo \"Hello\"\n",
+        "out": "Hello"
+      },
+      {
+        "src": "print(\"Hello\")\n",
+        "err": true
+      },
+      {
+        "src": "printf \"Hello\"\n",
+        "err": true
+      },
+      {
+        "src": "console.log(\"Hello\")\n",
+        "err": true
+      }
+    ]
+  },
+  "hello-2": {
+    "out": "3 + 4 = 7"
+  },
+  "hello-3": {
+    "extra": [
+      {
+        "src": "echo \"a\", \"b\"\n",
+        "out": "ab"
+      }
+    ]
+  },
+  "hello-4": {
+    "out": "Hello, world!"
+  },
+  "hello-5": {
+    "out": "Total: 12",
+    "distractors": true
+  },
+  "hello-6": {
+    "out": "Ready\nSet\nGo!"
+  },
+  "hello-7": {
+    "out": "42"
+  },
+  "hello-8": {
+    "out": "1 + 1"
+  },
+  "hello-10": {
+    "fix": "echo \"Middle\"",
+    "out": "Start\nMiddle\nEnd"
+  },
+  "hello-11": {
+    "fix": "echo \"World\"",
+    "out": "Hello\nWorld\n!"
+  },
+  "hello-12": {
+    "extra": [
+      {
+        "src": "echo \"Hi\"\n",
+        "out": "Hi"
+      }
+    ]
+  },
+  "variables-1": {
+    "out": "7"
+  },
+  "variables-2": {
+    "extra": [
+      {
+        "src": "let x = 1\nx = 2\necho x\n",
+        "err": true
+      },
+      {
+        "src": "var x = 1\nx = 2\necho x\n",
+        "out": "2"
+      },
+      {
+        "src": "mut x = 1\n",
+        "err": true
+      },
+      {
+        "src": "val x = 1\n",
+        "err": true
+      }
+    ]
+  },
+  "variables-3": {
+    "out": "3 2"
+  },
+  "variables-4": {
+    "out": "4.5"
+  },
+  "variables-5": {
+    "extra": [
+      {
+        "src": "var count: int\necho count\n",
+        "out": "0"
+      }
+    ]
+  },
+  "variables-6": {
+    "out": "1"
+  },
+  "variables-7": {
+    "fix": "var name = \"Ana\"",
+    "out": "Ana\nBen"
+  },
+  "variables-8": {
+    "tpl": "{{CODE}}\necho limit\n",
+    "out": "50"
+  },
+  "variables-9": {
+    "out": "15",
+    "alt_orders": [
+      [
+        0,
+        2,
+        1,
+        3
+      ]
+    ]
+  },
+  "variables-11": {
+    "fix": "let total = float(apples) * price",
+    "out": "4.5"
+  },
+  "variables-12": {
+    "extra": [
+      {
+        "src": "var price = 5\nprice = 2.5\necho price\n",
+        "err": true
+      }
+    ]
+  },
+  "strings-1": {
+    "out": "sunflower"
+  },
+  "strings-2": {
+    "err": true
+  },
+  "strings-3": {
+    "out": "Total: 12"
+  },
+  "strings-4": {
+    "out": "6"
+  },
+  "strings-5": {
+    "out": "i"
+  },
+  "strings-6": {
+    "out": "false"
+  },
+  "strings-7": {
+    "extra": [
+      {
+        "src": "echo \"nim\".toUpperAscii\n",
+        "err": true
+      },
+      {
+        "src": "import std/strutils\necho \"nim\".toUpperAscii\n",
+        "out": "NIM"
+      }
+    ]
+  },
+  "strings-8": {
+    "tpl": "let name = \"Ana\"\n{{CODE}}\n",
+    "out": "Hi, Ana",
+    "distractors": true
+  },
+  "strings-9": {
+    "out": "abcabc",
+    "alt_orders": [
+      [
+        0,
+        2,
+        1,
+        3
+      ]
+    ]
+  },
+  "strings-11": {
+    "fix": "echo \"I have \" & $count & \" \" & fruit",
+    "out": "I have 3 apples"
+  },
+  "strings-12": {
+    "out": "ell"
+  },
+  "conditions-1": {
+    "out": "medium"
+  },
+  "conditions-2": {
+    "out": "false"
+  },
+  "conditions-3": {
+    "extra": [
+      {
+        "src": "let n = 3\ncase n\nof 1: echo \"one\"\nof 2: echo \"two\"\n",
+        "err": true
+      },
+      {
+        "src": "let n = 3\ncase n\nof 1: echo \"one\"\nof 2: echo \"two\"\nelse: echo \"other\"\n",
+        "out": "other"
+      }
+    ]
+  },
+  "conditions-4": {
+    "out": "Adult"
+  },
+  "conditions-5": {
+    "out": "mid"
+  },
+  "conditions-6": {
+    "fix": "if x == 3:",
+    "out": "three"
+  },
+  "conditions-7": {
+    "tpl": "let age = 30\n{{CODE}}\n  echo \"ok\"\n",
+    "out": "ok"
+  },
+  "conditions-8": {
+    "out": "mild"
+  },
+  "conditions-10": {
+    "extra": [
+      {
+        "src": "let x = 5\nif x > 9:\n  echo \"a\"\nelif x > 3:\n  echo \"b\"\n",
+        "out": "b"
+      },
+      {
+        "src": "let x = 5\nif x > 9:\n  echo \"a\"\nelse if x > 3:\n  echo \"b\"\n",
+        "err": true
+      },
+      {
+        "src": "let x = 5\nif x > 9:\n  echo \"a\"\nelsif x > 3:\n  echo \"b\"\n",
+        "err": true
+      },
+      {
+        "src": "let x = 5\nif x > 9:\n  echo \"a\"\nelseif x > 3:\n  echo \"b\"\n",
+        "err": true
+      }
+    ]
+  },
+  "conditions-11": {
+    "fix": "if score > 50:",
+    "out": "pass"
+  },
+  "conditions-12": {
+    "out": "true false"
+  },
+  "loops-1": {
+    "out": "15"
+  },
+  "loops-2": {
+    "out": "4"
+  },
+  "loops-3": {
+    "out": "321"
+  },
+  "loops-4": {
+    "extra": [
+      {
+        "src": "var n = 0\nfor i in 1..5:\n  n += 1\necho n\n",
+        "out": "5"
+      }
+    ]
+  },
+  "loops-5": {
+    "out": "1\n2\n3"
+  },
+  "loops-6": {
+    "fix": "for i in 1..3:",
+    "out": "6"
+  },
+  "loops-7": {
+    "tpl": "var n = 1\n{{CODE}}\n  n = n * 3\necho n\n",
+    "out": "243"
+  },
+  "loops-8": {
+    "out": "2\n4",
+    "alt_orders": [
+      [
+        0,
+        3,
+        1,
+        2
+      ]
+    ]
+  },
+  "loops-10": {
+    "out": "12"
+  },
+  "loops-11": {
+    "out": "5"
+  },
+  "loops-12": {
+    "fix": "for i in countdown(5, 1):",
+    "out": "Start\n5\n4\n3\n2\n1\nEnd"
+  },
+  "procs-1": {
+    "out": "10"
+  },
+  "procs-2": {
+    "out": "8"
+  },
+  "procs-3": {
+    "out": "12"
+  },
+  "procs-4": {
+    "extra": [
+      {
+        "src": "proc three(): int =\n  result = 3\n\necho three()\n",
+        "out": "3"
+      }
+    ]
+  },
+  "procs-5": {
+    "fix": "echo add(2, 3)",
+    "out": "5"
+  },
+  "procs-6": {
+    "out": "Hi Bo"
+  },
+  "procs-7": {
+    "tpl": "{{CODE}}\n  n mod 2 == 0\n\necho isEven(4)\n",
+    "out": "true"
+  },
+  "procs-8": {
+    "out": "7"
+  },
+  "procs-10": {
+    "out": "5"
+  },
+  "procs-11": {
+    "fix": "proc reset(n: var int) =",
+    "out": "0"
+  },
+  "procs-12": {
+    "out": "3"
+  },
+  "collections-1": {
+    "out": "3 15"
+  },
+  "collections-2": {
+    "out": "y"
+  },
+  "collections-3": {
+    "extra": [
+      {
+        "src": "for i, x in @[\"a\", \"b\"]:\n  echo i, x\n",
+        "out": "0a\n1b"
+      }
+    ]
+  },
+  "collections-4": {
+    "out": "@[1, 2, 3]"
+  },
+  "collections-5": {
+    "out": "15"
+  },
+  "collections-6": {
+    "fix": "for i in 0..<nums.len:",
+    "out": "1\n2\n3"
+  },
+  "collections-7": {
+    "tpl": "{{CODE}}\nnames.add(\"Ana\")\necho names\n",
+    "out": "@[\"Ana\"]"
+  },
+  "collections-8": {
+    "out": "@[2, 4, 6]"
+  },
+  "collections-10": {
+    "out": "1"
+  },
+  "collections-11": {
+    "out": "@[\"c\", \"b\", \"d\"]"
+  },
+  "collections-12": {
+    "fix": "var a = @[1, 2, 3]",
+    "out": "4"
+  },
+  "objects-1": {
+    "out": "Rex is 3"
+  },
+  "objects-2": {
+    "out": "(x: 2, y: 6)"
+  },
+  "objects-3": {
+    "extra": [
+      {
+        "src": "type\n  Box = object\n    size: int\n    label: string\n\nlet b = Box(label: \"A\")\necho b.size\n",
+        "out": "0"
+      }
+    ]
+  },
+  "objects-4": {
+    "tpl": "type\n  Circle = object\n    radius: float\n\n{{CODE}}\n",
+    "out": "2.0"
+  },
+  "objects-5": {
+    "fix": "var p = Point(x: 1, y: 2)",
+    "out": "10"
+  },
+  "objects-6": {
+    "out": "25"
+  },
+  "objects-7": {
+    "tpl": "type\n  Point = object\n    x, y: int\n\n{{CODE}}\necho p\n",
+    "out": "(x: 3, y: 4)"
+  },
+  "objects-8": {
+    "out": "6"
+  },
+  "objects-10": {
+    "err": true
+  },
+  "objects-11": {
+    "fix": "echo pen.name, \": \", pen.price",
+    "out": "pen: 1.5"
+  },
+  "objects-12": {
+    "out": "Ben"
+  }
+}

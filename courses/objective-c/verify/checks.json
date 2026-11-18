@@ -1,0 +1,403 @@
+{
+  "hello-2": {
+    "out": "42"
+  },
+  "hello-3": {
+    "out": "Hi, Bob"
+  },
+  "hello-4": {
+    "extra": [
+      {
+        "src": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        printf(\"a\");\n        printf(\"b\\n\");\n    }\n    return 0;\n}",
+        "out": "ab"
+      }
+    ]
+  },
+  "hello-5": {
+    "out": "Ready"
+  },
+  "hello-6": {
+    "out": "3.50"
+  },
+  "hello-7": {
+    "out": "Hi",
+    "distractors": true
+  },
+  "hello-8": {
+    "tpl": "{{CODE}}\n",
+    "out": "Ready"
+  },
+  "hello-10": {
+    "tpl": "{{CODE}}\n",
+    "fix": "        printf(\"Stop\\n\");",
+    "out": "Start\nStop"
+  },
+  "hello-11": {
+    "tpl": "{{CODE}}\n",
+    "fix": "        printf(\"World\\n\");",
+    "out": "Hello\nWorld"
+  },
+  "hello-12": {
+    "extra": [
+      {
+        "src": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        printf(\"%s\\n\", [@\"Hi\" UTF8String]);\n    }\n    return 0;\n}",
+        "out": "Hi"
+      },
+      {
+        "src": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        printf(\"%s\\n\", UTF8String(@\"Hi\"));\n    }\n    return 0;\n}",
+        "err": true
+      },
+      {
+        "src": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        printf(\"%s\\n\", [UTF8String @\"Hi\"]);\n    }\n    return 0;\n}",
+        "err": true
+      },
+      {
+        "src": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        printf(\"%s\\n\", @\"Hi\"->UTF8String());\n    }\n    return 0;\n}",
+        "err": true
+      }
+    ]
+  },
+  "variables-1": {
+    "out": "3"
+  },
+  "variables-2": {
+    "out": "2"
+  },
+  "variables-3": {
+    "extra": [
+      {
+        "src": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        double x = 4.75;\n        int y = 4.75;\n        printf(\"%.2f %d\\n\", x, y);\n    }\n    return 0;\n}",
+        "out": "4.75 4",
+        "warn": true
+      }
+    ]
+  },
+  "variables-4": {
+    "out": "0"
+  },
+  "variables-5": {
+    "out": "Ada"
+  },
+  "variables-6": {
+    "out": "2.5"
+  },
+  "variables-7": {
+    "after": "printf(\"%d\\n\", [n intValue]);",
+    "out": "42",
+    "distractors": true
+  },
+  "variables-8": {
+    "out": "11 8"
+  },
+  "variables-10": {
+    "fix": "NSString *fruit = @\"pieces\";",
+    "out": "7 pieces"
+  },
+  "variables-11": {
+    "fix": "int c = [count intValue];",
+    "out": "11"
+  },
+  "variables-12": {
+    "out": "4.0"
+  },
+  "strings-1": {
+    "out": "9"
+  },
+  "strings-2": {
+    "out": "ABC"
+  },
+  "strings-3": {
+    "out": "room-12"
+  },
+  "strings-4": {
+    "extra": [
+      {
+        "src": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSString *a = @\"Good\";\n        NSString *b = [a stringByAppendingString:@\"bye\"];\n        printf(\"%s %s\\n\", [a UTF8String], [b UTF8String]);\n    }\n    return 0;\n}",
+        "out": "Good Goodbye"
+      }
+    ]
+  },
+  "strings-5": {
+    "out": "Hi Bob"
+  },
+  "strings-6": {
+    "out": "Total: 5"
+  },
+  "strings-7": {
+    "before": "NSString *a = @\"tea\";\nNSString *b = [@\"TEA\" lowercaseString];",
+    "after": "printf(\"%d\\n\", same);",
+    "out": "1",
+    "distractors": true
+  },
+  "strings-8": {
+    "out": "HELLO, ADA"
+  },
+  "strings-10": {
+    "fix": "printf(\"%s\\n\", [plural UTF8String]);",
+    "out": "5\ntrees"
+  },
+  "strings-11": {
+    "fix": "NSString *s = [NSString stringWithFormat:@\"%@ %d\", city, year];",
+    "out": "Rome 2024"
+  },
+  "strings-12": {
+    "extra": [
+      {
+        "src": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSString *a = @\"cat\";\n        NSString *b = @\"dog\";\n        NSString *c = [@\"CAT\" lowercaseString];\n        printf(\"%d %d %d\\n\", [a isEqualToString:b], [a length] == [b length], [a isEqualToString:c]);\n    }\n    return 0;\n}",
+        "out": "0 1 1"
+      }
+    ]
+  },
+  "conditions-1": {
+    "out": "medium"
+  },
+  "conditions-2": {
+    "out": "two\nthree"
+  },
+  "conditions-3": {
+    "extra": [
+      {
+        "src": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        if (3) {\n            printf(\"yes\\n\");\n        }\n    }\n    return 0;\n}",
+        "out": "yes"
+      }
+    ]
+  },
+  "conditions-4": {
+    "out": "1"
+  },
+  "conditions-5": {
+    "out": "even"
+  },
+  "conditions-6": {
+    "out": "easy"
+  },
+  "conditions-7": {
+    "tpl": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        int x = -4;\n        if (x > 0) {\n            printf(\"positive\\n\");\n        {{CODE}}\n            printf(\"negative\\n\");\n        }\n    }\n    return 0;\n}",
+    "out": "negative",
+    "distractors": true
+  },
+  "conditions-8": {
+    "out": "odd"
+  },
+  "conditions-10": {
+    "fix": "if (stock == 0) {",
+    "out": "sold out"
+  },
+  "conditions-11": {
+    "fix": "if (age >= 18) {",
+    "out": "checked"
+  },
+  "conditions-12": {
+    "out": "9"
+  },
+  "loops-1": {
+    "out": "10"
+  },
+  "loops-2": {
+    "out": "x\nx\nx\nx\nx"
+  },
+  "loops-3": {
+    "out": "6"
+  },
+  "loops-4": {
+    "out": ""
+  },
+  "loops-5": {
+    "out": "0\n1\n2"
+  },
+  "loops-6": {
+    "out": "Ann\nBen"
+  },
+  "loops-7": {
+    "tpl": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        {{CODE}}\n            printf(\"%d\\n\", i);\n        }\n    }\n    return 0;\n}",
+    "out": "5\n4\n3\n2\n1",
+    "distractors": true
+  },
+  "loops-8": {
+    "out": "1\n2\n3"
+  },
+  "loops-10": {
+    "fix": "for (int i = 1; i <= 5; i++) {",
+    "out": "15"
+  },
+  "loops-11": {
+    "fix": "    n--;",
+    "out": "3\n2\n1"
+  },
+  "loops-12": {
+    "out": "3"
+  },
+  "collections-1": {
+    "out": "y"
+  },
+  "collections-2": {
+    "out": "2"
+  },
+  "collections-3": {
+    "out": "2"
+  },
+  "collections-4": {
+    "extra": [
+      {
+        "src": "#import <Foundation/Foundation.h>\n\nint main(void) {\n    @autoreleasepool {\n        NSArray *a = @[@1];\n        [a addObject:@2];\n    }\n    return 0;\n}",
+        "err": true
+      }
+    ]
+  },
+  "collections-5": {
+    "out": "3"
+  },
+  "collections-6": {
+    "out": "4"
+  },
+  "collections-7": {
+    "before": "NSMutableArray *list = [NSMutableArray array];",
+    "after": "printf(\"%lu %s\\n\", [list count], [list[0] UTF8String]);",
+    "out": "1 tea",
+    "distractors": true
+  },
+  "collections-8": {
+    "out": "10"
+  },
+  "collections-10": {
+    "fix": "printf(\"%s\\n\", [colors[2] UTF8String]);",
+    "out": "3\nblue"
+  },
+  "collections-11": {
+    "fix": "ages[@\"Ann\"] = @30;",
+    "out": "30"
+  },
+  "collections-12": {
+    "out": "0"
+  },
+  "classes-2": {
+    "main": "printf(\"%d\\n\", [[[Box alloc] init] volume:3]);",
+    "out": "27"
+  },
+  "classes-3": {
+    "extra": [
+      {
+        "src": "#import <Foundation/Foundation.h>\n\n@interface Tool : NSObject\n+ (int)twice:(int)n;\n@end\n\n@implementation Tool\n+ (int)twice:(int)n {\n    return n * 2;\n}\n@end\n\nint main(void) {\n    @autoreleasepool {\n        printf(\"%d\\n\", [Tool twice:4]);\n    }\n    return 0;\n}",
+        "out": "8"
+      },
+      {
+        "src": "#import <Foundation/Foundation.h>\n\n@interface Tool : NSObject\n+ (int)twice:(int)n;\n@end\n\n@implementation Tool\n+ (int)twice:(int)n {\n    return n * 2;\n}\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Tool *t = [[Tool alloc] init];\n        printf(\"%d\\n\", [t twice:4]);\n    }\n    return 0;\n}",
+        "err": true
+      }
+    ]
+  },
+  "classes-4": {
+    "extra": [
+      {
+        "src": "#import <Foundation/Foundation.h>\n\n@interface Dog : NSObject\n- (void)bark;\n@end\n\n@implementation Dog\n- (void)bark {\n    printf(\"Woof!\\n\");\n}\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Dog *d = [[Dog alloc] init];\n        [d bark];\n    }\n    return 0;\n}",
+        "out": "Woof!"
+      },
+      {
+        "src": "#import <Foundation/Foundation.h>\n\n@interface Dog : NSObject\n- (void)bark;\n@end\n\n@implementation Dog\n- (void)bark {\n    printf(\"Woof!\\n\");\n}\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Dog d = [[Dog alloc] init];\n    }\n    return 0;\n}",
+        "err": true
+      },
+      {
+        "src": "#import <Foundation/Foundation.h>\n\n@interface Dog : NSObject\n- (void)bark;\n@end\n\n@implementation Dog\n- (void)bark {\n    printf(\"Woof!\\n\");\n}\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Dog *d = new Dog();\n    }\n    return 0;\n}",
+        "err": true
+      },
+      {
+        "src": "#import <Foundation/Foundation.h>\n\n@interface Dog : NSObject\n- (void)bark;\n@end\n\n@implementation Dog\n- (void)bark {\n    printf(\"Woof!\\n\");\n}\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Dog *d = [Dog alloc init];\n    }\n    return 0;\n}",
+        "err": true
+      }
+    ]
+  },
+  "classes-5": {
+    "main": "Cat *c = [[Cat alloc] init];\n[c meow];",
+    "out": "Meow"
+  },
+  "classes-6": {
+    "pre": "@interface Shop : NSObject\n- (int)priceFor:(int)count;\n@end\n\n@implementation Shop\n- (int)priceFor:(int)count {\n    return count * 3;\n}\n@end",
+    "out": "15"
+  },
+  "classes-7": {
+    "pre": "@interface Counter : NSObject\n- (void)increment;\n- (int)value;\n@end\n\n@implementation Counter {\n    int _count;\n}\n- (void)increment {\n    _count++;\n}\n- (int)value {\n    return _count;\n}\n@end",
+    "after": "[c increment];\nprintf(\"%d\\n\", [c value]);",
+    "out": "1",
+    "distractors": true
+  },
+  "classes-8": {
+    "tpl": "#import <Foundation/Foundation.h>\n\n@interface Calc : NSObject\n- (int)sumTo:(int)n;\n@end\n\n@implementation Calc\n{{CODE}}\n@end\n\nint main(void) {\n    @autoreleasepool {\n        printf(\"%d\\n\", [[[Calc alloc] init] sumTo:4]);\n    }\n    return 0;\n}\n",
+    "out": "10"
+  },
+  "classes-10": {
+    "main": "Bird *b = [[Bird alloc] init];\n[b sing];",
+    "fix": "- (void)sing;",
+    "out": "Tweet"
+  },
+  "classes-11": {
+    "pre": "@interface Dog : NSObject\n- (void)sit;\n- (void)bark;\n@end\n\n@implementation Dog\n- (void)sit {\n    printf(\"Sit\\n\");\n}\n- (void)bark {\n    printf(\"Woof\\n\");\n}\n@end",
+    "fix": "[rex bark];",
+    "out": "Sit\nWoof"
+  },
+  "classes-12": {
+    "pre": "@interface Counter : NSObject\n- (void)increment;\n- (int)value;\n@end\n\n@implementation Counter {\n    int _count;\n}\n- (void)increment {\n    _count++;\n}\n- (int)value {\n    return _count;\n}\n@end",
+    "out": "2 1"
+  },
+  "properties-1": {
+    "pre": "@interface Item : NSObject\n@property int count;\n@end\n\n@implementation Item\n@end",
+    "out": "12"
+  },
+  "properties-2": {
+    "extra": [
+      {
+        "src": "#import <Foundation/Foundation.h>\n\n@interface Person : NSObject\n@property NSString *name;\n@property int age;\n@end\n\n@implementation Person\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Person *p = [[Person alloc] init];\n        [p setAge:30];\n        printf(\"%d\\n\", p.age);\n    }\n    return 0;\n}",
+        "out": "30"
+      },
+      {
+        "src": "#import <Foundation/Foundation.h>\n\n@interface Person : NSObject\n@property NSString *name;\n@property int age;\n@end\n\n@implementation Person\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Person *p = [[Person alloc] init];\n        [p age:30];\n    }\n    return 0;\n}",
+        "err": true
+      },
+      {
+        "src": "#import <Foundation/Foundation.h>\n\n@interface Person : NSObject\n@property NSString *name;\n@property int age;\n@end\n\n@implementation Person\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Person *p = [[Person alloc] init];\n        [p setage:30];\n    }\n    return 0;\n}",
+        "err": true
+      },
+      {
+        "src": "#import <Foundation/Foundation.h>\n\n@interface Person : NSObject\n@property NSString *name;\n@property int age;\n@end\n\n@implementation Person\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Person *p = [[Person alloc] init];\n        p.setAge = 30;\n    }\n    return 0;\n}",
+        "err": true
+      }
+    ]
+  },
+  "properties-3": {
+    "extra": [
+      {
+        "src": "#import <Foundation/Foundation.h>\n\n@interface Rectangle : NSObject\n@property (nonatomic) double width;\n@property (nonatomic) double height;\n@property (nonatomic, readonly) double area;\n@end\n\n@implementation Rectangle\n- (double)area {\n    return self.width * self.height;\n}\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Rectangle *r = [[Rectangle alloc] init];\n        r.area = 5;\n    }\n    return 0;\n}",
+        "err": true
+      }
+    ]
+  },
+  "properties-4": {
+    "out": "12"
+  },
+  "properties-5": {
+    "out": "8"
+  },
+  "properties-6": {
+    "pre": "@interface Book : NSObject\n@property (nonatomic, copy) NSString *title;\n@end\n\n@implementation Book\n@end",
+    "out": "Dune"
+  },
+  "properties-7": {
+    "tpl": "#import <Foundation/Foundation.h>\n\n@interface Pet : NSObject\n{{CODE}}\n@end\n\n@implementation Pet\n@end\n\nint main(void) {\n    @autoreleasepool {\n        Pet *p = [[Pet alloc] init];\n        p.name = @\"Rex\";\n        printf(\"%s\\n\", [p.name UTF8String]);\n    }\n    return 0;\n}\n",
+    "out": "Rex",
+    "distractors": true
+  },
+  "properties-8": {
+    "out": "8"
+  },
+  "properties-10": {
+    "main": "Square *s = [[Square alloc] init];\ns.side = 3;\nprintf(\"%.1f\\n\", [s area]);",
+    "fix": "    return self.side * self.side;",
+    "out": "9.0"
+  },
+  "properties-11": {
+    "fix": "printf(\"%d\\n\", half(10));",
+    "out": "5"
+  },
+  "properties-12": {
+    "out": "1"
+  }
+}

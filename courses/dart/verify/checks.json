@@ -1,0 +1,381 @@
+{
+  "hello-1": {
+    "extra": [
+      {
+        "src": "void main() {\n  print('Hello');\n}\n",
+        "out": "Hello"
+      },
+      {
+        "src": "void main() {\n  print('Hello')\n}\n",
+        "err": true
+      },
+      {
+        "src": "void main() {\n  Print('Hello');\n}\n",
+        "err": true
+      },
+      {
+        "src": "void main() {\n  echo('Hello');\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "hello-2": {
+    "out": "11"
+  },
+  "hello-3": {
+    "out": "2"
+  },
+  "hello-4": {
+    "out": "2.5"
+  },
+  "hello-5": {
+    "out": "45"
+  },
+  "hello-6": {
+    "out": "4.0"
+  },
+  "hello-7": {
+    "out": "3"
+  },
+  "hello-8": {
+    "tpl": "void main() {\n  {{CODE}}\n}\n",
+    "out": "Hi, Dart!",
+    "distractors": true
+  },
+  "hello-9": {
+    "tpl": "{{CODE}}\n",
+    "out": "Ready\nSet\nGo"
+  },
+  "hello-11": {
+    "tpl": "{{CODE}}\n",
+    "fix": "  print('Middle');",
+    "out": "Start\nMiddle\nEnd"
+  },
+  "hello-12": {
+    "tpl": "{{CODE}}\n",
+    "fix": "  print('Done');",
+    "out": "Total:\n9\nDone"
+  },
+  "variables-1": {
+    "out": "9"
+  },
+  "variables-2": {
+    "extra": [
+      {
+        "src": "void main() {\n  double v = 4.5;\n  print(v);\n}\n",
+        "out": "4.5"
+      },
+      {
+        "src": "void main() {\n  int v = 4.5;\n  print(v);\n}\n",
+        "err": true
+      },
+      {
+        "src": "void main() {\n  String v = 4.5;\n  print(v);\n}\n",
+        "err": true
+      },
+      {
+        "src": "void main() {\n  bool v = 4.5;\n  print(v);\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "variables-3": {
+    "err": true
+  },
+  "variables-4": {
+    "out": "null"
+  },
+  "variables-5": {
+    "out": "null"
+  },
+  "variables-6": {
+    "out": "9.5"
+  },
+  "variables-7": {
+    "tpl": "{{CODE}}\n",
+    "fix": "  count = 4;",
+    "out": "4"
+  },
+  "variables-8": {
+    "tpl": "void main() {\n  {{CODE}}\n  print(limit);\n}\n",
+    "out": "10",
+    "distractors": true
+  },
+  "variables-10": {
+    "tpl": "{{CODE}}\n",
+    "out": "15"
+  },
+  "variables-11": {
+    "out": "null"
+  },
+  "variables-12": {
+    "extra": [
+      {
+        "src": "void main() {\n  const n = int.parse('5');\n  print(n);\n}\n",
+        "err": true
+      },
+      {
+        "src": "void main() {\n  final n = int.parse('5');\n  print(n);\n}\n",
+        "out": "5"
+      }
+    ]
+  },
+  "strings-1": {
+    "out": "Hi, Sam!"
+  },
+  "strings-2": {
+    "out": "x = 10"
+  },
+  "strings-3": {
+    "out": "5"
+  },
+  "strings-4": {
+    "out": "ar"
+  },
+  "strings-5": {
+    "out": "false"
+  },
+  "strings-6": {
+    "out": "DART"
+  },
+  "strings-7": {
+    "out": "code"
+  },
+  "strings-8": {
+    "tpl": "void main() {\n  var name = 'Ada';\n  {{CODE}}\n}\n",
+    "out": "3",
+    "distractors": true
+  },
+  "strings-9": {
+    "tpl": "{{CODE}}\n",
+    "out": "Hello, Ada!"
+  },
+  "strings-11": {
+    "tpl": "{{CODE}}\n",
+    "fix": "  print('Sum: ${a + b}');",
+    "out": "Sum: 5"
+  },
+  "strings-12": {
+    "out": "2"
+  },
+  "conditions-1": {
+    "out": "odd"
+  },
+  "conditions-2": {
+    "out": "mild"
+  },
+  "conditions-3": {
+    "extra": [
+      {
+        "src": "void main() {\n  var x = 1;\n  print(x == 1);\n}\n",
+        "out": "true"
+      },
+      {
+        "src": "void main() {\n  var x = 1;\n  if (x = 1) {\n    print('one');\n  }\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "conditions-4": {
+    "out": "false"
+  },
+  "conditions-5": {
+    "out": "Welcome"
+  },
+  "conditions-6": {
+    "out": "unknown"
+  },
+  "conditions-7": {
+    "out": "not positive"
+  },
+  "conditions-8": {
+    "tpl": "{{CODE}}\n",
+    "fix": "  if (a == b) {",
+    "out": "Equal"
+  },
+  "conditions-9": {
+    "tpl": "void main() {\n  {{CODE}}\n}\n",
+    "out": "Big"
+  },
+  "conditions-10": {
+    "tpl": "void main() {\n  var n = 5;\n  {{CODE}}\n  print(label);\n}\n",
+    "out": "yes",
+    "distractors": true
+  },
+  "conditions-12": {
+    "out": "Good"
+  },
+  "loops-1": {
+    "out": "10"
+  },
+  "loops-2": {
+    "out": "Hi\nHi\nHi"
+  },
+  "loops-3": {
+    "out": "27"
+  },
+  "loops-4": {
+    "out": "done"
+  },
+  "loops-5": {
+    "out": "inside"
+  },
+  "loops-6": {
+    "out": "kiwi\nfig"
+  },
+  "loops-7": {
+    "out": "12"
+  },
+  "loops-8": {
+    "tpl": "void main() {\n  {{CODE}}\n}\n",
+    "out": "3\n2\n1"
+  },
+  "loops-9": {
+    "tpl": "void main() {\n  {{CODE}}\n    print(i);\n  }\n}\n",
+    "out": "0\n1\n2\n3\n4",
+    "distractors": true
+  },
+  "loops-10": {
+    "tpl": "{{CODE}}\n",
+    "fix": "  for (var i = 1; i <= 3; i++) {",
+    "out": "1\n2\n3"
+  },
+  "loops-12": {
+    "extra": [
+      {
+        "src": "void main() {\n  var c = false;\n  do {\n    print('ran');\n  } while (c);\n  while (c) {\n    print('never');\n  }\n}\n",
+        "out": "ran"
+      }
+    ]
+  },
+  "functions-1": {
+    "out": "12"
+  },
+  "functions-2": {
+    "extra": [
+      {
+        "src": "void show(String s) {\n  print(s);\n}\n\nvoid main() {\n  show('a');\n  show('b');\n}\n",
+        "out": "a\nb"
+      },
+      {
+        "src": "void five() {\n  return 5;\n}\n\nvoid main() {\n  five();\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "functions-3": {
+    "out": "-7"
+  },
+  "functions-4": {
+    "out": "Go!"
+  },
+  "functions-5": {
+    "out": "5"
+  },
+  "functions-6": {
+    "out": "5"
+  },
+  "functions-7": {
+    "tpl": "{{CODE}}\n",
+    "fix": "  return x * x;",
+    "out": "9"
+  },
+  "functions-8": {
+    "tpl": "{{CODE}}\n\nvoid main() {\n  print(twice(4));\n}\n",
+    "out": "8",
+    "distractors": true
+  },
+  "functions-9": {
+    "tpl": "{{CODE}}\n\nvoid main() {\n  print(total(1, 2));\n}\n",
+    "out": "6"
+  },
+  "functions-11": {
+    "out": "Dr Lee"
+  },
+  "functions-12": {
+    "tpl": "{{CODE}}\n",
+    "fix": "  print(area(w: 2, h: 3));",
+    "out": "6.0"
+  },
+  "collections-1": {
+    "out": "8"
+  },
+  "collections-2": {
+    "out": "4"
+  },
+  "collections-3": {
+    "out": "null"
+  },
+  "collections-4": {
+    "out": "3"
+  },
+  "collections-5": {
+    "out": "[2, 4]"
+  },
+  "collections-6": {
+    "out": "[10, 20, 30]"
+  },
+  "collections-7": {
+    "extra": [
+      {
+        "src": "void main() {\n  var a = <String>{};\n  var b = {};\n  var c = [];\n  var d = <String>[];\n  print(a is Set);\n  print(b is Set);\n  print(c is Set);\n  print(d is Set);\n}\n",
+        "out": "true\nfalse\nfalse\nfalse"
+      }
+    ]
+  },
+  "collections-8": {
+    "tpl": "{{CODE}}\n",
+    "fix": "  print(colors[2]);",
+    "out": "blue"
+  },
+  "collections-9": {
+    "tpl": "void main() {\n  {{CODE}}\n}\n",
+    "out": "{pen: 3, cup: 1}"
+  },
+  "collections-10": {
+    "tpl": "void main() {\n  var fruits = ['fig'];\n  {{CODE}}\n  print(fruits);\n}\n",
+    "out": "[fig, kiwi]",
+    "distractors": true
+  },
+  "collections-12": {
+    "out": "77"
+  },
+  "classes-1": {
+    "out": "2"
+  },
+  "classes-2": {
+    "out": "Tom"
+  },
+  "classes-3": {
+    "err": true
+  },
+  "classes-4": {
+    "out": "5"
+  },
+  "classes-5": {
+    "out": "25"
+  },
+  "classes-6": {
+    "out": "Instance of 'Car'"
+  },
+  "classes-7": {
+    "tpl": "{{CODE}}\n",
+    "fix": "  Circle(this.r);",
+    "out": "3.0"
+  },
+  "classes-8": {
+    "tpl": "class Counter {\n  int value = 0;\n\n  void up() {\n    value++;\n  }\n}\n\nvoid main() {\n  {{CODE}}\n}\n",
+    "out": "0\nafter: 1"
+  },
+  "classes-9": {
+    "tpl": "class Point {\n  final int x;\n  final int y;\n\n  Point(this.x, this.y);\n}\n\nvoid main() {\n  {{CODE}}\n  print(p.y);\n}\n",
+    "out": "4",
+    "distractors": true
+  },
+  "classes-11": {
+    "out": "21 degrees"
+  },
+  "classes-12": {
+    "out": "false"
+  }
+}

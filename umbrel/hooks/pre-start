@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+APP_DIR="${APP_DATA_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+
+# nrzLearn kommt ohne eigenes Image und ohne Registry-Login: der kleine Dateiserver und die
+# Web-App liegen im nrzLearn-Repo auf nrzGit auf diesem Geraet (Zweig `umbrel`, Tag unten,
+# gebaut mit scripts/umbrel-release.sh). Beim ersten Start und nach Updates werden sie fuer
+# die Architektur dieses Geraets nach app/ geladen und geprueft; der Container (gepinntes
+# debian:trixie-slim) startet sie von dort. Der Lernfortschritt liegt im Browser; unter
+# data/ speichert der Server seit 6.0 nur die Einstellungen des Admin-Bereichs
+# (settings.json) und die anonyme Lernstatistik (stats.json). Die Datenbank aus 3.x
+# bleibt dort unangetastet.
+# Seit 5.0 enthaelt public.tar.gz auch die statischen Seiten aller Sprachen und die Kurstexte,
+# seit 6.0 ohne deren vorkomprimierte Kopien (die entstehen unten auf dem Geraet).
+RELEASE="umbrel-1.0.0"
+BASE="http://localhost:8390/nicorenezweers/nrzLearn/raw/tag/${RELEASE}"
+
+case "$(uname -m)" in
+  x86_64 | amd64) ARCH=amd64 ;;
+  aarch64 | arm64) ARCH=arm64 ;;
+  *) echo "nrzLearn: unsupported architecture $(uname -m)" >&2; exit 1 ;;
+esac
+
+download() {
+  TMP="$(mktemp -d "${APP_DIR}/.download.XXXXXX")"
+  trap 'rm -rf "${TMP}" "${APP_DIR}/app.new"' EXIT
+
+  fetch() {
+    if command -v curl >/dev/null 2>&1; then
+      curl -fsSL --retry 3 --retry-delay 2 -o "${TMP}/$1" "${BASE}/$1"
+    else
+      wget -q -O "${TMP}/$1" "${BASE}/$1"
+    fi
+  }
+  fetch SHA256SUMS || return 1
+  for f in "nrzlearn-server-${ARCH}.gz" public.tar.gz; do
+    fetch "$f" || return 1
+  done
+  (cd "${TMP}" && grep -E " nrzlearn-server-${ARCH}\.gz$| public\.tar\.gz$" SHA256SUMS | sha256sum -c --quiet -) || return 1
+
+  NEW="${APP_DIR}/app.new"
+  rm -rf "${NEW}"
+  mkdir -p "${NEW}/public"
+  gunzip -c "${TMP}/nrzlearn-server-${ARCH}.gz" > "${NEW}/nrzlearn-server"
+  chmod 755 "${NEW}/nrzlearn-server"
+  tar -xzf "${TMP}/public.tar.gz" -C "${NEW}/public"
+  # Seit 6.0 kommen Seiten und Kurstexte ohne vorkomprimierte Kopien (kleineres Paket): die
+  # gzip-Kopien hier einmal pro Release erzeugen, der Server liefert sie dann direkt aus.
+  find "${NEW}/public" -type f \( -name '*.html' -o -name '*.json' -o -name '*.xml' -o -name '*.txt' \) -size +1k -print0 |
+    xargs -0 -r -n 64 -P "$(nproc 2>/dev/null || echo 2)" gzip -9 -k -f || true
+  chmod -R a+rX "${NEW}"
+  echo "${RELEASE}-${ARCH}" > "${NEW}/.release"
+
+  rm -rf "${APP_DIR}/app.old"
+  if [ -d "${APP_DIR}/app" ]; then mv "${APP_DIR}/app" "${APP_DIR}/app.old"; fi
+  mv "${NEW}" "${APP_DIR}/app"
+  rm -rf "${APP_DIR}/app.old"
+}
+
+if [ "$(cat "${APP_DIR}/app/.release" 2>/dev/null || true)" != "${RELEASE}-${ARCH}" ]; then
+  if ! download; then
+    # nrzGit nicht erreichbar: mit dem bisherigen Programm weiterlaufen statt gar nicht zu starten
+    if [ -x "${APP_DIR}/app/nrzlearn-server" ]; then
+      echo "nrzLearn: ${RELEASE} nicht von nrzGit (Port 8390) ladbar, bisherige Version bleibt" >&2
+    else
+      echo "nrzLearn: Programm nicht von nrzGit (Port 8390) ladbar - ist die App nrzGit installiert und gestartet?" >&2
+      exit 1
+    fi
+  fi
+fi
+
+# Datenordner fuer Einstellungen und Statistik (der Container laeuft als 1000:1000).
+mkdir -p "${APP_DIR}/data"
+chown 1000:1000 "${APP_DIR}/data" 2>/dev/null || true

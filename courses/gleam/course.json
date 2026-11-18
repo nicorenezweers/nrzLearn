@@ -1,0 +1,1942 @@
+{
+  "course": "gleam",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Gleam!",
+      "chapter": "Basics",
+      "summary": "Write your first Gleam program, print text with io.println and use modules from the standard library.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Gleam is a friendly language with types. It runs on the Erlang virtual machine and in JavaScript. A Gleam program is made of **modules**: every `.gleam` file is one module. A program starts in a public function called `main`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\n\npub fn main() {\n  io.println(\"Hello, Gleam!\")\n}",
+          "output": "Hello, Gleam!"
+        },
+        {
+          "type": "text",
+          "md": "Line by line: `import gleam/io` loads the module `gleam/io` from the standard library. After the import, you use it by its last part, `io`. `pub fn main()` defines a function: `fn` means function, `main` is its name and `pub` (public) means that code outside the module can call it. The code of the function goes between the braces `{` and `}`."
+        },
+        {
+          "type": "heading",
+          "text": "Printing text"
+        },
+        {
+          "type": "text",
+          "md": "`io.println` prints a **string** (a text) and then ends the line. A string goes in double quotes `\"`. `io.print` prints a string but does not end the line. The lines of `main` run from top to bottom."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\n\npub fn main() {\n  io.print(\"Hello, \")\n  io.println(\"world!\")\n  io.println(\"Bye\")\n}",
+          "output": "Hello, world!\nBye"
+        },
+        {
+          "type": "text",
+          "md": "Gleam checks your program before it runs. `io.println` only accepts a string, so `io.println(42)` does not compile. You will learn how to turn numbers into strings in the next unit."
+        },
+        {
+          "type": "heading",
+          "text": "Modules"
+        },
+        {
+          "type": "text",
+          "md": "The standard library has many modules, for example `gleam/io` for printing and `gleam/string` for working with text. Write one `import` line for each module you need. `string.uppercase` writes a text in capital letters, and `string.reverse` turns it around."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\nimport gleam/string\n\npub fn main() {\n  io.println(string.uppercase(\"gleam\"))\n  io.println(string.reverse(\"stressed\"))\n}",
+          "output": "GLEAM\ndesserts"
+        },
+        {
+          "type": "tip",
+          "md": "A line that starts with `//` is a **comment**. Gleam ignores it. Gleam also warns you when you import a module that you do not use."
+        },
+        {
+          "type": "warning",
+          "md": "Gleam is case sensitive. Function names are written in lowercase with underscores, like `io.println`, so `io.Println` does not exist. Strings always use double quotes: `'Hi'` is not valid Gleam."
+        }
+      ],
+      "card": [
+        "`import gleam/io` loads the io module",
+        "`pub fn main() { … }` is where the program starts",
+        "`io.println(\"Hi\")` prints a line",
+        "`io.print(\"Hi\")` prints without ending the line",
+        "`//` starts a comment"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "In which function does a Gleam program start?",
+          "options": [
+            "`main`",
+            "`start`",
+            "`run`",
+            "`io.println`"
+          ],
+          "answer": 0,
+          "explain": "Gleam starts the program in the public function `main`."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "io.print(\"Good \")\nio.println(\"morning\")",
+          "answers": [
+            "Good morning"
+          ],
+          "explain": "`io.print` does not end the line, so `morning` follows on the same line."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "io.println(string.uppercase(\"hi\"))",
+          "answers": [
+            "HI"
+          ],
+          "explain": "`string.uppercase` writes the text in capital letters, then `io.println` prints it."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "`io.println(42)` prints the number 42.",
+          "answer": false,
+          "explain": "`io.println` only accepts a string. `42` is a number, so the program does not compile."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Complete the program so it prints Hi.",
+          "code": "import ___\n\npub fn main() {\n  io.println(\"Hi\")\n}",
+          "options": [
+            "gleam/io",
+            "\"gleam/io\"",
+            "gleam.io",
+            "io/gleam"
+          ],
+          "answer": 0,
+          "explain": "Module names are written with slashes and without quotes: `import gleam/io`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the program so it runs and prints Ready.",
+          "code": "import gleam/io\n\n___ fn main() {\n  io.println(\"Ready\")\n}",
+          "options": [
+            "pub",
+            "public",
+            "export",
+            "let"
+          ],
+          "answer": 0,
+          "explain": "`pub` makes the function public. `public` and `export` are not Gleam keywords."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-7",
+          "prompt": "Build the line that prints Hello and ends the line.",
+          "tokens": [
+            "io.println",
+            "(",
+            "\"Hello\"",
+            ")"
+          ],
+          "distractors": [
+            "println",
+            "'Hello'"
+          ],
+          "explain": "The function is `io.println` from the `io` module. The string goes in double quotes inside the parentheses."
+        },
+        {
+          "type": "order",
+          "id": "hello-8",
+          "prompt": "Put the lines in order so the program prints Ready and then Go.",
+          "lines": [
+            "pub fn main() {",
+            "  io.print(\"Re\")",
+            "  io.println(\"ady\")",
+            "  io.println(\"Go\")",
+            "}"
+          ],
+          "explain": "The lines of `main` run from top to bottom. `io.print` does not end the line, so `ady` follows `Re` on the same line."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`import gleam/io`",
+              "loads the io module"
+            ],
+            [
+              "`pub`",
+              "makes a function public"
+            ],
+            [
+              "`fn`",
+              "starts a function"
+            ],
+            [
+              "`io.print`",
+              "prints without ending the line"
+            ],
+            [
+              "`//`",
+              "starts a comment"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "import gleam/io",
+            "pub fn main() {",
+            "  io.println(\"Start\")",
+            "  io.println(\"Stop)",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "The closing quote is missing. Write `io.println(\"Stop\")`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "import gleam/io",
+            "pub fn main() {",
+            "  io.println(\"Line 1\")",
+            "  io.Println(\"Line 2\")",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "Gleam is case sensitive. The function is `io.println` with a small `p`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-12",
+          "prompt": "What does this print?",
+          "code": "io.print(\"A\")\nio.print(\"B\")\nio.println(\"C\")",
+          "options": [
+            "`ABC`",
+            "`A B C`",
+            "`C`",
+            "Each letter on its own line"
+          ],
+          "answer": 0,
+          "explain": "`io.print` does not end the line and adds no space, so all three letters are on one line."
+        }
+      ]
+    },
+    {
+      "id": "values",
+      "title": "Values and types",
+      "chapter": "Basics",
+      "summary": "Name values with let and get to know the types Int, Float, String and Bool.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Every value in Gleam has a **type**. The basic types are `Int` (whole numbers like `7`), `Float` (numbers with a decimal point like `2.5`), `String` (text like `\"hi\"`) and `Bool` (`True` or `False`)."
+        },
+        {
+          "type": "text",
+          "md": "`let` gives a value a name, for example `let apples = 3`. Names are lowercase and use underscores between words, like `total_price`. `io.println` only prints strings, so `int.to_string` from the module `gleam/int` turns an `Int` into a `String`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  let apples = 3\n  let pears = 4\n  let total = apples + pears\n  io.println(int.to_string(total))\n}",
+          "output": "7"
+        },
+        {
+          "type": "heading",
+          "text": "Int and Float"
+        },
+        {
+          "type": "text",
+          "md": "For `Int` you use `+`, `-`, `*`, `/` and `%`. The division `/` drops the remainder, and `%` gives the remainder. A `Float` has its own operators with a dot: `+.`, `-.`, `*.` and `/.`. `int.to_float` turns an `Int` into a `Float`, and `float.to_string` turns a `Float` into a `String`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/float\nimport gleam/int\nimport gleam/io\n\npub fn main() {\n  io.println(int.to_string(7 / 2))\n  io.println(int.to_string(7 % 2))\n  io.println(float.to_string(7.0 /. 2.0))\n  io.println(float.to_string(int.to_float(3) *. 1.5))\n}",
+          "output": "3\n1\n3.5\n4.5"
+        },
+        {
+          "type": "text",
+          "md": "A `Bool` is `True` or `False`, always with a capital letter. You get one from a comparison: `==` (equal), `!=` (not equal), `<`, `>`, `<=` and `>=`. `&&` means \"and\", `||` means \"or\" and `!` means \"not\". `bool.to_string` turns a `Bool` into a `String`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/bool\nimport gleam/io\n\npub fn main() {\n  let age = 20\n  let adult = age >= 18\n  io.println(bool.to_string(adult))\n  io.println(bool.to_string(adult && age < 13))\n  io.println(bool.to_string(!adult))\n}",
+          "output": "True\nFalse\nFalse"
+        },
+        {
+          "type": "heading",
+          "text": "Types and new names"
+        },
+        {
+          "type": "text",
+          "md": "Gleam finds the types by itself, but you can write them after a colon: `let score: Int = 10`. A value never changes. You can create a new value with the same name, and from then on the name means the new value."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  let score: Int = 10\n  let score = score + 5\n  io.println(int.to_string(score))\n}",
+          "output": "15"
+        },
+        {
+          "type": "tip",
+          "md": "Long numbers are easier to read with underscores: `1_000_000` is one million. Dividing an `Int` by zero does not crash in Gleam: `7 / 0` gives `0`."
+        },
+        {
+          "type": "warning",
+          "md": "Gleam never mixes `Int` and `Float`. `1 + 2.5` and `1.0 + 2.0` do not compile. Use `+.` for floats and `int.to_float` to turn an `Int` into a `Float` first."
+        }
+      ],
+      "card": [
+        "`let x = 5` gives a value a name",
+        "`Int`: `7 / 2` is `3`, `7 % 2` is `1`",
+        "`Float`: `+.` `-.` `*.` `/.`",
+        "`int.to_string(n)` turns an Int into a String",
+        "`True && False`, `||`, `!`, `==`, `!=`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "values-1",
+          "prompt": "What does this print?",
+          "code": "io.println(int.to_string(17 / 5))",
+          "answers": [
+            "3"
+          ],
+          "explain": "`/` on two `Int` values drops the remainder: 17 divided by 5 is 3, remainder 2."
+        },
+        {
+          "type": "input",
+          "id": "values-2",
+          "prompt": "What does this print?",
+          "code": "io.println(int.to_string(17 % 5))",
+          "answers": [
+            "2"
+          ],
+          "explain": "`%` gives the remainder: 17 = 3 × 5 + 2."
+        },
+        {
+          "type": "choice",
+          "id": "values-3",
+          "prompt": "Which expression compiles?",
+          "options": [
+            "`1.5 +. 2.0`",
+            "`1.5 + 2.0`",
+            "`1 +. 2.0`",
+            "`1 + 2.0`"
+          ],
+          "answer": 0,
+          "explain": "Floats need the operators with a dot, and both sides must be `Float`. `1` is an `Int`."
+        },
+        {
+          "type": "true_false",
+          "id": "values-4",
+          "statement": "After `let x = 1`, you can write `let x = x + 1` to create a new `x`.",
+          "answer": true,
+          "explain": "The old value does not change, but the name `x` now means the new value `2`."
+        },
+        {
+          "type": "gap",
+          "id": "values-5",
+          "prompt": "Complete the code so it prints 10.",
+          "code": "let price = 4\nlet count = 2\nio.println(int.to_string(price * count ___ 2))",
+          "options": [
+            "+",
+            "+.",
+            "*",
+            "-"
+          ],
+          "answer": 0,
+          "explain": "`4 * 2` is `8`, and `8 + 2` is `10`. `+.` only works with floats."
+        },
+        {
+          "type": "gap",
+          "id": "values-6",
+          "prompt": "Complete the code so it prints 42.",
+          "code": "io.println(___(42))",
+          "options": [
+            "int.to_string",
+            "float.to_string",
+            "int.to_float",
+            "to_string"
+          ],
+          "answer": 0,
+          "explain": "`42` is an `Int`, and `int.to_string` turns it into the string `\"42\"` that `io.println` needs."
+        },
+        {
+          "type": "choice",
+          "id": "values-7",
+          "prompt": "What does this print?",
+          "code": "let a = 10\nlet b = 4\nio.println(bool.to_string(a > b && b > 5))",
+          "options": [
+            "`False`",
+            "`True`",
+            "`false`",
+            "`10`"
+          ],
+          "answer": 0,
+          "explain": "`a > b` is `True`, but `b > 5` is `False`. With `&&` both must be `True`. Gleam writes `False` with a capital letter."
+        },
+        {
+          "type": "blocks",
+          "id": "values-8",
+          "prompt": "Build the line that gives the value 3.5 the name price.",
+          "tokens": [
+            "let",
+            "price",
+            "=",
+            "3.5"
+          ],
+          "distractors": [
+            "var",
+            ":="
+          ],
+          "explain": "`let`, then the name, then `=` and the value. Gleam has no `var`."
+        },
+        {
+          "type": "pairs",
+          "id": "values-9",
+          "prompt": "Match the type or operator with its meaning.",
+          "pairs": [
+            [
+              "`Int`",
+              "a whole number"
+            ],
+            [
+              "`Float`",
+              "a number with a decimal point"
+            ],
+            [
+              "`String`",
+              "a text in double quotes"
+            ],
+            [
+              "`Bool`",
+              "True or False"
+            ],
+            [
+              "`%`",
+              "the remainder of a division"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "values-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "import gleam/float",
+            "import gleam/io",
+            "pub fn main() {",
+            "  let half = 1.0 / 2.0",
+            "  io.println(float.to_string(half))",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "`/` only works with `Int` values. To divide floats, write `1.0 /. 2.0`."
+        },
+        {
+          "type": "order",
+          "id": "values-11",
+          "prompt": "Put the lines in order so the program prints 12.",
+          "lines": [
+            "pub fn main() {",
+            "  let width = 3",
+            "  let height = width + 1",
+            "  let area = width * height",
+            "  io.println(int.to_string(area))",
+            "}"
+          ],
+          "explain": "A name must exist before you use it: first `width`, then `height`, then `area`, and print at the end."
+        },
+        {
+          "type": "true_false",
+          "id": "values-12",
+          "statement": "`7 / 0` crashes a Gleam program.",
+          "answer": false,
+          "explain": "In Gleam, dividing an `Int` by zero gives `0`. The program does not crash."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings",
+      "chapter": "Basics",
+      "summary": "Join strings, use special characters and work with text using the gleam/string module.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A string is a text in double quotes. The operator `<>` joins two strings into a new string. You can join many strings in a row."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\n\npub fn main() {\n  let first = \"Ada\"\n  let last = \"Lovelace\"\n  io.println(first <> \" \" <> last)\n}",
+          "output": "Ada Lovelace"
+        },
+        {
+          "type": "text",
+          "md": "`<>` only joins strings. To add a number to a text, turn it into a string first, for example with `int.to_string`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  let age = 36\n  io.println(\"Age: \" <> int.to_string(age))\n}",
+          "output": "Age: 36"
+        },
+        {
+          "type": "heading",
+          "text": "Special characters"
+        },
+        {
+          "type": "text",
+          "md": "Some characters need a backslash `\\` in a string: `\\\"` is a double quote, `\\n` starts a new line and `\\\\` is one backslash."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\n\npub fn main() {\n  io.println(\"She said \\\"hi\\\"\")\n  io.println(\"one\\ntwo\")\n}",
+          "output": "She said \"hi\"\none\ntwo"
+        },
+        {
+          "type": "heading",
+          "text": "The string module"
+        },
+        {
+          "type": "text",
+          "md": "The module `gleam/string` has many functions for text. `string.length` counts the characters, `string.uppercase` and `string.lowercase` change the case, and `string.repeat` repeats a text a number of times."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\nimport gleam/string\n\npub fn main() {\n  let word = \"Gleam\"\n  io.println(int.to_string(string.length(word)))\n  io.println(string.uppercase(word))\n  io.println(string.lowercase(word))\n  io.println(string.repeat(\"ab\", 3))\n}",
+          "output": "5\nGLEAM\ngleam\nababab"
+        },
+        {
+          "type": "text",
+          "md": "Some functions answer a question with a `Bool`: `string.contains`, `string.starts_with` and `string.ends_with`. `string.trim` removes spaces at both ends. `string.split` cuts a text into a list of parts, and `string.join` puts parts together with a separator."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/bool\nimport gleam/io\nimport gleam/string\n\npub fn main() {\n  let text = \"  red,green,blue  \"\n  let clean = string.trim(text)\n  io.println(bool.to_string(string.contains(clean, \"green\")))\n  io.println(bool.to_string(string.starts_with(clean, \"blue\")))\n  let parts = string.split(clean, \",\")\n  io.println(string.join(parts, \" and \"))\n}",
+          "output": "True\nFalse\nred and green and blue"
+        },
+        {
+          "type": "tip",
+          "md": "The functions do not change the old string. `string.uppercase(word)` gives a new string, and `word` stays the same."
+        },
+        {
+          "type": "warning",
+          "md": "`+` does not join strings, and `\"Age: \" <> 36` does not compile because `36` is an `Int`. Use `<>` with strings only."
+        }
+      ],
+      "card": [
+        "`\"a\" <> \"b\"` gives `\"ab\"`",
+        "`\\n` new line, `\\\"` double quote",
+        "`string.length`, `string.uppercase`, `string.reverse`",
+        "`string.contains(s, \"x\")` gives a Bool",
+        "`string.split(s, \",\")` and `string.join(parts, \" \")`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this print?",
+          "code": "io.println(\"Hello\" <> \", \" <> \"Bo\")",
+          "answers": [
+            "Hello, Bo"
+          ],
+          "explain": "`<>` joins the three strings in order."
+        },
+        {
+          "type": "input",
+          "id": "strings-2",
+          "prompt": "What does this print?",
+          "code": "io.println(int.to_string(string.length(\"banana\")))",
+          "answers": [
+            "6"
+          ],
+          "explain": "`banana` has 6 characters."
+        },
+        {
+          "type": "choice",
+          "id": "strings-3",
+          "prompt": "What does this print?",
+          "code": "io.println(string.repeat(\"-\", 3) <> \"x\")",
+          "options": [
+            "`---x`",
+            "`-x-x-x`",
+            "`3x`",
+            "`---`"
+          ],
+          "answer": 0,
+          "explain": "`string.repeat(\"-\", 3)` gives `---`, then `<>` adds `x`."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-4",
+          "statement": "In Gleam, `+` joins two strings.",
+          "answer": false,
+          "explain": "`+` only adds `Int` values. Strings are joined with `<>`."
+        },
+        {
+          "type": "gap",
+          "id": "strings-5",
+          "prompt": "Complete the code so it prints Score: 9.",
+          "code": "io.println(\"Score: \" ___ int.to_string(9))",
+          "options": [
+            "<>",
+            "+",
+            "++",
+            "."
+          ],
+          "answer": 0,
+          "explain": "`<>` joins two strings."
+        },
+        {
+          "type": "gap",
+          "id": "strings-6",
+          "prompt": "Complete the code so it prints HELLO.",
+          "code": "io.println(string.___(\"hello\"))",
+          "options": [
+            "uppercase",
+            "upper",
+            "to_upper",
+            "capitalise"
+          ],
+          "answer": 0,
+          "explain": "`string.uppercase` writes all letters in capitals. `string.capitalise` only changes the first letter."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-7",
+          "prompt": "Build the line that joins `\"Hi, \"` and `name` into a value called `greeting`.",
+          "tokens": [
+            "let",
+            "greeting",
+            "=",
+            "\"Hi, \"",
+            "<>",
+            "name"
+          ],
+          "distractors": [
+            "+",
+            "++"
+          ],
+          "explain": "`<>` joins the string `\"Hi, \"` and the value of `name`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-8",
+          "prompt": "What does this print?",
+          "code": "let s = \"a-b-c\"\nio.println(string.join(string.split(s, \"-\"), \"\"))",
+          "options": [
+            "`abc`",
+            "`a-b-c`",
+            "`a b c`",
+            "`[\"a\", \"b\", \"c\"]`"
+          ],
+          "answer": 0,
+          "explain": "`string.split` gives the parts `a`, `b` and `c`. `string.join` with the empty string `\"\"` puts them together without a separator."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`<>`",
+              "joins two strings"
+            ],
+            [
+              "`\\n`",
+              "starts a new line"
+            ],
+            [
+              "`string.length`",
+              "counts the characters"
+            ],
+            [
+              "`string.trim`",
+              "removes spaces at both ends"
+            ],
+            [
+              "`string.reverse`",
+              "turns a text around"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "strings-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "import gleam/int",
+            "import gleam/io",
+            "pub fn main() {",
+            "  let count = 3",
+            "  io.println(\"Count: \" <> count)",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "`count` is an `Int`, and `<>` needs strings. Write `int.to_string(count)`."
+        },
+        {
+          "type": "order",
+          "id": "strings-11",
+          "prompt": "Put the lines in order so the program prints Hello, ADA.",
+          "lines": [
+            "pub fn main() {",
+            "  let name = \"ada\"",
+            "  let loud = string.uppercase(name)",
+            "  let text = \"Hello, \" <> loud",
+            "  io.println(text)",
+            "}"
+          ],
+          "explain": "Each line uses the name from the line before: `name`, then `loud`, then `text`."
+        },
+        {
+          "type": "input",
+          "id": "strings-12",
+          "prompt": "What does this print?",
+          "code": "io.println(bool.to_string(string.ends_with(\"photo.png\", \".png\")))",
+          "answers": [
+            "True"
+          ],
+          "explain": "The text `photo.png` ends with `.png`, so the answer is `True`."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Write your own functions, use labelled arguments, chain calls with the pipe |> and create anonymous functions.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A function gives a name to some code. You write `fn`, the name, the parameters with their types in parentheses, `->` and the type of the result. The last expression in the braces is the result. Gleam has no `return` keyword."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\n\nfn double(x: Int) -> Int {\n  x * 2\n}\n\npub fn main() {\n  io.println(int.to_string(double(21)))\n}",
+          "output": "42"
+        },
+        {
+          "type": "text",
+          "md": "A function can have several parameters and several lines. Only the value of the last line is the result. You need `pub` only for `main` and for functions that other modules use."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\n\nfn greet(name: String, greeting: String) -> String {\n  let text = greeting <> \", \" <> name\n  text <> \"!\"\n}\n\npub fn main() {\n  io.println(greet(\"Ada\", \"Hello\"))\n}",
+          "output": "Hello, Ada!"
+        },
+        {
+          "type": "heading",
+          "text": "Labelled arguments"
+        },
+        {
+          "type": "text",
+          "md": "A parameter can have a **label** in front of its name. When you call the function, you write `label: value`, and the order of labelled arguments does not matter. Labels make calls easier to read."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\n\nfn greet(name name: String, greeting greeting: String) -> String {\n  greeting <> \", \" <> name <> \"!\"\n}\n\npub fn main() {\n  io.println(greet(name: \"Ada\", greeting: \"Hi\"))\n  io.println(greet(greeting: \"Welcome\", name: \"Bo\"))\n}",
+          "output": "Hi, Ada!\nWelcome, Bo!"
+        },
+        {
+          "type": "heading",
+          "text": "The pipe"
+        },
+        {
+          "type": "text",
+          "md": "The **pipe** `|>` passes the value on its left as the first argument to the function on its right. `x |> f` means `f(x)`, and `x |> f(y)` means `f(x, y)`. With pipes you read the steps from top to bottom. `string.append(a, b)` puts `b` after `a`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\nimport gleam/string\n\npub fn main() {\n  \"  hello  \"\n  |> string.trim\n  |> string.uppercase\n  |> string.append(\"!\")\n  |> io.println\n}",
+          "output": "HELLO!"
+        },
+        {
+          "type": "heading",
+          "text": "Anonymous functions"
+        },
+        {
+          "type": "text",
+          "md": "`fn(x) { x + 3 }` is a function without a name. You can give it a name with `let` and call it, or pass it to another function. The type `fn(Int) -> Int` means a function that takes an `Int` and gives an `Int`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\n\nfn twice(f: fn(Int) -> Int, x: Int) -> Int {\n  f(f(x))\n}\n\npub fn main() {\n  let add_three = fn(x) { x + 3 }\n  io.println(int.to_string(add_three(1)))\n  io.println(int.to_string(twice(add_three, 10)))\n}",
+          "output": "4\n16"
+        },
+        {
+          "type": "warning",
+          "md": "The types must match: `double(\"4\")` does not compile, because `double` needs an `Int`. A function always gives back the value of its last expression."
+        }
+      ],
+      "card": [
+        "`fn add(a: Int, b: Int) -> Int { a + b }`",
+        "The last expression is the result",
+        "`fn f(name name: String)` is called with `f(name: \"Ada\")`",
+        "`x |> f(y)` means `f(x, y)`",
+        "`fn(x) { x * 2 }` is an anonymous function"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "fn add(a: Int, b: Int) -> Int {\n  a + b\n}\n\npub fn main() {\n  io.println(int.to_string(add(2, 3) * 2))\n}",
+          "answers": [
+            "10"
+          ],
+          "explain": "`add(2, 3)` gives `5`, and `5 * 2` is `10`."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this print? `int.subtract(a, b)` gives `a - b`.",
+          "code": "10\n|> int.subtract(3)\n|> int.to_string\n|> io.println",
+          "answers": [
+            "7"
+          ],
+          "explain": "The pipe passes `10` as the first argument: `int.subtract(10, 3)` is `7`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-3",
+          "prompt": "What does `x |> f(y)` mean?",
+          "options": [
+            "`f(x, y)`",
+            "`f(y, x)`",
+            "`x(f, y)`",
+            "`f(y)`"
+          ],
+          "answer": 0,
+          "explain": "The pipe passes the value on the left as the first argument."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-4",
+          "statement": "A Gleam function needs the keyword `return` to give back a value.",
+          "answer": false,
+          "explain": "Gleam has no `return`. The last expression of the function is its result."
+        },
+        {
+          "type": "gap",
+          "id": "functions-5",
+          "prompt": "Complete the function so the program compiles.",
+          "code": "fn triple(x: Int) -> ___ {\n  x * 3\n}",
+          "options": [
+            "Int",
+            "String",
+            "Float",
+            "int"
+          ],
+          "answer": 0,
+          "explain": "`x * 3` is an `Int`, so the result type is `Int`. Type names start with a capital letter."
+        },
+        {
+          "type": "gap",
+          "id": "functions-6",
+          "prompt": "Complete the call so the program prints 15.",
+          "code": "fn area(width w: Int, height h: Int) -> Int {\n  w * h\n}\n\npub fn main() {\n  io.println(int.to_string(area(width: 3, ___: 5)))\n}",
+          "options": [
+            "height",
+            "h",
+            "width",
+            "w"
+          ],
+          "answer": 0,
+          "explain": "In the call you use the label `height`. `h` is the name inside the function."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-7",
+          "prompt": "Build the line that names a function inc that adds 1.",
+          "tokens": [
+            "let",
+            "inc",
+            "=",
+            "fn(x)",
+            "{",
+            "x + 1",
+            "}"
+          ],
+          "distractors": [
+            "=>",
+            "->"
+          ],
+          "explain": "An anonymous function is `fn(x)` and then its body in braces."
+        },
+        {
+          "type": "choice",
+          "id": "functions-8",
+          "prompt": "What does this print?",
+          "code": "let shout = fn(s) { string.uppercase(s) <> \"!\" }\nio.println(shout(\"hey\"))",
+          "options": [
+            "`HEY!`",
+            "`hey!`",
+            "`HEY`",
+            "`shout(hey)`"
+          ],
+          "answer": 0,
+          "explain": "`shout` writes the text in capitals and adds `!`."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`fn`",
+              "defines a function"
+            ],
+            [
+              "`-> Int`",
+              "the result is an Int"
+            ],
+            [
+              "`|>`",
+              "passes a value to the next function"
+            ],
+            [
+              "`fn(x) { x }`",
+              "a function without a name"
+            ],
+            [
+              "`area(width: 3)`",
+              "a call with a labelled argument"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "functions-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "import gleam/float",
+            "import gleam/io",
+            "fn half(x: Float) -> Float {",
+            "  x /. 2.0",
+            "}",
+            "pub fn main() {",
+            "  io.println(float.to_string(half(5)))",
+            "}"
+          ],
+          "bug": 6,
+          "explain": "`half` needs a `Float`, but `5` is an `Int`. Write `half(5.0)`."
+        },
+        {
+          "type": "order",
+          "id": "functions-11",
+          "prompt": "Put the lines in order so the code prints HI YOU.",
+          "lines": [
+            "\"hi\"",
+            "|> string.append(\" you\")",
+            "|> string.uppercase",
+            "|> io.println"
+          ],
+          "explain": "Start with the value. First add ` you`, then write everything in capitals, and print at the end."
+        },
+        {
+          "type": "bug",
+          "id": "functions-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "import gleam/bool",
+            "import gleam/io",
+            "fn is_big(n: Int) -> Bool {",
+            "  n > 100",
+            "}",
+            "pub fn main() {",
+            "  io.println(is_big(500))",
+            "}"
+          ],
+          "bug": 6,
+          "explain": "`is_big` gives a `Bool`, but `io.println` needs a string. Write `bool.to_string(is_big(500))`."
+        }
+      ]
+    },
+    {
+      "id": "case",
+      "title": "Pattern matching",
+      "chapter": "Control flow",
+      "summary": "Make decisions with case expressions, patterns and guards.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Gleam has no `if` statement. To make decisions, you use `case`. It compares a value with **patterns** from top to bottom and runs the first branch that matches. Each branch is written `pattern -> result`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\n\nfn describe(n: Int) -> String {\n  case n {\n    0 -> \"zero\"\n    1 -> \"one\"\n    _ -> \"many\"\n  }\n}\n\npub fn main() {\n  io.println(describe(0))\n  io.println(describe(1))\n  io.println(describe(7))\n}",
+          "output": "zero\none\nmany"
+        },
+        {
+          "type": "text",
+          "md": "The pattern `_` matches any value, so it catches everything else. Gleam checks that a `case` handles every possible value. Without the `_` branch, this code does not compile. A `case` is an expression: it gives a value."
+        },
+        {
+          "type": "heading",
+          "text": "Yes or no"
+        },
+        {
+          "type": "text",
+          "md": "For a yes or no decision, use `case` on a `Bool` with the branches `True` and `False`. You can give the result of a `case` a name with `let`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\n\npub fn main() {\n  let temperature = 25\n  let advice = case temperature > 20 {\n    True -> \"T-shirt\"\n    False -> \"Jacket\"\n  }\n  io.println(advice)\n}",
+          "output": "T-shirt"
+        },
+        {
+          "type": "heading",
+          "text": "Guards and several patterns"
+        },
+        {
+          "type": "text",
+          "md": "A name in a pattern, like `x`, matches any value and gives it that name. A **guard** adds a condition with `if`: the branch `x if x < 0` only matches negative numbers. With `|` one branch can have several patterns."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\n\nfn sign(n: Int) -> String {\n  case n {\n    0 -> \"zero\"\n    x if x < 0 -> \"negative\"\n    _ -> \"positive\"\n  }\n}\n\nfn day_type(day: String) -> String {\n  case day {\n    \"Sat\" | \"Sun\" -> \"weekend\"\n    _ -> \"workday\"\n  }\n}\n\npub fn main() {\n  io.println(sign(-4))\n  io.println(sign(9))\n  io.println(day_type(\"Sun\"))\n  io.println(day_type(\"Mon\"))\n}",
+          "output": "negative\npositive\nweekend\nworkday"
+        },
+        {
+          "type": "heading",
+          "text": "Strings and several values"
+        },
+        {
+          "type": "text",
+          "md": "The pattern `\"Hi \" <> name` matches every string that starts with `Hi ` and gives the rest the name `name`. You can also match several values at once: write them with commas after `case`, and use the same number of patterns in each branch."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\n\nfn reply(message: String) -> String {\n  case message {\n    \"Hi \" <> name -> \"Hello, \" <> name\n    _ -> \"Pardon?\"\n  }\n}\n\nfn fizz(n: Int) -> String {\n  case n % 3, n % 5 {\n    0, 0 -> \"FizzBuzz\"\n    0, _ -> \"Fizz\"\n    _, 0 -> \"Buzz\"\n    _, _ -> \"number\"\n  }\n}\n\npub fn main() {\n  io.println(reply(\"Hi Ana\"))\n  io.println(reply(\"Yo\"))\n  io.println(fizz(15))\n  io.println(fizz(9))\n}",
+          "output": "Hello, Ana\nPardon?\nFizzBuzz\nFizz"
+        },
+        {
+          "type": "tip",
+          "md": "The order of the branches matters: only the first branch that matches runs. Put the catch-all branch `_` at the end."
+        },
+        {
+          "type": "warning",
+          "md": "Gleam cannot check whether guards cover every value. A `case` with only guard branches, like `x if x < 0` and `x if x >= 0`, does not compile. End it with a `_` branch. Guards also cannot call functions."
+        }
+      ],
+      "card": [
+        "`case x { 0 -> \"a\"  _ -> \"b\" }`",
+        "`_` matches any value",
+        "`case n > 0 { True -> …  False -> … }`",
+        "`x if x < 0 ->` is a branch with a guard",
+        "`\"a\" | \"b\" ->` several patterns, `\"Hi \" <> rest ->` start of a string"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "case-1",
+          "prompt": "What does this print?",
+          "code": "let n = 2\nlet word = case n {\n  1 -> \"one\"\n  2 -> \"two\"\n  _ -> \"other\"\n}\nio.println(word)",
+          "answers": [
+            "two"
+          ],
+          "explain": "`n` is `2`, so the second branch matches."
+        },
+        {
+          "type": "input",
+          "id": "case-2",
+          "prompt": "What does this print?",
+          "code": "let x = 7\nlet kind = case x % 2 == 0 {\n  True -> \"even\"\n  False -> \"odd\"\n}\nio.println(kind)",
+          "answers": [
+            "odd"
+          ],
+          "explain": "`7 % 2` is `1`, so `x % 2 == 0` is `False`."
+        },
+        {
+          "type": "choice",
+          "id": "case-3",
+          "prompt": "What does this print?",
+          "code": "let n = -3\nlet text = case n {\n  0 -> \"zero\"\n  x if x > 0 -> \"positive\"\n  _ -> \"negative\"\n}\nio.println(text)",
+          "options": [
+            "`negative`",
+            "`positive`",
+            "`zero`",
+            "Nothing, it does not compile"
+          ],
+          "answer": 0,
+          "explain": "`-3` is not `0` and not greater than `0`, so only the last branch `_` matches."
+        },
+        {
+          "type": "true_false",
+          "id": "case-4",
+          "statement": "A `case` must handle every possible value, or the code does not compile.",
+          "answer": true,
+          "explain": "Gleam checks that every value matches a branch. A `_` branch at the end handles the rest."
+        },
+        {
+          "type": "gap",
+          "id": "case-5",
+          "prompt": "Complete the code so it compiles and prints Meow.",
+          "code": "let animal = \"cat\"\nlet sound = case animal {\n  \"dog\" -> \"Woof\"\n  \"cat\" -> \"Meow\"\n  ___ -> \"...\"\n}\nio.println(sound)",
+          "options": [
+            "_",
+            "else",
+            "*",
+            ".."
+          ],
+          "answer": 0,
+          "explain": "`_` matches any other value. Gleam has no `else` branch."
+        },
+        {
+          "type": "gap",
+          "id": "case-6",
+          "prompt": "Complete the guard so the code prints teen.",
+          "code": "let age = 15\nlet group = case age {\n  a ___ a < 13 -> \"child\"\n  a if a < 18 -> \"teen\"\n  _ -> \"adult\"\n}\nio.println(group)",
+          "options": [
+            "if",
+            "when",
+            "where",
+            "&&"
+          ],
+          "answer": 0,
+          "explain": "A guard starts with `if`."
+        },
+        {
+          "type": "blocks",
+          "id": "case-7",
+          "prompt": "Build the branch that gives weekend for Sat and Sun.",
+          "tokens": [
+            "\"Sat\"",
+            "|",
+            "\"Sun\"",
+            "->",
+            "\"weekend\""
+          ],
+          "distractors": [
+            "||",
+            "=>"
+          ],
+          "explain": "`|` puts several patterns in one branch, and `->` comes before the result."
+        },
+        {
+          "type": "choice",
+          "id": "case-8",
+          "prompt": "What does this print?",
+          "code": "let a = 0\nlet b = 5\nlet r = case a, b {\n  0, 0 -> \"both\"\n  0, _ -> \"first\"\n  _, 0 -> \"second\"\n  _, _ -> \"none\"\n}\nio.println(r)",
+          "options": [
+            "`first`",
+            "`both`",
+            "`second`",
+            "`none`"
+          ],
+          "answer": 0,
+          "explain": "`a` is `0` and `b` is `5`. The first branch that matches is `0, _`."
+        },
+        {
+          "type": "pairs",
+          "id": "case-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`_`",
+              "matches any value"
+            ],
+            [
+              "`->`",
+              "separates pattern and result"
+            ],
+            [
+              "`x if x > 0`",
+              "a pattern with a guard"
+            ],
+            [
+              "`1 | 2`",
+              "several patterns in one branch"
+            ],
+            [
+              "`\"Hi \" <> name`",
+              "matches the start of a string"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "case-10",
+          "prompt": "This code does not compile. Which line has the bug?",
+          "lines": [
+            "fn grade(points: Int) -> String {",
+            "  case points {",
+            "    p if p >= 90 -> \"A\"",
+            "    p if p >= 50 -> \"B\"",
+            "    p if p < 50 -> \"C\"",
+            "  }",
+            "}"
+          ],
+          "bug": 4,
+          "explain": "Gleam cannot see that the guards cover every number. Write `_ -> \"C\"` as the last branch."
+        },
+        {
+          "type": "order",
+          "id": "case-11",
+          "prompt": "Put the lines in order so that `size(20)` gives huge, `size(5)` gives big and `size(1)` gives small.",
+          "lines": [
+            "fn size(n: Int) -> String {",
+            "  case n {",
+            "    x if x > 10 -> \"huge\"",
+            "    x if x > 3 -> \"big\"",
+            "    _ -> \"small\"",
+            "  }",
+            "}"
+          ],
+          "explain": "The first matching branch wins, so the strictest guard comes first and `_` comes last."
+        },
+        {
+          "type": "true_false",
+          "id": "case-12",
+          "statement": "In a `case`, every branch that matches runs, from top to bottom.",
+          "answer": false,
+          "explain": "Only the first branch that matches runs. The other branches are skipped."
+        }
+      ]
+    },
+    {
+      "id": "lists",
+      "title": "Lists",
+      "chapter": "Data",
+      "summary": "Store many values in a list and work with list.map, list.filter, list.fold and list patterns.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **list** holds many values of the same type in order: `[3, 1, 2]` is a `List(Int)`. The module `gleam/list` has functions for lists. `string.inspect` turns any value into a string that looks like Gleam code, so you can print a list."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\nimport gleam/list\nimport gleam/string\n\npub fn main() {\n  let numbers = [3, 1, 2]\n  io.println(string.inspect(numbers))\n  io.println(int.to_string(list.length(numbers)))\n  io.println(string.inspect(list.reverse(numbers)))\n  io.println(string.inspect([\"a\", \"b\"]))\n}",
+          "output": "[3, 1, 2]\n3\n[2, 1, 3]\n[\"a\", \"b\"]"
+        },
+        {
+          "type": "text",
+          "md": "`[1, ..numbers]` makes a new list with `1` in front of the items of `numbers`. The old list does not change. `list.append` joins two lists."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\nimport gleam/list\nimport gleam/string\n\npub fn main() {\n  let numbers = [2, 3]\n  let more = [1, ..numbers]\n  io.println(string.inspect(more))\n  io.println(string.inspect(numbers))\n  io.println(string.inspect(list.append(more, [4, 5])))\n}",
+          "output": "[1, 2, 3]\n[2, 3]\n[1, 2, 3, 4, 5]"
+        },
+        {
+          "type": "heading",
+          "text": "map, filter and fold"
+        },
+        {
+          "type": "text",
+          "md": "`list.map` calls a function for every item and gives a new list with the results. `list.filter` keeps only the items for which the function gives `True`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\nimport gleam/list\nimport gleam/string\n\npub fn main() {\n  let numbers = [1, 2, 3, 4, 5]\n  let doubled = list.map(numbers, fn(x) { x * 2 })\n  let even = list.filter(numbers, fn(x) { x % 2 == 0 })\n  io.println(string.inspect(doubled))\n  io.println(string.inspect(even))\n}",
+          "output": "[2, 4, 6, 8, 10]\n[2, 4]"
+        },
+        {
+          "type": "text",
+          "md": "`list.fold` combines all items into one value. It takes the list, a start value and a function. The function gets the result so far (`acc`) and the next item. List functions work well with the pipe `|>`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\nimport gleam/list\nimport gleam/string\n\npub fn main() {\n  let total = list.fold([1, 2, 3, 4], 0, fn(acc, x) { acc + x })\n  io.println(int.to_string(total))\n  [1, 2, 3, 4, 5, 6]\n  |> list.filter(fn(x) { x > 3 })\n  |> list.map(fn(x) { x * 100 })\n  |> string.inspect\n  |> io.println\n}",
+          "output": "10\n[400, 500, 600]"
+        },
+        {
+          "type": "heading",
+          "text": "Matching lists"
+        },
+        {
+          "type": "text",
+          "md": "In a `case`, the pattern `[]` matches the empty list, `[x]` a list with exactly one item, and `[first, ..rest]` the first item and a list with the rest. If you do not need the rest, write `[first, ..]`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\nimport gleam/list\n\nfn describe(items: List(String)) -> String {\n  case items {\n    [] -> \"empty\"\n    [one] -> \"only \" <> one\n    [first, ..rest] ->\n      first <> \" and \" <> int.to_string(list.length(rest)) <> \" more\"\n  }\n}\n\npub fn main() {\n  io.println(describe([]))\n  io.println(describe([\"tea\"]))\n  io.println(describe([\"milk\", \"bread\", \"rice\"]))\n}",
+          "output": "empty\nonly tea\nmilk and 2 more"
+        },
+        {
+          "type": "tip",
+          "md": "Lists are made to go through the items in order. Putting an item in front with `[x, ..list]` is fast, adding at the end with `list.append` is slower."
+        },
+        {
+          "type": "warning",
+          "md": "All items of a list have the same type. `[1, \"two\"]` does not compile."
+        }
+      ],
+      "card": [
+        "`[1, 2, 3]` is a `List(Int)`, `[0, ..xs]` adds in front",
+        "`list.map(xs, fn(x) { x * 2 })` changes every item",
+        "`list.filter(xs, fn(x) { x > 1 })` keeps some items",
+        "`list.fold(xs, 0, fn(acc, x) { acc + x })`",
+        "`case xs { [] -> …  [first, ..rest] -> … }`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "lists-1",
+          "prompt": "What does this print?",
+          "code": "io.println(string.inspect(list.map([1, 2, 3], fn(x) { x + 10 })))",
+          "answers": [
+            "[11, 12, 13]"
+          ],
+          "explain": "`list.map` adds 10 to every item."
+        },
+        {
+          "type": "input",
+          "id": "lists-2",
+          "prompt": "What does this print?",
+          "code": "io.println(int.to_string(list.fold([2, 3, 4], 1, fn(acc, x) { acc * x })))",
+          "answers": [
+            "24"
+          ],
+          "explain": "The start value is `1`. Then `1 * 2 = 2`, `2 * 3 = 6`, `6 * 4 = 24`."
+        },
+        {
+          "type": "choice",
+          "id": "lists-3",
+          "prompt": "What does this print?",
+          "code": "let xs = [2, 3]\nlet ys = [1, ..xs]\nio.println(string.inspect(xs) <> \" \" <> string.inspect(ys))",
+          "options": [
+            "`[2, 3] [1, 2, 3]`",
+            "`[1, 2, 3] [1, 2, 3]`",
+            "`[2, 3] [1, [2, 3]]`",
+            "`[2, 3] [2, 3, 1]`"
+          ],
+          "answer": 0,
+          "explain": "`[1, ..xs]` makes a new list `ys`. The list `xs` does not change."
+        },
+        {
+          "type": "true_false",
+          "id": "lists-4",
+          "statement": "A list can hold an Int and a String at the same time, like `[1, \"two\"]`.",
+          "answer": false,
+          "explain": "All items of a list have the same type, so `[1, \"two\"]` does not compile."
+        },
+        {
+          "type": "gap",
+          "id": "lists-5",
+          "prompt": "Complete the code so it prints [3, 4].",
+          "code": "let numbers = [1, 2, 3, 4]\nio.println(string.inspect(list.___(numbers, fn(x) { x > 2 })))",
+          "options": [
+            "filter",
+            "map",
+            "fold",
+            "keep"
+          ],
+          "answer": 0,
+          "explain": "`list.filter` keeps the items where the function gives `True`. `list.map` would give a list of `Bool` values."
+        },
+        {
+          "type": "gap",
+          "id": "lists-6",
+          "prompt": "Complete the pattern so the function gives the first item.",
+          "code": "fn first_or_zero(xs: List(Int)) -> Int {\n  case xs {\n    [] -> 0\n    ___ -> first\n  }\n}",
+          "options": [
+            "[first, ..]",
+            "[first]",
+            "first :: rest",
+            "[..first]"
+          ],
+          "answer": 0,
+          "explain": "`[first, ..]` matches every list with at least one item. `[first]` only matches lists with exactly one item."
+        },
+        {
+          "type": "blocks",
+          "id": "lists-7",
+          "prompt": "Build the line that doubles every item of numbers.",
+          "tokens": [
+            "let",
+            "doubled",
+            "=",
+            "list.map(numbers,",
+            "fn(x)",
+            "{",
+            "x * 2",
+            "})"
+          ],
+          "distractors": [
+            "list.filter(numbers,",
+            "=>"
+          ],
+          "explain": "`list.map` calls the function for every item and gives the new list."
+        },
+        {
+          "type": "choice",
+          "id": "lists-8",
+          "prompt": "What does this print?",
+          "code": "let items = [5, 6, 7]\nlet text = case items {\n  [] -> \"none\"\n  [x] -> int.to_string(x)\n  [x, ..rest] -> int.to_string(x + list.length(rest))\n}\nio.println(text)",
+          "options": [
+            "`7`",
+            "`5`",
+            "`18`",
+            "`none`"
+          ],
+          "answer": 0,
+          "explain": "The list has three items, so the last branch matches: `x` is `5` and `rest` is `[6, 7]` with length `2`."
+        },
+        {
+          "type": "pairs",
+          "id": "lists-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`[]`",
+              "the empty list"
+            ],
+            [
+              "`[x, ..rest]`",
+              "the first item and the rest"
+            ],
+            [
+              "`list.map`",
+              "changes every item"
+            ],
+            [
+              "`list.filter`",
+              "keeps some items"
+            ],
+            [
+              "`list.fold`",
+              "combines all items into one value"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "lists-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "pub fn main() {",
+            "  let prices = [3, 5, 2]",
+            "  let total = list.fold(prices, fn(acc, x) { acc + x }, 0)",
+            "  io.println(int.to_string(total))",
+            "}"
+          ],
+          "bug": 2,
+          "explain": "`list.fold` takes the list, then the start value, then the function: `list.fold(prices, 0, fn(acc, x) { acc + x })`."
+        },
+        {
+          "type": "order",
+          "id": "lists-11",
+          "prompt": "Put the lines in order so the code prints [3, 5, 7].",
+          "lines": [
+            "[1, 2, 3, 4, 5, 6]",
+            "|> list.filter(fn(x) { x % 2 == 0 })",
+            "|> list.map(fn(x) { x + 1 })",
+            "|> string.inspect",
+            "|> io.println"
+          ],
+          "explain": "First keep the even numbers `[2, 4, 6]`, then add 1 to each, then turn the list into a string and print it."
+        },
+        {
+          "type": "input",
+          "id": "lists-12",
+          "prompt": "What does this print?",
+          "code": "io.println(int.to_string(list.length([[1, 2], [3]])))",
+          "answers": [
+            "2"
+          ],
+          "explain": "The outer list has two items: the lists `[1, 2]` and `[3]`."
+        }
+      ]
+    },
+    {
+      "id": "recursion",
+      "title": "Recursion",
+      "chapter": "Control flow",
+      "summary": "Repeat work with functions that call themselves, on numbers and on lists.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Gleam has no loops like `for` or `while`. To repeat something, a function calls itself. This is called **recursion**. A recursive function needs a **base case** that stops, and a recursive case that comes closer to the base case with each call."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\n\nfn countdown(n: Int) -> Nil {\n  case n {\n    0 -> io.println(\"Go!\")\n    _ -> {\n      io.println(int.to_string(n))\n      countdown(n - 1)\n    }\n  }\n}\n\npub fn main() {\n  countdown(3)\n}",
+          "output": "3\n2\n1\nGo!"
+        },
+        {
+          "type": "text",
+          "md": "`Nil` is the type of a function that gives back nothing useful, like `io.println`. Its only value is also written `Nil`. Braces `{ }` group several expressions into a block. The block runs them in order and gives the value of the last one."
+        },
+        {
+          "type": "heading",
+          "text": "Recursion with numbers"
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\n\nfn factorial(n: Int) -> Int {\n  case n {\n    0 -> 1\n    _ -> n * factorial(n - 1)\n  }\n}\n\npub fn main() {\n  io.println(int.to_string(factorial(5)))\n}",
+          "output": "120"
+        },
+        {
+          "type": "text",
+          "md": "Follow the calls: `factorial(3)` is `3 * factorial(2)`, which is `3 * 2 * factorial(1)`, which is `3 * 2 * 1 * factorial(0)`. The base case `0 -> 1` stops the calls, and the result is `6`."
+        },
+        {
+          "type": "heading",
+          "text": "Recursion with lists"
+        },
+        {
+          "type": "text",
+          "md": "Lists work the same way. The empty list `[]` is the base case. For `[first, ..rest]` you handle the first item and call the function again with the rest."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\nimport gleam/string\n\nfn sum(numbers: List(Int)) -> Int {\n  case numbers {\n    [] -> 0\n    [first, ..rest] -> first + sum(rest)\n  }\n}\n\nfn double_all(numbers: List(Int)) -> List(Int) {\n  case numbers {\n    [] -> []\n    [first, ..rest] -> [first * 2, ..double_all(rest)]\n  }\n}\n\npub fn main() {\n  io.println(int.to_string(sum([1, 2, 3, 4])))\n  io.println(string.inspect(double_all([1, 2, 3])))\n}",
+          "output": "10\n[2, 4, 6]"
+        },
+        {
+          "type": "heading",
+          "text": "Accumulators"
+        },
+        {
+          "type": "text",
+          "md": "An **accumulator** is an extra parameter that carries the result so far. When the recursive call is the very last step, Gleam does not need extra memory for it. So this style works even for a million calls."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\n\nfn sum_to(n: Int, acc: Int) -> Int {\n  case n {\n    0 -> acc\n    _ -> sum_to(n - 1, acc + n)\n  }\n}\n\npub fn main() {\n  io.println(int.to_string(sum_to(100, 0)))\n  io.println(int.to_string(sum_to(1_000_000, 0)))\n}",
+          "output": "5050\n500000500000"
+        },
+        {
+          "type": "tip",
+          "md": "Functions like `list.map` and `list.fold` use recursion inside. When one of them fits your task, use it instead of writing the recursion yourself."
+        },
+        {
+          "type": "warning",
+          "md": "Without a base case, or when the calls do not come closer to it, the function calls itself forever and the program never finishes."
+        }
+      ],
+      "card": [
+        "A recursive function calls itself",
+        "Base case: `0 -> 1` or `[] -> 0` stops the calls",
+        "`[first, ..rest] -> first + sum(rest)`",
+        "Accumulator: `sum_to(n - 1, acc + n)`",
+        "`Nil` is the type of \"nothing\""
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "recursion-1",
+          "prompt": "What does this print?",
+          "code": "fn f(n: Int) -> Int {\n  case n {\n    0 -> 0\n    _ -> n + f(n - 1)\n  }\n}\n\npub fn main() {\n  io.println(int.to_string(f(4)))\n}",
+          "answers": [
+            "10"
+          ],
+          "explain": "`f(4)` is `4 + 3 + 2 + 1 + 0`, which is `10`."
+        },
+        {
+          "type": "input",
+          "id": "recursion-2",
+          "prompt": "What does this print?",
+          "code": "fn count(xs: List(String)) -> Int {\n  case xs {\n    [] -> 0\n    [_, ..rest] -> 1 + count(rest)\n  }\n}\n\npub fn main() {\n  io.println(int.to_string(count([\"a\", \"b\", \"c\"])))\n}",
+          "answers": [
+            "3"
+          ],
+          "explain": "Each call adds 1 and skips one item with `_`. Three items give `3`."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-3",
+          "prompt": "Which line is the base case?",
+          "code": "fn factorial(n: Int) -> Int {\n  case n {\n    0 -> 1\n    _ -> n * factorial(n - 1)\n  }\n}",
+          "options": [
+            "`0 -> 1`",
+            "`_ -> n * factorial(n - 1)`",
+            "`case n {`",
+            "`fn factorial(n: Int) -> Int {`"
+          ],
+          "answer": 0,
+          "explain": "The base case gives a result without calling the function again. Here this is `0 -> 1`."
+        },
+        {
+          "type": "true_false",
+          "id": "recursion-4",
+          "statement": "Gleam has a `for` loop to repeat code.",
+          "answer": false,
+          "explain": "Gleam has no loops. You repeat code with recursion or with functions like `list.map`."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-5",
+          "prompt": "Complete the base case so `sum([1, 2, 3])` gives 6.",
+          "code": "fn sum(xs: List(Int)) -> Int {\n  case xs {\n    [] -> ___\n    [x, ..rest] -> x + sum(rest)\n  }\n}",
+          "options": [
+            "0",
+            "1",
+            "[]",
+            "x"
+          ],
+          "answer": 0,
+          "explain": "The sum of an empty list is `0`. With `1`, every sum would be one too big."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-6",
+          "prompt": "Complete the recursive call so `countdown(2)` prints 2, 1 and Go!.",
+          "code": "fn countdown(n: Int) -> Nil {\n  case n {\n    0 -> io.println(\"Go!\")\n    _ -> {\n      io.println(int.to_string(n))\n      countdown(___)\n    }\n  }\n}",
+          "options": [
+            "n - 1",
+            "n - 2",
+            "0"
+          ],
+          "answer": 0,
+          "explain": "Each call must come one step closer to the base case `0`, so the next call uses `n - 1`."
+        },
+        {
+          "type": "blocks",
+          "id": "recursion-7",
+          "prompt": "Build the recursive branch of `sum`.",
+          "tokens": [
+            "[first, ..rest]",
+            "->",
+            "first",
+            "+",
+            "sum(rest)"
+          ],
+          "distractors": [
+            "=>",
+            "[first, rest]"
+          ],
+          "explain": "The pattern takes the first item, and the function adds it to the sum of the rest."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-8",
+          "prompt": "What does this print?",
+          "code": "fn build(n: Int) -> List(Int) {\n  case n {\n    0 -> []\n    _ -> [n, ..build(n - 1)]\n  }\n}\n\npub fn main() {\n  io.println(string.inspect(build(3)))\n}",
+          "options": [
+            "`[3, 2, 1]`",
+            "`[1, 2, 3]`",
+            "`[3, 2, 1, 0]`",
+            "`[0, 1, 2, 3]`"
+          ],
+          "answer": 0,
+          "explain": "Each call puts `n` in front of the rest: `[3, ..[2, ..[1, ..[]]]]`. The base case adds no `0`."
+        },
+        {
+          "type": "pairs",
+          "id": "recursion-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`0 -> 1`",
+              "a base case that stops"
+            ],
+            [
+              "`n * fact(n - 1)`",
+              "a recursive call"
+            ],
+            [
+              "`go(n - 1, acc + n)`",
+              "a call with an accumulator"
+            ],
+            [
+              "`Nil`",
+              "the value for nothing"
+            ],
+            [
+              "`[_, ..rest]`",
+              "skips the first item"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "recursion-10",
+          "prompt": "This function never finishes. Which line has the bug?",
+          "lines": [
+            "fn sum_to(n: Int) -> Int {",
+            "  case n {",
+            "    0 -> 0",
+            "    _ -> n + sum_to(n)",
+            "  }",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "The call `sum_to(n)` does not come closer to `0`. Write `sum_to(n - 1)`."
+        },
+        {
+          "type": "order",
+          "id": "recursion-11",
+          "prompt": "Put the lines in order to write the body of `countdown`, so that `countdown(3)` gives `[3, 2, 1]`.",
+          "lines": [
+            "case n {",
+            "  0 -> []",
+            "  _ -> {",
+            "    let rest = countdown(n - 1)",
+            "    [n, ..rest]",
+            "  }",
+            "}"
+          ],
+          "explain": "The base case `0 -> []` must come first, because `_` matches every number. In the other branch, `rest` must exist before you put `n` in front of it."
+        },
+        {
+          "type": "true_false",
+          "id": "recursion-12",
+          "statement": "`go(3, 0)` gives `6`.",
+          "code": "fn go(n: Int, acc: Int) -> Int {\n  case n {\n    0 -> acc\n    _ -> go(n - 1, acc + 2)\n  }\n}",
+          "answer": true,
+          "explain": "Each of the 3 calls adds `2` to the accumulator: `0 + 2 + 2 + 2` is `6`."
+        }
+      ]
+    },
+    {
+      "id": "types",
+      "title": "Custom types",
+      "chapter": "Types",
+      "summary": "Define your own types and records, and handle missing values and errors with Result and Option.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "With `type` you define your own type. You list its **variants**, and a value of the type is exactly one of them. Type names and variant names start with a capital letter. You handle the variants with `case`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\n\ntype Weather {\n  Sunny\n  Rainy\n  Snowy\n}\n\nfn advice(weather: Weather) -> String {\n  case weather {\n    Sunny -> \"Take sunglasses\"\n    Rainy -> \"Take an umbrella\"\n    Snowy -> \"Wear boots\"\n  }\n}\n\npub fn main() {\n  io.println(advice(Sunny))\n  io.println(advice(Rainy))\n  io.println(advice(Snowy))\n}",
+          "output": "Take sunglasses\nTake an umbrella\nWear boots"
+        },
+        {
+          "type": "heading",
+          "text": "Records"
+        },
+        {
+          "type": "text",
+          "md": "A variant can hold values in **fields** with labels. Such a value is called a **record**. You create it like a function call, `Person(name: \"Ada\", age: 36)`, and read a field with a dot: `ada.name`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\n\ntype Person {\n  Person(name: String, age: Int)\n}\n\npub fn main() {\n  let ada = Person(name: \"Ada\", age: 36)\n  io.println(ada.name)\n  let older = Person(..ada, age: ada.age + 1)\n  io.println(int.to_string(older.age))\n  io.println(int.to_string(ada.age))\n}",
+          "output": "Ada\n37\n36"
+        },
+        {
+          "type": "text",
+          "md": "`Person(..ada, age: 37)` makes a copy of `ada` with a new `age`. The old record does not change. Different variants can hold different fields, and a pattern like `Circle(r)` gives the field a name."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/float\nimport gleam/io\n\ntype Shape {\n  Circle(radius: Float)\n  Rectangle(width: Float, height: Float)\n}\n\nfn area(shape: Shape) -> Float {\n  case shape {\n    Circle(r) -> 3.0 *. r *. r\n    Rectangle(w, h) -> w *. h\n  }\n}\n\npub fn main() {\n  io.println(float.to_string(area(Circle(2.0))))\n  io.println(float.to_string(area(Rectangle(2.0, 3.5))))\n}",
+          "output": "12.0\n7.0"
+        },
+        {
+          "type": "heading",
+          "text": "Result and Option"
+        },
+        {
+          "type": "text",
+          "md": "Something that can fail gives a `Result`: `Ok(value)` when it works, or `Error(reason)` when it fails. `int.parse` turns a string into an `Int` and gives `Ok` with the number or `Error(Nil)`. You handle both cases with `case`."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/int\nimport gleam/io\n\nfn check(text: String) -> String {\n  case int.parse(text) {\n    Ok(n) -> \"number \" <> int.to_string(n * 2)\n    Error(_) -> \"not a number\"\n  }\n}\n\npub fn main() {\n  io.println(check(\"21\"))\n  io.println(check(\"abc\"))\n}",
+          "output": "number 42\nnot a number"
+        },
+        {
+          "type": "text",
+          "md": "An `Option` from `gleam/option` is a value that may be missing: `Some(value)` or `None`. With `import gleam/option.{type Option, None, Some}` you can write `Option`, `Some` and `None` without `option.` in front. `option.unwrap` gives the value or a default."
+        },
+        {
+          "type": "code",
+          "code": "import gleam/io\nimport gleam/option.{type Option, None, Some}\n\nfn greet(name: Option(String)) -> String {\n  case name {\n    Some(n) -> \"Hello, \" <> n\n    None -> \"Hello, stranger\"\n  }\n}\n\npub fn main() {\n  io.println(greet(Some(\"Kim\")))\n  io.println(greet(None))\n  io.println(option.unwrap(None, \"default\"))\n}",
+          "output": "Hello, Kim\nHello, stranger\ndefault"
+        },
+        {
+          "type": "tip",
+          "md": "`result.unwrap` from `gleam/result` gives the value inside `Ok` or a default: `result.unwrap(int.parse(\"x\"), 0)` gives `0`."
+        },
+        {
+          "type": "warning",
+          "md": "Names of types and variants start with a capital letter, like `Person` and `Some`. Names of values and functions start with a small letter."
+        }
+      ],
+      "card": [
+        "`type Color { Red Green }` defines a custom type",
+        "`type P { P(name: String) }` is a record, `p.name` reads a field",
+        "`P(..p, name: \"Bo\")` copies with a change",
+        "`Ok(x)` or `Error(e)` is a `Result`",
+        "`Some(x)` or `None` is an `Option`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "types-1",
+          "prompt": "What does this print?",
+          "code": "type Pet {\n  Pet(name: String, legs: Int)\n}\n\npub fn main() {\n  let p = Pet(name: \"Rex\", legs: 4)\n  io.println(p.name <> \" \" <> int.to_string(p.legs))\n}",
+          "answers": [
+            "Rex 4"
+          ],
+          "explain": "`p.name` is `Rex` and `p.legs` is `4`."
+        },
+        {
+          "type": "input",
+          "id": "types-2",
+          "prompt": "What does this print?",
+          "code": "io.println(int.to_string(result.unwrap(int.parse(\"12\"), 0) + 1))",
+          "answers": [
+            "13"
+          ],
+          "explain": "`int.parse(\"12\")` gives `Ok(12)`, `result.unwrap` takes out `12`, and `12 + 1` is `13`."
+        },
+        {
+          "type": "choice",
+          "id": "types-3",
+          "prompt": "What does this print?",
+          "code": "let text = case int.parse(\"7x\") {\n  Ok(n) -> int.to_string(n)\n  Error(_) -> \"error\"\n}\nio.println(text)",
+          "options": [
+            "`error`",
+            "`7`",
+            "`7x`",
+            "`0`"
+          ],
+          "answer": 0,
+          "explain": "`7x` is not a whole number, so `int.parse` gives `Error(Nil)`."
+        },
+        {
+          "type": "true_false",
+          "id": "types-4",
+          "statement": "Variant names like `Red` must start with a capital letter.",
+          "answer": true,
+          "explain": "Gleam only accepts variant names with a capital letter. `red` would be a name for a value."
+        },
+        {
+          "type": "gap",
+          "id": "types-5",
+          "prompt": "Complete the code so `action(Green)` gives go.",
+          "code": "type Light {\n  Red\n  Green\n}\n\nfn action(light: Light) -> String {\n  case light {\n    Red -> \"stop\"\n    ___ -> \"go\"\n  }\n}",
+          "options": [
+            "Green",
+            "\"Green\"",
+            "Light",
+            "Light.Green"
+          ],
+          "answer": 0,
+          "explain": "The pattern is the variant name `Green` without quotes."
+        },
+        {
+          "type": "gap",
+          "id": "types-6",
+          "prompt": "Complete the code so it prints Gleam 2024.",
+          "code": "type Book {\n  Book(title: String, year: Int)\n}\n\npub fn main() {\n  let a = Book(title: \"Gleam\", year: 2020)\n  let b = Book(___, year: 2024)\n  io.println(b.title <> \" \" <> int.to_string(b.year))\n}",
+          "options": [
+            "..a",
+            "a",
+            "...a",
+            "a.."
+          ],
+          "answer": 0,
+          "explain": "`Book(..a, year: 2024)` copies `a` and changes only `year`."
+        },
+        {
+          "type": "blocks",
+          "id": "types-7",
+          "prompt": "Build the line that creates a Point with x 1 and y 2.",
+          "tokens": [
+            "let",
+            "p",
+            "=",
+            "Point(",
+            "x: 1,",
+            "y: 2",
+            ")"
+          ],
+          "distractors": [
+            "point(",
+            "new Point("
+          ],
+          "explain": "A record is created like a function call with the variant name and the labelled fields."
+        },
+        {
+          "type": "choice",
+          "id": "types-8",
+          "prompt": "What does this print?",
+          "code": "let r = Rect(w: 2, h: 3)\nlet r2 = Rect(..r, h: 10)\nio.println(int.to_string(r.h + r2.w))",
+          "options": [
+            "`5`",
+            "`12`",
+            "`13`",
+            "`20`"
+          ],
+          "answer": 0,
+          "explain": "`r` does not change, so `r.h` is `3`. `r2` keeps `w: 2`. `3 + 2` is `5`."
+        },
+        {
+          "type": "pairs",
+          "id": "types-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`Ok(5)`",
+              "success with a value"
+            ],
+            [
+              "`Error(Nil)`",
+              "failure without details"
+            ],
+            [
+              "`Some(\"Kim\")`",
+              "a value is there"
+            ],
+            [
+              "`None`",
+              "no value"
+            ],
+            [
+              "`p.name`",
+              "reads a field"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "types-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "fn describe(r: Result(Int, Nil)) -> String {",
+            "  case r {",
+            "    Ok(n) -> int.to_string(n)",
+            "    None -> \"missing\"",
+            "  }",
+            "}"
+          ],
+          "bug": 3,
+          "explain": "A `Result` is `Ok` or `Error`. `None` belongs to `Option`. Write `Error(_) -> \"missing\"`."
+        },
+        {
+          "type": "order",
+          "id": "types-11",
+          "prompt": "Put the lines in order so the program prints 10.",
+          "lines": [
+            "pub fn main() {",
+            "  let p = Player(name: \"Mia\", score: 0)",
+            "  let p = Player(..p, score: p.score + 5)",
+            "  let p = Player(..p, score: p.score * 2)",
+            "  io.println(int.to_string(p.score))",
+            "}"
+          ],
+          "explain": "Start with score `0`, add `5`, then double it to `10`. Doubling first would give `5`."
+        },
+        {
+          "type": "true_false",
+          "id": "types-12",
+          "statement": "`int.parse(\"42\")` gives `Ok(42)`.",
+          "answer": true,
+          "explain": "The text is a valid whole number, so the result is `Ok` with the number `42`."
+        }
+      ]
+    }
+  ]
+}

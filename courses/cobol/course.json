@@ -1,0 +1,1945 @@
+{
+  "course": "cobol",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, COBOL!",
+      "chapter": "Basics",
+      "summary": "Write your first COBOL program, learn how its divisions fit together and print text with DISPLAY.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "COBOL (Common Business-Oriented Language) is one of the oldest programming languages. Banks, insurance companies and governments still run large COBOL programs every day. COBOL code reads almost like English sentences."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. HELLO.\nPROCEDURE DIVISION.\n    DISPLAY \"Hello, COBOL!\"\n    STOP RUN.",
+          "output": "Hello, COBOL!"
+        },
+        {
+          "type": "text",
+          "md": "The first line, `>>SOURCE FORMAT FREE`, tells the compiler that you use **free format**: a line may start in any column. Older COBOL code uses fixed format, where some columns have special meanings. This course always uses free format."
+        },
+        {
+          "type": "text",
+          "md": "`IDENTIFICATION DIVISION.` starts the first part of the program. `PROGRAM-ID. HELLO.` gives the program its name, here `HELLO`. `PROCEDURE DIVISION.` starts the part with the **statements**, the instructions that the computer runs from top to bottom."
+        },
+        {
+          "type": "text",
+          "md": "`DISPLAY` prints text and then ends the line. Text in double quotes, like `\"Hello, COBOL!\"`, is a **literal**: COBOL prints it exactly as written. `STOP RUN` ends the program."
+        },
+        {
+          "type": "heading",
+          "text": "Divisions"
+        },
+        {
+          "type": "text",
+          "md": "A COBOL program has up to four **divisions**, always in this order: `IDENTIFICATION`, `ENVIRONMENT`, `DATA` and `PROCEDURE`. Only the `IDENTIFICATION DIVISION` with `PROGRAM-ID` is required. You do not need the `ENVIRONMENT DIVISION` in this course, and you meet the `DATA DIVISION` in the next unit."
+        },
+        {
+          "type": "heading",
+          "text": "Printing with DISPLAY"
+        },
+        {
+          "type": "text",
+          "md": "One `DISPLAY` can print several items. It puts them next to each other without spaces, so you add spaces inside the quotes yourself. Numbers like `42` need no quotes. Each `DISPLAY` prints one line."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. SHOW.\nPROCEDURE DIVISION.\n    DISPLAY \"Total: \" 42\n    DISPLAY \"A\" \"B\" \"C\"\n    DISPLAY \"Done\"\n    STOP RUN.",
+          "output": "Total: 42\nABC\nDone"
+        },
+        {
+          "type": "text",
+          "md": "Add `WITH NO ADVANCING` to stay on the same line. The next `DISPLAY` then continues where the last one stopped."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. SAMELINE.\nPROCEDURE DIVISION.\n    DISPLAY \"Loading\" WITH NO ADVANCING\n    DISPLAY \"...\" WITH NO ADVANCING\n    DISPLAY \" ready\"\n    STOP RUN.",
+          "output": "Loading... ready"
+        },
+        {
+          "type": "tip",
+          "md": "The period `.` ends every division header and the `PROGRAM-ID` line. In the `PROCEDURE DIVISION`, this course puts a period only after the last statement, `STOP RUN.`. COBOL ignores upper and lower case in keywords, so `display` works like `DISPLAY`, but most COBOL code is written in capitals."
+        },
+        {
+          "type": "tip",
+          "md": "In exercises, short examples often show only the statements of the `PROCEDURE DIVISION`. Imagine them inside a complete program like the ones above."
+        }
+      ],
+      "card": [
+        "`>>SOURCE FORMAT FREE` lets lines start in any column",
+        "`IDENTIFICATION DIVISION.` + `PROGRAM-ID. NAME.` name the program",
+        "`PROCEDURE DIVISION.` holds the statements",
+        "`DISPLAY \"Total: \" 42` prints items side by side and ends the line",
+        "`STOP RUN.` ends the program"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which division holds the statements that the program runs?",
+          "options": [
+            "`PROCEDURE DIVISION`",
+            "`IDENTIFICATION DIVISION`",
+            "`DATA DIVISION`",
+            "`ENVIRONMENT DIVISION`"
+          ],
+          "answer": 0,
+          "explain": "The statements, such as `DISPLAY` and `STOP RUN`, always go into the `PROCEDURE DIVISION`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "DISPLAY \"A\" \"B\" \"C\"",
+          "options": [
+            "`ABC`",
+            "`A B C`",
+            "`\"A\" \"B\" \"C\"`",
+            "`C`"
+          ],
+          "answer": 0,
+          "explain": "`DISPLAY` prints its items next to each other without spaces and without the quotes."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "How many lines does this print?",
+          "code": "DISPLAY \"One\" WITH NO ADVANCING\nDISPLAY \"Two\"\nDISPLAY \"Three\"",
+          "answers": [
+            "2"
+          ],
+          "explain": "`WITH NO ADVANCING` keeps `Two` on the same line as `One`. `Three` goes on the second line."
+        },
+        {
+          "type": "input",
+          "id": "hello-4",
+          "prompt": "What does this print?",
+          "code": "DISPLAY \"Price: \" 15 \" EUR\"",
+          "answers": [
+            "Price: 15 EUR"
+          ],
+          "explain": "The three items are printed side by side. The spaces come from inside the quotes."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-5",
+          "statement": "The `DATA DIVISION` may come before the `IDENTIFICATION DIVISION`.",
+          "answer": false,
+          "explain": "The divisions always come in the same order, and `IDENTIFICATION DIVISION` is first."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-6",
+          "statement": "`display \"Hi\"` works the same as `DISPLAY \"Hi\"`.",
+          "answer": true,
+          "explain": "COBOL ignores upper and lower case in keywords. Only the text inside quotes is printed exactly as written."
+        },
+        {
+          "type": "gap",
+          "id": "hello-7",
+          "prompt": "Complete the program so it prints Hello.",
+          "code": "IDENTIFICATION DIVISION.\nPROGRAM-ID. HELLO.\nPROCEDURE DIVISION.\n    ___ \"Hello\"\n    STOP RUN.",
+          "options": [
+            "DISPLAY",
+            "PRINT",
+            "WRITE",
+            "SHOW"
+          ],
+          "answer": 0,
+          "explain": "COBOL prints with `DISPLAY`. `WRITE` exists, but it writes to files."
+        },
+        {
+          "type": "gap",
+          "id": "hello-8",
+          "prompt": "Complete the line that ends the program.",
+          "code": "IDENTIFICATION DIVISION.\nPROGRAM-ID. BYE.\nPROCEDURE DIVISION.\n    DISPLAY \"Bye\"\n    ___ RUN.",
+          "options": [
+            "STOP",
+            "END",
+            "EXIT",
+            "HALT"
+          ],
+          "answer": 0,
+          "explain": "`STOP RUN` ends a COBOL program."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-9",
+          "prompt": "Build the statement that prints Hi and stays on the same line.",
+          "tokens": [
+            "DISPLAY",
+            "\"Hi\"",
+            "WITH",
+            "NO",
+            "ADVANCING"
+          ],
+          "distractors": [
+            "PRINT",
+            "NEWLINE"
+          ],
+          "explain": "`WITH NO ADVANCING` comes after the items, so the line does not end."
+        },
+        {
+          "type": "order",
+          "id": "hello-10",
+          "prompt": "Put the lines in order to make a complete program that prints Ready.",
+          "lines": [
+            "IDENTIFICATION DIVISION.",
+            "PROGRAM-ID. READY.",
+            "PROCEDURE DIVISION.",
+            "    DISPLAY \"Ready\"",
+            "    STOP RUN."
+          ],
+          "explain": "First the `IDENTIFICATION DIVISION` with the `PROGRAM-ID`, then the `PROCEDURE DIVISION` with the statements. `STOP RUN` comes last."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-11",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`PROGRAM-ID. PAY.`",
+              "gives the program a name"
+            ],
+            [
+              "`PROCEDURE DIVISION.`",
+              "starts the statements"
+            ],
+            [
+              "`DISPLAY`",
+              "prints a line"
+            ],
+            [
+              "`WITH NO ADVANCING`",
+              "stays on the same line"
+            ],
+            [
+              "`STOP RUN.`",
+              "ends the program"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "IDENTIFICATION DIVISION.",
+            "PROGRAM-ID. HELLO.",
+            "PROCEDURE DIVISION",
+            "    DISPLAY \"Hello\"",
+            "    STOP RUN."
+          ],
+          "bug": 2,
+          "explain": "A division header ends with a period. Write `PROCEDURE DIVISION.`."
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "title": "Data and PIC clauses",
+      "chapter": "Basics",
+      "summary": "Declare data items in WORKING-STORAGE, describe them with PIC clauses, give them start values and copy data with MOVE.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A program keeps values in **data items**, which other languages call variables. In COBOL you declare every data item before you use it. Data items go into the `DATA DIVISION`, in the `WORKING-STORAGE SECTION`, between the `IDENTIFICATION DIVISION` and the `PROCEDURE DIVISION`."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. CITIES.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 CITY PIC X(5) VALUE \"Paris\".\n01 FOUNDED PIC 9(4) VALUE 1190.\nPROCEDURE DIVISION.\n    DISPLAY \"City: \" CITY\n    DISPLAY \"Founded: \" FOUNDED\n    STOP RUN.",
+          "output": "City: Paris\nFounded: 1190"
+        },
+        {
+          "type": "text",
+          "md": "Each declaration is one line that ends with a period. `01` is the **level number**: `01` means a data item of its own. Then comes the name, which may use letters, digits and hyphens. `PIC` (short for picture) describes what the item can hold, and `VALUE` gives it a start value."
+        },
+        {
+          "type": "text",
+          "md": "In a `PIC` clause, `9` stands for one digit, `X` for any character and `A` for a letter or a space. A number in parentheses repeats the character: `9(4)` is the same as `9999`, and `X(5)` holds exactly five characters."
+        },
+        {
+          "type": "text",
+          "md": "The size is fixed. A number always shows all its digits, so `PIC 9(3)` with the value `7` prints `007`. Text that is shorter than its item is filled with spaces on the right. The brackets in the next example only show where the item starts and ends."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. SIZES.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 SCORE PIC 9(3) VALUE 7.\n01 TOWN PIC X(6) VALUE \"Rome\".\nPROCEDURE DIVISION.\n    DISPLAY SCORE\n    DISPLAY \"[\" TOWN \"]\"\n    STOP RUN.",
+          "output": "007\n[Rome  ]"
+        },
+        {
+          "type": "heading",
+          "text": "Copying values with MOVE"
+        },
+        {
+          "type": "text",
+          "md": "`MOVE 25 TO AGE` puts `25` into `AGE` and replaces the old value. `MOVE OLD-AGE TO AGE` copies the value of `OLD-AGE` into `AGE`, and `OLD-AGE` keeps its value. One `MOVE` can fill several items: `MOVE 0 TO A B`."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. MOVES.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 AGE PIC 99 VALUE 18.\n01 OLD-AGE PIC 99.\nPROCEDURE DIVISION.\n    DISPLAY AGE\n    MOVE 25 TO AGE\n    DISPLAY AGE\n    MOVE AGE TO OLD-AGE\n    MOVE 30 TO AGE\n    DISPLAY OLD-AGE \" \" AGE\n    STOP RUN.",
+          "output": "18\n25\n25 30"
+        },
+        {
+          "type": "text",
+          "md": "When a value is too big for its item, COBOL cuts it off without an error. Text loses characters on the **right**. Numbers lose digits on the **left**, because COBOL keeps the digits that line up with the item."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. CUTS.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 SHORT-NAME PIC X(4).\n01 NUM PIC 99.\nPROCEDURE DIVISION.\n    MOVE \"Alexander\" TO SHORT-NAME\n    MOVE 1234 TO NUM\n    DISPLAY SHORT-NAME\n    DISPLAY NUM\n    STOP RUN.",
+          "output": "Alex\n34"
+        },
+        {
+          "type": "text",
+          "md": "Higher level numbers such as `05` build a **group**: the `05` items belong to the `01` item above them. The group is all of its items in a row, so `DISPLAY PERSON` prints both parts without a space. A group has no `PIC` of its own."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. GROUPS.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 PERSON.\n    05 FIRST-NAME PIC X(3) VALUE \"Ana\".\n    05 BIRTH-YEAR PIC 9(4) VALUE 1990.\nPROCEDURE DIVISION.\n    DISPLAY FIRST-NAME\n    DISPLAY PERSON\n    STOP RUN.",
+          "output": "Ana\nAna1990"
+        },
+        {
+          "type": "tip",
+          "md": "From now on, short examples in exercises show the data items and the statements together. Imagine the `01` lines in the `WORKING-STORAGE SECTION` and the statements in the `PROCEDURE DIVISION`, followed by `STOP RUN`."
+        }
+      ],
+      "card": [
+        "`WORKING-STORAGE SECTION.` lists the data items",
+        "`01 AGE PIC 99 VALUE 18.` = level, name, picture, start value",
+        "`9` digit, `X` any character, `A` letter; `X(5)` = `XXXXX`",
+        "`MOVE 25 TO AGE` replaces the value",
+        "Too big: text is cut on the right, numbers on the left"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "data-1",
+          "prompt": "What does this print?",
+          "code": "01 SCORE PIC 9(4) VALUE 42.\nDISPLAY SCORE",
+          "answers": [
+            "0042"
+          ],
+          "explain": "`PIC 9(4)` always shows four digits, so COBOL adds two zeros on the left."
+        },
+        {
+          "type": "choice",
+          "id": "data-2",
+          "prompt": "Which picture can hold the name Maria?",
+          "options": [
+            "`PIC X(10)`",
+            "`PIC 9(10)`",
+            "`PIC X`",
+            "`PIC 9(5)`"
+          ],
+          "answer": 0,
+          "explain": "`X` holds any character and `X(10)` has room for ten of them. `PIC X` holds only one character, and `9` is meant only for digits."
+        },
+        {
+          "type": "input",
+          "id": "data-3",
+          "prompt": "What does this print?",
+          "code": "01 TOWN PIC X(5).\nMOVE \"Barcelona\" TO TOWN\nDISPLAY TOWN",
+          "answers": [
+            "Barce"
+          ],
+          "explain": "`TOWN` has room for five characters. Text is cut off on the right."
+        },
+        {
+          "type": "input",
+          "id": "data-4",
+          "prompt": "What does this print?",
+          "code": "01 YY PIC 99.\nMOVE 2025 TO YY\nDISPLAY YY",
+          "answers": [
+            "25"
+          ],
+          "explain": "`YY` has two digits. Numbers lose their digits on the left, so `25` stays."
+        },
+        {
+          "type": "true_false",
+          "id": "data-5",
+          "statement": "`PIC 9(3)` and `PIC 999` describe the same kind of data item.",
+          "answer": true,
+          "explain": "The number in parentheses repeats the character, so `9(3)` means three digits, like `999`."
+        },
+        {
+          "type": "gap",
+          "id": "data-6",
+          "prompt": "Complete the declaration so that AGE starts at 30.",
+          "code": "01 AGE PIC 99 ___ 30.\nDISPLAY AGE",
+          "options": [
+            "VALUE",
+            "IS",
+            "=",
+            "TO"
+          ],
+          "answer": 0,
+          "explain": "`VALUE` gives a data item its start value."
+        },
+        {
+          "type": "gap",
+          "id": "data-7",
+          "prompt": "Complete the code so it prints 5.",
+          "code": "01 QTY PIC 9.\n___ 5 TO QTY\nDISPLAY QTY",
+          "options": [
+            "MOVE",
+            "SET",
+            "PUT",
+            "COPY"
+          ],
+          "answer": 0,
+          "explain": "`MOVE 5 TO QTY` puts the value `5` into `QTY`."
+        },
+        {
+          "type": "blocks",
+          "id": "data-8",
+          "prompt": "Build the statement that copies PRICE into OLD-PRICE.",
+          "tokens": [
+            "MOVE",
+            "PRICE",
+            "TO",
+            "OLD-PRICE"
+          ],
+          "distractors": [
+            "INTO",
+            "="
+          ],
+          "explain": "`MOVE` names the source first and the target after `TO`."
+        },
+        {
+          "type": "choice",
+          "id": "data-9",
+          "prompt": "What does this print?",
+          "code": "01 ITEM-CODE.\n    05 LETTERS PIC X(3) VALUE \"ABC\".\n    05 DIGITS PIC 99 VALUE 7.\nDISPLAY ITEM-CODE",
+          "options": [
+            "`ABC07`",
+            "`ABC 07`",
+            "`ABC7`",
+            "`ITEM-CODE`"
+          ],
+          "answer": 0,
+          "explain": "A group is all of its items in a row. `DIGITS` has two digits, so `7` prints as `07`."
+        },
+        {
+          "type": "pairs",
+          "id": "data-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`9`",
+              "one digit"
+            ],
+            [
+              "`X`",
+              "any character"
+            ],
+            [
+              "`A`",
+              "a letter or a space"
+            ],
+            [
+              "`VALUE`",
+              "start value"
+            ],
+            [
+              "`05`",
+              "part of a group"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "data-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "01 TOWN PIC X(4) VALUE \"Oslo\".",
+            "01 TEMP PIC 99 VALUE 5.",
+            "MOVE 12 TO TEMP",
+            "DISPLAY TOWN \" \" TEMP",
+            "MOVE \"Rome\" INTO TOWN",
+            "DISPLAY TOWN"
+          ],
+          "bug": 4,
+          "explain": "`MOVE` always uses `TO`. Write `MOVE \"Rome\" TO TOWN`."
+        },
+        {
+          "type": "bug",
+          "id": "data-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "01 DAYS PIC 99 VALUE 100.",
+            "01 MONTHS PIC 99 VALUE 3.",
+            "DISPLAY DAYS",
+            "DISPLAY MONTHS"
+          ],
+          "bug": 0,
+          "explain": "`PIC 99` holds at most `99`, so the start value `100` does not fit. Use `PIC 999`."
+        }
+      ]
+    },
+    {
+      "id": "arithmetic",
+      "title": "Arithmetic",
+      "chapter": "Basics",
+      "summary": "Calculate with ADD, SUBTRACT, MULTIPLY, DIVIDE and COMPUTE, and work with decimals and ROUNDED.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "COBOL has an English verb for each kind of calculation. `ADD 5 TO TOTAL` adds `5` to `TOTAL` and stores the result in `TOTAL`. `SUBTRACT 3 FROM TOTAL` subtracts. `MULTIPLY 2 BY TOTAL` and `DIVIDE 4 INTO TOTAL` also store their result in `TOTAL`, the last item."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. VERBS.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 TOTAL PIC 999 VALUE 10.\nPROCEDURE DIVISION.\n    ADD 5 TO TOTAL\n    DISPLAY TOTAL\n    SUBTRACT 3 FROM TOTAL\n    DISPLAY TOTAL\n    MULTIPLY 2 BY TOTAL\n    DISPLAY TOTAL\n    DIVIDE 4 INTO TOTAL\n    DISPLAY TOTAL\n    STOP RUN.",
+          "output": "015\n012\n024\n006"
+        },
+        {
+          "type": "text",
+          "md": "With `GIVING`, the result goes into another item and the inputs stay the same. `DIVIDE A BY B GIVING C` divides `A` by `B`. Add `REMAINDER R` to keep what is left over."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. GIVING.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 A PIC 99 VALUE 17.\n01 B PIC 99 VALUE 5.\n01 C PIC 99.\n01 R PIC 99.\nPROCEDURE DIVISION.\n    ADD A TO B GIVING C\n    DISPLAY \"Sum: \" C\n    MULTIPLY A BY B GIVING C\n    DISPLAY \"Product: \" C\n    DIVIDE A BY B GIVING C REMAINDER R\n    DISPLAY \"Quotient: \" C \" Remainder: \" R\n    STOP RUN.",
+          "output": "Sum: 22\nProduct: 85\nQuotient: 03 Remainder: 02"
+        },
+        {
+          "type": "heading",
+          "text": "Formulas with COMPUTE"
+        },
+        {
+          "type": "text",
+          "md": "`COMPUTE` calculates a whole formula and stores the result in the item before `=`. It uses `+` and `-`, `*` to multiply, `/` to divide and `**` for a power. `*` and `/` come before `+` and `-`, and parentheses change the order."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. FORMULA.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 RESULT PIC 999.\nPROCEDURE DIVISION.\n    COMPUTE RESULT = 2 + 3 * 4\n    DISPLAY RESULT\n    COMPUTE RESULT = (2 + 3) * 4\n    DISPLAY RESULT\n    COMPUTE RESULT = 2 ** 5\n    DISPLAY RESULT\n    STOP RUN.",
+          "output": "014\n020\n032"
+        },
+        {
+          "type": "warning",
+          "md": "Always put spaces around the operators. A hyphen can be part of a name, so COBOL reads `A-B` as one name, not as `A` minus `B`. Write `A - B`."
+        },
+        {
+          "type": "heading",
+          "text": "Decimals"
+        },
+        {
+          "type": "text",
+          "md": "`V` in a picture marks where the decimal point is. `PIC 9(3)V99` holds three digits before the point and two after it. The point is not stored, so to print the number nicely you move it to an **edited** picture. In an edited picture, `.` prints the point and `Z` prints a space instead of a leading zero."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. PRICE.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 PRICE PIC 9(3)V99 VALUE 4.25.\n01 SHOWN PIC ZZ9.99.\nPROCEDURE DIVISION.\n    MULTIPLY 3 BY PRICE\n    MOVE PRICE TO SHOWN\n    DISPLAY \"Total:\" SHOWN\n    STOP RUN.",
+          "output": "Total: 12.75"
+        },
+        {
+          "type": "text",
+          "md": "If a result has more decimals than the item can hold, COBOL cuts the extra digits off. Add `ROUNDED` after the result item to round instead: `2.5` becomes `3`."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. ROUND.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 WHOLE PIC 99.\nPROCEDURE DIVISION.\n    COMPUTE WHOLE = 10 / 4\n    DISPLAY WHOLE\n    COMPUTE WHOLE ROUNDED = 10 / 4\n    DISPLAY WHOLE\n    STOP RUN.",
+          "output": "02\n03"
+        },
+        {
+          "type": "warning",
+          "md": "A result that is too big loses its digits on the left without an error: `99 + 1` in `PIC 99` gives `00`. Add `ON SIZE ERROR` and a statement to react instead, for example `ADD 1 TO N ON SIZE ERROR DISPLAY \"Too big\" END-ADD`. Then `N` keeps its old value."
+        }
+      ],
+      "card": [
+        "`ADD 5 TO N`, `SUBTRACT 3 FROM N`, `MULTIPLY 2 BY N`, `DIVIDE 4 INTO N`",
+        "`DIVIDE A BY B GIVING C REMAINDER R`",
+        "`COMPUTE C = (A + B) * 2 ** 3` with spaces around operators",
+        "`PIC 9(3)V99` stores decimals; `PIC ZZ9.99` prints them",
+        "`COMPUTE N ROUNDED = 10 / 4` rounds instead of cutting"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "arithmetic-1",
+          "prompt": "What does this print?",
+          "code": "01 N PIC 99 VALUE 7.\nADD 5 TO N\nDISPLAY N",
+          "answers": [
+            "12"
+          ],
+          "explain": "`ADD 5 TO N` adds `5` to `7` and stores `12` in `N`."
+        },
+        {
+          "type": "input",
+          "id": "arithmetic-2",
+          "prompt": "What does this print?",
+          "code": "01 Q PIC 9.\n01 R PIC 9.\nDIVIDE 17 BY 5 GIVING Q REMAINDER R\nDISPLAY \"Q=\" Q \" R=\" R",
+          "answers": [
+            "Q=3 R=2"
+          ],
+          "explain": "`17` divided by `5` is `3`, and `2` is left over."
+        },
+        {
+          "type": "choice",
+          "id": "arithmetic-3",
+          "prompt": "What does this print?",
+          "code": "01 N PIC 99 VALUE 4.\nMULTIPLY 3 BY N\nDISPLAY N",
+          "options": [
+            "`12`",
+            "`04`",
+            "`03`",
+            "`34`"
+          ],
+          "answer": 0,
+          "explain": "Without `GIVING`, `MULTIPLY 3 BY N` stores the result `12` in `N`."
+        },
+        {
+          "type": "choice",
+          "id": "arithmetic-4",
+          "prompt": "What does this print?",
+          "code": "01 X PIC 99.\nCOMPUTE X = 2 + 3 * 4\nDISPLAY X",
+          "options": [
+            "`14`",
+            "`20`",
+            "`24`",
+            "`09`"
+          ],
+          "answer": 0,
+          "explain": "`*` comes before `+`: `3 * 4` is `12`, plus `2` is `14`."
+        },
+        {
+          "type": "input",
+          "id": "arithmetic-5",
+          "prompt": "What does this print?",
+          "code": "01 Y PIC 9.\nCOMPUTE Y ROUNDED = 7 / 2\nDISPLAY Y",
+          "answers": [
+            "4"
+          ],
+          "explain": "`7 / 2` is `3.5`. `Y` has no decimals, and `ROUNDED` rounds `3.5` up to `4`. Without `ROUNDED`, you get `3`."
+        },
+        {
+          "type": "choice",
+          "id": "arithmetic-6",
+          "prompt": "What does this print?",
+          "code": "01 SHOWN PIC ZZ9.\nMOVE 7 TO SHOWN\nDISPLAY \"[\" SHOWN \"]\"",
+          "options": [
+            "`[  7]`",
+            "`[007]`",
+            "`[7]`",
+            "`[7  ]`"
+          ],
+          "answer": 0,
+          "explain": "Each `Z` prints a space instead of a leading zero. The item still has three characters."
+        },
+        {
+          "type": "true_false",
+          "id": "arithmetic-7",
+          "statement": "This program stops with an error because the result does not fit.",
+          "code": "01 N PIC 99 VALUE 1.\nADD 99 TO N\nDISPLAY N",
+          "answer": false,
+          "explain": "COBOL cuts the result `100` to the two digits `00` and goes on. Use `ON SIZE ERROR` to notice it."
+        },
+        {
+          "type": "gap",
+          "id": "arithmetic-8",
+          "prompt": "Complete the code so it prints 12.",
+          "code": "01 PRICE PIC 9 VALUE 3.\n01 QTY PIC 9 VALUE 4.\n01 TOTAL PIC 99.\nMULTIPLY PRICE BY QTY ___ TOTAL\nDISPLAY TOTAL",
+          "options": [
+            "GIVING",
+            "INTO",
+            "TO",
+            "="
+          ],
+          "answer": 0,
+          "explain": "`GIVING TOTAL` stores the result in `TOTAL` and leaves `PRICE` and `QTY` as they are."
+        },
+        {
+          "type": "gap",
+          "id": "arithmetic-9",
+          "prompt": "Complete the code so it prints 025, the square of SIDE.",
+          "code": "01 SIDE PIC 99 VALUE 5.\n01 SQ PIC 999.\nCOMPUTE SQ = SIDE ___ 2\nDISPLAY SQ",
+          "options": [
+            "**",
+            "^",
+            "*",
+            "x"
+          ],
+          "answer": 0,
+          "explain": "`**` is the power operator: `5 ** 2` is `25`. `SIDE * 2` would give `10`."
+        },
+        {
+          "type": "blocks",
+          "id": "arithmetic-10",
+          "prompt": "Build the statement that subtracts 4 from TOTAL.",
+          "tokens": [
+            "SUBTRACT",
+            "4",
+            "FROM",
+            "TOTAL"
+          ],
+          "distractors": [
+            "TO",
+            "MINUS"
+          ],
+          "explain": "`SUBTRACT` names the amount first and the item after `FROM`."
+        },
+        {
+          "type": "bug",
+          "id": "arithmetic-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "01 A PIC 99 VALUE 10.",
+            "01 B PIC 99 VALUE 4.",
+            "01 C PIC 99.",
+            "COMPUTE C = A-B",
+            "DISPLAY C"
+          ],
+          "bug": 3,
+          "explain": "COBOL reads `A-B` as one name. Put spaces around the minus: `COMPUTE C = A - B`."
+        },
+        {
+          "type": "pairs",
+          "id": "arithmetic-12",
+          "prompt": "Match each statement with what it does to N.",
+          "pairs": [
+            [
+              "`ADD 2 TO N`",
+              "adds 2 to N"
+            ],
+            [
+              "`SUBTRACT 2 FROM N`",
+              "subtracts 2 from N"
+            ],
+            [
+              "`MULTIPLY 2 BY N`",
+              "doubles N"
+            ],
+            [
+              "`DIVIDE 2 INTO N`",
+              "halves N"
+            ],
+            [
+              "`COMPUTE N = 2 ** 3`",
+              "sets N to 8"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let the program choose with IF, ELSE and EVALUATE, and give values readable names with level 88.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`IF` runs statements only when a condition is true. `ELSE` adds statements for the other case, and `END-IF` closes the `IF`. Indent the statements inside so that you can see what belongs together."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. ADULT.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 AGE PIC 99 VALUE 15.\nPROCEDURE DIVISION.\n    IF AGE >= 18\n        DISPLAY \"Adult\"\n    ELSE\n        DISPLAY \"Young\"\n    END-IF\n    STOP RUN.",
+          "output": "Young"
+        },
+        {
+          "type": "text",
+          "md": "You can compare with `=`, `>`, `<`, `>=`, `<=` and `NOT =` (not equal). COBOL also accepts words, such as `IS GREATER THAN` and `IS EQUAL TO`. `AND` needs both conditions to be true, `OR` needs at least one, and `NOT` turns a condition around."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. RANGE.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 TEMP PIC 99 VALUE 20.\nPROCEDURE DIVISION.\n    IF TEMP > 15 AND TEMP < 25\n        DISPLAY \"Pleasant\"\n    END-IF\n    IF TEMP IS GREATER THAN 30 OR TEMP IS LESS THAN 0\n        DISPLAY \"Extreme\"\n    ELSE\n        DISPLAY \"Normal\"\n    END-IF\n    STOP RUN.",
+          "output": "Pleasant\nNormal"
+        },
+        {
+          "type": "warning",
+          "md": "Do not put a period inside an `IF`. A period ends the whole sentence, so it also ends the `IF`, and the next `ELSE` becomes an error. Close every `IF` with `END-IF` instead."
+        },
+        {
+          "type": "heading",
+          "text": "Choosing with EVALUATE"
+        },
+        {
+          "type": "text",
+          "md": "`EVALUATE` compares one item with several values. Each `WHEN` names a value, and `WHEN OTHER` catches everything else. COBOL runs only the first `WHEN` that matches and then continues after `END-EVALUATE`."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. WEEKDAY.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 DAY-NUM PIC 9 VALUE 4.\nPROCEDURE DIVISION.\n    EVALUATE DAY-NUM\n        WHEN 1\n            DISPLAY \"Monday\"\n        WHEN 2\n            DISPLAY \"Tuesday\"\n        WHEN 3 THRU 5\n            DISPLAY \"Midweek\"\n        WHEN OTHER\n            DISPLAY \"Weekend\"\n    END-EVALUATE\n    STOP RUN.",
+          "output": "Midweek"
+        },
+        {
+          "type": "text",
+          "md": "`WHEN 3 THRU 5` matches every value from `3` to `5`. With `EVALUATE TRUE`, each `WHEN` holds a full condition, and the first true one wins."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. GRADES.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 POINTS PIC 999 VALUE 72.\nPROCEDURE DIVISION.\n    EVALUATE TRUE\n        WHEN POINTS >= 90\n            DISPLAY \"Excellent\"\n        WHEN POINTS >= 50\n            DISPLAY \"Passed\"\n        WHEN OTHER\n            DISPLAY \"Failed\"\n    END-EVALUATE\n    STOP RUN.",
+          "output": "Passed"
+        },
+        {
+          "type": "heading",
+          "text": "Condition names with level 88"
+        },
+        {
+          "type": "text",
+          "md": "A level `88` item gives a value of the item above it a name. With `88 IS-RED VALUE \"R\"`, the condition `IF IS-RED` means `IF LIGHT = \"R\"`. `SET IS-GREEN TO TRUE` moves the value of `IS-GREEN` into `LIGHT`. A level `88` item can also list several values or a range with `THRU`."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. LIGHTS.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 LIGHT PIC X VALUE \"R\".\n    88 IS-RED VALUE \"R\".\n    88 IS-GREEN VALUE \"G\".\nPROCEDURE DIVISION.\n    IF IS-RED\n        DISPLAY \"Stop\"\n    END-IF\n    SET IS-GREEN TO TRUE\n    DISPLAY LIGHT\n    IF NOT IS-RED\n        DISPLAY \"Go\"\n    END-IF\n    STOP RUN.",
+          "output": "Stop\nG\nGo"
+        },
+        {
+          "type": "tip",
+          "md": "Condition names make code easier to read: `IF IS-WEEKEND` explains itself, `IF DAY-NUM > 5` does not. Use them for values that have a meaning in your program."
+        }
+      ],
+      "card": [
+        "`IF A > B ... ELSE ... END-IF`, no period inside",
+        "`=`, `NOT =`, `<`, `>=`, `AND`, `OR`, `NOT`",
+        "`EVALUATE X WHEN 1 ... WHEN 2 THRU 5 ... WHEN OTHER ... END-EVALUATE`",
+        "`EVALUATE TRUE` + `WHEN condition`: the first true one wins",
+        "`88 IS-RED VALUE \"R\".` then `IF IS-RED`, `SET IS-RED TO TRUE`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "01 AGE PIC 99 VALUE 15.\nIF AGE >= 18\n    DISPLAY \"Adult\"\nELSE\n    DISPLAY \"Young\"\nEND-IF",
+          "answers": [
+            "Young"
+          ],
+          "explain": "`15` is not `>=` `18`, so the `ELSE` part runs."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "01 N PIC 9 VALUE 5.\nIF N > 3 AND N < 5\n    DISPLAY \"A\"\nELSE\n    DISPLAY \"B\"\nEND-IF",
+          "options": [
+            "`B`",
+            "`A`",
+            "`AB`",
+            "nothing"
+          ],
+          "answer": 0,
+          "explain": "`N < 5` is false for `5`. With `AND`, both conditions must be true, so the `ELSE` part runs."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "What does this print?",
+          "code": "01 N PIC 9 VALUE 7.\nEVALUATE TRUE\n    WHEN N > 5\n        DISPLAY \"Big\"\n    WHEN N > 0\n        DISPLAY \"Positive\"\n    WHEN OTHER\n        DISPLAY \"Zero\"\nEND-EVALUATE",
+          "options": [
+            "`Big`",
+            "`Positive`",
+            "`Big` and then `Positive`",
+            "`Zero`"
+          ],
+          "answer": 0,
+          "explain": "Both conditions are true, but `EVALUATE` runs only the first `WHEN` that matches."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-4",
+          "statement": "When several `WHEN` branches of an `EVALUATE` match, all of them run.",
+          "answer": false,
+          "explain": "Only the first matching `WHEN` runs. Then the program continues after `END-EVALUATE`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-5",
+          "prompt": "Complete the condition so the code prints Not ten.",
+          "code": "01 N PIC 99 VALUE 5.\nIF N ___ 10\n    DISPLAY \"Not ten\"\nEND-IF",
+          "options": [
+            "NOT =",
+            "!=",
+            "=",
+            "IS"
+          ],
+          "answer": 0,
+          "explain": "COBOL writes not equal as `NOT =`. The operator `!=` from other languages does not exist in COBOL."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-6",
+          "prompt": "Complete the code so it compiles and prints Even.",
+          "code": "01 N PIC 9 VALUE 4.\n01 HALF PIC 9.\n01 REST PIC 9.\nDIVIDE N BY 2 GIVING HALF REMAINDER REST\nIF REST = 0\n    DISPLAY \"Even\"\n___",
+          "options": [
+            "END-IF",
+            "ENDIF",
+            "END",
+            "FI"
+          ],
+          "answer": 0,
+          "explain": "`END-IF` closes an `IF`. COBOL writes it with a hyphen."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-7",
+          "prompt": "Build the statement that prints Big when TOTAL is greater than 100.",
+          "tokens": [
+            "IF",
+            "TOTAL",
+            ">",
+            "100",
+            "DISPLAY",
+            "\"Big\"",
+            "END-IF"
+          ],
+          "distractors": [
+            "ENDIF",
+            "=="
+          ],
+          "explain": "The condition comes after `IF`, then the statement, and `END-IF` closes it."
+        },
+        {
+          "type": "order",
+          "id": "conditions-8",
+          "prompt": "Put the lines in order so the code prints Positive when N is 3.",
+          "lines": [
+            "IF N > 0",
+            "    DISPLAY \"Positive\"",
+            "ELSE",
+            "    DISPLAY \"Not positive\"",
+            "END-IF"
+          ],
+          "explain": "The condition comes first, then the statements for true, `ELSE`, the statements for false, and `END-IF`."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-9",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`NOT =`",
+              "not equal"
+            ],
+            [
+              "`>=`",
+              "greater than or equal"
+            ],
+            [
+              "`WHEN OTHER`",
+              "no other WHEN matched"
+            ],
+            [
+              "`WHEN 3 THRU 5`",
+              "a value from 3 to 5"
+            ],
+            [
+              "`88`",
+              "names a value"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "conditions-10",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "01 LIGHT PIC X VALUE \"R\".",
+            "    88 IS-RED VALUE \"R\".",
+            "    88 IS-GREEN VALUE \"G\".",
+            "SET IS-GREEN TO \"G\"",
+            "DISPLAY LIGHT"
+          ],
+          "bug": 3,
+          "explain": "You set a condition name with `TRUE`: `SET IS-GREEN TO TRUE`. COBOL then moves `\"G\"` into `LIGHT`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "01 N PIC 99 VALUE 8.",
+            "IF N > 5",
+            "    DISPLAY \"Big\".",
+            "ELSE",
+            "    DISPLAY \"Small\"",
+            "END-IF"
+          ],
+          "bug": 2,
+          "explain": "The period ends the `IF` too early, so `ELSE` has no `IF` any more. Remove the period: `DISPLAY \"Big\"`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-12",
+          "prompt": "What does this print?",
+          "code": "01 SCORE PIC 99 VALUE 75.\n    88 PASSED VALUE 50 THRU 99.\nIF PASSED\n    DISPLAY \"Pass\"\nELSE\n    DISPLAY \"Fail\"\nEND-IF",
+          "answers": [
+            "Pass"
+          ],
+          "explain": "`75` is between `50` and `99`, so the condition name `PASSED` is true."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops",
+      "chapter": "Control flow",
+      "summary": "Repeat statements with PERFORM TIMES, count with PERFORM VARYING and loop until a condition is true with PERFORM UNTIL.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "`PERFORM` repeats statements. `PERFORM 3 TIMES` runs the statements up to `END-PERFORM` three times. Instead of a number you can also use a data item, for example `PERFORM ROUNDS TIMES`."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. REPEAT.\nPROCEDURE DIVISION.\n    PERFORM 3 TIMES\n        DISPLAY \"Hello\"\n    END-PERFORM\n    DISPLAY \"Done\"\n    STOP RUN.",
+          "output": "Hello\nHello\nHello\nDone"
+        },
+        {
+          "type": "heading",
+          "text": "Counting with PERFORM VARYING"
+        },
+        {
+          "type": "text",
+          "md": "`PERFORM VARYING I FROM 1 BY 1 UNTIL I > 5` uses `I` as a counter. It sets `I` to `1`, checks the condition before each round and adds `1` after each round. The loop stops as soon as the condition after `UNTIL` is true."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. COUNTING.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 I PIC 9.\nPROCEDURE DIVISION.\n    PERFORM VARYING I FROM 1 BY 1 UNTIL I > 5\n        DISPLAY I WITH NO ADVANCING\n    END-PERFORM\n    DISPLAY \" end\"\n    STOP RUN.",
+          "output": "12345 end"
+        },
+        {
+          "type": "text",
+          "md": "`BY` sets the step. Here the loop adds the even numbers from `2` to `10`. A loop like this often builds a result, such as a total, in another data item."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. EVENS.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 N PIC 99.\n01 TOTAL PIC 999 VALUE 0.\nPROCEDURE DIVISION.\n    PERFORM VARYING N FROM 2 BY 2 UNTIL N > 10\n        ADD N TO TOTAL\n    END-PERFORM\n    DISPLAY \"Total: \" TOTAL\n    STOP RUN.",
+          "output": "Total: 030"
+        },
+        {
+          "type": "tip",
+          "md": "After the loop, the counter keeps the value that stopped it. After `UNTIL I > 5` with step `1`, `I` is `6`."
+        },
+        {
+          "type": "heading",
+          "text": "Looping with PERFORM UNTIL"
+        },
+        {
+          "type": "text",
+          "md": "`PERFORM UNTIL` repeats until a condition becomes true. It checks the condition **before** each round, so the body may not run at all. Make sure that the statements inside change something, or the loop never ends."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. DOUBLE.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 AMOUNT PIC 999 VALUE 1.\n01 STEPS PIC 9 VALUE 0.\nPROCEDURE DIVISION.\n    PERFORM UNTIL AMOUNT > 100\n        MULTIPLY 2 BY AMOUNT\n        ADD 1 TO STEPS\n    END-PERFORM\n    DISPLAY AMOUNT \" after \" STEPS \" steps\"\n    STOP RUN.",
+          "output": "128 after 7 steps"
+        },
+        {
+          "type": "text",
+          "md": "With `WITH TEST AFTER`, COBOL checks the condition after each round instead. The body then always runs at least once."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. TESTAFTER.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 N PIC 9 VALUE 5.\nPROCEDURE DIVISION.\n    PERFORM WITH TEST AFTER UNTIL N > 3\n        DISPLAY \"Round \" N\n        ADD 1 TO N\n    END-PERFORM\n    STOP RUN.",
+          "output": "Round 5"
+        },
+        {
+          "type": "warning",
+          "md": "A counter needs enough digits. `PIC 9` holds at most `9`, so `9 + 1` becomes `0`, and `UNTIL I > 9` is never true. The loop then runs forever. Use `PIC 99` for a counter that must reach `10`."
+        }
+      ],
+      "card": [
+        "`PERFORM 3 TIMES ... END-PERFORM`",
+        "`PERFORM VARYING I FROM 1 BY 1 UNTIL I > 5 ... END-PERFORM`",
+        "`PERFORM UNTIL X > 100 ... END-PERFORM` checks before each round",
+        "`WITH TEST AFTER` checks after each round",
+        "Give the counter enough digits, or the loop never ends"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "How many lines does this print?",
+          "code": "PERFORM 4 TIMES\n    DISPLAY \"Hi\"\nEND-PERFORM",
+          "answers": [
+            "4"
+          ],
+          "explain": "`PERFORM 4 TIMES` runs the `DISPLAY` four times, and each `DISPLAY` prints one line."
+        },
+        {
+          "type": "input",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "01 I PIC 9.\n01 TOTAL PIC 99 VALUE 0.\nPERFORM VARYING I FROM 1 BY 1 UNTIL I > 4\n    ADD I TO TOTAL\nEND-PERFORM\nDISPLAY TOTAL",
+          "answers": [
+            "10"
+          ],
+          "explain": "The loop adds `1 + 2 + 3 + 4`, which is `10`."
+        },
+        {
+          "type": "input",
+          "id": "loops-3",
+          "prompt": "What does this print?",
+          "code": "01 I PIC 9.\nPERFORM VARYING I FROM 1 BY 1 UNTIL I > 3\n    CONTINUE\nEND-PERFORM\nDISPLAY I",
+          "answers": [
+            "4"
+          ],
+          "explain": "The loop stops when `I > 3` is true for the first time, so `I` is `4`. `CONTINUE` is a statement that does nothing."
+        },
+        {
+          "type": "choice",
+          "id": "loops-4",
+          "prompt": "What does this print?",
+          "code": "01 I PIC 9.\nPERFORM VARYING I FROM 1 BY 2 UNTIL I > 7\n    DISPLAY I WITH NO ADVANCING\nEND-PERFORM",
+          "options": [
+            "`1357`",
+            "`13579`",
+            "`135`",
+            "`1234567`"
+          ],
+          "answer": 0,
+          "explain": "`I` takes the values `1`, `3`, `5` and `7`. At `9`, the condition `I > 7` is true and the loop stops."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-5",
+          "statement": "This code prints only Done.",
+          "code": "01 N PIC 9 VALUE 5.\nPERFORM UNTIL N > 3\n    DISPLAY \"Again\"\nEND-PERFORM\nDISPLAY \"Done\"",
+          "answer": true,
+          "explain": "`PERFORM UNTIL` checks the condition before the first round. `5 > 3` is already true, so the body never runs."
+        },
+        {
+          "type": "gap",
+          "id": "loops-6",
+          "prompt": "Complete the loop so it prints 123.",
+          "code": "01 I PIC 9.\nPERFORM ___ I FROM 1 BY 1 UNTIL I > 3\n    DISPLAY I WITH NO ADVANCING\nEND-PERFORM",
+          "options": [
+            "VARYING",
+            "FOR",
+            "LOOP",
+            "TIMES"
+          ],
+          "answer": 0,
+          "explain": "`PERFORM VARYING` counts with `I`, from `1` in steps of `1`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-7",
+          "prompt": "Complete the loop so it prints Hi three times.",
+          "code": "PERFORM 3 ___\n    DISPLAY \"Hi\"\nEND-PERFORM",
+          "options": [
+            "TIMES",
+            "TIME",
+            "LOOPS",
+            "REPEAT"
+          ],
+          "answer": 0,
+          "explain": "The form is `PERFORM 3 TIMES`, always with `TIMES`."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-8",
+          "prompt": "Build the start of a loop that counts I from 1 to 9 in steps of 2.",
+          "tokens": [
+            "PERFORM",
+            "VARYING",
+            "I",
+            "FROM",
+            "1",
+            "BY",
+            "2",
+            "UNTIL",
+            "I > 9"
+          ],
+          "distractors": [
+            "WHILE",
+            "TO"
+          ],
+          "explain": "`FROM` gives the start value, `BY` the step and `UNTIL` the condition that stops the loop."
+        },
+        {
+          "type": "order",
+          "id": "loops-9",
+          "prompt": "Put the lines in order so the code prints 3, 2 and 1 on three lines.",
+          "lines": [
+            "MOVE 3 TO N",
+            "PERFORM UNTIL N = 0",
+            "    DISPLAY N",
+            "    SUBTRACT 1 FROM N",
+            "END-PERFORM"
+          ],
+          "explain": "Set `N` first. Inside the loop, print `N` before you make it smaller, so the last line is `1`."
+        },
+        {
+          "type": "bug",
+          "id": "loops-10",
+          "prompt": "This code should print the sum of 1 to 9, which is 45. Which line has the bug?",
+          "lines": [
+            "01 I PIC 9.",
+            "01 TOTAL PIC 99 VALUE 0.",
+            "PERFORM VARYING I FROM 1 BY 1 UNTIL I > 9",
+            "    ADD I TO TOTAL",
+            "END-PERFORM",
+            "DISPLAY TOTAL"
+          ],
+          "bug": 0,
+          "explain": "`PIC 9` cannot hold `10`, so `I > 9` is never true and the loop never ends. Use `01 I PIC 99.`."
+        },
+        {
+          "type": "bug",
+          "id": "loops-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "01 N PIC 9 VALUE 0.",
+            "PERFORM 3 TIMES",
+            "    ADD 2 TO N",
+            "END-IF",
+            "DISPLAY N"
+          ],
+          "bug": 3,
+          "explain": "A `PERFORM` loop ends with `END-PERFORM`, not `END-IF`."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-12",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`PERFORM 5 TIMES`",
+              "repeats five times"
+            ],
+            [
+              "`FROM 1 BY 1`",
+              "starts at 1, adds 1 each round"
+            ],
+            [
+              "`UNTIL I > 5`",
+              "stops when I passes 5"
+            ],
+            [
+              "`WITH TEST AFTER`",
+              "checks after each round"
+            ],
+            [
+              "`END-PERFORM`",
+              "ends the loop body"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paragraphs",
+      "title": "Paragraphs",
+      "chapter": "Structure",
+      "summary": "Split the PROCEDURE DIVISION into named paragraphs and run them with PERFORM.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Long programs are hard to read. A **paragraph** is a named group of statements in the `PROCEDURE DIVISION`. Its name stands on its own line and ends with a period. The paragraph ends with a period after its last statement."
+        },
+        {
+          "type": "text",
+          "md": "`PERFORM GREET` runs the paragraph `GREET` and then comes back to the next statement. The first paragraph is the main part of the program, often called `MAIN-PARA`. It ends with `STOP RUN`, so the program does not run into the paragraphs below it."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. PARAS.\nPROCEDURE DIVISION.\nMAIN-PARA.\n    DISPLAY \"Start\"\n    PERFORM GREET\n    PERFORM GREET\n    DISPLAY \"End\"\n    STOP RUN.\n\nGREET.\n    DISPLAY \"Hello\".",
+          "output": "Start\nHello\nHello\nEnd"
+        },
+        {
+          "type": "text",
+          "md": "All paragraphs use the same data items from `WORKING-STORAGE`. To give a paragraph input, move values into data items before the `PERFORM`. The paragraph leaves its result in a data item, too."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. SQUARES.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 N PIC 9.\n01 RESULT PIC 99.\nPROCEDURE DIVISION.\nMAIN-PARA.\n    MOVE 4 TO N\n    PERFORM CALC-SQUARE\n    DISPLAY N \" squared is \" RESULT\n    MOVE 7 TO N\n    PERFORM CALC-SQUARE\n    DISPLAY N \" squared is \" RESULT\n    STOP RUN.\n\nCALC-SQUARE.\n    COMPUTE RESULT = N * N.",
+          "output": "4 squared is 16\n7 squared is 49"
+        },
+        {
+          "type": "heading",
+          "text": "Repeating a paragraph"
+        },
+        {
+          "type": "text",
+          "md": "All forms of `PERFORM` from the last unit also work with a paragraph name. `PERFORM SHOW-LINE 3 TIMES` runs the paragraph three times. `PERFORM SHOW-ROW VARYING R FROM 1 BY 1 UNTIL R > 3` runs it once for each value of `R`. These forms have no `END-PERFORM`."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. ROWS.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 R PIC 9.\n01 TRIPLE PIC 9.\nPROCEDURE DIVISION.\nMAIN-PARA.\n    PERFORM SHOW-ROW VARYING R FROM 1 BY 1 UNTIL R > 3\n    STOP RUN.\n\nSHOW-ROW.\n    COMPUTE TRIPLE = R * 3\n    DISPLAY R \" x 3 = \" TRIPLE.",
+          "output": "1 x 3 = 3\n2 x 3 = 6\n3 x 3 = 9"
+        },
+        {
+          "type": "warning",
+          "md": "Without `STOP RUN`, the program does not stop at the end of the main paragraph. It goes on with the next paragraph, so that paragraph runs one extra time."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. NOSTOP.\nPROCEDURE DIVISION.\nMAIN-PARA.\n    PERFORM SAY-HI\n    DISPLAY \"Bye\".\n\nSAY-HI.\n    DISPLAY \"Hi\".",
+          "output": "Hi\nBye\nHi"
+        },
+        {
+          "type": "text",
+          "md": "`PERFORM STEP-1 THRU STEP-3` runs all paragraphs from `STEP-1` to `STEP-3` in the order in which they appear in the code, and then comes back."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. THRU.\nPROCEDURE DIVISION.\nMAIN-PARA.\n    PERFORM STEP-1 THRU STEP-3\n    STOP RUN.\n\nSTEP-1.\n    DISPLAY \"Wash\".\n\nSTEP-2.\n    DISPLAY \"Cut\".\n\nSTEP-3.\n    DISPLAY \"Cook\".",
+          "output": "Wash\nCut\nCook"
+        },
+        {
+          "type": "tip",
+          "md": "Give each paragraph one clear task and a name that says what it does, such as `PRINT-TOTAL` or `READ-NEXT`. Then `MAIN-PARA` reads like a table of contents."
+        }
+      ],
+      "card": [
+        "`NAME.` on its own line starts a paragraph; a period ends it",
+        "`PERFORM NAME` runs it and comes back",
+        "`PERFORM NAME 3 TIMES`, `PERFORM NAME VARYING ... UNTIL ...`",
+        "`PERFORM A THRU C` runs A to C in order",
+        "End the main paragraph with `STOP RUN.`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "paragraphs-1",
+          "prompt": "How many lines does this print?",
+          "code": "MAIN-PARA.\n    PERFORM SAY-HI 3 TIMES\n    STOP RUN.\nSAY-HI.\n    DISPLAY \"Hi\".",
+          "answers": [
+            "3"
+          ],
+          "explain": "`PERFORM SAY-HI 3 TIMES` runs the paragraph three times. `STOP RUN` then ends the program."
+        },
+        {
+          "type": "choice",
+          "id": "paragraphs-2",
+          "prompt": "What does this print?",
+          "code": "MAIN-PARA.\n    PERFORM STEP-B\n    PERFORM STEP-A\n    STOP RUN.\nSTEP-A.\n    DISPLAY \"A\".\nSTEP-B.\n    DISPLAY \"B\".",
+          "options": [
+            "`B`, then `A`",
+            "`A`, then `B`",
+            "only `B`",
+            "`B`, `A`, `A`, `B`"
+          ],
+          "answer": 0,
+          "explain": "The order of the `PERFORM` statements counts, not the order of the paragraphs in the code."
+        },
+        {
+          "type": "input",
+          "id": "paragraphs-3",
+          "prompt": "What does this print?",
+          "code": "01 N PIC 99 VALUE 4.\nMAIN-PARA.\n    PERFORM DOUBLE-IT\n    DISPLAY N\n    STOP RUN.\nDOUBLE-IT.\n    MULTIPLY 2 BY N.",
+          "answers": [
+            "08"
+          ],
+          "explain": "The paragraph changes `N`, which all paragraphs share. `PIC 99` prints two digits: `08`."
+        },
+        {
+          "type": "true_false",
+          "id": "paragraphs-4",
+          "statement": "A paragraph name must end with a period.",
+          "answer": true,
+          "explain": "The period after the name tells COBOL that a new paragraph starts."
+        },
+        {
+          "type": "true_false",
+          "id": "paragraphs-5",
+          "statement": "`PERFORM CALC` runs the paragraph `CALC` and then continues with the statement after the `PERFORM`.",
+          "answer": true,
+          "explain": "That is the difference between `PERFORM` and a jump: the program comes back after the paragraph."
+        },
+        {
+          "type": "gap",
+          "id": "paragraphs-6",
+          "prompt": "Complete the code so it prints Total and then Done.",
+          "code": "MAIN-PARA.\n    ___ PRINT-TOTAL\n    DISPLAY \"Done\"\n    STOP RUN.\nPRINT-TOTAL.\n    DISPLAY \"Total\".",
+          "options": [
+            "PERFORM",
+            "CALL",
+            "RUN",
+            "DO"
+          ],
+          "answer": 0,
+          "explain": "`PERFORM` runs a paragraph and comes back. `CALL` starts another program, not a paragraph."
+        },
+        {
+          "type": "gap",
+          "id": "paragraphs-7",
+          "prompt": "Complete the main paragraph so Hello is printed only once.",
+          "code": "MAIN-PARA.\n    PERFORM GREET\n    ___\nGREET.\n    DISPLAY \"Hello\".",
+          "options": [
+            "STOP RUN.",
+            "CONTINUE.",
+            "END.",
+            "RETURN."
+          ],
+          "answer": 0,
+          "explain": "`STOP RUN.` ends the program. Without it, the program runs into `GREET` a second time."
+        },
+        {
+          "type": "blocks",
+          "id": "paragraphs-8",
+          "prompt": "Build the statement that runs the paragraph PRINT-ROW three times.",
+          "tokens": [
+            "PERFORM",
+            "PRINT-ROW",
+            "3",
+            "TIMES"
+          ],
+          "distractors": [
+            "CALL",
+            "LOOP"
+          ],
+          "explain": "The paragraph name comes right after `PERFORM`, then the number of times."
+        },
+        {
+          "type": "order",
+          "id": "paragraphs-9",
+          "prompt": "Put the lines in order so the program prints Start, Work and End.",
+          "lines": [
+            "MAIN-PARA.",
+            "    DISPLAY \"Start\"",
+            "    PERFORM DO-WORK",
+            "    DISPLAY \"End\"",
+            "    STOP RUN.",
+            "DO-WORK.",
+            "    DISPLAY \"Work\"."
+          ],
+          "explain": "The main paragraph comes first and ends with `STOP RUN.`. The paragraph `DO-WORK` follows after it."
+        },
+        {
+          "type": "pairs",
+          "id": "paragraphs-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`MAIN-PARA.`",
+              "starts a paragraph"
+            ],
+            [
+              "`PERFORM CALC`",
+              "runs CALC and comes back"
+            ],
+            [
+              "`PERFORM CALC 3 TIMES`",
+              "runs CALC three times"
+            ],
+            [
+              "`PERFORM A THRU C`",
+              "runs A to C in order"
+            ],
+            [
+              "`STOP RUN.`",
+              "ends the program"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "paragraphs-11",
+          "prompt": "The program should print Hi and then Bye. Which line has the bug?",
+          "lines": [
+            "MAIN-PARA.",
+            "    PERFORM SAY-HI",
+            "    DISPLAY \"Bye\"",
+            "    CONTINUE.",
+            "SAY-HI.",
+            "    DISPLAY \"Hi\"."
+          ],
+          "bug": 3,
+          "explain": "`CONTINUE` does nothing, so the program runs into `SAY-HI` again. The main paragraph must end with `STOP RUN.`."
+        },
+        {
+          "type": "bug",
+          "id": "paragraphs-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "01 N PIC 9 VALUE 3.",
+            "MAIN-PARA.",
+            "    PERFORM SHOW-N",
+            "    STOP RUN.",
+            "SHOW-N",
+            "    DISPLAY \"N is \" N."
+          ],
+          "bug": 4,
+          "explain": "A paragraph name needs a period. Write `SHOW-N.`."
+        }
+      ]
+    },
+    {
+      "id": "tables",
+      "title": "Tables",
+      "chapter": "Data",
+      "summary": "Store many values under one name with OCCURS, reach them with subscripts and process them in loops.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **table** holds many values of the same kind under one name. Other languages call it an array. You create one with `OCCURS`: `05 TEMP PIC 99 OCCURS 3 TIMES` makes three items called `TEMP`. Put the table inside a group item, here `TEMPS`, so that you can also use all elements together."
+        },
+        {
+          "type": "text",
+          "md": "A **subscript** in parentheses picks one element: `TEMP(1)` is the first, `TEMP(3)` the last. COBOL starts counting at `1`, not at `0`."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. TEMPS.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 TEMPS.\n    05 TEMP PIC 99 OCCURS 3 TIMES.\nPROCEDURE DIVISION.\n    MOVE 12 TO TEMP(1)\n    MOVE 15 TO TEMP(2)\n    MOVE 9 TO TEMP(3)\n    DISPLAY \"Second day: \" TEMP(2)\n    DISPLAY \"All: \" TEMPS\n    STOP RUN.",
+          "output": "Second day: 15\nAll: 121509"
+        },
+        {
+          "type": "text",
+          "md": "The subscript can also be a data item, such as `TEMP(I)`. Together with `PERFORM VARYING`, this lets one loop visit every element."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. SQUARES.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 SQUARES.\n    05 SQ PIC 99 OCCURS 5 TIMES.\n01 I PIC 9.\nPROCEDURE DIVISION.\n    PERFORM VARYING I FROM 1 BY 1 UNTIL I > 5\n        COMPUTE SQ(I) = I * I\n    END-PERFORM\n    PERFORM VARYING I FROM 1 BY 1 UNTIL I > 5\n        DISPLAY SQ(I) WITH NO ADVANCING\n        DISPLAY \" \" WITH NO ADVANCING\n    END-PERFORM\n    DISPLAY \"end\"\n    STOP RUN.",
+          "output": "01 04 09 16 25 end"
+        },
+        {
+          "type": "heading",
+          "text": "Start values"
+        },
+        {
+          "type": "text",
+          "md": "A group with a table can get a `VALUE` with all elements written one after another. Here `\"254012\"` fills three prices with two digits each: `25`, `40` and `12`. A loop then adds them up and finds the largest one."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. PRICES.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 PRICES VALUE \"254012\".\n    05 PRICE PIC 99 OCCURS 3 TIMES.\n01 I PIC 9.\n01 TOTAL PIC 999 VALUE 0.\n01 BIGGEST PIC 99 VALUE 0.\nPROCEDURE DIVISION.\n    PERFORM VARYING I FROM 1 BY 1 UNTIL I > 3\n        ADD PRICE(I) TO TOTAL\n        IF PRICE(I) > BIGGEST\n            MOVE PRICE(I) TO BIGGEST\n        END-IF\n    END-PERFORM\n    DISPLAY \"Total: \" TOTAL\n    DISPLAY \"Biggest: \" BIGGEST\n    STOP RUN.",
+          "output": "Total: 077\nBiggest: 40"
+        },
+        {
+          "type": "tip",
+          "md": "`INITIALIZE` resets a whole table at once: number items become zero and text items become spaces."
+        },
+        {
+          "type": "heading",
+          "text": "Tables of groups"
+        },
+        {
+          "type": "text",
+          "md": "`OCCURS` also works on a group. Each element then has several parts. `FRUIT-NAME(2)` is the name in the second element, and `FRUIT-QTY(2)` is its quantity."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. STOCK.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 STOCK.\n    05 FRUIT OCCURS 2 TIMES.\n        10 FRUIT-NAME PIC X(6).\n        10 FRUIT-QTY PIC 99.\n01 I PIC 9.\nPROCEDURE DIVISION.\n    MOVE \"Apple\" TO FRUIT-NAME(1)\n    MOVE 12 TO FRUIT-QTY(1)\n    MOVE \"Pear\" TO FRUIT-NAME(2)\n    MOVE 7 TO FRUIT-QTY(2)\n    PERFORM VARYING I FROM 1 BY 1 UNTIL I > 2\n        DISPLAY FRUIT-NAME(I) FRUIT-QTY(I)\n    END-PERFORM\n    STOP RUN.",
+          "output": "Apple 12\nPear  07"
+        },
+        {
+          "type": "warning",
+          "md": "Keep every subscript between `1` and the size of the table. GnuCOBOL does not check this by default, so `TEMP(4)` in a table of three reads or changes memory that belongs to other data items."
+        }
+      ],
+      "card": [
+        "`05 TEMP PIC 99 OCCURS 3 TIMES.` inside an `01` group",
+        "`TEMP(1)` is the first element, `TEMP(I)` element number I",
+        "Loop over a table with `PERFORM VARYING I FROM 1 BY 1 UNTIL I > 3`",
+        "`01 T VALUE \"102030\".` fills `05 N PIC 99 OCCURS 3.`",
+        "`INITIALIZE T` sets numbers to zero, text to spaces"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "tables-1",
+          "prompt": "What does this print?",
+          "code": "01 T VALUE \"112233\".\n    05 N PIC 99 OCCURS 3 TIMES.\nDISPLAY N(2)",
+          "answers": [
+            "22"
+          ],
+          "explain": "The start value is split into elements of two digits: `11`, `22` and `33`."
+        },
+        {
+          "type": "choice",
+          "id": "tables-2",
+          "prompt": "How do you write the first element of the table SCORE?",
+          "options": [
+            "`SCORE(1)`",
+            "`SCORE(0)`",
+            "`SCORE[1]`",
+            "`SCORE.1`"
+          ],
+          "answer": 0,
+          "explain": "Subscripts go in parentheses, and COBOL starts counting at `1`."
+        },
+        {
+          "type": "input",
+          "id": "tables-3",
+          "prompt": "What does this print?",
+          "code": "01 T VALUE \"050307\".\n    05 N PIC 99 OCCURS 3 TIMES.\n01 I PIC 9.\n01 TOTAL PIC 99 VALUE 0.\nPERFORM VARYING I FROM 1 BY 1 UNTIL I > 3\n    ADD N(I) TO TOTAL\nEND-PERFORM\nDISPLAY TOTAL",
+          "answers": [
+            "15"
+          ],
+          "explain": "The loop adds `5 + 3 + 7`, which is `15`."
+        },
+        {
+          "type": "choice",
+          "id": "tables-4",
+          "prompt": "What does this print?",
+          "code": "01 T.\n    05 V PIC 99 OCCURS 4 TIMES.\n01 I PIC 9.\nPERFORM VARYING I FROM 1 BY 1 UNTIL I > 4\n    COMPUTE V(I) = I * 10\nEND-PERFORM\nDISPLAY V(3)",
+          "options": [
+            "`30`",
+            "`40`",
+            "`20`",
+            "`03`"
+          ],
+          "answer": 0,
+          "explain": "Element number `3` gets `3 * 10`, which is `30`."
+        },
+        {
+          "type": "true_false",
+          "id": "tables-5",
+          "statement": "In COBOL, the first element of a table has the subscript `0`.",
+          "answer": false,
+          "explain": "COBOL counts from `1`. The first element is `NAME(1)`."
+        },
+        {
+          "type": "gap",
+          "id": "tables-6",
+          "prompt": "Complete the declaration so SCORE has five elements.",
+          "code": "01 SCORES.\n    05 SCORE PIC 99 ___ 5 TIMES.\nMOVE 42 TO SCORE(5)\nDISPLAY SCORE(5)",
+          "options": [
+            "OCCURS",
+            "REPEAT",
+            "ARRAY",
+            "SIZE"
+          ],
+          "answer": 0,
+          "explain": "`OCCURS 5 TIMES` makes five elements with the same picture."
+        },
+        {
+          "type": "gap",
+          "id": "tables-7",
+          "prompt": "Complete the code so it prints Lima, the second city.",
+          "code": "01 CITIES VALUE \"OsloLimaRome\".\n    05 CITY PIC X(4) OCCURS 3 TIMES.\nDISPLAY CITY___",
+          "options": [
+            "(2)",
+            "[2]",
+            "{2}",
+            ".2"
+          ],
+          "answer": 0,
+          "explain": "The subscript goes in parentheses right after the name: `CITY(2)`."
+        },
+        {
+          "type": "blocks",
+          "id": "tables-8",
+          "prompt": "Build the statement that puts 5 into element number I of QTY.",
+          "tokens": [
+            "MOVE",
+            "5",
+            "TO",
+            "QTY(I)"
+          ],
+          "distractors": [
+            "QTY[I]",
+            "INTO"
+          ],
+          "explain": "`QTY(I)` is the element whose number is in `I`."
+        },
+        {
+          "type": "order",
+          "id": "tables-9",
+          "prompt": "Put the lines in order so the code prints 09.",
+          "lines": [
+            "PERFORM VARYING I FROM 1 BY 1 UNTIL I > 3",
+            "    COMPUTE SQ(I) = I * I",
+            "END-PERFORM",
+            "DISPLAY SQ(3)"
+          ],
+          "explain": "The loop fills the table first. Only then can you print the third element, `3 * 3`."
+        },
+        {
+          "type": "pairs",
+          "id": "tables-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`OCCURS 5 TIMES`",
+              "makes five elements"
+            ],
+            [
+              "`PRICE(1)`",
+              "the first element"
+            ],
+            [
+              "`PRICE(I)`",
+              "the element number I"
+            ],
+            [
+              "`INITIALIZE T`",
+              "resets the whole table"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "tables-11",
+          "prompt": "The code should print 60, the sum of all three prices. Which line has the bug?",
+          "lines": [
+            "01 PRICES VALUE \"152520\".",
+            "    05 PRICE PIC 99 OCCURS 3 TIMES.",
+            "01 I PIC 9.",
+            "01 TOTAL PIC 99 VALUE 0.",
+            "PERFORM VARYING I FROM 1 BY 1 UNTIL I = 3",
+            "    ADD PRICE(I) TO TOTAL",
+            "END-PERFORM",
+            "DISPLAY TOTAL"
+          ],
+          "bug": 4,
+          "explain": "The loop stops when `I` becomes `3`, before it adds the third price. Use `UNTIL I > 3`."
+        },
+        {
+          "type": "bug",
+          "id": "tables-12",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "01 T VALUE \"102030\".",
+            "    05 N PIC 99 OCCURS 3 TIMES.",
+            "01 I PIC 9.",
+            "01 TOTAL PIC 99 VALUE 0.",
+            "PERFORM VARYING I FROM 1 BY 1 UNTIL I > 3",
+            "    ADD N TO TOTAL",
+            "END-PERFORM",
+            "DISPLAY TOTAL"
+          ],
+          "bug": 5,
+          "explain": "`N` is a table, so you must say which element you mean: `ADD N(I) TO TOTAL`."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Text handling",
+      "chapter": "Data",
+      "summary": "Cut, join, split and change text with reference modification, STRING, UNSTRING, INSPECT and text functions.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Text items have a fixed size and are filled with spaces. COBOL has **intrinsic functions** that help: you write `FUNCTION`, the name and the input in parentheses. `FUNCTION TRIM` removes the spaces at both ends, and `FUNCTION UPPER-CASE` and `FUNCTION LOWER-CASE` change the letters."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. FUNCS.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 CITY PIC X(8) VALUE \"Lima\".\nPROCEDURE DIVISION.\n    DISPLAY \"[\" CITY \"]\"\n    DISPLAY \"[\" FUNCTION TRIM(CITY) \"]\"\n    DISPLAY FUNCTION UPPER-CASE(\"Lima\")\n    DISPLAY FUNCTION LOWER-CASE(\"HELLO\")\n    STOP RUN.",
+          "output": "[Lima    ]\n[Lima]\nLIMA\nhello"
+        },
+        {
+          "type": "heading",
+          "text": "Parts of a text"
+        },
+        {
+          "type": "text",
+          "md": "**Reference modification** takes a part of a text: `WORD(start:length)`. `WORD(1:4)` gives the first four characters, `WORD(5:3)` three characters from position `5`. Positions start at `1`. Without a length, as in `WORD(5:)`, you get the rest of the text."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. PARTS.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 WORD PIC X(8) VALUE \"COMPUTER\".\nPROCEDURE DIVISION.\n    DISPLAY WORD(1:4)\n    DISPLAY WORD(5:3)\n    DISPLAY WORD(7:)\n    MOVE \"D\" TO WORD(1:1)\n    DISPLAY WORD\n    STOP RUN.",
+          "output": "COMP\nUTE\nER\nDOMPUTER"
+        },
+        {
+          "type": "heading",
+          "text": "Joining and splitting"
+        },
+        {
+          "type": "text",
+          "md": "`STRING` joins several pieces `INTO` one item. Each piece has a `DELIMITED BY` phrase: `DELIMITED BY SIZE` takes the whole piece, and `DELIMITED BY SPACE` takes it only up to the first space. `STRING` does not clear the target, so `MOVE SPACES` to it first. `SPACES` stands for as many spaces as the item needs."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. JOIN.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 FIRST-NAME PIC X(10) VALUE \"Ada\".\n01 LAST-NAME PIC X(10) VALUE \"Lovelace\".\n01 FULL-NAME PIC X(25).\nPROCEDURE DIVISION.\n    MOVE SPACES TO FULL-NAME\n    STRING FIRST-NAME DELIMITED BY SPACE\n        \" \" DELIMITED BY SIZE\n        LAST-NAME DELIMITED BY SPACE\n        INTO FULL-NAME\n    END-STRING\n    DISPLAY \"[\" FUNCTION TRIM(FULL-NAME) \"]\"\n    STOP RUN.",
+          "output": "[Ada Lovelace]"
+        },
+        {
+          "type": "text",
+          "md": "`UNSTRING` does the opposite: it splits a text at a delimiter and puts the parts into several items, from left to right."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. SPLIT.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 DATE-TEXT PIC X(10) VALUE \"2024-05-17\".\n01 YY PIC X(4).\n01 MM PIC XX.\n01 DD PIC XX.\nPROCEDURE DIVISION.\n    UNSTRING DATE-TEXT DELIMITED BY \"-\"\n        INTO YY MM DD\n    END-UNSTRING\n    DISPLAY \"Day \" DD \" of month \" MM \" in \" YY\n    STOP RUN.",
+          "output": "Day 17 of month 05 in 2024"
+        },
+        {
+          "type": "heading",
+          "text": "Counting and replacing with INSPECT"
+        },
+        {
+          "type": "text",
+          "md": "`INSPECT ... TALLYING N FOR ALL \"s\"` counts how often `\"s\"` appears and adds the count to `N`. `INSPECT ... REPLACING ALL \"s\" BY \"z\"` replaces every `\"s\"` with `\"z\"`. Both texts must have the same length."
+        },
+        {
+          "type": "code",
+          "code": ">>SOURCE FORMAT FREE\nIDENTIFICATION DIVISION.\nPROGRAM-ID. INSPECT.\nDATA DIVISION.\nWORKING-STORAGE SECTION.\n01 WORD PIC X(11) VALUE \"mississippi\".\n01 HITS PIC 99 VALUE 0.\nPROCEDURE DIVISION.\n    INSPECT WORD TALLYING HITS FOR ALL \"s\"\n    DISPLAY \"Count: \" HITS\n    INSPECT WORD REPLACING ALL \"ss\" BY \"SS\"\n    DISPLAY WORD\n    STOP RUN.",
+          "output": "Count: 04\nmiSSiSSippi"
+        },
+        {
+          "type": "warning",
+          "md": "`TALLYING` adds to the counter and does not reset it. Give the counter the start value `0`, or `MOVE 0` to it before every new count."
+        }
+      ],
+      "card": [
+        "`FUNCTION TRIM(T)`, `FUNCTION UPPER-CASE(T)`",
+        "`T(5:3)` = 3 characters from position 5",
+        "`STRING A DELIMITED BY SPACE B DELIMITED BY SIZE INTO C`",
+        "`UNSTRING T DELIMITED BY \",\" INTO A B C`",
+        "`INSPECT T TALLYING N FOR ALL \"a\"` / `REPLACING ALL \"a\" BY \"o\"`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this print?",
+          "code": "01 WORD PIC X(8) VALUE \"COMPUTER\".\nDISPLAY WORD(1:4)",
+          "answers": [
+            "COMP"
+          ],
+          "explain": "`WORD(1:4)` takes four characters, starting at position `1`."
+        },
+        {
+          "type": "input",
+          "id": "strings-2",
+          "prompt": "What does this print?",
+          "code": "01 WORD PIC X(8) VALUE \"COMPUTER\".\nDISPLAY WORD(4:3)",
+          "answers": [
+            "PUT"
+          ],
+          "explain": "Position `4` is the `P`. From there, three characters give `PUT`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-3",
+          "prompt": "What does this print?",
+          "code": "01 OUT-TEXT PIC X(10) VALUE SPACES.\nSTRING \"Ada\" DELIMITED BY SIZE\n    \"-\" DELIMITED BY SIZE\n    \"Bob\" DELIMITED BY SIZE\n    INTO OUT-TEXT\nEND-STRING\nDISPLAY FUNCTION TRIM(OUT-TEXT)",
+          "options": [
+            "`Ada-Bob`",
+            "`Ada - Bob`",
+            "`AdaBob`",
+            "`Ada-`"
+          ],
+          "answer": 0,
+          "explain": "`STRING` puts the three pieces directly one after another, without extra spaces."
+        },
+        {
+          "type": "input",
+          "id": "strings-4",
+          "prompt": "What does this print?",
+          "code": "01 WORD PIC X(6) VALUE \"banana\".\n01 HITS PIC 99 VALUE 0.\nINSPECT WORD TALLYING HITS FOR ALL \"a\"\nDISPLAY HITS",
+          "answers": [
+            "03"
+          ],
+          "explain": "`banana` has three `a`. `HITS` has two digits, so it prints `03`."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-5",
+          "statement": "`STRING` fills the rest of the target item with spaces.",
+          "answer": false,
+          "explain": "`STRING` changes only the characters it writes. The rest keeps its old content, so clear the target with `MOVE SPACES` first."
+        },
+        {
+          "type": "gap",
+          "id": "strings-6",
+          "prompt": "Complete the code so it prints red, then blue.",
+          "code": "01 COLORS PIC X(8) VALUE \"red,blue\".\n01 C1 PIC X(4).\n01 C2 PIC X(4).\nUNSTRING COLORS DELIMITED BY ___\n    INTO C1 C2\nEND-UNSTRING\nDISPLAY FUNCTION TRIM(C1)\nDISPLAY C2",
+          "options": [
+            "\",\"",
+            "SPACE",
+            "SIZE",
+            "COMMA"
+          ],
+          "answer": 0,
+          "explain": "The delimiter is the text `\",\"` in quotes. `UNSTRING` splits at each comma."
+        },
+        {
+          "type": "gap",
+          "id": "strings-7",
+          "prompt": "Complete the code so it prints bonono.",
+          "code": "01 WORD PIC X(6) VALUE \"banana\".\nINSPECT WORD ___ ALL \"a\" BY \"o\"\nDISPLAY WORD",
+          "options": [
+            "REPLACING",
+            "TALLYING",
+            "CONVERTING",
+            "CHANGING"
+          ],
+          "answer": 0,
+          "explain": "`REPLACING ALL \"a\" BY \"o\"` changes every `a` into an `o`."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-8",
+          "prompt": "Build the statement that copies CITY up to the first space into OUT-TEXT.",
+          "tokens": [
+            "STRING",
+            "CITY",
+            "DELIMITED",
+            "BY",
+            "SPACE",
+            "INTO",
+            "OUT-TEXT"
+          ],
+          "distractors": [
+            "TO",
+            "SIZE"
+          ],
+          "explain": "`DELIMITED BY SPACE` stops at the first space, and `INTO` names the target."
+        },
+        {
+          "type": "order",
+          "id": "strings-9",
+          "prompt": "Put the lines in order so the code prints 17.05.2024.",
+          "lines": [
+            "MOVE \"2024-05-17\" TO DATE-TEXT",
+            "UNSTRING DATE-TEXT DELIMITED BY \"-\"",
+            "    INTO YY MM DD",
+            "END-UNSTRING",
+            "DISPLAY DD \".\" MM \".\" YY"
+          ],
+          "explain": "Fill `DATE-TEXT` first, then split it, and print the parts at the end."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-10",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`FUNCTION TRIM(T)`",
+              "removes outer spaces"
+            ],
+            [
+              "`T(2:3)`",
+              "three characters from position 2"
+            ],
+            [
+              "`STRING`",
+              "joins texts"
+            ],
+            [
+              "`UNSTRING`",
+              "splits a text"
+            ],
+            [
+              "`INSPECT ... TALLYING`",
+              "counts characters"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "strings-11",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "01 WORD PIC X(8) VALUE \"COMPUTER\".",
+            "DISPLAY WORD(0:3)",
+            "DISPLAY WORD(6:3)"
+          ],
+          "bug": 1,
+          "explain": "Positions start at `1`, not `0`. Write `WORD(1:3)` for the first three characters."
+        },
+        {
+          "type": "bug",
+          "id": "strings-12",
+          "prompt": "The code should print New York!. Which line has the bug?",
+          "lines": [
+            "01 CITY PIC X(8) VALUE \"New York\".",
+            "01 OUT-TEXT PIC X(12) VALUE SPACES.",
+            "STRING CITY DELIMITED BY SPACE",
+            "    \"!\" DELIMITED BY SIZE",
+            "    INTO OUT-TEXT",
+            "END-STRING",
+            "DISPLAY FUNCTION TRIM(OUT-TEXT)"
+          ],
+          "bug": 2,
+          "explain": "`DELIMITED BY SPACE` stops at the space in `New York`. Use `DELIMITED BY SIZE` to take the whole item."
+        }
+      ]
+    }
+  ]
+}

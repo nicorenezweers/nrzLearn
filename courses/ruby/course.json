@@ -1,0 +1,1890 @@
+{
+  "course": "ruby",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Ruby",
+      "chapter": "Basics",
+      "summary": "Write your first Ruby programs: print text and numbers with puts, print and p, and let Ruby calculate.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Ruby is a programming language that is easy to read. A Ruby program is a list of instructions. The computer runs them from top to bottom, one line after the other. Your first instruction is `puts`: it prints a value and then starts a new line."
+        },
+        {
+          "type": "code",
+          "code": "puts \"Hello, Ruby!\"",
+          "output": "Hello, Ruby!"
+        },
+        {
+          "type": "text",
+          "md": "Text in quotes is called a **string**. You can write it with double quotes, `\"Hi\"`, or with single quotes, `'Hi'`. Every `puts` prints its own line."
+        },
+        {
+          "type": "code",
+          "code": "puts \"Hello\"\nputs 'World'\nputs \"Ruby is fun\"",
+          "output": "Hello\nWorld\nRuby is fun"
+        },
+        {
+          "type": "heading",
+          "text": "Numbers and calculations"
+        },
+        {
+          "type": "text",
+          "md": "Numbers need no quotes. Ruby calculates with `+` (plus), `-` (minus), `*` (times) and `/` (divided by). Whole numbers are called **integers**. When you divide two integers, Ruby drops the part after the decimal point: `7 / 2` is `3`. Write `7.0 / 2` to get `3.5`. `%` gives the remainder of a division: `7 % 2` is `1`."
+        },
+        {
+          "type": "code",
+          "code": "puts 2 + 3\nputs 10 - 4\nputs 3 * 4\nputs 7 / 2\nputs 7.0 / 2\nputs 7 % 2",
+          "output": "5\n6\n12\n3\n3.5\n1"
+        },
+        {
+          "type": "text",
+          "md": "Quotes make a big difference. `\"2\"` with quotes is text, `2` without quotes is a number. `+` between two strings joins them, and `+` between two numbers adds them."
+        },
+        {
+          "type": "code",
+          "code": "puts \"2\" + \"3\"\nputs 2 + 3",
+          "output": "23\n5"
+        },
+        {
+          "type": "heading",
+          "text": "print and p"
+        },
+        {
+          "type": "text",
+          "md": "`print` prints a value **without** a new line at the end, so the next output continues on the same line. `p` prints a value the way Ruby sees it: a string keeps its quotes. Programmers use `p` to check values while they work."
+        },
+        {
+          "type": "code",
+          "code": "print \"Hello, \"\nprint \"World\"\nputs \"!\"\np \"Ruby\"\np 42",
+          "output": "Hello, World!\n\"Ruby\"\n42"
+        },
+        {
+          "type": "tip",
+          "md": "Everything after a `#` on a line is a **comment**. Ruby ignores it. In this course, comments only show results, for example `puts 2 + 3 # 5`."
+        }
+      ],
+      "card": [
+        "`puts \"Hi\"` prints and starts a new line",
+        "`print \"Hi\"` prints without a new line",
+        "`p \"Hi\"` shows the value as Ruby sees it: `\"Hi\"`",
+        "`7 / 2` is `3`, `7.0 / 2` is `3.5`, `7 % 2` is `1`",
+        "`\"2\" + \"3\"` is `\"23\"`, but `2 + 3` is `5`"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which line prints Hello and then starts a new line?",
+          "options": [
+            "`puts \"Hello\"`",
+            "`print \"Hello\"`",
+            "`echo \"Hello\"`",
+            "`puts Hello`"
+          ],
+          "answer": 0,
+          "explain": "`puts` prints the value and starts a new line. `print` does not start a new line, `echo` does not exist in Ruby, and `Hello` without quotes is not a string."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "puts 4 * 5",
+          "answers": [
+            "20"
+          ],
+          "explain": "`*` multiplies: 4 times 5 is 20."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "puts 9 / 2",
+          "answers": [
+            "4"
+          ],
+          "explain": "Both numbers are integers, so Ruby drops the part after the decimal point: 9 / 2 is 4, not 4.5."
+        },
+        {
+          "type": "choice",
+          "id": "hello-4",
+          "prompt": "What does this print?",
+          "code": "print \"Hi\"\nprint \"Ruby\"",
+          "options": [
+            "`HiRuby`",
+            "`Hi Ruby`",
+            "`Hi` and `Ruby` on two lines",
+            "`\"Hi\"\"Ruby\"`"
+          ],
+          "answer": 0,
+          "explain": "`print` does not start a new line and adds no space, so both strings end up next to each other."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-5",
+          "statement": "This program prints 23.",
+          "code": "puts \"2\" + \"3\"",
+          "answer": true,
+          "explain": "`\"2\"` and `\"3\"` are strings because of the quotes. `+` joins two strings, so the result is `23`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so it prints 3.5.",
+          "code": "puts ___ / 2",
+          "options": [
+            "7",
+            "7.0",
+            "\"7\""
+          ],
+          "answer": 1,
+          "explain": "With `7.0`, one number is a float, so the result keeps the decimal part: `3.5`. `7 / 2` gives `3`, and you cannot divide a string."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-7",
+          "prompt": "Match each piece of code with what it does.",
+          "pairs": [
+            [
+              "`puts`",
+              "prints and starts a new line"
+            ],
+            [
+              "`print`",
+              "prints without a new line"
+            ],
+            [
+              "`p`",
+              "shows the value as Ruby sees it"
+            ],
+            [
+              "`#`",
+              "starts a comment"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "hello-8",
+          "prompt": "Build a line that prints the result of 10 minus 4 and starts a new line.",
+          "tokens": [
+            "puts",
+            "10",
+            "-",
+            "4"
+          ],
+          "distractors": [
+            "+",
+            "print"
+          ],
+          "explain": "`puts` prints the result, `6`, and starts a new line. The numbers need no quotes."
+        },
+        {
+          "type": "order",
+          "id": "hello-9",
+          "prompt": "Put the lines in order so the program prints: Hello, Ruby!",
+          "lines": [
+            "print \"Hello\"",
+            "print \", \"",
+            "print \"Ruby\"",
+            "puts \"!\""
+          ],
+          "explain": "`print` keeps everything on one line. The last line uses `puts`, so the output ends with a new line."
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "This program should print Start, 12 and End on three lines. Which line has the bug?",
+          "lines": [
+            "puts \"Start\"",
+            "puts 3 x 4",
+            "puts \"End\""
+          ],
+          "bug": 1,
+          "explain": "Ruby multiplies with `*`, not with `x`. Write `puts 3 * 4`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-11",
+          "prompt": "What does this print?",
+          "code": "p \"Ruby\"",
+          "options": [
+            "`Ruby`",
+            "`\"Ruby\"`",
+            "`p Ruby`",
+            "`'Ruby'`"
+          ],
+          "answer": 1,
+          "explain": "`p` shows the value the way Ruby sees it, so a string keeps its double quotes."
+        },
+        {
+          "type": "bug",
+          "id": "hello-12",
+          "prompt": "This program should print: Hi, Sam! Which line has the bug?",
+          "lines": [
+            "print \"Hi, \"",
+            "print Sam",
+            "puts \"!\""
+          ],
+          "bug": 1,
+          "explain": "Text needs quotes. Without them, Ruby looks for something called `Sam` and stops with an error. Write `print \"Sam\"`."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "Variables and types",
+      "chapter": "Basics",
+      "summary": "Store values in variables, meet Integer, Float, String, true, false and nil, and put values into text with #{}.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **variable** is a name for a value. You create it with `=`: the name on the left, the value on the right. After that, you use the name instead of the value."
+        },
+        {
+          "type": "code",
+          "code": "name = \"Mia\"\nage = 12\nputs name\nputs age",
+          "output": "Mia\n12"
+        },
+        {
+          "type": "text",
+          "md": "A variable can get a new value later; Ruby then forgets the old one. `score += 5` is short for `score = score + 5`, and `score -= 1` is short for `score = score - 1`. Variable names use small letters and underscores, like `first_name`."
+        },
+        {
+          "type": "code",
+          "code": "score = 10\nputs score\nscore = score + 5\nputs score\nscore += 1\nputs score\nscore -= 6\nputs score",
+          "output": "10\n15\n16\n10"
+        },
+        {
+          "type": "heading",
+          "text": "Types"
+        },
+        {
+          "type": "text",
+          "md": "Every value has a type, which Ruby calls its **class**. `.class` asks a value for its class. Whole numbers are `Integer`, numbers with a decimal point are `Float`, and text is `String`. `true` and `false` answer yes-or-no questions. `nil` means \"no value\"."
+        },
+        {
+          "type": "code",
+          "code": "puts 42.class\nputs 3.14.class\nputs \"hi\".class\nputs true.class\nputs false.class\nputs nil.class",
+          "output": "Integer\nFloat\nString\nTrueClass\nFalseClass\nNilClass"
+        },
+        {
+          "type": "tip",
+          "md": "`puts nil` prints an empty line, because `nil` has no text. `p nil` shows `nil`."
+        },
+        {
+          "type": "heading",
+          "text": "Values inside strings"
+        },
+        {
+          "type": "text",
+          "md": "To put a value into a string, write `#{}` inside **double quotes** and put a variable or a calculation between the braces. This is called **interpolation**. It does not work with single quotes."
+        },
+        {
+          "type": "code",
+          "code": "name = \"Mia\"\nage = 12\nputs \"#{name} is #{age} years old.\"\nputs \"Next year: #{age + 1}\"\nputs 'No #{name} here'",
+          "output": "Mia is 12 years old.\nNext year: 13\nNo #{name} here"
+        },
+        {
+          "type": "text",
+          "md": "You cannot join a string and a number with `+`: `\"Age: \" + 12` stops with an error (`TypeError`). Convert the value first. `.to_s` turns a value into a string, `.to_i` turns a string into an integer, and `.to_f` turns it into a float."
+        },
+        {
+          "type": "code",
+          "code": "age = 12\nputs \"Age: \" + age.to_s\nputs \"5\".to_i + 3\nputs \"2.5\".to_f * 2",
+          "output": "Age: 12\n8\n5.0"
+        }
+      ],
+      "card": [
+        "`age = 12` creates a variable; `age += 1` adds 1",
+        "`42.class` is `Integer`; others: `Float`, `String`, `TrueClass`, `NilClass`",
+        "`\"Hi #{name}\"` puts a value into a string (double quotes only)",
+        "`.to_s`, `.to_i` and `.to_f` convert values",
+        "`nil` means no value"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "variables-1",
+          "prompt": "What does this print?",
+          "code": "x = 5\nx = x * 2\nputs x",
+          "answers": [
+            "10"
+          ],
+          "explain": "`x` starts as `5`. The second line stores `5 * 2`, so `x` is `10`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-2",
+          "prompt": "What does this print?",
+          "code": "puts 7.5.class",
+          "options": [
+            "`Integer`",
+            "`Float`",
+            "`String`",
+            "`Decimal`"
+          ],
+          "answer": 1,
+          "explain": "`7.5` has a decimal point, so its class is `Float`."
+        },
+        {
+          "type": "input",
+          "id": "variables-3",
+          "prompt": "What does this print?",
+          "code": "name = \"Leo\"\nputs \"Hi, #{name}!\"",
+          "answers": [
+            "Hi, Leo!"
+          ],
+          "explain": "Inside double quotes, `#{name}` is replaced with the value of `name`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-4",
+          "statement": "This program prints: Hello, Ana",
+          "code": "name = \"Ana\"\nputs 'Hello, #{name}'",
+          "answer": false,
+          "explain": "Interpolation only works in double quotes. In single quotes, `#{name}` stays as it is, so the program prints `Hello, #{name}`."
+        },
+        {
+          "type": "gap",
+          "id": "variables-5",
+          "prompt": "Complete the code so it prints: Total: 15",
+          "code": "total = 15\nputs \"Total: \" + total___",
+          "options": [
+            ".to_s",
+            ".to_i",
+            ".class"
+          ],
+          "answer": 0,
+          "explain": "`+` can only join a string with another string. `.to_s` turns the number `15` into the string `\"15\"`."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-6",
+          "prompt": "Match each value with its type.",
+          "pairs": [
+            [
+              "`42`",
+              "a whole number (Integer)"
+            ],
+            [
+              "`4.2`",
+              "a number with a decimal point (Float)"
+            ],
+            [
+              "`\"42\"`",
+              "text (String)"
+            ],
+            [
+              "`nil`",
+              "no value"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "variables-7",
+          "prompt": "Build a line that stores the sum of a and b in the variable total.",
+          "tokens": [
+            "total",
+            "=",
+            "a",
+            "+",
+            "b"
+          ],
+          "distractors": [
+            "==",
+            "puts"
+          ],
+          "explain": "The name of the new variable comes first, then `=`, then the value to store."
+        },
+        {
+          "type": "order",
+          "id": "variables-8",
+          "prompt": "Put the lines in order so the program prints 8.",
+          "lines": [
+            "count = 3",
+            "count = count * 2",
+            "count += 2",
+            "puts count"
+          ],
+          "explain": "`count` must exist before you use it. 3 times 2 is 6, plus 2 is 8. In the other order, you would get (3 + 2) * 2 = 10."
+        },
+        {
+          "type": "bug",
+          "id": "variables-9",
+          "prompt": "This program should print: Score: 10. Which line has the bug?",
+          "lines": [
+            "score = 10",
+            "text = \"Score: \" + score",
+            "puts text"
+          ],
+          "bug": 1,
+          "explain": "You cannot join a string and an integer with `+`. Write `text = \"Score: \" + score.to_s`, or use interpolation: `\"Score: #{score}\"`."
+        },
+        {
+          "type": "choice",
+          "id": "variables-10",
+          "prompt": "What does this print?",
+          "code": "puts \"3\".to_i + 4",
+          "options": [
+            "`7`",
+            "`34`",
+            "`\"7\"`",
+            "an error"
+          ],
+          "answer": 0,
+          "explain": "`\"3\".to_i` turns the string into the integer `3`, and `3 + 4` is `7`."
+        },
+        {
+          "type": "input",
+          "id": "variables-11",
+          "prompt": "What does this print?",
+          "code": "a = 10\nb = a\na = 20\nputs b",
+          "answers": [
+            "10"
+          ],
+          "explain": "`b = a` stores the value that `a` has at that moment, `10`. Changing `a` later does not change `b`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-12",
+          "prompt": "This program should print: Hi, Max! Which line has the bug?",
+          "lines": [
+            "name = \"Max\"",
+            "greeting = 'Hi, #{name}!'",
+            "puts greeting"
+          ],
+          "bug": 1,
+          "explain": "Interpolation needs double quotes. Write `greeting = \"Hi, #{name}!\"`."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings",
+      "chapter": "Basics",
+      "summary": "Change and check text with string methods like upcase, length, include? and gsub, and take parts of a string.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **method** is an action that a value can do. You call it with a dot after the value, like `\"hello\".upcase`. `upcase` gives the text in capital letters, `downcase` in small letters, and `capitalize` makes only the first letter a capital."
+        },
+        {
+          "type": "code",
+          "code": "word = \"ruby\"\nputs word.upcase\nputs \"HELLO\".downcase\nputs \"hello world\".capitalize",
+          "output": "RUBY\nhello\nHello world"
+        },
+        {
+          "type": "text",
+          "md": "`length` counts the characters of a string; spaces count too. `reverse` gives the characters in reverse order."
+        },
+        {
+          "type": "code",
+          "code": "puts \"Ruby\".length\nputs \"Hi there\".length\nputs \"stressed\".reverse",
+          "output": "4\n8\ndesserts"
+        },
+        {
+          "type": "text",
+          "md": "Some methods need extra information. You pass it in parentheses `()`; it is called an **argument**. A method name that ends with `?` answers a question with `true` or `false`. `include?` checks if a string contains some text, `start_with?` and `end_with?` check the beginning and the end, and `empty?` checks if a string has no characters."
+        },
+        {
+          "type": "code",
+          "code": "text = \"I like Ruby\"\nputs text.include?(\"Ruby\")\nputs text.include?(\"ruby\")\nputs text.start_with?(\"I\")\nputs text.end_with?(\"!\")\nputs \"\".empty?",
+          "output": "true\nfalse\ntrue\nfalse\ntrue"
+        },
+        {
+          "type": "heading",
+          "text": "Replacing text"
+        },
+        {
+          "type": "text",
+          "md": "`gsub(a, b)` replaces **every** `a` with `b`. `sub(a, b)` replaces only the first one. `strip` removes spaces at the start and the end. You can call one method after the other: `\"  hi  \".strip.upcase` first removes the spaces, then makes capitals."
+        },
+        {
+          "type": "code",
+          "code": "text = \"one two one\"\nputs text.gsub(\"one\", \"1\")\nputs text.sub(\"one\", \"1\")\nputs \"  hi  \".strip.upcase",
+          "output": "1 two 1\n1 two one\nHI"
+        },
+        {
+          "type": "warning",
+          "md": "These methods return a **new** string; the original stays the same. Store the result if you need it: `word = word.upcase`."
+        },
+        {
+          "type": "code",
+          "code": "word = \"ruby\"\nloud = word.upcase\nputs word\nputs loud",
+          "output": "ruby\nRUBY"
+        },
+        {
+          "type": "heading",
+          "text": "Parts of a string"
+        },
+        {
+          "type": "text",
+          "md": "Each character has a position, called its **index**. The first index is `0`, not `1`. `word[0]` is the first character and `word[-1]` is the last one. `word[start, count]` takes `count` characters, beginning at index `start`."
+        },
+        {
+          "type": "code",
+          "code": "word = \"Ruby\"\nputs word[0]\nputs word[1]\nputs word[-1]\nputs word[0, 2]\nputs word[1, 3]",
+          "output": "R\nu\ny\nRu\nuby"
+        }
+      ],
+      "card": [
+        "`s.upcase`, `s.downcase`, `s.capitalize`, `s.reverse`",
+        "`s.length` counts the characters",
+        "`s.include?(\"x\")` and `s.start_with?(\"x\")` give `true` or `false`",
+        "`s.gsub(\"a\", \"b\")` replaces every `a`; `s.sub` only the first",
+        "`s[0]` is the first character, `s[-1]` the last, `s[1, 3]` three from index 1"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this print?",
+          "code": "puts \"banana\".length",
+          "answers": [
+            "6"
+          ],
+          "explain": "`banana` has six characters: b, a, n, a, n, a."
+        },
+        {
+          "type": "choice",
+          "id": "strings-2",
+          "prompt": "What does this print?",
+          "code": "word = \"Ruby\"\nputs word[1]",
+          "options": [
+            "`R`",
+            "`u`",
+            "`b`",
+            "`Ru`"
+          ],
+          "answer": 1,
+          "explain": "Indexes start at `0`: `word[0]` is `R`, so `word[1]` is `u`."
+        },
+        {
+          "type": "input",
+          "id": "strings-3",
+          "prompt": "What does this print?",
+          "code": "puts \"Hello\"[1, 3]",
+          "answers": [
+            "ell"
+          ],
+          "explain": "`[1, 3]` starts at index `1` (`e`) and takes three characters: `ell`."
+        },
+        {
+          "type": "input",
+          "id": "strings-4",
+          "prompt": "What does this print?",
+          "code": "puts \"a-b-c\".gsub(\"-\", \"+\")",
+          "answers": [
+            "a+b+c"
+          ],
+          "explain": "`gsub` replaces every `-` with `+`."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-5",
+          "statement": "This program prints HELLO.",
+          "code": "text = \"hello\"\ntext.upcase\nputs text",
+          "answer": false,
+          "explain": "`upcase` returns a new string, but the program does not store it. `text` is still `hello`."
+        },
+        {
+          "type": "gap",
+          "id": "strings-6",
+          "prompt": "Complete the code so it prints true.",
+          "code": "puts \"I love Ruby\".___(\"Ruby\")",
+          "options": [
+            "include?",
+            "contains?",
+            "include"
+          ],
+          "answer": 0,
+          "explain": "The method is called `include?`, with a question mark, because it answers a yes-or-no question."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-7",
+          "prompt": "Match each piece of code with what it gives.",
+          "pairs": [
+            [
+              "`s.upcase`",
+              "all letters as capitals"
+            ],
+            [
+              "`s.length`",
+              "the number of characters"
+            ],
+            [
+              "`s.reverse`",
+              "the characters in reverse order"
+            ],
+            [
+              "`s[-1]`",
+              "the last character"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "strings-8",
+          "prompt": "Build a line that replaces every a with o and stores the result in text.",
+          "tokens": [
+            "text",
+            "=",
+            "text.gsub(\"a\",",
+            "\"o\")"
+          ],
+          "distractors": [
+            "text.sub(\"a\",",
+            "=="
+          ],
+          "explain": "`gsub` replaces every `a`, and `text =` stores the new string. `sub` would replace only the first `a`."
+        },
+        {
+          "type": "order",
+          "id": "strings-9",
+          "prompt": "Put the lines in order so the program prints YBUR.",
+          "lines": [
+            "word = \"ruby\"",
+            "loud = word.upcase",
+            "back = loud.reverse",
+            "puts back"
+          ],
+          "explain": "Each line uses the variable that the line before it creates: `ruby`, then `RUBY`, then `YBUR`."
+        },
+        {
+          "type": "bug",
+          "id": "strings-10",
+          "prompt": "This program should print the first letter, R. Which line has the bug?",
+          "lines": [
+            "word = \"Ruby\"",
+            "first = word[1]",
+            "puts first"
+          ],
+          "bug": 1,
+          "explain": "The first index is `0`, so `word[1]` is `u`. Write `first = word[0]`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-11",
+          "prompt": "What does this print?",
+          "code": "puts \"hello world\".capitalize",
+          "options": [
+            "`Hello World`",
+            "`Hello world`",
+            "`HELLO WORLD`",
+            "`hello World`"
+          ],
+          "answer": 1,
+          "explain": "`capitalize` makes the first letter of the string a capital and all other letters small."
+        },
+        {
+          "type": "bug",
+          "id": "strings-12",
+          "prompt": "This program should print 4. Which line has the bug?",
+          "lines": [
+            "name = \"Anna\"",
+            "count = name.lenght",
+            "puts count"
+          ],
+          "bug": 1,
+          "explain": "The method name is misspelled, so Ruby does not know it. Write `count = name.length`."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program choose with if, elsif, else and unless, compare values, combine conditions and use case and when.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A comparison gives `true` or `false`. `==` checks if two values are equal; remember that one `=` stores a value and two compare. `!=` means \"not equal\". `<`, `>`, `<=` and `>=` mean less than, greater than, less or equal, and greater or equal."
+        },
+        {
+          "type": "code",
+          "code": "age = 15\nputs age == 15\nputs age != 15\nputs age > 18\nputs age <= 15",
+          "output": "true\nfalse\nfalse\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "`if` runs code only when its condition is `true`. The code after `else` runs when it is `false`. `end` closes the whole block. Indent the code inside by two spaces: Ruby does not need it, but it makes the code easy to read."
+        },
+        {
+          "type": "code",
+          "code": "temperature = 25\nif temperature > 20\n  puts \"Warm\"\nelse\n  puts \"Cold\"\nend",
+          "output": "Warm"
+        },
+        {
+          "type": "text",
+          "md": "`elsif` checks another condition when the ones before it were `false`. Ruby tests the conditions from top to bottom and runs only the first branch that matches."
+        },
+        {
+          "type": "code",
+          "code": "score = 75\nif score >= 90\n  puts \"A\"\nelsif score >= 70\n  puts \"B\"\nelse\n  puts \"C\"\nend",
+          "output": "B"
+        },
+        {
+          "type": "text",
+          "md": "`&&` means **and**: both sides must be `true`. `||` means **or**: one true side is enough. `!` turns `true` into `false` and `false` into `true`. `unless` is the opposite of `if`: its code runs when the condition is `false`."
+        },
+        {
+          "type": "code",
+          "code": "age = 20\nticket = true\nif age >= 18 && ticket\n  puts \"Welcome\"\nend\nunless ticket\n  puts \"Buy a ticket\"\nend\nputs age < 12 || age > 65\nputs !ticket",
+          "output": "Welcome\nfalse\nfalse"
+        },
+        {
+          "type": "text",
+          "md": "For one short line, you can put `if` or `unless` at the end: `puts \"Hot\" if temperature > 30`. The **ternary operator** `condition ? a : b` gives `a` when the condition is `true` and `b` when it is `false`."
+        },
+        {
+          "type": "code",
+          "code": "temperature = 35\nputs \"Hot\" if temperature > 30\nputs \"Freezing\" if temperature < 0\nlabel = temperature > 20 ? \"warm\" : \"cold\"\nputs label",
+          "output": "Hot\nwarm"
+        },
+        {
+          "type": "heading",
+          "text": "case and when"
+        },
+        {
+          "type": "text",
+          "md": "`case` compares one value with several options. Each `when` lists one or more values, separated by commas. The code after `else` runs when no `when` matches."
+        },
+        {
+          "type": "code",
+          "code": "day = \"Sat\"\ncase day\nwhen \"Sat\", \"Sun\"\n  puts \"Weekend\"\nwhen \"Fri\"\n  puts \"Almost weekend\"\nelse\n  puts \"Workday\"\nend",
+          "output": "Weekend"
+        },
+        {
+          "type": "tip",
+          "md": "In Ruby, only `false` and `nil` count as false in a condition. Every other value counts as true, even `0` and the empty string `\"\"`."
+        }
+      ],
+      "card": [
+        "`==` equal, `!=` not equal, `<`, `>`, `<=`, `>=`",
+        "`if` … `elsif` … `else` … `end`",
+        "`&&` and, `||` or, `!` not; `unless` means \"if not\"",
+        "`x > 0 ? \"yes\" : \"no\"` chooses one of two values",
+        "`case x` … `when 1, 2` … `else` … `end`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "x = 7\nif x > 5\n  puts \"big\"\nelse\n  puts \"small\"\nend",
+          "answers": [
+            "big"
+          ],
+          "explain": "`7 > 5` is `true`, so the `if` branch runs."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "score = 85\nif score >= 90\n  puts \"A\"\nelsif score >= 80\n  puts \"B\"\nelsif score >= 70\n  puts \"C\"\nend",
+          "options": [
+            "`A`",
+            "`B`",
+            "`C`",
+            "`B` and `C`"
+          ],
+          "answer": 1,
+          "explain": "`85 >= 90` is `false`, `85 >= 80` is `true`. Ruby runs only the first matching branch, so it prints `B` and skips the rest."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-3",
+          "statement": "This program prints yes.",
+          "code": "count = 0\nif count\n  puts \"yes\"\nelse\n  puts \"no\"\nend",
+          "answer": true,
+          "explain": "Only `false` and `nil` count as false in Ruby. `0` counts as true, so the `if` branch runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-4",
+          "prompt": "What does this print?",
+          "code": "a = 5\nb = 10\nputs a > 3 && b < 5",
+          "answers": [
+            "false"
+          ],
+          "explain": "`a > 3` is `true`, but `b < 5` is `false`. With `&&`, both sides must be `true`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-5",
+          "prompt": "Complete the code so it prints Different.",
+          "code": "a = 4\nb = 5\nif a ___ b\n  puts \"Different\"\nend",
+          "options": [
+            "!=",
+            "==",
+            "<>"
+          ],
+          "answer": 0,
+          "explain": "`!=` means \"not equal\". `4 != 5` is `true`. Ruby has no `<>` operator."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-6",
+          "prompt": "Match each piece of code with its meaning.",
+          "pairs": [
+            [
+              "`&&`",
+              "both sides must be true"
+            ],
+            [
+              "`||`",
+              "one true side is enough"
+            ],
+            [
+              "`!`",
+              "turns true into false"
+            ],
+            [
+              "`unless`",
+              "runs when the condition is false"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-7",
+          "prompt": "Build a line that prints Hot only when temp is greater than 30.",
+          "tokens": [
+            "puts",
+            "\"Hot\"",
+            "if",
+            "temp",
+            ">",
+            "30"
+          ],
+          "distractors": [
+            "unless",
+            "<"
+          ],
+          "explain": "A short `if` can come at the end of the line: first the action, then `if` and the condition."
+        },
+        {
+          "type": "order",
+          "id": "conditions-8",
+          "prompt": "Put the lines in order so the program prints Cold.",
+          "lines": [
+            "temp = 10",
+            "if temp > 20",
+            "  puts \"Warm\"",
+            "else",
+            "  puts \"Cold\"",
+            "end"
+          ],
+          "explain": "The variable comes first. `10 > 20` is `false`, so the `else` branch prints `Cold`. `end` closes the `if`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-9",
+          "prompt": "This program should print Wrong. Which line has the bug?",
+          "lines": [
+            "answer = 42",
+            "if answer = 7",
+            "  puts \"Correct\"",
+            "else",
+            "  puts \"Wrong\"",
+            "end"
+          ],
+          "bug": 1,
+          "explain": "One `=` stores `7` in `answer`, and `7` counts as true. To compare, use two: `if answer == 7`."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-10",
+          "prompt": "What does this print?",
+          "code": "x = nil\nputs x ? \"yes\" : \"no\"",
+          "options": [
+            "`yes`",
+            "`no`",
+            "`nil`",
+            "an error"
+          ],
+          "answer": 1,
+          "explain": "`x` is `nil`, and `nil` counts as false. So the ternary operator gives the second value, `no`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-11",
+          "prompt": "What does this print?",
+          "code": "day = \"Mon\"\ncase day\nwhen \"Sat\", \"Sun\"\n  puts \"Weekend\"\nelse\n  puts \"Workday\"\nend",
+          "answers": [
+            "Workday"
+          ],
+          "explain": "`Mon` matches no `when`, so the `else` branch runs."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-12",
+          "prompt": "This program should print positive. Which line has the bug?",
+          "lines": [
+            "n = 5",
+            "if n > 0",
+            "  puts \"positive\"",
+            "elseif n < 0",
+            "  puts \"negative\"",
+            "else",
+            "  puts \"zero\"",
+            "end"
+          ],
+          "bug": 3,
+          "explain": "Ruby spells it `elsif`, without the second e. Ruby reads `elseif` as an unknown method and stops with an error. Write `elsif n < 0`."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops and ranges",
+      "chapter": "Control flow",
+      "summary": "Repeat code with times, each, upto and while, and count through ranges like 1..5.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **loop** repeats code. The easiest loop in Ruby is `times`: `3.times` runs the code three times. The code between `do` and `end` is called a **block**."
+        },
+        {
+          "type": "code",
+          "code": "3.times do\n  puts \"Hello\"\nend",
+          "output": "Hello\nHello\nHello"
+        },
+        {
+          "type": "text",
+          "md": "A block can receive a value between two bars, like `|i|`. With `times`, `i` counts from `0`. For short blocks, you can use curly braces `{ }` instead of `do` and `end`."
+        },
+        {
+          "type": "code",
+          "code": "3.times do |i|\n  puts \"Round #{i}\"\nend\n2.times { puts \"Hi\" }",
+          "output": "Round 0\nRound 1\nRound 2\nHi\nHi"
+        },
+        {
+          "type": "heading",
+          "text": "Ranges"
+        },
+        {
+          "type": "text",
+          "md": "A **range** is a sequence of values from a start to an end. `1..5` contains 1, 2, 3, 4 and 5. With three dots, `1...5` stops **before** the end: 1, 2, 3 and 4. `each` runs a block once for every value. Ranges also have methods: `sum` adds all values, and `include?` checks if a value is part of the range."
+        },
+        {
+          "type": "code",
+          "code": "(1..3).each do |n|\n  puts n * 10\nend\nnumbers = 1...5\nputs numbers.sum\nputs numbers.include?(5)",
+          "output": "10\n20\n30\n10\nfalse"
+        },
+        {
+          "type": "text",
+          "md": "`upto` counts up from one number to another, and `downto` counts down."
+        },
+        {
+          "type": "code",
+          "code": "1.upto(3) { |i| puts i }\n3.downto(1) { |i| puts i }\nputs \"Go!\"",
+          "output": "1\n2\n3\n3\n2\n1\nGo!"
+        },
+        {
+          "type": "heading",
+          "text": "while"
+        },
+        {
+          "type": "text",
+          "md": "A `while` loop repeats its code as long as its condition is `true`. Make sure that the code in the loop changes the condition; otherwise, the loop never stops."
+        },
+        {
+          "type": "code",
+          "code": "count = 1\nwhile count <= 3\n  puts \"Count: #{count}\"\n  count += 1\nend\nputs \"Done\"",
+          "output": "Count: 1\nCount: 2\nCount: 3\nDone"
+        },
+        {
+          "type": "text",
+          "md": "`break` leaves a loop at once. `next` skips the rest of the block and continues with the next value. `n.even?` is `true` for even numbers, and `n.odd?` for odd numbers."
+        },
+        {
+          "type": "code",
+          "code": "(1..10).each do |n|\n  next if n.even?\n  break if n > 7\n  puts n\nend",
+          "output": "1\n3\n5\n7"
+        }
+      ],
+      "card": [
+        "`3.times { |i| puts i }` prints 0, 1 and 2",
+        "`1..5` includes 5, `1...5` stops before 5",
+        "`(1..5).each do |n| … end` runs once for every value",
+        "`1.upto(3)` counts up, `3.downto(1)` counts down",
+        "`while cond … end` repeats; `break` stops, `next` skips"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "4.times { print \"*\" }",
+          "answers": [
+            "****"
+          ],
+          "explain": "The block runs four times, and `print` adds no new line, so you get four stars on one line."
+        },
+        {
+          "type": "choice",
+          "id": "loops-2",
+          "prompt": "What does this print?",
+          "code": "total = 0\n(1...4).each { |n| total += n }\nputs total",
+          "options": [
+            "`6`",
+            "`10`",
+            "`4`",
+            "`3`"
+          ],
+          "answer": 0,
+          "explain": "`1...4` stops before 4, so the loop adds 1 + 2 + 3 = 6."
+        },
+        {
+          "type": "input",
+          "id": "loops-3",
+          "prompt": "What does this print?",
+          "code": "count = 0\n5.times { count += 2 }\nputs count",
+          "answers": [
+            "10"
+          ],
+          "explain": "The block runs five times and adds 2 each time: 5 times 2 is 10."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-4",
+          "statement": "`1..5` and `1...5` contain the same numbers.",
+          "answer": false,
+          "explain": "`1..5` includes 5. `1...5`, with three dots, stops before 5."
+        },
+        {
+          "type": "gap",
+          "id": "loops-5",
+          "prompt": "Complete the code so it prints the numbers 1, 2 and 3 on three lines.",
+          "code": "1.___(3) { |i| puts i }",
+          "options": [
+            "upto",
+            "downto",
+            "times"
+          ],
+          "answer": 0,
+          "explain": "`1.upto(3)` counts up from 1 to 3. `downto` counts down, and `times` does not take an argument."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-6",
+          "prompt": "Match each piece of code with its meaning.",
+          "pairs": [
+            [
+              "`3.times`",
+              "runs a block three times"
+            ],
+            [
+              "`1..3`",
+              "the numbers 1, 2 and 3"
+            ],
+            [
+              "`1...3`",
+              "the numbers 1 and 2"
+            ],
+            [
+              "`break`",
+              "leaves the loop"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "loops-7",
+          "prompt": "Build a line that prints every number from 1 to 5.",
+          "tokens": [
+            "(1..5).each",
+            "{",
+            "|n|",
+            "puts",
+            "n",
+            "}"
+          ],
+          "distractors": [
+            "(1...5).each",
+            "|n"
+          ],
+          "explain": "Two dots include the 5. The block receives each number as `n` between bars and prints it."
+        },
+        {
+          "type": "order",
+          "id": "loops-8",
+          "prompt": "Put the lines in order so the program prints 3, 2 and 1 on three lines.",
+          "lines": [
+            "n = 3",
+            "while n > 0",
+            "  puts n",
+            "  n -= 1",
+            "end"
+          ],
+          "explain": "`n` must exist before the loop. Inside the loop, the program prints `n` first and then makes it smaller; in the other order, it would print 2, 1 and 0."
+        },
+        {
+          "type": "bug",
+          "id": "loops-9",
+          "prompt": "This program should print the numbers 1 to 5. Which line has the bug?",
+          "lines": [
+            "(1...5).each do |n|",
+            "  puts n",
+            "end"
+          ],
+          "bug": 0,
+          "explain": "Three dots stop before 5, so the program prints only 1 to 4. Write `(1..5).each do |n|`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-10",
+          "prompt": "What does this print?",
+          "code": "(1..10).each do |n|\n  break if n == 4\n  print n\nend",
+          "options": [
+            "`123`",
+            "`1234`",
+            "`12345678910`",
+            "`4`"
+          ],
+          "answer": 0,
+          "explain": "When `n` is 4, `break` leaves the loop before `print` runs. So only 1, 2 and 3 are printed."
+        },
+        {
+          "type": "input",
+          "id": "loops-11",
+          "prompt": "What does this print?",
+          "code": "(1..6).each do |n|\n  next if n.odd?\n  print n\nend",
+          "answers": [
+            "246"
+          ],
+          "explain": "`next` skips the odd numbers, so only 2, 4 and 6 are printed, on one line."
+        },
+        {
+          "type": "bug",
+          "id": "loops-12",
+          "prompt": "This program should count down 5, 4, 3, 2, 1 and then print Go! Which line has the bug?",
+          "lines": [
+            "5.upto(1) do |i|",
+            "  puts i",
+            "end",
+            "puts \"Go!\""
+          ],
+          "bug": 0,
+          "explain": "`upto` counts up, so `5.upto(1)` runs zero times. Write `5.downto(1) do |i|`."
+        }
+      ]
+    },
+    {
+      "id": "methods",
+      "title": "Methods",
+      "chapter": "Building blocks",
+      "summary": "Write your own methods with def, give them parameters and default values, and return results.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **method** is a named piece of code that you can run again and again. You define it with `def`, a name, the code, and `end`. You **call** the method by writing its name."
+        },
+        {
+          "type": "code",
+          "code": "def greet\n  puts \"Hello!\"\nend\n\ngreet\ngreet",
+          "output": "Hello!\nHello!"
+        },
+        {
+          "type": "text",
+          "md": "**Parameters** are variables in parentheses after the method name. When you call the method, you give it values for them; these values are the **arguments**. Separate several parameters with commas."
+        },
+        {
+          "type": "code",
+          "code": "def greet(name)\n  puts \"Hello, #{name}!\"\nend\n\ngreet(\"Ana\")\ngreet(\"Ben\")",
+          "output": "Hello, Ana!\nHello, Ben!"
+        },
+        {
+          "type": "text",
+          "md": "A parameter can have a **default value**: `def greet(name = \"friend\")`. When you call the method without an argument, Ruby uses the default."
+        },
+        {
+          "type": "code",
+          "code": "def greet(name = \"friend\")\n  puts \"Hello, #{name}!\"\nend\n\ngreet(\"Ana\")\ngreet",
+          "output": "Hello, Ana!\nHello, friend!"
+        },
+        {
+          "type": "heading",
+          "text": "Return values"
+        },
+        {
+          "type": "text",
+          "md": "A method gives back a value, its **return value**: the value of the last line that runs. You do not need to write `return` for it. Use `return` to leave a method early with a value."
+        },
+        {
+          "type": "code",
+          "code": "def add(a, b)\n  a + b\nend\n\ndef sign(n)\n  return \"negative\" if n < 0\n  \"positive or zero\"\nend\n\nputs add(2, 3)\nputs sign(-4)\nputs sign(7)",
+          "output": "5\nnegative\npositive or zero"
+        },
+        {
+          "type": "text",
+          "md": "Methods that answer a yes-or-no question end with `?` and return `true` or `false`, like `even?`. You can name your own methods the same way."
+        },
+        {
+          "type": "code",
+          "code": "def adult?(age)\n  age >= 18\nend\n\nputs adult?(20)\nputs adult?(12)\nputs 10.even?",
+          "output": "true\nfalse\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "A method that ends with `!` usually changes the value itself instead of returning a new one. `upcase` returns a new string; `upcase!` changes the string that is stored in the variable."
+        },
+        {
+          "type": "code",
+          "code": "name = \"ruby\"\nputs name.upcase\nputs name\nname.upcase!\nputs name",
+          "output": "RUBY\nruby\nRUBY"
+        },
+        {
+          "type": "warning",
+          "md": "A variable that you create outside a method does not exist inside it, and the other way round. Give values to a method as arguments, and get results back as the return value."
+        }
+      ],
+      "card": [
+        "`def greet(name) … end` defines a method",
+        "`greet(\"Ana\")` calls it with an argument",
+        "`def greet(name = \"friend\")` sets a default value",
+        "The last line gives the return value; `return` leaves early",
+        "`?` methods answer yes or no; `!` methods change the value"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "methods-1",
+          "prompt": "What does this print?",
+          "code": "def double(n)\n  n * 2\nend\n\nputs double(21)",
+          "answers": [
+            "42"
+          ],
+          "explain": "The last line of the method, `n * 2`, is its return value: 21 times 2 is 42."
+        },
+        {
+          "type": "choice",
+          "id": "methods-2",
+          "prompt": "What does this print?",
+          "code": "def greet(name = \"you\")\n  \"Hi, #{name}\"\nend\n\nputs greet",
+          "options": [
+            "`Hi, you`",
+            "`Hi, `",
+            "`Hi, name`",
+            "an error"
+          ],
+          "answer": 0,
+          "explain": "The call has no argument, so `name` gets its default value, `\"you\"`."
+        },
+        {
+          "type": "input",
+          "id": "methods-3",
+          "prompt": "What does this print?",
+          "code": "def area(width, height)\n  width * height\nend\n\nputs area(3, 4)",
+          "answers": [
+            "12"
+          ],
+          "explain": "The arguments go to the parameters in order: `width` is 3, `height` is 4, and 3 times 4 is 12."
+        },
+        {
+          "type": "true_false",
+          "id": "methods-4",
+          "statement": "A method can use a variable that you created outside of it.",
+          "answer": false,
+          "explain": "A method has its own variables. A variable from outside does not exist inside the method; pass the value as an argument instead."
+        },
+        {
+          "type": "gap",
+          "id": "methods-5",
+          "prompt": "Complete the code so it prints 9.",
+          "code": "def square(n)\n  n * n\n___\n\nputs square(3)",
+          "options": [
+            "end",
+            "return",
+            "}"
+          ],
+          "answer": 0,
+          "explain": "Every `def` needs an `end` that closes the method."
+        },
+        {
+          "type": "pairs",
+          "id": "methods-6",
+          "prompt": "Match each piece of code with its meaning.",
+          "pairs": [
+            [
+              "`def`",
+              "starts a method definition"
+            ],
+            [
+              "`return`",
+              "leaves the method with a value"
+            ],
+            [
+              "`even?`",
+              "a method that answers yes or no"
+            ],
+            [
+              "`upcase!`",
+              "changes the string itself"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "methods-7",
+          "prompt": "Build a line that leaves the method early with \"negative\" when n is less than 0.",
+          "tokens": [
+            "return",
+            "\"negative\"",
+            "if",
+            "n",
+            "<",
+            "0"
+          ],
+          "distractors": [
+            "unless",
+            "puts"
+          ],
+          "explain": "`return` gives back the value and leaves the method at once. The `if` at the end makes it happen only when `n < 0`."
+        },
+        {
+          "type": "order",
+          "id": "methods-8",
+          "prompt": "Put the lines in order so the program prints 15.",
+          "lines": [
+            "def triple(n)",
+            "  n * 3",
+            "end",
+            "puts triple(5)"
+          ],
+          "explain": "You define the method first, with `def` and `end` around its code. Then you can call it."
+        },
+        {
+          "type": "bug",
+          "id": "methods-9",
+          "prompt": "This program should print 10. Which line has the bug?",
+          "lines": [
+            "def add(a)",
+            "  a + b",
+            "end",
+            "puts add(4, 6)"
+          ],
+          "bug": 0,
+          "explain": "The method uses `b` and gets two arguments, but it has only one parameter. Write `def add(a, b)`."
+        },
+        {
+          "type": "choice",
+          "id": "methods-10",
+          "prompt": "What does this print?",
+          "code": "def size(n)\n  return \"small\" if n < 10\n  \"big\"\nend\n\nputs size(3)",
+          "options": [
+            "`small`",
+            "`big`",
+            "`small` and `big`",
+            "nothing"
+          ],
+          "answer": 0,
+          "explain": "`3 < 10` is `true`, so `return` leaves the method with `\"small\"`. The last line does not run."
+        },
+        {
+          "type": "input",
+          "id": "methods-11",
+          "prompt": "What does this print?",
+          "code": "name = \"ruby\"\nname.capitalize!\nputs name",
+          "answers": [
+            "Ruby"
+          ],
+          "explain": "`capitalize!` with `!` changes the string in `name` itself."
+        },
+        {
+          "type": "bug",
+          "id": "methods-12",
+          "prompt": "This program should print true, because 4 is even. Which line has the bug?",
+          "lines": [
+            "def even_number?(n)",
+            "  n % 2 == 1",
+            "end",
+            "puts even_number?(4)"
+          ],
+          "bug": 1,
+          "explain": "An even number has the remainder `0` when you divide it by 2. Write `n % 2 == 0`."
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "Arrays and hashes",
+      "chapter": "Data",
+      "summary": "Keep many values in arrays and hashes, use symbols as keys, and work with each, map, select and sum.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** is an ordered list of values in square brackets `[]`, separated by commas. Each element has an index, starting at `0`, like the characters of a string. `p` shows the whole array."
+        },
+        {
+          "type": "code",
+          "code": "fruits = [\"apple\", \"banana\", \"cherry\"]\nputs fruits[0]\nputs fruits[-1]\nputs fruits.length\np fruits",
+          "output": "apple\ncherry\n3\n[\"apple\", \"banana\", \"cherry\"]"
+        },
+        {
+          "type": "text",
+          "md": "`<<` adds an element at the end. `first` and `last` give the first and the last element, `include?` checks if a value is in the array, and `sort` returns a sorted copy."
+        },
+        {
+          "type": "code",
+          "code": "numbers = [5, 2, 8]\nnumbers << 1\np numbers\nputs numbers.first\nputs numbers.include?(8)\np numbers.sort",
+          "output": "[5, 2, 8, 1]\n5\ntrue\n[1, 2, 5, 8]"
+        },
+        {
+          "type": "text",
+          "md": "`each` runs a block for every element. `map` builds a new array from the results of the block. `select` keeps only the elements for which the block gives `true`. `sum`, `min` and `max` work on arrays of numbers."
+        },
+        {
+          "type": "code",
+          "code": "numbers = [1, 2, 3, 4]\nnumbers.each { |n| puts n * 10 }\np numbers.map { |n| n * n }\np numbers.select { |n| n.even? }\nputs numbers.sum\nputs numbers.max",
+          "output": "10\n20\n30\n40\n[1, 4, 9, 16]\n[2, 4]\n10\n4"
+        },
+        {
+          "type": "tip",
+          "md": "`join` turns an array into one string. Its argument goes between the elements: `[\"a\", \"b\", \"c\"].join(\", \")` gives `a, b, c`."
+        },
+        {
+          "type": "heading",
+          "text": "Hashes and symbols"
+        },
+        {
+          "type": "text",
+          "md": "A **hash** stores pairs of a **key** and a **value** in curly braces `{}`. You get a value with its key in square brackets. Keys are often **symbols**: names with a colon in front, like `:name`. A symbol is a fixed label. In a hash, `name: \"Ana\"` is short for the key `:name` with the value `\"Ana\"`."
+        },
+        {
+          "type": "code",
+          "code": "person = { name: \"Ana\", age: 30 }\nputs person[:name]\nputs person[:age]\nperson[:city] = \"Lima\"\nputs person[:city]\nputs person.length\np person.keys",
+          "output": "Ana\n30\nLima\n3\n[:name, :age, :city]"
+        },
+        {
+          "type": "text",
+          "md": "Keys can also be strings; then you write `=>` between the key and the value. A key that is not in the hash gives `nil`. `each` on a hash gives the block two values: the key and the value."
+        },
+        {
+          "type": "code",
+          "code": "prices = { \"apple\" => 2, \"pear\" => 3 }\np prices[\"kiwi\"]\nprices.each do |fruit, price|\n  puts \"#{fruit}: #{price}\"\nend",
+          "output": "nil\napple: 2\npear: 3"
+        },
+        {
+          "type": "warning",
+          "md": "`:name` and `\"name\"` are different keys. If you store a value with the symbol `:name`, you must also read it with `:name`."
+        }
+      ],
+      "card": [
+        "`a = [1, 2, 3]`; `a[0]`, `a.length`, `a << 4`",
+        "`a.map { |x| x * 2 }`, `a.select { |x| x > 1 }`, `a.sum`",
+        "`h = { name: \"Ana\" }`; `h[:name]` gives `\"Ana\"`",
+        "`:name` is a symbol; a missing key gives `nil`",
+        "`h.each do |key, value| … end`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "collections-1",
+          "prompt": "What does this print?",
+          "code": "nums = [4, 7, 1]\nputs nums[1]",
+          "answers": [
+            "7"
+          ],
+          "explain": "Indexes start at `0`: `nums[0]` is 4, so `nums[1]` is 7."
+        },
+        {
+          "type": "choice",
+          "id": "collections-2",
+          "prompt": "What does this print?",
+          "code": "nums = [1, 2, 3]\np nums.map { |n| n + 1 }",
+          "options": [
+            "`[2, 3, 4]`",
+            "`[1, 2, 3]`",
+            "`9`",
+            "`[1, 2, 3, 1]`"
+          ],
+          "answer": 0,
+          "explain": "`map` builds a new array with the result of the block for every element: each number plus 1."
+        },
+        {
+          "type": "input",
+          "id": "collections-3",
+          "prompt": "What does this print?",
+          "code": "puts [3, 5, 2].sum",
+          "answers": [
+            "10"
+          ],
+          "explain": "`sum` adds all elements: 3 + 5 + 2 is 10."
+        },
+        {
+          "type": "input",
+          "id": "collections-4",
+          "prompt": "What does this print?",
+          "code": "person = { name: \"Leo\", age: 9 }\nputs person[:age]",
+          "answers": [
+            "9"
+          ],
+          "explain": "`person[:age]` gives the value stored under the key `:age`."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-5",
+          "statement": "This program prints nil.",
+          "code": "ages = { \"Ana\" => 30 }\np ages[\"Ben\"]",
+          "answer": true,
+          "explain": "The hash has no key `\"Ben\"`, so `ages[\"Ben\"]` gives `nil`, and `p` shows it as `nil`."
+        },
+        {
+          "type": "gap",
+          "id": "collections-6",
+          "prompt": "Complete the code so it prints [2, 4].",
+          "code": "nums = [1, 2, 3, 4]\np nums.___ { |n| n.even? }",
+          "options": [
+            "select",
+            "map",
+            "each"
+          ],
+          "answer": 0,
+          "explain": "`select` keeps the elements for which the block gives `true`. `map` would give `[false, true, false, true]`."
+        },
+        {
+          "type": "pairs",
+          "id": "collections-7",
+          "prompt": "Match each piece of code with its meaning.",
+          "pairs": [
+            [
+              "`[1, 2]`",
+              "an array"
+            ],
+            [
+              "`{ a: 1 }`",
+              "a hash"
+            ],
+            [
+              "`:a`",
+              "a symbol"
+            ],
+            [
+              "`list.length`",
+              "the number of elements"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "collections-8",
+          "prompt": "Build a line that prints all numbers in nums doubled.",
+          "tokens": [
+            "p",
+            "nums.map",
+            "{",
+            "|x|",
+            "x",
+            "*",
+            "2",
+            "}"
+          ],
+          "distractors": [
+            "nums.each",
+            "|x"
+          ],
+          "explain": "`map` builds a new array from the results of the block, and `p` shows it."
+        },
+        {
+          "type": "order",
+          "id": "collections-9",
+          "prompt": "Put the lines in order so the program prints Ana: 30 and then Ben: 25.",
+          "lines": [
+            "ages = { \"Ana\" => 30, \"Ben\" => 25 }",
+            "ages.each do |name, age|",
+            "  puts \"#{name}: #{age}\"",
+            "end"
+          ],
+          "explain": "First create the hash. Then `each` gives the block every key and value, in the order you stored them."
+        },
+        {
+          "type": "bug",
+          "id": "collections-10",
+          "prompt": "This program should print: Hello, Ana! Which line has the bug?",
+          "lines": [
+            "person = { name: \"Ana\", age: 30 }",
+            "name = person[\"name\"]",
+            "puts \"Hello, #{name}!\""
+          ],
+          "bug": 1,
+          "explain": "The key is the symbol `:name`, not the string `\"name\"`, so `person[\"name\"]` gives `nil`. Write `name = person[:name]`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-11",
+          "prompt": "What does this print?",
+          "code": "words = [\"hi\", \"hello\", \"hey\"]\nputs words.select { |w| w.length > 2 }.length",
+          "options": [
+            "`2`",
+            "`3`",
+            "`1`",
+            "`hello`"
+          ],
+          "answer": 0,
+          "explain": "`select` keeps the words with more than two characters, `hello` and `hey`. That array has 2 elements."
+        },
+        {
+          "type": "bug",
+          "id": "collections-12",
+          "prompt": "This program should print the total price, 9. Which line has the bug?",
+          "lines": [
+            "prices = [2, 3, 4]",
+            "total = 0",
+            "prices.each { |price| total = price }",
+            "puts total"
+          ],
+          "bug": 2,
+          "explain": "`total = price` replaces the total each time, so it ends as 4. Write `total += price` to add every price."
+        }
+      ]
+    },
+    {
+      "id": "classes",
+      "title": "Classes",
+      "chapter": "Objects",
+      "summary": "Build your own kinds of objects with class, initialize and instance variables, and add methods, attr_accessor and to_s.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Everything in Ruby is an **object**, and every object belongs to a **class**: `\"hi\"` is an object of the class `String`. A class is like a blueprint. You define your own class with `class`, a name that starts with a capital letter, and `end`. `new` creates an object of the class."
+        },
+        {
+          "type": "code",
+          "code": "class Dog\n  def bark\n    \"Woof!\"\n  end\nend\n\nrex = Dog.new\nputs rex.bark\nputs rex.class",
+          "output": "Woof!\nDog"
+        },
+        {
+          "type": "text",
+          "md": "`initialize` is a special method: `new` calls it when it creates an object, and passes on its arguments. A variable that starts with `@` is an **instance variable**. Each object has its own copy, and all methods of the object can use it."
+        },
+        {
+          "type": "code",
+          "code": "class Dog\n  def initialize(name)\n    @name = name\n  end\n\n  def bark\n    \"#{@name} says Woof!\"\n  end\nend\n\nrex = Dog.new(\"Rex\")\nbello = Dog.new(\"Bello\")\nputs rex.bark\nputs bello.bark",
+          "output": "Rex says Woof!\nBello says Woof!"
+        },
+        {
+          "type": "heading",
+          "text": "Reading and changing attributes"
+        },
+        {
+          "type": "text",
+          "md": "Code outside the class cannot read instance variables: `rex.name` does not work yet. `attr_reader :name` adds a method `name` that returns `@name`. `attr_accessor :age` adds a method to read `@age` and one to change it with `=`."
+        },
+        {
+          "type": "code",
+          "code": "class Dog\n  attr_reader :name\n  attr_accessor :age\n\n  def initialize(name, age)\n    @name = name\n    @age = age\n  end\nend\n\nrex = Dog.new(\"Rex\", 3)\nputs rex.name\nrex.age = 4\nputs rex.age",
+          "output": "Rex\n4"
+        },
+        {
+          "type": "text",
+          "md": "Methods can change instance variables. This way, every object keeps its own **state**."
+        },
+        {
+          "type": "code",
+          "code": "class Counter\n  attr_reader :count\n\n  def initialize\n    @count = 0\n  end\n\n  def increment\n    @count += 1\n  end\nend\n\na = Counter.new\nb = Counter.new\na.increment\na.increment\nb.increment\nputs a.count\nputs b.count",
+          "output": "2\n1"
+        },
+        {
+          "type": "heading",
+          "text": "to_s"
+        },
+        {
+          "type": "text",
+          "md": "`puts` calls the method `to_s` to turn an object into text, and interpolation with `#{}` does the same. Define `to_s` in your class to decide what your objects look like as text."
+        },
+        {
+          "type": "code",
+          "code": "class Point\n  def initialize(x, y)\n    @x = x\n    @y = y\n  end\n\n  def to_s\n    \"(#{@x}, #{@y})\"\n  end\nend\n\npoint = Point.new(2, 5)\nputs point\nputs \"Point: #{point}\"",
+          "output": "(2, 5)\nPoint: (2, 5)"
+        },
+        {
+          "type": "tip",
+          "md": "Without your own `to_s`, `puts` prints something like `#<Point:0x000…>`: the class name and a memory address."
+        }
+      ],
+      "card": [
+        "`class Dog … end`; `Dog.new(\"Rex\")` creates an object",
+        "`initialize` runs when `new` creates an object",
+        "`@name` is an instance variable: each object has its own",
+        "`attr_reader :name` reads, `attr_accessor :age` reads and changes",
+        "`def to_s` decides what `puts obj` prints"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "classes-1",
+          "prompt": "What does this print?",
+          "code": "class Cat\n  def initialize(name)\n    @name = name\n  end\n\n  def greet\n    \"Meow, I am #{@name}\"\n  end\nend\n\nputs Cat.new(\"Tom\").greet",
+          "answers": [
+            "Meow, I am Tom"
+          ],
+          "explain": "`new` passes `\"Tom\"` to `initialize`, which stores it in `@name`. `greet` uses `@name`."
+        },
+        {
+          "type": "choice",
+          "id": "classes-2",
+          "prompt": "Which method does `new` call when it creates an object?",
+          "options": [
+            "`initialize`",
+            "`create`",
+            "`to_s`",
+            "`start`"
+          ],
+          "answer": 0,
+          "explain": "`new` creates the object and then calls its `initialize` method with the arguments."
+        },
+        {
+          "type": "input",
+          "id": "classes-3",
+          "prompt": "What does this print?",
+          "code": "class Counter\n  attr_reader :count\n\n  def initialize\n    @count = 10\n  end\n\n  def add(n)\n    @count += n\n  end\nend\n\nc = Counter.new\nc.add(5)\nc.add(1)\nputs c.count",
+          "answers": [
+            "16"
+          ],
+          "explain": "`@count` starts at 10. The two calls add 5 and 1, so it ends at 16."
+        },
+        {
+          "type": "true_false",
+          "id": "classes-4",
+          "statement": "This program prints Rex.",
+          "code": "class Dog\n  def initialize(name)\n    @name = name\n  end\nend\n\nputs Dog.new(\"Rex\").name",
+          "answer": false,
+          "explain": "The class has no method `name`, so the call stops with an error (`NoMethodError`). Add `attr_reader :name` to the class to fix it."
+        },
+        {
+          "type": "gap",
+          "id": "classes-5",
+          "prompt": "Complete the code so it prints: Ruby Basics",
+          "code": "class Book\n  ___ :title\n\n  def initialize(title)\n    @title = title\n  end\nend\n\nb = Book.new(\"Draft\")\nb.title = \"Ruby Basics\"\nputs b.title",
+          "options": [
+            "attr_accessor",
+            "attr_reader",
+            "attr_writer"
+          ],
+          "answer": 0,
+          "explain": "The program reads `title` and also changes it with `b.title =`. Only `attr_accessor` adds both methods."
+        },
+        {
+          "type": "pairs",
+          "id": "classes-6",
+          "prompt": "Match each piece of code with its meaning.",
+          "pairs": [
+            [
+              "`class`",
+              "defines a new kind of object"
+            ],
+            [
+              "`initialize`",
+              "runs when an object is created"
+            ],
+            [
+              "`@name`",
+              "an instance variable"
+            ],
+            [
+              "`to_s`",
+              "turns the object into text"
+            ]
+          ]
+        },
+        {
+          "type": "blocks",
+          "id": "classes-7",
+          "prompt": "Build a line that creates a Dog named Rex and stores it in pet.",
+          "tokens": [
+            "pet",
+            "=",
+            "Dog.new(",
+            "\"Rex\"",
+            ")"
+          ],
+          "distractors": [
+            "new",
+            "Dog("
+          ],
+          "explain": "`Dog.new` creates the object; the argument `\"Rex\"` goes to `initialize`."
+        },
+        {
+          "type": "order",
+          "id": "classes-8",
+          "prompt": "Put the lines in order so the program defines a class and prints Hi.",
+          "lines": [
+            "class Robot",
+            "  def hello",
+            "    \"Hi\"",
+            "  end",
+            "end",
+            "puts Robot.new.hello"
+          ],
+          "explain": "The method `hello` lives inside the class. Each `end` closes the last open `def` or `class`. After the class, you can create an object and call its method."
+        },
+        {
+          "type": "bug",
+          "id": "classes-9",
+          "prompt": "This program should print Ana. Which line has the bug?",
+          "lines": [
+            "class Person",
+            "  attr_reader :name",
+            "  def initialize(name)",
+            "    name = name",
+            "  end",
+            "end",
+            "puts Person.new(\"Ana\").name"
+          ],
+          "bug": 3,
+          "explain": "`name = name` only sets the parameter again; `@name` stays `nil`. Write `@name = name`."
+        },
+        {
+          "type": "choice",
+          "id": "classes-10",
+          "prompt": "What does this print?",
+          "code": "class Box\n  def initialize(size)\n    @size = size\n  end\n\n  def to_s\n    \"Box of size #{@size}\"\n  end\nend\n\nputs \"I have: #{Box.new(3)}\"",
+          "options": [
+            "`I have: Box of size 3`",
+            "`I have: #{Box.new(3)}`",
+            "`I have: Box`",
+            "`I have: 3`"
+          ],
+          "answer": 0,
+          "explain": "Interpolation calls `to_s` on the object, and this class defines its own `to_s`."
+        },
+        {
+          "type": "input",
+          "id": "classes-11",
+          "prompt": "What does this print?",
+          "code": "class Light\n  def initialize\n    @on = false\n  end\n\n  def switch\n    @on = !@on\n  end\n\n  def on?\n    @on\n  end\nend\n\nlight = Light.new\nlight.switch\nlight.switch\nlight.switch\nputs light.on?",
+          "answers": [
+            "true"
+          ],
+          "explain": "`@on` starts as `false`. Each `switch` flips it: true, false, true."
+        },
+        {
+          "type": "bug",
+          "id": "classes-12",
+          "prompt": "This program should print: Rex: Woof. Which line has the bug?",
+          "lines": [
+            "class Dog",
+            "  def initialize(name)",
+            "    @name = name",
+            "  end",
+            "  def bark",
+            "    \"#{@name}: Woof\"",
+            "  end",
+            "end",
+            "rex = Dog.new",
+            "puts rex.bark"
+          ],
+          "bug": 8,
+          "explain": "`initialize` needs a name, so `Dog.new` without an argument stops with an error. Write `rex = Dog.new(\"Rex\")`."
+        }
+      ]
+    }
+  ]
+}

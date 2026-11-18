@@ -1,0 +1,415 @@
+{
+  "hello-1": {
+    "extra": [
+      {
+        "src": "const std = @import(\"std\");\n\npub fn main() void {\n    std.debug.print(\"Hi\\n\", .{});\n}",
+        "out": "Hi"
+      },
+      {
+        "src": "const std = @import(\"std\");\n\npub fn main() void {\n    std.debug.print(\"Hi\\n\");\n}",
+        "err": true
+      },
+      {
+        "src": "const std = @import(\"std\");\n\npub fn main() void {\n    print(\"Hi\\n\", .{});\n}",
+        "err": true
+      },
+      {
+        "src": "const std = @import(\"std\");\n\npub fn main() void {\n    std.debug.print(Hi\\n, .{});\n}",
+        "err": true
+      }
+    ]
+  },
+  "hello-2": {
+    "out": "2 + 3 = 5"
+  },
+  "hello-3": {
+    "out": "AB"
+  },
+  "hello-5": {
+    "out": "Hello, Zig!"
+  },
+  "hello-6": {
+    "tpl": "{{CODE}}\n\npub fn main() void {\n    std.debug.print(\"Ready\\n\", .{});\n}",
+    "out": "Ready"
+  },
+  "hello-7": {
+    "tpl": "const std = @import(\"std\");\n\n{{CODE}}\n    std.debug.print(\"Go\\n\", .{});\n}",
+    "out": "Go"
+  },
+  "hello-8": {
+    "out": "One\nTwo\nThree"
+  },
+  "hello-10": {
+    "tpl": "{{CODE}}",
+    "fix": "    std.debug.print(\"Hi\\n\", .{});",
+    "out": "Hi"
+  },
+  "hello-11": {
+    "tpl": "{{CODE}}",
+    "fix": "    std.debug.print(\"Total: {d}\\n\", .{42});",
+    "out": "Total: 42"
+  },
+  "hello-12": {
+    "out": "Ada is 36"
+  },
+  "variables-1": {
+    "out": "14"
+  },
+  "variables-2": {
+    "extra": [
+      {
+        "src": "const std = @import(\"std\");\n\npub fn main() void {\n    const x: u8 = -3;\n    std.debug.print(\"{d}\\n\", .{x});\n}",
+        "err": true
+      },
+      {
+        "src": "const std = @import(\"std\");\n\npub fn main() void {\n    const x: i32 = -3;\n    std.debug.print(\"{d}\\n\", .{x});\n}",
+        "out": "-3"
+      },
+      {
+        "src": "const std = @import(\"std\");\n\npub fn main() void {\n    const x: u32 = -3;\n    std.debug.print(\"{d}\\n\", .{x});\n}",
+        "err": true
+      },
+      {
+        "src": "const std = @import(\"std\");\n\npub fn main() void {\n    const x: bool = -3;\n    std.debug.print(\"{}\\n\", .{x});\n}",
+        "err": true
+      }
+    ]
+  },
+  "variables-3": {
+    "err": true
+  },
+  "variables-4": {
+    "extra": [
+      {
+        "src": "const std = @import(\"std\");\n\npub fn main() void {\n    const x: u8 = 300;\n    std.debug.print(\"{d}\\n\", .{x});\n}",
+        "err": true
+      }
+    ]
+  },
+  "variables-5": {
+    "out": "1"
+  },
+  "variables-6": {
+    "out": "4.5"
+  },
+  "variables-7": {
+    "out": "250"
+  },
+  "variables-8": {
+    "tpl": "const std = @import(\"std\");\n\npub fn main() void {\n    {{CODE}}\n    score += 3;\n    std.debug.print(\"{d}\\n\", .{score});\n}",
+    "out": "3"
+  },
+  "variables-10": {
+    "fix": "    const lives: u8 = 3;",
+    "out": "Ada has 3 lives"
+  },
+  "variables-11": {
+    "fix": "    var count: i32 = 0;",
+    "out": "2"
+  },
+  "variables-12": {
+    "err": true
+  },
+  "conditions-1": {
+    "out": "big"
+  },
+  "conditions-2": {
+    "out": "B"
+  },
+  "conditions-3": {
+    "out": "yes"
+  },
+  "conditions-4": {
+    "extra": [
+      {
+        "src": "const std = @import(\"std\");\n\npub fn main() void {\n    const a = true;\n    const b = true;\n    if (a && b) {\n        std.debug.print(\"ok\\n\", .{});\n    }\n}",
+        "err": true
+      }
+    ]
+  },
+  "conditions-5": {
+    "tpl": "const std = @import(\"std\");\n\npub fn main() void {\n    const age: u32 = 15;\n    const has_ticket = true;\n    {{CODE}}\n}",
+    "out": "Sorry"
+  },
+  "conditions-6": {
+    "out": "many"
+  },
+  "conditions-7": {
+    "out": "mid"
+  },
+  "conditions-8": {
+    "tpl": "const std = @import(\"std\");\n\npub fn main() void {\n    const n: i32 = -2;\n    {{CODE}}\n    std.debug.print(\"{s}\\n\", .{sign});\n}",
+    "out": "minus"
+  },
+  "conditions-9": {
+    "tpl": "const std = @import(\"std\");\n\npub fn main() void {\n    const score: u32 = 75;\n    {{CODE}}\n}",
+    "out": "B"
+  },
+  "conditions-11": {
+    "tpl": "const std = @import(\"std\");\n\npub fn main() void {\n    {{CODE}}\n}",
+    "fix": "if (x == 5) {",
+    "out": "five"
+  },
+  "conditions-12": {
+    "tpl": "const std = @import(\"std\");\n\npub fn main() void {\n    {{CODE}}\n}",
+    "fix": "if (n > 3) {",
+    "out": "big"
+  },
+  "loops-1": {
+    "out": "6"
+  },
+  "loops-2": {
+    "out": "012"
+  },
+  "loops-3": {
+    "code": "var count: u32 = 0;\nfor (2..5) |i| {\n    std.debug.print(\"{d}\\n\", .{i});\n    count += 1;\n}\nstd.debug.print(\"{d}\\n\", .{count});",
+    "out": "2\n3\n4\n3"
+  },
+  "loops-4": {
+    "code": "var last: usize = 0;\nfor (0..5) |i| {\n    last = i;\n}\nstd.debug.print(\"{d}\\n\", .{last});",
+    "out": "4"
+  },
+  "loops-5": {
+    "out": "2\n4"
+  },
+  "loops-6": {
+    "out": "1\n2\n4\n5"
+  },
+  "loops-7": {
+    "out": "32"
+  },
+  "loops-8": {
+    "tpl": "const std = @import(\"std\");\n\npub fn main() void {\n    var i: u32 = 0;\n    {{CODE}}\n    }\n    std.debug.print(\"{d}\\n\", .{i});\n}",
+    "out": "10"
+  },
+  "loops-9": {
+    "out": "6"
+  },
+  "loops-11": {
+    "tpl": "const std = @import(\"std\");\n\npub fn main() void {\n    {{CODE}}\n}",
+    "fix": "var i: u32 = 0;",
+    "out": "0\n1\n2"
+  },
+  "loops-12": {
+    "out": "3\n6\n9"
+  },
+  "functions-1": {
+    "out": "12"
+  },
+  "functions-2": {
+    "out": "10"
+  },
+  "functions-3": {
+    "extra": [
+      {
+        "src": "const std = @import(\"std\");\n\nfn sum(a: i32, b: i32) i32 {\n    return a + b;\n}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{sum(1, 2)});\n}",
+        "out": "3"
+      },
+      {
+        "src": "const std = @import(\"std\");\n\nfn sum(i32 a, i32 b) i32 {\n    return a + b;\n}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{sum(1, 2)});\n}",
+        "err": true
+      },
+      {
+        "src": "const std = @import(\"std\");\n\nfn sum(a, b: i32) i32 {\n    return a + b;\n}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{sum(1, 2)});\n}",
+        "err": true
+      },
+      {
+        "src": "const std = @import(\"std\");\n\nfn sum(a: i32, b: i32): i32 {\n    return a + b;\n}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{sum(1, 2)});\n}",
+        "err": true
+      }
+    ]
+  },
+  "functions-4": {
+    "tpl": "const std = @import(\"std\");\n\n{{CODE}}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{half(8)});\n}",
+    "err": true
+  },
+  "functions-5": {
+    "extra": [
+      {
+        "src": "const std = @import(\"std\");\n\nfn add(a: i32, b: i32) i32 {\n    return a + b;\n}\n\npub fn main() void {\n    add(1, 2);\n}",
+        "err": true
+      }
+    ]
+  },
+  "functions-6": {
+    "tpl": "const std = @import(\"std\");\n\n{{CODE}}\n\npub fn main() void {\n    std.debug.print(\"{}\\n\", .{isEven(6)});\n}",
+    "out": "true"
+  },
+  "functions-7": {
+    "tpl": "const std = @import(\"std\");\n\n{{CODE}}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{add(2, 5)});\n}",
+    "out": "7"
+  },
+  "functions-8": {
+    "tpl": "const std = @import(\"std\");\n\n{{CODE}}\n    return x * x;\n}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{square(4)});\n}",
+    "out": "16"
+  },
+  "functions-9": {
+    "tpl": "const std = @import(\"std\");\n\n{{CODE}}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{fact(5)});\n}",
+    "out": "120"
+  },
+  "functions-11": {
+    "fix": "fn add(a: i32, b: i32) i32 {",
+    "out": "5"
+  },
+  "functions-12": {
+    "fix": "    const x = add(2, 3);",
+    "out": "5"
+  },
+  "arrays-1": {
+    "out": "30"
+  },
+  "arrays-2": {
+    "out": "ell"
+  },
+  "arrays-3": {
+    "extra": [
+      {
+        "src": "const std = @import(\"std\");\n\npub fn main() void {\n    const a = [_]u8{ 7, 8, 9 };\n    std.debug.print(\"{d}\\n\", .{a[0]});\n}",
+        "out": "7"
+      }
+    ]
+  },
+  "arrays-4": {
+    "out": "6"
+  },
+  "arrays-5": {
+    "extra": [
+      {
+        "src": "const std = @import(\"std\");\n\npub fn main() void {\n    const a: []const u8 = \"hi\";\n    const b: []const u8 = \"hi\";\n    std.debug.print(\"{}\\n\", .{a == b});\n}",
+        "err": true
+      }
+    ]
+  },
+  "arrays-6": {
+    "out": "3"
+  },
+  "arrays-7": {
+    "tpl": "const std = @import(\"std\");\n\n{{CODE}}\n\npub fn main() void {\n    const prices = [_]u32{ 1, 2, 3, 4 };\n    std.debug.print(\"{d}\\n\", .{total(&prices)});\n}",
+    "out": "10"
+  },
+  "arrays-8": {
+    "tpl": "const std = @import(\"std\");\n\npub fn main() void {\n    {{CODE}}\n    std.debug.print(\"{d}\\n\", .{nums[2]});\n}",
+    "out": "3"
+  },
+  "arrays-9": {
+    "tpl": "const std = @import(\"std\");\n\npub fn main() void {\n    {{CODE}}\n}",
+    "out": "0: Ann\n1: Bo"
+  },
+  "arrays-11": {
+    "tpl": "const std = @import(\"std\");\n\npub fn main() void {\n    {{CODE}}\n}",
+    "fix": "const last = a[2];",
+    "out": "3"
+  },
+  "arrays-12": {
+    "tpl": "const std = @import(\"std\");\n\npub fn main() void {\n    {{CODE}}\n}",
+    "fix": "var scores = [_]u32{ 1, 2 };",
+    "out": "5 2"
+  },
+  "structs-1": {
+    "tpl": "const std = @import(\"std\");\n\nconst Point = struct {\n    x: i32,\n    y: i32,\n};\n\npub fn main() void {\n    {{CODE}}\n}",
+    "out": "12"
+  },
+  "structs-2": {
+    "out": "130"
+  },
+  "structs-3": {
+    "out": "16"
+  },
+  "structs-4": {
+    "extra": [
+      {
+        "src": "const std = @import(\"std\");\n\nconst Item = struct {\n    name: []const u8,\n    count: u32 = 1,\n};\n\npub fn main() void {\n    const i = Item{ .name = \"pen\" };\n    std.debug.print(\"{s} {d}\\n\", .{ i.name, i.count });\n}",
+        "out": "pen 1"
+      }
+    ]
+  },
+  "structs-5": {
+    "tpl": "const std = @import(\"std\");\n\n{{CODE}}\n\npub fn main() void {\n    var c = Counter{};\n    c.increment();\n    std.debug.print(\"{d}\\n\", .{c.count});\n}",
+    "err": true
+  },
+  "structs-6": {
+    "tpl": "const std = @import(\"std\");\n\nconst Point = struct {\n    x: i32,\n    y: i32,\n};\n\npub fn main() void {\n    {{CODE}}\n    std.debug.print(\"{d}\\n\", .{p.x + p.y});\n}",
+    "out": "3"
+  },
+  "structs-7": {
+    "tpl": "const std = @import(\"std\");\n\n{{CODE}}\n\npub fn main() void {\n    var p = Plant{};\n    p.grow();\n    std.debug.print(\"{d}\\n\", .{p.size});\n}",
+    "out": "2"
+  },
+  "structs-8": {
+    "tpl": "const std = @import(\"std\");\n\nconst Rect = struct {\n    w: u32,\n    h: u32,\n};\n\npub fn main() void {\n    {{CODE}}\n    std.debug.print(\"{d}\\n\", .{r.w * r.h});\n}",
+    "out": "6"
+  },
+  "structs-9": {
+    "tpl": "const std = @import(\"std\");\n\nconst Player = struct {\n    name: []const u8,\n    score: u32 = 0,\n};\n\npub fn main() void {\n    {{CODE}}\n}",
+    "out": "20"
+  },
+  "structs-11": {
+    "fix": "    var c = Counter{};",
+    "out": "1"
+  },
+  "structs-12": {
+    "fix": "        return self.w * self.h;",
+    "out": "6"
+  },
+  "errors-1": {
+    "out": "5 0"
+  },
+  "errors-2": {
+    "out": "8"
+  },
+  "errors-3": {
+    "extra": [
+      {
+        "src": "const std = @import(\"std\");\n\nfn f() !u32 {\n    return 3;\n}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{f() catch 0});\n}",
+        "out": "3"
+      },
+      {
+        "src": "const std = @import(\"std\");\n\nfn f() ?u32 {\n    return error.Bad;\n}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{f() orelse 0});\n}",
+        "err": true
+      },
+      {
+        "src": "const std = @import(\"std\");\n\nfn f() u32! {\n    return 3;\n}\n\npub fn main() void {\n    std.debug.print(\"{d}\\n\", .{f() catch 0});\n}",
+        "err": true
+      }
+    ]
+  },
+  "errors-4": {
+    "out": "none"
+  },
+  "errors-5": {
+    "extra": [
+      {
+        "src": "const std = @import(\"std\");\n\nfn f(n: u32) !u32 {\n    if (n == 0) return error.Zero;\n    return n;\n}\n\npub fn main() void {\n    const x = try f(3);\n    std.debug.print(\"{d}\\n\", .{x});\n}",
+        "err": true
+      }
+    ]
+  },
+  "errors-6": {
+    "extra": [
+      {
+        "src": "const std = @import(\"std\");\n\npub fn main() void {\n    const n: u32 = null;\n    std.debug.print(\"{d}\\n\", .{n});\n}",
+        "err": true
+      }
+    ]
+  },
+  "errors-7": {
+    "tpl": "const std = @import(\"std\");\n\nfn findPort() ?u16 {\n    return null;\n}\n\npub fn main() void {\n    {{CODE}}\n}",
+    "out": "8080"
+  },
+  "errors-8": {
+    "tpl": "const std = @import(\"std\");\n\nfn readCount() !u32 {\n    return 5;\n}\n\n{{CODE}}\n\npub fn main() !void {\n    std.debug.print(\"{d}\\n\", .{try total()});\n}",
+    "out": "6"
+  },
+  "errors-9": {
+    "tpl": "const std = @import(\"std\");\n\nfn checkAge(age: i32) !i32 {\n    if (age < 0) return error.Negative;\n    return age;\n}\n\npub fn main() void {\n    const input: i32 = -4;\n    {{CODE}}\n    std.debug.print(\"{d}\\n\", .{age});\n}",
+    "out": "0"
+  },
+  "errors-10": {
+    "tpl": "const std = @import(\"std\");\n\n{{CODE}}\n\npub fn main() void {\n    const a = safeDiv(10, 2) catch 99;\n    const b = safeDiv(1, 0) catch 99;\n    std.debug.print(\"{d} {d}\\n\", .{ a, b });\n}",
+    "out": "5 99"
+  },
+  "errors-12": {
+    "fix": "fn check(n: u32) !u32 {",
+    "out": "5"
+  }
+}

@@ -1,0 +1,1894 @@
+{
+  "course": "swift",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Swift",
+      "chapter": "Basics",
+      "summary": "Write your first Swift program, print text and numbers, and see how Swift runs your code line by line.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A program is a list of instructions for the computer. In Swift, `print` shows a value on the screen. You put the value in parentheses `( )`. Text goes in double quotes `\"...\"`."
+        },
+        {
+          "type": "code",
+          "code": "print(\"Hello, Swift!\")",
+          "output": "Hello, Swift!"
+        },
+        {
+          "type": "text",
+          "md": "Swift runs your code from top to bottom, one line after the other. Each line here is a **statement**: one instruction for the computer. Every `print` writes its own line."
+        },
+        {
+          "type": "code",
+          "code": "print(\"One\")\nprint(\"Two\")\nprint(\"Three\")",
+          "output": "One\nTwo\nThree"
+        },
+        {
+          "type": "heading",
+          "text": "Strings and numbers"
+        },
+        {
+          "type": "text",
+          "md": "Text in quotes is called a **string**. Numbers need no quotes. Swift can calculate with numbers: `+` adds, `-` subtracts, `*` multiplies and `/` divides. Look at the last line: `\"2 + 3\"` is a string, so Swift prints the text and does not calculate."
+        },
+        {
+          "type": "code",
+          "code": "print(7)\nprint(2 + 3)\nprint(10 * 4)\nprint(\"2 + 3\")",
+          "output": "7\n5\n40\n2 + 3"
+        },
+        {
+          "type": "text",
+          "md": "`*` and `/` are calculated before `+` and `-`, as in mathematics. Use parentheses to change the order."
+        },
+        {
+          "type": "code",
+          "code": "print(2 + 3 * 4)\nprint((2 + 3) * 4)",
+          "output": "14\n20"
+        },
+        {
+          "type": "text",
+          "md": "You can give `print` several values, separated by commas. It puts a space between them in the output."
+        },
+        {
+          "type": "code",
+          "code": "print(\"Apples:\", 3)\nprint(\"Sum:\", 4 + 5)",
+          "output": "Apples: 3\nSum: 9"
+        },
+        {
+          "type": "text",
+          "md": "Swift ignores everything after `//` on a line. This is called a **comment**. In this course, comments only show the result of a line, like `// 9` below."
+        },
+        {
+          "type": "code",
+          "code": "print(4 + 5) // 9",
+          "output": "9"
+        },
+        {
+          "type": "warning",
+          "md": "Swift is case-sensitive: `print` works, but `Print` and `PRINT` are errors. Strings need straight double quotes `\"`, not single quotes `'`."
+        }
+      ],
+      "card": [
+        "`print(\"Hi\")` shows text",
+        "`print(2 + 3)` shows `5`",
+        "`print(\"Sum:\", 9)` shows `Sum: 9`",
+        "`*` and `/` come before `+` and `-`",
+        "`// 9` is a comment"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Which line prints `Hello` in Swift?",
+          "options": [
+            "`print(\"Hello\")`",
+            "`Print(\"Hello\")`",
+            "`print(Hello)`",
+            "`echo \"Hello\"`"
+          ],
+          "answer": 0,
+          "explain": "The function is called `print`, in small letters, and text needs double quotes."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this print?",
+          "code": "print(2 + 3 * 4)",
+          "answers": [
+            "14"
+          ],
+          "explain": "`*` comes before `+`: `3 * 4` is `12`, and `2 + 12` is `14`."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this print?",
+          "code": "print(\"5 + 5\")",
+          "answers": [
+            "5 + 5"
+          ],
+          "explain": "`\"5 + 5\"` is in quotes, so it is a string. Swift prints the text and does not calculate."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-4",
+          "statement": "This program prints `B` first.",
+          "code": "print(\"A\")\nprint(\"B\")",
+          "answer": false,
+          "explain": "Swift runs the lines from top to bottom, so it prints `A` first and then `B`."
+        },
+        {
+          "type": "gap",
+          "id": "hello-5",
+          "prompt": "Fill the gap so the program prints `Hi`.",
+          "code": "___(\"Hi\")",
+          "options": [
+            "print",
+            "Print",
+            "echo"
+          ],
+          "answer": 0,
+          "explain": "Only `print` in small letters shows a value. Swift is case-sensitive."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-6",
+          "prompt": "Build a line that prints `Score: 10`.",
+          "tokens": [
+            "print(",
+            "\"Score:\",",
+            "10",
+            ")"
+          ],
+          "distractors": [
+            "Print(",
+            "echo"
+          ],
+          "explain": "`print` takes several values separated by commas and puts a space between them: `print(\"Score:\", 10)`."
+        },
+        {
+          "type": "order",
+          "id": "hello-7",
+          "prompt": "Put the lines in order so the program prints `3`, `2`, `1` and `Go!` on four lines.",
+          "lines": [
+            "print(3)",
+            "print(2)",
+            "print(1)",
+            "print(\"Go!\")"
+          ],
+          "explain": "Swift runs the lines from top to bottom, so the lines must be in the order of the output."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-8",
+          "prompt": "Match the code to its meaning.",
+          "pairs": [
+            [
+              "`\"Hi\"`",
+              "a string (text)"
+            ],
+            [
+              "`42`",
+              "a whole number"
+            ],
+            [
+              "`*`",
+              "multiplies"
+            ],
+            [
+              "`//`",
+              "starts a comment"
+            ],
+            [
+              "`print`",
+              "shows a value"
+            ]
+          ]
+        },
+        {
+          "type": "bug",
+          "id": "hello-9",
+          "prompt": "Which line has the bug?",
+          "lines": [
+            "print(\"Start\")",
+            "print(\"Middle)",
+            "print(\"End\")"
+          ],
+          "bug": 1,
+          "explain": "The string is not closed. Write `print(\"Middle\")` with a closing quote."
+        },
+        {
+          "type": "input",
+          "id": "hello-10",
+          "prompt": "What does this print?",
+          "code": "print(\"Total:\", 2 + 2)",
+          "answers": [
+            "Total: 4"
+          ],
+          "explain": "`print` shows `Total:`, then a space, then the result of `2 + 2`."
+        },
+        {
+          "type": "choice",
+          "id": "hello-11",
+          "prompt": "What does this print?",
+          "code": "print((1 + 2) * 3)",
+          "options": [
+            "`9`",
+            "`7`",
+            "`(1 + 2) * 3`",
+            "`6`"
+          ],
+          "answer": 0,
+          "explain": "The parentheses come first: `1 + 2` is `3`, and `3 * 3` is `9`."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-12",
+          "statement": "`Print(\"Hi\")` with a capital `P` works in Swift.",
+          "answer": false,
+          "explain": "Swift is case-sensitive. The function is `print`, so `Print` is an error."
+        }
+      ]
+    },
+    {
+      "id": "variables",
+      "title": "let, var and types",
+      "chapter": "Basics",
+      "summary": "Store values with let and var, and get to know the types Int, Double, String and Bool.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **constant** is a name for a value. You create it with `let`, a name, `=` and the value. A constant gets its value once and never changes. Then you use the name instead of the value."
+        },
+        {
+          "type": "code",
+          "code": "let name = \"Ada\"\nlet age = 36\nprint(name)\nprint(age)",
+          "output": "Ada\n36"
+        },
+        {
+          "type": "text",
+          "md": "Use `var` to create a **variable** when the value must change later. To give a variable a new value, write the name, `=` and the new value, without `var`."
+        },
+        {
+          "type": "code",
+          "code": "var score = 10\nprint(score)\nscore = 15\nprint(score)\nscore = score + 5\nprint(score)",
+          "output": "10\n15\n20"
+        },
+        {
+          "type": "warning",
+          "md": "If you try to change a `let` constant, Swift does not run the program and shows an error. Prefer `let`, and use `var` only when the value really changes."
+        },
+        {
+          "type": "heading",
+          "text": "Types"
+        },
+        {
+          "type": "text",
+          "md": "Every value has a **type**. `Int` is a whole number, `Double` is a number with a decimal point, `String` is text and `Bool` is either `true` or `false`."
+        },
+        {
+          "type": "code",
+          "code": "let count = 3\nlet price = 2.5\nlet city = \"Oslo\"\nlet isOpen = true\nprint(count, price, city, isOpen)",
+          "output": "3 2.5 Oslo true"
+        },
+        {
+          "type": "text",
+          "md": "Swift finds the type from the value: `3` gives an `Int`, `2.5` gives a `Double`. This is called **type inference**. You can also write the type yourself with a **type annotation**: a colon `:` and the type after the name."
+        },
+        {
+          "type": "code",
+          "code": "let year: Int = 2024\nlet height: Double = 180\nlet greeting: String = \"Hi\"\nprint(year)\nprint(height)\nprint(greeting)",
+          "output": "2024\n180.0\nHi"
+        },
+        {
+          "type": "text",
+          "md": "Look at `height`: you wrote `180`, but the type is `Double`, so Swift prints `180.0`. A variable keeps its type forever. You cannot store a `String` in an `Int` variable."
+        },
+        {
+          "type": "text",
+          "md": "Swift never mixes number types on its own. To multiply an `Int` with a `Double`, convert one of them first: `Double(x)` makes a `Double`, and `Int(y)` makes an `Int` and drops the decimal part."
+        },
+        {
+          "type": "code",
+          "code": "let apples = 3\nlet weight = 1.5\nprint(Double(apples) * weight)\nprint(Int(weight))",
+          "output": "4.5\n1"
+        },
+        {
+          "type": "tip",
+          "md": "Names start with a small letter. For several words, use **camelCase**: `firstName`, `isOpen`, `totalPrice`."
+        }
+      ],
+      "card": [
+        "`let x = 5` creates a constant",
+        "`var y = 1` creates a variable, `y = 2` changes it",
+        "`Int`, `Double`, `String`, `Bool`",
+        "`let h: Double = 180` sets the type",
+        "`Double(x)`, `Int(y)` convert"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "variables-1",
+          "prompt": "Which keyword creates a value that can never change?",
+          "options": [
+            "`let`",
+            "`var`",
+            "`const`",
+            "`val`"
+          ],
+          "answer": 0,
+          "explain": "`let` creates a constant. A `var` can change, and `const` and `val` are not Swift keywords."
+        },
+        {
+          "type": "input",
+          "id": "variables-2",
+          "prompt": "What does this print?",
+          "code": "var x = 4\nx = x * 3\nprint(x)",
+          "answers": [
+            "12"
+          ],
+          "explain": "`x` starts at `4`. The second line stores `4 * 3`, which is `12`, in `x`."
+        },
+        {
+          "type": "input",
+          "id": "variables-3",
+          "prompt": "What does this print?",
+          "code": "let h: Double = 7\nprint(h)",
+          "answers": [
+            "7.0"
+          ],
+          "explain": "The type annotation makes `h` a `Double`, so Swift prints it with a decimal point: `7.0`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-4",
+          "statement": "This program runs and prints `6`.",
+          "code": "let n = 5\nn = 6\nprint(n)",
+          "answer": false,
+          "explain": "`n` is a `let` constant, so `n = 6` is an error and the program does not run. Use `var` to change a value."
+        },
+        {
+          "type": "gap",
+          "id": "variables-5",
+          "prompt": "Fill the gap so `total` can change.",
+          "code": "___ total = 0\ntotal = 8\nprint(total)",
+          "options": [
+            "var",
+            "let",
+            "const"
+          ],
+          "answer": 0,
+          "explain": "Only a `var` can get a new value. With `let`, the line `total = 8` is an error."
+        },
+        {
+          "type": "pairs",
+          "id": "variables-6",
+          "prompt": "Match the type to its values.",
+          "pairs": [
+            [
+              "`Int`",
+              "whole numbers"
+            ],
+            [
+              "`Double`",
+              "numbers with a decimal point"
+            ],
+            [
+              "`String`",
+              "text"
+            ],
+            [
+              "`Bool`",
+              "true or false"
+            ]
+          ]
+        },
+        {
+          "type": "choice",
+          "id": "variables-7",
+          "prompt": "What is the type of `price`?",
+          "code": "let price = 4.0",
+          "options": [
+            "`Int`",
+            "`Double`",
+            "`String`",
+            "`Bool`"
+          ],
+          "answer": 1,
+          "explain": "`4.0` has a decimal point, so type inference makes `price` a `Double`."
+        },
+        {
+          "type": "bug",
+          "id": "variables-8",
+          "prompt": "The program should print `Rome` and `150`. Which line has the bug?",
+          "lines": [
+            "let city = \"Rome\"",
+            "var visitors = 100",
+            "visitors = visitors + 50",
+            "print(city)",
+            "print(Visitors)"
+          ],
+          "bug": 4,
+          "explain": "Swift is case-sensitive. The variable is `visitors` with a small `v`: write `print(visitors)`."
+        },
+        {
+          "type": "blocks",
+          "id": "variables-9",
+          "prompt": "Build a line that creates a constant `price` of type `Double` with the value `9.5`.",
+          "tokens": [
+            "let",
+            "price:",
+            "Double",
+            "=",
+            "9.5"
+          ],
+          "distractors": [
+            "const",
+            "Int"
+          ],
+          "explain": "`let` creates a constant, and `: Double` after the name is the type annotation: `let price: Double = 9.5`."
+        },
+        {
+          "type": "order",
+          "id": "variables-10",
+          "prompt": "Put the lines in order so the program prints `5` and then `Now: 8`.",
+          "lines": [
+            "var steps = 5",
+            "print(steps)",
+            "steps = steps + 3",
+            "print(\"Now:\", steps)"
+          ],
+          "explain": "First create the variable, print it, then change it and print it again."
+        },
+        {
+          "type": "input",
+          "id": "variables-11",
+          "prompt": "What does this print?",
+          "code": "let a = 7\nlet b = 2.0\nprint(Double(a) * b)",
+          "answers": [
+            "14.0"
+          ],
+          "explain": "`Double(a)` is `7.0`, and `7.0 * 2.0` is the `Double` `14.0`."
+        },
+        {
+          "type": "true_false",
+          "id": "variables-12",
+          "statement": "`Int(3.9)` gives `4`.",
+          "answer": false,
+          "explain": "`Int(...)` drops the decimal part and does not round, so `Int(3.9)` is `3`."
+        }
+      ]
+    },
+    {
+      "id": "strings",
+      "title": "Strings and operators",
+      "chapter": "Basics",
+      "summary": "Join strings, insert values with interpolation, use count and uppercased(), and calculate and compare values.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "You can join strings with `+`. Both sides must be strings."
+        },
+        {
+          "type": "code",
+          "code": "let first = \"Ada\"\nlet last = \"Lovelace\"\nlet full = first + \" \" + last\nprint(full)",
+          "output": "Ada Lovelace"
+        },
+        {
+          "type": "text",
+          "md": "**String interpolation** puts a value right into a string: inside the quotes, write `\\(` and `)` around a name or a calculation. It works with numbers and other types too, not only with strings."
+        },
+        {
+          "type": "code",
+          "code": "let name = \"Sam\"\nlet age = 30\nprint(\"\\(name) is \\(age) years old.\")\nprint(\"Next year: \\(age + 1)\")",
+          "output": "Sam is 30 years old.\nNext year: 31"
+        },
+        {
+          "type": "heading",
+          "text": "Working with strings"
+        },
+        {
+          "type": "text",
+          "md": "A string knows things about itself. `count` gives the number of characters. `uppercased()` and `lowercased()` give a new string in capital or small letters. `isEmpty` is `true` when the string has no characters."
+        },
+        {
+          "type": "code",
+          "code": "let word = \"Swift\"\nprint(word.count)\nprint(word.uppercased())\nprint(word.lowercased())\nprint(word.isEmpty)\nprint(\"\".isEmpty)",
+          "output": "5\nSWIFT\nswift\nfalse\ntrue"
+        },
+        {
+          "type": "heading",
+          "text": "Arithmetic"
+        },
+        {
+          "type": "text",
+          "md": "With two `Int` values, `/` gives a whole number and drops the rest. `%` gives the rest (the **remainder**) of a division. With `Double` values, `/` gives the exact result. `+=` adds to a variable: `points += 5` is short for `points = points + 5`. `-=` and `*=` work the same way."
+        },
+        {
+          "type": "code",
+          "code": "print(17 / 5)\nprint(17 % 5)\nprint(17.0 / 5.0)\nvar points = 10\npoints += 5\npoints -= 2\nprint(points)",
+          "output": "3\n2\n3.4\n13"
+        },
+        {
+          "type": "heading",
+          "text": "Comparison"
+        },
+        {
+          "type": "text",
+          "md": "Comparison operators compare two values and give a `Bool`: `==` equal, `!=` not equal, `<` less than, `>` greater than, `<=` less or equal, `>=` greater or equal. You can compare strings too."
+        },
+        {
+          "type": "code",
+          "code": "print(5 == 5)\nprint(3 != 3)\nprint(2 < 7)\nprint(4 >= 5)\nprint(\"cat\" == \"Cat\")",
+          "output": "true\nfalse\ntrue\nfalse\nfalse"
+        },
+        {
+          "type": "warning",
+          "md": "`=` stores a value, `==` compares two values. Mixing them up is a common mistake."
+        }
+      ],
+      "card": [
+        "`\"Hi, \\(name)!\"` inserts a value",
+        "`a + b` joins two strings",
+        "`s.count`, `s.uppercased()`, `s.isEmpty`",
+        "`17 / 5` is `3`, `17 % 5` is `2`",
+        "`==` `!=` `<` `>` `<=` `>=` give a `Bool`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "strings-1",
+          "prompt": "What does this print?",
+          "code": "let city = \"Paris\"\nprint(\"I love \\(city)!\")",
+          "answers": [
+            "I love Paris!"
+          ],
+          "explain": "`\\(city)` is replaced by the value of `city`."
+        },
+        {
+          "type": "input",
+          "id": "strings-2",
+          "prompt": "What does this print?",
+          "code": "print(\"banana\".count)",
+          "answers": [
+            "6"
+          ],
+          "explain": "`count` gives the number of characters: b, a, n, a, n, a are `6` characters."
+        },
+        {
+          "type": "input",
+          "id": "strings-3",
+          "prompt": "What does this print?",
+          "code": "print(20 % 6)",
+          "answers": [
+            "2"
+          ],
+          "explain": "`20 / 6` is `3` with a remainder of `2`, because `3 * 6` is `18`. `%` gives the remainder."
+        },
+        {
+          "type": "choice",
+          "id": "strings-4",
+          "prompt": "What does this print?",
+          "code": "print(7 / 2)",
+          "options": [
+            "`3`",
+            "`3.5`",
+            "`4`",
+            "`2`"
+          ],
+          "answer": 0,
+          "explain": "`7` and `2` are both `Int` values, so `/` gives a whole number and drops the rest."
+        },
+        {
+          "type": "gap",
+          "id": "strings-5",
+          "prompt": "Fill the gap so the program prints `HELLO`.",
+          "code": "let s = \"hello\"\nprint(s.___)",
+          "options": [
+            "uppercased()",
+            "lowercased()",
+            "count",
+            "upper()"
+          ],
+          "answer": 0,
+          "explain": "`uppercased()` gives a new string in capital letters."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-6",
+          "statement": "`\"Swift\" == \"swift\"` is `true`.",
+          "answer": false,
+          "explain": "String comparison is case-sensitive. `S` and `s` are different characters."
+        },
+        {
+          "type": "bug",
+          "id": "strings-7",
+          "prompt": "The program should print `Item: pen` and `Price: 2`. Which line has the bug?",
+          "lines": [
+            "let item = \"pen\"",
+            "let price = 2",
+            "print(\"Item: \" + item)",
+            "print(\"Price: \" + price)"
+          ],
+          "bug": 3,
+          "explain": "`+` only joins two strings, but `price` is an `Int`. Use interpolation: `print(\"Price: \\(price)\")`."
+        },
+        {
+          "type": "blocks",
+          "id": "strings-8",
+          "prompt": "Build a line that stores `true` in `isLong` when `word` has more than `5` characters.",
+          "tokens": [
+            "let",
+            "isLong",
+            "=",
+            "word.count",
+            ">",
+            "5"
+          ],
+          "distractors": [
+            "==",
+            "<"
+          ],
+          "explain": "`word.count > 5` compares the number of characters with `5` and gives a `Bool`."
+        },
+        {
+          "type": "pairs",
+          "id": "strings-9",
+          "prompt": "Match the code to its meaning.",
+          "pairs": [
+            [
+              "`%`",
+              "remainder of a division"
+            ],
+            [
+              "`==`",
+              "checks if two values are equal"
+            ],
+            [
+              "`!=`",
+              "checks if two values are different"
+            ],
+            [
+              "`+=`",
+              "adds to a variable"
+            ],
+            [
+              "`\\(x)`",
+              "puts a value into a string"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "strings-10",
+          "prompt": "Put the lines in order so the program prints `Hello, Mia` and then `10`.",
+          "lines": [
+            "let name = \"Mia\"",
+            "let greeting = \"Hello, \" + name",
+            "print(greeting)",
+            "print(greeting.count)"
+          ],
+          "explain": "Each line uses the one before it: `greeting` needs `name`, and `print` needs `greeting`."
+        },
+        {
+          "type": "choice",
+          "id": "strings-11",
+          "prompt": "What does this print?",
+          "code": "let a = 10\nvar b = 3\nb *= 2\nprint(a > b)",
+          "options": [
+            "`true`",
+            "`false`",
+            "`6`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "`b *= 2` makes `b` equal to `6`. `10 > 6` is `true`."
+        },
+        {
+          "type": "true_false",
+          "id": "strings-12",
+          "statement": "`\"5\" + \"5\"` gives `\"55\"`.",
+          "answer": true,
+          "explain": "Both values are strings, so `+` joins them instead of adding numbers."
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Let your program choose with if, else and switch, match ranges in cases and combine conditions with &&, || and !.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An `if` statement runs code only when a condition is `true`. The condition needs no parentheses, but the code always goes in curly braces `{ }`."
+        },
+        {
+          "type": "code",
+          "code": "let temperature = 30\nif temperature > 25 {\n    print(\"It is hot.\")\n}\nprint(\"Done.\")",
+          "output": "It is hot.\nDone."
+        },
+        {
+          "type": "text",
+          "md": "Add `else` for code that runs when the condition is `false`. With `else if`, you check more conditions one after the other. Only the first block whose condition is `true` runs."
+        },
+        {
+          "type": "code",
+          "code": "let score = 72\nif score >= 90 {\n    print(\"Excellent\")\n} else if score >= 60 {\n    print(\"Passed\")\n} else {\n    print(\"Try again\")\n}",
+          "output": "Passed"
+        },
+        {
+          "type": "warning",
+          "md": "The condition must be a `Bool`. Swift does not treat numbers as `true` or `false`: `if count { }` is an error, so write `if count > 0 { }` instead."
+        },
+        {
+          "type": "heading",
+          "text": "Logical operators"
+        },
+        {
+          "type": "text",
+          "md": "**Logical operators** combine conditions. `&&` (and) is `true` when both sides are `true`. `||` (or) is `true` when at least one side is `true`. `!` (not) turns `true` into `false` and `false` into `true`."
+        },
+        {
+          "type": "code",
+          "code": "let age = 20\nlet hasTicket = true\nprint(age >= 18 && hasTicket)\nprint(age < 16 || !hasTicket)\nif age >= 18 && hasTicket {\n    print(\"Welcome!\")\n}",
+          "output": "true\nfalse\nWelcome!"
+        },
+        {
+          "type": "heading",
+          "text": "switch"
+        },
+        {
+          "type": "text",
+          "md": "A `switch` compares one value with several **cases** and runs the first case that matches. A case can list several values, separated by commas. A `switch` must cover every possible value, so you usually end it with `default`. You need no `break`: Swift leaves the `switch` after one case."
+        },
+        {
+          "type": "code",
+          "code": "let day = \"Sat\"\nswitch day {\ncase \"Sat\", \"Sun\":\n    print(\"Weekend\")\ncase \"Fri\":\n    print(\"Almost weekend\")\ndefault:\n    print(\"Workday\")\n}",
+          "output": "Weekend"
+        },
+        {
+          "type": "text",
+          "md": "A case can also be a **range** of numbers. `90...100` means every number from `90` to `100`, with both ends included. `75..<90` means from `75` up to `89`: the end is not included."
+        },
+        {
+          "type": "code",
+          "code": "let points = 85\nswitch points {\ncase 90...100:\n    print(\"A\")\ncase 75..<90:\n    print(\"B\")\ncase 50..<75:\n    print(\"C\")\ndefault:\n    print(\"D\")\n}",
+          "output": "B"
+        },
+        {
+          "type": "tip",
+          "md": "Indent the code inside `{ }` by four spaces. Swift does not need it, but it makes your code much easier to read."
+        }
+      ],
+      "card": [
+        "`if x > 0 { ... } else { ... }`",
+        "`&&` and, `||` or, `!` not",
+        "`switch x { case 1, 2: ... default: ... }`",
+        "`case 1...5:` includes `5`, `case 1..<5:` does not"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this print?",
+          "code": "let n = 7\nif n % 2 == 0 {\n    print(\"even\")\n} else {\n    print(\"odd\")\n}",
+          "answers": [
+            "odd"
+          ],
+          "explain": "`7 % 2` is `1`, not `0`, so the condition is `false` and the `else` block runs."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-2",
+          "prompt": "What does this print?",
+          "code": "let x = 15\nif x > 20 {\n    print(\"A\")\n} else if x > 10 {\n    print(\"B\")\n} else if x > 5 {\n    print(\"C\")\n} else {\n    print(\"D\")\n}",
+          "options": [
+            "`A`",
+            "`B`",
+            "`C`",
+            "`B` and `C`"
+          ],
+          "answer": 1,
+          "explain": "`15 > 20` is `false`, `15 > 10` is `true`. Only the first block whose condition is `true` runs."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-3",
+          "statement": "`true || false` is `true`.",
+          "answer": true,
+          "explain": "`||` is `true` when at least one side is `true`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-4",
+          "prompt": "Fill the gap so the program prints `Welcome`.",
+          "code": "let isMember = false\nlet isGuest = true\nif isMember ___ isGuest {\n    print(\"Welcome\")\n}",
+          "options": [
+            "&&",
+            "||",
+            "=="
+          ],
+          "answer": 1,
+          "explain": "`||` is `true` when at least one side is `true`. `isGuest` is `true`, so the block runs."
+        },
+        {
+          "type": "input",
+          "id": "conditions-5",
+          "prompt": "What does this print?",
+          "code": "let size = 3\nswitch size {\ncase 1:\n    print(\"small\")\ncase 2, 3:\n    print(\"medium\")\ndefault:\n    print(\"large\")\n}",
+          "answers": [
+            "medium"
+          ],
+          "explain": "The case `2, 3` matches both `2` and `3`, so `3` prints `medium`."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-6",
+          "prompt": "The program should print `Level four`. Which line has the bug?",
+          "lines": [
+            "let level = 4",
+            "if level = 4 {",
+            "    print(\"Level four\")",
+            "} else {",
+            "    print(\"Other level\")",
+            "}"
+          ],
+          "bug": 1,
+          "explain": "`=` stores a value. To compare, write `==`: `if level == 4 {`."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-7",
+          "prompt": "Match the code to its meaning.",
+          "pairs": [
+            [
+              "`&&`",
+              "and"
+            ],
+            [
+              "`||`",
+              "or"
+            ],
+            [
+              "`!`",
+              "not"
+            ],
+            [
+              "`default`",
+              "runs when no case matches"
+            ],
+            [
+              "`1...5`",
+              "the numbers 1 to 5"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "conditions-8",
+          "prompt": "Put the lines in order so the program prints `Good morning` when `hour` is less than `12`, otherwise `Good afternoon`.",
+          "lines": [
+            "if hour < 12 {",
+            "    print(\"Good morning\")",
+            "} else {",
+            "    print(\"Good afternoon\")",
+            "}"
+          ],
+          "explain": "The `if` line opens the first block, `} else {` closes it and opens the second one, and `}` closes the second one."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-9",
+          "prompt": "Build the first line of a case that matches the numbers from `1` up to `9`, but not `10`.",
+          "tokens": [
+            "case",
+            "1",
+            "..<",
+            "10:"
+          ],
+          "distractors": [
+            "...",
+            "default:"
+          ],
+          "explain": "`..<` leaves out the end, so `case 1 ..< 10:` matches `1` to `9`. With `...`, the case would match `10` too."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-10",
+          "prompt": "Which numbers does `case 1...3:` match?",
+          "options": [
+            "`1`, `2` and `3`",
+            "`1` and `2`",
+            "only `2`",
+            "`1` and `3`"
+          ],
+          "answer": 0,
+          "explain": "`...` is a closed range: it includes both ends, so it matches `1`, `2` and `3`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-11",
+          "prompt": "What does this print?",
+          "code": "let a = 5\nlet b = 10\nprint(a > 3 && b < 10)",
+          "answers": [
+            "false"
+          ],
+          "explain": "`5 > 3` is `true`, but `10 < 10` is `false`. With `&&`, both sides must be `true`."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-12",
+          "statement": "This program runs without an error.",
+          "code": "let n = 2\nswitch n {\ncase 1:\n    print(\"one\")\ncase 2:\n    print(\"two\")\n}",
+          "answer": false,
+          "explain": "A `switch` must cover every possible value. An `Int` has many more values than `1` and `2`, so you need a `default` case."
+        }
+      ]
+    },
+    {
+      "id": "loops",
+      "title": "Loops and ranges",
+      "chapter": "Control flow",
+      "summary": "Repeat code with for-in, ranges and stride, and keep looping with while and repeat-while until a condition changes.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **loop** repeats code. A `for`-`in` loop runs its block once for every number in a range. `1...3` is a **closed range**: it includes both ends. In each round, `i` holds the current number."
+        },
+        {
+          "type": "code",
+          "code": "for i in 1...3 {\n    print(\"Round \\(i)\")\n}",
+          "output": "Round 1\nRound 2\nRound 3"
+        },
+        {
+          "type": "text",
+          "md": "`0..<3` is a **half-open range**: it goes up to the end but does not include it, so it gives `0`, `1` and `2`. If you do not need the number, write `_` instead of a name."
+        },
+        {
+          "type": "code",
+          "code": "for n in 0..<3 {\n    print(n * 10)\n}\nfor _ in 1...2 {\n    print(\"Hi\")\n}",
+          "output": "0\n10\n20\nHi\nHi"
+        },
+        {
+          "type": "text",
+          "md": "A loop often builds a result step by step. Create a `var` before the loop and change it inside the loop."
+        },
+        {
+          "type": "code",
+          "code": "var sum = 0\nfor n in 1...4 {\n    sum += n\n}\nprint(sum)",
+          "output": "10"
+        },
+        {
+          "type": "heading",
+          "text": "stride"
+        },
+        {
+          "type": "text",
+          "md": "`stride(from:to:by:)` counts in steps of any size and stops before `to`. `stride(from:through:by:)` can also reach the end value. A negative step counts down."
+        },
+        {
+          "type": "code",
+          "code": "for x in stride(from: 0, to: 10, by: 4) {\n    print(x)\n}\nfor x in stride(from: 10, through: 0, by: -5) {\n    print(x)\n}",
+          "output": "0\n4\n8\n10\n5\n0"
+        },
+        {
+          "type": "heading",
+          "text": "while and repeat-while"
+        },
+        {
+          "type": "text",
+          "md": "A `while` loop repeats as long as its condition is `true`. It checks the condition before each round. Make sure the loop changes something in the condition, or it never ends."
+        },
+        {
+          "type": "code",
+          "code": "var energy = 3\nwhile energy > 0 {\n    print(\"Energy: \\(energy)\")\n    energy -= 1\n}\nprint(\"Rest\")",
+          "output": "Energy: 3\nEnergy: 2\nEnergy: 1\nRest"
+        },
+        {
+          "type": "text",
+          "md": "A `repeat`-`while` loop checks the condition after each round. So its block always runs at least once, even when the condition is `false` from the start."
+        },
+        {
+          "type": "code",
+          "code": "var count = 10\nrepeat {\n    print(\"Count: \\(count)\")\n    count += 1\n} while count < 3",
+          "output": "Count: 10"
+        }
+      ],
+      "card": [
+        "`for i in 1...3 { }` gives 1, 2, 3",
+        "`for i in 1..<3 { }` gives 1, 2",
+        "`stride(from: 0, to: 10, by: 2)`",
+        "`while x > 0 { }` checks first",
+        "`repeat { } while x > 0` runs at least once"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "loops-1",
+          "prompt": "What does this print?",
+          "code": "var total = 0\nfor i in 1..<4 {\n    total += i\n}\nprint(total)",
+          "answers": [
+            "6"
+          ],
+          "explain": "`1..<4` gives `1`, `2` and `3`, without `4`. `1 + 2 + 3` is `6`."
+        },
+        {
+          "type": "choice",
+          "id": "loops-2",
+          "prompt": "How many times does this loop print `Hi`?",
+          "code": "for _ in 0...3 {\n    print(\"Hi\")\n}",
+          "options": [
+            "`3`",
+            "`4`",
+            "`5`",
+            "`2`"
+          ],
+          "answer": 1,
+          "explain": "`0...3` includes both ends: `0`, `1`, `2` and `3`. That is `4` rounds."
+        },
+        {
+          "type": "true_false",
+          "id": "loops-3",
+          "statement": "`1..<5` includes the number `5`.",
+          "answer": false,
+          "explain": "`..<` is a half-open range. It stops before the end, so it gives `1` to `4`."
+        },
+        {
+          "type": "gap",
+          "id": "loops-4",
+          "prompt": "Fill the gap so the program prints `0`, `5`, `10` and `15`.",
+          "code": "for x in stride(from: 0, ___: 15, by: 5) {\n    print(x)\n}",
+          "options": [
+            "through",
+            "to",
+            "until"
+          ],
+          "answer": 0,
+          "explain": "`through:` includes the end value `15`. With `to:`, the loop stops before `15`."
+        },
+        {
+          "type": "input",
+          "id": "loops-5",
+          "prompt": "What does this print?",
+          "code": "var n = 1\nwhile n < 20 {\n    n *= 2\n}\nprint(n)",
+          "answers": [
+            "32"
+          ],
+          "explain": "`n` becomes `2`, `4`, `8`, `16` and then `32`. `32 < 20` is `false`, so the loop stops."
+        },
+        {
+          "type": "bug",
+          "id": "loops-6",
+          "prompt": "The program should print the sum of `1` to `5`, which is `15`. Which line has the bug?",
+          "lines": [
+            "var sum = 0",
+            "for n in 1..<5 {",
+            "    sum += n",
+            "}",
+            "print(sum)"
+          ],
+          "bug": 1,
+          "explain": "`1..<5` stops at `4`, so the sum is `10`. Write `for n in 1...5 {` to include `5`."
+        },
+        {
+          "type": "pairs",
+          "id": "loops-7",
+          "prompt": "Match the code to its meaning.",
+          "pairs": [
+            [
+              "`1...3`",
+              "1, 2 and 3"
+            ],
+            [
+              "`1..<3`",
+              "1 and 2"
+            ],
+            [
+              "`stride(from: 0, to: 6, by: 2)`",
+              "0, 2 and 4"
+            ],
+            [
+              "`while`",
+              "checks the condition before each round"
+            ],
+            [
+              "`repeat { } while`",
+              "runs at least once"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "loops-8",
+          "prompt": "Put the lines in order so the program prints the numbers `1` to `3` and then `Done`.",
+          "lines": [
+            "var i = 1",
+            "while i <= 3 {",
+            "    print(i)",
+            "    i += 1",
+            "}",
+            "print(\"Done\")"
+          ],
+          "explain": "Create `i` first. Inside the loop, print `i` before you increase it, or the output starts at `2`."
+        },
+        {
+          "type": "blocks",
+          "id": "loops-9",
+          "prompt": "Build the first line of a loop that counts down from `10` to `0` in steps of `2`, with `0` included.",
+          "tokens": [
+            "for",
+            "x",
+            "in",
+            "stride(from:",
+            "10,",
+            "through:",
+            "0,",
+            "by:",
+            "-2)",
+            "{"
+          ],
+          "distractors": [
+            "to:",
+            "2)"
+          ],
+          "explain": "`through:` includes the end value `0`, and the negative step `-2` counts down."
+        },
+        {
+          "type": "choice",
+          "id": "loops-10",
+          "prompt": "Which loop always runs its block at least once?",
+          "options": [
+            "`for`-`in`",
+            "`while`",
+            "`repeat`-`while`",
+            "none of them"
+          ],
+          "answer": 2,
+          "explain": "`repeat`-`while` checks the condition after each round, so the block runs once before the first check."
+        },
+        {
+          "type": "input",
+          "id": "loops-11",
+          "prompt": "What does this print?",
+          "code": "var text = \"\"\nfor _ in 1...3 {\n    text += \"ab\"\n}\nprint(text.count)",
+          "answers": [
+            "6"
+          ],
+          "explain": "The loop adds `\"ab\"` three times, so `text` is `\"ababab\"` with `6` characters."
+        },
+        {
+          "type": "choice",
+          "id": "loops-12",
+          "prompt": "What does this print?",
+          "code": "var k = 5\nrepeat {\n    k -= 2\n} while k > 0\nprint(k)",
+          "options": [
+            "`-1`",
+            "`1`",
+            "`0`",
+            "`5`"
+          ],
+          "answer": 0,
+          "explain": "`k` becomes `3`, then `1`, then `-1`. Only then is `k > 0` false, so the loop stops."
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions and closures",
+      "chapter": "Building blocks",
+      "summary": "Write your own functions with parameters, argument labels, return values and default values, and meet closures.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** is a named block of code that you can run again and again. You create it with `func`, a name, parentheses and a block. Then you **call** it with its name and parentheses."
+        },
+        {
+          "type": "code",
+          "code": "func sayHello() {\n    print(\"Hello!\")\n}\nsayHello()\nsayHello()",
+          "output": "Hello!\nHello!"
+        },
+        {
+          "type": "text",
+          "md": "A **parameter** gives the function a value to work with. Write its name and type in the parentheses. When you call the function, write the parameter name as an **argument label**, then a colon and the value."
+        },
+        {
+          "type": "code",
+          "code": "func greet(name: String) {\n    print(\"Hello, \\(name)!\")\n}\ngreet(name: \"Ann\")\ngreet(name: \"Bo\")",
+          "output": "Hello, Ann!\nHello, Bo!"
+        },
+        {
+          "type": "text",
+          "md": "A function can **return** a value. Write `->` and the return type after the parentheses, and use `return` to hand the result back. The caller can store the result or print it."
+        },
+        {
+          "type": "code",
+          "code": "func square(number: Int) -> Int {\n    return number * number\n}\nlet result = square(number: 4)\nprint(result)\nprint(square(number: 5) + 1)",
+          "output": "16\n26"
+        },
+        {
+          "type": "heading",
+          "text": "Argument labels"
+        },
+        {
+          "type": "text",
+          "md": "A parameter can have two names: an argument label for the call and a name for inside the function. Write `_` as the label when the call should have no label. When the body is a single expression, you can leave out `return`."
+        },
+        {
+          "type": "code",
+          "code": "func add(_ a: Int, to b: Int) -> Int {\n    return a + b\n}\nprint(add(3, to: 4))\nfunc double(_ x: Int) -> Int {\n    x * 2\n}\nprint(double(6))",
+          "output": "7\n12"
+        },
+        {
+          "type": "text",
+          "md": "A parameter can have a **default value**. Then the caller may leave out that argument."
+        },
+        {
+          "type": "code",
+          "code": "func order(item: String, count: Int = 1) {\n    print(\"\\(count) x \\(item)\")\n}\norder(item: \"tea\")\norder(item: \"cake\", count: 3)",
+          "output": "1 x tea\n3 x cake"
+        },
+        {
+          "type": "heading",
+          "text": "Closures"
+        },
+        {
+          "type": "text",
+          "md": "A **closure** is a function without a name. You write it in curly braces: first the parameters and the return type, then the keyword `in`, then the code. You can store a closure in a constant and call it like a function, without argument labels."
+        },
+        {
+          "type": "code",
+          "code": "let triple = { (x: Int) -> Int in\n    return x * 3\n}\nprint(triple(5))\nlet shout = { (word: String) -> String in\n    word.uppercased() + \"!\"\n}\nprint(shout(\"hey\"))",
+          "output": "15\nHEY!"
+        }
+      ],
+      "card": [
+        "`func greet(name: String) { }`, call `greet(name: \"Ann\")`",
+        "`func sq(_ x: Int) -> Int { return x * x }`",
+        "`_` means no argument label",
+        "`count: Int = 1` sets a default value",
+        "`let f = { (x: Int) -> Int in x * 2 }`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this print?",
+          "code": "func double(number: Int) -> Int {\n    return number * 2\n}\nprint(double(number: 21))",
+          "answers": [
+            "42"
+          ],
+          "explain": "The function returns `21 * 2`, which is `42`, and `print` shows it."
+        },
+        {
+          "type": "choice",
+          "id": "functions-2",
+          "prompt": "How do you call `func greet(name: String)`?",
+          "options": [
+            "`greet(name: \"Ann\")`",
+            "`greet(\"Ann\")`",
+            "`greet(String: \"Ann\")`",
+            "`func greet(\"Ann\")`"
+          ],
+          "answer": 0,
+          "explain": "The parameter `name` has no `_`, so the call needs the argument label `name:`."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-3",
+          "statement": "A function only runs when you call it.",
+          "answer": true,
+          "explain": "`func` only creates the function. Its code runs each time you call it by its name."
+        },
+        {
+          "type": "gap",
+          "id": "functions-4",
+          "prompt": "Fill the gap so the function gives back the sum.",
+          "code": "func sum(_ a: Int, _ b: Int) -> Int {\n    ___ a + b\n}\nprint(sum(2, 3))",
+          "options": [
+            "return",
+            "print",
+            "func",
+            "in"
+          ],
+          "answer": 0,
+          "explain": "`return` hands the value back to the caller, which then prints `5`."
+        },
+        {
+          "type": "input",
+          "id": "functions-5",
+          "prompt": "What does this print?",
+          "code": "func price(base: Int, tax: Int = 5) -> Int {\n    return base + tax\n}\nprint(price(base: 20))",
+          "answers": [
+            "25"
+          ],
+          "explain": "The call leaves out `tax`, so it uses the default value `5`. `20 + 5` is `25`."
+        },
+        {
+          "type": "bug",
+          "id": "functions-6",
+          "prompt": "The function should return the larger of two numbers, so the program should print `7`. Which line has the bug?",
+          "lines": [
+            "func larger(_ a: Int, _ b: Int) -> Int {",
+            "    if a > b {",
+            "        return b",
+            "    }",
+            "    return b",
+            "}",
+            "print(larger(7, 3))"
+          ],
+          "bug": 2,
+          "explain": "When `a` is greater, the function must return `a`. Write `return a` inside the `if` block."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-7",
+          "prompt": "Match the code to its meaning.",
+          "pairs": [
+            [
+              "`func`",
+              "creates a function"
+            ],
+            [
+              "`->`",
+              "the return type follows"
+            ],
+            [
+              "`return`",
+              "hands back a value"
+            ],
+            [
+              "`_`",
+              "no argument label"
+            ],
+            [
+              "`in`",
+              "starts the code of a closure"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "functions-8",
+          "prompt": "Put the lines in order so the program prints `5`.",
+          "lines": [
+            "let add = { (a: Int, b: Int) -> Int in",
+            "    return a + b",
+            "}",
+            "print(add(2, 3))"
+          ],
+          "explain": "The closure must be complete before you call it: first the line with `in`, then the body, then `}`, then the call."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-9",
+          "prompt": "Build the first line of a function `isEven` with one `Int` parameter `n` without a label. It returns a `Bool`.",
+          "tokens": [
+            "func",
+            "isEven(_",
+            "n:",
+            "Int)",
+            "->",
+            "Bool",
+            "{"
+          ],
+          "distractors": [
+            "return",
+            "String"
+          ],
+          "explain": "`_` removes the label, and `-> Bool` sets the return type: `func isEven(_ n: Int) -> Bool {`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-10",
+          "prompt": "What does this print?",
+          "code": "func greet(_ name: String, loud: Bool = false) -> String {\n    let text = \"Hi, \\(name)\"\n    if loud {\n        return text.uppercased()\n    }\n    return text\n}\nprint(greet(\"Kim\", loud: true))",
+          "options": [
+            "`HI, KIM`",
+            "`Hi, Kim`",
+            "`hi, kim`",
+            "An error"
+          ],
+          "answer": 0,
+          "explain": "The call sets `loud` to `true`, so the function returns the text in capital letters."
+        },
+        {
+          "type": "input",
+          "id": "functions-11",
+          "prompt": "What does this print?",
+          "code": "let square = { (x: Int) -> Int in\n    x * x\n}\nprint(square(7))",
+          "answers": [
+            "49"
+          ],
+          "explain": "The closure returns `x * x`. You call it with `7`, so it returns `49`."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-12",
+          "statement": "This program prints `8`.",
+          "code": "func add(_ a: Int, _ b: Int) -> Int {\n    a + b\n}\nprint(add(a: 3, b: 5))",
+          "answer": false,
+          "explain": "The parameters have the label `_`, so the call must not use labels. Write `add(3, 5)`."
+        }
+      ]
+    },
+    {
+      "id": "collections",
+      "title": "Arrays and dictionaries",
+      "chapter": "Data",
+      "summary": "Keep many values in arrays and dictionaries, add and read items, loop over them and handle missing keys.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "An **array** is an ordered list of values of the same type. You write the values in square brackets `[ ]`, separated by commas. Each item has an **index**, its position. The index starts at `0`, so the first item is `fruits[0]`."
+        },
+        {
+          "type": "code",
+          "code": "let fruits = [\"apple\", \"banana\", \"cherry\"]\nprint(fruits[0])\nprint(fruits[2])\nprint(fruits.count)\nprint(fruits)",
+          "output": "apple\ncherry\n3\n[\"apple\", \"banana\", \"cherry\"]"
+        },
+        {
+          "type": "text",
+          "md": "To change an array, create it with `var`. `append` adds an item at the end. You can also replace an item through its index. `isEmpty` tells you if the array has no items."
+        },
+        {
+          "type": "code",
+          "code": "var scores = [8, 5]\nscores.append(9)\nscores[1] = 6\nprint(scores)\nprint(scores.isEmpty)",
+          "output": "[8, 6, 9]\nfalse"
+        },
+        {
+          "type": "warning",
+          "md": "An index that does not exist stops the program with the error `Index out of range`. The last valid index is `count - 1`."
+        },
+        {
+          "type": "text",
+          "md": "A `for`-`in` loop goes through all items of an array, in order. An empty array needs a type annotation, for example `var names: [String] = []`."
+        },
+        {
+          "type": "code",
+          "code": "let prices = [3, 7, 5]\nvar total = 0\nfor price in prices {\n    total += price\n}\nprint(\"Total: \\(total)\")",
+          "output": "Total: 15"
+        },
+        {
+          "type": "heading",
+          "text": "Dictionaries"
+        },
+        {
+          "type": "text",
+          "md": "A **dictionary** stores pairs of a **key** and a **value**, like a word and its meaning in a real dictionary. You write `key: value` pairs in square brackets. With `dict[key] = value`, you add a new pair or change an existing one."
+        },
+        {
+          "type": "code",
+          "code": "var ages = [\"Ann\": 31, \"Ben\": 25]\nages[\"Cleo\"] = 40\nages[\"Ann\"] = 32\nprint(ages.count)",
+          "output": "3"
+        },
+        {
+          "type": "text",
+          "md": "A lookup like `stock[\"kiwi\"]` may find nothing, because the key might not exist. So it gives an **optional**: a value or `nil`, which means **no value**. Write `??` and a default value after the lookup to always get a normal value. The next world explains optionals in detail."
+        },
+        {
+          "type": "code",
+          "code": "let stock = [\"apple\": 5, \"pear\": 0]\nprint(stock[\"apple\"] ?? 0)\nprint(stock[\"kiwi\"] ?? 0)\nprint(stock[\"kiwi\"] == nil)",
+          "output": "5\n0\ntrue"
+        },
+        {
+          "type": "text",
+          "md": "A dictionary has no fixed order. When the order matters, loop over its keys with `keys.sorted()`, which gives the keys in alphabetical order."
+        },
+        {
+          "type": "code",
+          "code": "let stock = [\"pear\": 0, \"apple\": 5]\nfor name in stock.keys.sorted() {\n    print(\"\\(name): \\(stock[name] ?? 0)\")\n}",
+          "output": "apple: 5\npear: 0"
+        }
+      ],
+      "card": [
+        "`var a = [1, 2]`, `a[0]` is the first item",
+        "`a.append(3)`, `a.count`, `a.isEmpty`",
+        "`for x in a { }` loops over all items",
+        "`var d = [\"a\": 1]`, `d[\"b\"] = 2`",
+        "`d[\"z\"] ?? 0` gives `0` for a missing key"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "collections-1",
+          "prompt": "What does this print?",
+          "code": "let colors = [\"red\", \"green\", \"blue\"]\nprint(colors[1])",
+          "answers": [
+            "green"
+          ],
+          "explain": "The index starts at `0`, so `colors[1]` is the second item, `green`."
+        },
+        {
+          "type": "input",
+          "id": "collections-2",
+          "prompt": "What does this print?",
+          "code": "var nums = [1, 2]\nnums.append(3)\nnums.append(4)\nprint(nums.count)",
+          "answers": [
+            "4"
+          ],
+          "explain": "The array starts with `2` items, and each `append` adds one more."
+        },
+        {
+          "type": "choice",
+          "id": "collections-3",
+          "prompt": "What is the index of the first item in an array?",
+          "options": [
+            "`0`",
+            "`1`",
+            "`-1`",
+            "it depends on the array"
+          ],
+          "answer": 0,
+          "explain": "In Swift, every array index starts at `0`."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-4",
+          "statement": "This program stops with an error.",
+          "code": "let letters = [\"a\", \"b\", \"c\"]\nprint(letters[3])",
+          "answer": true,
+          "explain": "The array has `3` items with the indexes `0`, `1` and `2`. Index `3` does not exist."
+        },
+        {
+          "type": "gap",
+          "id": "collections-5",
+          "prompt": "Fill the gap so the program adds `\"milk\"` at the end of the list.",
+          "code": "var list = [\"bread\"]\nlist.___(\"milk\")\nprint(list)",
+          "options": [
+            "append",
+            "add",
+            "push",
+            "insert"
+          ],
+          "answer": 0,
+          "explain": "`append` adds an item at the end of an array."
+        },
+        {
+          "type": "input",
+          "id": "collections-6",
+          "prompt": "What does this print?",
+          "code": "let prices = [\"tea\": 3, \"coffee\": 4]\nlet p = prices[\"coffee\"] ?? 0\nprint(p * 2)",
+          "answers": [
+            "8"
+          ],
+          "explain": "The key `\"coffee\"` exists, so `p` is `4`. `4 * 2` is `8`."
+        },
+        {
+          "type": "bug",
+          "id": "collections-7",
+          "prompt": "The program should print `Linus`. Which line has the bug?",
+          "lines": [
+            "var names: [String] = []",
+            "names.append(\"Ada\")",
+            "names.append(\"Linus\")",
+            "print(names[2])"
+          ],
+          "bug": 3,
+          "explain": "`Linus` is the second item, so its index is `1`. Write `print(names[1])`."
+        },
+        {
+          "type": "pairs",
+          "id": "collections-8",
+          "prompt": "Match the code to its meaning.",
+          "pairs": [
+            [
+              "`[1, 2, 3]`",
+              "an array"
+            ],
+            [
+              "`[\"a\": 1]`",
+              "a dictionary"
+            ],
+            [
+              "`items.count`",
+              "the number of items"
+            ],
+            [
+              "`items.append(x)`",
+              "adds an item at the end"
+            ],
+            [
+              "`?? 0`",
+              "a default value for nil"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "collections-9",
+          "prompt": "Put the lines in order so the program prints `[\"hi\", \"you\"]`.",
+          "lines": [
+            "var words: [String] = []",
+            "words.append(\"hi\")",
+            "words.append(\"you\")",
+            "print(words)"
+          ],
+          "explain": "Create the empty array first. `append` adds at the end, so `\"hi\"` must be added before `\"you\"`."
+        },
+        {
+          "type": "blocks",
+          "id": "collections-10",
+          "prompt": "Build a line that reads the price of `\"tea\"` from `menu`, or uses `0` when the key is missing.",
+          "tokens": [
+            "let",
+            "price",
+            "=",
+            "menu[\"tea\"]",
+            "??",
+            "0"
+          ],
+          "distractors": [
+            "!",
+            "||"
+          ],
+          "explain": "The lookup gives an optional, and `??` replaces a missing value with `0`."
+        },
+        {
+          "type": "choice",
+          "id": "collections-11",
+          "prompt": "What does this print?",
+          "code": "var stock = [\"pen\": 2]\nstock[\"pen\"] = 5\nstock[\"ink\"] = 1\nprint(stock.count)",
+          "options": [
+            "`2`",
+            "`3`",
+            "`1`",
+            "`8`"
+          ],
+          "answer": 0,
+          "explain": "`stock[\"pen\"] = 5` changes the existing pair and `stock[\"ink\"] = 1` adds a new one, so there are `2` pairs."
+        },
+        {
+          "type": "true_false",
+          "id": "collections-12",
+          "statement": "Looking up `ages[\"Zoe\"]` stops the program with an error when the key `\"Zoe\"` does not exist.",
+          "answer": false,
+          "explain": "A dictionary lookup gives an optional. A missing key gives `nil`, not an error."
+        }
+      ]
+    },
+    {
+      "id": "optionals",
+      "title": "Optionals and structs",
+      "chapter": "Data",
+      "summary": "Handle missing values safely with optionals, if let, guard let and ??, and build your own types with structs.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Sometimes a value can be missing. An **optional** either holds a value or is `nil`, which means no value. You write a `?` after the type: `Int?` is an optional `Int`. `Int(\"42\")` turns a string into a number and gives an `Int?`, because the text might not be a number."
+        },
+        {
+          "type": "code",
+          "code": "let a = Int(\"42\")\nlet b = Int(\"hello\")\nprint(a == nil)\nprint(b == nil)\nvar nickname: String? = nil\nnickname = \"Ace\"\nprint(nickname ?? \"none\")",
+          "output": "false\ntrue\nAce"
+        },
+        {
+          "type": "text",
+          "md": "You cannot use an optional like a normal value: `a + 1` is an error. First you **unwrap** it. `if let` unwraps the value and runs the block only when there is one. Inside the block, the new name holds a normal, non-optional value."
+        },
+        {
+          "type": "code",
+          "code": "let input = \"7\"\nif let number = Int(input) {\n    print(number * 2)\n} else {\n    print(\"Not a number\")\n}",
+          "output": "14"
+        },
+        {
+          "type": "tip",
+          "md": "When the optional already has a name, you can write `if let nickname {` as a short form of `if let nickname = nickname {`."
+        },
+        {
+          "type": "heading",
+          "text": "guard let"
+        },
+        {
+          "type": "text",
+          "md": "`guard let` is used inside functions. It unwraps a value, or it runs the `else` block, which must leave the function, for example with `return`. After the `guard`, the value is available for the rest of the function."
+        },
+        {
+          "type": "code",
+          "code": "func describe(_ text: String) {\n    guard let n = Int(text) else {\n        print(\"\\(text) is not a number\")\n        return\n    }\n    print(\"\\(n) squared is \\(n * n)\")\n}\ndescribe(\"5\")\ndescribe(\"five\")",
+          "output": "5 squared is 25\nfive is not a number"
+        },
+        {
+          "type": "warning",
+          "md": "You may see `a!` in other code. The `!` forces the value out of an optional and stops the program with an error when it is `nil`. Prefer `if let`, `guard let` and `??`."
+        },
+        {
+          "type": "heading",
+          "text": "Structs"
+        },
+        {
+          "type": "text",
+          "md": "A **struct** groups related values into your own type. The values inside are called **properties**. Swift creates an initializer for you: call the struct name with an argument label for every property. Use a dot to read a property."
+        },
+        {
+          "type": "code",
+          "code": "struct Book {\n    let title: String\n    var pages: Int\n}\nvar book = Book(title: \"Swift Basics\", pages: 120)\nbook.pages += 30\nprint(book.title)\nprint(book.pages)",
+          "output": "Swift Basics\n150"
+        },
+        {
+          "type": "text",
+          "md": "Functions inside a struct are called **methods**. They can use the properties directly. A method that changes a property must start with `mutating`. A property with a default value, like `value = 0`, can be left out when you create the struct."
+        },
+        {
+          "type": "code",
+          "code": "struct Counter {\n    var value = 0\n    mutating func increase(by step: Int = 1) {\n        value += step\n    }\n    func describe() -> String {\n        \"Count: \\(value)\"\n    }\n}\nvar counter = Counter()\ncounter.increase()\ncounter.increase(by: 5)\nprint(counter.describe())",
+          "output": "Count: 6"
+        }
+      ],
+      "card": [
+        "`Int?` is an `Int` or `nil`",
+        "`if let n = Int(s) { ... }` unwraps",
+        "`guard let n = x else { return }`",
+        "`x ?? 0` gives a default value",
+        "`struct P { var x: Int }`, `P(x: 1).x`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "optionals-1",
+          "prompt": "What does this print?",
+          "code": "let n = Int(\"12\")\nprint((n ?? 0) + 1)",
+          "answers": [
+            "13"
+          ],
+          "explain": "`Int(\"12\")` succeeds, so `n ?? 0` is `12`, and `12 + 1` is `13`."
+        },
+        {
+          "type": "input",
+          "id": "optionals-2",
+          "prompt": "What does this print?",
+          "code": "let n = Int(\"abc\")\nprint(n ?? -1)",
+          "answers": [
+            "-1"
+          ],
+          "explain": "`\"abc\"` is not a number, so `n` is `nil` and `??` gives the default value `-1`."
+        },
+        {
+          "type": "choice",
+          "id": "optionals-3",
+          "prompt": "What is the type of `Int(\"5\")`?",
+          "options": [
+            "`Int`",
+            "`Int?`",
+            "`String`",
+            "`String?`"
+          ],
+          "answer": 1,
+          "explain": "The conversion can fail, so it gives an optional `Int`, written `Int?`."
+        },
+        {
+          "type": "true_false",
+          "id": "optionals-4",
+          "statement": "Inside `if let number = Int(text) { ... }`, `number` is a normal `Int`, not an optional.",
+          "answer": true,
+          "explain": "`if let` unwraps the optional. Inside the block, `number` holds the plain value."
+        },
+        {
+          "type": "gap",
+          "id": "optionals-5",
+          "prompt": "Fill the gap so the function leaves early when the text is not a number.",
+          "code": "func check(_ text: String) {\n    ___ let n = Int(text) else {\n        print(\"no\")\n        return\n    }\n    print(n)\n}\ncheck(\"8\")\ncheck(\"x\")",
+          "options": [
+            "guard",
+            "if",
+            "while"
+          ],
+          "answer": 0,
+          "explain": "`guard let ... else { return }` unwraps the value or leaves the function. After it, `n` is available."
+        },
+        {
+          "type": "bug",
+          "id": "optionals-6",
+          "prompt": "The program should print `4`. Which line has the bug?",
+          "lines": [
+            "struct Point {",
+            "    var x: Int",
+            "    var y: Int",
+            "    func move(by dx: Int) {",
+            "        x += dx",
+            "    }",
+            "}",
+            "var p = Point(x: 1, y: 2)",
+            "p.move(by: 3)",
+            "print(p.x)"
+          ],
+          "bug": 3,
+          "explain": "The method changes the property `x`, so it must be marked `mutating`: `mutating func move(by dx: Int) {`."
+        },
+        {
+          "type": "pairs",
+          "id": "optionals-7",
+          "prompt": "Match the code to its meaning.",
+          "pairs": [
+            [
+              "`Int?`",
+              "an Int that can be missing"
+            ],
+            [
+              "`nil`",
+              "no value"
+            ],
+            [
+              "`??`",
+              "gives a default value"
+            ],
+            [
+              "`if let`",
+              "unwraps a value and runs a block"
+            ],
+            [
+              "`struct`",
+              "creates your own type"
+            ]
+          ]
+        },
+        {
+          "type": "order",
+          "id": "optionals-8",
+          "prompt": "Put the lines in order so `double(\"10\")` gives `20` and `double(\"x\")` gives `0`.",
+          "lines": [
+            "func double(_ text: String) -> Int {",
+            "    guard let n = Int(text) else { return 0 }",
+            "    let result = n * 2",
+            "    return result",
+            "}"
+          ],
+          "explain": "`guard let` comes first and leaves with `return 0` when there is no number. After the `guard`, `n` can be used to compute `result`."
+        },
+        {
+          "type": "blocks",
+          "id": "optionals-9",
+          "prompt": "Build a line that creates a `Point` with `x` set to `2` and `y` set to `5`.",
+          "tokens": [
+            "let",
+            "p",
+            "=",
+            "Point(x:",
+            "2,",
+            "y:",
+            "5)"
+          ],
+          "distractors": [
+            "new",
+            "Point(2,"
+          ],
+          "explain": "The initializer needs an argument label for every property: `Point(x: 2, y: 5)`."
+        },
+        {
+          "type": "choice",
+          "id": "optionals-10",
+          "prompt": "What does this print?",
+          "code": "struct Box {\n    var items = 0\n    mutating func add(_ n: Int) {\n        items += n\n    }\n}\nvar box = Box()\nbox.add(3)\nbox.add(4)\nprint(box.items)",
+          "options": [
+            "`7`",
+            "`4`",
+            "`3`",
+            "`0`"
+          ],
+          "answer": 0,
+          "explain": "`items` starts at `0`. The `mutating` method adds `3` and then `4`, so `items` is `7`."
+        },
+        {
+          "type": "input",
+          "id": "optionals-11",
+          "prompt": "What does this print?",
+          "code": "let capitals = [\"France\": \"Paris\"]\nif let city = capitals[\"Spain\"] {\n    print(city)\n} else {\n    print(\"unknown\")\n}",
+          "answers": [
+            "unknown"
+          ],
+          "explain": "The key `\"Spain\"` does not exist, so the lookup gives `nil` and the `else` block runs."
+        },
+        {
+          "type": "true_false",
+          "id": "optionals-12",
+          "statement": "`let x: Int = nil` is allowed in Swift.",
+          "answer": false,
+          "explain": "Only an optional can be `nil`. You need the type `Int?`: `let x: Int? = nil`."
+        }
+      ]
+    }
+  ]
+}

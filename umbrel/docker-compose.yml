@@ -1,0 +1,56 @@
+services:
+  # Injected by umbrelOS. nrzLearn hat keine Konten; settings.yml schaltet die
+  # umbrelOS-Anmeldung davor ab.
+  app_proxy:
+    environment:
+      APP_HOST: nrz-rust-learn_web_1
+      APP_PORT: 8080
+    container_name: nrz-rust-learn_app_proxy_1
+
+  web:
+    # Gepinntes Debian (Multi-Arch-Manifest). nrzLearn ist kein eigenes Image: hooks/pre-start
+    # laedt den kleinen Dateiserver und die Web-App fuer die Architektur dieses Geraets aus dem
+    # nrzLearn-Repo (Zweig umbrel) nach ${APP_DATA_DIR}/app - ohne Registry-Login.
+    # Alles laeuft im Browser: der Server liefert statische, vorkomprimierte Dateien aus,
+    # zaehlt abgeschlossene Level anonym und hat auf Port 29091 einen Admin-Bereich
+    # (Webanalyse, SEO-Eintraege, Statistik; Benutzer admin, Passwort = APP_PASSWORD).
+    image: debian:trixie-slim@sha256:f6b08b09a05725f9431502d3b5714f5c4576e82c1a84fa1debe0c24a7e0c3ec4
+    container_name: nrz-rust-learn_web_1
+    restart: unless-stopped
+    init: true
+    user: "1000:1000"
+    read_only: true
+    working_dir: /app
+    command: ["/app/nrzlearn-server"]
+    stop_grace_period: 10s
+    ports:
+      - "29091:8081"
+    environment:
+      - NRZLEARN_ADDR=0.0.0.0:8080
+      - NRZLEARN_PUBLIC=/app/public
+      - NRZLEARN_DATA=/data
+      - NRZLEARN_ADMIN_ADDR=0.0.0.0:8081
+      - NRZLEARN_ADMIN_PASSWORD=${APP_PASSWORD}
+      # Vorbelegung der Webanalyse im Admin-Bereich (erst nach dem Einschalten aktiv).
+      - NRZLEARN_ANALYTICS_SRC=https://analytics.zweers.ch/js/script.js
+      - NRZLEARN_ANALYTICS_DOMAIN=learn.zweers.ch
+      # Erzwingt pro Release einen frischen Container.
+      - APP_VERSION=${APP_VERSION}
+    volumes:
+      - ${APP_DATA_DIR}/app:/app:ro
+      - ${APP_DATA_DIR}/data:/data
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "/app/nrzlearn-server", "healthcheck"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: "5m"
+        max-file: "3"

@@ -1,0 +1,1866 @@
+{
+  "course": "haskell",
+  "lang": "en",
+  "units": [
+    {
+      "id": "hello",
+      "title": "Hello, Haskell!",
+      "chapter": "Basics",
+      "summary": "Write your first Haskell program, print text and numbers, and run several actions in a do block.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Every Haskell program starts at `main`. `putStrLn` prints a text and then a line break. In Haskell, a text is called a `String` and goes in double quotes."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = putStrLn \"Hello, Haskell!\"",
+          "output": "Hello, Haskell!"
+        },
+        {
+          "type": "text",
+          "md": "The first line is a **type signature**. `main :: IO ()` says that `main` is an action that does input or output. You could leave this line out, but it is good style to write it."
+        },
+        {
+          "type": "heading",
+          "text": "Several actions with do"
+        },
+        {
+          "type": "text",
+          "md": "To run several actions one after the other, write `do` and put the actions below it, each on its own line. All lines of a `do` block must start in the same column, so indent them by the same number of spaces."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    putStrLn \"One\"\n    putStrLn \"Two\"\n    putStrLn \"Three\"",
+          "output": "One\nTwo\nThree"
+        },
+        {
+          "type": "heading",
+          "text": "putStr and print"
+        },
+        {
+          "type": "text",
+          "md": "`putStr` prints a text without a line break. `print` prints any value, for example a number. When you `print` a text, it shows the quotes."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    putStr \"Hello, \"\n    putStrLn \"world\"\n    print 42\n    print \"Hi\"",
+          "output": "Hello, world\n42\n\"Hi\""
+        },
+        {
+          "type": "text",
+          "md": "`++` joins two strings. `show` turns a number into a string, so you can join it with a text. Parentheses group what belongs together: `putStrLn (\"Age: \" ++ show 36)` prints the joined text."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    putStrLn (\"Age: \" ++ show 36)\n    print (2 + 3 * 4)",
+          "output": "Age: 36\n14"
+        },
+        {
+          "type": "warning",
+          "md": "Without the parentheses, `putStrLn \"Age: \" ++ show 36` is an error. Haskell reads it as `(putStrLn \"Age: \") ++ show 36` and reports a type error."
+        },
+        {
+          "type": "tip",
+          "md": "Haskell ignores everything from `--` to the end of the line. This is a **comment**, a note for people who read the code."
+        }
+      ],
+      "card": [
+        "`main :: IO ()` is where the program starts",
+        "`putStrLn \"Hi\"` prints a line",
+        "`do` runs several actions in order",
+        "`print 42` prints any value",
+        "`\"a\" ++ show 5` joins texts"
+      ],
+      "exercises": [
+        {
+          "type": "choice",
+          "id": "hello-1",
+          "prompt": "Where does a Haskell program start?",
+          "options": [
+            "At the first line of the file",
+            "At `main`",
+            "At a function called `start`",
+            "At the last line of the file"
+          ],
+          "answer": 1,
+          "explain": "The program runs the action `main`. It can be anywhere in the file."
+        },
+        {
+          "type": "input",
+          "id": "hello-2",
+          "prompt": "What does this program print?",
+          "code": "main :: IO ()\nmain = do\n    putStr \"Good \"\n    putStrLn \"morning\"",
+          "answers": [
+            "Good morning"
+          ],
+          "explain": "`putStr` adds no line break, so `morning` follows on the same line."
+        },
+        {
+          "type": "input",
+          "id": "hello-3",
+          "prompt": "What does this program print?",
+          "code": "main = print (10 - 4 * 2)",
+          "answers": [
+            "2"
+          ],
+          "explain": "`*` comes before `-`: 4 * 2 = 8 and 10 - 8 = 2."
+        },
+        {
+          "type": "choice",
+          "id": "hello-4",
+          "prompt": "What does this program print?",
+          "code": "main = print \"Hi\"",
+          "options": [
+            "`Hi`",
+            "`\"Hi\"`",
+            "`'Hi'`",
+            "Nothing, it is an error"
+          ],
+          "answer": 1,
+          "explain": "`print` shows a text the way you write it in code, with double quotes. `putStrLn` would print it without quotes."
+        },
+        {
+          "type": "true_false",
+          "id": "hello-5",
+          "statement": "`putStr` prints a line break after the text.",
+          "answer": false,
+          "explain": "`putStr` prints the text only. `putStrLn` adds the line break."
+        },
+        {
+          "type": "gap",
+          "id": "hello-6",
+          "prompt": "Complete the code so it prints Score: 10.",
+          "code": "main = putStrLn (\"Score: \" ___ show 10)",
+          "options": [
+            "++",
+            "+",
+            ".",
+            "&"
+          ],
+          "answer": 0,
+          "explain": "`++` joins two strings. `+` only adds numbers."
+        },
+        {
+          "type": "gap",
+          "id": "hello-7",
+          "prompt": "Complete the code so it prints A and B on two lines.",
+          "code": "main :: IO ()\nmain = ___\n    putStrLn \"A\"\n    putStrLn \"B\"",
+          "options": [
+            "do",
+            "then",
+            "begin",
+            "{"
+          ],
+          "answer": 0,
+          "explain": "`do` starts a block of actions that run one after the other."
+        },
+        {
+          "type": "blocks",
+          "id": "hello-8",
+          "prompt": "Build a program that prints Hello.",
+          "tokens": [
+            "main",
+            "=",
+            "putStrLn",
+            "\"Hello\""
+          ],
+          "distractors": [
+            "==",
+            "echo"
+          ],
+          "explain": "`main = putStrLn \"Hello\"` defines `main` as the action that prints `Hello`. `==` compares values."
+        },
+        {
+          "type": "order",
+          "id": "hello-9",
+          "prompt": "Put the lines in order so the program prints Start, 3 and End on three lines.",
+          "lines": [
+            "main = do",
+            "    putStrLn \"Start\"",
+            "    print (1 + 2)",
+            "    putStrLn \"End\""
+          ],
+          "explain": "`main = do` comes first. The actions below it run from top to bottom."
+        },
+        {
+          "type": "bug",
+          "id": "hello-10",
+          "prompt": "The program should print Name: Ada and Age: 36. Which line has the bug?",
+          "lines": [
+            "main :: IO ()",
+            "main = do",
+            "    putStrLn \"Name: Ada\"",
+            "    putStrLn (\"Age: \" ++ 36)"
+          ],
+          "bug": 3,
+          "explain": "`++` joins strings, and `36` is a number. Convert it first: `putStrLn (\"Age: \" ++ show 36)`."
+        },
+        {
+          "type": "bug",
+          "id": "hello-11",
+          "prompt": "The program should print One, Two and Three. Which line has the bug?",
+          "lines": [
+            "main :: IO ()",
+            "main = do",
+            "    putStrLn \"One\"",
+            "  putStrLn \"Two\"",
+            "    putStrLn \"Three\""
+          ],
+          "bug": 3,
+          "explain": "All lines of a `do` block must start in the same column. Indent the line by four spaces like the others."
+        },
+        {
+          "type": "pairs",
+          "id": "hello-12",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`putStrLn`",
+              "prints a text and a line break"
+            ],
+            [
+              "`putStr`",
+              "prints a text without a line break"
+            ],
+            [
+              "`print`",
+              "prints any value"
+            ],
+            [
+              "`show`",
+              "turns a value into a string"
+            ],
+            [
+              "`++`",
+              "joins two strings"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "values",
+      "title": "Values and types",
+      "chapter": "Basics",
+      "summary": "Give values a name and get to know the types Int, Double, Bool, Char and String.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "In Haskell, you give a value a **name** with `=`. A name always keeps its value: you cannot change it later. So `=` is a definition, not an assignment. Names start with a lowercase letter."
+        },
+        {
+          "type": "code",
+          "code": "price :: Int\nprice = 25\n\nmain :: IO ()\nmain = do\n    print price\n    print (price * 3)",
+          "output": "25\n75"
+        },
+        {
+          "type": "heading",
+          "text": "Basic types"
+        },
+        {
+          "type": "text",
+          "md": "Every value has a **type**. `Int` is a whole number, `Double` is a number with a decimal point, and `Bool` is `True` or `False`. `Char` is a single character in single quotes, and `String` is a text in double quotes. Types start with an uppercase letter."
+        },
+        {
+          "type": "code",
+          "code": "age :: Int\nage = 36\n\nheight :: Double\nheight = 1.72\n\nready :: Bool\nready = True\n\ninitial :: Char\ninitial = 'A'\n\nname :: String\nname = \"Ada\"\n\nmain :: IO ()\nmain = do\n    print age\n    print height\n    print ready\n    print initial\n    putStrLn name",
+          "output": "36\n1.72\nTrue\n'A'\nAda"
+        },
+        {
+          "type": "heading",
+          "text": "Arithmetic"
+        },
+        {
+          "type": "text",
+          "md": "`+`, `-` and `*` work as usual, and `^` raises to a power. `/` divides and gives a number with decimals. For whole numbers, write `div` before the two numbers to get the whole part of the division, and `mod` to get the remainder."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    print (7 / 2)\n    print (div 7 2)\n    print (mod 7 2)\n    print (2 ^ 10)",
+          "output": "3.5\n3\n1\n1024"
+        },
+        {
+          "type": "text",
+          "md": "Inside a `do` block, `let` gives a name to a value. You can use the name in the lines below."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    let width = 4\n    let height = 3\n    print (width * height)",
+          "output": "12"
+        },
+        {
+          "type": "heading",
+          "text": "Converting"
+        },
+        {
+          "type": "text",
+          "md": "Haskell never mixes types on its own. To use an `Int` in a calculation with a `Double`, convert it with `fromIntegral`. To join a number with a text, convert it with `show`."
+        },
+        {
+          "type": "code",
+          "code": "count :: Int\ncount = 4\n\nmain :: IO ()\nmain = do\n    let total = 10.0\n    print (total / fromIntegral count)\n    putStrLn (\"Count: \" ++ show count)",
+          "output": "2.5\nCount: 4"
+        },
+        {
+          "type": "warning",
+          "md": "If `count` is an `Int`, `count / 2` is an error, because `/` needs a type with decimals, such as `Double`. Write `div count 2` or `fromIntegral count / 2` instead."
+        }
+      ],
+      "card": [
+        "`x = 5` defines a name that never changes",
+        "`Int`, `Double`, `Bool`, `Char`, `String`",
+        "`div 7 2` is `3`, `mod 7 2` is `1`",
+        "`fromIntegral n` converts an `Int`",
+        "`let x = 5` inside `do`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "values-1",
+          "prompt": "What does this program print?",
+          "code": "main = print (div 17 5)",
+          "answers": [
+            "3"
+          ],
+          "explain": "`div` gives the whole part of the division: 17 / 5 is 3 with a remainder of 2."
+        },
+        {
+          "type": "input",
+          "id": "values-2",
+          "prompt": "What does this program print?",
+          "code": "main = print (mod 17 5)",
+          "answers": [
+            "2"
+          ],
+          "explain": "`mod` gives the remainder: 17 = 3 * 5 + 2."
+        },
+        {
+          "type": "choice",
+          "id": "values-3",
+          "prompt": "What does this program print?",
+          "code": "main = print (9 / 2)",
+          "options": [
+            "`4`",
+            "`4.5`",
+            "`5`",
+            "Nothing, it is an error"
+          ],
+          "answer": 1,
+          "explain": "`/` divides with decimals. For the whole part, you would use `div`."
+        },
+        {
+          "type": "choice",
+          "id": "values-4",
+          "prompt": "Which type does the value `'x'` have?",
+          "options": [
+            "`String`",
+            "`Char`",
+            "`Int`",
+            "`Bool`"
+          ],
+          "answer": 1,
+          "explain": "Single quotes mark a single character, a `Char`. A `String` uses double quotes."
+        },
+        {
+          "type": "true_false",
+          "id": "values-5",
+          "statement": "After `count = 3`, you can write `count = 4` later in the same program to change the value.",
+          "answer": false,
+          "explain": "A name in Haskell keeps its value. Defining `count` twice is an error."
+        },
+        {
+          "type": "true_false",
+          "id": "values-6",
+          "statement": "`True` and `False` are the two values of the type `Bool`.",
+          "answer": true,
+          "explain": "A `Bool` is either `True` or `False`. Both start with an uppercase letter."
+        },
+        {
+          "type": "gap",
+          "id": "values-7",
+          "prompt": "Complete the code so it prints 2.5.",
+          "code": "count :: Int\ncount = 2\n\nmain :: IO ()\nmain = print (5 / ___ count)",
+          "options": [
+            "fromIntegral",
+            "show",
+            "div",
+            "toDouble"
+          ],
+          "answer": 0,
+          "explain": "`fromIntegral` converts the `Int` so that `/` can use it. `show` would make a `String`."
+        },
+        {
+          "type": "gap",
+          "id": "values-8",
+          "prompt": "Complete the type signature.",
+          "code": "name :: ___\nname = \"Ada\"\n\nmain :: IO ()\nmain = putStrLn name",
+          "options": [
+            "String",
+            "Char",
+            "Text",
+            "string"
+          ],
+          "answer": 0,
+          "explain": "A text in double quotes is a `String`. Types start with an uppercase letter."
+        },
+        {
+          "type": "blocks",
+          "id": "values-9",
+          "prompt": "Inside a do block, build the line that names the result of 3 times 4 total.",
+          "tokens": [
+            "let",
+            "total",
+            "=",
+            "3",
+            "*",
+            "4"
+          ],
+          "distractors": [
+            "var",
+            ":="
+          ],
+          "explain": "`let total = 3 * 4` gives the result the name `total` for the following lines."
+        },
+        {
+          "type": "order",
+          "id": "values-10",
+          "prompt": "Put the lines in order so the program prints 20.",
+          "lines": [
+            "main = do",
+            "    let a = 4",
+            "    let b = a * 5",
+            "    print b"
+          ],
+          "explain": "`b` uses `a`, so `a` must be defined first. `print b` comes last."
+        },
+        {
+          "type": "bug",
+          "id": "values-11",
+          "prompt": "The program should print 3, the whole part of 7 divided by 2. Which line has the bug?",
+          "lines": [
+            "count :: Int",
+            "count = 7",
+            "main :: IO ()",
+            "main = print (count / 2)"
+          ],
+          "bug": 3,
+          "explain": "`/` does not work with an `Int`. Use `div` for whole numbers: `main = print (div count 2)`."
+        },
+        {
+          "type": "pairs",
+          "id": "values-12",
+          "prompt": "Match the type with its values.",
+          "pairs": [
+            [
+              "`Int`",
+              "whole numbers"
+            ],
+            [
+              "`Double`",
+              "numbers with decimals"
+            ],
+            [
+              "`Bool`",
+              "`True` or `False`"
+            ],
+            [
+              "`Char`",
+              "a single character"
+            ],
+            [
+              "`String`",
+              "a text"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "chapter": "Functions",
+      "summary": "Define your own functions with parameters and type signatures, and call them with arguments.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **function** takes values and gives back a result. You define it with its name, the names of its parameters, `=` and the result. To call it, write the function name and then the arguments, separated by spaces, without parentheses or commas."
+        },
+        {
+          "type": "code",
+          "code": "double :: Int -> Int\ndouble x = x * 2\n\nmain :: IO ()\nmain = do\n    print (double 5)\n    print (double 21)",
+          "output": "10\n42"
+        },
+        {
+          "type": "text",
+          "md": "The type signature `Int -> Int` means: the function takes an `Int` and gives back an `Int`. With two parameters, the signature has two arrows. The last type is always the type of the result."
+        },
+        {
+          "type": "code",
+          "code": "area :: Int -> Int -> Int\narea width height = width * height\n\nmain :: IO ()\nmain = print (area 3 4)",
+          "output": "12"
+        },
+        {
+          "type": "heading",
+          "text": "Parentheses"
+        },
+        {
+          "type": "text",
+          "md": "A function call binds more strongly than any operator: `double 3 + 1` means `(double 3) + 1`. If an argument is a calculation or another call, put it in parentheses, as in `double (3 + 1)`."
+        },
+        {
+          "type": "code",
+          "code": "double :: Int -> Int\ndouble x = x * 2\n\nmain :: IO ()\nmain = do\n    print (double 3 + 1)\n    print (double (3 + 1))\n    print (double (double 3))",
+          "output": "7\n8\n12"
+        },
+        {
+          "type": "text",
+          "md": "Functions work with all types. This function takes a `String` and gives back a new `String`."
+        },
+        {
+          "type": "code",
+          "code": "greet :: String -> String\ngreet name = \"Hello, \" ++ name ++ \"!\"\n\nmain :: IO ()\nmain = do\n    putStrLn (greet \"Ada\")\n    putStrLn (greet \"Bob\")",
+          "output": "Hello, Ada!\nHello, Bob!"
+        },
+        {
+          "type": "heading",
+          "text": "Helper names"
+        },
+        {
+          "type": "text",
+          "md": "`where` after a function defines helper names that only this function can use. Inside a `do` block, `let` can also define a small function, for example `let triple x = x * 3`."
+        },
+        {
+          "type": "code",
+          "code": "circleArea :: Double -> Double\ncircleArea r = piValue * r * r\n  where\n    piValue = 3.14\n\nmain :: IO ()\nmain = do\n    let triple x = x * 3\n    print (circleArea 2)\n    print (triple 5)",
+          "output": "12.56\n15"
+        },
+        {
+          "type": "warning",
+          "md": "Do not put commas between arguments. `area 3 4` is right. `area (3, 4)` passes a single value made of two numbers and gives a type error."
+        },
+        {
+          "type": "tip",
+          "md": "A function like `double` computes its result only from its arguments. With the same arguments, it always gives back the same result."
+        }
+      ],
+      "card": [
+        "`double x = x * 2` defines a function",
+        "`double :: Int -> Int` is its type",
+        "`area 3 4` calls it with two arguments",
+        "`double (3 + 1)` needs parentheses",
+        "`where` defines helper names"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "functions-1",
+          "prompt": "What does this program print?",
+          "code": "triple :: Int -> Int\ntriple n = n * 3\n\nmain :: IO ()\nmain = print (triple 4)",
+          "answers": [
+            "12"
+          ],
+          "explain": "`triple 4` computes `4 * 3`."
+        },
+        {
+          "type": "input",
+          "id": "functions-2",
+          "prompt": "What does this program print?",
+          "code": "add :: Int -> Int -> Int\nadd a b = a + b\n\nmain :: IO ()\nmain = print (add 2 3 * 10)",
+          "answers": [
+            "50"
+          ],
+          "explain": "The call binds more strongly than `*`: `add 2 3` is `5`, and `5 * 10` is `50`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-3",
+          "prompt": "What does this program print?",
+          "code": "square :: Int -> Int\nsquare x = x * x\n\nmain :: IO ()\nmain = print (square 2 + 1)",
+          "options": [
+            "`5`",
+            "`9`",
+            "`4`",
+            "`6`"
+          ],
+          "answer": 0,
+          "explain": "`square 2 + 1` means `(square 2) + 1`, so 4 + 1 = 5. For `9`, you would write `square (2 + 1)`."
+        },
+        {
+          "type": "choice",
+          "id": "functions-4",
+          "prompt": "What does the type `Int -> Int -> Bool` describe?",
+          "options": [
+            "A function that takes two `Int` values and gives back a `Bool`",
+            "A function that takes a `Bool` and gives back two `Int` values",
+            "A list of two `Int` values and a `Bool`",
+            "A function that takes three values"
+          ],
+          "answer": 0,
+          "explain": "The last type after the arrows is the result. The types before it are the parameters."
+        },
+        {
+          "type": "true_false",
+          "id": "functions-5",
+          "statement": "`square 3 + 1` and `square (3 + 1)` give the same result.",
+          "answer": false,
+          "explain": "`square 3 + 1` is 9 + 1 = 10. `square (3 + 1)` is `square 4`, which is 16."
+        },
+        {
+          "type": "gap",
+          "id": "functions-6",
+          "prompt": "Complete the function so that half 10 gives 5.",
+          "code": "half :: Int -> Int\nhalf n = ___ n 2\n\nmain :: IO ()\nmain = print (half 10)",
+          "options": [
+            "div",
+            "/",
+            "mod",
+            "half"
+          ],
+          "answer": 0,
+          "explain": "`div n 2` divides two whole numbers. `mod` would give the remainder, `0`."
+        },
+        {
+          "type": "gap",
+          "id": "functions-7",
+          "prompt": "Complete the code so it prints Hi, Ada.",
+          "code": "greet :: String -> String\ngreet name = \"Hi, \" ++ name\n\nmain :: IO ()\nmain = putStrLn ___",
+          "options": [
+            "(greet \"Ada\")",
+            "greet \"Ada\"",
+            "greet(\"Ada\", \"Bob\")",
+            "(greet)"
+          ],
+          "answer": 0,
+          "explain": "Without parentheses, `putStrLn` would get two arguments, `greet` and `\"Ada\"`. The parentheses pass it the result of the call."
+        },
+        {
+          "type": "blocks",
+          "id": "functions-8",
+          "prompt": "Build a function inc that adds 1 to its argument.",
+          "tokens": [
+            "inc",
+            "x",
+            "=",
+            "x",
+            "+",
+            "1"
+          ],
+          "distractors": [
+            "return",
+            ":="
+          ],
+          "explain": "First the name and the parameter, then `=` and the result `x + 1`. Haskell has no `return` for this."
+        },
+        {
+          "type": "order",
+          "id": "functions-9",
+          "prompt": "Put the lines in order so the program prints 10.",
+          "lines": [
+            "main = do",
+            "    let double x = x * 2",
+            "    let result = double 5",
+            "    print result"
+          ],
+          "explain": "`result` uses the function `double`, so `double` must be defined first."
+        },
+        {
+          "type": "bug",
+          "id": "functions-10",
+          "prompt": "The program should print 5. Which line has the bug?",
+          "lines": [
+            "add :: Int -> Int -> Int",
+            "add a b = a + b",
+            "main :: IO ()",
+            "main = print (add(2, 3))"
+          ],
+          "bug": 3,
+          "explain": "Arguments are separated by spaces, not by commas: `main = print (add 2 3)`."
+        },
+        {
+          "type": "bug",
+          "id": "functions-11",
+          "prompt": "The program should print Hello, Ada. Which line has the bug?",
+          "lines": [
+            "greet :: String -> Int",
+            "greet name = \"Hello, \" ++ name",
+            "main :: IO ()",
+            "main = putStrLn (greet \"Ada\")"
+          ],
+          "bug": 0,
+          "explain": "The function gives back a text, so its type must be `greet :: String -> String`."
+        },
+        {
+          "type": "pairs",
+          "id": "functions-12",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`f x = x + 1`",
+              "defines a function"
+            ],
+            [
+              "`Int -> Int`",
+              "type of a function from `Int` to `Int`"
+            ],
+            [
+              "`f 3`",
+              "calls `f` with `3`"
+            ],
+            [
+              "`f (g 3)`",
+              "passes the result of `g 3` to `f`"
+            ],
+            [
+              "`where`",
+              "starts helper definitions"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conditions",
+      "title": "Decisions",
+      "chapter": "Control flow",
+      "summary": "Compare values and choose a result with if, guards, pattern matching and case.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Comparisons give a `Bool`: `==` means equal, `/=` not equal, and there are `<`, `>`, `<=` and `>=`. `&&` means and, `||` means or, and `not` turns `True` into `False` and `False` into `True`."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    print (3 > 2)\n    print (3 /= 3)\n    print (5 > 1 && 2 > 4)\n    print (not True || 1 == 1)",
+          "output": "True\nFalse\nFalse\nTrue"
+        },
+        {
+          "type": "heading",
+          "text": "if then else"
+        },
+        {
+          "type": "text",
+          "md": "`if` chooses between two values. In Haskell, `if` always needs both `then` and `else`, because it must give back a value in every case."
+        },
+        {
+          "type": "code",
+          "code": "describe :: Int -> String\ndescribe n = if n >= 0 then \"positive or zero\" else \"negative\"\n\nmain :: IO ()\nmain = do\n    putStrLn (describe 5)\n    putStrLn (describe (-3))",
+          "output": "positive or zero\nnegative"
+        },
+        {
+          "type": "warning",
+          "md": "A negative number as an argument needs parentheses. `describe -3` means `describe - 3`, a subtraction, and gives an error. Write `describe (-3)`."
+        },
+        {
+          "type": "heading",
+          "text": "Guards"
+        },
+        {
+          "type": "text",
+          "md": "With several cases, **guards** are clearer. Each guard starts with `|`, followed by a condition, `=` and the result. Haskell checks the guards from top to bottom and takes the first one that is `True`. `otherwise` is always `True` and catches all other cases."
+        },
+        {
+          "type": "code",
+          "code": "grade :: Int -> String\ngrade points\n  | points >= 90 = \"A\"\n  | points >= 75 = \"B\"\n  | points >= 50 = \"C\"\n  | otherwise = \"F\"\n\nmain :: IO ()\nmain = do\n    putStrLn (grade 95)\n    putStrLn (grade 80)\n    putStrLn (grade 20)",
+          "output": "A\nB\nF"
+        },
+        {
+          "type": "heading",
+          "text": "Pattern matching"
+        },
+        {
+          "type": "text",
+          "md": "You can also write a function as several equations for concrete values. Haskell uses the first equation whose **pattern** fits. The pattern `_` fits any value."
+        },
+        {
+          "type": "code",
+          "code": "dayName :: Int -> String\ndayName 1 = \"Monday\"\ndayName 2 = \"Tuesday\"\ndayName _ = \"another day\"\n\nmain :: IO ()\nmain = do\n    putStrLn (dayName 1)\n    putStrLn (dayName 7)",
+          "output": "Monday\nanother day"
+        },
+        {
+          "type": "text",
+          "md": "`case ... of` does the same inside an expression. Each line has a pattern, `->` and the result."
+        },
+        {
+          "type": "code",
+          "code": "answer :: Char -> String\nanswer c = case c of\n  'y' -> \"yes\"\n  'n' -> \"no\"\n  _ -> \"unknown\"\n\nmain :: IO ()\nmain = do\n    putStrLn (answer 'y')\n    putStrLn (answer 'x')",
+          "output": "yes\nunknown"
+        }
+      ],
+      "card": [
+        "`==`, `/=`, `<`, `>=`, `&&`, `||`, `not`",
+        "`if c then a else b` always needs `else`",
+        "`| x > 0 = ...` is a guard, `otherwise` catches the rest",
+        "`f 0 = ...` matches a value, `_` matches all",
+        "`case x of 1 -> ...`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "conditions-1",
+          "prompt": "What does this program print?",
+          "code": "main = print (10 /= 5)",
+          "answers": [
+            "True"
+          ],
+          "explain": "`/=` means not equal. 10 is not equal to 5, so the result is `True`."
+        },
+        {
+          "type": "input",
+          "id": "conditions-2",
+          "prompt": "What does this program print?",
+          "code": "sign :: Int -> String\nsign n\n  | n > 0 = \"plus\"\n  | n < 0 = \"minus\"\n  | otherwise = \"zero\"\n\nmain :: IO ()\nmain = putStrLn (sign 0)",
+          "answers": [
+            "zero"
+          ],
+          "explain": "`0` is neither greater nor less than `0`, so only `otherwise` is left."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-3",
+          "prompt": "What does this program print?",
+          "code": "check :: Int -> String\ncheck n\n  | n > 10 = \"big\"\n  | n > 5 = \"medium\"\n  | otherwise = \"small\"\n\nmain :: IO ()\nmain = putStrLn (check 12)",
+          "options": [
+            "`big`",
+            "`medium`",
+            "`small`",
+            "`bigmedium`"
+          ],
+          "answer": 0,
+          "explain": "The guards are checked from top to bottom. `12 > 10` is `True`, so the first guard wins and the others are not checked."
+        },
+        {
+          "type": "choice",
+          "id": "conditions-4",
+          "prompt": "What does this program print?",
+          "code": "name :: Int -> String\nname 0 = \"zero\"\nname 1 = \"one\"\nname _ = \"many\"\n\nmain :: IO ()\nmain = putStrLn (name 5)",
+          "options": [
+            "`zero`",
+            "`one`",
+            "`many`",
+            "Nothing, it is an error"
+          ],
+          "answer": 2,
+          "explain": "`5` does not fit `0` or `1`. The pattern `_` fits any value."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-5",
+          "statement": "In Haskell, you can write an `if` without an `else` part to choose a value.",
+          "answer": false,
+          "explain": "`if` must give back a value in every case, so `else` is required."
+        },
+        {
+          "type": "true_false",
+          "id": "conditions-6",
+          "statement": "`/=` means not equal.",
+          "answer": true,
+          "explain": "`/=` is `True` when the two values are different. Other languages often write `!=`."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-7",
+          "prompt": "Complete the guard so that all other numbers give \"other\".",
+          "code": "kind :: Int -> String\nkind n\n  | n == 0 = \"zero\"\n  | ___ = \"other\"\n\nmain :: IO ()\nmain = putStrLn (kind 7)",
+          "options": [
+            "otherwise",
+            "else",
+            "default",
+            "_"
+          ],
+          "answer": 0,
+          "explain": "`otherwise` is always `True`, so the last guard catches every remaining value."
+        },
+        {
+          "type": "gap",
+          "id": "conditions-8",
+          "prompt": "Complete the code so it prints yes.",
+          "code": "main = putStrLn (if 4 > 3 ___ \"yes\" else \"no\")",
+          "options": [
+            "then",
+            "?",
+            ":",
+            "do"
+          ],
+          "answer": 0,
+          "explain": "The parts are `if`, the condition, `then` with the first value and `else` with the second."
+        },
+        {
+          "type": "blocks",
+          "id": "conditions-9",
+          "prompt": "Build the result of parity so it gives `\"even\"` for even numbers and `\"odd\"` for all others.",
+          "tokens": [
+            "if",
+            "mod n 2 == 0",
+            "then",
+            "\"even\"",
+            "else",
+            "\"odd\""
+          ],
+          "distractors": [
+            "?",
+            "elif"
+          ],
+          "explain": "A number is even if the remainder of the division by 2 is `0`. `if` needs both `then` and `else`."
+        },
+        {
+          "type": "order",
+          "id": "conditions-10",
+          "prompt": "Put the lines in order so that size gives `\"small\"` below 10, `\"medium\"` below 100 and `\"large\"` for all other numbers.",
+          "lines": [
+            "size n",
+            "  | n < 10 = \"small\"",
+            "  | n < 100 = \"medium\"",
+            "  | otherwise = \"large\""
+          ],
+          "explain": "The guards are checked from top to bottom, so `n < 10` must come before `n < 100`. `otherwise` comes last."
+        },
+        {
+          "type": "bug",
+          "id": "conditions-11",
+          "prompt": "The function should give \"adult\" for 18 and older. Which line has the bug?",
+          "lines": [
+            "status :: Int -> String",
+            "status age",
+            "  | age > 18 = \"adult\"",
+            "  | otherwise = \"child\""
+          ],
+          "bug": 2,
+          "explain": "`age > 18` is `False` for 18. Use `>=`: `| age >= 18 = \"adult\"`."
+        },
+        {
+          "type": "pairs",
+          "id": "conditions-12",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`==`",
+              "equal"
+            ],
+            [
+              "`/=`",
+              "not equal"
+            ],
+            [
+              "`&&`",
+              "and"
+            ],
+            [
+              "`||`",
+              "or"
+            ],
+            [
+              "`otherwise`",
+              "always `True`"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lists",
+      "title": "Lists",
+      "chapter": "Data",
+      "summary": "Store several values in a list, build lists with ranges, and use length, sum, take and more.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "A **list** holds several values of the same type, in square brackets and separated by commas. `[1, 2, 3]` has the type `[Int]`. A `String` is a list of characters: `\"abc\"` is the same as `['a', 'b', 'c']`."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    let numbers = [3, 1, 4, 1, 5]\n    print numbers\n    print (length numbers)\n    print (sum numbers)\n    print (maximum numbers)",
+          "output": "[3,1,4,1,5]\n5\n14\n5"
+        },
+        {
+          "type": "heading",
+          "text": "Ranges"
+        },
+        {
+          "type": "text",
+          "md": "`[1 .. 5]` is the list of the numbers from 1 to 5. With a second value, you set the step: `[2, 4 .. 10]` counts in steps of 2. Ranges also work backwards and with characters."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    print [1 .. 5]\n    print [2, 4 .. 10]\n    print [10, 7 .. 0]\n    print ['a' .. 'e']",
+          "output": "[1,2,3,4,5]\n[2,4,6,8,10]\n[10,7,4,1]\n\"abcde\""
+        },
+        {
+          "type": "heading",
+          "text": "Building lists"
+        },
+        {
+          "type": "text",
+          "md": "`:` puts one element in front of a list, and `++` joins two lists. Both give back a new list. The old list stays as it was."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    let fruits = [\"apple\", \"pear\"]\n    print (\"kiwi\" : fruits)\n    print (fruits ++ [\"plum\"])\n    print fruits",
+          "output": "[\"kiwi\",\"apple\",\"pear\"]\n[\"apple\",\"pear\",\"plum\"]\n[\"apple\",\"pear\"]"
+        },
+        {
+          "type": "heading",
+          "text": "Useful functions"
+        },
+        {
+          "type": "text",
+          "md": "`reverse` turns a list around. `take n` gives the first `n` elements, and `drop n` gives the list without them. `elem x` checks whether `x` is in the list, and `null` checks whether the list is empty. `!!` gives the element at a position, starting at `0`."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    let letters = \"haskell\"\n    print (reverse [1, 2, 3])\n    print (take 3 letters)\n    print (drop 3 letters)\n    print (elem 'k' letters)\n    print (null [])\n    print (letters !! 0)",
+          "output": "[3,2,1]\n\"has\"\n\"kell\"\nTrue\nTrue\n'h'"
+        },
+        {
+          "type": "warning",
+          "md": "`!!` with a position that does not exist stops the program with an error, for example `[1, 2, 3] !! 5`."
+        },
+        {
+          "type": "tip",
+          "md": "All elements of a list have the same type, so `[1, \"two\"]` is an error. In the next unit, you learn about tuples, which can hold values of different types."
+        }
+      ],
+      "card": [
+        "`[1, 2, 3]` is a list of type `[Int]`",
+        "`[1 .. 5]` is a range",
+        "`0 : xs` adds in front, `xs ++ ys` joins",
+        "`length`, `sum`, `reverse`, `take`, `drop`, `elem`",
+        "`xs !! 0` is the first element"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "lists-1",
+          "prompt": "What does this program print?",
+          "code": "main = print (length [5, 6, 7, 8])",
+          "answers": [
+            "4"
+          ],
+          "explain": "`length` counts the elements, not their values."
+        },
+        {
+          "type": "input",
+          "id": "lists-2",
+          "prompt": "What does this program print?",
+          "code": "main = print [1, 3 .. 9]",
+          "answers": [
+            "[1,3,5,7,9]"
+          ],
+          "explain": "The first two values set the step to 2. The range stops at `9`."
+        },
+        {
+          "type": "input",
+          "id": "lists-3",
+          "prompt": "What does this program print?",
+          "code": "main = print (take 2 [9, 8, 7])",
+          "answers": [
+            "[9,8]"
+          ],
+          "explain": "`take 2` gives the first two elements."
+        },
+        {
+          "type": "choice",
+          "id": "lists-4",
+          "prompt": "What does this program print?",
+          "code": "main = print (0 : [1, 2])",
+          "options": [
+            "`[0,1,2]`",
+            "`[1,2,0]`",
+            "`[[0],1,2]`",
+            "Nothing, it is an error"
+          ],
+          "answer": 0,
+          "explain": "`:` puts the element in front of the list."
+        },
+        {
+          "type": "choice",
+          "id": "lists-5",
+          "prompt": "What does this program print?",
+          "code": "main = print (\"ab\" ++ \"cd\")",
+          "options": [
+            "`\"abcd\"`",
+            "`[\"ab\",\"cd\"]`",
+            "`\"ab cd\"`",
+            "Nothing, it is an error"
+          ],
+          "answer": 0,
+          "explain": "Strings are lists of characters, so `++` joins them into one string without a space."
+        },
+        {
+          "type": "true_false",
+          "id": "lists-6",
+          "statement": "`\"cat\"` and `['c', 'a', 't']` are the same value.",
+          "answer": true,
+          "explain": "A `String` is a list of `Char` values. The double quotes are a short way to write it."
+        },
+        {
+          "type": "true_false",
+          "id": "lists-7",
+          "statement": "`[1, \"two\"]` is a valid list.",
+          "answer": false,
+          "explain": "All elements of a list must have the same type. `1` is a number and `\"two\"` is a `String`."
+        },
+        {
+          "type": "gap",
+          "id": "lists-8",
+          "prompt": "Complete the code so it prints 15.",
+          "code": "main = print (___ [1 .. 5])",
+          "options": [
+            "sum",
+            "length",
+            "maximum",
+            "product"
+          ],
+          "answer": 0,
+          "explain": "`sum` adds all elements: 1 + 2 + 3 + 4 + 5 = 15."
+        },
+        {
+          "type": "gap",
+          "id": "lists-9",
+          "prompt": "Complete the code so it prints True.",
+          "code": "main = print (elem 3 ___)",
+          "options": [
+            "[1, 2, 3]",
+            "[1, 2]",
+            "[4 .. 9]",
+            "\"3\""
+          ],
+          "answer": 0,
+          "explain": "`elem 3` checks whether `3` is in the list. `\"3\"` is a list of characters, not of numbers."
+        },
+        {
+          "type": "blocks",
+          "id": "lists-10",
+          "prompt": "Build an expression that gives the list [5,4,3,2,1].",
+          "tokens": [
+            "reverse",
+            "[",
+            "1",
+            "..",
+            "5",
+            "]"
+          ],
+          "distractors": [
+            "rev",
+            "]]"
+          ],
+          "explain": "`[1 .. 5]` gives the numbers from 1 to 5, and `reverse` turns the list around."
+        },
+        {
+          "type": "bug",
+          "id": "lists-11",
+          "prompt": "The program should print the first three letters of the word. Which line has the bug?",
+          "lines": [
+            "main :: IO ()",
+            "main = do",
+            "    let word = \"Haskell\"",
+            "    print (take word 3)"
+          ],
+          "bug": 3,
+          "explain": "`take` gets the number first and then the list: `print (take 3 word)`."
+        },
+        {
+          "type": "pairs",
+          "id": "lists-12",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`length xs`",
+              "number of elements"
+            ],
+            [
+              "`reverse xs`",
+              "the list backwards"
+            ],
+            [
+              "`xs !! 2`",
+              "element at position 2"
+            ],
+            [
+              "`x : xs`",
+              "`x` in front of the list"
+            ],
+            [
+              "`null xs`",
+              "checks if the list is empty"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "recursion",
+      "title": "Recursion and tuples",
+      "chapter": "Functions",
+      "summary": "Repeat work with recursive functions, take lists apart with patterns, and group values in tuples.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "Haskell has no loops. To repeat something, a function calls itself. This is called **recursion**. Every recursive function needs a **base case** that ends it."
+        },
+        {
+          "type": "code",
+          "code": "factorial :: Int -> Int\nfactorial 0 = 1\nfactorial n = n * factorial (n - 1)\n\nmain :: IO ()\nmain = print (factorial 5)",
+          "output": "120"
+        },
+        {
+          "type": "text",
+          "md": "`factorial 3` becomes `3 * factorial 2`, then `3 * 2 * factorial 1`, then `3 * 2 * 1 * factorial 0`. The base case gives `1`, so the result is `6`."
+        },
+        {
+          "type": "heading",
+          "text": "Patterns for lists"
+        },
+        {
+          "type": "text",
+          "md": "A list is either empty, `[]`, or a first element in front of the rest, `x : xs`. A function on lists usually has one equation for each case. In the pattern `(x : xs)`, `x` is the first element and `xs` is the rest of the list."
+        },
+        {
+          "type": "code",
+          "code": "total :: [Int] -> Int\ntotal [] = 0\ntotal (x : xs) = x + total xs\n\nmain :: IO ()\nmain = print (total [4, 5, 6])",
+          "output": "15"
+        },
+        {
+          "type": "code",
+          "code": "firstOr :: Int -> [Int] -> Int\nfirstOr fallback [] = fallback\nfirstOr _ (x : _) = x\n\nmain :: IO ()\nmain = do\n    print (firstOr 0 [7, 8, 9])\n    print (firstOr 0 [])",
+          "output": "7\n0"
+        },
+        {
+          "type": "heading",
+          "text": "Tuples"
+        },
+        {
+          "type": "text",
+          "md": "A **tuple** groups a fixed number of values, which can have different types. `(\"Ada\", 36)` has the type `(String, Int)`. `fst` gives the first part of a pair and `snd` the second. Patterns can take tuples apart, too."
+        },
+        {
+          "type": "code",
+          "code": "describe :: (String, Int) -> String\ndescribe (name, age) = name ++ \" is \" ++ show age\n\nmain :: IO ()\nmain = do\n    let person = (\"Ada\", 36)\n    print (fst person)\n    print (snd person)\n    putStrLn (describe person)",
+          "output": "\"Ada\"\n36\nAda is 36"
+        },
+        {
+          "type": "text",
+          "md": "`zip` combines two lists into one list of pairs."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = print (zip [1, 2, 3] \"abc\")",
+          "output": "[(1,'a'),(2,'b'),(3,'c')]"
+        },
+        {
+          "type": "warning",
+          "md": "If the base case is never reached, the recursion does not end. `factorial (-1)` counts down past `0` and never reaches the base case."
+        },
+        {
+          "type": "tip",
+          "md": "If a function has no equation for a value, the program stops with an error when it gets that value. Write an equation for every case, for example for `[]`."
+        }
+      ],
+      "card": [
+        "`f 0 = 1` is the base case, `f n = n * f (n - 1)`",
+        "`[]` matches an empty list",
+        "`(x : xs)` matches the first element and the rest",
+        "`(\"Ada\", 36)` is a tuple, use `fst` and `snd`",
+        "`zip [1, 2] \"ab\"` makes pairs"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "recursion-1",
+          "prompt": "What does this program print?",
+          "code": "count :: [Int] -> Int\ncount [] = 0\ncount (_ : xs) = 1 + count xs\n\nmain :: IO ()\nmain = print (count [7, 7, 7])",
+          "answers": [
+            "3"
+          ],
+          "explain": "Each element adds 1, and the empty list gives 0: 1 + 1 + 1 + 0 = 3."
+        },
+        {
+          "type": "input",
+          "id": "recursion-2",
+          "prompt": "What does this program print?",
+          "code": "power :: Int -> Int -> Int\npower _ 0 = 1\npower b e = b * power b (e - 1)\n\nmain :: IO ()\nmain = print (power 2 4)",
+          "answers": [
+            "16"
+          ],
+          "explain": "`power 2 4` is 2 * 2 * 2 * 2 * 1 = 16."
+        },
+        {
+          "type": "input",
+          "id": "recursion-3",
+          "prompt": "What does this program print?",
+          "code": "main = print (snd (\"x\", 5))",
+          "answers": [
+            "5"
+          ],
+          "explain": "`snd` gives the second part of the pair."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-4",
+          "prompt": "What does this program print?",
+          "code": "countdown :: Int -> [Int]\ncountdown 0 = []\ncountdown n = n : countdown (n - 1)\n\nmain :: IO ()\nmain = print (countdown 3)",
+          "options": [
+            "`[3,2,1]`",
+            "`[3,2,1,0]`",
+            "`[1,2,3]`",
+            "`[0,1,2,3]`"
+          ],
+          "answer": 0,
+          "explain": "Each step puts `n` in front of the rest. The base case `countdown 0` gives the empty list, so `0` is not in the result."
+        },
+        {
+          "type": "choice",
+          "id": "recursion-5",
+          "prompt": "Which line is the base case?",
+          "code": "total :: [Int] -> Int\ntotal [] = 0\ntotal (x : xs) = x + total xs",
+          "options": [
+            "`total [] = 0`",
+            "`total (x : xs) = x + total xs`",
+            "`total :: [Int] -> Int`",
+            "There is no base case"
+          ],
+          "answer": 0,
+          "explain": "`total [] = 0` does not call `total` again. It ends the recursion."
+        },
+        {
+          "type": "true_false",
+          "id": "recursion-6",
+          "statement": "A tuple can hold values of different types, like `(\"Ada\", 36)`.",
+          "answer": true,
+          "explain": "Unlike a list, a tuple can mix types. Its type lists them all: `(String, Int)`."
+        },
+        {
+          "type": "true_false",
+          "id": "recursion-7",
+          "statement": "In the pattern `(x : xs)`, `xs` is the last element of the list.",
+          "answer": false,
+          "explain": "`xs` is the rest of the list, everything after the first element `x`."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-8",
+          "prompt": "Complete the base case so that total [1, 2, 3] gives 6.",
+          "code": "total :: [Int] -> Int\ntotal [] = ___\ntotal (x : xs) = x + total xs\n\nmain :: IO ()\nmain = print (total [1, 2, 3])",
+          "options": [
+            "0",
+            "1",
+            "[]",
+            "x"
+          ],
+          "answer": 0,
+          "explain": "The sum of an empty list is `0`. With `1`, every result would be one too big."
+        },
+        {
+          "type": "gap",
+          "id": "recursion-9",
+          "prompt": "Complete the pattern so that firstOf gives the first element.",
+          "code": "firstOf :: [Int] -> Int\nfirstOf [] = 0\nfirstOf ___ = x\n\nmain :: IO ()\nmain = print (firstOf [5, 6])",
+          "options": [
+            "(x : _)",
+            "x : xs",
+            "(xs : x)",
+            "(_ : x)"
+          ],
+          "answer": 0,
+          "explain": "The first element comes before `:`. A pattern with `:` needs parentheses."
+        },
+        {
+          "type": "blocks",
+          "id": "recursion-10",
+          "prompt": "Build the recursive equation of total.",
+          "tokens": [
+            "total (x : xs)",
+            "=",
+            "x",
+            "+",
+            "total xs"
+          ],
+          "distractors": [
+            "total []",
+            "x : xs"
+          ],
+          "explain": "The sum is the first element plus the sum of the rest."
+        },
+        {
+          "type": "order",
+          "id": "recursion-11",
+          "prompt": "Put the lines in order so the program prints Ada is here.",
+          "lines": [
+            "main = do",
+            "    let person = (\"Ada\", 36)",
+            "    let name = fst person",
+            "    putStrLn (name ++ \" is here\")"
+          ],
+          "explain": "`name` takes the first part of `person`, so `person` must be defined before it."
+        },
+        {
+          "type": "bug",
+          "id": "recursion-12",
+          "prompt": "The function should count the elements of a list. Which line has the bug?",
+          "lines": [
+            "count :: [Int] -> Int",
+            "count [] = 1",
+            "count (_ : xs) = 1 + count xs"
+          ],
+          "bug": 1,
+          "explain": "An empty list has no elements: `count [] = 0`. With `1`, every result is one too big."
+        }
+      ]
+    },
+    {
+      "id": "higher-order",
+      "title": "Higher-order functions",
+      "chapter": "Functions",
+      "summary": "Pass functions to functions: transform lists with map, filter and foldr, lambdas and list comprehensions.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "In Haskell, functions are values, so you can pass a function to another function. `map` applies a function to every element of a list and gives back the new list."
+        },
+        {
+          "type": "code",
+          "code": "double :: Int -> Int\ndouble x = x * 2\n\nmain :: IO ()\nmain = do\n    print (map double [1, 2, 3])\n    print (map show [1, 2, 3])",
+          "output": "[2,4,6]\n[\"1\",\"2\",\"3\"]"
+        },
+        {
+          "type": "text",
+          "md": "`filter` keeps only the elements for which a function gives `True`. `even` and `odd` are such functions: they check whether a number is even or odd."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    print (filter even [1 .. 10])\n    print (filter odd [1 .. 10])",
+          "output": "[2,4,6,8,10]\n[1,3,5,7,9]"
+        },
+        {
+          "type": "heading",
+          "text": "Lambdas"
+        },
+        {
+          "type": "text",
+          "md": "A **lambda** is a function without a name. `\\x -> x * x` takes `x` and gives back `x * x`. Lambdas are useful for short functions that you need only once."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    print (map (\\x -> x * x) [1, 2, 3, 4])\n    print (filter (\\w -> length w > 3) [\"sun\", \"moon\", \"star\", \"sky\"])",
+          "output": "[1,4,9,16]\n[\"moon\",\"star\"]"
+        },
+        {
+          "type": "text",
+          "md": "An operator with one side filled in is a function, too: `(+ 1)` adds 1, `(* 2)` doubles a number, and `(> 5)` checks whether a number is greater than 5."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    print (map (+ 1) [1, 2, 3])\n    print (filter (> 5) [3, 8, 1, 9])",
+          "output": "[2,3,4]\n[8,9]"
+        },
+        {
+          "type": "heading",
+          "text": "Folding"
+        },
+        {
+          "type": "text",
+          "md": "`foldr` combines all elements of a list into one value. `foldr (+) 0 [1, 2, 3]` computes `1 + (2 + (3 + 0))`. `(+)` is the operator `+` used as a function, and `0` is the start value."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = do\n    print (foldr (+) 0 [1, 2, 3])\n    print (foldr (*) 1 [1, 2, 3, 4])",
+          "output": "6\n24"
+        },
+        {
+          "type": "text",
+          "md": "A **list comprehension** builds a list in one expression. `[x * x | x <- [1 .. 5], odd x]` reads: `x * x` for every `x` from 1 to 5 for which `odd x` is `True`."
+        },
+        {
+          "type": "code",
+          "code": "main :: IO ()\nmain = print [x * x | x <- [1 .. 5], odd x]",
+          "output": "[1,9,25]"
+        }
+      ],
+      "card": [
+        "`map f xs` applies `f` to every element",
+        "`filter even xs` keeps the matching elements",
+        "`\\x -> x * 2` is a lambda",
+        "`(+ 1)` and `(> 5)` are functions, too",
+        "`foldr (+) 0 xs` combines a list"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "higher-order-1",
+          "prompt": "What does this program print?",
+          "code": "main = print (map (* 3) [1, 2, 3])",
+          "answers": [
+            "[3,6,9]"
+          ],
+          "explain": "`(* 3)` multiplies each element by 3."
+        },
+        {
+          "type": "input",
+          "id": "higher-order-2",
+          "prompt": "What does this program print?",
+          "code": "main = print (filter (< 4) [5, 1, 7, 3])",
+          "answers": [
+            "[1,3]"
+          ],
+          "explain": "`filter` keeps the elements less than 4 and keeps their order."
+        },
+        {
+          "type": "input",
+          "id": "higher-order-3",
+          "prompt": "What does this program print?",
+          "code": "main = print (foldr (+) 10 [1, 2])",
+          "answers": [
+            "13"
+          ],
+          "explain": "The start value is `10`: 1 + (2 + 10) = 13."
+        },
+        {
+          "type": "choice",
+          "id": "higher-order-4",
+          "prompt": "What does this program print?",
+          "code": "main = print (map (\\x -> x + 10) [1, 2])",
+          "options": [
+            "`[11,12]`",
+            "`[10,11,12]`",
+            "`[1,2,10]`",
+            "`13`"
+          ],
+          "answer": 0,
+          "explain": "The lambda adds 10 to every element. `map` keeps the length of the list."
+        },
+        {
+          "type": "choice",
+          "id": "higher-order-5",
+          "prompt": "What does this program print?",
+          "code": "main = print [x * 2 | x <- [1 .. 4], x > 2]",
+          "options": [
+            "`[6,8]`",
+            "`[2,4,6,8]`",
+            "`[3,4]`",
+            "`[4,6,8]`"
+          ],
+          "answer": 0,
+          "explain": "Only `3` and `4` are greater than 2. Each of them is doubled."
+        },
+        {
+          "type": "true_false",
+          "id": "higher-order-6",
+          "statement": "`filter` can change the elements of a list, for example double them.",
+          "answer": false,
+          "explain": "`filter` only keeps or removes elements. To change them, use `map`."
+        },
+        {
+          "type": "true_false",
+          "id": "higher-order-7",
+          "statement": "`map length [\"a\", \"bcd\"]` gives `[1,3]`.",
+          "answer": true,
+          "explain": "`map` applies `length` to each string: `\"a\"` has 1 character and `\"bcd\"` has 3."
+        },
+        {
+          "type": "gap",
+          "id": "higher-order-8",
+          "prompt": "Complete the code so it prints [2,4,6].",
+          "code": "main = print (___ (* 2) [1, 2, 3])",
+          "options": [
+            "map",
+            "filter",
+            "foldr",
+            "length"
+          ],
+          "answer": 0,
+          "explain": "`map` applies `(* 2)` to every element. `filter` needs a function that gives a `Bool`."
+        },
+        {
+          "type": "gap",
+          "id": "higher-order-9",
+          "prompt": "Complete the lambda so the program prints [1,4,9].",
+          "code": "main = print (map (___ -> x * x) [1, 2, 3])",
+          "options": [
+            "\\x",
+            "x",
+            "fun x",
+            "lambda x"
+          ],
+          "answer": 0,
+          "explain": "A lambda starts with a backslash, followed by its parameter and `->`."
+        },
+        {
+          "type": "blocks",
+          "id": "higher-order-10",
+          "prompt": "Build an expression that keeps the even numbers from 1 to 10.",
+          "tokens": [
+            "filter",
+            "even",
+            "[1 .. 10]"
+          ],
+          "distractors": [
+            "map",
+            "odd"
+          ],
+          "explain": "`filter` gets the test `even` first and then the list."
+        },
+        {
+          "type": "order",
+          "id": "higher-order-11",
+          "prompt": "Put the lines in order so the program prints [20,40].",
+          "lines": [
+            "main = do",
+            "    let numbers = [1, 2, 3, 4]",
+            "    let evens = filter even numbers",
+            "    print (map (* 10) evens)"
+          ],
+          "explain": "First the list, then the even numbers from it, then each of them times 10."
+        },
+        {
+          "type": "bug",
+          "id": "higher-order-12",
+          "prompt": "The program should print the squares of the numbers. Which line has the bug?",
+          "lines": [
+            "main :: IO ()",
+            "main = do",
+            "    let numbers = [1, 2, 3]",
+            "    print (filter (\\x -> x * x) numbers)"
+          ],
+          "bug": 3,
+          "explain": "`filter` only keeps or removes elements. To change each element, use `map`: `print (map (\\x -> x * x) numbers)`."
+        }
+      ]
+    },
+    {
+      "id": "types",
+      "title": "Your own types",
+      "chapter": "Types",
+      "summary": "Define your own data types with constructors and records, and handle missing values with Maybe.",
+      "lesson": [
+        {
+          "type": "text",
+          "md": "With `data`, you define your own type. The type `Color` below has three possible values, its **constructors**. Types and constructors start with an uppercase letter. `deriving (Show, Eq)` lets you print the values and compare them with `==`. Without `Show`, `print` does not work for your type."
+        },
+        {
+          "type": "code",
+          "code": "data Color = Red | Green | Blue\n  deriving (Show, Eq)\n\nmain :: IO ()\nmain = do\n    print Green\n    print (Red == Blue)",
+          "output": "Green\nFalse"
+        },
+        {
+          "type": "text",
+          "md": "Functions on your type use pattern matching, with one equation for each constructor."
+        },
+        {
+          "type": "code",
+          "code": "data Color = Red | Green | Blue\n\ndescribe :: Color -> String\ndescribe Red = \"warm\"\ndescribe Green = \"fresh\"\ndescribe Blue = \"calm\"\n\nmain :: IO ()\nmain = putStrLn (describe Blue)",
+          "output": "calm"
+        },
+        {
+          "type": "heading",
+          "text": "Constructors with values"
+        },
+        {
+          "type": "text",
+          "md": "A constructor can carry values. `Circle Double` holds a radius, and `Rectangle Double Double` holds a width and a height. In a pattern, you give names to these values. `pi` is the number π."
+        },
+        {
+          "type": "code",
+          "code": "data Shape = Circle Double | Rectangle Double Double\n\narea :: Shape -> Double\narea (Circle r) = pi * r * r\narea (Rectangle w h) = w * h\n\nmain :: IO ()\nmain = do\n    print (area (Circle 1))\n    print (area (Rectangle 3 4))",
+          "output": "3.141592653589793\n12.0"
+        },
+        {
+          "type": "heading",
+          "text": "Records"
+        },
+        {
+          "type": "text",
+          "md": "With **record syntax**, every field has a name. The field names are also functions that read the field."
+        },
+        {
+          "type": "code",
+          "code": "data Person = Person { name :: String, age :: Int }\n  deriving Show\n\nmain :: IO ()\nmain = do\n    let ada = Person { name = \"Ada\", age = 36 }\n    putStrLn (name ada)\n    print (age ada)\n    print ada",
+          "output": "Ada\n36\nPerson {name = \"Ada\", age = 36}"
+        },
+        {
+          "type": "heading",
+          "text": "Maybe"
+        },
+        {
+          "type": "text",
+          "md": "Sometimes there is no result. The type `Maybe` has two constructors: `Just x` holds a value, and `Nothing` holds none. A function that can fail gives back a `Maybe`, and `case` checks which one you got."
+        },
+        {
+          "type": "code",
+          "code": "safeDiv :: Int -> Int -> Maybe Int\nsafeDiv _ 0 = Nothing\nsafeDiv a b = Just (div a b)\n\nmain :: IO ()\nmain = do\n    print (safeDiv 10 2)\n    print (safeDiv 1 0)\n    case safeDiv 7 2 of\n        Just n -> putStrLn (\"Result: \" ++ show n)\n        Nothing -> putStrLn \"Cannot divide by zero\"",
+          "output": "Just 5\nNothing\nResult: 3"
+        },
+        {
+          "type": "tip",
+          "md": "A `Maybe Int` is not an `Int`. To use the number, take it out first with pattern matching, for example with `case`."
+        }
+      ],
+      "card": [
+        "`data Color = Red | Green | Blue`",
+        "`deriving (Show, Eq)` for `print` and `==`",
+        "`data Shape = Circle Double`, match it with `(Circle r)`",
+        "`Person { name = \"Ada\", age = 36 }`",
+        "`Just 5` or `Nothing` of type `Maybe Int`"
+      ],
+      "exercises": [
+        {
+          "type": "input",
+          "id": "types-1",
+          "prompt": "What does this program print?",
+          "code": "data Size = Small | Large\n  deriving Show\n\nmain :: IO ()\nmain = print Large",
+          "answers": [
+            "Large"
+          ],
+          "explain": "`deriving Show` lets `print` show the constructor by its name."
+        },
+        {
+          "type": "input",
+          "id": "types-2",
+          "prompt": "What does this program print?",
+          "code": "data Shape = Square Int | Line Int\n\nsize :: Shape -> Int\nsize (Square s) = s * s\nsize (Line n) = n\n\nmain :: IO ()\nmain = print (size (Square 5))",
+          "answers": [
+            "25"
+          ],
+          "explain": "`Square 5` fits the first equation, so `s` is `5` and the result is 5 * 5."
+        },
+        {
+          "type": "input",
+          "id": "types-3",
+          "prompt": "What does this program print?",
+          "code": "data Book = Book { title :: String, pages :: Int }\n\nmain :: IO ()\nmain = do\n    let book = Book { title = \"Dune\", pages = 412 }\n    print (pages book)",
+          "answers": [
+            "412"
+          ],
+          "explain": "The field name `pages` is a function that reads the field."
+        },
+        {
+          "type": "choice",
+          "id": "types-4",
+          "prompt": "What does this program print?",
+          "code": "lookupAge :: String -> Maybe Int\nlookupAge \"Ada\" = Just 36\nlookupAge _ = Nothing\n\nmain :: IO ()\nmain = print (lookupAge \"Bob\")",
+          "options": [
+            "`Nothing`",
+            "`Just 36`",
+            "`0`",
+            "Nothing, it is an error"
+          ],
+          "answer": 0,
+          "explain": "`\"Bob\"` does not fit the first equation, so the second one gives `Nothing`."
+        },
+        {
+          "type": "choice",
+          "id": "types-5",
+          "prompt": "Which constructor carries a value?",
+          "code": "data Reply = Yes | No | Later Int",
+          "options": [
+            "`Yes`",
+            "`No`",
+            "`Later`",
+            "None of them"
+          ],
+          "answer": 2,
+          "explain": "`Later Int` holds a number, for example `Later 3`. `Yes` and `No` hold nothing."
+        },
+        {
+          "type": "true_false",
+          "id": "types-6",
+          "statement": "`Nothing` is a value of the type `Maybe Int`.",
+          "answer": true,
+          "explain": "A `Maybe Int` is either `Just` with a number or `Nothing`."
+        },
+        {
+          "type": "true_false",
+          "id": "types-7",
+          "statement": "Without `deriving Show`, you can print values of your own type with `print`.",
+          "answer": false,
+          "explain": "`print` needs `Show`. Without it, the compiler reports an error."
+        },
+        {
+          "type": "gap",
+          "id": "types-8",
+          "prompt": "Complete the code so it prints Just 4.",
+          "code": "half :: Int -> Maybe Int\nhalf n = if even n then ___ (div n 2) else Nothing\n\nmain :: IO ()\nmain = print (half 8)",
+          "options": [
+            "Just",
+            "Maybe",
+            "Some",
+            "Nothing"
+          ],
+          "answer": 0,
+          "explain": "`Just` wraps a value into a `Maybe`. `Maybe` is the name of the type, not a constructor."
+        },
+        {
+          "type": "gap",
+          "id": "types-9",
+          "prompt": "Complete the type so the program works.",
+          "code": "data Light = Red | Yellow ___ Green\n  deriving Show\n\nmain :: IO ()\nmain = print Yellow",
+          "options": [
+            "|",
+            ",",
+            "or",
+            "||"
+          ],
+          "answer": 0,
+          "explain": "`|` separates the constructors of a type."
+        },
+        {
+          "type": "blocks",
+          "id": "types-10",
+          "prompt": "Build a type Weather with the values Hot and Cold.",
+          "tokens": [
+            "data",
+            "Weather",
+            "=",
+            "Hot",
+            "|",
+            "Cold"
+          ],
+          "distractors": [
+            "type",
+            ","
+          ],
+          "explain": "`data` starts the definition, and `|` separates the constructors."
+        },
+        {
+          "type": "bug",
+          "id": "types-11",
+          "prompt": "The function should give the area of a shape. Which line has the bug?",
+          "lines": [
+            "data Shape = Circle Double | Square Double",
+            "area :: Shape -> Double",
+            "area (Circle r) = pi * r * r",
+            "area Square s = s * s"
+          ],
+          "bug": 3,
+          "explain": "A constructor with its values needs parentheses in a pattern: `area (Square s) = s * s`."
+        },
+        {
+          "type": "pairs",
+          "id": "types-12",
+          "prompt": "Match the code with its meaning.",
+          "pairs": [
+            [
+              "`data`",
+              "defines a new type"
+            ],
+            [
+              "`Just 5`",
+              "a `Maybe` that holds `5`"
+            ],
+            [
+              "`Nothing`",
+              "no value"
+            ],
+            [
+              "`deriving Show`",
+              "makes `print` work"
+            ],
+            [
+              "`name person`",
+              "reads the field `name`"
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

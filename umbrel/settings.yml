@@ -1,0 +1,5 @@
+dependencies: {}
+autoStart: true
+# nrzLearn hat keine Konten mehr: jeder soll ohne umbrelOS-Anmeldung lernen koennen.
+# Der Fortschritt liegt im Browser, auf dem Geraet wird nichts gespeichert.
+appProxyAuthEnabled: false

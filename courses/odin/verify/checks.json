@@ -1,0 +1,436 @@
+{
+  "hello-1": {
+    "extra": [
+      {
+        "src": "main :: proc() {\n    fmt.println(\"Hi\")\n}",
+        "out": "Hi"
+      },
+      {
+        "src": "package main\n\nimport \"core:fmt\"\n\nstart :: proc() {\n    fmt.println(\"Hi\")\n}",
+        "err": true
+      },
+      {
+        "src": "package main\n\nimport \"core:fmt\"\n\nrun :: proc() {\n    fmt.println(\"Hi\")\n}",
+        "err": true
+      }
+    ]
+  },
+  "hello-2": {
+    "out": "Odin is fun"
+  },
+  "hello-3": {
+    "out": "6 apples"
+  },
+  "hello-4": {
+    "code": "fmt.printf(\"A\")\nfmt.printf(\"B\\n\")",
+    "out": "AB"
+  },
+  "hello-5": {
+    "out": "Hi"
+  },
+  "hello-6": {
+    "out": "Name: Ada"
+  },
+  "hello-7": {
+    "out": "Hello, Odin!"
+  },
+  "hello-8": {
+    "out": "Ready"
+  },
+  "hello-10": {
+    "fix": "    fmt.println(\"Stop\")",
+    "out": "Start\nStop"
+  },
+  "hello-11": {
+    "fix": "    fmt.println(\"Line 2\")",
+    "out": "Line 1\nLine 2",
+    "extra": [
+      {
+        "src": "fmt.println('Hi')",
+        "err": true
+      },
+      {
+        "src": "// fmt.println(\"no\")\nfmt.println(\"yes\")",
+        "out": "yes"
+      }
+    ]
+  },
+  "hello-12": {
+    "out": "2 + 3 = 5"
+  },
+  "variables-1": {
+    "out": "14"
+  },
+  "variables-2": {
+    "extra": [
+      {
+        "src": "x: f64 = 2.5\nfmt.println(x)",
+        "out": "2.5"
+      },
+      {
+        "src": "x: int = 2.5\nfmt.println(x)",
+        "err": true
+      },
+      {
+        "src": "x: bool = 2.5\nfmt.println(x)",
+        "err": true
+      },
+      {
+        "src": "x: string = 2.5\nfmt.println(x)",
+        "err": true
+      }
+    ]
+  },
+  "variables-3": {
+    "err": true
+  },
+  "variables-4": {
+    "out": "3 2"
+  },
+  "variables-5": {
+    "out": "0 false"
+  },
+  "variables-6": {
+    "out": "15"
+  },
+  "variables-7": {
+    "out": "3.5"
+  },
+  "variables-8": {
+    "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nmain :: proc() {\n    {{CODE}}\n    fmt.println(price)\n}",
+    "out": "2.5"
+  },
+  "variables-9": {
+    "out": "50"
+  },
+  "variables-11": {
+    "fix": "total := price * f64(count)",
+    "out": "9"
+  },
+  "variables-12": {
+    "fix": "score += 1",
+    "out": "11"
+  },
+  "conditions-1": {
+    "out": "big"
+  },
+  "conditions-2": {
+    "out": "B"
+  },
+  "conditions-3": {
+    "extra": [
+      {
+        "src": "x := 3\nif x == 3 {\n    fmt.println(\"yes\")\n}",
+        "out": "yes"
+      },
+      {
+        "src": "x := 3\nif x = 3 {\n    fmt.println(\"yes\")\n}",
+        "err": true
+      },
+      {
+        "src": "x := 3\nif x := 3 {\n    fmt.println(\"yes\")\n}",
+        "err": true
+      },
+      {
+        "src": "x := 3\nif x != 3 {\n    fmt.println(\"yes\")\n}",
+        "out": ""
+      }
+    ]
+  },
+  "conditions-4": {
+    "code": "x := 1\nswitch x {\ncase 1:\n    fmt.println(\"one\")\ncase 2:\n    fmt.println(\"two\")\n}",
+    "out": "one"
+  },
+  "conditions-5": {
+    "out": "yes"
+  },
+  "conditions-6": {
+    "out": "adult"
+  },
+  "conditions-7": {
+    "out": "not both"
+  },
+  "conditions-8": {
+    "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nmain :: proc() {\n    x := 12\n    {{CODE}}\n        fmt.println(\"big\")\n    }\n}",
+    "out": "big"
+  },
+  "conditions-9": {
+    "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nshow :: proc(temp: int) {\n    {{CODE}}\n}\n\nmain :: proc() {\n    show(30)\n    show(20)\n    show(40)\n}",
+    "out": "hot\nnot hot\nhot"
+  },
+  "conditions-11": {
+    "fix": "case:",
+    "out": "other"
+  },
+  "conditions-12": {
+    "fix": "if x == 5 {",
+    "out": "five",
+    "extra": [
+      {
+        "src": "if 1 {\n    fmt.println(\"x\")\n}",
+        "err": true
+      }
+    ]
+  },
+  "loops-1": {
+    "out": "9"
+  },
+  "loops-2": {
+    "out": "27"
+  },
+  "loops-3": {
+    "out": "Hi\nHi\nHi\nHi"
+  },
+  "loops-4": {
+    "code": "for i in 0..<5 {\n    fmt.println(i)\n}",
+    "out": "0\n1\n2\n3\n4"
+  },
+  "loops-5": {
+    "out": "0\n1\n2"
+  },
+  "loops-6": {
+    "out": "1\n2\n3\n4\n5"
+  },
+  "loops-7": {
+    "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nmain :: proc() {\n    {{CODE}}\n        fmt.println(i)\n    }\n}",
+    "out": "0\n1\n2"
+  },
+  "loops-8": {
+    "out": "10"
+  },
+  "loops-10": {
+    "fix": "for i := 0; i < 3; i += 1 {",
+    "out": "Start\n0\n1\n2",
+    "extra": [
+      {
+        "src": "for (i := 0; i < 3; i += 1) {\n    fmt.println(i)\n}",
+        "err": true
+      }
+    ]
+  },
+  "loops-11": {
+    "fix": "        continue",
+    "out": "1\n2\n4\n5"
+  },
+  "loops-12": {
+    "out": "-2"
+  },
+  "procedures-1": {
+    "out": "12"
+  },
+  "procedures-2": {
+    "out": "2 1"
+  },
+  "procedures-3": {
+    "extra": [
+      {
+        "src": "twice :: proc(n: int) -> int {\n    return n * 2\n}\n\nmain :: proc() {\n    fmt.println(twice(4))\n}",
+        "out": "8"
+      },
+      {
+        "src": "twice :: proc(n int) int {\n    return n * 2\n}\n\nmain :: proc() {\n    fmt.println(twice(4))\n}",
+        "err": true
+      },
+      {
+        "src": "twice := func(n: int): int {\n    return n * 2\n}\n\nmain :: proc() {\n    fmt.println(twice(4))\n}",
+        "err": true
+      },
+      {
+        "src": "proc twice(n: int) -> int {\n    return n * 2\n}\n\nmain :: proc() {\n    fmt.println(twice(4))\n}",
+        "err": true
+      }
+    ]
+  },
+  "procedures-4": {
+    "code": "divide :: proc(a, b: int) -> (int, int) {\n    return a / b, a % b\n}\n\nmain :: proc() {\n    q, r := divide(7, 2)\n    fmt.println(q, r)\n}",
+    "out": "3 1",
+    "extra": [
+      {
+        "src": "later()\n",
+        "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nmain :: proc() {\n    {{CODE}}\n}\n\nlater :: proc() {\n    fmt.println(\"below\")\n}",
+        "out": "below"
+      },
+      {
+        "src": "change :: proc(n: int) {\n    n = 5\n}\n\nmain :: proc() {\n    change(1)\n}",
+        "err": true
+      },
+      {
+        "src": "change :: proc(n: int) {\n    n := n\n    n = 5\n    fmt.println(n)\n}\n\nmain :: proc() {\n    change(1)\n}",
+        "out": "5"
+      }
+    ]
+  },
+  "procedures-5": {
+    "out": "7"
+  },
+  "procedures-6": {
+    "out": "Hi, Ada"
+  },
+  "procedures-7": {
+    "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\n{{CODE}}\n    return n * n\n}\n\nmain :: proc() {\n    fmt.println(square(5))\n}",
+    "out": "25"
+  },
+  "procedures-8": {
+    "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nsquare :: proc(n: int) -> int {\n    return n * n\n}\n\nadd :: proc(a, b: int) -> int {\n    return a + b\n}\n\nmain :: proc() {\n    {{CODE}}\n}",
+    "out": "5"
+  },
+  "procedures-10": {
+    "fix": "half :: proc(n: f64) -> f64 {",
+    "out": "4.5"
+  },
+  "procedures-11": {
+    "fix": "    q, r := divide(7, 2)",
+    "out": "3"
+  },
+  "procedures-12": {
+    "out": "5 6"
+  },
+  "arrays-1": {
+    "out": "18"
+  },
+  "arrays-2": {
+    "out": "2"
+  },
+  "arrays-3": {
+    "out": "3"
+  },
+  "arrays-4": {
+    "code": "a := [3]string{\"x\", \"y\", \"z\"}\nfmt.println(a[0])",
+    "out": "x"
+  },
+  "arrays-5": {
+    "out": "[4]"
+  },
+  "arrays-6": {
+    "out": "0 Ada\n1 Bob"
+  },
+  "arrays-7": {
+    "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nmain :: proc() {\n    list: [dynamic]int\n    {{CODE}}\n    fmt.println(list)\n}",
+    "out": "[7]"
+  },
+  "arrays-8": {
+    "out": "[1, 7, 3, 4, 5]"
+  },
+  "arrays-10": {
+    "fix": "fmt.println(days[2])",
+    "out": "Mon\nWed"
+  },
+  "arrays-11": {
+    "fix": "nums: [dynamic]int",
+    "out": "1"
+  },
+  "arrays-12": {
+    "out": "6"
+  },
+  "structs-1": {
+    "out": "12"
+  },
+  "structs-2": {
+    "out": "Medium"
+  },
+  "structs-3": {
+    "extra": [
+      {
+        "src": "p := Point{x = 1, y = 2}\nfmt.println(p)",
+        "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nPoint :: struct {\n    x: int,\n    y: int,\n}\n\nmain :: proc() {\n    {{CODE}}\n}",
+        "out": "Point{x = 1, y = 2}"
+      },
+      {
+        "src": "p := Point(x: 1, y: 2)\nfmt.println(p)",
+        "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nPoint :: struct {\n    x: int,\n    y: int,\n}\n\nmain :: proc() {\n    {{CODE}}\n}",
+        "err": true
+      },
+      {
+        "src": "p := Point{x: 1, y: 2}\nfmt.println(p)",
+        "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nPoint :: struct {\n    x: int,\n    y: int,\n}\n\nmain :: proc() {\n    {{CODE}}\n}",
+        "err": true
+      },
+      {
+        "src": "p := new Point(1, 2)\nfmt.println(p)",
+        "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nPoint :: struct {\n    x: int,\n    y: int,\n}\n\nmain :: proc() {\n    {{CODE}}\n}",
+        "err": true
+      }
+    ]
+  },
+  "structs-4": {
+    "code": "Point :: struct {\n    x: int,\n    y: int,\n}\n\nmain :: proc() {\n    p := Point{x = 5}\n    fmt.println(p.y)\n}",
+    "out": "0"
+  },
+  "structs-5": {
+    "out": "2"
+  },
+  "structs-6": {
+    "out": "On"
+  },
+  "structs-7": {
+    "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\n{{CODE}}\n    x: int,\n    y: int,\n}\n\nmain :: proc() {\n    fmt.println(Point{1, 2})\n}",
+    "out": "Point{x = 1, y = 2}"
+  },
+  "structs-8": {
+    "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nPlayer :: struct {\n    name:  string,\n    level: int,\n}\n\nlevel_up :: proc(p: ^Player) {\n    p.level += 1\n}\n\nmain :: proc() {\n    {{CODE}}\n}",
+    "out": "20"
+  },
+  "structs-10": {
+    "fix": "    name: string,",
+    "out": "Pen 2"
+  },
+  "structs-11": {
+    "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nLight :: enum {\n    Red,\n    Green,\n}\n\nmain :: proc() {\n    {{CODE}}\n}",
+    "fix": "case .Green:",
+    "out": "Go"
+  },
+  "structs-12": {
+    "out": "1",
+    "extra": [
+      {
+        "src": "show(.Red)",
+        "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nLight :: enum {\n    Red,\n    Yellow,\n    Green,\n}\n\nshow :: proc(l: Light) {\n    switch l {\n    case .Red:\n        fmt.println(\"Stop\")\n    case .Green:\n        fmt.println(\"Go\")\n    }\n}\n\nmain :: proc() {\n    {{CODE}}\n}",
+        "err": true
+      },
+      {
+        "src": "show(.Red)",
+        "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nLight :: enum {\n    Red,\n    Yellow,\n    Green,\n}\n\nshow :: proc(l: Light) {\n    #partial switch l {\n    case .Red:\n        fmt.println(\"Stop\")\n    case .Green:\n        fmt.println(\"Go\")\n    }\n}\n\nmain :: proc() {\n    {{CODE}}\n}",
+        "out": "Stop"
+      }
+    ]
+  },
+  "maps-1": {
+    "out": "12"
+  },
+  "maps-2": {
+    "out": "11 pro"
+  },
+  "maps-3": {
+    "out": "0 false"
+  },
+  "maps-5": {
+    "out": "0"
+  },
+  "maps-6": {
+    "out": "yes"
+  },
+  "maps-7": {
+    "tpl": "package main\n\nimport \"core:fmt\"\nimport \"core:strings\"\n\nmain :: proc() {\n    {{CODE}}\n    ages[\"Ada\"] = 36\n    fmt.println(ages[\"Ada\"])\n}",
+    "out": "36"
+  },
+  "maps-8": {
+    "out": "12"
+  },
+  "maps-10": {
+    "fix": "full := strings.concatenate({first, \" \", last})",
+    "out": "Ada Lovelace"
+  },
+  "maps-11": {
+    "fix": "age, found := ages[\"Bob\"]",
+    "out": "0 false",
+    "extra": [
+      {
+        "src": "fmt.println(\"ab\" + \"cd\")",
+        "out": "abcd"
+      }
+    ]
+  },
+  "maps-12": {
+    "out": "2"
+  }
+}

@@ -1,0 +1,416 @@
+{
+  "hello-2": {
+    "out": "Good morning",
+    "tpl": "import gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "hello-3": {
+    "out": "HI",
+    "tpl": "import gleam/io\nimport gleam/string\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "hello-4": {
+    "extra": [
+      {
+        "src": "import gleam/io\n\npub fn main() {\n  io.println(42)\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "hello-5": {
+    "out": "Hi"
+  },
+  "hello-6": {
+    "out": "Ready"
+  },
+  "hello-7": {
+    "out": "Hello",
+    "tpl": "import gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "hello-8": {
+    "out": "Ready\nGo",
+    "tpl": "import gleam/io\n\n{{CODE}}\n"
+  },
+  "hello-10": {
+    "out": "Start\nStop",
+    "fix": "  io.println(\"Stop\")"
+  },
+  "hello-11": {
+    "out": "Line 1\nLine 2",
+    "fix": "  io.println(\"Line 2\")"
+  },
+  "hello-12": {
+    "out": "ABC",
+    "tpl": "import gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "values-1": {
+    "out": "3",
+    "tpl": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "values-2": {
+    "out": "2",
+    "tpl": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "values-3": {
+    "extra": [
+      {
+        "src": "import gleam/float\nimport gleam/io\n\npub fn main() {\n  io.println(float.to_string(1.5 +. 2.0))\n}\n",
+        "out": "3.5"
+      },
+      {
+        "src": "import gleam/float\nimport gleam/io\n\npub fn main() {\n  io.println(float.to_string(1.5 + 2.0))\n}\n",
+        "err": true
+      },
+      {
+        "src": "import gleam/float\nimport gleam/io\n\npub fn main() {\n  io.println(float.to_string(1 +. 2.0))\n}\n",
+        "err": true
+      },
+      {
+        "src": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  io.println(int.to_string(1 + 2.0))\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "values-4": {
+    "extra": [
+      {
+        "src": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  let x = 1\n  let x = x + 1\n  io.println(int.to_string(x))\n}\n",
+        "out": "2"
+      }
+    ]
+  },
+  "values-5": {
+    "out": "10",
+    "tpl": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "values-6": {
+    "out": "42",
+    "tpl": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "values-7": {
+    "out": "False",
+    "tpl": "import gleam/bool\nimport gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "values-8": {
+    "out": "3.5",
+    "tpl": "import gleam/float\nimport gleam/io\n\npub fn main() {\n  {{CODE}}\n  io.println(float.to_string(price))\n}\n"
+  },
+  "values-10": {
+    "out": "0.5",
+    "fix": "  let half = 1.0 /. 2.0"
+  },
+  "values-11": {
+    "out": "12",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n"
+  },
+  "values-12": {
+    "extra": [
+      {
+        "src": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  io.println(int.to_string(7 / 0))\n}\n",
+        "out": "0"
+      }
+    ]
+  },
+  "strings-1": {
+    "out": "Hello, Bo",
+    "tpl": "import gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "strings-2": {
+    "out": "6",
+    "tpl": "import gleam/int\nimport gleam/io\nimport gleam/string\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "strings-3": {
+    "out": "---x",
+    "tpl": "import gleam/io\nimport gleam/string\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "strings-4": {
+    "extra": [
+      {
+        "src": "import gleam/io\n\npub fn main() {\n  io.println(\"a\" + \"b\")\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "strings-5": {
+    "out": "Score: 9",
+    "tpl": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "strings-6": {
+    "out": "HELLO",
+    "tpl": "import gleam/io\nimport gleam/string\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "strings-7": {
+    "out": "Hi, Kim",
+    "tpl": "import gleam/io\n\npub fn main() {\n  let name = \"Kim\"\n  {{CODE}}\n  io.println(greeting)\n}\n"
+  },
+  "strings-8": {
+    "out": "abc",
+    "tpl": "import gleam/io\nimport gleam/string\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "strings-10": {
+    "out": "Count: 3",
+    "fix": "  io.println(\"Count: \" <> int.to_string(count))"
+  },
+  "strings-11": {
+    "out": "Hello, ADA",
+    "tpl": "import gleam/io\nimport gleam/string\n\n{{CODE}}\n"
+  },
+  "strings-12": {
+    "out": "True",
+    "tpl": "import gleam/bool\nimport gleam/io\nimport gleam/string\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "functions-1": {
+    "out": "10",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n"
+  },
+  "functions-2": {
+    "out": "7",
+    "tpl": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "functions-3": {
+    "extra": [
+      {
+        "src": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  let a = 10 |> int.subtract(3)\n  let b = int.subtract(10, 3)\n  io.println(int.to_string(a) <> \" \" <> int.to_string(b))\n}\n",
+        "out": "7 7"
+      }
+    ]
+  },
+  "functions-4": {
+    "extra": [
+      {
+        "src": "import gleam/int\nimport gleam/io\n\nfn one() -> Int {\n  return 1\n}\n\npub fn main() {\n  io.println(int.to_string(one()))\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "functions-5": {
+    "out": "12",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n\npub fn main() {\n  io.println(int.to_string(triple(4)))\n}\n"
+  },
+  "functions-6": {
+    "out": "15",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n"
+  },
+  "functions-7": {
+    "out": "2",
+    "tpl": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  {{CODE}}\n  io.println(int.to_string(inc(1)))\n}\n"
+  },
+  "functions-8": {
+    "out": "HEY!",
+    "tpl": "import gleam/io\nimport gleam/string\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "functions-10": {
+    "out": "2.5",
+    "fix": "  io.println(float.to_string(half(5.0)))"
+  },
+  "functions-11": {
+    "out": "HI YOU",
+    "tpl": "import gleam/io\nimport gleam/string\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "functions-12": {
+    "out": "True",
+    "fix": "  io.println(bool.to_string(is_big(500)))"
+  },
+  "case-1": {
+    "out": "two",
+    "tpl": "import gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "case-2": {
+    "out": "odd",
+    "tpl": "import gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "case-3": {
+    "out": "negative",
+    "tpl": "import gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "case-4": {
+    "extra": [
+      {
+        "src": "import gleam/io\n\npub fn main() {\n  let n = 3\n  let text = case n {\n    0 -> \"zero\"\n    1 -> \"one\"\n  }\n  io.println(text)\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "case-5": {
+    "out": "Meow",
+    "tpl": "import gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "case-6": {
+    "out": "teen",
+    "tpl": "import gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "case-7": {
+    "out": "weekend",
+    "tpl": "import gleam/io\n\npub fn main() {\n  let day = \"Sun\"\n  let kind = case day {\n    {{CODE}}\n    _ -> \"workday\"\n  }\n  io.println(kind)\n}\n"
+  },
+  "case-8": {
+    "out": "first",
+    "tpl": "import gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "case-10": {
+    "out": "C",
+    "fix": "    _ -> \"C\"",
+    "tpl": "import gleam/io\n\n{{CODE}}\n\npub fn main() {\n  io.println(grade(30))\n}\n"
+  },
+  "case-11": {
+    "out": "huge\nbig\nsmall",
+    "tpl": "import gleam/io\n\n{{CODE}}\n\npub fn main() {\n  io.println(size(20))\n  io.println(size(5))\n  io.println(size(1))\n}\n"
+  },
+  "case-12": {
+    "extra": [
+      {
+        "src": "import gleam/io\n\npub fn main() {\n  let n = 5\n  let text = case n {\n    x if x > 1 -> \"big\"\n    5 -> \"five\"\n    _ -> \"other\"\n  }\n  io.println(text)\n}\n",
+        "out": "big"
+      }
+    ]
+  },
+  "lists-1": {
+    "out": "[11, 12, 13]",
+    "tpl": "import gleam/io\nimport gleam/list\nimport gleam/string\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "lists-2": {
+    "out": "24",
+    "tpl": "import gleam/int\nimport gleam/io\nimport gleam/list\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "lists-3": {
+    "out": "[2, 3] [1, 2, 3]",
+    "tpl": "import gleam/io\nimport gleam/string\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "lists-4": {
+    "extra": [
+      {
+        "src": "import gleam/io\nimport gleam/string\n\npub fn main() {\n  io.println(string.inspect([1, \"two\"]))\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "lists-5": {
+    "out": "[3, 4]",
+    "tpl": "import gleam/io\nimport gleam/list\nimport gleam/string\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "lists-6": {
+    "out": "7",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n\npub fn main() {\n  io.println(int.to_string(first_or_zero([7, 8, 9])))\n}\n"
+  },
+  "lists-7": {
+    "out": "[2, 4, 6]",
+    "tpl": "import gleam/io\nimport gleam/list\nimport gleam/string\n\npub fn main() {\n  let numbers = [1, 2, 3]\n  {{CODE}}\n  io.println(string.inspect(doubled))\n}\n"
+  },
+  "lists-8": {
+    "out": "7",
+    "tpl": "import gleam/int\nimport gleam/io\nimport gleam/list\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "lists-10": {
+    "out": "10",
+    "fix": "  let total = list.fold(prices, 0, fn(acc, x) { acc + x })",
+    "tpl": "import gleam/int\nimport gleam/io\nimport gleam/list\n\n{{CODE}}\n"
+  },
+  "lists-11": {
+    "out": "[3, 5, 7]",
+    "tpl": "import gleam/io\nimport gleam/list\nimport gleam/string\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "lists-12": {
+    "out": "2",
+    "tpl": "import gleam/int\nimport gleam/io\nimport gleam/list\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "recursion-1": {
+    "out": "10",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n"
+  },
+  "recursion-2": {
+    "out": "3",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n"
+  },
+  "recursion-3": {
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n\npub fn main() {\n  io.println(int.to_string(factorial(5)))\n}\n",
+    "out": "120"
+  },
+  "recursion-4": {
+    "extra": [
+      {
+        "src": "import gleam/io\n\npub fn main() {\n  for x in [1, 2] {\n    io.println(\"x\")\n  }\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "recursion-5": {
+    "out": "6",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n\npub fn main() {\n  io.println(int.to_string(sum([1, 2, 3])))\n}\n"
+  },
+  "recursion-6": {
+    "out": "2\n1\nGo!",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n\npub fn main() {\n  countdown(2)\n}\n"
+  },
+  "recursion-7": {
+    "out": "6",
+    "tpl": "import gleam/int\nimport gleam/io\n\nfn sum(numbers: List(Int)) -> Int {\n  case numbers {\n    [] -> 0\n    {{CODE}}\n  }\n}\n\npub fn main() {\n  io.println(int.to_string(sum([1, 2, 3])))\n}\n"
+  },
+  "recursion-8": {
+    "out": "[3, 2, 1]",
+    "tpl": "import gleam/io\nimport gleam/string\n\n{{CODE}}\n"
+  },
+  "recursion-10": {
+    "out": "6",
+    "fix": "    _ -> n + sum_to(n - 1)",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n\npub fn main() {\n  io.println(int.to_string(sum_to(3)))\n}\n"
+  },
+  "recursion-11": {
+    "out": "[3, 2, 1]",
+    "tpl": "import gleam/io\nimport gleam/string\n\nfn countdown(n: Int) -> List(Int) {\n  {{CODE}}\n}\n\npub fn main() {\n  io.println(string.inspect(countdown(3)))\n}\n"
+  },
+  "recursion-12": {
+    "out": "6",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n\npub fn main() {\n  io.println(int.to_string(go(3, 0)))\n}\n"
+  },
+  "types-1": {
+    "out": "Rex 4",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n"
+  },
+  "types-2": {
+    "out": "13",
+    "tpl": "import gleam/int\nimport gleam/io\nimport gleam/result\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "types-3": {
+    "out": "error",
+    "tpl": "import gleam/int\nimport gleam/io\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "types-4": {
+    "extra": [
+      {
+        "src": "import gleam/io\n\ntype Color {\n  red\n}\n\npub fn main() {\n  io.println(\"x\")\n}\n",
+        "err": true
+      }
+    ]
+  },
+  "types-5": {
+    "out": "stop\ngo",
+    "tpl": "import gleam/io\n\n{{CODE}}\n\npub fn main() {\n  io.println(action(Red))\n  io.println(action(Green))\n}\n"
+  },
+  "types-6": {
+    "out": "Gleam 2024",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n"
+  },
+  "types-7": {
+    "out": "3",
+    "tpl": "import gleam/int\nimport gleam/io\n\ntype Point {\n  Point(x: Int, y: Int)\n}\n\npub fn main() {\n  {{CODE}}\n  io.println(int.to_string(p.x + p.y))\n}\n"
+  },
+  "types-8": {
+    "out": "5",
+    "tpl": "import gleam/int\nimport gleam/io\n\ntype Rect {\n  Rect(w: Int, h: Int)\n}\n\npub fn main() {\n  {{CODE}}\n}\n"
+  },
+  "types-10": {
+    "out": "missing",
+    "fix": "    Error(_) -> \"missing\"",
+    "tpl": "import gleam/int\nimport gleam/io\n\n{{CODE}}\n\npub fn main() {\n  io.println(describe(int.parse(\"x\")))\n}\n"
+  },
+  "types-11": {
+    "out": "10",
+    "tpl": "import gleam/int\nimport gleam/io\n\ntype Player {\n  Player(name: String, score: Int)\n}\n\n{{CODE}}\n"
+  },
+  "types-12": {
+    "extra": [
+      {
+        "src": "import gleam/int\nimport gleam/io\nimport gleam/string\n\npub fn main() {\n  io.println(string.inspect(int.parse(\"42\")))\n}\n",
+        "out": "Ok(42)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1926 @@
+{
+ "course": "c",
+ "lang": "en",
+ "units": [
+  {
+   "id": "hello",
+   "title": "Hello, C",
+   "chapter": "First steps",
+   "summary": "Write your first C program, print text with `printf`, and learn how to compile and run it.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "Every C program starts in a function called `main`. Here is a complete program that prints one line of text."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    printf(\"Hello, World!\\n\");\n    return 0;\n}",
+     "output": "Hello, World!"
+    },
+    {
+     "type": "text",
+     "md": "The first line, `#include <stdio.h>`, loads the **standard input and output** library. A file that ends in `.h` is called a **header**. It contains `printf`, the function that prints text. Without it, the compiler does not know `printf`."
+    },
+    {
+     "type": "text",
+     "md": "`int main(void)` is where the program starts. `void` in the parentheses means that `main` takes no input. The curly braces `{` and `}` hold its statements, and every statement ends with a semicolon `;`. `return 0;` ends `main` and tells the system that the program finished without errors."
+    },
+    {
+     "type": "heading",
+     "text": "Compiling and running"
+    },
+    {
+     "type": "text",
+     "md": "C is a **compiled** language: a program called a **compiler** translates your source code into a file that the computer can run. Save the code as `hello.c`. The command `cc hello.c -o hello` compiles it, and `-o hello` names the result `hello`. Then `./hello` runs the program."
+    },
+    {
+     "type": "tip",
+     "md": "The compiler checks your code before anything runs. If it finds a mistake, it prints an error with the file name and the line number, for example `hello.c:4:5: error`. Fix the first error first: the errors after it are often caused by it."
+    },
+    {
+     "type": "heading",
+     "text": "Ending a line"
+    },
+    {
+     "type": "text",
+     "md": "`printf` does not start a new line by itself. Inside a string, `\\n` is the **newline** character. Without it, the next output continues on the same line."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    printf(\"One\");\n    printf(\"Two\\n\");\n    printf(\"Three\\n\");\n    return 0;\n}",
+     "output": "OneTwo\nThree"
+    },
+    {
+     "type": "heading",
+     "text": "Special characters"
+    },
+    {
+     "type": "text",
+     "md": "The backslash `\\` starts an **escape sequence**, a special character inside a string. `\\n` is a new line, `\\t` is a tab, `\\\"` is a double quote, and `\\\\` is a backslash."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    printf(\"She said \\\"Hi\\\"\\n\");\n    printf(\"C:\\\\temp\\n\");\n    return 0;\n}",
+     "output": "She said \"Hi\"\nC:\\temp"
+    },
+    {
+     "type": "warning",
+     "md": "C is case-sensitive: `Main` or `Printf` do not work. If you forget a `;`, the compiler stops with an error."
+    }
+   ],
+   "card": [
+    "`#include <stdio.h>` makes `printf` available",
+    "`int main(void) { ... }` is where the program starts",
+    "`printf(\"Hi\\n\");` prints text, `\\n` ends the line",
+    "`return 0;` ends `main` successfully",
+    "`cc hello.c -o hello` compiles, `./hello` runs"
+   ],
+   "exercises": [
+    {
+     "type": "choice",
+     "id": "hello-1",
+     "prompt": "Which line prints `Hello`?",
+     "options": [
+      "`printf(\"Hello\");`",
+      "`print(\"Hello\");`",
+      "`printf(Hello);`",
+      "`Printf(\"Hello\");`"
+     ],
+     "answer": 0,
+     "explain": "The function is called `printf`, all in lower case, and text must be inside double quotes."
+    },
+    {
+     "type": "input",
+     "id": "hello-2",
+     "prompt": "What does this program print?",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    printf(\"Hi, \");\n    printf(\"Sam!\\n\");\n    return 0;\n}",
+     "answers": [
+      "Hi, Sam!"
+     ],
+     "explain": "The first `printf` does not end the line, so `Sam!` continues right after `Hi, `."
+    },
+    {
+     "type": "input",
+     "id": "hello-3",
+     "prompt": "These lines are inside `main`. What do they print?",
+     "code": "printf(\"ab\");\nprintf(\"c\");\nprintf(\"d\\n\");",
+     "answers": [
+      "abcd"
+     ],
+     "explain": "Only the last string contains `\\n`, so all four letters end up on the same line."
+    },
+    {
+     "type": "true_false",
+     "id": "hello-4",
+     "statement": "`return 0;` at the end of `main` tells the system that the program finished without errors.",
+     "answer": true,
+     "explain": "The value that `main` returns goes back to the system. `0` means success."
+    },
+    {
+     "type": "gap",
+     "id": "hello-5",
+     "prompt": "Fill the gap so the program can use `printf`.",
+     "code": "#include ___\n\nint main(void) {\n    printf(\"Hi\\n\");\n    return 0;\n}",
+     "options": [
+      "<stdio.h>",
+      "<stdio>",
+      "<print.h>",
+      "<iostream>"
+     ],
+     "answer": 0,
+     "explain": "`printf` is declared in the header `<stdio.h>`, the standard input and output library."
+    },
+    {
+     "type": "gap",
+     "id": "hello-6",
+     "prompt": "Fill the gap so the output is on two lines.",
+     "code": "printf(\"Line 1___\");\nprintf(\"Line 2\\n\");",
+     "options": [
+      "\\n",
+      "/n",
+      "n",
+      "\\t"
+     ],
+     "answer": 0,
+     "explain": "The newline character is written with a backslash: `\\n`. `\\t` is a tab, not a new line."
+    },
+    {
+     "type": "blocks",
+     "id": "hello-7",
+     "prompt": "Build a line that prints `Hi!` and ends the line.",
+     "tokens": [
+      "printf",
+      "(",
+      "\"Hi!\\n\"",
+      ")",
+      ";"
+     ],
+     "distractors": [
+      "print",
+      "<<"
+     ],
+     "explain": "First comes the function name `printf`, then the text in parentheses, and a `;` at the end."
+    },
+    {
+     "type": "order",
+     "id": "hello-8",
+     "prompt": "Put the lines in order so the program prints `Ready` and then `Go`.",
+     "lines": [
+      "#include <stdio.h>",
+      "int main(void) {",
+      "    printf(\"Ready\\n\");",
+      "    printf(\"Go\\n\");",
+      "    return 0;",
+      "}"
+     ],
+     "explain": "The `#include` comes first, then `main`. Statements run from top to bottom, and `return 0;` ends the program."
+    },
+    {
+     "type": "pairs",
+     "id": "hello-9",
+     "prompt": "Match the code to its meaning.",
+     "pairs": [
+      [
+       "`#include <stdio.h>`",
+       "loads input and output"
+      ],
+      [
+       "`int main(void)`",
+       "where the program starts"
+      ],
+      [
+       "`\\n`",
+       "starts a new line"
+      ],
+      [
+       "`return 0;`",
+       "ends the program successfully"
+      ],
+      [
+       "`;`",
+       "ends a statement"
+      ]
+     ]
+    },
+    {
+     "type": "bug",
+     "id": "hello-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "#include <stdio.h>",
+      "int main(void) {",
+      "    printf(\"Hello\\n\")",
+      "    printf(\"World\\n\");",
+      "    return 0;",
+      "}"
+     ],
+     "bug": 2,
+     "explain": "The statement on line 3 has no `;` at the end. Write `printf(\"Hello\\n\");`."
+    },
+    {
+     "type": "choice",
+     "id": "hello-11",
+     "prompt": "What does this print?",
+     "code": "printf(\"She said \\\"Yes\\\"\\n\");",
+     "options": [
+      "`She said \"Yes\"`",
+      "`She said \\\"Yes\\\"`",
+      "`She said Yes`",
+      "Nothing, it does not compile"
+     ],
+     "answer": 0,
+     "explain": "`\\\"` is an escape sequence: it puts a double quote into the string. The backslash itself is not printed."
+    },
+    {
+     "type": "true_false",
+     "id": "hello-12",
+     "statement": "`Printf(\"Hi\\n\");` also prints `Hi`, because C ignores upper and lower case.",
+     "answer": false,
+     "explain": "C is case-sensitive. The function is called `printf`, all in lower case."
+    }
+   ]
+  },
+  {
+   "id": "variables",
+   "title": "Variables and types",
+   "chapter": "First steps",
+   "summary": "Store numbers and characters in variables of type `int`, `double` and `char`, and print them with `printf`.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A **variable** is a named place in memory that stores a value. In C, every variable has a **type**, and you write the type before the name. `int age = 30;` creates a variable `age` of type `int`, a whole number, with the value `30`."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int age = 30;\n    printf(\"Age: %d\\n\", age);\n    return 0;\n}",
+     "output": "Age: 30"
+    },
+    {
+     "type": "text",
+     "md": "`printf` can print values, too. Its first argument is the **format string**. Each **format specifier** in it, like `%d`, is a placeholder: `printf` replaces it with the next value after the comma. `%d` stands for an `int`."
+    },
+    {
+     "type": "heading",
+     "text": "Three basic types"
+    },
+    {
+     "type": "text",
+     "md": "`double` stores numbers with a decimal point, and `char` stores a single character in single quotes, like `'A'`. Each type has its own specifier: `%d` for `int`, `%f` for `double` and `%c` for `char`. You can put several specifiers in one format string. The values follow in the same order."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int items = 3;\n    double price = 2.5;\n    char grade = 'A';\n    printf(\"%d items at %f\\n\", items, price);\n    printf(\"Grade: %c\\n\", grade);\n    return 0;\n}",
+     "output": "3 items at 2.500000\nGrade: A"
+    },
+    {
+     "type": "text",
+     "md": "`%f` prints six digits after the decimal point. Write `%.2f` to get two digits; the value is rounded. Use `%%` to print the percent sign itself."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    double price = 4.998;\n    double rate = 7.5;\n    printf(\"%.2f\\n\", price);\n    printf(\"%.1f%%\\n\", rate);\n    return 0;\n}",
+     "output": "5.00\n7.5%"
+    },
+    {
+     "type": "heading",
+     "text": "Changing a variable"
+    },
+    {
+     "type": "text",
+     "md": "The `=` sign **assigns** a value: it stores the value on the right in the variable on the left. You can assign a new value later, but the type stays the same. You can also declare a variable first and give it a value later."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int score = 10;\n    printf(\"%d\\n\", score);\n    score = 25;\n    printf(\"%d\\n\", score);\n    int total;\n    total = score + 5;\n    printf(\"%d\\n\", total);\n    return 0;\n}",
+     "output": "10\n25\n30"
+    },
+    {
+     "type": "text",
+     "md": "Write `const` before the type when a value must never change. The compiler then stops with an error if you try to assign a new value. In the next example, `*` means multiply."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    const double pi = 3.14159;\n    double radius = 2.0;\n    printf(\"Area: %.2f\\n\", pi * radius * radius);\n    return 0;\n}",
+     "output": "Area: 12.57"
+    },
+    {
+     "type": "warning",
+     "md": "A variable without a value contains garbage: whatever was in that memory before. Always give a variable a value before you read it. Also make sure the specifier matches the type: printing a `double` with `%d` gives wrong output."
+    }
+   ],
+   "card": [
+    "`int n = 5;` whole number, `double x = 2.5;` decimal, `char c = 'A';` character",
+    "`printf(\"%d %f %c\\n\", n, x, c);` prints values",
+    "`%.2f` prints two decimal places, `%%` prints `%`",
+    "`const int max = 10;` can never change"
+   ],
+   "exercises": [
+    {
+     "type": "choice",
+     "id": "variables-1",
+     "prompt": "Which type stores the value `3.75`?",
+     "options": [
+      "`int`",
+      "`double`",
+      "`char`",
+      "`const`"
+     ],
+     "answer": 1,
+     "explain": "`double` stores numbers with a decimal point. An `int` would lose the `.75`, and a `char` stores one character."
+    },
+    {
+     "type": "input",
+     "id": "variables-2",
+     "prompt": "These lines are inside `main`. What do they print?",
+     "code": "int a = 4;\nint b = a;\na = 9;\nprintf(\"%d %d\\n\", a, b);",
+     "answers": [
+      "9 4"
+     ],
+     "explain": "`b = a` copies the value `4` into `b`. Changing `a` later does not change `b`."
+    },
+    {
+     "type": "input",
+     "id": "variables-3",
+     "prompt": "These lines are inside `main`. What do they print?",
+     "code": "double weight = 72.349;\nprintf(\"%.1f kg\\n\", weight);",
+     "answers": [
+      "72.3 kg"
+     ],
+     "explain": "`%.1f` prints one digit after the decimal point and rounds: `72.349` becomes `72.3`."
+    },
+    {
+     "type": "choice",
+     "id": "variables-4",
+     "prompt": "What does this print?",
+     "code": "printf(\"%f\\n\", 1.5);",
+     "options": [
+      "`1.5`",
+      "`1.500000`",
+      "`1.50`",
+      "`2`"
+     ],
+     "answer": 1,
+     "explain": "`%f` without a precision always prints six digits after the decimal point."
+    },
+    {
+     "type": "gap",
+     "id": "variables-5",
+     "prompt": "Fill the gap so the program prints `B`.",
+     "code": "char letter = ___;\nprintf(\"%c\\n\", letter);",
+     "options": [
+      "'B'",
+      "\"B\"",
+      "B"
+     ],
+     "answer": 0,
+     "explain": "A single character goes in single quotes. `\"B\"` in double quotes is a string, and `B` without quotes would be a variable name."
+    },
+    {
+     "type": "gap",
+     "id": "variables-6",
+     "prompt": "Fill the gap so the program prints `7`.",
+     "code": "int count = 7;\nprintf(\"___\\n\", count);",
+     "options": [
+      "%d",
+      "%f",
+      "%c",
+      "%s"
+     ],
+     "answer": 0,
+     "explain": "`%d` is the format specifier for an `int`. `%f` is for `double` and `%c` is for `char`."
+    },
+    {
+     "type": "blocks",
+     "id": "variables-7",
+     "prompt": "Declare a constant `max` with the value `100`.",
+     "tokens": [
+      "const",
+      "int",
+      "max",
+      "=",
+      "100",
+      ";"
+     ],
+     "distractors": [
+      "==",
+      "var"
+     ],
+     "explain": "`const` comes before the type, then the name, `=` and the value. One `=` assigns, `==` would compare."
+    },
+    {
+     "type": "order",
+     "id": "variables-8",
+     "prompt": "Put the lines in order so the program prints `15`.",
+     "lines": [
+      "#include <stdio.h>",
+      "int main(void) {",
+      "    int price = 10;",
+      "    int total = price + 5;",
+      "    printf(\"%d\\n\", total);",
+      "    return 0;",
+      "}"
+     ],
+     "explain": "A variable must be declared before you use it: first `price`, then `total`, which uses `price`, then the output."
+    },
+    {
+     "type": "pairs",
+     "id": "variables-9",
+     "prompt": "Match the format specifier to what it prints.",
+     "pairs": [
+      [
+       "`%d`",
+       "an int"
+      ],
+      [
+       "`%f`",
+       "a double"
+      ],
+      [
+       "`%c`",
+       "a char"
+      ],
+      [
+       "`%.2f`",
+       "a double with two decimals"
+      ],
+      [
+       "`%%`",
+       "a percent sign"
+      ]
+     ]
+    },
+    {
+     "type": "bug",
+     "id": "variables-10",
+     "prompt": "The program should print `9.99`. Which line has the bug?",
+     "lines": [
+      "#include <stdio.h>",
+      "int main(void) {",
+      "    double price = 9.99;",
+      "    printf(\"%d\\n\", price);",
+      "    return 0;",
+      "}"
+     ],
+     "bug": 3,
+     "explain": "A `double` needs `%f`, not `%d`. Write `printf(\"%.2f\\n\", price);`."
+    },
+    {
+     "type": "true_false",
+     "id": "variables-11",
+     "statement": "`printf(\"%.2f\\n\", 2.0);` prints `2.00`.",
+     "answer": true,
+     "explain": "`%.2f` always prints exactly two digits after the decimal point, even when they are zeros."
+    },
+    {
+     "type": "true_false",
+     "id": "variables-12",
+     "statement": "After `const int max = 10;`, you can write `max = 20;` later in the program.",
+     "answer": false,
+     "explain": "A `const` variable cannot get a new value. The compiler stops with an error."
+    }
+   ]
+  },
+  {
+   "id": "operators",
+   "title": "Operators",
+   "chapter": "First steps",
+   "summary": "Calculate with `+`, `-`, `*`, `/` and `%`, understand integer division, and use `++`, `+=` and casts.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "C has the usual arithmetic operators: `+` adds, `-` subtracts, `*` multiplies and `/` divides. As in mathematics, `*` and `/` come before `+` and `-`. Use parentheses `(` `)` to change the order."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int a = 7;\n    int b = 2;\n    printf(\"%d\\n\", a + b);\n    printf(\"%d\\n\", a * b);\n    printf(\"%d\\n\", 2 + 3 * 4);\n    printf(\"%d\\n\", (2 + 3) * 4);\n    return 0;\n}",
+     "output": "9\n14\n14\n20"
+    },
+    {
+     "type": "heading",
+     "text": "Integer division"
+    },
+    {
+     "type": "text",
+     "md": "When both numbers are `int`, `/` is **integer division**: the result is a whole number, and the part after the decimal point is cut off. `7 / 2` is `3`, not `3.5`. The **remainder operator** `%` gives what is left over: `7 % 2` is `1`."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    printf(\"%d\\n\", 7 / 2);\n    printf(\"%d\\n\", 7 % 2);\n    printf(\"%d\\n\", 10 % 5);\n    printf(\"%f\\n\", 7.0 / 2);\n    return 0;\n}",
+     "output": "3\n1\n0\n3.500000"
+    },
+    {
+     "type": "text",
+     "md": "If at least one number is a `double`, the division keeps the decimals, as `7.0 / 2` shows. The remainder `%` only works with whole numbers. It tells you if a number is even: `n % 2` is `0` for every even `n`."
+    },
+    {
+     "type": "heading",
+     "text": "Short forms"
+    },
+    {
+     "type": "text",
+     "md": "Changing a variable based on its own value is very common, so C has short forms. `x += 5` means `x = x + 5`. There are also `-=`, `*=`, `/=` and `%=`. `x++` adds 1 to `x` (**increment**), and `x--` subtracts 1 (**decrement**)."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int x = 10;\n    x += 5;\n    printf(\"%d\\n\", x);\n    x *= 2;\n    printf(\"%d\\n\", x);\n    x++;\n    printf(\"%d\\n\", x);\n    x--;\n    x--;\n    printf(\"%d\\n\", x);\n    return 0;\n}",
+     "output": "15\n30\n31\n29"
+    },
+    {
+     "type": "tip",
+     "md": "Use `++` and `--` as statements of their own, like `count++;`. Inside bigger expressions they are hard to read, and some combinations, like `i++ + i++`, are not allowed in C and give unpredictable results."
+    },
+    {
+     "type": "heading",
+     "text": "Casts"
+    },
+    {
+     "type": "text",
+     "md": "Sometimes you have two `int` values but want a result with decimals. A **cast** converts a value to another type: write the type in parentheses before the value, like `(double)total`. Converting a `double` to an `int` cuts off the decimals."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int total = 7;\n    int count = 2;\n    printf(\"%.1f\\n\", (double)total / count);\n    printf(\"%.1f\\n\", (double)(total / count));\n    printf(\"%d\\n\", (int)3.99);\n    return 0;\n}",
+     "output": "3.5\n3.0\n3"
+    },
+    {
+     "type": "warning",
+     "md": "`(double)(total / count)` is `3.0`, not `3.5`: the division inside the parentheses happens first, with whole numbers. Cast before you divide."
+    }
+   ],
+   "card": [
+    "`7 / 2` is `3` with `int`, `7.0 / 2` is `3.5`",
+    "`7 % 2` is `1`, the remainder",
+    "`x += 5;` means `x = x + 5;`",
+    "`x++;` adds 1, `x--;` subtracts 1",
+    "`(double)a / b` divides with decimals"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "operators-1",
+     "prompt": "These lines are inside `main`. What do they print?",
+     "code": "printf(\"%d\\n\", 17 / 5);",
+     "answers": [
+      "3"
+     ],
+     "explain": "Both numbers are `int`, so `/` is integer division: `17 / 5` is `3.4`, and the `.4` is cut off."
+    },
+    {
+     "type": "input",
+     "id": "operators-2",
+     "prompt": "These lines are inside `main`. What do they print?",
+     "code": "printf(\"%d\\n\", 17 % 5);",
+     "answers": [
+      "2"
+     ],
+     "explain": "`5` fits into `17` three times, which makes `15`. The remainder is `17 - 15`, so `2`."
+    },
+    {
+     "type": "choice",
+     "id": "operators-3",
+     "prompt": "What does this print?",
+     "code": "int n = 4;\nn += 3;\nn *= 2;\nprintf(\"%d\\n\", n);",
+     "options": [
+      "`14`",
+      "`11`",
+      "`10`",
+      "`8`"
+     ],
+     "answer": 0,
+     "explain": "`n += 3` makes `n` equal to `7`, and `n *= 2` doubles it to `14`."
+    },
+    {
+     "type": "choice",
+     "id": "operators-4",
+     "prompt": "What does this print?",
+     "code": "printf(\"%.1f\\n\", (double)9 / 2);",
+     "options": [
+      "`4.5`",
+      "`4.0`",
+      "`4`",
+      "`5.0`"
+     ],
+     "answer": 0,
+     "explain": "The cast turns `9` into a `double` before the division, so the result keeps its decimals."
+    },
+    {
+     "type": "true_false",
+     "id": "operators-5",
+     "statement": "`10 / 4` is `2.5` when both numbers are `int`.",
+     "answer": false,
+     "explain": "With two `int` values, `/` cuts off the decimals, so `10 / 4` is `2`."
+    },
+    {
+     "type": "gap",
+     "id": "operators-6",
+     "prompt": "Fill the gap so the program prints `3.5`.",
+     "code": "int a = 7;\nint b = 2;\nprintf(\"%.1f\\n\", ___ a / b);",
+     "options": [
+      "(double)",
+      "(int)",
+      "double"
+     ],
+     "answer": 0,
+     "explain": "The cast `(double)` turns `a` into `7.0` before the division. A cast needs the parentheses."
+    },
+    {
+     "type": "gap",
+     "id": "operators-7",
+     "prompt": "Fill the gap so `count` grows by 1.",
+     "code": "int count = 5;\ncount___;\nprintf(\"%d\\n\", count);",
+     "options": [
+      "++",
+      "--",
+      "+=",
+      "**"
+     ],
+     "answer": 0,
+     "explain": "`count++` adds 1 to `count`. `count--` would subtract 1, and `+=` needs a value on its right."
+    },
+    {
+     "type": "blocks",
+     "id": "operators-8",
+     "prompt": "Write a statement that adds `10` to `total`.",
+     "tokens": [
+      "total",
+      "+=",
+      "10",
+      ";"
+     ],
+     "distractors": [
+      "=+",
+      "++"
+     ],
+     "explain": "`total += 10;` is short for `total = total + 10;`."
+    },
+    {
+     "type": "order",
+     "id": "operators-9",
+     "prompt": "These lines are inside `main`. Put them in order so the program prints `2`.",
+     "lines": [
+      "int total = 17;",
+      "int each = total / 5;",
+      "int left = total - each * 5;",
+      "printf(\"%d\\n\", left);"
+     ],
+     "explain": "Each line uses the variable from the line before: `each` is `3`, and `left` is `17 - 15`, so `2`."
+    },
+    {
+     "type": "bug",
+     "id": "operators-10",
+     "prompt": "The program should print `2.50`. Which line has the bug?",
+     "lines": [
+      "#include <stdio.h>",
+      "int main(void) {",
+      "    int cost = 5;",
+      "    double half = cost / 2;",
+      "    printf(\"%.2f\\n\", half);",
+      "    return 0;",
+      "}"
+     ],
+     "bug": 3,
+     "explain": "`cost / 2` is integer division and gives `2` before the value is stored. Write `double half = cost / 2.0;`."
+    },
+    {
+     "type": "pairs",
+     "id": "operators-11",
+     "prompt": "Match the operator to its meaning.",
+     "pairs": [
+      [
+       "`+=`",
+       "adds to a variable"
+      ],
+      [
+       "`%`",
+       "remainder of a division"
+      ],
+      [
+       "`++`",
+       "adds 1"
+      ],
+      [
+       "`*`",
+       "multiplies"
+      ],
+      [
+       "`(double)`",
+       "converts to double"
+      ]
+     ]
+    },
+    {
+     "type": "true_false",
+     "id": "operators-12",
+     "statement": "`-7 / 2` is `-3` in C, because integer division cuts off the decimals.",
+     "answer": true,
+     "explain": "`-7 / 2` would be `-3.5`. Integer division cuts off the `.5`, so the result is `-3`."
+    }
+   ]
+  },
+  {
+   "id": "conditions",
+   "title": "Decisions",
+   "chapter": "Control flow",
+   "summary": "Make decisions with `if`, `else` and `switch`, compare values, and combine conditions with `&&`, `||` and `!`.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "An `if` statement runs code only when a **condition** is true. The condition goes in parentheses, the code in curly braces. With `else`, you say what happens otherwise."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int age = 15;\n    if (age >= 18) {\n        printf(\"Adult\\n\");\n    } else {\n        printf(\"Child\\n\");\n    }\n    return 0;\n}",
+     "output": "Child"
+    },
+    {
+     "type": "text",
+     "md": "C compares with `==` (equal), `!=` (not equal), `<`, `>`, `<=` and `>=`. A comparison gives `1` when it is true and `0` when it is false. In a condition, `0` means false and every other number means true."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int x = 5;\n    printf(\"%d\\n\", x == 5);\n    printf(\"%d\\n\", x > 7);\n    printf(\"%d\\n\", x != 3);\n    return 0;\n}",
+     "output": "1\n0\n1"
+    },
+    {
+     "type": "warning",
+     "md": "Do not confuse `=` and `==`. `if (x = 5)` does not compare: it assigns `5` to `x`, and the condition is always true. The compiler warns about it, so read the warnings."
+    },
+    {
+     "type": "heading",
+     "text": "More than two cases"
+    },
+    {
+     "type": "text",
+     "md": "Chain conditions with `else if`. C checks them from top to bottom and runs only the first block whose condition is true."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int score = 72;\n    if (score >= 90) {\n        printf(\"A\\n\");\n    } else if (score >= 70) {\n        printf(\"B\\n\");\n    } else {\n        printf(\"C\\n\");\n    }\n    return 0;\n}",
+     "output": "B"
+    },
+    {
+     "type": "heading",
+     "text": "Combining conditions"
+    },
+    {
+     "type": "text",
+     "md": "`&&` means **and**: both sides must be true. `||` means **or**: at least one side must be true. `!` means **not**: it turns true into false and false into true."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int age = 25;\n    int has_ticket = 1;\n    if (age >= 18 && has_ticket) {\n        printf(\"Enter\\n\");\n    }\n    if (age < 12 || age > 65) {\n        printf(\"Discount\\n\");\n    }\n    if (!has_ticket) {\n        printf(\"Buy a ticket\\n\");\n    }\n    return 0;\n}",
+     "output": "Enter"
+    },
+    {
+     "type": "heading",
+     "text": "switch"
+    },
+    {
+     "type": "text",
+     "md": "`switch` compares one whole number or character with several fixed values. Each `case` is a value followed by a colon. `break` ends the `switch`. Without it, the program **falls through** and also runs the next case. `default` runs when no case matches."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int day = 2;\n    switch (day) {\n        case 1:\n            printf(\"Monday\\n\");\n            break;\n        case 2:\n            printf(\"Tuesday\\n\");\n            break;\n        default:\n            printf(\"Another day\\n\");\n    }\n    return 0;\n}",
+     "output": "Tuesday"
+    }
+   ],
+   "card": [
+    "`if (x > 0) { ... } else { ... }`",
+    "`==` compares, `=` assigns",
+    "`&&` and, `||` or, `!` not",
+    "`switch (n) { case 1: ... break; default: ... }`",
+    "`0` is false, every other number is true"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "conditions-1",
+     "prompt": "These lines are inside `main`. What do they print?",
+     "code": "int temp = 12;\nif (temp > 25) {\n    printf(\"Hot\\n\");\n} else if (temp > 10) {\n    printf(\"Mild\\n\");\n} else {\n    printf(\"Cold\\n\");\n}",
+     "answers": [
+      "Mild"
+     ],
+     "explain": "`12 > 25` is false, so C checks the next condition. `12 > 10` is true, so it prints `Mild` and skips the rest."
+    },
+    {
+     "type": "input",
+     "id": "conditions-2",
+     "prompt": "These lines are inside `main`. What do they print?",
+     "code": "printf(\"%d\\n\", 3 < 2 || 5 == 5);",
+     "answers": [
+      "1"
+     ],
+     "explain": "`3 < 2` is false, but `5 == 5` is true. With `||`, one true side is enough, and a true comparison gives `1`."
+    },
+    {
+     "type": "choice",
+     "id": "conditions-3",
+     "prompt": "What does this print?",
+     "code": "int n = 0;\nif (n) {\n    printf(\"Yes\\n\");\n} else {\n    printf(\"No\\n\");\n}",
+     "options": [
+      "`No`",
+      "`Yes`",
+      "`0`",
+      "Nothing"
+     ],
+     "answer": 0,
+     "explain": "In a condition, `0` means false. So the `else` block runs."
+    },
+    {
+     "type": "choice",
+     "id": "conditions-4",
+     "prompt": "Which condition is true when `x` is between 1 and 10, both included?",
+     "options": [
+      "`x >= 1 && x <= 10`",
+      "`x >= 1 || x <= 10`",
+      "`1 <= x <= 10`",
+      "`x > 1 && x < 10`"
+     ],
+     "answer": 0,
+     "explain": "Both comparisons must be true, so you need `&&`. `1 <= x <= 10` does not work in C: it compares the result `0` or `1` of `1 <= x` with `10`."
+    },
+    {
+     "type": "true_false",
+     "id": "conditions-5",
+     "statement": "`if (x = 0)` checks whether `x` equals `0`.",
+     "answer": false,
+     "explain": "A single `=` assigns: `x` becomes `0`, and the condition is always false. To compare, write `x == 0`."
+    },
+    {
+     "type": "gap",
+     "id": "conditions-6",
+     "prompt": "Fill the gap so the program prints `Even`.",
+     "code": "int n = 8;\nif (n % 2 ___ 0) {\n    printf(\"Even\\n\");\n} else {\n    printf(\"Odd\\n\");\n}",
+     "options": [
+      "==",
+      "=",
+      "!=",
+      "=>"
+     ],
+     "answer": 0,
+     "explain": "`n % 2 == 0` is true when the remainder is `0`, which means the number is even."
+    },
+    {
+     "type": "gap",
+     "id": "conditions-7",
+     "prompt": "Fill the gap so the program prints only `Small`.",
+     "code": "int size = 1;\nswitch (size) {\n    case 1:\n        printf(\"Small\\n\");\n        ___;\n    case 2:\n        printf(\"Large\\n\");\n}",
+     "options": [
+      "break",
+      "stop",
+      "continue",
+      "return"
+     ],
+     "answer": 0,
+     "explain": "`break` ends the `switch`. Without it, the program falls through and also prints `Large`."
+    },
+    {
+     "type": "blocks",
+     "id": "conditions-8",
+     "prompt": "Write the first line of an `if` that checks whether `age` is at least 18.",
+     "tokens": [
+      "if",
+      "(",
+      "age",
+      ">=",
+      "18",
+      ")",
+      "{"
+     ],
+     "distractors": [
+      "=>",
+      "then"
+     ],
+     "explain": "The condition goes in parentheses after `if`, and the block starts with `{`. \"At least\" means `>=`."
+    },
+    {
+     "type": "order",
+     "id": "conditions-9",
+     "prompt": "Put the lines in order: the program prints `Hot` above 25, `Warm` above 15 and `Cold` otherwise.",
+     "lines": [
+      "if (t > 25) {",
+      "    printf(\"Hot\\n\");",
+      "} else if (t > 15) {",
+      "    printf(\"Warm\\n\");",
+      "} else {",
+      "    printf(\"Cold\\n\");",
+      "}"
+     ],
+     "explain": "Each `printf` goes right after the condition it belongs to. The `else` block comes last, because it runs when no condition is true."
+    },
+    {
+     "type": "bug",
+     "id": "conditions-10",
+     "prompt": "The program should print nothing. Which line has the bug?",
+     "lines": [
+      "#include <stdio.h>",
+      "int main(void) {",
+      "    int code = 7;",
+      "    if (code = 3) {",
+      "        printf(\"Three\\n\");",
+      "    }",
+      "    return 0;",
+      "}"
+     ],
+     "bug": 3,
+     "explain": "`code = 3` assigns instead of comparing, so the condition is always true. Write `if (code == 3) {`."
+    },
+    {
+     "type": "pairs",
+     "id": "conditions-11",
+     "prompt": "Match the operator to its meaning.",
+     "pairs": [
+      [
+       "`==`",
+       "equal to"
+      ],
+      [
+       "`!=`",
+       "not equal to"
+      ],
+      [
+       "`&&`",
+       "and"
+      ],
+      [
+       "`||`",
+       "or"
+      ],
+      [
+       "`!`",
+       "not"
+      ]
+     ]
+    },
+    {
+     "type": "true_false",
+     "id": "conditions-12",
+     "statement": "Without `break`, a `case` in a `switch` also runs the code of the next case.",
+     "answer": true,
+     "explain": "This is called fall-through. The program continues with the next case until it reaches a `break` or the end of the `switch`."
+    }
+   ]
+  },
+  {
+   "id": "loops",
+   "title": "Loops",
+   "chapter": "Control flow",
+   "summary": "Repeat code with `for`, `while` and `do`-`while`, and control loops with `break` and `continue`.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A **loop** repeats code. The `while` loop checks its condition before every round and runs the body as long as the condition is true."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 3;\n    while (n > 0) {\n        printf(\"%d\\n\", n);\n        n--;\n    }\n    printf(\"Go!\\n\");\n    return 0;\n}",
+     "output": "3\n2\n1\nGo!"
+    },
+    {
+     "type": "warning",
+     "md": "If the condition never becomes false, the loop runs forever. Make sure the body changes something the condition depends on, like `n--` above."
+    },
+    {
+     "type": "heading",
+     "text": "The for loop"
+    },
+    {
+     "type": "text",
+     "md": "A `for` loop puts everything for counting in one line, with three parts separated by `;`: the start (`int i = 1`), the condition (`i <= 3`) and the step (`i++`). The step runs after each round. The variable `i` exists only inside the loop."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    for (int i = 1; i <= 3; i++) {\n        printf(\"Round %d\\n\", i);\n    }\n    return 0;\n}",
+     "output": "Round 1\nRound 2\nRound 3"
+    },
+    {
+     "type": "text",
+     "md": "The step can be any change, like `i += 2` or `i--`. A loop can also build a result: here `sum` starts at `0`, and every round adds the current number."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int sum = 0;\n    for (int i = 2; i <= 10; i += 2) {\n        sum += i;\n    }\n    printf(\"Sum: %d\\n\", sum);\n    return 0;\n}",
+     "output": "Sum: 30"
+    },
+    {
+     "type": "heading",
+     "text": "do-while"
+    },
+    {
+     "type": "text",
+     "md": "A `do`-`while` loop checks the condition **after** the body. So the body always runs at least once, even if the condition is false from the start. Note the `;` after the condition."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int n = 10;\n    do {\n        printf(\"n is %d\\n\", n);\n        n++;\n    } while (n < 5);\n    return 0;\n}",
+     "output": "n is 10"
+    },
+    {
+     "type": "heading",
+     "text": "break and continue"
+    },
+    {
+     "type": "text",
+     "md": "`break` leaves the loop immediately. `continue` skips the rest of the current round and goes on with the next one."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    for (int i = 1; i <= 10; i++) {\n        if (i % 2 == 0) {\n            continue;\n        }\n        if (i > 7) {\n            break;\n        }\n        printf(\"%d\\n\", i);\n    }\n    return 0;\n}",
+     "output": "1\n3\n5\n7"
+    }
+   ],
+   "card": [
+    "`for (int i = 0; i < n; i++) { ... }` counts",
+    "`while (x > 0) { ... }` checks first",
+    "`do { ... } while (x > 0);` runs at least once",
+    "`break` leaves the loop, `continue` skips to the next round"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "loops-1",
+     "prompt": "These lines are inside `main`. What do they print?",
+     "code": "int total = 0;\nfor (int i = 1; i <= 4; i++) {\n    total += i;\n}\nprintf(\"%d\\n\", total);",
+     "answers": [
+      "10"
+     ],
+     "explain": "The loop adds `1`, `2`, `3` and `4` to `total`, which makes `10`."
+    },
+    {
+     "type": "input",
+     "id": "loops-2",
+     "prompt": "These lines are inside `main`. What do they print?",
+     "code": "int n = 1;\nwhile (n < 50) {\n    n *= 3;\n}\nprintf(\"%d\\n\", n);",
+     "answers": [
+      "81"
+     ],
+     "explain": "`n` becomes `3`, `9`, `27` and `81`. Then `n < 50` is false and the loop stops."
+    },
+    {
+     "type": "choice",
+     "id": "loops-3",
+     "prompt": "What does this print?",
+     "code": "int i = 5;\ndo {\n    printf(\"%d\\n\", i);\n    i++;\n} while (i < 3);",
+     "options": [
+      "`5`",
+      "Nothing",
+      "`3`",
+      "`5` and `6`"
+     ],
+     "answer": 0,
+     "explain": "A `do`-`while` loop runs the body once before it checks the condition. Then `6 < 3` is false, so it stops."
+    },
+    {
+     "type": "choice",
+     "id": "loops-4",
+     "prompt": "Which loop prints the numbers from 1 to 5 in increasing order?",
+     "options": [
+      "`for (int i = 1; i <= 5; i++)`",
+      "`for (int i = 1; i < 5; i++)`",
+      "`for (int i = 0; i <= 5; i++)`",
+      "`for (int i = 5; i > 0; i--)`"
+     ],
+     "answer": 0,
+     "explain": "The loop starts at `1` and runs as long as `i <= 5`, so `5` is included. `i < 5` would stop at `4`."
+    },
+    {
+     "type": "true_false",
+     "id": "loops-5",
+     "statement": "A `do`-`while` loop always runs its body at least once.",
+     "answer": true,
+     "explain": "The condition is checked after the body, so the body runs once even when the condition is false from the start."
+    },
+    {
+     "type": "gap",
+     "id": "loops-6",
+     "prompt": "Fill the gap so the loop prints `0`, `1` and `2`.",
+     "code": "for (int i = 0; i ___ 3; i++) {\n    printf(\"%d\\n\", i);\n}",
+     "options": [
+      "<",
+      "<=",
+      ">",
+      "=="
+     ],
+     "answer": 0,
+     "explain": "`i < 3` is true for `0`, `1` and `2`. With `<=`, the loop would also print `3`."
+    },
+    {
+     "type": "gap",
+     "id": "loops-7",
+     "prompt": "Fill the gap so the loop stops when `i` reaches `4`.",
+     "code": "for (int i = 1; i <= 10; i++) {\n    if (i == 4) {\n        ___;\n    }\n    printf(\"%d\\n\", i);\n}",
+     "options": [
+      "break",
+      "continue",
+      "stop",
+      "exit"
+     ],
+     "answer": 0,
+     "explain": "`break` leaves the loop at once, so the program prints `1`, `2` and `3`. `continue` would only skip `4`."
+    },
+    {
+     "type": "blocks",
+     "id": "loops-8",
+     "prompt": "Build a `for` loop header that counts from `10` down to `1`.",
+     "tokens": [
+      "for",
+      "(",
+      "int i = 10;",
+      "i >= 1;",
+      "i--",
+      ")"
+     ],
+     "distractors": [
+      "i++",
+      "i <= 1;"
+     ],
+     "explain": "The loop starts at `10`, runs as long as `i >= 1`, and `i--` makes `i` smaller after each round."
+    },
+    {
+     "type": "order",
+     "id": "loops-9",
+     "prompt": "These lines are inside `main`. Put them in order so the program prints `3`, `2` and `1`.",
+     "lines": [
+      "int n = 3;",
+      "while (n > 0) {",
+      "    printf(\"%d\\n\", n);",
+      "    n--;",
+      "}"
+     ],
+     "explain": "`n` must exist before the loop. Inside the loop, print `n` first and then make it smaller."
+    },
+    {
+     "type": "bug",
+     "id": "loops-10",
+     "prompt": "These lines are inside `main`. Which line has the bug?",
+     "lines": [
+      "int n = 0;",
+      "do {",
+      "    printf(\"%d\\n\", n);",
+      "    n++;",
+      "} while (n < 3)"
+     ],
+     "bug": 4,
+     "explain": "A `do`-`while` loop ends with a `;` after the condition. Write `} while (n < 3);`."
+    },
+    {
+     "type": "pairs",
+     "id": "loops-11",
+     "prompt": "Match the code to its meaning.",
+     "pairs": [
+      [
+       "`for`",
+       "counts with start, condition and step"
+      ],
+      [
+       "`while`",
+       "checks the condition first"
+      ],
+      [
+       "`do ... while`",
+       "checks the condition after the body"
+      ],
+      [
+       "`break`",
+       "leaves the loop"
+      ],
+      [
+       "`continue`",
+       "skips to the next round"
+      ]
+     ]
+    },
+    {
+     "type": "input",
+     "id": "loops-12",
+     "prompt": "These lines are inside `main`. What do they print?",
+     "code": "for (int i = 1; i <= 5; i++) {\n    if (i == 3) {\n        continue;\n    }\n    printf(\"%d\", i);\n}\nprintf(\"\\n\");",
+     "answers": [
+      "1245"
+     ],
+     "explain": "When `i` is `3`, `continue` skips the `printf` and the loop goes on with `4`."
+    }
+   ]
+  },
+  {
+   "id": "functions",
+   "title": "Functions",
+   "chapter": "Building blocks",
+   "summary": "Split programs into functions with parameters and return values, declare them with prototypes, and understand scope.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "A **function** is a named block of code that you can call again and again. You already know two: `main` and `printf`. A function definition starts with the **return type**, then the name and the **parameters** in parentheses."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint square(int n) {\n    return n * n;\n}\n\nint main(void) {\n    printf(\"%d\\n\", square(4));\n    printf(\"%d\\n\", square(7));\n    return 0;\n}",
+     "output": "16\n49"
+    },
+    {
+     "type": "text",
+     "md": "`int square(int n)` says: the function is called `square`, it takes one `int` called `n`, and it gives back an `int`. `return` ends the function and hands the value back to the caller. The value you pass in the call, like `4`, is called an **argument**."
+    },
+    {
+     "type": "heading",
+     "text": "Several parameters and void"
+    },
+    {
+     "type": "text",
+     "md": "Separate several parameters with commas. If a function returns nothing, its return type is `void`. If it takes nothing, write `void` in the parentheses, as in `main(void)`."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nvoid greet(void) {\n    printf(\"Hello!\\n\");\n}\n\ndouble average(double a, double b) {\n    return (a + b) / 2;\n}\n\nint main(void) {\n    greet();\n    printf(\"%.1f\\n\", average(3.0, 4.0));\n    return 0;\n}",
+     "output": "Hello!\n3.5"
+    },
+    {
+     "type": "heading",
+     "text": "Prototypes"
+    },
+    {
+     "type": "text",
+     "md": "C reads a file from top to bottom, so you must declare a function before you call it. If you want to define it below `main`, put a **prototype** above `main`: the first line of the function, ending with `;`."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint max(int a, int b);\n\nint main(void) {\n    printf(\"%d\\n\", max(3, 9));\n    return 0;\n}\n\nint max(int a, int b) {\n    if (a > b) {\n        return a;\n    }\n    return b;\n}",
+     "output": "9"
+    },
+    {
+     "type": "heading",
+     "text": "Scope"
+    },
+    {
+     "type": "text",
+     "md": "Parameters and variables declared inside a function are **local**: they exist only inside that function, from their declaration to the closing `}`. The same is true for variables declared inside any block, such as a loop. So different functions can use the same names without conflict."
+    },
+    {
+     "type": "text",
+     "md": "C passes arguments **by value**: the function gets a copy. If it changes its parameter, the variable of the caller stays the same."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nvoid add_one(int n) {\n    n++;\n    printf(\"Inside: %d\\n\", n);\n}\n\nint main(void) {\n    int n = 5;\n    add_one(n);\n    printf(\"Outside: %d\\n\", n);\n    return 0;\n}",
+     "output": "Inside: 6\nOutside: 5"
+    },
+    {
+     "type": "tip",
+     "md": "To change a variable of the caller, a function needs the address of that variable. You will learn how in the unit about pointers."
+    }
+   ],
+   "card": [
+    "`int square(int n) { return n * n; }`",
+    "`void` means no return value, `(void)` means no parameters",
+    "`int max(int a, int b);` is a prototype above `main`",
+    "Arguments are copied, local variables live only in their block"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "functions-1",
+     "prompt": "What does this program print?",
+     "code": "#include <stdio.h>\n\nint triple(int x) {\n    return 3 * x;\n}\n\nint main(void) {\n    printf(\"%d\\n\", triple(2) + 1);\n    return 0;\n}",
+     "answers": [
+      "7"
+     ],
+     "explain": "`triple(2)` returns `6`, and `6 + 1` is `7`."
+    },
+    {
+     "type": "input",
+     "id": "functions-2",
+     "prompt": "What does this program print?",
+     "code": "#include <stdio.h>\n\nint diff(int a, int b) {\n    return a - b;\n}\n\nint main(void) {\n    printf(\"%d\\n\", diff(3, 8));\n    return 0;\n}",
+     "answers": [
+      "-5"
+     ],
+     "explain": "The arguments are matched by position: `a` is `3` and `b` is `8`, so the result is `3 - 8`."
+    },
+    {
+     "type": "choice",
+     "id": "functions-3",
+     "prompt": "What does this program print?",
+     "code": "#include <stdio.h>\n\nvoid reset(int x) {\n    x = 0;\n    printf(\"%d\\n\", x);\n}\n\nint main(void) {\n    int score = 42;\n    reset(score);\n    printf(\"%d\\n\", score);\n    return 0;\n}",
+     "options": [
+      "`0`, then `42`",
+      "`0`, then `0`",
+      "`42`, then `42`",
+      "`42`, then `0`"
+     ],
+     "answer": 0,
+     "explain": "`reset` gets a copy of `score`. It sets its copy to `0` and prints it, but `score` in `main` stays `42`."
+    },
+    {
+     "type": "choice",
+     "id": "functions-4",
+     "prompt": "What is the return type of a function that returns nothing?",
+     "options": [
+      "`void`",
+      "`int`",
+      "`null`",
+      "`empty`"
+     ],
+     "answer": 0,
+     "explain": "`void` means \"no value\". Such a function does not need a `return` statement with a value."
+    },
+    {
+     "type": "true_false",
+     "id": "functions-5",
+     "statement": "A function must be declared before the line where you call it.",
+     "answer": true,
+     "explain": "C reads the file from top to bottom. Define the function above the call, or put a prototype there."
+    },
+    {
+     "type": "gap",
+     "id": "functions-6",
+     "prompt": "Fill the gap so `half` gives back its result.",
+     "code": "#include <stdio.h>\n\ndouble half(double x) {\n    ___ x / 2;\n}\n\nint main(void) {\n    printf(\"%.1f\\n\", half(5.0));\n    return 0;\n}",
+     "options": [
+      "return",
+      "print",
+      "give",
+      "void"
+     ],
+     "answer": 0,
+     "explain": "`return` ends the function and hands the value back to the caller."
+    },
+    {
+     "type": "gap",
+     "id": "functions-7",
+     "prompt": "Fill the gap with the prototype for `cube`.",
+     "code": "#include <stdio.h>\n\n___\n\nint main(void) {\n    printf(\"%d\\n\", cube(2));\n    return 0;\n}\n\nint cube(int n) {\n    return n * n * n;\n}",
+     "options": [
+      "int cube(int n);",
+      "int cube(int n)",
+      "cube(int n);",
+      "int cube;"
+     ],
+     "answer": 0,
+     "explain": "A prototype is the first line of the function, with the return type, and it ends with `;`."
+    },
+    {
+     "type": "blocks",
+     "id": "functions-8",
+     "prompt": "Build the first line of a function `area` that takes two `double` values and returns a `double`.",
+     "tokens": [
+      "double",
+      "area",
+      "(",
+      "double w",
+      ",",
+      "double h",
+      ")"
+     ],
+     "distractors": [
+      "int",
+      ";"
+     ],
+     "explain": "The return type comes first, then the name, then the parameters with their types, separated by a comma."
+    },
+    {
+     "type": "order",
+     "id": "functions-9",
+     "prompt": "Put the lines in order so the program prints `10`.",
+     "lines": [
+      "#include <stdio.h>",
+      "void show(int n) { printf(\"%d\\n\", 2 * n); }",
+      "int main(void) {",
+      "    show(5);",
+      "    return 0;",
+      "}"
+     ],
+     "explain": "The header comes first because `show` uses `printf`. `show` is defined before `main` calls it."
+    },
+    {
+     "type": "bug",
+     "id": "functions-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "#include <stdio.h>",
+      "int add(int a, int b) {",
+      "    int sum = a + b;",
+      "}",
+      "int main(void) {",
+      "    printf(\"%d\\n\", add(2, 3));",
+      "    return 0;",
+      "}"
+     ],
+     "bug": 2,
+     "explain": "`add` must give back a value, but it never returns one. Write `return a + b;`."
+    },
+    {
+     "type": "pairs",
+     "id": "functions-11",
+     "prompt": "Match the code to its meaning.",
+     "pairs": [
+      [
+       "`return x;`",
+       "hands a value back"
+      ],
+      [
+       "`void f(int n)`",
+       "a function without a return value"
+      ],
+      [
+       "`int f(int n);`",
+       "a prototype"
+      ],
+      [
+       "`int f(void)`",
+       "a function without parameters"
+      ],
+      [
+       "`f(3)`",
+       "calls f with the argument 3"
+      ]
+     ]
+    },
+    {
+     "type": "true_false",
+     "id": "functions-12",
+     "statement": "A variable declared inside one function can also be used in another function.",
+     "answer": false,
+     "explain": "Variables inside a function are local. They exist only in that function."
+    }
+   ]
+  },
+  {
+   "id": "arrays",
+   "title": "Arrays and strings",
+   "chapter": "Data",
+   "summary": "Store many values in arrays, loop over them, and work with strings as `char` arrays using `string.h`.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "An **array** stores several values of the same type, one after another. You write the size in square brackets `[ ]` and the values in curly braces. Each element has an **index**, starting at `0`: `scores[0]` is the first element."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int scores[4] = {90, 75, 82, 60};\n    printf(\"%d\\n\", scores[0]);\n    printf(\"%d\\n\", scores[3]);\n    scores[1] = 80;\n    printf(\"%d\\n\", scores[1]);\n    return 0;\n}",
+     "output": "90\n60\n80"
+    },
+    {
+     "type": "warning",
+     "md": "An array with 4 elements has the indexes `0` to `3`. C does not check the index: `scores[4]` reads memory that does not belong to the array, and the program may crash or print garbage."
+    },
+    {
+     "type": "heading",
+     "text": "Looping over an array"
+    },
+    {
+     "type": "text",
+     "md": "`sizeof` gives the size of something in bytes. `sizeof(scores)` is the size of the whole array and `sizeof(scores[0])` the size of one element, so dividing them gives the number of elements. The result has the type `size_t`, a whole number that is never negative. You print it with `%zu`."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int scores[] = {90, 75, 82, 60};\n    size_t count = sizeof(scores) / sizeof(scores[0]);\n    int sum = 0;\n    for (size_t i = 0; i < count; i++) {\n        sum += scores[i];\n    }\n    printf(\"%zu scores, sum %d\\n\", count, sum);\n    return 0;\n}",
+     "output": "4 scores, sum 307"
+    },
+    {
+     "type": "tip",
+     "md": "If you list the values, you can leave out the size, as in `int scores[] = {90, 75, 82, 60};`. The compiler counts the values for you."
+    },
+    {
+     "type": "heading",
+     "text": "Strings"
+    },
+    {
+     "type": "text",
+     "md": "C has no separate string type. A **string** is an array of `char` that ends with the **null character** `'\\0'`. A string literal like `\"cat\"` adds it automatically, so `char word[] = \"cat\";` uses 4 bytes. Print a string with `%s`."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    char word[] = \"cat\";\n    printf(\"%s\\n\", word);\n    printf(\"%c\\n\", word[0]);\n    printf(\"%zu\\n\", sizeof(word));\n    return 0;\n}",
+     "output": "cat\nc\n4"
+    },
+    {
+     "type": "text",
+     "md": "The header `<string.h>` has functions for strings. `strlen(s)` counts the characters before the `'\\0'`. `strcpy(dest, src)` copies the string `src` into the array `dest`. `strcmp(a, b)` compares two strings and gives `0` when they are equal."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char name[20] = \"Ada\";\n    printf(\"%zu\\n\", strlen(name));\n    printf(\"%zu\\n\", sizeof(name));\n    strcpy(name, \"Grace\");\n    printf(\"%s\\n\", name);\n    if (strcmp(name, \"Grace\") == 0) {\n        printf(\"Same\\n\");\n    }\n    return 0;\n}",
+     "output": "3\n20\nGrace\nSame"
+    },
+    {
+     "type": "warning",
+     "md": "You cannot copy strings with `=` or compare them with `==`. Use `strcpy` and `strcmp` instead. The target array must be big enough for all characters plus the `'\\0'`."
+    }
+   ],
+   "card": [
+    "`int a[3] = {1, 2, 3};` has the indexes `0` to `2`",
+    "`sizeof(a) / sizeof(a[0])` is the number of elements",
+    "`char s[] = \"hi\";` ends with `'\\0'`, print it with `%s`",
+    "`strlen(s)`, `strcpy(dest, src)`, `strcmp(a, b) == 0`"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "arrays-1",
+     "prompt": "These lines are inside `main`. What do they print?",
+     "code": "int nums[] = {4, 8, 15, 16};\nprintf(\"%d\\n\", nums[1] + nums[3]);",
+     "answers": [
+      "24"
+     ],
+     "explain": "Indexes start at `0`: `nums[1]` is `8` and `nums[3]` is `16`."
+    },
+    {
+     "type": "input",
+     "id": "arrays-2",
+     "prompt": "What does this program print?",
+     "code": "#include <stdio.h>\n#include <string.h>\n\nint main(void) {\n    char text[] = \"hello\";\n    printf(\"%zu\\n\", strlen(text));\n    return 0;\n}",
+     "answers": [
+      "5"
+     ],
+     "explain": "`strlen` counts the characters before the `'\\0'` at the end: `h`, `e`, `l`, `l`, `o`."
+    },
+    {
+     "type": "choice",
+     "id": "arrays-3",
+     "prompt": "What does this print?",
+     "code": "char s[] = \"dog\";\nprintf(\"%zu\\n\", sizeof(s));",
+     "options": [
+      "`4`",
+      "`3`",
+      "`1`",
+      "`8`"
+     ],
+     "answer": 0,
+     "explain": "The string `\"dog\"` has three letters plus the `'\\0'` at the end, so the array has 4 bytes."
+    },
+    {
+     "type": "choice",
+     "id": "arrays-4",
+     "prompt": "Which expression gives the last element of `temps`?",
+     "code": "double temps[5] = {1.5, 2.5, 3.5, 4.5, 5.5};",
+     "options": [
+      "`temps[4]`",
+      "`temps[5]`",
+      "`temps[-1]`",
+      "`temps[last]`"
+     ],
+     "answer": 0,
+     "explain": "An array with 5 elements has the indexes `0` to `4`. `temps[5]` is outside the array."
+    },
+    {
+     "type": "true_false",
+     "id": "arrays-5",
+     "statement": "`strcmp(a, b)` gives `1` when the two strings are equal.",
+     "answer": false,
+     "explain": "`strcmp` gives `0` when the strings are equal. That is why you write `strcmp(a, b) == 0`."
+    },
+    {
+     "type": "gap",
+     "id": "arrays-6",
+     "prompt": "Fill the gap to print the string.",
+     "code": "char city[] = \"Rome\";\nprintf(\"___\\n\", city);",
+     "options": [
+      "%s",
+      "%c",
+      "%d",
+      "%zu"
+     ],
+     "answer": 0,
+     "explain": "`%s` prints a string. `%c` prints only one character."
+    },
+    {
+     "type": "gap",
+     "id": "arrays-7",
+     "prompt": "Fill the gap so the program prints the sum `18`.",
+     "code": "int values[] = {3, 6, 9};\nint sum = 0;\nfor (size_t i = 0; i < 3; i++) {\n    sum += ___;\n}\nprintf(\"%d\\n\", sum);",
+     "options": [
+      "values[i]",
+      "values",
+      "i",
+      "values[3]"
+     ],
+     "answer": 0,
+     "explain": "`values[i]` is the element at the current index. `values[3]` would be outside the array."
+    },
+    {
+     "type": "blocks",
+     "id": "arrays-8",
+     "prompt": "Declare an array `primes` with the values `2`, `3` and `5`.",
+     "tokens": [
+      "int",
+      "primes[]",
+      "=",
+      "{2, 3, 5}",
+      ";"
+     ],
+     "distractors": [
+      "primes()",
+      "[2, 3, 5]"
+     ],
+     "explain": "The square brackets after the name make it an array, and the values go in curly braces."
+    },
+    {
+     "type": "order",
+     "id": "arrays-9",
+     "prompt": "These lines are inside `main`. Put them in order so the program prints `cat` and then `3`.",
+     "lines": [
+      "char pet[10];",
+      "strcpy(pet, \"cat\");",
+      "printf(\"%s\\n\", pet);",
+      "printf(\"%zu\\n\", strlen(pet));"
+     ],
+     "explain": "First create the array, then copy the text into it. Then print the string and its length."
+    },
+    {
+     "type": "bug",
+     "id": "arrays-10",
+     "prompt": "Which line has the bug?",
+     "lines": [
+      "#include <stdio.h>",
+      "#include <string.h>",
+      "int main(void) {",
+      "    char answer[] = \"yes\";",
+      "    if (answer == \"yes\") {",
+      "        printf(\"OK\\n\");",
+      "    }",
+      "    return 0;",
+      "}"
+     ],
+     "bug": 4,
+     "explain": "Strings cannot be compared with `==`. Write `if (strcmp(answer, \"yes\") == 0) {`."
+    },
+    {
+     "type": "pairs",
+     "id": "arrays-11",
+     "prompt": "Match the code to its meaning.",
+     "pairs": [
+      [
+       "`a[0]`",
+       "the first element"
+      ],
+      [
+       "`'\\0'`",
+       "marks the end of a string"
+      ],
+      [
+       "`strlen(s)`",
+       "the number of characters"
+      ],
+      [
+       "`%s`",
+       "prints a string"
+      ],
+      [
+       "`strcpy(d, s)`",
+       "copies a string"
+      ]
+     ]
+    },
+    {
+     "type": "true_false",
+     "id": "arrays-12",
+     "statement": "`char word[] = \"sun\";` creates an array with 4 elements.",
+     "answer": true,
+     "explain": "The three letters are followed by the null character `'\\0'`, so the array has 4 elements."
+    }
+   ]
+  },
+  {
+   "id": "pointers",
+   "title": "Pointers and structs",
+   "chapter": "Memory",
+   "summary": "Use addresses with `&` and `*`, change variables through pointer parameters, and group data in a `struct`.",
+   "lesson": [
+    {
+     "type": "text",
+     "md": "Every variable lives at an **address** in memory. The operator `&` gives the address of a variable. A **pointer** is a variable that stores an address: `int *p` declares a pointer to an `int`."
+    },
+    {
+     "type": "text",
+     "md": "The operator `*` in front of a pointer **dereferences** it: it gives the value at that address. Through the pointer, you can read the variable and also change it."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nint main(void) {\n    int score = 10;\n    int *p = &score;\n    printf(\"%d\\n\", *p);\n    *p = 20;\n    printf(\"%d\\n\", score);\n    return 0;\n}",
+     "output": "10\n20"
+    },
+    {
+     "type": "tip",
+     "md": "The symbol `*` has several jobs. In a declaration, `int *p` means that `p` is a pointer. In an expression, `*p` means the value that `p` points to. And `a * b` is still a multiplication."
+    },
+    {
+     "type": "heading",
+     "text": "Pointers as parameters"
+    },
+    {
+     "type": "text",
+     "md": "Remember that C copies arguments. If a function gets a pointer, it can change the caller's variable through it. You pass the address with `&`. In `add_one`, `(*n)++` needs the parentheses: it increases the value that `n` points to."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nvoid add_one(int *n) {\n    (*n)++;\n}\n\nvoid swap(int *a, int *b) {\n    int tmp = *a;\n    *a = *b;\n    *b = tmp;\n}\n\nint main(void) {\n    int x = 5;\n    int y = 9;\n    add_one(&x);\n    printf(\"%d\\n\", x);\n    swap(&x, &y);\n    printf(\"%d %d\\n\", x, y);\n    return 0;\n}",
+     "output": "6\n9 6"
+    },
+    {
+     "type": "warning",
+     "md": "A pointer must point to a valid variable before you use `*` on it. Use `NULL` for a pointer that points nowhere, and never dereference a `NULL` pointer: the program crashes."
+    },
+    {
+     "type": "heading",
+     "text": "Structs"
+    },
+    {
+     "type": "text",
+     "md": "A `struct` groups several values, called **members**, into one new type. The definition ends with `};`. You reach a member with a dot, as in `p.x`."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nstruct Point {\n    int x;\n    int y;\n};\n\nint main(void) {\n    struct Point p = {3, 4};\n    p.x = 10;\n    printf(\"(%d, %d)\\n\", p.x, p.y);\n    return 0;\n}",
+     "output": "(10, 4)"
+    },
+    {
+     "type": "text",
+     "md": "With a pointer to a struct, use the arrow `->` to reach a member: `ptr->x` means `(*ptr).x`. Functions often take a pointer to a struct, so they can change it without copying it."
+    },
+    {
+     "type": "code",
+     "code": "#include <stdio.h>\n\nstruct Account {\n    char owner[20];\n    double balance;\n};\n\nvoid deposit(struct Account *acc, double amount) {\n    acc->balance += amount;\n}\n\nint main(void) {\n    struct Account a = {\"Mia\", 50.0};\n    deposit(&a, 25.5);\n    printf(\"%s: %.2f\\n\", a.owner, a.balance);\n    return 0;\n}",
+     "output": "Mia: 75.50"
+    }
+   ],
+   "card": [
+    "`int *p = &x;` stores the address of `x` in `p`",
+    "`*p = 5;` changes the value `p` points to",
+    "`void f(int *n)` called as `f(&x);` can change `x`",
+    "`struct Point { int x; int y; };` then `p.x`",
+    "`ptr->x` is the same as `(*ptr).x`"
+   ],
+   "exercises": [
+    {
+     "type": "input",
+     "id": "pointers-1",
+     "prompt": "These lines are inside `main`. What do they print?",
+     "code": "int a = 3;\nint *p = &a;\n*p = *p + 4;\nprintf(\"%d\\n\", a);",
+     "answers": [
+      "7"
+     ],
+     "explain": "`p` points to `a`, so `*p = *p + 4` changes `a` itself from `3` to `7`."
+    },
+    {
+     "type": "input",
+     "id": "pointers-2",
+     "prompt": "What does this program print?",
+     "code": "#include <stdio.h>\n\nvoid triple(int *n) {\n    *n *= 3;\n}\n\nint main(void) {\n    int v = 5;\n    triple(&v);\n    printf(\"%d\\n\", v);\n    return 0;\n}",
+     "answers": [
+      "15"
+     ],
+     "explain": "`triple` gets the address of `v` and changes the value at that address, so `v` becomes `15`."
+    },
+    {
+     "type": "choice",
+     "id": "pointers-3",
+     "prompt": "What does this program print?",
+     "code": "#include <stdio.h>\n\nstruct Item {\n    int qty;\n    double price;\n};\n\nint main(void) {\n    struct Item it = {2, 1.5};\n    printf(\"%.2f\\n\", it.qty * it.price);\n    return 0;\n}",
+     "options": [
+      "`3.00`",
+      "`3.50`",
+      "`2.00`",
+      "`1.50`"
+     ],
+     "answer": 0,
+     "explain": "`it.qty` is `2` and `it.price` is `1.5`, so the product is `3.0`, printed with two decimals."
+    },
+    {
+     "type": "choice",
+     "id": "pointers-4",
+     "prompt": "`p` is a pointer to a `struct Point`. How do you read its member `x`?",
+     "options": [
+      "`p->x`",
+      "`p.x`",
+      "`*p.x`",
+      "`&p.x`"
+     ],
+     "answer": 0,
+     "explain": "With a pointer to a struct, you use the arrow `->`. The dot works only on the struct itself."
+    },
+    {
+     "type": "true_false",
+     "id": "pointers-5",
+     "statement": "After `int *p = &x;`, changing `*p` also changes `x`.",
+     "answer": true,
+     "explain": "`p` stores the address of `x`, so `*p` is `x` itself."
+    },
+    {
+     "type": "gap",
+     "id": "pointers-6",
+     "prompt": "Fill the gap so `p` stores the address of `n`.",
+     "code": "int n = 8;\nint *p = ___;\nprintf(\"%d\\n\", *p);",
+     "options": [
+      "&n",
+      "*n",
+      "n",
+      "&p"
+     ],
+     "answer": 0,
+     "explain": "`&n` is the address of `n`. A pointer to `int` stores such an address."
+    },
+    {
+     "type": "gap",
+     "id": "pointers-7",
+     "prompt": "Fill the gap so `reset` sets `count` to `0`.",
+     "code": "#include <stdio.h>\n\nvoid reset(int *n) {\n    *n = 0;\n}\n\nint main(void) {\n    int count = 9;\n    reset(___);\n    printf(\"%d\\n\", count);\n    return 0;\n}",
+     "options": [
+      "&count",
+      "count",
+      "*count"
+     ],
+     "answer": 0,
+     "explain": "The parameter is a pointer, so you pass the address `&count`. Then `reset` can change `count`."
+    },
+    {
+     "type": "blocks",
+     "id": "pointers-8",
+     "prompt": "Build a line that sets the member `age` of the struct that `ptr` points to to `30`.",
+     "tokens": [
+      "ptr",
+      "->",
+      "age",
+      "=",
+      "30",
+      ";"
+     ],
+     "distractors": [
+      ".",
+      "&"
+     ],
+     "explain": "`ptr->age` reaches the member `age` through the pointer, and `=` assigns the new value."
+    },
+    {
+     "type": "order",
+     "id": "pointers-9",
+     "prompt": "The program starts with `#include <stdio.h>`. Put the other lines in order so it prints `120`.",
+     "lines": [
+      "struct Book {",
+      "    int pages;",
+      "};",
+      "int main(void) {",
+      "    struct Book b = {120};",
+      "    printf(\"%d\\n\", b.pages);",
+      "    return 0;",
+      "}"
+     ],
+     "explain": "The struct type must be defined before `main` can use it. Its definition ends with `};`."
+    },
+    {
+     "type": "bug",
+     "id": "pointers-10",
+     "prompt": "The program should print `8`. Which line has the bug?",
+     "lines": [
+      "#include <stdio.h>",
+      "void double_it(int *n) {",
+      "    *n = *n * 2;",
+      "}",
+      "int main(void) {",
+      "    int x = 4;",
+      "    double_it(x);",
+      "    printf(\"%d\\n\", x);",
+      "    return 0;",
+      "}"
+     ],
+     "bug": 6,
+     "explain": "`double_it` expects an address, not a value. Write `double_it(&x);`."
+    },
+    {
+     "type": "pairs",
+     "id": "pointers-11",
+     "prompt": "Match the code to its meaning.",
+     "pairs": [
+      [
+       "`&x`",
+       "the address of x"
+      ],
+      [
+       "`int *p`",
+       "declares a pointer to an int"
+      ],
+      [
+       "`*p`",
+       "the value p points to"
+      ],
+      [
+       "`s.x`",
+       "a member of a struct"
+      ],
+      [
+       "`ptr->x`",
+       "a member through a pointer"
+      ]
+     ]
+    },
+    {
+     "type": "true_false",
+     "id": "pointers-12",
+     "statement": "`ptr->x` and `(*ptr).x` mean the same thing.",
+     "answer": true,
+     "explain": "The arrow is a short form: it dereferences the pointer and then reads the member."
+    }
+   ]
+  }
+ ]
+}
