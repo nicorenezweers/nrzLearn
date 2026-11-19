@@ -1,7 +1,7 @@
 # nrzLearn - Umbrel-Paket
 
 Dieser Zweig enthaelt nur fertige Dateien fuer umbrelOS, gebaut mit
-`scripts/umbrel-release.sh` auf dem Zweig `main`:
+`cargo xtask umbrel-release` auf dem Zweig `main`:
 
 - `nrzlearn-server-amd64.gz`, `nrzlearn-server-arm64.gz` - der kleine Dateiserver
   (Linux, statisch gelinkt)
